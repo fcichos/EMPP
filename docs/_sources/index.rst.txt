@@ -45,7 +45,7 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
 
 .. toctree::
    :maxdepth: 2
-   :caption: Lecture 1:
+   :caption: Introduction:
 
    lectures/Intro/overview.rst
    notebooks/Intro/1_Introduction2Jupyter.ipynb
@@ -61,7 +61,7 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
    notebooks/L1/2_operators.ipynb
    notebooks/L1/3_datatypes.ipynb
    notebooks/L1/4_modules.ipynb
-   lectures/L1/assignment_1.rst
+
 
 
 Indices and tables
