@@ -6,7 +6,7 @@
 Prüfung
 =======
 
-Wir werden diesen Kurs mit einer Prüfung in Form einer Portfolio Prüfung abschließen.  Die Prüfung besteht aus der Abgabe von 50 Prozent aller Übungen (Teil 1) und einem Abschlussprojekt. Dieses Abschlussprojekt wird zu einem Thema Ihrer Wahl oder zu einem der Themen, die wir als Beispielthemen anbieten, durchgeführt. Jeder einzelne Teilnehmer muss ein Jupyter Notebook einreichen. Gruppenarbeit ist nicht erlaubt.
+Wir werden diesen Kurs mit einer Prüfung in Form einer Portfolio Prüfung abschließen. Die Prüfung besteht aus der Abgabe von 50 Prozent korrekter Übungsaufgaben (insgesamt, Teil 1) und einem Abschlussprojekt (Teil 2). Beide Teilleistungen müssen bestanden werden. Das Abschlussprojekt wird zu einem Thema Ihrer Wahl oder zu einem der Themen, die wir als Beispielthemen anbieten, durchgeführt. Jeder einzelne Teilnehmer muss ein Jupyter Notebook einreichen. Gruppenarbeit ist nicht erlaubt.
 
 
 **Jupyter-Notebook mit dem Abschlussprojekt**
@@ -22,7 +22,7 @@ Benotung: Die Notebooks werden nach folgenden Kriterien benotet:
 - Qualität des Codes (Verwendung von Funktionen, Klassen, Modulen, Funktion des Notebooks)
 - Qualität der Diagramme (Achsenbeschriftungen, Lesbarkeit der Beschriftungen)
 
-Der Abgabetermin für das Projekt ist **der 1. März 2024**. 
+Der Abgabetermin für das Projekt ist **der 4. März 2024, 12:00 Uhr**. Projektabgaben nach diesem Zeitpunkt werden nicht mehr akzeptiert.
 
 Bitte reichen Sie Ihre Projekte per E-Mail an Andrea Kramer, **firstname.surname@uni-leipzig.de**, ein.
 

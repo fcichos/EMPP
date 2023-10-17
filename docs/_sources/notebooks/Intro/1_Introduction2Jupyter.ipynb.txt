@@ -177,7 +177,7 @@
     }
    },
    "source": [
-    "Internally, notebook documents are **[JSON](https://en.wikipedia.org/wiki/JSON) text files** with **binary data encoded in  [base64](http://en.wikipedia.org/wiki/Base64)**. This allows them to be **read and manipulated programmatically** by any programming language."
+    "Internally, notebook documents are **[JSON](https://en.wikipedia.org/wiki/JSON)  text files** with **binary data encoded in   [base64](http://en.wikipedia.org/wiki/Base64)**. This allows them to be **read and manipulated programmatically** by any programming language."
    ]
   },
   {
