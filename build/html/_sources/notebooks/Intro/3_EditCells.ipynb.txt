@@ -39,7 +39,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": 3,
    "metadata": {
     "slideshow": {
      "slide_type": "subslide"
@@ -62,7 +62,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 4,
    "metadata": {
     "slideshow": {
      "slide_type": "subslide"

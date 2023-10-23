@@ -59,9 +59,16 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
    lectures/L1/overview_1.rst
    notebooks/L1/1_variables.ipynb
    notebooks/L1/2_operators.ipynb
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 2:
+   lectures/L2/overview_2.rst
    notebooks/L1/3_datatypes.ipynb
    notebooks/L1/4_modules.ipynb
-
+   notebooks/L2/1_numpy.ipynb   
+   notebooks/L2/2_plotting.ipynb
 
 
 Indices and tables
