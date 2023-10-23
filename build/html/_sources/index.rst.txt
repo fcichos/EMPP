@@ -64,6 +64,7 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
 .. toctree::
    :maxdepth: 2
    :caption: Lecture 2:
+   
    lectures/L2/overview_2.rst
    notebooks/L1/3_datatypes.ipynb
    notebooks/L1/4_modules.ipynb
