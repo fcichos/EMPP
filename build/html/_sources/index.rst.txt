@@ -70,7 +70,7 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
    notebooks/L1/4_modules.ipynb
    notebooks/L2/1_numpy.ipynb   
    notebooks/L2/2_plotting.ipynb
-
+   lectures/L2/assignment_1.rst
 
 Indices and tables
 ==================
