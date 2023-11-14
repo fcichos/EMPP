@@ -1,21 +1,17 @@
-Lecture Contents
-================
+Inhalt der Vorlesung
+====================
 
-In this third lecture we will have a look at
+In dieser dritten Vorlesung werden wir uns mit folgenden Themen beschäftigen
 
-1. Random Numbers (pending from last lecture)
-2. Input and output
-3. Flow control
-4. Functions
-5. Exceptions (for self-study)
+1. Zufallszahlen (noch aus der letzten Vorlesung)
+2. Eingabe und Ausgabe
+3. Flusskontrolle
+4. Funktionen
+5. Ausnahmen (zum Selbststudium)
 
-The video is missing the reandom number part, which is in the previous lectures video.
+Im Video fehlt der Teil mit den Zufallszahlen, der im Video der letzten Vorlesung enthalten ist.
 
-There is today also a tiny add-on we will talk about in the seminar. It is about the reactive Pluto notebook system.
-
-   `Add On: Reactive Pluto Notebooks <https://fcichos.github.io/CompSoft22/lectures/L12/pluto/lecture.jl.html>`_
-
-Have fun!
+Viel Spaß!
 
 
 

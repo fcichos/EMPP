@@ -71,6 +71,18 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
    notebooks/L2/1_numpy.ipynb   
    notebooks/L2/2_plotting.ipynb
    lectures/L2/assignment_1.rst
+   
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 3:
+
+   lectures/L3/overview_3.rst
+   notebooks/L2/3_randomnumbers.ipynb
+   notebooks/L3/1_input_output.ipynb
+   notebooks/L3/2_flowcontrol.ipynb   
+   notebooks/L3/4_exceptions.ipynb
+   lectures/L3/assignment_2.rst
+
 
 Indices and tables
 ==================
