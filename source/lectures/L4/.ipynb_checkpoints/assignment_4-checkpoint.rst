@@ -1,16 +1,17 @@
-Exercise 4
-==========
+Übungszettel 4
+==============
 
-The fourth assignment will be about the topic COVID19! You will apply your knowledge about 
+In der vierten Aufgabe geht es um das Thema COVID19! Sie werden Ihr Wissen anwenden über 
 
-1. Classes and objects
-2. Flow Control
+1. Klassen und Objekte
+2. Flusskontrolle
 3. Animation
 
-an create a simple simulation of the spreading of COVID19.
+Erstellen Sie eine einfache Simulation der Ausbreitung von COVID19.
 
-Since this might be a bit more demanding you have may take some additional time. Don't hestitate to ask in the forum.
-Have fun!
+Da dies etwas anspruchsvoller ist, kann es sein, dass Sie etwas zusätzliche Zeit benötigen. Zögern Sie nicht, im Forum zu fragen.
+Viel Spaß!
+
 
     .. image:: img/assignment_4.png
        :width: 600px

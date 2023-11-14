@@ -1,15 +1,15 @@
-Lecture Contents
-================
+Inhalt der Vorlesung
+====================
 
-In this 4th lecture we will have a look at 
+In dieser 4. Vorlesung werden wir einen Blick werfen auf 
 
-1. Functions (pending from last lecture)
-2. Classes and Objects
-3. Physics Project: Brownian Motion
-4. Animations 
+1. Funktionen (ausstehend aus der letzten Vorlesung)
+2. Klassen und Objekte
+3. Physik-Projekt: Brownsche Bewegung
+4. Animationen 
 
 
-Note that the section on Animations will not show the final animations. I have added a short sequence at the end of the video. If you want to have a look at the animations, please use the Binder version of the lecture. The lecture notebooks may slightly deviate from the video and are subject to changes until the Lecture date.
+Beachten Sie, dass der Abschnitt über Animationen nicht die endgültigen Animationen zeigen wird. Ich habe eine kurze Sequenz am Ende des Videos hinzugefügt. Wenn Sie sich die Animationen ansehen wollen, benutzen Sie bitte die Binder-Version der Vorlesung. Die Vorlesungshefte können leicht vom Video abweichen und können bis zum Vorlesungstermin noch geändert werden.
 
 .. raw:: html
 

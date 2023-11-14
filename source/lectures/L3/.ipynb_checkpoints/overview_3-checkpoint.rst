@@ -3,7 +3,7 @@ Inhalt der Vorlesung
 
 In dieser dritten Vorlesung werden wir uns mit folgenden Themen beschäftigen
 
-1. Zufallszahlen (noch aus der letzten Vorlesung)
+1. Zufallszahlen
 2. Eingabe und Ausgabe
 3. Flusskontrolle
 4. Funktionen
