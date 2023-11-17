@@ -82,6 +82,7 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
    notebooks/L3/2_flowcontrol.ipynb   
    notebooks/L3/4_exceptions.ipynb
    lectures/L3/assignment_2.rst
+   notebooks/L3/25_publication_ready_figures.ipynb
 
 
 Indices and tables
