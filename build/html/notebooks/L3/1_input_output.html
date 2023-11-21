@@ -256,7 +256,7 @@
 <h2>Keyboard input<a class="headerlink" href="#Keyboard-input" title="Permalink to this heading">#</a></h2>
 <p>Python has a function called <em>input</em> for getting input from the user and assigning it a variable name.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Tell me a number: &quot;</span><span class="p">)</span>
@@ -269,11 +269,11 @@
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Tell me a number:  Hello
+Tell me a number:  12
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -283,7 +283,7 @@ str
 </div>
 <p>The value contains the keyboard input as expected, but it is a string. We want to use a number and not a string, so we need to convert it from a string to a number.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -292,19 +292,12 @@ str
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[43], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> v <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">eval</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">value</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> v
-
-File <span class="ansi-green-fg">&lt;string&gt;:1</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;Hello&#39; is not defined
+12
 </pre></div></div>
 </div>
 </section>
