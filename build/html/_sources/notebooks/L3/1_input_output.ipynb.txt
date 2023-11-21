@@ -14,6 +14,13 @@
   },
   {
    "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "[File as PDF](https://github.com/fcichos/EMPP/blob/b300542a6ba0fd350956de94f32f564eb09e9f73/source/notebooks/L3/1_input_output.pdf)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
    "metadata": {
     "slideshow": {
      "slide_type": "subslide"
@@ -1258,7 +1265,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.8.16"
+   "version": "3.8.10"
   },
   "widgets": {
    "application/vnd.jupyter.widget-state+json": {

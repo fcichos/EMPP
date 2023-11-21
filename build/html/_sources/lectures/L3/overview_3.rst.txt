@@ -3,11 +3,9 @@ Inhalt der Vorlesung
 
 In dieser dritten Vorlesung werden wir uns mit folgenden Themen beschäftigen
 
-1. Zufallszahlen
-2. Eingabe und Ausgabe
-3. Flusskontrolle
-4. Funktionen
-5. Ausnahmen (zum Selbststudium)
+1. Plotting
+2. Zufallszahlen
+
 
 Im Video fehlt der Teil mit den Zufallszahlen, der im Video der letzten Vorlesung enthalten ist.
 
