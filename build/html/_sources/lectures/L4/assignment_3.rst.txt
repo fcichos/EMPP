@@ -1,11 +1,11 @@
-Exercise 3
-==========
+Übungsblatt 3
+=============
 
-The third assignment is also available now. Please have a look and not only a look! It is about 
+Die dritte Aufgabe ist jetzt ebenfalls verfügbar. Bitte schauen Sie es sich an und nicht nur anschauen! Es geht um 
 
-1. Input & Output
-2. Flow Control
-3. Functions
+1. Eingabe & Ausgabe
+2. Flußkontrolle
+3. Funktionen
 
 
 .. toctree::
@@ -13,7 +13,7 @@ The third assignment is also available now. Please have a look and not only a lo
    :caption: Solution to Exercise 3:
     notebooks/Intro/3_EditCells.ipynb
 
-You will most likely have fun with those unnamed function!
+Sie werden wahrscheinlich viel Spaß mit diesen unbenannten Funktionen haben!
 
     .. image:: img/assignment_3.png
        :width: 600px

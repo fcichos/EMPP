@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2023.6.15)  17 NOV 2023 11:21
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2023.6.15)  20 NOV 2023 14:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -244,11 +244,7 @@ File: l3backend-xdvipdfmx.def 2020-02-03 L3 backend support: xdvipdfmx
 LaTeX Warning: Unused global option(s):
     [9pt].
 
-(./paper.aux
-
-LaTeX Warning: Label `fig:figure1' multiply defined.
-
-)
+No file paper.aux.
 \openout1 = `paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
@@ -262,7 +258,7 @@ LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
 4.
- (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 14.
@@ -299,19 +295,27 @@ Underfull \hbox (badness 1342) in paragraph at lines 14--15
  []
 
 ) (./paper.bbl
+
+LaTeX Warning: Reference `LastBibItem' on page 2 undefined on input line 9.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 9--9
  []\TU/lmr/m/n/9 chatgpt@physik.uni-leipzig.de; http://www.uni-
  []
 
 ) [2] (./paper.aux)
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right .
+
 
  ) 
 Here is how much of TeX's memory you used:
- 4099 strings out of 479819
- 54473 string characters out of 5895846
- 342016 words of memory out of 5000000
+ 4097 strings out of 479819
+ 54456 string characters out of 5895846
+ 340923 words of memory out of 5000000
  21168 multiletter control sequences out of 15000+600000
  538750 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

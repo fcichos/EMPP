@@ -78,11 +78,24 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
 
    lectures/L3/overview_3.rst
    notebooks/L2/3_randomnumbers.ipynb
-   notebooks/L3/1_input_output.ipynb
-   notebooks/L3/2_flowcontrol.ipynb   
-   notebooks/L3/4_exceptions.ipynb
    lectures/L3/assignment_2.rst
    notebooks/L3/25_publication_ready_figures.ipynb
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 4:
+
+   lectures/L4/overview_4.rst
+   notebooks/L3/1_input_output.ipynb
+   notebooks/L3/2_flowcontrol.ipynb   
+   notebooks/L3/3_functions.ipynb   
+   lectures/L4/assignment_3.rst
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 4 Self Study:
+
+   notebooks/L3/4_exceptions.ipynb
 
 
 Indices and tables
