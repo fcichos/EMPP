@@ -97,6 +97,14 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
 
    notebooks/L3/4_exceptions.ipynb
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 5:
+
+   lectures/L4/overview_5.rst
+   notebooks/L4/1_classes.ipynb
+   notebooks/L4/2_brownian_motion.ipynb   
+   notebooks/L4/3_animations.ipynb  
 
 Indices and tables
 ==================
