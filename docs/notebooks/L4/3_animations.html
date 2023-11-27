@@ -213,7 +213,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Lecture 5:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/L4/overview_4.html">Inhalt der Vorlesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/L4/overview_5.html">Inhalt der Vorlesung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1_classes.html">Classes and Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_brownian_motion.html">Brownian Motion</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Animations</a></li>
@@ -258,6 +258,7 @@
 </div>
 <section id="Animations">
 <h1>Animations<a class="headerlink" href="#Animations" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://github.com/fcichos/EMPP/blob/f47d69ca3218c5039fcb4b9f87b331fcc6f3a2cc/source/notebooks/L4/3_animations.pdf">File as PDF</a></p>
 <p>Animations are sometimes a nice feature, if you want to have a look at how your calculations evolve over time. Especially in the case of our particle based simulations it seems useful to diplay the position of the particles over time.</p>
 <p>There are multiple ways to animate plots and images in python. Not all of them are always transferable between computers. Matplotlib for example provides a <code class="docutils literal notranslate"><span class="pre">animate</span></code> function, which can also use the <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> video compressor. But that requires installation of all of them on the specific system you are working on.</p>
 <p>We want to use the <code class="docutils literal notranslate"><span class="pre">ipycanvas</span></code> module, because it delivers easy drawing of shapes like circles or rectangle in a canvas directly in our Jupyter Notebooks. Have a look at the (<a class="reference external" href="https://readthedocs.org/projects/ipycanvas/downloads/pdf/latest/">documentation</a>). The module provides even tools to interact with a mouse.</p>
@@ -295,7 +296,7 @@ from ipycanvas import MultiCanvas, hold_canvas,Canvas
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -311,7 +312,7 @@ from ipycanvas import MultiCanvas, hold_canvas,Canvas
 <h2>Particle class<a class="headerlink" href="#Particle-class" title="Permalink to this heading">#</a></h2>
 <p>We start by using out colloidal particle class, which we developed in the last section.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Class definition</span>
@@ -362,7 +363,7 @@ from ipycanvas import MultiCanvas, hold_canvas,Canvas
 <h2>Create a set of particles<a class="headerlink" href="#Create-a-set-of-particles" title="Permalink to this heading">#</a></h2>
 <p>We want to animate the Brownian motion of many particles. The best is therefore to create a <code class="docutils literal notranslate"><span class="pre">list</span></code> which contains all the individual <code class="docutils literal notranslate"><span class="pre">Colloid</span></code> objects. We start by creating 200 colloids at the position <code class="docutils literal notranslate"><span class="pre">(0,0)</span></code> to see how the spread from the origin. They are stored in the list <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of particles</span>
@@ -380,7 +381,7 @@ from ipycanvas import MultiCanvas, hold_canvas,Canvas
 <p>Next, we need a canvas, in which we draw our particles and we need the drawing function.</p>
 <p>The canvas is created by the <code class="docutils literal notranslate"><span class="pre">Canvas()</span></code> constructor if <code class="docutils literal notranslate"><span class="pre">ipycanvas</span></code>. The <code class="docutils literal notranslate"><span class="pre">display</span></code> command displays the canvas below the the cell.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
@@ -392,13 +393,13 @@ from ipycanvas import MultiCanvas, hold_canvas,Canvas
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9c8f48372db84362bdc6213423496bea", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1ec253ee84cb4896b3fa5d3957f8864e", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <img alt="particles" src="../../_images/particles.png" />
 <p>We realize the drawing in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, which is first updating all particle positions and then drawing all the particles.</p>
 <p>The loop contains one interesting statement, which is the <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">hold_canvas(canvas):</span></code>. Its useful to know that this statement halts the execution of all subsequent drawing comments in the following code block to create a “batch” of drawing commands send at one to the <code class="docutils literal notranslate"><span class="pre">ipycanvas</span></code> module. This will allow fast drawing of the whole scene. All the rest of the commands are shortly explained in the loop comments.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span><span class="o">=</span><span class="mf">1e7</span> <span class="c1"># this is to scale up all from µm to pixels</span>
@@ -416,6 +417,22 @@ from ipycanvas import MultiCanvas, hold_canvas,Canvas
         <span class="n">sleep</span><span class="p">(</span><span class="mf">0.03</span><span class="p">)</span> <span class="c1"># wait 10 ms before drawing the next timestep</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[6], line 13</span>
+<span class="ansi-green-intense-fg ansi-bold">     10</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> i <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">range</span>(N): <span style="color: rgb(95,135,135)"># loop over all particles</span>
+<span class="ansi-green-intense-fg ansi-bold">     11</span>     <span style="color: rgb(95,135,135)"># draw a filled circle for each particle</span>
+<span class="ansi-green-intense-fg ansi-bold">     12</span>     canvas<span style="color: rgb(98,98,98)">.</span>fill_arc(p[i]<span style="color: rgb(98,98,98)">.</span>x[<span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">1</span>]<span style="color: rgb(98,98,98)">*</span>scale<span style="color: rgb(98,98,98)">+</span><span style="color: rgb(98,98,98)">150</span>, p[i]<span style="color: rgb(98,98,98)">.</span>y[<span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">1</span>]<span style="color: rgb(98,98,98)">*</span>scale<span style="color: rgb(98,98,98)">+</span><span style="color: rgb(98,98,98)">150</span>, <span style="color: rgb(98,98,98)">5</span>, <span style="color: rgb(98,98,98)">0</span>, <span style="color: rgb(98,98,98)">2</span><span style="color: rgb(98,98,98)">*</span>np<span style="color: rgb(98,98,98)">.</span>pi)
+<span class="ansi-green-fg">---&gt; 13</span> <span class="ansi-yellow-bg">sleep</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">0.03</span><span class="ansi-yellow-bg">)</span> <span style="color: rgb(95,135,135)"># wait 10 ms before drawing the next timestep</span>
+
+<span class="ansi-red-fg">KeyboardInterrupt</span>:
+</pre></div></div>
 </div>
 <p><strong>Talk about the with statement next time</strong></p>
 </section>

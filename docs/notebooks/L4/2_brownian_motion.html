@@ -213,7 +213,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Lecture 5:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/L4/overview_4.html">Inhalt der Vorlesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/L4/overview_5.html">Inhalt der Vorlesung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1_classes.html">Classes and Objects</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Brownian Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_animations.html">Animations</a></li>
@@ -258,6 +258,7 @@
 </div>
 <section id="Brownian-Motion">
 <h1>Brownian Motion<a class="headerlink" href="#Brownian-Motion" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://github.com/fcichos/EMPP/blob/f47d69ca3218c5039fcb4b9f87b331fcc6f3a2cc/source/notebooks/L4/2_brownian_motion.pdf">File as PDF</a></p>
 <p>We will use our newly gained knowledge about classes for the simulation of Brownian motion. This actually perfectly fits to the object oriented programming topic, as each Brownian particle (or colloid) can be seen as an object instanciated from the same class, but perhaps with different properties. Some particles might be larger and some smaller for example. We know already some part of that, as we have covered it in earlier lectures.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -462,7 +463,7 @@ I&#39;m a particle with radius R=1.000e-06 at x=-5.477e-06,y=-1.404e-06.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L4_2_brownian_motion_18_0.png" class="no-scaled-link" src="../../_images/notebooks_L4_2_brownian_motion_18_0.png" style="width: 612px; height: 557px;" />
+<img alt="../../_images/notebooks_L4_2_brownian_motion_19_0.png" class="no-scaled-link" src="../../_images/notebooks_L4_2_brownian_motion_19_0.png" style="width: 612px; height: 557px;" />
 </div>
 </div>
 </section>
@@ -500,7 +501,7 @@ v(n dt) = \frac{<\sqrt{(x_{i+n}-x_{i})^2+(y_{i+n}-y_{i})^2}>}{n\,dt}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L4_2_brownian_motion_23_0.png" class="no-scaled-link" src="../../_images/notebooks_L4_2_brownian_motion_23_0.png" style="width: 575px; height: 478px;" />
+<img alt="../../_images/notebooks_L4_2_brownian_motion_24_0.png" class="no-scaled-link" src="../../_images/notebooks_L4_2_brownian_motion_24_0.png" style="width: 575px; height: 478px;" />
 </div>
 </div>
 <p>The result of this analysis shows, that each particle has an apparent speed which seems to increase with decreasing time of observation or which decreases with increasing time. This would mean that there is some friction at work, which slows down the particle in time, but this is apparently not true. Also an infinite speed at zero time appears to be unphysical. The correct answer is just that the speed is no good measure to characterize the motion of a Brownian particle.</p>
@@ -534,7 +535,7 @@ v(n dt) = \frac{<\sqrt{(x_{i+n}-x_{i})^2+(y_{i+n}-y_{i})^2}>}{n\,dt}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L4_2_brownian_motion_27_0.png" class="no-scaled-link" src="../../_images/notebooks_L4_2_brownian_motion_27_0.png" style="width: 579px; height: 478px;" />
+<img alt="../../_images/notebooks_L4_2_brownian_motion_28_0.png" class="no-scaled-link" src="../../_images/notebooks_L4_2_brownian_motion_28_0.png" style="width: 579px; height: 478px;" />
 </div>
 </div>
 <p>The results show that the mean squared displacement of the individual particles follows <em>on average</em> the theoretical predictions of a linear growth in time. That means, we are able to read the diffusion coefficient from the slope of the MSD of the individual particles if recorded in a simulation or an experiment.</p>
