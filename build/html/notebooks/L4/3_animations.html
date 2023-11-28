@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Brownian Motion" href="2_brownian_motion.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Numerical Differentiation" href="../L5/1_differentiation.html" /><link rel="prev" title="Brownian Motion" href="2_brownian_motion.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Animations - Einführung in die Modellierung Physikalischer Prozesse 23 documentation</title>
@@ -217,6 +217,7 @@
 <li class="toctree-l1"><a class="reference internal" href="1_classes.html">Classes and Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_brownian_motion.html">Brownian Motion</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L5/1_differentiation.html">Numerical Differentiation</a></li>
 </ul>
 
 </div>
@@ -393,7 +394,7 @@ from ipycanvas import MultiCanvas, hold_canvas,Canvas
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1ec253ee84cb4896b3fa5d3957f8864e", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ceb8a34d33e64d48bd6393b2232f88fc", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <img alt="particles" src="../../_images/particles.png" />
 <p>We realize the drawing in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, which is first updating all particle positions and then drawing all the particles.</p>
@@ -425,11 +426,11 @@ from ipycanvas import MultiCanvas, hold_canvas,Canvas
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[6], line 13</span>
-<span class="ansi-green-intense-fg ansi-bold">     10</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> i <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">range</span>(N): <span style="color: rgb(95,135,135)"># loop over all particles</span>
-<span class="ansi-green-intense-fg ansi-bold">     11</span>     <span style="color: rgb(95,135,135)"># draw a filled circle for each particle</span>
-<span class="ansi-green-intense-fg ansi-bold">     12</span>     canvas<span style="color: rgb(98,98,98)">.</span>fill_arc(p[i]<span style="color: rgb(98,98,98)">.</span>x[<span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">1</span>]<span style="color: rgb(98,98,98)">*</span>scale<span style="color: rgb(98,98,98)">+</span><span style="color: rgb(98,98,98)">150</span>, p[i]<span style="color: rgb(98,98,98)">.</span>y[<span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">1</span>]<span style="color: rgb(98,98,98)">*</span>scale<span style="color: rgb(98,98,98)">+</span><span style="color: rgb(98,98,98)">150</span>, <span style="color: rgb(98,98,98)">5</span>, <span style="color: rgb(98,98,98)">0</span>, <span style="color: rgb(98,98,98)">2</span><span style="color: rgb(98,98,98)">*</span>np<span style="color: rgb(98,98,98)">.</span>pi)
-<span class="ansi-green-fg">---&gt; 13</span> <span class="ansi-yellow-bg">sleep</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">0.03</span><span class="ansi-yellow-bg">)</span> <span style="color: rgb(95,135,135)"># wait 10 ms before drawing the next timestep</span>
+<span class="ansi-green-intense-fg ansi-bold">/home/lectures/EMPP/source/notebooks/L4/3_animations.ipynb Cell 23</span> line <span class="ansi-cyan-fg">1
+</span><span class="ansi-green-intense-fg ansi-bold">     &lt;a href=&#39;vscode-notebook-cell://ssh-remote%2B172.26.29.76/home/lectures/EMPP/source/notebooks/L4/3_animations.ipynb#X31sdnNjb2RlLXJlbW90ZQ%3D%3D?line=9&#39;&gt;10&lt;/a&gt;</span> for i in range(N): # loop over all particles
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href=&#39;vscode-notebook-cell://ssh-remote%2B172.26.29.76/home/lectures/EMPP/source/notebooks/L4/3_animations.ipynb#X31sdnNjb2RlLXJlbW90ZQ%3D%3D?line=10&#39;&gt;11&lt;/a&gt;</span>     # draw a filled circle for each particle
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href=&#39;vscode-notebook-cell://ssh-remote%2B172.26.29.76/home/lectures/EMPP/source/notebooks/L4/3_animations.ipynb#X31sdnNjb2RlLXJlbW90ZQ%3D%3D?line=11&#39;&gt;12&lt;/a&gt;</span>     canvas.fill_arc(p[i].x[-1]*scale+150, p[i].y[-1]*scale+150, 5, 0, 2*np.pi)
+<span class="ansi-green-fg">---&gt; &lt;a href=&#39;vscode-notebook-cell://ssh-remote%2B172.26.29.76/home/lectures/EMPP/source/notebooks/L4/3_animations.ipynb#X31sdnNjb2RlLXJlbW90ZQ%3D%3D?line=12&#39;&gt;13&lt;/a&gt;</span> sleep(0.03) # wait 10 ms before drawing the next timestep
 
 <span class="ansi-red-fg">KeyboardInterrupt</span>:
 </pre></div></div>
@@ -532,7 +533,15 @@ simulation.start()
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="../L5/1_differentiation.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Numerical Differentiation</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="2_brownian_motion.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
