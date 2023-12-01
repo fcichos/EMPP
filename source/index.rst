@@ -106,6 +106,7 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
    notebooks/L4/2_brownian_motion.ipynb   
    notebooks/L4/3_animations.ipynb  
    notebooks/L5/1_differentiation.ipynb
+   lectures/L5/assignment_4.rst
 
 Indices and tables
 ==================
