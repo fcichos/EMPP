@@ -1,12 +1,13 @@
-Exercise 5
-==========
+Übungszettel 5
+==============
 
-The fifth assignment will be about the solution of ordinary differential equations! You will apply your knowledge about 
+In der fünften Aufgabe geht es um die Lösung von gewöhnlichen Differentialgleichungen! Sie werden Ihr Wissen anwenden über 
 
-1. solving a system of ordinary differential euqations
-2. using the fast fourier transform for frequency analysis
+1. das Lösen eines Systems gewöhnlicher Differentialgleichungen
+2. Anwendung der schnellen Fourier-Transformation zur Frequenzanalyse
 
-to study the solution of a more biologically focused problem.
+um die Lösung eines eher biologisch orientierten Problems zu untersuchen.
+
 
 Have fun!
 

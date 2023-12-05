@@ -105,9 +105,19 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
    notebooks/L4/1_classes.ipynb
    notebooks/L4/2_brownian_motion.ipynb   
    notebooks/L4/3_animations.ipynb  
-   notebooks/L5/1_differentiation.ipynb
    lectures/L5/assignment_4.rst
 
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 6:
+
+   lectures/L5/overview_5.rst
+   notebooks/L5/1_differentiation.ipynb
+   notebooks/L5/2_integration.ipynb   
+   notebooks/L5/3_solving_ODEs.ipynb 
+
+   
 Indices and tables
 ==================
 

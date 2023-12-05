@@ -1,13 +1,14 @@
-Lecture Contents
-================
+Inhalt der Vorlesung
+====================
 
-In this 5th lecture we will have a look at
+In dieser 5. Vorlesung werden wir einen Blick auf Folgendes werfen
 
-1. Numerical Differentiation
-2. Numerical Integration
-3. Solving Ordinary Differential Equations 
+1. Numerische Differenzierung
+2. Numerische Integration
+3. Lösen von gewöhnlichen Differentialgleichungen 
 
-The last topic really gets us into dealing with physical problems. We will start with the simple harmonic oscillator but also show the solution of the free fall and the physical pendulum with friction.
+Das letzte Thema bringt uns wirklich dazu, uns mit physikalischen Problemen zu beschäftigen. Wir beginnen mit dem einfachen harmonischen Oszillator, zeigen aber auch die Lösung für den freien Fall und das physikalische Pendel mit Reibung.
+
 
 .. raw:: html
 
