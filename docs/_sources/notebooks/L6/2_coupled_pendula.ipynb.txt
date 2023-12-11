@@ -11,6 +11,13 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "[File as PDF](https://github.com/fcichos/EMPP/blob/d1d5e42c734210f6f28c3f9ce13c4b2b2fa1df0c/source/notebooks/L6/2_coupled_pendula.pdf)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
     "We will continue our course with some physical problems, we are going to tackle. One of the more extensive solutions will consider two coupled pendula. This belongs to the class of coupled oscillators, which are extremely important. They will later yield propagating waves. They are important for phonons, i.e. coupled vibration of atoms in solids, but there are also many other axamples. One can realize the coupled oscillation on different ways. He we will do that not with spring oscillators, by with pendula. "
    ]
   },

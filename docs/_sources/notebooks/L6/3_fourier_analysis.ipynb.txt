@@ -11,6 +11,13 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "[File as PDF](https://github.com/fcichos/EMPP/blob/d1d5e42c734210f6f28c3f9ce13c4b2b2fa1df0c/source/notebooks/L6/3_fourier_analysis.pdf)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
     "Fourier analysis or the description of functions as s sereies of sine and cosine function could be a very useful tool in the numerical analysis of data as well as in the numerical solution of differential equations. If you look through experiments, fourier transforms are frequently employed. \n",
     "\n",
     "* optical tweezers are often characterized by the frequency spectrum of positional fluctuations\n",
