@@ -1,12 +1,14 @@
-Lecture Contents
-================
+Inhalt der Vorlesung
+====================
 
-In this 6th lecture we will have a look at
+In dieser 6. Vorlesung werden wir einen Blick auf Folgendes werfen
 
-1. COVID19 models and data
-2. Coupled Pendula
-3. Fourier Analysis 
+1. Gekoppelte Pendel
+2. Fourier-Analyse 
 
+Zusatz passend zur 4. Übungsaufgabe:
+
+3. COVID19 Modelle und Daten
 
 .. raw:: html
 

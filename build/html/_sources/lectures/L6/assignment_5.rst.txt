@@ -1,12 +1,7 @@
 Übungszettel 5
 ==============
 
-In der fünften Aufgabe geht es um die Lösung von gewöhnlichen Differentialgleichungen! Sie werden Ihr Wissen anwenden über 
-
-1. das Lösen eines Systems gewöhnlicher Differentialgleichungen
-2. Anwendung der schnellen Fourier-Transformation zur Frequenzanalyse
-
-um die Lösung eines eher biologisch orientierten Problems zu untersuchen.
+In der fünften Übung geht es um die Lösung von Differentialgleichungen! Sie werden Ihr Wissen aus der Vorlesung anwenden, um die Differentialgleichung für einen harmonischen Oszillator mit Reibung zu lösen.
 
 
 Have fun!

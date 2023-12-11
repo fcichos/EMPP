@@ -116,7 +116,22 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
    notebooks/L5/1_differentiation.ipynb
    notebooks/L5/2_integration.ipynb   
    notebooks/L5/3_solving_ODEs.ipynb 
+   lectures/L6/assignment_5.rst
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 7:
+
+   lectures/L6/overview_6.rst   
+   notebooks/L6/2_coupled_pendula.ipynb   
+   notebooks/L6/3_fourier_analysis.ipynb  
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 7 Self Study:
+   
+   notebooks/L6/1_covid19.ipynb
+   
    
 Indices and tables
 ==================
