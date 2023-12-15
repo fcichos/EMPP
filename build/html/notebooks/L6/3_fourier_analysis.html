@@ -237,6 +237,13 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="1_covid19.html">COVID19</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 7 Seminar Codid:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="4_fourier_series_coding.html">Fourieranalyse von Daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_fourier_series_coding.html#Integrationsmethode">Integrationsmethode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_fourier_series_coding.html#Berechnung-der-Fourierkoeffizienten">Berechnung der Fourierkoeffizienten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_fourier_series_coding.html#Berechnung-der-Fourierreihe">Berechnung der Fourierreihe</a></li>
+</ul>
 
 </div>
 </div>
@@ -341,7 +348,7 @@
 <section id="Fourier-series">
 <h2>Fourier series<a class="headerlink" href="#Fourier-series" title="Permalink to this heading">#</a></h2>
 <p>A Fourier series is a representation of periodic function <span class="math notranslate nohighlight">\(f(t)\)</span> of period <span class="math notranslate nohighlight">\(2\pi\)</span> or more general as described below on an arbitrary interval <span class="math notranslate nohighlight">\(T\)</span> regarding sine and cosine functions</p>
-<p><span class="math">\begin{equation} \label{eq:fourier_sum}
+<p><span class="math">\begin{equation}
 f(t)=\frac{A_{0}}{2}+\sum_{k=1}^{\infty}\left ( A_{k}\cos\left (\omega_k t\right) + B_{k}\sin\left (\omega_k t\right)\right )
 \end{equation}</span></p>
 <p>where <span class="math notranslate nohighlight">\(\omega_k=\frac{2\pi k}{T}\)</span>. <span class="math notranslate nohighlight">\(T\)</span> represents the period of the cosine and sine functions. Their amplitude is defined by the coefficients <span class="math notranslate nohighlight">\(A_k\)</span> and <span class="math notranslate nohighlight">\(B_k\)</span>. The term <span class="math notranslate nohighlight">\(A_0\)</span> is a constant offset added to the oscillating sine and consine functions. Equation <span class="math">\ref{eq:fourier_sum}</span> therefore represents an arbitrary periodic function <span class="math notranslate nohighlight">\(f(t)\)</span> on an interval T as a sum of oscillating sine and cosine functions of discrete frequencies (<span class="math notranslate nohighlight">\(\omega_k\)</span>)</p>
@@ -357,66 +364,75 @@ f(t)=\frac{A_{0}}{2}+\sum_{k=1}^{\infty}\left ( A_{k}\cos\left (\omega_k t\right
 \int\limits_{-\frac{T}{2}}^{+\frac{T}{2}}  \sin(\omega_{i}t)\sin (\omega_k t) dt
 \end{equation}</span></p>
 <p>can be split into two integrals over a cosine function with the sum <span class="math notranslate nohighlight">\((\omega_{1}+\omega_{2})\)</span> and the difference frequency <span class="math notranslate nohighlight">\((\omega_{1}-\omega_{2})\)</span>. As the integration results in a sine function and has to be evaluated at <span class="math notranslate nohighlight">\(T/2\)</span> and <span class="math notranslate nohighlight">\(-T/2\)</span> with <span class="math notranslate nohighlight">\(\omega_k=k 2\pi/T\)</span>, <span class="math notranslate nohighlight">\((k \in \mathbb{Z}^+ )\)</span>, the integral results in</p>
-<p><span class="math">\begin{equation}\label{eq:orthog}
+<p><span class="math">\begin{equation}
 \int\limits_{-\frac{T}{2}}^{+\frac{T}{2}}  \sin(\omega_{i}t)\sin (\omega_k t) dt  =\begin{cases}
 0 &\text{for }  i\neq k, \\
-T &\text{for }  i=k
+T/2 &\text{for }  i=k
 \end{cases}
 \end{equation}</span></p>
 <p>Equivalently, the same can be carried out for the cosine functions, which yields</p>
 <p><span class="math">\begin{equation}
 \int\limits_{-\frac{T}{2}}^{+\frac{T}{2}}  \cos(\omega_{i}t)\cos (\omega_k t) dt  =\begin{cases}
 0 &\text{for }  i\neq k, \\
-T &\text{for }  i=k
+T/2 &\text{for }  i=k
 \end{cases}
 \end{equation}</span></p>
 <p>As mentioned above the coefficients <span class="math notranslate nohighlight">\(A_k\)</span> and <span class="math notranslate nohighlight">\(B_k\)</span> are determined by the projections of the function <span class="math notranslate nohighlight">\(f(t)\)</span> onto the basis functions as displayed in Eq.:nbsphinx-math:<cite>ref{A_k}</cite>-<span class="math">\ref{B_k}</span>.</p>
-<p><span class="math">\begin{align}\label{Projections}
+<p><span class="math">\begin{align}
 \int\limits_{-\frac{T}{2}}^{+\frac{T}{2}} & \cos (\omega_k t) dt  =\begin{cases}
 0 &\text{for }  k\neq0, \\
 T &\text{for }  k=0
 \end{cases} \\
 \int\limits_{-\frac{T}{2}}^{+\frac{T}{2}} & \sin(\omega_k t) dt=0  \text{ for all }k
 \end{align}</span></p>
-<p><span class="math">\begin{equation}\label{A_k}
+<p><span class="math">\begin{equation}
 A_k=\frac{2}{T}\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}} f(t)\cos(\omega_k t) dt  \text{ for } k \neq 0
 \end{equation}</span></p>
 <p>and for <span class="math notranslate nohighlight">\(k=0\)</span></p>
-<p><span class="math">\begin{equation}\label{A_0}
+<p><span class="math">\begin{equation}
 A_0= \frac{1}{T}\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}} f(t) dt
 \end{equation}</span></p>
 <p>In this case <span class="math notranslate nohighlight">\(\frac{2}{T}\)</span> and <span class="math notranslate nohighlight">\(\frac{1}{T}\)</span> are the mean values for the Equations. To get the coefficient <span class="math notranslate nohighlight">\(B_k\)</span> I need to multiply <span class="math notranslate nohighlight">\(f(t)\)</span> with <span class="math notranslate nohighlight">\(\sin (\omega_k t)\)</span> and integrate it from <span class="math notranslate nohighlight">\(-\frac{T}{2}\)</span> to <span class="math notranslate nohighlight">\(+\frac{T}{2}\)</span>.</p>
 <p>As a result of this, we obtain</p>
-<p><span class="math">\begin{equation}\label{B_k}
+<p><span class="math">\begin{equation}
 B_k=\frac{2}{T}\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}} f(t) \sin(\omega_k t) dt,\,  \forall k
 \end{equation}</span></p>
-</section>
-<section id="Fourier-transform">
-<h2>Fourier transform<a class="headerlink" href="#Fourier-transform" title="Permalink to this heading">#</a></h2>
-<p>The Fourier transform is a generalisation of the complex Fourier series to the representation of arbitrary non-periodic functions <span class="math notranslate nohighlight">\(f(t)\)</span> by a continuous spectrum of complex functions <span class="math notranslate nohighlight">\(\exp(i\omega t)\)</span>. This transform is therefore also called continuous Fourier transform. The sum of individual sine and cosine functions with discrete frequencies <span class="math notranslate nohighlight">\(\omega_{k}\)</span> in the Fourier series is now replaced by an integral over the complex function <span class="math notranslate nohighlight">\(\exp(i\omega t)\)</span> with arbitrary
-continuous values of the frequency <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
-<p>The Fourier transform of the function <span class="math notranslate nohighlight">\(f(t)\)</span> is therefore defined by</p>
-<p><span class="math">\begin{equation}
+## Fourier transform
+
+The Fourier transform is a generalisation of the complex Fourier series to the representation of arbitrary non-periodic functions $f(t)$ by a continuous spectrum of complex functions $\exp(i\omega t)$. This transform is therefore also called continuous Fourier transform. The sum of individual sine and cosine functions with discrete frequencies $\omega_{k}$ in the Fourier series is now replaced by an integral over the complex function $\exp(i\omega t)$ with arbitrary continuous values of the frequency $\omega$.
+
+
+The Fourier transform of the function $f(t)$ is therefore defined by
+
+\begin{equation}
 F(\omega)=\int\limits_{-\infty}^{+\infty}f(t)e^{-i\omega t}dt
-\end{equation}</span></p>
-<p>with <span class="math notranslate nohighlight">\(F(\omega)\)</span> now representing the spectrum of frequencies contributing to the function <span class="math notranslate nohighlight">\(f(t)\)</span>. Similarly, the so called inverse Fourier transform of the spectrum <span class="math notranslate nohighlight">\(F(\omega)\)</span> yields the original function <span class="math notranslate nohighlight">\(f(t)\)</span> again (Eq. <span class="math">\ref{eq:inverse_FT}</span>).</p>
-<p><span class="math">\begin{equation}\label{eq:inverse_FT}
+\end{equation}
+
+with $F(\omega)$ now representing the spectrum of frequencies contributing to the function $f(t)$. Similarly, the so called inverse Fourier transform of the spectrum $F(\omega)$ yields the original function $f(t)$ again (Eq. \ref{eq:inverse_FT}).
+
+\begin{equation}\label{eq:inverse_FT}
 f(t)=\frac{1}{2\pi}\int\limits_{-\infty}^{+\infty}F(\omega)e^{+i\omega t}dt
-\end{equation}</span></p>
-<p>Note that the Fourier transform <span class="math notranslate nohighlight">\(F(\omega)\)</span> is a complex number, which gives you information on the phase and amplitude of the oscillations. Not all of the oscillations have to align in with the same phase. As compared to the last lecture, we may get the phase of the oscillation at a frequency <span class="math notranslate nohighlight">\(\omega\)</span> by</p>
-<p><span class="math">\begin{equation}
+\end{equation}
+
+Note that the Fourier transform $F(\omega)$ is a complex number, which gives you information on the phase and amplitude of the oscillations. Not all of the oscillations have to align in with the same phase. As compared to the last lecture, we may get the phase of the oscillation at a frequency $\omega$ by
+
+\begin{equation}
 \phi=\tan^{-1}\left(\frac{Im(F(\omega))}{Re(F(\omega))}\right)
-\end{equation}</span></p>
-<p>and the amplitude at a frequency <span class="math notranslate nohighlight">\(\omega\)</span> by</p>
-<p><span class="math">\begin{equation}
+\end{equation}
+
+and the amplitude at a frequency $\omega$ by
+
+\begin{equation}
 x_{0}^{\rm theo}=|F(\omega)|
-\end{equation}</span></p>
-<p>There are a number of efficient numerical algorithms available, which simplify the Fourier transformation. These are called <em>Fast Fourier Transforms</em> and implemented in <em>numpy</em> for example. We will use these algorithms to calculate the numerical Fourier transforms of our signals to identify the different oscillations in our signal. Below is an example how the numpy function cab be used and how to obtain the proper frequency axis.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>f=np.fft.fft(alpha)
+\end{equation}
+
+There are a number of efficient numerical algorithms available, which simplify the Fourier transformation. These are called *Fast Fourier Transforms* and implemented in *numpy* for example. We will use these algorithms to calculate the numerical Fourier transforms of our signals to identify the different oscillations in our signal.
+Below is an example how the numpy function cab be used and how to obtain the proper frequency axis.
+
+~~~
+f=np.fft.fft(alpha)
 freq = np.fft.fftfreq(t.shape[-1],time/t.shape[-1])
-</pre></div>
-</div>
-</section>
+~~~</section>
 <section id="Frequency-analysis-of-our-coupled-pendula">
 <h2>Frequency analysis of our coupled pendula<a class="headerlink" href="#Frequency-analysis-of-our-coupled-pendula" title="Permalink to this heading">#</a></h2>
 <p>To use the Fourier analysis we load the data of our previous simulation with the normal modes and the beat mode of the harmonic oscillator.</p>
@@ -444,7 +460,7 @@ freq = np.fft.fftfreq(t.shape[-1],time/t.shape[-1])
 </div>
 <p>The next few lines are mainly for plotting the data but contain also the Fourier transform of the signal.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate the frequency spectrum of the oscillations for different initial conditions</span>
@@ -474,8 +490,17 @@ freq = np.fft.fftfreq(t.shape[-1],time/t.shape[-1])
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_3_fourier_analysis_12_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_3_fourier_analysis_12_0.png" style="width: 601px; height: 469px;" />
-</div>
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[1], line 2</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span style="color: rgb(95,135,135)"># calculate the frequency spectrum of the oscillations for different initial conditions</span>
+<span class="ansi-green-fg">----&gt; 2</span> <span class="ansi-yellow-bg">plt</span><span style="color: rgb(98,98,98)">.</span>figure(<span style="color: rgb(98,98,98)">1</span>,figsize<span style="color: rgb(98,98,98)">=</span>(<span style="color: rgb(98,98,98)">6</span>,<span style="color: rgb(98,98,98)">5</span>))
+<span class="ansi-green-intense-fg ansi-bold">      3</span> plt<span style="color: rgb(98,98,98)">.</span>xlabel(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">frequency [Hz]</span><span style="color: rgb(175,0,0)">&#39;</span>, fontsize<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">16</span>)
+<span class="ansi-green-intense-fg ansi-bold">      4</span> plt<span style="color: rgb(98,98,98)">.</span>ylabel(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Amplitude</span><span style="color: rgb(175,0,0)">&#39;</span>,fontsize<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">16</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;plt&#39; is not defined
+</pre></div></div>
 </div>
 <p>The result of our calculation is now, that the beat mode is actually a superposition of the two normal modes of the system. In fact, it turns out, that all of the possible states of a coupled oscillator system can be constructed from a superposition of its normal modes with specific amplitudes.</p>
 <script type="application/vnd.jupyter.widget-state+json">
@@ -518,7 +543,7 @@ freq = np.fft.fftfreq(t.shape[-1],time/t.shape[-1])
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Dec 11, 2023</div>
+              Last updated on Dec 16, 2023</div>
           </div>
           <div class="right-details">
             
@@ -541,7 +566,6 @@ freq = np.fft.fftfreq(t.shape[-1],time/t.shape[-1])
             <ul>
 <li><a class="reference internal" href="#">Fourier Analysis</a><ul>
 <li><a class="reference internal" href="#Fourier-series">Fourier series</a></li>
-<li><a class="reference internal" href="#Fourier-transform">Fourier transform</a></li>
 <li><a class="reference internal" href="#Frequency-analysis-of-our-coupled-pendula">Frequency analysis of our coupled pendula</a></li>
 </ul>
 </li>

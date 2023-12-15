@@ -237,6 +237,13 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="1_covid19.html">COVID19</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 7 Seminar Codid:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="4_fourier_series_coding.html">Fourieranalyse von Daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_fourier_series_coding.html#Integrationsmethode">Integrationsmethode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_fourier_series_coding.html#Berechnung-der-Fourierkoeffizienten">Berechnung der Fourierkoeffizienten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_fourier_series_coding.html#Berechnung-der-Fourierreihe">Berechnung der Fourierreihe</a></li>
+</ul>
 
 </div>
 </div>
@@ -281,12 +288,12 @@
 <p>We will continue our course with some physical problems, we are going to tackle. One of the more extensive solutions will consider two coupled pendula. This belongs to the class of coupled oscillators, which are extremely important. They will later yield propagating waves. They are important for phonons, i.e. coupled vibration of atoms in solids, but there are also many other axamples. One can realize the coupled oscillation on different ways. He we will do that not with spring oscillators, by
 with pendula.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
   <span class="kn">import</span> <span class="nn">google.colab</span>
-  <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">ipycanvas</span><span class="o">==</span><span class="m">0</span>.11
+  <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">ipycanvas</span><span class="o">==</span><span class="m">0</span>.13
   <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">output</span>
   <span class="n">output</span><span class="o">.</span><span class="n">enable_custom_widget_manager</span><span class="p">()</span>
   <span class="n">IN_COLAB</span><span class="o">=</span><span class="kc">True</span>
@@ -296,7 +303,7 @@ with pendula.</p>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -338,7 +345,7 @@ with pendula.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -395,7 +402,7 @@ state[1] -&gt; velocity
 </div>
 <p>So the state vector just gets longer and the coupling is in the definition of the velocities and accelerations. The results are then the positions and velocities of the objects. Use this type of scheme to define the problem and write a function, which returns the state of the objects as before.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">coupled_pendula</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
@@ -420,7 +427,7 @@ state[1] -&gt; velocity
 <li><p>spring constant of the coupling spring, <span class="math notranslate nohighlight">\(k=5\)</span></p></li>
 </ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initial parameters</span>
@@ -436,7 +443,7 @@ state[1] -&gt; velocity
 </div>
 <p>As compared to our previous problem of a damped driven pendulum, where we had two initial conditions for the second order differential equation, we have now two second order differential equation. We therefore need 4 initial parameters, which are the initial elongations of both pendula and their corresponding initial angular velocities We will notice, that the solution,i.e. the motion of the pendula, will strongly depend on the initial conditions.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inital angles, initial angular velocities</span>
@@ -457,7 +464,7 @@ state[1] -&gt; velocity
 <h3>Solve the equation of motion<a class="headerlink" href="#Solve-the-equation-of-motion" title="Permalink to this heading">#</a></h3>
 <p>We have to define a timeperiod over which we would like to obtain the solution. We use here a period of 400s where we calculate the solution at 10000 points along the 400s.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution</span>
@@ -469,7 +476,7 @@ state[1] -&gt; velocity
 </div>
 <p>We are now ready to calculate the solution. Finally, we extract also the angles of the individual pendula, their angular velocities and the position of the point masses at the end of the pendulum. This can be then readily used to create some animation.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#solve the differential equations</span>
@@ -496,7 +503,7 @@ state[1] -&gt; velocity
 <h3>Plotting<a class="headerlink" href="#Plotting" title="Permalink to this heading">#</a></h3>
 <p>First, get some impression of how the angles change over time.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting angles over time</span>
@@ -517,7 +524,7 @@ state[1] -&gt; velocity
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_2_coupled_pendula_27_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_27_0.png" style="width: 999px; height: 482px;" />
+<img alt="../../_images/notebooks_L6_2_coupled_pendula_27_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_27_0.png" style="width: 1001px; height: 485px;" />
 </div>
 </div>
 </section>
@@ -525,7 +532,7 @@ state[1] -&gt; velocity
 <h3>Animation<a class="headerlink" href="#Animation" title="Permalink to this heading">#</a></h3>
 <p>The plot of the angles over time is not always giving a good insight. With our knowledge about animations, we may easily animate the motion of the two pendula as well.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## create our canvas</span>
@@ -535,7 +542,7 @@ state[1] -&gt; velocity
 </div>
 <p>For the physics, it has neven been interesting to define at which distance the pendula are mounted at a ceiling for example. For drawing them we have to do that together with some additional parameters, which define for example the position of where to draw in the canvas and the conversion of <em>meters</em> to <em>pixels</em>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance</span><span class="o">=</span><span class="mi">2</span> <span class="c1"># distance of the pendula in m</span>
@@ -547,7 +554,7 @@ state[1] -&gt; velocity
 </div>
 <p>The function below will do the drawing for us. We define a function such that we can create a background animation with a <code class="docutils literal notranslate"><span class="pre">thread</span></code>. Note that we have inserted <code class="docutils literal notranslate"><span class="pre">sleep(t[1]-t[0])</span></code> at the end. The drawing of the 4 objects will be pretty fast so that we can wait a certain amount of time until we display the next frame. That means at the end, that our simulation will run in real time.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw</span><span class="p">():</span>
@@ -575,7 +582,7 @@ state[1] -&gt; velocity
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulation</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">draw</span><span class="p">)</span>
@@ -584,7 +591,7 @@ state[1] -&gt; velocity
 </div>
 <p>Looks pretty slow, but remember the pendula are 3 meters long.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
@@ -596,7 +603,7 @@ state[1] -&gt; velocity
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2d43f4acdfc6493994a71b0a17d59b9d", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "961ad5ac5f1d4cb5ace6b895db3ffd1f", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 </section>
@@ -999,7 +1006,7 @@ point it’s easily to recognize how the wife is generated. In a set of many cou
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Dec 11, 2023</div>
+              Last updated on Dec 16, 2023</div>
           </div>
           <div class="right-details">
             
