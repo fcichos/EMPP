@@ -134,7 +134,7 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
    
 .. toctree::
    :maxdepth: 2
-   :caption: Lecture 7 Seminar Codid:
+   :caption: Lecture 7 Seminar Coding:
    
    notebooks/L6/4_fourier_series_coding.ipynb
 
