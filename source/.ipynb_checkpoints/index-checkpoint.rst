@@ -132,6 +132,26 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
    
    notebooks/L6/1_covid19.ipynb
    
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 7 Seminar Coding:
+   
+   notebooks/L6/4_fourier_series_coding.ipynb
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 8:
+
+   notebooks/L7/1_spring_pendulum.ipynb
+   notebooks/L7/2_planetary_motion.ipynb   
+      
+   
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 9:
+
+   notebooks/L7/3_diffusion_equation.ipynb     
+   notebooks/L8/1_curve_fitting.ipynb
    
 Indices and tables
 ==================

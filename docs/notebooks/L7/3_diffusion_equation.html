@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Planetary Motion" href="2_planetary_motion.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Curve fitting" href="../L8/1_curve_fitting.html" /><link rel="prev" title="Planetary Motion" href="2_planetary_motion.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Diffusion equation - Einführung in die Modellierung Physikalischer Prozesse 23 documentation</title>
@@ -245,10 +245,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../L6/4_fourier_series_coding.html#Berechnung-der-Fourierreihe">Berechnung der Fourierreihe</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Lecture 8:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="1_spring_pendulum.html">Spring Pendulum</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_planetary_motion.html">Planetary Motion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 9:</span></p>
+<ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L8/1_curve_fitting.html">Curve fitting</a></li>
 </ul>
 
 </div>
@@ -400,7 +404,7 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 <section id="Setup-Domain">
 <h3>Setup Domain<a class="headerlink" href="#Setup-Domain" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">=</span><span class="mf">1.0</span> <span class="c1">## domain size</span>
@@ -423,7 +427,7 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 <section id="Initial-Conditions">
 <h3>Initial Conditions<a class="headerlink" href="#Initial-Conditions" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigma</span><span class="o">=</span><span class="mf">0.02</span> <span class="c1">## initial distribution width</span>
@@ -432,7 +436,7 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;position x&#39;</span><span class="p">)</span>
@@ -447,14 +451,14 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L7_3_diffusion_equation_22_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_3_diffusion_equation_22_0.png" style="width: 407px; height: 299px;" />
+<img alt="../../_images/notebooks_L7_3_diffusion_equation_22_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_3_diffusion_equation_22_0.png" style="width: 597px; height: 484px;" />
 </div>
 </div>
 </section>
 <section id="Matrix-Setup">
 <h3>Matrix Setup<a class="headerlink" href="#Matrix-Setup" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Second derivative Matrix, this time created by spdiags of the scipy.sparse module</span>
@@ -470,7 +474,7 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
@@ -478,7 +482,7 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -492,7 +496,7 @@ array([[ 1.,  1.,  1., ...,  1.,  1.,  1.],
 <section id="Solution">
 <h3>Solution<a class="headerlink" href="#Solution" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">## store the solutions for the individual timesteps</span>
@@ -508,7 +512,7 @@ array([[ 1.,  1.,  1., ...,  1.,  1.,  1.],
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">NT</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
@@ -524,11 +528,11 @@ array([[ 1.,  1.,  1., ...,  1.,  1.,  1.],
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L7_3_diffusion_equation_28_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_3_diffusion_equation_28_0.png" style="width: 407px; height: 286px;" />
+<img alt="../../_images/notebooks_L7_3_diffusion_equation_28_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_3_diffusion_equation_28_0.png" style="width: 597px; height: 465px;" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NT</span><span class="p">,</span><span class="n">NX</span><span class="p">),</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray_r&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
@@ -542,7 +546,15 @@ array([[ 1.,  1.,  1., ...,  1.,  1.,  1.],
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L7_3_diffusion_equation_29_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_3_diffusion_equation_29_0.png" style="width: 420px; height: 236px;" />
+<img alt="../../_images/notebooks_L7_3_diffusion_equation_29_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_3_diffusion_equation_29_0.png" style="width: 614px; height: 343px;" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
@@ -556,7 +568,15 @@ array([[ 1.,  1.,  1., ...,  1.,  1.,  1.],
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="../L8/1_curve_fitting.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Curve fitting</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="2_planetary_motion.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
@@ -578,7 +598,7 @@ array([[ 1.,  1.,  1., ...,  1.,  1.,  1.],
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Dec 19, 2023</div>
+              Last updated on Jan 08, 2024</div>
           </div>
           <div class="right-details">
             

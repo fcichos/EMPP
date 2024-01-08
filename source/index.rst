@@ -144,8 +144,14 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
 
    notebooks/L7/1_spring_pendulum.ipynb
    notebooks/L7/2_planetary_motion.ipynb   
-   notebooks/L7/3_diffusion_equation.ipynb     
+      
    
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 9:
+
+   notebooks/L7/3_diffusion_equation.ipynb     
+   notebooks/L8/1_curve_fitting.ipynb
    
 Indices and tables
 ==================

@@ -248,7 +248,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="1_spring_pendulum.html">Spring Pendulum</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Planetary Motion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 9:</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="3_diffusion_equation.html">Diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L8/1_curve_fitting.html">Curve fitting</a></li>
 </ul>
 
 </div>
@@ -290,8 +294,8 @@
 </div>
 <section id="Planetary-Motion">
 <h1>Planetary Motion<a class="headerlink" href="#Planetary-Motion" title="Permalink to this heading">#</a></h1>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -318,19 +322,6 @@
 <br/></pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<style>
-.output_png {
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-}
-</style></div>
-</div>
 <section id="Physical-Model">
 <h2>Physical Model<a class="headerlink" href="#Physical-Model" title="Permalink to this heading">#</a></h2>
 <p>From the above defined equation of motion for the spring pendulum, it is only a small step to simulate planetary motion, which you should know well from you mechanics lectures. The equations of motion in angular and radial direction can be obtained very similarly. Here, however, there is no force in the tangential direction as we deal with the central symmetric gravitational potential. The equations of motion read:</p>
@@ -352,7 +343,7 @@ p=\frac{L^2}{G M m^2}
 \end{equation}</span></p>
 <p>The trajectory is therefore determined by <span class="math notranslate nohighlight">\(p\)</span> and the excentricity <span class="math notranslate nohighlight">\(\epsilon\)</span>. For <span class="math notranslate nohighlight">\(0&lt;\epsilon&lt;1\)</span>(E&lt;0) there is a closed orbit with an ellipctical shape. For <span class="math notranslate nohighlight">\(\epsilon=0\)</span> the orbit is circular.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">planetary_motion</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">time</span> <span class="p">):</span>
@@ -370,7 +361,7 @@ p=\frac{L^2}{G M m^2}
 <section id="Initial-Parameters:-Planets">
 <h3>Initial Parameters: Planets<a class="headerlink" href="#Initial-Parameters:-Planets" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mass m1, m2, length of pendula L1, L2, position of the coupling, spring constant k, gravitational acceleration</span>
@@ -399,7 +390,7 @@ p=\frac{L^2}{G M m^2}
 <section id="Solution:-Planets">
 <h3>Solution: Planets<a class="headerlink" href="#Solution:-Planets" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">answer</span> <span class="o">=</span> <span class="n">odeint</span> <span class="p">(</span> <span class="n">planetary_motion</span> <span class="p">,</span> <span class="n">state</span> <span class="p">,</span> <span class="n">time</span> <span class="p">)</span>
@@ -410,7 +401,7 @@ p=\frac{L^2}{G M m^2}
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ellipse parameters</span>
@@ -429,7 +420,7 @@ p=\frac{L^2}{G M m^2}
 <section id="Trajectory">
 <h4>Trajectory<a class="headerlink" href="#Trajectory" title="Permalink to this heading">#</a></h4>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># analytical solution</span>
@@ -452,7 +443,7 @@ p=\frac{L^2}{G M m^2}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L7_2_planetary_motion_14_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_2_planetary_motion_14_0.png" style="width: 460px; height: 419px;" />
+<img alt="../../_images/notebooks_L7_2_planetary_motion_14_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_2_planetary_motion_14_0.png" style="width: 639px; height: 593px;" />
 </div>
 </div>
 </section>
@@ -469,15 +460,16 @@ p=\frac{L^2}{G M m^2}
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">Ekin</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">Epot</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">Ekin</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;E_kin&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">Epot</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;E_pot&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">Etot</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;energy&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -486,7 +478,15 @@ p=\frac{L^2}{G M m^2}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L7_2_planetary_motion_17_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_2_planetary_motion_17_0.png" style="width: 426px; height: 286px;" />
+<img alt="../../_images/notebooks_L7_2_planetary_motion_17_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_2_planetary_motion_17_0.png" style="width: 622px; height: 465px;" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
@@ -531,7 +531,7 @@ p=\frac{L^2}{G M m^2}
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Dec 19, 2023</div>
+              Last updated on Jan 08, 2024</div>
           </div>
           <div class="right-details">
             
