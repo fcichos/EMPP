@@ -298,7 +298,7 @@
 <p>We stop for the moment the physics related stuff and have a look at a different important topic, which is curve fitting. We demonstrate the least-square fitting of a quadratic function with three parameters to experimental data. You may of course also have more complex function or even a simple linear function. For some fitting functions you may write down explicit estimators of the parameters and you do not have to stress the fitting procedure. So before you fit, think about how to obtain a
 good estimate of your model parameters. For those of you, who are interested a bit more in that topic, have a look at maximum likelihood estimation for example.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -382,7 +382,7 @@ p(y_{1},\ldots,y_{N})=\prod_{i}^{N}\frac{1}{\sqrt{2\pi}\sigma_{i}}\exp(-(y_{i}-f
 <h2>Data<a class="headerlink" href="#Data" title="Permalink to this heading">#</a></h2>
 <p>Lets have a look at the meaning of this equation. Lets assume we measure the trajectory of a ball that has been thrown under and angle <span class="math notranslate nohighlight">\(\alpha\)</span> with an initial velocity <span class="math notranslate nohighlight">\(v_{0}\)</span>. We have collected data point by measuring the height of the ball above ground at equally spaced distances from the throwing person. Lets load some data</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here is some data of the height measurements including untertainties</span>
@@ -397,7 +397,7 @@ y=ax^2+bx+c
 <p>where the parameter <span class="math notranslate nohighlight">\(a\)</span> must be negative since the parabola is inverted.</p>
 <p>I have created an interactive plotting with an interact widget, as this allows you to play around with the parameters. The value of <span class="math notranslate nohighlight">\(\chi^2\)</span> is also included in the legend, that you get an impression of how good your fit of the data is.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parabola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
@@ -419,7 +419,7 @@ y=ax^2+bx+c
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
@@ -431,7 +431,7 @@ y=ax^2+bx+c
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a58d2785d7d34de99b95cd46f935be5a", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "eaea4391b99a434c81e88e39f0487149", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>We have that troubeling point at the right edge with a large uncertainty. However, since the value of <span class="math notranslate nohighlight">\(\chi^2\)</span> divides the deviation by the uncertainty <span class="math notranslate nohighlight">\(\sigma_{i}\)</span> the weight for this point overall in the <span class="math notranslate nohighlight">\(\chi^{2}\)</span> is smaller than for the other points.</p>
 <p><span class="math">\begin{equation}
@@ -869,7 +869,7 @@ y=a(x-b)^2 +c
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Jan 09, 2024</div>
+              Last updated on Jan 15, 2024</div>
           </div>
           <div class="right-details">
             

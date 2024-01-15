@@ -297,7 +297,7 @@
 <p>So far, we have always looked at ordinary differential equations, i.e. differential equations where the physical quantity we considered was depending only on one variable. In a lot of physical problems, the observable quantities depend on multiple variables like time and space. The differential equations, which govern those problems are partial differential equations. The diffusion equation is one of them. It pops up in various forms in physics, describing also heat conduction and in a slighly
 modified way this is corresponding to the time dependent Schrödinger equation.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[151]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -404,7 +404,7 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 <section id="Setup-Domain">
 <h3>Setup Domain<a class="headerlink" href="#Setup-Domain" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[132]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">=</span><span class="mf">1.0</span> <span class="c1">## domain size</span>
@@ -419,7 +419,7 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 <span class="n">dt</span> <span class="o">=</span> <span class="n">dx</span><span class="o">/</span><span class="mi">4</span> <span class="c1">## time step</span>
 <span class="n">NT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span> <span class="c1">## number of time steps</span>
 
-<span class="n">D</span><span class="o">=</span><span class="mi">1</span> <span class="c1">## diffusion coefficient</span>
+<span class="n">D</span><span class="o">=</span><span class="mf">0.1</span> <span class="c1">## diffusion coefficient</span>
 </pre></div>
 </div>
 </div>
@@ -427,16 +427,16 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 <section id="Initial-Conditions">
 <h3>Initial Conditions<a class="headerlink" href="#Initial-Conditions" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[133]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigma</span><span class="o">=</span><span class="mf">0.04</span> <span class="c1">## initial distribution width</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))))</span> <span class="c1">## Gaussian distribution</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))))</span> <span class="c1">## Gaussian distribution</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[134]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;position x&#39;</span><span class="p">)</span>
@@ -458,7 +458,7 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 <section id="Matrix-Setup">
 <h3>Matrix Setup<a class="headerlink" href="#Matrix-Setup" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[135]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Second derivative Matrix, this time created by spdiags of the scipy.sparse module</span>
@@ -477,11 +477,11 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 <section id="Solution">
 <h3>Solution<a class="headerlink" href="#Solution" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[136]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">## store the solutions for the individual timesteps</span>
-
+<span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NT</span><span class="p">):</span> <span class="c1">## loop over all timesteps</span>
 
     <span class="n">A</span> <span class="o">=</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span><span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">D</span><span class="o">*</span><span class="n">M</span><span class="p">)</span> <span class="c1">## matrix multiplied to the next timestep solution</span>
@@ -493,7 +493,7 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[137]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">NT</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
@@ -509,14 +509,14 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L7_3_diffusion_equation_27_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_3_diffusion_equation_27_0.png" style="width: 597px; height: 459px;" />
+<img alt="../../_images/notebooks_L7_3_diffusion_equation_27_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_3_diffusion_equation_27_0.png" style="width: 597px; height: 456px;" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[152]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">NT</span><span class="p">,</span><span class="n">NX</span><span class="p">),</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray_r&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1003</span><span class="p">,</span><span class="mi">500</span><span class="p">),</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray_r&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;position x&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;time t&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -527,7 +527,23 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L7_3_diffusion_equation_28_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_3_diffusion_equation_28_0.png" style="width: 614px; height: 343px;" />
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[152], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> plt<span style="color: rgb(98,98,98)">.</span>imshow(<span class="ansi-yellow-bg">np</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">array</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg">dtype</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">float</span><span class="ansi-yellow-bg">)</span><span style="color: rgb(98,98,98)">.</span>reshape(<span style="color: rgb(98,98,98)">1003</span>,<span style="color: rgb(98,98,98)">500</span>),vmin<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0</span>,vmax<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0.1</span>,cmap<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">gray_r</span><span style="color: rgb(175,0,0)">&#39;</span>,extent<span style="color: rgb(98,98,98)">=</span>(<span style="color: rgb(98,98,98)">0</span>,L,T,<span style="color: rgb(98,98,98)">0</span>))
+<span class="ansi-green-intense-fg ansi-bold">      2</span> plt<span style="color: rgb(98,98,98)">.</span>xlabel(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">position x</span><span style="color: rgb(175,0,0)">&#39;</span>)
+<span class="ansi-green-intense-fg ansi-bold">      3</span> plt<span style="color: rgb(98,98,98)">.</span>ylabel(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">time t</span><span style="color: rgb(175,0,0)">&#39;</span>)
+
+<span class="ansi-red-fg">ValueError</span>: setting an array element with a sequence. The requested array has an inhomogeneous shape after 2 dimensions. The detected shape was (1003, 500) + inhomogeneous part.
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
@@ -571,7 +587,7 @@ c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Jan 09, 2024</div>
+              Last updated on Jan 15, 2024</div>
           </div>
           <div class="right-details">
             
