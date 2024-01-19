@@ -152,7 +152,22 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
 
    notebooks/L7/3_diffusion_equation.ipynb     
    notebooks/L8/1_curve_fitting.ipynb
-   
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 10:
+
+   notebooks/L8/1_curve_fitting.ipynb
+   notebooks/L9/1_plane_waves.ipynb
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Extra Seminar:
+
+   notebooks/L12/2_reinforcement_learning.ipynb
+
+
 Indices and tables
 ==================
 

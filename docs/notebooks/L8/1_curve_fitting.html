@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Diffusion equation" href="../L7/3_diffusion_equation.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Plane Waves" href="../L9/1_plane_waves.html" /><link rel="prev" title="Diffusion equation" href="../L7/3_diffusion_equation.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Curve fitting - Einführung in die Modellierung Physikalischer Prozesse 23 documentation</title>
@@ -252,7 +252,16 @@
 <p class="caption" role="heading"><span class="caption-text">Lecture 9:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../L7/3_diffusion_equation.html">Diffusion equation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Curve fitting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 10:</span></p>
+<ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Curve fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L9/1_plane_waves.html">Plane Waves</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extra Seminar:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L12/2_reinforcement_learning.html">Machine Learning and Neural Networks</a></li>
 </ul>
 
 </div>
@@ -298,7 +307,7 @@
 <p>We stop for the moment the physics related stuff and have a look at a different important topic, which is curve fitting. We demonstrate the least-square fitting of a quadratic function with three parameters to experimental data. You may of course also have more complex function or even a simple linear function. For some fitting functions you may write down explicit estimators of the parameters and you do not have to stress the fitting procedure. So before you fit, think about how to obtain a
 good estimate of your model parameters. For those of you, who are interested a bit more in that topic, have a look at maximum likelihood estimation for example.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -382,7 +391,7 @@ p(y_{1},\ldots,y_{N})=\prod_{i}^{N}\frac{1}{\sqrt{2\pi}\sigma_{i}}\exp(-(y_{i}-f
 <h2>Data<a class="headerlink" href="#Data" title="Permalink to this heading">#</a></h2>
 <p>Lets have a look at the meaning of this equation. Lets assume we measure the trajectory of a ball that has been thrown under and angle <span class="math notranslate nohighlight">\(\alpha\)</span> with an initial velocity <span class="math notranslate nohighlight">\(v_{0}\)</span>. We have collected data point by measuring the height of the ball above ground at equally spaced distances from the throwing person. Lets load some data</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here is some data of the height measurements including untertainties</span>
@@ -397,7 +406,7 @@ y=ax^2+bx+c
 <p>where the parameter <span class="math notranslate nohighlight">\(a\)</span> must be negative since the parabola is inverted.</p>
 <p>I have created an interactive plotting with an interact widget, as this allows you to play around with the parameters. The value of <span class="math notranslate nohighlight">\(\chi^2\)</span> is also included in the legend, that you get an impression of how good your fit of the data is.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parabola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
@@ -419,7 +428,7 @@ y=ax^2+bx+c
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
@@ -431,7 +440,7 @@ y=ax^2+bx+c
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "eaea4391b99a434c81e88e39f0487149", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8f5d0ff8873d4d2186dc3b93f67735b0", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>We have that troubeling point at the right edge with a large uncertainty. However, since the value of <span class="math notranslate nohighlight">\(\chi^2\)</span> divides the deviation by the uncertainty <span class="math notranslate nohighlight">\(\sigma_{i}\)</span> the weight for this point overall in the <span class="math notranslate nohighlight">\(\chi^{2}\)</span> is smaller than for the other points.</p>
 <p><span class="math">\begin{equation}
@@ -448,7 +457,7 @@ y=ax^2+bx+c
 <p>This kind of least squares minimization is done by a fitting software with different types of algorithms.</p>
 <p>OK so let’s do some fitting. We will use the <code class="docutils literal notranslate"><span class="pre">SciPy</span></code> module for fitting. There we have a <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> method in the <code class="docutils literal notranslate"><span class="pre">optimize</span></code> sub-module. At first we should provide a model function we would like to fit to the data. This could just be our parabola function.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[514]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parabola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
@@ -458,7 +467,7 @@ y=ax^2+bx+c
 </div>
 <p>At second, we should not leave the fitting procedure of <code class="docutils literal notranslate"><span class="pre">SciPy</span></code> without a clue on where to look for the optimal parameters. Therefore we can provide initial parameters for the search.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[515]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">init_guess</span> <span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
@@ -467,7 +476,7 @@ y=ax^2+bx+c
 </div>
 <p>The fit is then obtained by calling</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[516]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span><span class="o">=</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">parabola</span><span class="p">,</span><span class="n">x_data</span><span class="p">,</span><span class="n">y_data</span><span class="p">,</span><span class="n">sigma</span><span class="o">=</span><span class="n">err</span><span class="p">,</span><span class="n">p0</span><span class="o">=</span><span class="n">init_guess</span><span class="p">,</span><span class="n">absolute_sigma</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -475,8 +484,28 @@ y=ax^2+bx+c
 </div>
 </div>
 <p>and we obtain all the fit results in the variable <code class="docutils literal notranslate"><span class="pre">fit</span></code>. This is actually composed of various results. If we split that up, we will find</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(array([-2.51836051,  1.6971755 ,  1.00678869]),
+ array([[ 0.07675961, -0.06444204,  0.0077515 ],
+        [-0.06444204,  0.05918523, -0.00848237],
+        [ 0.0077515 , -0.00848237,  0.00192722]]))
+</pre></div></div>
+</div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[517]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ans</span><span class="p">,</span><span class="n">cov</span><span class="o">=</span><span class="n">fit</span>
@@ -486,7 +515,7 @@ y=ax^2+bx+c
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">ans</span></code> containing the fit parameters <code class="docutils literal notranslate"><span class="pre">fit_a</span></code>,<code class="docutils literal notranslate"><span class="pre">fit_b</span></code>,<code class="docutils literal notranslate"><span class="pre">fit_c</span></code> as well as the so-called covariance matrix <code class="docutils literal notranslate"><span class="pre">cov</span></code>. Lets have a look at the fit and the <span class="math notranslate nohighlight">\(\chi^{2}\)</span> value first.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[518]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit_a</span><span class="p">,</span><span class="n">fit_b</span><span class="p">,</span><span class="n">fit_c</span>
@@ -494,7 +523,7 @@ y=ax^2+bx+c
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[518]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -503,7 +532,7 @@ y=ax^2+bx+c
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[519]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -522,7 +551,7 @@ y=ax^2+bx+c
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L8_1_curve_fitting_30_0.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_30_0.png" style="width: 528px; height: 385px;" />
+<img alt="../../_images/notebooks_L8_1_curve_fitting_31_0.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_31_0.png" style="width: 734px; height: 545px;" />
 </div>
 </div>
 <section id="\chi-squared-value">
@@ -552,7 +581,7 @@ r_i=100\left (\frac{y_i-f(x_{i},a)}{y_i}\right )
 \end{equation}</span></p>
 <p>If there are only statsitical fluctuations of the residuals around zero, then the fit and likely also the model is good.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[505]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -568,7 +597,7 @@ r_i=100\left (\frac{y_i-f(x_{i},a)}{y_i}\right )
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L8_1_curve_fitting_37_0.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_37_0.png" style="width: 511px; height: 385px;" />
+<img alt="../../_images/notebooks_L8_1_curve_fitting_38_0.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_38_0.png" style="width: 711px; height: 545px;" />
 </div>
 </div>
 </section>
@@ -577,7 +606,7 @@ r_i=100\left (\frac{y_i-f(x_{i},a)}{y_i}\right )
 <h2>Covariance matrix<a class="headerlink" href="#Covariance-matrix" title="Permalink to this heading">#</a></h2>
 <p>Let us now have a look at the individual measurements which have yielded the errorbars in the above plot. If I take each of those measurements and calculate a fit for each of the datasets I get a whole set of fit functions and parameters. The uncertainties in the parameters of the fit function are the result of the measurement uncertainty.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[535]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
@@ -589,7 +618,7 @@ r_i=100\left (\frac{y_i-f(x_{i},a)}{y_i}\right )
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[522]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
@@ -615,7 +644,7 @@ r_i=100\left (\frac{y_i-f(x_{i},a)}{y_i}\right )
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L8_1_curve_fitting_41_0.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_41_0.png" style="width: 517px; height: 385px;" />
+<img alt="../../_images/notebooks_L8_1_curve_fitting_42_0.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_42_0.png" style="width: 719px; height: 547px;" />
 </div>
 </div>
 <p>We may therefore want to characterize how much the individual parameters vary with each other. In other word, this means that we want to know whether the fit parameters are independent or not, which is a good quality measure of our model. For this pupose we use a generalization of the variance definition</p>
@@ -638,7 +667,7 @@ r_i=100\left (\frac{y_i-f(x_{i},a)}{y_i}\right )
 \end{equation}</span></p>
 <p>The diagonal elements thereby provide the squared errors of the fit parameters (their variances). The off diagonal elements describe by how much the individual parameters are related with each other.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[537]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>
@@ -650,9 +679,9 @@ r_i=100\left (\frac{y_i-f(x_{i},a)}{y_i}\right )
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[[ 0.07675961 -0.00252389 -0.00524745]
- [-0.00252389  0.0002834   0.0001206 ]
- [-0.00524745  0.0001206   0.00074961]]
+[[ 0.07675961 -0.06444203  0.0077515 ]
+ [-0.06444203  0.05918522 -0.00848237]
+ [ 0.0077515  -0.00848237  0.00192722]]
 </pre></div></div>
 </div>
 <p>The matrix above is our covariance matrix of the parameters. You see from the off diagonal elements that a number of parameters is highly related to each other. An even better view may be obtained by the so called correlation matrix <span class="math notranslate nohighlight">\(R\)</span>, where the matrix elements</p>
@@ -661,7 +690,7 @@ R_{p_{i},p_{j}}=\frac{{\rm cov}(p_{i},p_{j})}{\sqrt{\sigma_{i}^2\sigma_{j}^2}}
 \end{equation}</span></p>
 <p>The entries of the covariance matrix are here normalized by the variances of the parameters itself, i.e. by the diagonal elements.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[538]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>
@@ -673,7 +702,7 @@ R_{p_{i},p_{j}}=\frac{{\rm cov}(p_{i},p_{j})}{\sqrt{\sigma_{i}^2\sigma_{j}^2}}
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[527]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
@@ -685,14 +714,14 @@ R_{p_{i},p_{j}}=\frac{{\rm cov}(p_{i},p_{j})}{\sqrt{\sigma_{i}^2\sigma_{j}^2}}
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[[ 1.         -0.95608434  0.63731452]
- [-0.95608434  1.         -0.79422754]
- [ 0.63731452 -0.79422754  1.        ]]
+[[ 1.         -0.95608434  0.63731451]
+ [-0.95608434  1.         -0.79422753]
+ [ 0.63731451 -0.79422753  1.        ]]
 </pre></div></div>
 </div>
 <p>The correlation matrix thus indeed reveals that the parameters are highly related to each other. <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> calculates the corresponding covariance entries using the specified uncertainties. We may access the meaning of them a bit better if we look at our synthetic data.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[539]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
@@ -705,7 +734,7 @@ R_{p_{i},p_{j}}=\frac{{\rm cov}(p_{i},p_{j})}{\sqrt{\sigma_{i}^2\sigma_{j}^2}}
 </div>
 <p>If we generate 100 different measurements and fit the accordingly, we can access a possible correlation of the parameters as sugested by the correlation matrix.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[540]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[]</span>
@@ -723,18 +752,18 @@ R_{p_{i},p_{j}}=\frac{{\rm cov}(p_{i},p_{j})}{\sqrt{\sigma_{i}^2\sigma_{j}^2}}
 </div>
 <p>If we now plot the parameter <span class="math notranslate nohighlight">\(a\)</span> over the parameter <span class="math notranslate nohighlight">\(b\)</span>, we indeed obtain a very strong correlation, which has a negative slope as suggested by the correlation matrix.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[529]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;parameter a&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;parameter b&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[529]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -746,7 +775,7 @@ Text(0, 0.5, &#39;parameter b&#39;)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L8_1_curve_fitting_53_1.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_53_1.png" style="width: 522px; height: 385px;" />
+<img alt="../../_images/notebooks_L8_1_curve_fitting_54_1.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_54_1.png" style="width: 734px; height: 545px;" />
 </div>
 </div>
 <p>This correlation of parameters means, that the parameter <code class="docutils literal notranslate"><span class="pre">b</span></code> is not independent from <code class="docutils literal notranslate"><span class="pre">a</span></code> but rather strongly linearly dependent on it. We might want to find a better model containing more independent parameters. We may write down a different model</p>
@@ -755,7 +784,7 @@ y=a(x-b)^2 +c
 \end{equation}</span></p>
 <p>which also contains three parameters, but the parameter <code class="docutils literal notranslate"><span class="pre">b</span></code> directly refers to trhe maximum of out parabola, while the parameter <code class="docutils literal notranslate"><span class="pre">a</span></code> denotes its curvature.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[541]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">newmodel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
@@ -764,7 +793,7 @@ y=a(x-b)^2 +c
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[542]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span><span class="o">=</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">newmodel</span><span class="p">,</span><span class="n">x_data</span><span class="p">,</span><span class="n">y_data</span><span class="p">,</span><span class="n">sigma</span><span class="o">=</span><span class="n">err</span><span class="p">,</span><span class="n">p0</span><span class="o">=</span><span class="n">init_guess</span><span class="p">,</span><span class="n">absolute_sigma</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -772,7 +801,7 @@ y=a(x-b)^2 +c
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[543]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ans</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">fit</span>
@@ -780,7 +809,7 @@ y=a(x-b)^2 +c
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[544]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>
@@ -793,7 +822,7 @@ y=a(x-b)^2 +c
 </div>
 <p>We see from the covariance matrix that the new model has a smaller correlation of the parameters on each other.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[546]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>
@@ -812,7 +841,7 @@ y=a(x-b)^2 +c
 </div>
 <p>This is also expressed by our correlation matrix.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[495]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
@@ -829,14 +858,6 @@ y=a(x-b)^2 +c
  [-0.69177302  0.26166299  1.        ]]
 </pre></div></div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
 <script type="application/vnd.jupyter.widget-state+json">
 {"state": {}, "version_major": 2, "version_minor": 0}
 </script></section>
@@ -847,7 +868,15 @@ y=a(x-b)^2 +c
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="../L9/1_plane_waves.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Plane Waves</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="../L7/3_diffusion_equation.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
@@ -869,7 +898,7 @@ y=a(x-b)^2 +c
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Jan 15, 2024</div>
+              Last updated on Jan 19, 2024</div>
           </div>
           <div class="right-details">
             
