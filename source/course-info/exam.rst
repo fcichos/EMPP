@@ -13,8 +13,8 @@ Wir werden diesen Kurs mit einer Prüfung in Form einer Portfolio Prüfung absch
 
 Die Notebooks müssen der folgenden Gliederung folgen
 
-- **Einführung** Sie führen in das Problem ein, das Sie mit Ihrem Notebook behandeln und begründen, was Sie tun werden. Die Einführung sollte auch eine grundlegende theoretische Beschreibung des zu lösenden Problems enthalten.
-- **Ergebnisse & Diskussion** Sie entwickeln den Code für Ihr Problem und diskutieren und kommentieren die einzelnen Schritte in Ihrem Heft. Es ist wichtig, dass Sie die einzelnen Ergebnisse diskutieren und deren 
+- **Einführung** Sie führen in das Problem ein, das Sie mit Ihrem Notebook behandeln wollen und stellen dar, was Sie tun werden. Die Einführung sollte auch eine grundlegende theoretische Beschreibung des zu lösenden Problems enthalten.
+- **Ergebnisse & Diskussion** Sie entwickeln den Code für Ihr Problem und diskutieren und kommentieren die einzelnen Schritte in Ihrem Notebook. Es ist wichtig, dass Sie die einzelnen Ergebnisse diskutieren und deren Bedeutung interpretieren. 
 
 Benotung: Die Notebooks werden nach folgenden Kriterien benotet:
 
