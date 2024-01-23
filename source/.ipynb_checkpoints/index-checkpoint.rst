@@ -167,7 +167,15 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
 
    notebooks/L12/2_reinforcement_learning.ipynb
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 11:
 
+   notebooks/L9/1_plane_waves.ipynb
+   notebooks/L9/2_spherical_waves.ipynb
+   notebooks/L9/3_huygens_principle.ipynb
+   
+   
 Indices and tables
 ==================
 
