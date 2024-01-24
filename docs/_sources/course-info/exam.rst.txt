@@ -6,7 +6,12 @@
 Prüfung
 =======
 
-Wir werden diesen Kurs mit einer Prüfung in Form einer Portfolio Prüfung abschließen. Die Prüfung besteht aus der Abgabe von 50 Prozent korrekter Übungsaufgaben (insgesamt, Teil 1) und einem Abschlussprojekt (Teil 2). Beide Teilleistungen müssen bestanden werden. Das Abschlussprojekt wird zu einem Thema Ihrer Wahl oder zu einem der Themen, die wir als Beispielthemen anbieten, durchgeführt. Jeder einzelne Teilnehmer muss ein Jupyter Notebook einreichen. Gruppenarbeit ist nicht erlaubt.
+Wir werden diesen Kurs mit einer Prüfung in Form einer Portfolio Prüfung abschließen. Die Prüfung besthet aus zwei Teilen. Beide Teile müssen bestanden werden. 
+
+Teil 1 ist die Abgabe der Übungsaufgaben. Hier müssen 50 Prozent der Punkte rehalten werden. Diese Teilleistung hat keinen Einfluss auf die Note.
+
+Teil 2 ist ein Abschlussprojekt (siehe unten). Das Abschlussprojekt wird zu einem Thema Ihrer Wahl oder zu einem der Themen, die wir als Beispielthemen anbieten, durchgeführt. 
+Jeder einzelne Teilnehmer muss ein Jupyter Notebook einreichen. Gruppenarbeit ist nicht erlaubt. Diese Teilleistung wird benotet und bildet die Abschlussnote.
 
 
 **Jupyter-Notebook mit dem Abschlussprojekt**

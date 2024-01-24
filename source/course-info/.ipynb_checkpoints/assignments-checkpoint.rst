@@ -6,7 +6,7 @@
 Übungsaufgaben
 ============
 
-Wir werden die Aufgabenstellungen jede Woche an alle Studenten verteilen über den Übungsserver verteilen. Die Aufgaben werden in Form eines Jupyter-Notebooks mit individuellen Problemen bereitgestellt. Bitte tragen Sie den Code oder die Antworten ein und reichen Sie die Notebooks **vor der Vorlesung** jeden Dienstagmorgen zurück. Sie erhalten die Webadresse unseres Aufgabenservers sowie ein Login und Passwort. Unten finden Sie auch ein kurzes Video (Englisch), wie Sie die Aufgaben herunterladen und zurückgeben können.
+Die Übungsaufgaben sind eine Prüfungsteilleistung, die nicht benotet wird aber bestanden werden muss. Wir werden die Aufgabenstellungen jede Woche an alle Studenten verteilen über den Übungsserver verteilen. Die Aufgaben werden in Form eines Jupyter-Notebooks mit individuellen Problemen bereitgestellt. Bitte tragen Sie den Code oder die Antworten ein und reichen Sie die Notebooks **vor der Vorlesung** jeden Dienstagmorgen zurück. Sie erhalten die Webadresse unseres Aufgabenservers sowie ein Login und Passwort. Unten finden Sie auch ein kurzes Video (Englisch), wie Sie die Aufgaben herunterladen und zurückgeben können. 
 
 
 .. raw:: html

@@ -313,7 +313,7 @@
 <p>In the previous parts we have dealt with mechanics essentially. Even if we have described Brownian motion, this has been done by a particular type of Newtons equation of motion, it is much like mechanics. Now we would like to have a look at some examples from electromagnetic waves. We will not solve the wave equation but look at some solution using the complex notion of the electric field. This shall train our use of complex numbers. The special solutions are the <strong>plane wave</strong> and the
 <strong>spherical wave</strong>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
@@ -328,7 +328,7 @@
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -407,7 +407,7 @@ k_{z}^{\prime}+ik_{z}^{"} \\
 <section id="Electric-field">
 <h2>Electric field<a class="headerlink" href="#Electric-field" title="Permalink to this heading">#</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plane_wave</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">omega</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
@@ -417,7 +417,7 @@ k_{z}^{\prime}+ik_{z}^{"} \\
 </div>
 <p>Lets have a look at waves and wave propagation. We want to create a wave, which has a wavelength of 532 nm in vacuum.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelength</span><span class="o">=</span><span class="mf">532e-9</span>
@@ -429,10 +429,10 @@ k_{z}^{\prime}+ik_{z}^{"} \\
 </div>
 <p>It shall propagate along the z-direction and we wull have a look at the x-z plane.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="o">-</span><span class="mf">1.</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">])</span>
 <span class="n">vec</span><span class="o">=</span><span class="n">vec</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span><span class="n">vec</span><span class="p">))</span>
 
 <span class="n">k</span><span class="o">=</span><span class="n">k0</span><span class="o">*</span><span class="n">vec</span>
@@ -441,7 +441,7 @@ k_{z}^{\prime}+ik_{z}^{"} \\
 </div>
 <p>We can plot the electric field in the x-z plane by defining a grid of points (x,z). This is done by the <em>meshgrid</em> function of <em>numpy</em>. The meshgrid returns a 2-dimensional array for each coordinate. Have a look at the values in the meshgrid.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5e-6</span><span class="p">,</span><span class="mf">2.5e-6</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
@@ -458,7 +458,7 @@ you want to plot it, you have to calculate the magnitude square of the electric 
 I\propto |E|^{2}
 \end{equation}</span></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -488,7 +488,7 @@ I\propto |E|^{2}
 <h2>Plane wave propagation<a class="headerlink" href="#Plane-wave-propagation" title="Permalink to this heading">#</a></h2>
 <p>The above graph shows a static snapshot of the plane wave at a time <span class="math notranslate nohighlight">\(t=0\)</span>. We know, however, that a plane wave is propagating in space and time. Since we know how to animate things, we may do that using the <code class="docutils literal notranslate"><span class="pre">ipycanvas</span></code> module.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5e-6</span><span class="p">,</span><span class="mf">2.5e-6</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
@@ -500,7 +500,7 @@ I\propto |E|^{2}
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">sync_image_data</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -512,11 +512,11 @@ I\propto |E|^{2}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a61f5564495448c0aab088f7ba5e377a", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "91799ad2a4a748138ce9ef7cd1b320d1", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>To do the animation I use a little trick to get the same color map as in the matplotlib plotting. The function below uses the matplotlib color map <code class="docutils literal notranslate"><span class="pre">seismic</span></code> and the corresponding mapping of values with a given minimum <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and maximum <code class="docutils literal notranslate"><span class="pre">vmax</span></code> value. The mapping is done in the animation function with <code class="docutils literal notranslate"><span class="pre">c=m.to_rgba(tmp)</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#normalize the color map to a certain value range</span>
@@ -532,7 +532,7 @@ I\propto |E|^{2}
 </div>
 <p>This is our animation function, where I provide time and the wavevector as arguments, such that we may change both parameters easily.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">time</span><span class="p">):</span>
@@ -548,11 +548,11 @@ I\propto |E|^{2}
 </div>
 </div>
 With the call below, you may animate the wave now with different refractive indices.<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eta</span><span class="o">=</span><span class="mi">1</span>
-<span class="n">kappa</span><span class="o">=</span><span class="mf">0.1</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eta</span><span class="o">=</span><span class="mf">1.</span>
+<span class="n">kappa</span><span class="o">=</span><span class="mf">0.0</span>
 <span class="n">n</span><span class="o">=</span><span class="n">eta</span><span class="o">+</span><span class="n">kappa</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span>
 
 <span class="n">k</span><span class="o">=</span><span class="n">n</span><span class="o">*</span><span class="n">k0</span><span class="o">*</span><span class="n">vec</span>
@@ -566,7 +566,7 @@ With the call below, you may animate the wave now with different refractive indi
 <h2>Imaginary wave vector<a class="headerlink" href="#Imaginary-wave-vector" title="Permalink to this heading">#</a></h2>
 <p>If we now create a material, which has an imaginary part of the refractive index, we see that the amplitude decays and the wave fades.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[72]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5e-6</span><span class="p">,</span><span class="mf">2.5e-6</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
@@ -637,7 +637,7 @@ the fact the the intensity is the square of the electric field.</p>
 <h2>Animation<a class="headerlink" href="#Animation" title="Permalink to this heading">#</a></h2>
 <p>Of course, we should not miss the animation.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[149]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
@@ -648,10 +648,10 @@ the fact the the intensity is the square of the electric field.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "eb307dccbdcd45c0a3a420b4d8164044", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "91799ad2a4a748138ce9ef7cd1b320d1", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[150]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[71]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="o">=</span><span class="n">n</span><span class="o">*</span><span class="n">k0</span><span class="o">*</span><span class="n">vec</span>
@@ -671,16 +671,8 @@ the fact the the intensity is the square of the electric field.</p>
 <p><span class="math">\begin{equation}
 I\propto |\vec{E}|^2=|\vec{E}_{1}|^2+|\vec{E}_{2}|^2 + \vec{E}_{1}^{*} \vec{E}_{2}+\vec{E}_{2}^{*}\vec{E}_{1}
 \end{equation}</span></p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[155]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[77]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5e-6</span><span class="p">,</span><span class="mf">5e-6</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
@@ -694,7 +686,7 @@ I\propto |\vec{E}|^2=|\vec{E}_{1}|^2+|\vec{E}_{2}|^2 + \vec{E}_{1}^{*} \vec{E}_{
 <span class="n">k1</span><span class="o">=</span><span class="n">k0</span><span class="o">*</span><span class="n">vec</span>
 
 
-<span class="n">vec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">])</span>
+<span class="n">vec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">])</span>
 <span class="n">vec</span><span class="o">=</span><span class="n">vec</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span><span class="n">vec</span><span class="p">))</span>
 <span class="n">k2</span><span class="o">=</span><span class="n">k0</span><span class="o">*</span><span class="n">vec</span>
 
@@ -735,20 +727,19 @@ I\propto |\vec{E}|^2=|\vec{E}_{1}|^2+|\vec{E}_{2}|^2 + \vec{E}_{1}^{*} \vec{E}_{
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="n">While</span> <span class="n">the</span> <span class="n">field</span> <span class="n">pattern</span> <span class="n">still</span> <span class="n">looks</span> <span class="n">complicated</span><span class="p">,</span> <span class="n">the</span> <span class="n">intensity</span> <span class="n">pattern</span> <span class="ow">is</span> <span class="n">just</span> <span class="n">a</span> <span class="nb">set</span> <span class="n">of</span> <span class="n">bright</span> <span class="n">lines</span><span class="o">.</span>
-</pre></div>
+<br/><br/></pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L9_1_plane_waves_43_0.png" class="no-scaled-link" src="../../_images/notebooks_L9_1_plane_waves_43_0.png" style="width: 1429px; height: 360px;" />
+<img alt="../../_images/notebooks_L9_1_plane_waves_42_0.png" class="no-scaled-link" src="../../_images/notebooks_L9_1_plane_waves_42_0.png" style="width: 1985px; height: 500px;" />
 </div>
 </div>
+<p>While the field pattern still looks complicated, the intensity pattern is just a set of bright lines.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[156]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[78]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">transpose</span><span class="p">()[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
@@ -762,7 +753,7 @@ I\propto |\vec{E}|^2=|\vec{E}_{1}|^2+|\vec{E}_{2}|^2 + \vec{E}_{1}^{*} \vec{E}_{
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L9_1_plane_waves_44_0.png" class="no-scaled-link" src="../../_images/notebooks_L9_1_plane_waves_44_0.png" style="width: 392px; height: 280px;" />
+<img alt="../../_images/notebooks_L9_1_plane_waves_44_0.png" class="no-scaled-link" src="../../_images/notebooks_L9_1_plane_waves_44_0.png" style="width: 575px; height: 456px;" />
 </div>
 </div>
 <section id="Plane-wave-at-a-boundary">
@@ -1128,7 +1119,7 @@ k_{0z,t}=\pm \frac{1}{n_{1}}\sqrt{n_2^2 k_{0z,in}^2 -(n_{1}^2-n_{2}^2)k_{0x}^{2}
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Jan 23, 2024</div>
+              Last updated on Jan 24, 2024</div>
           </div>
           <div class="right-details">
             
