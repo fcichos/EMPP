@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Prüfung
+PrüfungM
 =======
 
 Wir werden diesen Kurs mit einer Prüfung in Form einer Portfolio Prüfung abschließen. Die Prüfung besthet aus zwei Teilen. Beide Teile müssen bestanden werden. 

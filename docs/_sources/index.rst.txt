@@ -175,6 +175,12 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
    notebooks/L9/2_spherical_waves.ipynb
    notebooks/L9/3_huygens_principle.ipynb
    
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 12:
+
+   notebooks/L13/1_deep_learning.ipynb
+   
    
 Indices and tables
 ==================

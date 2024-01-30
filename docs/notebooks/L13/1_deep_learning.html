@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Huygens principle" href="../L9/3_huygens_principle.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Neural Networks - Einführung in die Modellierung Physikalischer Prozesse 23 documentation</title>
@@ -163,7 +163,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../course-info/website.html">Diese Webseiten</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../course-info/schedule.html">Zeitplan für den Kurs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../course-info/assignments.html">Übungsaufgaben</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../course-info/exam.html">Prüfung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../course-info/exam.html">PrüfungM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../course-info/resources.html">Ressourcen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../course-info/instructor.html">Vorlesender</a></li>
 </ul>
@@ -269,6 +269,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../L9/2_spherical_waves.html">Spherical waves</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L9/3_huygens_principle.html">Huygens principle</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 12:</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Neural Networks</a></li>
+</ul>
 
 </div>
 </div>
@@ -309,6 +313,7 @@
 </div>
 <section id="Neural-Networks">
 <h1>Neural Networks<a class="headerlink" href="#Neural-Networks" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://github.com/fcichos/EMPP/blob/56b8c0f7fdfff1f1f4412eaf27152738785f2377/source/notebooks/L13/1_deep_learning.pdf">File as PDF</a></p>
 <p>Neural networks are one of the most commonly used machine learning objects nowadays. Mostly these systems are known as <strong>deep neural networks</strong>, which just says something about how many layers in which neurons are arranged exist. We will in this lecture have a look at the basic unit, the neuron, and how to connect and train a network. We will do all ourselves, that means, we will not use one of the many existing python modules, that simplifies the task. This notebook has been largely developed
 by <strong>Martin Fränzl</strong>.</p>
 <div class="nbinput nblast docutils container">
@@ -372,7 +377,7 @@ by <strong>Martin Fränzl</strong>.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L13_1_deep_learning_10_0.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_10_0.png" style="width: 522px; height: 422px;" />
+<img alt="../../_images/notebooks_L13_1_deep_learning_11_0.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_11_0.png" style="width: 522px; height: 422px;" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -450,7 +455,7 @@ label:  3
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L13_1_deep_learning_22_0.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_22_0.png" style="width: 514px; height: 427px;" />
+<img alt="../../_images/notebooks_L13_1_deep_learning_23_0.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_23_0.png" style="width: 514px; height: 427px;" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -525,7 +530,7 @@ y=\sigma( x_{1} w_{1}+ x_{2} w_{2}+b)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L13_1_deep_learning_31_0.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_31_0.png" style="width: 482px; height: 308px;" />
+<img alt="../../_images/notebooks_L13_1_deep_learning_32_0.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_32_0.png" style="width: 482px; height: 308px;" />
 </div>
 </div>
 <p>If we now have this kind of two input neuron with the weights <span class="math notranslate nohighlight">\(w\)</span> and the bias value <span class="math notranslate nohighlight">\(b\)</span></p>
@@ -807,7 +812,7 @@ False
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L13_1_deep_learning_61_1.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_61_1.png" style="width: 426px; height: 421px;" />
+<img alt="../../_images/notebooks_L13_1_deep_learning_62_1.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_62_1.png" style="width: 426px; height: 421px;" />
 </div>
 </div>
 </section>
@@ -995,7 +1000,7 @@ the number predicted.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L13_1_deep_learning_75_0.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_75_0.png" style="width: 514px; height: 427px;" />
+<img alt="../../_images/notebooks_L13_1_deep_learning_76_0.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_76_0.png" style="width: 514px; height: 427px;" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1212,7 +1217,7 @@ weighted avg       0.83      0.83      0.83     10000
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L13_1_deep_learning_93_1.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_93_1.png" style="width: 426px; height: 421px;" />
+<img alt="../../_images/notebooks_L13_1_deep_learning_94_1.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_94_1.png" style="width: 426px; height: 421px;" />
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
@@ -1226,7 +1231,17 @@ weighted avg       0.83      0.83      0.83     10000
         
         <div class="related-pages">
           
-          
+          <a class="prev-page" href="../L9/3_huygens_principle.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Huygens principle</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -1237,7 +1252,7 @@ weighted avg       0.83      0.83      0.83     10000
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Jan 23, 2024</div>
+              Last updated on Jan 30, 2024</div>
           </div>
           <div class="right-details">
             
