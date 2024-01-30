@@ -317,7 +317,7 @@
 <p>Neural networks are one of the most commonly used machine learning objects nowadays. Mostly these systems are known as <strong>deep neural networks</strong>, which just says something about how many layers in which neurons are arranged exist. We will in this lecture have a look at the basic unit, the neuron, and how to connect and train a network. We will do all ourselves, that means, we will not use one of the many existing python modules, that simplifies the task. This notebook has been largely developed
 by <strong>Martin Fränzl</strong>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[85]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -352,7 +352,7 @@ by <strong>Martin Fränzl</strong>.</p>
 <section id="Load-the-data">
 <h3>Load the data<a class="headerlink" href="#Load-the-data" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[86]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
@@ -362,10 +362,10 @@ by <strong>Martin Fränzl</strong>.</p>
 </div>
 <p>The images are now contained in the array <code class="docutils literal notranslate"><span class="pre">X</span></code>, while the labels (so which number it is) are contained in <code class="docutils literal notranslate"><span class="pre">y</span></code>. Let’s have a look at a random image and label.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[87]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">33419</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -377,7 +377,7 @@ by <strong>Martin Fränzl</strong>.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L13_1_deep_learning_11_0.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_11_0.png" style="width: 522px; height: 422px;" />
+<img alt="../../_images/notebooks_L13_1_deep_learning_11_0.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_11_0.png" style="width: 521px; height: 421px;" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -385,7 +385,7 @@ by <strong>Martin Fränzl</strong>.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-label:  3
+label:  8
 </pre></div></div>
 </div>
 </section>
@@ -393,7 +393,7 @@ label:  3
 <h3>Normalize the data<a class="headerlink" href="#Normalize-the-data" title="Permalink to this heading">#</a></h3>
 <p>To use data in neural networks as training data, it is always useful to normalize the data to the interval [0, 1].</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">/</span><span class="mi">255</span>
@@ -405,7 +405,7 @@ label:  3
 <h3>Preparing training and testing data<a class="headerlink" href="#Preparing-training-and-testing-data" title="Permalink to this heading">#</a></h3>
 <p>The default MNIST labels say ‘1’ for an image of a one, ‘2’ for an image of a two, etc., but we are just building a zero classifier for now. So we want our labels to say 1 when we have a zero, and 0 otherwise. So we overwrite the labels accordingly:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -416,7 +416,7 @@ label:  3
 </div>
 <p>We now split the data in a train and test set. The MNIST images are pre-arranged so that the first 60,000 can be used for training, and the last 10,000 for testing. We’ll also transform the data into the shape we want, with each example in a column (instead of a row):</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="mi">60000</span>
@@ -429,7 +429,7 @@ label:  3
 </div>
 <p>Finally, we shuffle the training set:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -440,10 +440,10 @@ label:  3
 </div>
 <p>Let’s again have a look at random image and label just to check</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">28</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">39</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -504,7 +504,7 @@ y=\sigma( x_{1} w_{1}+ x_{2} w_{2}+b)
 \end{equation*}</span></p>
 <p>The sigmoid function is something we can already define and plot.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
@@ -513,7 +513,7 @@ y=\sigma( x_{1} w_{1}+ x_{2} w_{2}+b)
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
@@ -571,7 +571,7 @@ L(Y,\hat{Y}) = -\frac{1}{m}\sum_{i = 0}^{m}y^{(i)}\log(\hat{y}^{(i)})-(1-y^{(i)}
 \end{equation*}</span></p>
 <p>In Python code, this looks like</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_loss</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">Y_hat</span><span class="p">):</span>
@@ -666,7 +666,7 @@ L(y,\hat{y}) &= -y\log(\hat{y})-(1-y)\log(1-\hat{y})\ .
 <h3>Build an Train<a class="headerlink" href="#Build-an-Train" title="Permalink to this heading">#</a></h3>
 <p>Now we have all things together to create a single neuron network doing the analysis of the MNIST numbers. This type of data processing is called logistic regression based on the sigmoid function, which is a logistic function. So let’s create all in python code and train the network for 100 epochs.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mi">1</span>
@@ -680,7 +680,7 @@ L(y,\hat{y}) &= -y\log(\hat{y})-(1-y)\log(1-\hat{y})\ .
 <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.01</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
     <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
 
@@ -704,24 +704,34 @@ L(y,\hat{y}) &= -y\log(\hat{y})-(1-y)\log(1-\hat{y})\ .
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Epoch 0  loss:  0.7471125121616977
-Epoch 10  loss:  0.0730826958292902
-Epoch 20  loss:  0.06131832354627721
-Epoch 30  loss:  0.055230119812005714
-Epoch 40  loss:  0.0513243202361425
-Epoch 50  loss:  0.04854004196371184
-Epoch 60  loss:  0.04642485272904433
-Epoch 70  loss:  0.04474722082574824
-Epoch 80  loss:  0.043374333931969114
-Epoch 90  loss:  0.042223715518407964
-Final loss: 0.041332921148394014
+Epoch 0  loss:  0.712705014591008
+Epoch 10  loss:  0.07396580299485674
+Epoch 20  loss:  0.061877026978155565
+Epoch 30  loss:  0.05560505468136092
+Epoch 40  loss:  0.051593839390561745
+Epoch 50  loss:  0.04874530452612801
+Epoch 60  loss:  0.04658831902161801
+Epoch 70  loss:  0.04488194332155037
+Epoch 80  loss:  0.04348835743260476
+Epoch 90  loss:  0.042322254068972005
+Epoch 100  loss:  0.041327625276307345
+Epoch 110  loss:  0.04046597773697196
+Epoch 120  loss:  0.0397098700197939
+Epoch 130  loss:  0.03903914548641721
+Epoch 140  loss:  0.03843862495187371
+Epoch 150  loss:  0.03789663416200166
+Epoch 160  loss:  0.03740403091053638
+Epoch 170  loss:  0.03695354294304271
+Epoch 180  loss:  0.0365393056828885
+Epoch 190  loss:  0.036156532179556194
+Final loss: 0.0358356588623288
 </pre></div></div>
 </div>
 <p>We do not really now how to judge the quality of our trained network. At least we saw that the loss is decreasing, which is good. We may judge the quality of our trained network by calculating the so-called <strong>confusion matrix</strong>. The confusion matrix is creating a matrix giving reports the actual values in the rows and the predicted values in the columns.</p>
 <img alt="confusion_matrix" src="../../_images/confusion_matrix.png" />
 <p>The entries in the matrix are called <strong>true positives</strong> (TP), <strong>false positives</strong> (FP), <strong>false negatives</strong> (FN), and <strong>true negatives</strong> (TN). Fortunately we can use a method of the <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> module to calculate the confusion matrix. We just have to supply the predictions and the actual labels to it. To do so, we use the testing data set <code class="docutils literal notranslate"><span class="pre">X_test</span></code> which we have splitted earlier.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
@@ -741,8 +751,8 @@ Final loss: 0.041332921148394014
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[[8973   42]
- [  47  938]]
+[[8975   32]
+ [  45  948]]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -774,16 +784,16 @@ weighted avg       0.99      0.99      0.99     10000
 <h3>Testing our model<a class="headerlink" href="#Testing-our-model" title="Permalink to this heading">#</a></h3>
 <p>We can check a single image of our testing data with the following line. If the output number is bigger than 0.5, our number is likely a 0.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="o">=</span><span class="mi">11</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="o">=</span><span class="mi">200</span>
 <span class="nb">bool</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span><span class="n">i</span><span class="p">])</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -792,7 +802,7 @@ False
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
@@ -800,12 +810,12 @@ False
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f06e46c6df0&gt;
+&lt;matplotlib.image.AxesImage at 0x7fdfd069b3a0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -823,7 +833,7 @@ False
 <img alt="hidden" src="../../_images/image.png" />
 <p>So we have now and input layer with 784 inputs that are connected to 64 units in the hidden layer and 1 neuron in the output layer. We will not go through the derivations of all the formulas for the forward and backward passes this time. The code is a simple extension of what we did before and I hope easy to read.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[71]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">X_train</span>
@@ -873,22 +883,22 @@ False
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Epoch 0 loss:  2.395166635058746
-Epoch 10 loss:  0.2207416875926896
-Epoch 20 loss:  0.16601548222727533
-Epoch 30 loss:  0.13990677867922954
-Epoch 40 loss:  0.12390102523919129
-Epoch 50 loss:  0.11269161497108851
-Epoch 60 loss:  0.10421329497723456
-Epoch 70 loss:  0.09747959072905935
-Epoch 80 loss:  0.09194898313097832
-Epoch 90 loss:  0.0872943606401609
-Final loss: 0.08367740628296327
+Epoch 0 loss:  1.5303060808526847
+Epoch 10 loss:  0.27446691469017714
+Epoch 20 loss:  0.1926619675354561
+Epoch 30 loss:  0.15684287165372143
+Epoch 40 loss:  0.13612848843899486
+Epoch 50 loss:  0.12224309100042507
+Epoch 60 loss:  0.11210751394792584
+Epoch 70 loss:  0.10427163248149719
+Epoch 80 loss:  0.09796026453780454
+Epoch 90 loss:  0.09272455980521614
+Final loss: 0.08869905484482155
 </pre></div></div>
 </div>
 <p>To judge the newtork quality we do use again the confusion matrix.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[72]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">W1</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span>
@@ -909,15 +919,15 @@ Final loss: 0.08367740628296327
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[[8905  178]
- [ 115  802]]
+[[8923  199]
+ [  97  781]]
               precision    recall  f1-score   support
 
-       False       0.99      0.98      0.98      9083
-        True       0.82      0.87      0.85       917
+       False       0.99      0.98      0.98      9122
+        True       0.80      0.89      0.84       878
 
     accuracy                           0.97     10000
-   macro avg       0.90      0.93      0.91     10000
+   macro avg       0.89      0.93      0.91     10000
 weighted avg       0.97      0.97      0.97     10000
 
 </pre></div></div>
@@ -934,7 +944,7 @@ the number predicted.</p>
 <p>would therefore correspond to the value 1.</p>
 <p>For this purpose, we need to reload the right labels.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[84]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
@@ -955,7 +965,7 @@ the number predicted.</p>
 </div>
 <p>Then we’ll one-hot encode MNIST’s labels, to get a 10 x 70,000 array.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[74]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits</span> <span class="o">=</span> <span class="mi">10</span>
@@ -968,9 +978,26 @@ the number predicted.</p>
 </pre></div>
 </div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y_new</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(10, 70000)
+</pre></div></div>
+</div>
 <p>We also seperate into trainging and testing data</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[75]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="mi">60000</span>
@@ -985,10 +1012,10 @@ the number predicted.</p>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">56</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">58</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1000,11 +1027,11 @@ the number predicted.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L13_1_deep_learning_76_0.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_76_0.png" style="width: 514px; height: 427px;" />
+<img alt="../../_images/notebooks_L13_1_deep_learning_77_0.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_77_0.png" style="width: 514px; height: 427px;" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1031,7 +1058,7 @@ L(y,\hat{y}) = -\frac{1}{m}\sum_{j=0}^m\sum_{i=0}^n y_i^{(i)}\log(\hat{y}_i^{(i)
 \end{align*}</span></p>
 <p>So let’s define:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[77]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_multiclass_loss</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">Y_hat</span><span class="p">):</span>
@@ -1055,7 +1082,7 @@ L(y,\hat{y}) = -\frac{1}{m}\sum_{j=0}^m\sum_{i=0}^n y_i^{(i)}\log(\hat{y}_i^{(i)
 <h3>Build and Train<a class="headerlink" href="#Build-and-Train" title="Permalink to this heading">#</a></h3>
 <p>As we have now more weights and classes, the training takes longer and we actually need also more episodes to achieve a good accuracy.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[78]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_x</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1105,32 +1132,32 @@ L(y,\hat{y}) = -\frac{1}{m}\sum_{j=0}^m\sum_{i=0}^n y_i^{(i)}\log(\hat{y}_i^{(i)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Epoch 0 loss:  9.359409945262723
-Epoch 10 loss:  2.48091541075077
-Epoch 20 loss:  1.674432764227768
-Epoch 30 loss:  1.3330104308788546
-Epoch 40 loss:  1.144784230249712
-Epoch 50 loss:  1.0230964725181804
-Epoch 60 loss:  0.9368747323694274
-Epoch 70 loss:  0.871957389404843
-Epoch 80 loss:  0.8208795576102075
-Epoch 90 loss:  0.7793325725168159
-Epoch 100 loss:  0.7446649543545801
-Epoch 110 loss:  0.7151537041535515
-Epoch 120 loss:  0.6896258244540622
-Epoch 130 loss:  0.6672519100025258
-Epoch 140 loss:  0.6474268213495037
-Epoch 150 loss:  0.6296970416913454
-Epoch 160 loss:  0.6137147676333654
-Epoch 170 loss:  0.5992079750548169
-Epoch 180 loss:  0.5859603076597459
-Epoch 190 loss:  0.5737971945414018
-Final loss: 0.5636592880338956
+Epoch 0 loss:  6.010326404455228
+Epoch 10 loss:  2.323002848177245
+Epoch 20 loss:  1.6259053517271709
+Epoch 30 loss:  1.3102533474046745
+Epoch 40 loss:  1.1273677675982938
+Epoch 50 loss:  1.0068400320035986
+Epoch 60 loss:  0.9208205666014583
+Epoch 70 loss:  0.8559468068575539
+Epoch 80 loss:  0.8049966696651137
+Epoch 90 loss:  0.7637190207966343
+Epoch 100 loss:  0.7294485308457597
+Epoch 110 loss:  0.7004274881102474
+Epoch 120 loss:  0.6754481926172466
+Epoch 130 loss:  0.6536531069555731
+Epoch 140 loss:  0.6344165238360561
+Epoch 150 loss:  0.6172709767400203
+Epoch 160 loss:  0.6018598003024458
+Epoch 170 loss:  0.5879057416607227
+Epoch 180 loss:  0.5751897115524459
+Epoch 190 loss:  0.5635360521675132
+Final loss: 0.5538376054882703
 </pre></div></div>
 </div>
 <p>Let’s see how we did:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[80]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">W1</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span>
@@ -1146,7 +1173,7 @@ Final loss: 0.5636592880338956
 <section id="Model-performance">
 <h4>Model performance<a class="headerlink" href="#Model-performance" title="Permalink to this heading">#</a></h4>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
@@ -1159,32 +1186,32 @@ Final loss: 0.5636592880338956
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[[ 896    0   26    8    8   22   30    4   14   10]
- [   0 1076   15    6    2    7    3    6   14    2]
- [  14   13  815   30   10   13   23   33   24   13]
- [  10   12   47  820    4   60    5   18   40   17]
- [   0    1   17    0  790   22   30   17   14  106]
- [  27    4    7   56    5  669   23    6   58   16]
- [  13    5   30    7   23   28  822    0   21    1]
- [   6    2   18   25   12   10    3  866   18   37]
- [  12   22   47   42   19   44   16   15  739   28]
- [   2    0   10   16  109   17    3   63   32  779]]
+[[ 910    0   20   12    1   38   30    4   15   12]
+ [   0 1080    8    6    7    5    1    9   13    5]
+ [  12    9  834   30    6   13   29   28   22    5]
+ [   4   12   30  827    3   74    2    5   58   13]
+ [   0    4   18    2  823   15   24   15    8   71]
+ [  30    2    8   53   14  624   25    6   70   27]
+ [  17    2   28   11   19   36  828    3   14    1]
+ [   2    1   29   13    3   18    4  887   11   44]
+ [   5   25   50   37   12   51   12   15  744   15]
+ [   0    0    7   19   94   18    3   56   19  816]]
               precision    recall  f1-score   support
 
-           0       0.91      0.88      0.90      1018
-           1       0.95      0.95      0.95      1131
-           2       0.79      0.82      0.81       988
-           3       0.81      0.79      0.80      1033
-           4       0.80      0.79      0.80       997
-           5       0.75      0.77      0.76       871
-           6       0.86      0.87      0.86       950
-           7       0.84      0.87      0.86       997
-           8       0.76      0.75      0.75       984
-           9       0.77      0.76      0.76      1031
+           0       0.93      0.87      0.90      1042
+           1       0.95      0.95      0.95      1134
+           2       0.81      0.84      0.83       988
+           3       0.82      0.80      0.81      1028
+           4       0.84      0.84      0.84       980
+           5       0.70      0.73      0.71       859
+           6       0.86      0.86      0.86       959
+           7       0.86      0.88      0.87      1012
+           8       0.76      0.77      0.77       966
+           9       0.81      0.79      0.80      1032
 
-    accuracy                           0.83     10000
-   macro avg       0.82      0.83      0.82     10000
-weighted avg       0.83      0.83      0.83     10000
+    accuracy                           0.84     10000
+   macro avg       0.83      0.83      0.83     10000
+weighted avg       0.84      0.84      0.84     10000
 
 </pre></div></div>
 </div>
@@ -1195,29 +1222,37 @@ weighted avg       0.83      0.83      0.83     10000
 <section id="Test-the-model">
 <h2>Test the model<a class="headerlink" href="#Test-the-model" title="Permalink to this heading">#</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[82]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="o">=</span><span class="mi">100</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="o">=</span><span class="mi">2003</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 <span class="n">predictions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[82]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-6
+5
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L13_1_deep_learning_94_1.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_94_1.png" style="width: 426px; height: 421px;" />
+<img alt="../../_images/notebooks_L13_1_deep_learning_95_1.png" class="no-scaled-link" src="../../_images/notebooks_L13_1_deep_learning_95_1.png" style="width: 426px; height: 421px;" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">

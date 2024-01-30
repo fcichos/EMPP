@@ -180,6 +180,7 @@ Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Über
    :caption: Lecture 12:
 
    notebooks/L13/1_deep_learning.ipynb
+   notebooks/L13/1_deep_learning_keras.ipynb
    
    
 Indices and tables
