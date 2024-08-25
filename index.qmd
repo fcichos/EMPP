@@ -1,10 +1,4 @@
 ---
-title: "My Document"
+title: "Home"
 notebook-url: "https://path/to/your/notebook.ipynb"
 ---
-# Welcome {.unnumbered}
-
-
-Welcome ot the Introduction to Computation Physics Course.
-
-This document has been created with Quarto. To learn more about Quarto books visit <https://quarto.org/docs/books>.
