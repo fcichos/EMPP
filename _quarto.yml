@@ -1,7 +1,6 @@
 project:
   type: book
   output-dir: docs
-
 book:
   title: "Introduction to Computer-based Physical Modeling"
   author:
@@ -68,7 +67,7 @@ execute:
   freeze: auto
 
 comments:
-  hypothesis: false
+  hypothesis: true
 
 open-graph:
   title: "Title for Open Graph"
