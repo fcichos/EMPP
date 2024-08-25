@@ -40,6 +40,9 @@ book:
         - lectures/lecture10/01-lecture10.qmd
         - lectures/lecture11/01-lecture11.qmd
         - lectures/lecture12/01-lecture12.qmd
+    - part: "Seminar Contents"
+      chapters:
+        - seminars/seminar01/01-seminar01.qmd
 
 number-sections: true
 bibliography: references.bib

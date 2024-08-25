@@ -1,0 +1,6 @@
+---
+title: "Seminar 1"
+format:
+  ipynb: default
+notebook-url: "https://github.com/yourusername/yourrepository/blob/main/notebooks/my-document.ipynb"
+---
