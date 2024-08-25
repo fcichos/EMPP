@@ -58,7 +58,7 @@ format:
     backgroundcolor: "#F5F5F5"
     include-before-body: "quarto-header.html"
     header-includes: |
-      <img src="https://fcichos.github.io/EMPP24/CompSoft_banner.png" style="width: 100%; height: auto; display: block; margin: 0 auto;">
+      <img src="https://github.com/fcichos/EMPP24/blob/26f772271ecbbaa233e7c8659181ff6c447e73c7/CompSoft_banner.png" style="width: 100%; height: auto; display: block; margin: 0 auto;">
     toc: true
     toc-location: right
     toc-title: "On this page"
