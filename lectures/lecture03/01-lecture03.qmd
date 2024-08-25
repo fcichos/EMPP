@@ -1,0 +1,426 @@
+---
+title: Lecture 3
+---
+
+# Dynamics and Simple Motion
+
+  - Lists and arrays (introduction to `numpy` for numerical operations).
+  - Basic vector operations using `numpy`.
+
+
+::: {.callout-note title="Numpy Array"}
+The NumPy array, formally called ndarray in NumPy documentation, is the real workhorse of data structures for scientific and engineering applications. The NumPy array is similar to a list but where all the elements of the list are of the same type. The elements of a **NumPy array** are usually numbers, but can also be booleans, strings, or other objects. When the elements are numbers, they must all be of the same type. For example, they might be all integers or all floating point numbers. NumPy arrays are more efficient than Python lists for storing and manipulating data.
+:::
+
+```{python}
+    #| slideshow: {slide_type: fragment}
+    import numpy as np
+```
+
+## Creating Numpy Arrays
+
+  There are a number of ways to initialize new numpy arrays, for example from
+
+  * a Python list or tuples using `np.array`
+  * using functions that are dedicated to generating numpy arrays, such as `arange`, `linspace`, etc.
+  * reading data from files which will be covered in the files section of this course.
+
+### From lists
+
+  For example, to create new vector and matrix arrays from Python lists we can use the `numpy.array` function. This is demonstrated in the following cells:
+
+```{python}
+  #this is a list
+  a = [0, 0, 1, 4, 7, 16, 31, 64, 127]
+
+  type(a)
+```
+
+```{python}
+
+  b=np.array(a,dtype=float)
+  type(b)
+```
+
+### Using array-generating functions
+
+  For larger arrays it is inpractical to initialize the data manually, using explicit python lists. Instead we can use one of the many functions in `numpy` that generate arrays of different forms and shapes.
+  Some of the more common are:
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  # create a range
+
+  x = np.arange(0, 10, 1) # arguments: start, stop, step
+  x
+```
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  x = np.arange(-5, -2, 0.1)
+  x
+```
+
+::: {.callout-note title="linspace"}
+
+  The `linspace` function creates an array of N evenly spaced points between a starting point and an ending point. The form of the function is linspace(start, stop, N).If the third argument N is omitted,then N=50. The function `linspace` always includes the end points.
+
+:::
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  # using linspace, both end points ARE included
+  np.linspace(0,10,25)
+```
+
+::: {.callout-note title="logspace"}
+  `logspace` is doing equivelent things with logaritmic spacing. The function `logspace` generates an array of N points between decades 10^start and 10^stop. The form of the function is logspace(start, stop, N). If the third argument N is omitted, then N=50. The function `logspace` always includes the end points.
+:::
+
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  np.logspace(0, 10, 10, base=np.e)
+```
+
+Other types of array creation techniques are listed below. Try around with these commands to get a feeling what they do.
+
+
+::: {.callout-note title="mgrid"}
+
+  `mgrid` generates a multi-dimensional matrix with increasing value entries, for example in columns and rows. The arguments are similar to `arange` and `linspace`.
+:::
+
+```{python}
+#| slideshow: {slide_type: fragment}
+x, y = np.mgrid[0:1:0.1, 0:5] # similar to meshgrid in MATLAB
+```
+
+```{python}
+#| slideshow: {slide_type: fragment}
+x
+```
+
+```{python}
+#| tags: []
+y
+```
+
+```{python}
+#| tags: []
+np.array([[1,2,3],[4,5,6],[7,8,9]])
+```
+
+
+::: {.callout-note title="diag"}
+
+  `diag` generates a diagonal matrix with the list supplied to it as the diagonal values. The values can be also offset from the main diagonal by using the optional argument `k`. If `k` is positive, the diagonal is above the main diagonal, if negative, below the main diagonal.
+:::
+
+```{python}
+#| tags: []
+# a diagonal matrix
+np.diag([1,2,3])
+```
+
+```{python}
+## diagonal with offset from the main diagonal
+np.diag([1,2,3], k=-1)
+```
+
+::: {.callout-note title="zeros and ones"}
+
+  `zeros` and `ones` creates a matrix with the dimensions given in the argument and filled with 0 or 1. The argument is a tuple with the dimensions of the matrix. For example, `np.zeros((3,3))` creates a 3x3 matrix filled with zeros.
+:::
+
+```{python}
+#| slideshow: {slide_type: fragment}
+np.zeros((3,3))
+```
+
+```{python}
+#| slideshow: {slide_type: fragment}
+np.ones((3,3))
+```
+
+## Manipulating NumPy arrays
+
+### Slicing
+
+  Slicing is the name for extracting part of an array by the syntax `M[lower:upper:step]`. When any of these are unspecified, they default to the values `lower=0`, `upper=size of dimension`, `step=1`. We can also use negative indices to count from the end of the array. Here are some examples:
+
+```{python}
+#| slideshow: {slide_type: fragment}
+A = np.array([1,2,3,4,5])
+A
+```
+
+```{python}
+#| slideshow: {slide_type: fragment}
+A[1:4]
+```
+
+  Any of the three parameters in `M[lower:upper:step]` can be ommited.
+
+```{python}
+#| slideshow: {slide_type: fragment}
+A[::] # lower, upper, step all take the default values
+```
+
+```{python}
+#| slideshow: {slide_type: fragment}
+A[::2] # step is 2, lower and upper defaults to the beginning and end of the array
+```
+
+  Negative indices counts from the end of the array (positive index from the begining) and can be used in any of the three slicing parameters. Here are some examples:
+
+```{python}
+#| slideshow: {slide_type: fragment}
+A = np.array([1,2,3,4,5])
+```
+
+```{python}
+#| slideshow: {slide_type: fragment}
+A[-1] # the last element in the array
+```
+
+```{python}
+#| slideshow: {slide_type: fragment}
+A[2:] # the last three elements
+```
+
+  Index slicing works exactly the same way for multidimensional arrays. We can slice along each axis independently. Here are some examples:
+
+```{python}
+#| slideshow: {slide_type: fragment}
+A = np.array([[n+m*10 for n in range(5)] for m in range(5)])
+A
+```
+
+```{python}
+#| slideshow: {slide_type: fragment}
+# a block from the original array
+A[1:3, 1:4]
+```
+
+
+::: {.callout-note title="Differences"}
+
+  **Slicing** can be effectively used to calculate differences for example for the calculation of derivatives. Here the position $y_i$ of an object has been measured at times $t_i$ and stored in an array each. We wish to calculate the average velocity at the times $t_{i}$ from the arrays by the formula
+
+  \begin{equation}
+  v_{i}=\frac{y_i-y_{i-1}}{t_{i}-t_{i-1}}
+  \end{equation}
+:::
+
+
+```{python}
+#| slideshow: {slide_type: fragment}
+y = np.array([ 0. , 1.3, 5. , 10.9, 18.9, 28.7, 40. ])
+t = np.array([ 0. , 0.49, 1. , 1.5 , 2.08, 2.55, 3.2 ])
+```
+
+```{python}
+#| slideshow: {slide_type: fragment}
+v = (y[1:]-y[:-1])/(t[1:]-t[:-1])
+v
+```
+
+### Reshaping
+
+  Arrays can be reshaped into any form, which contains the same number of elements. For example, a 4-element array can be reshaped into a 2x2 array, or a 2x2 array can be reshaped into a 4-element array. Here are some examples:
+
+```{python}
+#| slideshow: {slide_type: fragment}
+a=np.zeros(4)
+a
+```
+
+```{python}
+#| ExecuteTime: {end_time: '2019-04-09T12:09:59.284858Z', start_time: '2019-04-09T12:09:59.280261Z'}
+#| slideshow: {slide_type: fragment}
+np.reshape(a,(2,2))
+```
+
+### Adding a new dimension: newaxis
+
+  With `newaxis`, we can insert new dimensions in an array, for example converting a vector to a column or row matrix. Here are some examples:
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  v = np.array([1,2,3])
+  v
+```
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  v.shape
+```
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  # make a column matrix of the vector v
+  v[:, np.newaxis]
+```
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  # column matrix
+  v[:,np.newaxis].shape
+```
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  # row matrix
+  v[np.newaxis,:].shape
+```
+
+### Stacking and repeating arrays
+
+  Using function `repeat`, `tile`, `vstack`, `hstack`, and `concatenate` we can create larger vectors and matrices from smaller ones by repeating or stacking. Please try the individual functions yourself in your notebook. We wont discuss them in detail here.
+
+#### Tile and repeat
+
+```{python}
+  #| slideshow: {slide_type: skip}
+  a = np.array([[1, 2], [3, 4]])
+  a
+```
+
+```{python}
+  #| slideshow: {slide_type: skip}
+  # repeat each element 3 times
+  np.repeat(a, 3)
+```
+
+```{python}
+  #| slideshow: {slide_type: skip}
+  # tile the matrix 3 times
+  np.tile(a, 3)
+```
+
+#### Concatenate
+
+Concatenate joins arrays along an existing axis. Here are some examples:
+
+```{python}
+  #| slideshow: {slide_type: skip}
+  a = np.array([[1, 2], [3, 4]])
+  a
+```
+
+```{python}
+  #| slideshow: {slide_type: skip}
+  b = np.array([[5, 6]])
+```
+
+```{python}
+  #| slideshow: {slide_type: skip}
+  np.concatenate((a, b), axis=0)
+```
+
+```{python}
+  #| slideshow: {slide_type: skip}
+  np.concatenate((a, b.T), axis=1)
+```
+
+#### Hstack and vstack
+
+hstack and vstack stack arrays horizontally and vertically. Here are some examples:
+
+```{python}
+  #| slideshow: {slide_type: skip}
+  a = np.array([1, 2, 3])
+  b = np.array([2, 3, 4])
+```
+
+```{python}
+  #| slideshow: {slide_type: skip}
+  np.vstack((a,b))
+```
+
+```{python}
+  #| slideshow: {slide_type: skip}
+  np.hstack((a,b.T))
+```
+
+## Applying mathematical functions
+
+  All kinds of mathematical operations can be carried out on arrays. Typically these operation act element wise as seen from the examples below where `a` is an array of numbers from 0 to 9.
+
+### Operation involving one array
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  a=np.arange(0, 10, 1.5)
+  a
+```
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  a/2
+```
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  a**2
+```
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  np.sin(a)
+```
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  np.exp(-a)
+```
+
+```{python}
+  #| slideshow: {slide_type: fragment}
+  (a+2)/3
+```
+
+### Operations involving multiple arrays
+
+  Operation between multiple vectors allow in particular very quick operations. The operations address then elements of the same index. These operations are called vector operations since the concern the whole array at the same time. The product between two vectors results therefore not in a dot product, which gives one number but in an array of multiplied elements.
+
+```{python}
+  #| ExecuteTime: {end_time: '2017-04-20T21:16:34.978152+02:00', start_time: '2017-04-20T21:16:34.973278'}
+  #| slideshow: {slide_type: fragment}
+  a = np.array([34., -12, 5.,1.2])
+  b = np.array([68., 5.0, 20.,40.])
+```
+
+```{python}
+  #| ExecuteTime: {end_time: '2017-04-20T21:16:41.810170+02:00', start_time: '2017-04-20T21:16:41.804038'}
+  #| slideshow: {slide_type: fragment}
+  a + b
+```
+
+```{python}
+  #| ExecuteTime: {end_time: '2017-04-20T21:16:48.002366+02:00', start_time: '2017-04-20T21:16:47.996136'}
+  #| slideshow: {slide_type: fragment}
+  #| tags: []
+  2*b
+```
+xxw
+```{python}
+  #| ExecuteTime: {end_time: '2017-04-20T21:20:19.373091+02:00', start_time: '2017-04-20T21:20:19.367493'}
+  #| slideshow: {slide_type: fragment}
+  a*np.exp(-b)
+```
+
+```{python}
+  #| tags: []
+  v1=np.array([1,2,3])
+  v2=np.array([4,2,3])
+```
+
+<div class="section-application">
+## Application
+  - Simulating and plotting the trajectory of a projectile under the influence of gravity (2D motion).
+  - Introduction to vector addition and resolving vectors into components.
+  - Visualization: Plotting the path of the projectile and velocity vectors.
+  - Homework: Simulate projectile motion with air resistance (optional for advanced students).
+</div>

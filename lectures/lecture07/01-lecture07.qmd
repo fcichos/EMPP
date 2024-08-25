@@ -1,0 +1,12 @@
+# Lecture 7
+
+## Gravitation and Orbital Mechanics
+
+### Python Concepts
+  - Solving differential equations using Python (Euler’s method for numerical integration).
+  - Using `scipy` for more advanced numerical methods.
+
+### Application
+  - Simulating gravitational forces and orbital motion (e.g., a planet orbiting a star).
+  - Visualizing the orbit and calculating parameters like orbital period and eccentricity.
+  - Homework: Modify the simulation to include multiple bodies (e.g., a three-body problem).

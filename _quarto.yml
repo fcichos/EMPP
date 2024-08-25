@@ -1,0 +1,74 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Introduction to Computer-based Physical Modeling"
+  author:
+    name: "Frank Cichos"
+    position: center
+    style: italic
+  date: "8/14/2024"
+  abstract: |
+    This book is a collection of lecture notes for the course "Introduction to Computer-based Physical Modeling" at the University of Leipzig. The course is part of the Bachelor's program in Physics and is intended for all students. The course covers the basics of computer-based physical modeling, including numerical methods, simulation techniques, and data analysis. The book is designed to be used as a reference for students taking the course, as well as for anyone interested in learning more about computer-based physical modeling.
+  search: true
+  downloads: [pdf, epub]
+  sidebar:
+    style: docked
+    background: light
+    logo: mona_logo.png
+    title: "EMPP"
+    collapse-level: 1
+  chapters:
+    - index.qmd
+    - part: "Course Info"
+      chapters:
+        - courseinfo/course_info.qmd
+    - part: "Exam"
+      chapters:
+        - exam/exam.qmd
+    - part: "Lecture Contents"
+      chapters:
+        - lectures/lecture01/01-lecture01.qmd
+        - lectures/lecture02/01-lecture02.qmd
+        - lectures/lecture03/01-lecture03.qmd
+        - lectures/lecture04/01-lecture04.qmd
+        - lectures/lecture05/01-lecture05.qmd
+        - lectures/lecture06/01-lecture06.qmd
+        - lectures/lecture07/01-lecture07.qmd
+        - lectures/lecture08/01-lecture08.qmd
+        - lectures/lecture09/01-lecture09.qmd
+        - lectures/lecture10/01-lecture10.qmd
+        - lectures/lecture11/01-lecture11.qmd
+        - lectures/lecture12/01-lecture12.qmd
+
+number-sections: true
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - simplex
+      - custom.scss
+    css: styles.css
+    code-fold: false
+    backgroundcolor: "#F5F5F5"
+    include-before-body: "quarto-header.html"
+    header-includes: |
+      <img src="../../CompSoft_banner.png" style="width: 100%; height: auto; display: block; margin: 0 auto;">
+    toc: true
+    toc-location: right
+    toc-title: "On this page"
+    toc-depth: 4
+  pdf:
+    documentclass: scrreprt
+    output-file: pdf-book
+
+execute:
+  freeze: auto
+
+comments:
+  hypothesis: false
+
+open-graph:
+  title: "Title for Open Graph"

@@ -1,0 +1,70 @@
+{
+  "index.qmd": {
+    "index.html": "2c52db27",
+    "01-lecture01.ipynb": "f5b02a55"
+  },
+  "intro.qmd": {
+    "intro.html": "2120c856"
+  },
+  "summary.qmd": {
+    "summary.html": "3832d5de"
+  },
+  "references.qmd": {
+    "references.html": "e7d87cb8"
+  },
+  "lectures/lecture01/intro.qmd": {
+    "intro.html": "77282e88"
+  },
+  "lectures/lecture02/01-python.qmd": {
+    "01-python.html": "75f55550"
+  },
+  "lectures/lecture01/01-intro.qmd": {
+    "01-intro.html": "f4586578"
+  },
+  "lectures/lecture03/01-lecture03.qmd": {
+    "01-lecture03.html": "eaa99b70"
+  },
+  "lectures/lecture04/01-lecture04.qmd": {
+    "01-lecture04.html": "3a73a5e8"
+  },
+  "lectures/lecture05/01-lecture05.qmd": {
+    "01-lecture05.html": "fb2fbcf9"
+  },
+  "lectures/lecture06/01-lecture06.qmd": {
+    "01-lecture06.html": "da7ee6a0"
+  },
+  "lectures/lecture07/01-lecture07.qmd": {
+    "01-lecture07.html": "86d8c2ea"
+  },
+  "lectures/lecture08/01-lecture08.qmd": {
+    "01-lecture08.html": "b610f078"
+  },
+  "lectures/lecture09/01-lecture09.qmd": {
+    "01-lecture09.html": "9e5ff60d"
+  },
+  "lectures/lecture10/01-lecture10.qmd": {
+    "01-lecture10.html": "f9b2e5a2"
+  },
+  "lectures/lecture11/01-lecture11.qmd": {
+    "01-lecture11.html": "d2bc78b6"
+  },
+  "lectures/lecture12/01-lecture12.qmd": {
+    "01-lecture12.html": "a6384445"
+  },
+  "lectures/lecture01/01-lecture01.qmd": {
+    "01-lecture01.html": "c1878c5f",
+    "01-lecture01.ipynb": "fa560433"
+  },
+  "lectures/lecture02/01-lecture02.qmd": {
+    "01-lecture02.html": "0a45e58b"
+  },
+  "lectures/lecture01/01-lecture01.md": {
+    "01-lecture01.html": "4d6f7727"
+  },
+  "courseinfo/course_info.qmd": {
+    "course_info.html": "1b48360d"
+  },
+  "exam/exam.qmd": {
+    "exam.html": "838e4024"
+  }
+}

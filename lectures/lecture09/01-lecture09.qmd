@@ -1,0 +1,11 @@
+# Lecture 9
+## Deformation of Solids
+
+### Python Concepts
+  - Basic file handling for reading and writing data (e.g., stress-strain data).
+  - Curve fitting using `numpy` or `scipy` to analyze experimental data.
+
+### Application
+  - Simulating the deformation of a solid under load (e.g., Hooke’s law for springs).
+  - Plotting stress-strain curves and fitting them to experimental data.
+  - Homework: Extend the simulation to include plastic deformation or fracture.

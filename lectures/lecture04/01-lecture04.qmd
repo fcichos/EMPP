@@ -1,0 +1,64 @@
+# Lecture 4
+## Work, Power, Energy
+
+### Python Concepts
+  - Introduction to loops for numerical integration (e.g., trapezoidal rule).
+  - Functions for calculating work, power, and energy.
+
+
+### Application
+  - Writing Python code to calculate the work done by a variable force (e.g., spring force) using numerical integration.
+  - Simulating energy conservation in a closed system (e.g., pendulum).
+  - Visualization: Plotting energy vs. time for the system.
+  - Homework: Modify the code to simulate a different system, such as a mass-spring system.
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3.js Shaded Spheres</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <svg id="spheres" width="400" height="200"></svg>
+
+    <script>
+        // Select the SVG element
+        const svg = d3.select("#spheres");
+
+        // Define the gradient
+        const gradient = svg.append("defs")
+            .append("radialGradient")
+            .attr("id", "sphereGradient")
+            .attr("cx", "30%")
+            .attr("cy", "30%");
+
+        gradient.append("stop")
+            .attr("offset", "0%")
+            .attr("stop-color", "white");
+
+        gradient.append("stop")
+            .attr("offset", "100%")
+            .attr("stop-color", "steelblue");
+
+        // Create data for spheres
+        const sphereData = [
+            {cx: 100, cy: 100, r: 50},
+            {cx: 300, cy: 100, r: 70}
+        ];
+
+        // Draw the spheres
+        svg.selectAll("circle")
+            .data(sphereData)
+            .enter()
+            .append("circle")
+            .attr("cx", d => d.cx)
+            .attr("cy", d => d.cy)
+            .attr("r", d => d.r)
+            .attr("fill", "url(#sphereGradient)");
+    </script>
+</body>
+</html>
+```

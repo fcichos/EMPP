@@ -1,0 +1,11 @@
+# Lecture 10
+## Fluid Dynamics and Surface Tension
+
+### Python Concepts
+  - Introduction to flow simulation and basic fluid mechanics principles (continuity equation, Bernoulli’s equation).
+  - Using `matplotlib` for more advanced visualizations (e.g., vector fields).
+
+### Application
+  - Simulating fluid flow in simple scenarios (e.g., flow through a pipe, around an object).
+  - Visualizing pressure and velocity fields.
+  - Homework: Simulate and visualize a more complex fluid system, such as flow over a wing.

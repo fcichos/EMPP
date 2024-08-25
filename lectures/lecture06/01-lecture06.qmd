@@ -1,0 +1,13 @@
+# Lecture 6
+
+## Collisions and Conservation Laws
+
+### Python Concepts
+  - Advanced conditionals and loops for simulating complex scenarios.
+  - Introduction to basic data structures (dictionaries) for handling multiple objects.
+
+### Application
+  - Simulating elastic and inelastic collisions in one and two dimensions.
+  - Applying conservation laws (momentum and energy) to check the validity of the simulation.
+  - Visualization: Plotting the trajectories and velocities of colliding objects.
+  - Homework: Simulate a multi-object collision scenario.

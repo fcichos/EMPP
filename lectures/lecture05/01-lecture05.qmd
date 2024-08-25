@@ -1,0 +1,11 @@
+# Lecture 5
+## Angular Momentum and Rotational Motion
+
+### Python Concepts
+  - Introduction to classes in Python (optional, for organizing code).
+  - Rotational kinematics and dynamics (moment of inertia, angular momentum).
+
+### Application
+  - Simulating the motion of a rotating object (e.g., a spinning disk) and calculating its angular momentum.
+  - Visualizing the effect of torque on the object’s rotation.
+  - Homework: Extend the simulation to include the effect of external forces, such as friction.
