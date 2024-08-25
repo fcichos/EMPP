@@ -66,5 +66,8 @@
   },
   "exam/exam.qmd": {
     "exam.html": "838e4024"
+  },
+  "seminars/seminar01/01-seminar01.qmd": {
+    "01-seminar01.html": "d5946f4a"
   }
 }
