@@ -69,5 +69,14 @@
   },
   "seminars/seminar01/01-seminar01.qmd": {
     "01-seminar01.html": "d5946f4a"
+  },
+  "courseinfo/website.qmd": {
+    "website.html": "dba8a815"
+  },
+  "courseinfo/schedule.qmd": {
+    "schedule.html": "0cd5c635"
+  },
+  "courseinfo/resources.qmd": {
+    "resources.html": "1fe59f06"
   }
 }

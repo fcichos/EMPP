@@ -12,7 +12,8 @@ book:
   abstract: |
     This book is a collection of lecture notes for the course "Introduction to Computer-based Physical Modeling" at the University of Leipzig. The course is part of the Bachelor's program in Physics and is intended for all students. The course covers the basics of computer-based physical modeling, including numerical methods, simulation techniques, and data analysis. The book is designed to be used as a reference for students taking the course, as well as for anyone interested in learning more about computer-based physical modeling.
   search: true
-  downloads: [pdf, epub]
+  downloads: [pdf]
+  page-navigation: true
   navbar:
     background: primary
     search: true
@@ -20,7 +21,7 @@ book:
       - icon: github
         href: https://github.com/fastai/course22
   sidebar:
-    style: docked
+    style: floating
     background: light
     logo: mona_logo.png
     title: "EMPP"
@@ -30,6 +31,9 @@ book:
     - part: "Course Info"
       chapters:
         - courseinfo/course_info.qmd
+        - courseinfo/website.qmd
+        - courseinfo/schedule.qmd
+        - courseinfo/resources.qmd
     - part: "Exam"
       chapters:
         - exam/exam.qmd

@@ -4,3 +4,15 @@ format:
   ipynb: default
 notebook-url: "https://github.com/yourusername/yourrepository/blob/main/notebooks/my-document.ipynb"
 ---
+
+
+Vorlesender
+===========
+
+Email: *lastname@physik.uni-leipzig.de*
+
+* Prof. Dr. Frank Cichos
+
+  * Linnéstr. 5, 04103 Leipzig
+  * Office: 322
+  * Phone: +0341 97 32571

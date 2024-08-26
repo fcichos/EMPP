@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Computer-based Physical Modeling - 4&nbsp; Lecture 1</title>
+<title>Introduction to Computer-based Physical Modeling - 7&nbsp; Introduction to Python and Basic Calculations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -148,7 +148,7 @@ window.Quarto = {
 <meta property="og:site_name" content="Introduction to Computer-based Physical Modeling">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -173,23 +173,7 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
-    <div class="dropdown">
-      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="../../Introduction-to-Computer-based-Physical-Modeling.pdf">
-              <i class="bi bi-bi-file-pdf pe-1"></i>
-            Download PDF
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="../../Introduction-to-Computer-based-Physical-Modeling.epub">
-              <i class="bi bi-bi-journal pe-1"></i>
-            Download ePub
-            </a>
-          </li>
-      </ul>
-    </div>
+    <a href="../../Introduction-to-Computer-based-Physical-Modeling.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -198,7 +182,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Lecture Contents</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lecture 1</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Lecture Contents</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Python and Basic Calculations</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -207,7 +191,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../index.html" class="sidebar-logo-link">
       <img src="../../mona_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -236,6 +220,24 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Course Information</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courseinfo/website.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Diese Webseiten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courseinfo/schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Zeitplan für den Kurs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courseinfo/resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Ressourcen</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -250,7 +252,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../exam/exam.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exam</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam</span></span></a>
   </div>
 </li>
       </ul>
@@ -267,13 +269,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture01/01-lecture01.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lecture 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Python and Basic Calculations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture02/01-lecture02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lecture 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lecture 2</span></span></a>
   </div>
 </li>
       </ul>
@@ -290,7 +292,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../seminars/seminar01/01-seminar01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Seminar 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 1</span></span></a>
   </div>
 </li>
       </ul>
@@ -305,47 +307,46 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction-to-python-and-basic-calculations" id="toc-introduction-to-python-and-basic-calculations" class="nav-link active" data-scroll-target="#introduction-to-python-and-basic-calculations"><span class="header-section-number">5</span> Introduction to Python and Basic Calculations</a></li>
-  <li><a href="#what-is-jupyter-notebook" id="toc-what-is-jupyter-notebook" class="nav-link" data-scroll-target="#what-is-jupyter-notebook"><span class="header-section-number">6</span> What is Jupyter Notebook?</a>
+  <li><a href="#what-is-jupyter-notebook" id="toc-what-is-jupyter-notebook" class="nav-link active" data-scroll-target="#what-is-jupyter-notebook"><span class="header-section-number">8</span> What is Jupyter Notebook?</a>
   <ul>
-  <li><a href="#key-components-of-a-notebook" id="toc-key-components-of-a-notebook" class="nav-link" data-scroll-target="#key-components-of-a-notebook"><span class="header-section-number">6.1</span> Key Components of a Notebook</a>
+  <li><a href="#key-components-of-a-notebook" id="toc-key-components-of-a-notebook" class="nav-link" data-scroll-target="#key-components-of-a-notebook"><span class="header-section-number">8.1</span> Key Components of a Notebook</a>
   <ul class="collapse">
-  <li><a href="#notebook-editor" id="toc-notebook-editor" class="nav-link" data-scroll-target="#notebook-editor"><span class="header-section-number">6.1.1</span> Notebook Editor</a></li>
-  <li><a href="#kernels" id="toc-kernels" class="nav-link" data-scroll-target="#kernels"><span class="header-section-number">6.1.2</span> Kernels</a></li>
-  <li><a href="#notebook-documents" id="toc-notebook-documents" class="nav-link" data-scroll-target="#notebook-documents"><span class="header-section-number">6.1.3</span> Notebook Documents</a></li>
+  <li><a href="#notebook-editor" id="toc-notebook-editor" class="nav-link" data-scroll-target="#notebook-editor"><span class="header-section-number">8.1.1</span> Notebook Editor</a></li>
+  <li><a href="#kernels" id="toc-kernels" class="nav-link" data-scroll-target="#kernels"><span class="header-section-number">8.1.2</span> Kernels</a></li>
+  <li><a href="#notebook-documents" id="toc-notebook-documents" class="nav-link" data-scroll-target="#notebook-documents"><span class="header-section-number">8.1.3</span> Notebook Documents</a></li>
   </ul></li>
-  <li><a href="#using-the-notebook-editor" id="toc-using-the-notebook-editor" class="nav-link" data-scroll-target="#using-the-notebook-editor"><span class="header-section-number">6.2</span> Using the Notebook Editor</a>
+  <li><a href="#using-the-notebook-editor" id="toc-using-the-notebook-editor" class="nav-link" data-scroll-target="#using-the-notebook-editor"><span class="header-section-number">8.2</span> Using the Notebook Editor</a>
   <ul class="collapse">
-  <li><a href="#edit-mode" id="toc-edit-mode" class="nav-link" data-scroll-target="#edit-mode"><span class="header-section-number">6.2.1</span> Edit mode</a></li>
-  <li><a href="#command-mode" id="toc-command-mode" class="nav-link" data-scroll-target="#command-mode"><span class="header-section-number">6.2.2</span> Command mode</a></li>
-  <li><a href="#keyboard-navigation" id="toc-keyboard-navigation" class="nav-link" data-scroll-target="#keyboard-navigation"><span class="header-section-number">6.2.3</span> Keyboard navigation</a></li>
-  <li><a href="#running-code-in-your-notebook" id="toc-running-code-in-your-notebook" class="nav-link" data-scroll-target="#running-code-in-your-notebook"><span class="header-section-number">6.2.4</span> Running code in your notebook</a></li>
+  <li><a href="#edit-mode" id="toc-edit-mode" class="nav-link" data-scroll-target="#edit-mode"><span class="header-section-number">8.2.1</span> Edit mode</a></li>
+  <li><a href="#command-mode" id="toc-command-mode" class="nav-link" data-scroll-target="#command-mode"><span class="header-section-number">8.2.2</span> Command mode</a></li>
+  <li><a href="#keyboard-navigation" id="toc-keyboard-navigation" class="nav-link" data-scroll-target="#keyboard-navigation"><span class="header-section-number">8.2.3</span> Keyboard navigation</a></li>
+  <li><a href="#running-code-in-your-notebook" id="toc-running-code-in-your-notebook" class="nav-link" data-scroll-target="#running-code-in-your-notebook"><span class="header-section-number">8.2.4</span> Running code in your notebook</a></li>
   </ul></li>
-  <li><a href="#managing-the-kernel" id="toc-managing-the-kernel" class="nav-link" data-scroll-target="#managing-the-kernel"><span class="header-section-number">6.3</span> Managing the kernel</a></li>
-  <li><a href="#markdown-in-notebooks" id="toc-markdown-in-notebooks" class="nav-link" data-scroll-target="#markdown-in-notebooks"><span class="header-section-number">6.4</span> Markdown in Notebooks</a>
+  <li><a href="#managing-the-kernel" id="toc-managing-the-kernel" class="nav-link" data-scroll-target="#managing-the-kernel"><span class="header-section-number">8.3</span> Managing the kernel</a></li>
+  <li><a href="#markdown-in-notebooks" id="toc-markdown-in-notebooks" class="nav-link" data-scroll-target="#markdown-in-notebooks"><span class="header-section-number">8.4</span> Markdown in Notebooks</a>
   <ul class="collapse">
-  <li><a href="#markdown-basics" id="toc-markdown-basics" class="nav-link" data-scroll-target="#markdown-basics"><span class="header-section-number">6.4.1</span> Markdown basics</a></li>
-  <li><a href="#headings" id="toc-headings" class="nav-link" data-scroll-target="#headings"><span class="header-section-number">6.4.2</span> Headings</a></li>
-  <li><a href="#embedded-code" id="toc-embedded-code" class="nav-link" data-scroll-target="#embedded-code"><span class="header-section-number">6.4.3</span> Embedded code</a></li>
-  <li><a href="#latex-equations" id="toc-latex-equations" class="nav-link" data-scroll-target="#latex-equations"><span class="header-section-number">6.4.4</span> LaTeX equations</a></li>
-  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images"><span class="header-section-number">6.4.5</span> Images</a></li>
-  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos"><span class="header-section-number">6.4.6</span> Videos</a></li>
+  <li><a href="#markdown-basics" id="toc-markdown-basics" class="nav-link" data-scroll-target="#markdown-basics"><span class="header-section-number">8.4.1</span> Markdown basics</a></li>
+  <li><a href="#headings" id="toc-headings" class="nav-link" data-scroll-target="#headings"><span class="header-section-number">8.4.2</span> Headings</a></li>
+  <li><a href="#embedded-code" id="toc-embedded-code" class="nav-link" data-scroll-target="#embedded-code"><span class="header-section-number">8.4.3</span> Embedded code</a></li>
+  <li><a href="#latex-equations" id="toc-latex-equations" class="nav-link" data-scroll-target="#latex-equations"><span class="header-section-number">8.4.4</span> LaTeX equations</a></li>
+  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images"><span class="header-section-number">8.4.5</span> Images</a></li>
+  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos"><span class="header-section-number">8.4.6</span> Videos</a></li>
   </ul></li>
-  <li><a href="#variables-in-python" id="toc-variables-in-python" class="nav-link" data-scroll-target="#variables-in-python"><span class="header-section-number">6.5</span> Variables in Python</a>
+  <li><a href="#variables-in-python" id="toc-variables-in-python" class="nav-link" data-scroll-target="#variables-in-python"><span class="header-section-number">8.5</span> Variables in Python</a>
   <ul class="collapse">
-  <li><a href="#symbol-names" id="toc-symbol-names" class="nav-link" data-scroll-target="#symbol-names"><span class="header-section-number">6.5.1</span> Symbol Names</a></li>
-  <li><a href="#variable-assignment" id="toc-variable-assignment" class="nav-link" data-scroll-target="#variable-assignment"><span class="header-section-number">6.5.2</span> Variable Assignment</a></li>
+  <li><a href="#symbol-names" id="toc-symbol-names" class="nav-link" data-scroll-target="#symbol-names"><span class="header-section-number">8.5.1</span> Symbol Names</a></li>
+  <li><a href="#variable-assignment" id="toc-variable-assignment" class="nav-link" data-scroll-target="#variable-assignment"><span class="header-section-number">8.5.2</span> Variable Assignment</a></li>
   </ul></li>
-  <li><a href="#number-types" id="toc-number-types" class="nav-link" data-scroll-target="#number-types"><span class="header-section-number">6.6</span> Number Types</a>
+  <li><a href="#number-types" id="toc-number-types" class="nav-link" data-scroll-target="#number-types"><span class="header-section-number">8.6</span> Number Types</a>
   <ul class="collapse">
-  <li><a href="#comparison-of-number-types" id="toc-comparison-of-number-types" class="nav-link" data-scroll-target="#comparison-of-number-types"><span class="header-section-number">6.6.1</span> Comparison of Number Types</a></li>
+  <li><a href="#comparison-of-number-types" id="toc-comparison-of-number-types" class="nav-link" data-scroll-target="#comparison-of-number-types"><span class="header-section-number">8.6.1</span> Comparison of Number Types</a></li>
   </ul></li>
-  <li><a href="#type-conversion" id="toc-type-conversion" class="nav-link" data-scroll-target="#type-conversion"><span class="header-section-number">6.7</span> Type Conversion</a>
+  <li><a href="#type-conversion" id="toc-type-conversion" class="nav-link" data-scroll-target="#type-conversion"><span class="header-section-number">8.7</span> Type Conversion</a>
   <ul class="collapse">
-  <li><a href="#implicit-type-conversion" id="toc-implicit-type-conversion" class="nav-link" data-scroll-target="#implicit-type-conversion"><span class="header-section-number">6.7.1</span> Implicit Type Conversion</a></li>
-  <li><a href="#explicit-type-conversion" id="toc-explicit-type-conversion" class="nav-link" data-scroll-target="#explicit-type-conversion"><span class="header-section-number">6.7.2</span> Explicit Type Conversion</a></li>
+  <li><a href="#implicit-type-conversion" id="toc-implicit-type-conversion" class="nav-link" data-scroll-target="#implicit-type-conversion"><span class="header-section-number">8.7.1</span> Implicit Type Conversion</a></li>
+  <li><a href="#explicit-type-conversion" id="toc-explicit-type-conversion" class="nav-link" data-scroll-target="#explicit-type-conversion"><span class="header-section-number">8.7.2</span> Explicit Type Conversion</a></li>
   </ul></li>
-  <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application"><span class="header-section-number">6.8</span> Application</a></li>
+  <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application"><span class="header-section-number">8.8</span> Application</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -359,9 +360,9 @@ window.Quarto = {
     </p>
 </div>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Lecture Contents</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lecture 1</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Lecture Contents</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Python and Basic Calculations</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lecture 1</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Python and Basic Calculations</span></h1>
 </div>
 
 
@@ -378,15 +379,12 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction-to-python-and-basic-calculations" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Introduction to Python and Basic Calculations</h1>
-</section>
-<section id="what-is-jupyter-notebook" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> What is Jupyter Notebook?</h1>
+<section id="what-is-jupyter-notebook" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> What is Jupyter Notebook?</h1>
 <p>A Jupyter Notebook is a web browser based <strong>interactive computing environment</strong> that enables users to create documents that include code to be executed, results from the executed code such as plots and images,and finally also an additional documentation in form of markdown text including equations in LaTeX.</p>
 <p>These documents provide a <strong>complete and self-contained record of a computation</strong> that can be converted to various formats and shared with others using email, version control systems (like git/<a href="https://github.com">GitHub</a>) or <a href="http://nbviewer.jupyter.org">nbviewer.jupyter.org</a>.</p>
-<section id="key-components-of-a-notebook" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="key-components-of-a-notebook"><span class="header-section-number">6.1</span> Key Components of a Notebook</h2>
+<section id="key-components-of-a-notebook" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="key-components-of-a-notebook"><span class="header-section-number">8.1</span> Key Components of a Notebook</h2>
 <p>The Jupyter Notebook ecosystem consists of three main components:</p>
 <ol type="1">
 <li>Notebook Editor</li>
@@ -394,8 +392,8 @@ window.Quarto = {
 <li>Notebook Documents</li>
 </ol>
 <p>Let’s explore each of these components in detail:</p>
-<section id="notebook-editor" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="notebook-editor"><span class="header-section-number">6.1.1</span> Notebook Editor</h3>
+<section id="notebook-editor" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="notebook-editor"><span class="header-section-number">8.1.1</span> Notebook Editor</h3>
 <p>The Notebook editor is an interactive web-based application for creating and editing notebook documents. It allows users to write and run code interactively, as well as add rich text and multimedia content. When running Jupyter on a server, you’ll typically use either the classic Jupyter Notebook interface or JupyterLab, which is a more advanced and feature-rich version of the notebook editor.</p>
 <p>Key features of the Notebook editor include:</p>
 <ul>
@@ -431,8 +429,8 @@ Advance Notebook Editor Info
 </div>
 </div>
 </section>
-<section id="kernels" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="kernels"><span class="header-section-number">6.1.2</span> Kernels</h3>
+<section id="kernels" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="kernels"><span class="header-section-number">8.1.2</span> Kernels</h3>
 <p>Kernels are the computational engines that execute the code contained in a notebook. They are separate processes that run independently of the notebook editor.</p>
 <p>Key responsibilities of kernels include: * Executing user code * Returning computation results to the notebook editor * Handling computations for interactive widgets * Providing features like tab completion and introspection</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Advanced Kernel Info">
@@ -469,8 +467,8 @@ Advanced Kernel Info
 </div>
 </div>
 </section>
-<section id="notebook-documents" class="level3" data-number="6.1.3">
-<h3 data-number="6.1.3" class="anchored" data-anchor-id="notebook-documents"><span class="header-section-number">6.1.3</span> Notebook Documents</h3>
+<section id="notebook-documents" class="level3" data-number="8.1.3">
+<h3 data-number="8.1.3" class="anchored" data-anchor-id="notebook-documents"><span class="header-section-number">8.1.3</span> Notebook Documents</h3>
 <p>Notebook documents are self-contained files that encapsulate all content created in the notebook editor. They include code inputs/outputs, Markdown text, equations, images, and other media. Each document is associated with a specific kernel and serves as both a human-readable record of analysis and an executable script to reproduce the work.</p>
 <p>Characteristics of notebook documents:</p>
 <ul>
@@ -517,8 +515,8 @@ Advanced Notebook Documents Info
 <p>This integrated system of editor, kernels, and documents makes Jupyter Notebooks a powerful tool for interactive computing, data analysis, and sharing of computational narratives.</p>
 </section>
 </section>
-<section id="using-the-notebook-editor" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="using-the-notebook-editor"><span class="header-section-number">6.2</span> Using the Notebook Editor</h2>
+<section id="using-the-notebook-editor" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="using-the-notebook-editor"><span class="header-section-number">8.2</span> Using the Notebook Editor</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/notebook.png" class="img-fluid figure-img"></p>
@@ -531,8 +529,8 @@ Advanced Notebook Documents Info
 <li><strong>command mode</strong> the mode where you execute the cells content.</li>
 </ul>
 <p>In the more advanced version of JupyterLab you can also have a <strong>presentation mode</strong> where you can present your notebook as a slideshow.</p>
-<section id="edit-mode" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="edit-mode"><span class="header-section-number">6.2.1</span> Edit mode</h3>
+<section id="edit-mode" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="edit-mode"><span class="header-section-number">8.2.1</span> Edit mode</h3>
 <p>Edit mode is indicated by a blue cell border and a prompt showing in the editor area when a cell is selected. You can enter edit mode by pressing <code>Enter</code> or using the mouse to click on a cell’s editor area.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -542,8 +540,8 @@ Advanced Notebook Documents Info
 </div>
 <p>When a cell is in edit mode, you can type into the cell, like a normal text editor</p>
 </section>
-<section id="command-mode" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="command-mode"><span class="header-section-number">6.2.2</span> Command mode</h3>
+<section id="command-mode" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="command-mode"><span class="header-section-number">8.2.2</span> Command mode</h3>
 <p>Command mode is indicated by a grey cell border with a blue left margin. When you are in command mode, you are able to edit the notebook as a whole, but not type into individual cells. Most importantly, in command mode, the keyboard is mapped to a set of shortcuts that let you perform notebook and cell actions efficiently.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -553,8 +551,8 @@ Advanced Notebook Documents Info
 </div>
 <p>If you have a hardware keyboard connected to your iOS device, you can use Jupyter keyboard shortcuts. The modal user interface of the Jupyter Notebook has been optimized for efficient keyboard usage. This is made possible by having two different sets of keyboard shortcuts: one set that is active in edit mode and another in command mode.</p>
 </section>
-<section id="keyboard-navigation" class="level3" data-number="6.2.3">
-<h3 data-number="6.2.3" class="anchored" data-anchor-id="keyboard-navigation"><span class="header-section-number">6.2.3</span> Keyboard navigation</h3>
+<section id="keyboard-navigation" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="keyboard-navigation"><span class="header-section-number">8.2.3</span> Keyboard navigation</h3>
 <p>In edit mode, most of the keyboard is dedicated to typing into the cell’s editor area. Thus, in edit mode there are relatively few shortcuts available. In command mode, the entire keyboard is available for shortcuts, so there are many more. Most important ones are:</p>
 <ol type="1">
 <li>Switch command and edit mods: <code>Enter</code> for edit mode, and <code>Esc</code> or <code>Control</code> for command mode.</li>
@@ -567,10 +565,10 @@ Advanced Notebook Documents Info
 <li>Kernel operations: <code>i</code> to <strong>interrupt</strong> and <code>0</code> to <strong>restart</strong></li>
 </ol>
 </section>
-<section id="running-code-in-your-notebook" class="level3" data-number="6.2.4">
-<h3 data-number="6.2.4" class="anchored" data-anchor-id="running-code-in-your-notebook"><span class="header-section-number">6.2.4</span> Running code in your notebook</h3>
+<section id="running-code-in-your-notebook" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="running-code-in-your-notebook"><span class="header-section-number">8.2.4</span> Running code in your notebook</h3>
 <p>Code cells allow you to enter and run code. Run a code cell by pressing the <code>▶︎</code> button in the bottom-right panel, or <code>Control</code>+<code>Enter</code> on your hardware keyboard.</p>
-<div id="e8bf5f1c" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="1">
+<div id="c5921c11" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">23752636</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -585,8 +583,8 @@ Advanced Notebook Documents Info
 </ul>
 </section>
 </section>
-<section id="managing-the-kernel" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="managing-the-kernel"><span class="header-section-number">6.3</span> Managing the kernel</h2>
+<section id="managing-the-kernel" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="managing-the-kernel"><span class="header-section-number">8.3</span> Managing the kernel</h2>
 <p>Code is run in a separate process called the <strong>kernel</strong>, which can be interrupted or restarted. You can see kernel indicator in the top-right corner reporting current kernel state: <code>⚪︎</code> means kernel is <strong>ready</strong> to execute code, and <code>⚫︎</code> means kernel is currently <strong>busy</strong>. Tapping kernel indicator will open <strong>kernel menu</strong>, where you can reconnect, interrupt or restart kernel.</p>
 <p>Try running the following cell — kernel indicator will switch from <code>⚪︎</code> to <code>⚫︎</code>, i.e.&nbsp;reporting kernel as “busy”. This means that you won’t be able to run any new cells until current execution finishes, or until kernel is interrupted. You can then go to kernel menu by tapping the kernel indicator and select “Interrupt”.</p>
 <p>Entering code is pretty easy. You just have to click into a cell and type the commands you want to type. If you have multiple lines of code, just press <strong>enter</strong> at the end of the line and start a new one.</p>
@@ -598,7 +596,7 @@ Advanced Notebook Documents Info
 <li>Comments over multiple lines can be started with <code>'''</code>and end with the same <code>'''</code>. They are used as <code>docstrings</code> to provide a help text.</li>
 </ul></li>
 </ul>
-<div id="c66739aa" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="2">
+<div id="662531b0" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># typical function</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> function(x):</span>
@@ -625,15 +623,15 @@ function(x)
 </div>
 </div>
 </section>
-<section id="markdown-in-notebooks" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="markdown-in-notebooks"><span class="header-section-number">6.4</span> Markdown in Notebooks</h2>
+<section id="markdown-in-notebooks" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="markdown-in-notebooks"><span class="header-section-number">8.4</span> Markdown in Notebooks</h2>
 <p>Text can be added to Jupyter Notebooks using Markdown cells. This is extremely useful providing a complete documentation of your calculations or simulations. In this way, everything really becomes an notebook. You can change the cell type to Markdown by using the “Cell Actions” menu, or with a hardware keyboard shortcut <code>m</code>. Markdown is a popular markup language that is a superset of HTML. Its specification can be found here:</p>
 <p><a href="https://daringfireball.net/projects/markdown/" class="uri">https://daringfireball.net/projects/markdown/</a></p>
 <p>Markdown cells can either be <strong>rendered</strong> or <strong>unrendered</strong>.</p>
 <p>When they are rendered, you will see a nice formatted representation of the cell’s contents.</p>
 <p>When they are unrendered, you will see the raw text source of the cell. To render the selected cell, click the <code>▶︎</code> button or <code>shift</code>+ <code>enter</code>. To unrender, select the markdown cell, and press <code>enter</code> or just double click.</p>
-<section id="markdown-basics" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="markdown-basics"><span class="header-section-number">6.4.1</span> Markdown basics</h3>
+<section id="markdown-basics" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="markdown-basics"><span class="header-section-number">8.4.1</span> Markdown basics</h3>
 <p>Below are some basic markdown examples, in its rendered form. If you which to access how to create specific appearances, double click the individual cells to put the into an unrendered edit mode.</p>
 <p>You can make text <em>italic</em> or <strong>bold</strong>. You can build nested itemized or enumerated lists:</p>
 <ul>
@@ -677,8 +675,8 @@ function(x)
 <p>And Web links:</p>
 <p><a href="http://jupyter.org">Jupyter’s website</a></p>
 </section>
-<section id="headings" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="headings"><span class="header-section-number">6.4.2</span> Headings</h3>
+<section id="headings" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="headings"><span class="header-section-number">8.4.2</span> Headings</h3>
 <p>You can add headings by starting a line with one (or multiple) <code>#</code> followed by a space and the title of your section. The number of <code>#</code> you use will determine the size of the heading</p>
 <pre><code># Heading 1
 # Heading 2
@@ -686,15 +684,15 @@ function(x)
 ## Heading 2.2
 ### Heading 2.2.1</code></pre>
 </section>
-<section id="embedded-code" class="level3" data-number="6.4.3">
-<h3 data-number="6.4.3" class="anchored" data-anchor-id="embedded-code"><span class="header-section-number">6.4.3</span> Embedded code</h3>
+<section id="embedded-code" class="level3" data-number="8.4.3">
+<h3 data-number="8.4.3" class="anchored" data-anchor-id="embedded-code"><span class="header-section-number">8.4.3</span> Embedded code</h3>
 <p>You can embed code meant for illustration instead of execution in Python:</p>
 <pre><code>def f(x):
     """a docstring"""
     return x**2</code></pre>
 </section>
-<section id="latex-equations" class="level3" data-number="6.4.4">
-<h3 data-number="6.4.4" class="anchored" data-anchor-id="latex-equations"><span class="header-section-number">6.4.4</span> LaTeX equations</h3>
+<section id="latex-equations" class="level3" data-number="8.4.4">
+<h3 data-number="8.4.4" class="anchored" data-anchor-id="latex-equations"><span class="header-section-number">8.4.4</span> LaTeX equations</h3>
 <p>Courtesy of MathJax, you can include mathematical expressions both inline: <span class="math inline">\(e^{i\pi} + 1 = 0\)</span> and displayed:</p>
 <p><span class="math display">\[e^x=\sum_{i=0}^\infty \frac{1}{i!}x^i\]</span></p>
 <p>Inline expressions can be added by surrounding the latex code with <code>$</code>:</p>
@@ -702,8 +700,8 @@ function(x)
 <p>Expressions on their own line are surrounded by <code>$$</code>:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode latex code-with-copy"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$e^x=</span><span class="sc">\sum</span><span class="ss">_{i=0}^</span><span class="sc">\infty</span><span class="ss"> </span><span class="sc">\frac</span><span class="ss">{1}{i!}x^i$$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="images" class="level3" data-number="6.4.5">
-<h3 data-number="6.4.5" class="anchored" data-anchor-id="images"><span class="header-section-number">6.4.5</span> Images</h3>
+<section id="images" class="level3" data-number="8.4.5">
+<h3 data-number="8.4.5" class="anchored" data-anchor-id="images"><span class="header-section-number">8.4.5</span> Images</h3>
 <p>Images may be also directly integrated into a Markdown block.</p>
 <p>To include images use</p>
 <pre><code>![alternative text](url)</code></pre>
@@ -715,15 +713,15 @@ function(x)
 </figure>
 </div>
 </section>
-<section id="videos" class="level3" data-number="6.4.6">
-<h3 data-number="6.4.6" class="anchored" data-anchor-id="videos"><span class="header-section-number">6.4.6</span> Videos</h3>
+<section id="videos" class="level3" data-number="8.4.6">
+<h3 data-number="8.4.6" class="anchored" data-anchor-id="videos"><span class="header-section-number">8.4.6</span> Videos</h3>
 <p>To include videos, we use HTML code like</p>
 <pre><code>&lt;video src="mov/movie.mp4" width="320" height="200" controls preload&gt;&lt;/video&gt;</code></pre>
 <p>in the Markdown cell. This works with videos stored locally.</p>
 <video src="mov/movie.mp4" width="320" height="200" controls="">
 </video>
 <p>You can embed YouTube Videos as well by using the <code>IPython</code> module.</p>
-<div id="f78f6eda" class="cell" data-execution_count="3">
+<div id="52f30b77" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> YouTubeVideo</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>YouTubeVideo(<span class="st">'QlLx32juGzI'</span>,width<span class="op">=</span><span class="dv">600</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -734,10 +732,10 @@ function(x)
 </div>
 </section>
 </section>
-<section id="variables-in-python" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="variables-in-python"><span class="header-section-number">6.5</span> Variables in Python</h2>
-<section id="symbol-names" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="symbol-names"><span class="header-section-number">6.5.1</span> Symbol Names</h3>
+<section id="variables-in-python" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="variables-in-python"><span class="header-section-number">8.5</span> Variables in Python</h2>
+<section id="symbol-names" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="symbol-names"><span class="header-section-number">8.5.1</span> Symbol Names</h3>
 <p>Variable names in Python can include alphanumerical characters <code>a-z</code>, <code>A-Z</code>, <code>0-9</code>, and the special character <code>_</code>. Normal variable names must start with a letter or an underscore. By convention, variable names typically start with a lower-case letter, while Class names start with a capital letter and internal variables start with an underscore.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="Reserved Keywords">
 <div class="callout-header d-flex align-content-center">
@@ -755,11 +753,11 @@ Reserved Keywords
 </div>
 </div>
 </section>
-<section id="variable-assignment" class="level3" data-number="6.5.2">
-<h3 data-number="6.5.2" class="anchored" data-anchor-id="variable-assignment"><span class="header-section-number">6.5.2</span> Variable Assignment</h3>
+<section id="variable-assignment" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="variable-assignment"><span class="header-section-number">8.5.2</span> Variable Assignment</h3>
 <p>The assignment operator in Python is <code>=</code>. Python is a dynamically typed language, so we do not need to specify the type of a variable when we create one.</p>
 <p>Assigning a value to a new variable creates the variable:</p>
-<div id="2dd4e72f" class="cell" data-execution_count="4">
+<div id="6e7d93d1" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variable assignments</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">1.0</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>my_favorite_variable <span class="op">=</span> <span class="fl">12.2</span></span>
@@ -769,33 +767,33 @@ Reserved Keywords
 </div>
 </div>
 <p>Although not explicitly specified, a variable does have a type associated with it (e.g., integer, float, string). The type is derived from the value that was assigned to it. To determine the type of a variable, we can use the <code>type</code> function.</p>
-<div id="cd243ebf" class="cell" data-execution_count="5">
+<div id="b6fbf292" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>float</code></pre>
 </div>
 </div>
 <p>If we assign a new value to a variable, its type can change.</p>
-<div id="d69a52bf" class="cell" data-execution_count="6">
+<div id="b4e4c999" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="aa5295dc" class="cell" data-execution_count="7">
+<div id="d7d3cf48" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>int</code></pre>
 </div>
 </div>
 <p>If we try to use a variable that has not yet been defined, we get a <code>NameError</code> error.</p>
-<div id="b75b78a3" class="cell" data-execution_count="8">
+<div id="b8eb99a9" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#print(g)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="number-types" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="number-types"><span class="header-section-number">6.6</span> Number Types</h2>
+<section id="number-types" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="number-types"><span class="header-section-number">8.6</span> Number Types</h2>
 <p>Python supports various number types, including integers, floating-point numbers, and complex numbers. These are some of the basic building blocks of doing arithmetic in any programming language. We will discuss each of these types in more detail.</p>
-<section id="comparison-of-number-types" class="level3" data-number="6.6.1">
-<h3 data-number="6.6.1" class="anchored" data-anchor-id="comparison-of-number-types"><span class="header-section-number">6.6.1</span> Comparison of Number Types</h3>
+<section id="comparison-of-number-types" class="level3" data-number="8.6.1">
+<h3 data-number="8.6.1" class="anchored" data-anchor-id="comparison-of-number-types"><span class="header-section-number">8.6.1</span> Comparison of Number Types</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 5%">
@@ -856,10 +854,10 @@ Examples for Number Types
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<section id="integers" class="level3" data-number="6.6.2">
-<h3 data-number="6.6.2" class="anchored" data-anchor-id="integers"><span class="header-section-number">6.6.2</span> Integers</h3>
+<section id="integers" class="level3" data-number="8.6.2">
+<h3 data-number="8.6.2" class="anchored" data-anchor-id="integers"><span class="header-section-number">8.6.2</span> Integers</h3>
 <p><strong>Integer Representation:</strong> Integers are whole numbers without a decimal point.</p>
-<div id="be41a97d" class="cell" data-execution_count="9">
+<div id="d9c496c7" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -867,7 +865,7 @@ Examples for Number Types
 </div>
 </div>
 <p><strong>Binary, Octal, and Hexadecimal:</strong> Integers can be represented in different bases:</p>
-<div id="138435db" class="cell" data-execution_count="10">
+<div id="a4087a59" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bn">0b1010111110</span>  <span class="co"># Binary</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bn">0x0F</span>          <span class="co"># Hexadecimal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -875,10 +873,10 @@ Examples for Number Types
 </div>
 </div>
 </section>
-<section id="floating-point-numbers" class="level3" data-number="6.6.3">
-<h3 data-number="6.6.3" class="anchored" data-anchor-id="floating-point-numbers"><span class="header-section-number">6.6.3</span> Floating Point Numbers</h3>
+<section id="floating-point-numbers" class="level3" data-number="8.6.3">
+<h3 data-number="8.6.3" class="anchored" data-anchor-id="floating-point-numbers"><span class="header-section-number">8.6.3</span> Floating Point Numbers</h3>
 <p><strong>Floating Point Representation:</strong> Numbers with a decimal point are treated as floating-point values.</p>
-<div id="1ccdba4f" class="cell" data-execution_count="11">
+<div id="38e1f5b7" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">3.141</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -886,17 +884,17 @@ Examples for Number Types
 </div>
 </div>
 <p><strong>Maximum Float Value:</strong> Python handles large floats, converting them to infinity if they exceed the maximum representable value.</p>
-<div id="63a48f37" class="cell" data-execution_count="12">
+<div id="61826800" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.7976931348623157e+308</span> <span class="op">*</span> <span class="dv">2</span>  <span class="co"># Output: inf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>inf</code></pre>
 </div>
 </div>
 </section>
-<section id="complex-numbers" class="level3" data-number="6.6.4">
-<h3 data-number="6.6.4" class="anchored" data-anchor-id="complex-numbers"><span class="header-section-number">6.6.4</span> Complex Numbers</h3>
+<section id="complex-numbers" class="level3" data-number="8.6.4">
+<h3 data-number="8.6.4" class="anchored" data-anchor-id="complex-numbers"><span class="header-section-number">8.6.4</span> Complex Numbers</h3>
 <p><strong>Complex Number Representation:</strong> Complex numbers have a real and an imaginary part.</p>
-<div id="3cdc9952" class="cell" data-execution_count="13">
+<div id="0ba9722e" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="ot">4j</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
@@ -910,7 +908,7 @@ Examples for Number Types
 <li><code>c.imag</code>: Imaginary part of the complex number.</li>
 </ul></li>
 </ul>
-<div id="e2f367b8" class="cell" data-execution_count="14">
+<div id="c3b97155" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(c.real)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(c.imag)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -919,7 +917,7 @@ Examples for Number Types
 </div>
 </div>
 <p><strong>Complex Conjugate:</strong> Use the <code>.conjugate()</code> method to get the complex conjugate.</p>
-<div id="17f1d963" class="cell" data-execution_count="15">
+<div id="87259b14" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> c.conjugate()</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -932,12 +930,12 @@ Examples for Number Types
 </div>
 </section>
 </section>
-<section id="type-conversion" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="type-conversion"><span class="header-section-number">6.7</span> Type Conversion</h2>
-<section id="implicit-type-conversion" class="level3" data-number="6.7.1">
-<h3 data-number="6.7.1" class="anchored" data-anchor-id="implicit-type-conversion"><span class="header-section-number">6.7.1</span> Implicit Type Conversion</h3>
+<section id="type-conversion" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="type-conversion"><span class="header-section-number">8.7</span> Type Conversion</h2>
+<section id="implicit-type-conversion" class="level3" data-number="8.7.1">
+<h3 data-number="8.7.1" class="anchored" data-anchor-id="implicit-type-conversion"><span class="header-section-number">8.7.1</span> Implicit Type Conversion</h3>
 <p>Python automatically converts types during operations involving mixed types. The result is a type that can accommodate all the values involved in the operation. This is known as implicit type conversion. For example, adding an integer and a float results in a float.</p>
-<div id="7bcd46e6" class="cell" data-execution_count="16">
+<div id="1e6fbdc3" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>integer_number <span class="op">=</span> <span class="dv">123</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>float_number <span class="op">=</span> <span class="fl">1.23</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>new_number <span class="op">=</span> integer_number <span class="op">+</span> float_number</span>
@@ -947,10 +945,10 @@ Examples for Number Types
 </div>
 </div>
 </section>
-<section id="explicit-type-conversion" class="level3" data-number="6.7.2">
-<h3 data-number="6.7.2" class="anchored" data-anchor-id="explicit-type-conversion"><span class="header-section-number">6.7.2</span> Explicit Type Conversion</h3>
+<section id="explicit-type-conversion" class="level3" data-number="8.7.2">
+<h3 data-number="8.7.2" class="anchored" data-anchor-id="explicit-type-conversion"><span class="header-section-number">8.7.2</span> Explicit Type Conversion</h3>
 <p>Use functions like <code>int()</code>, <code>float()</code>, and <code>str()</code> to explicitly convert types from one to another. Explicit type conversion is also known as type casting. For example, converting a string to an integer.</p>
-<div id="c7072c64" class="cell" data-execution_count="17">
+<div id="88730b4b" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>num_string <span class="op">=</span> <span class="st">"12"</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>num_string <span class="op">=</span> <span class="bu">int</span>(num_string)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(num_string)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -959,7 +957,7 @@ Examples for Number Types
 </div>
 </div>
 <p>Converting a float to an integer truncates the decimal part.</p>
-<div id="d49c7830" class="cell" data-execution_count="18">
+<div id="31a07595" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span> <span class="op">/</span> <span class="dv">2</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">int</span>(x)</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="bu">complex</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -975,7 +973,7 @@ Handling Complex Numbers
 </div>
 <div class="callout-body-container callout-body">
 <p>Complex numbers cannot be directly converted to floats or integers; extract the real or imaginary part first.</p>
-<div id="183da823" class="cell" data-execution_count="19">
+<div id="945d19ac" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="bu">bool</span>(z.real)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(z.real, <span class="st">" -&gt; "</span>, y, <span class="bu">type</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -986,10 +984,10 @@ Handling Complex Numbers
 </div>
 </section>
 </section>
-<section id="application" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="application"><span class="header-section-number">6.8</span> Application</h2>
+<section id="application" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="application"><span class="header-section-number">8.8</span> Application</h2>
 <p>The following code snippets demonstrate the use of variables and basic arithmetic operations in Python. The code snippets include examples of variable assignments, type conversion, and arithmetic operations.</p>
-<div id="51495131" class="cell" data-code-tools="true" data-execution_count="20">
+<div id="fedbe1bd" class="cell" data-code-tools="true" data-execution_count="20">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Converting Units of Distance</span></span>
@@ -1490,12 +1488,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../exam/exam.html" class="pagination-link" aria-label="Exam">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exam</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../lectures/lecture02/01-lecture02.html" class="pagination-link" aria-label="Lecture 2">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lecture 2</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lecture 2</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

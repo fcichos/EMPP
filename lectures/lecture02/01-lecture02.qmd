@@ -1,6 +1,6 @@
 ---
 title: "Lecture 2"
-notebook-url: "https://github.com/yourusername/yourrepository/blob/main/notebooks/my-document.ipynb"
+notebook-url: "https://github.com/fcichos/EMPP24/blob/main/lectures/lecture01/01-lecture01.ipynb"
 ---
 
 # Kinematics and Python
