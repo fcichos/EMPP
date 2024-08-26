@@ -13,6 +13,12 @@ book:
     This book is a collection of lecture notes for the course "Introduction to Computer-based Physical Modeling" at the University of Leipzig. The course is part of the Bachelor's program in Physics and is intended for all students. The course covers the basics of computer-based physical modeling, including numerical methods, simulation techniques, and data analysis. The book is designed to be used as a reference for students taking the course, as well as for anyone interested in learning more about computer-based physical modeling.
   search: true
   downloads: [pdf, epub]
+  navbar:
+    background: primary
+    search: true
+    right:
+      - icon: github
+        href: https://github.com/fastai/course22
   sidebar:
     style: docked
     background: light
@@ -51,18 +57,19 @@ bibliography: references.bib
 format:
   html:
     theme:
-      - simplex
+      - cosmo
       - custom.scss
     css: styles.css
     code-fold: false
     backgroundcolor: "#F5F5F5"
     include-before-body: "quarto-header.html"
-    header-includes: |
-      <img src="https://github.com/fcichos/EMPP24/blob/26f772271ecbbaa233e7c8659181ff6c447e73c7/CompSoft_banner.png" style="width: 100%; height: auto; display: block; margin: 0 auto;">
+    #header-includes: |
+    #  <img src="https://github.com/fcichos/EMPP24/blob/26f772271ecbbaa233e7c8659181ff6c447e73c7/CompSoft_banner.png" style="width: 100%; height: auto; display: block; margin: 0 auto;">
     toc: true
     toc-location: right
     toc-title: "On this page"
     toc-depth: 4
+
   pdf:
     documentclass: scrreprt
     output-file: pdf-book
