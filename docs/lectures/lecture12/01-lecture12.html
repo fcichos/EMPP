@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Frank Cichos">
-<meta name="dcterms.date" content="2024-08-14">
 
-<title>Introduction to Computer-based Physical Modeling</title>
+<title>Introduction to Computer-based Physical Modeling - 9&nbsp; Lecture 12</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,23 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./courseinfo/course_info.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../seminars/seminar01/01-seminar01.html" rel="next">
+<link href="../../lectures/lecture02/01-lecture02.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -77,9 +76,8 @@ ul.task-list li input[type="checkbox"] {
 </script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Title for Open Graph">
-<meta property="og:description" content="This book is a collection of lecture notes for the course “Introduction to Computer-based Physical Modeling” at the University of Leipzig. The course is part of the Bachelor’s program in Physics and is intended for all students. The course covers the basics of computer-based physical modeling, including numerical methods, simulation techniques, and data analysis. The book is designed to be used as a reference for students taking the course, as well as for anyone interested in learning more about computer-based physical modeling.">
 <meta property="og:site_name" content="Introduction to Computer-based Physical Modeling">
 </head>
 
@@ -90,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Introduction to Computer-based Physical Modeling</span>
     </a>
   </div>
@@ -108,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
-    <a href="./Introduction-to-Computer-based-Physical-Modeling.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="../../Introduction-to-Computer-based-Physical-Modeling.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -117,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Home</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Lecture Contents</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture12/01-lecture12.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Lecture 12</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -128,15 +126,15 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./mona_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../mona_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Home</span></span></a>
   </div>
 </li>
@@ -151,25 +149,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./courseinfo/course_info.html" class="sidebar-item-text sidebar-link">
+  <a href="../../courseinfo/course_info.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Course Information</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./courseinfo/website.html" class="sidebar-item-text sidebar-link">
+  <a href="../../courseinfo/website.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Diese Webseiten</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./courseinfo/schedule.html" class="sidebar-item-text sidebar-link">
+  <a href="../../courseinfo/schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Zeitplan für den Kurs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./courseinfo/resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../../courseinfo/resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Ressourcen</span></span></a>
   </div>
 </li>
@@ -186,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exam/exam.html" class="sidebar-item-text sidebar-link">
+  <a href="../../exam/exam.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam</span></span></a>
   </div>
 </li>
@@ -194,28 +192,28 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text">Lecture Contents</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lectures/lecture01/01-lecture01.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture01/01-lecture01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Python and Basic Calculations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lectures/lecture02/01-lecture02.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture02/01-lecture02.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lecture 2</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lectures/lecture12/01-lecture12.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture12/01-lecture12.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Lecture 12</span></span></a>
   </div>
 </li>
@@ -232,7 +230,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./seminars/seminar01/01-seminar01.html" class="sidebar-item-text sidebar-link">
+  <a href="../../seminars/seminar01/01-seminar01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 1</span></span></a>
   </div>
 </li>
@@ -244,56 +242,264 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#advanced-waves-and-final-project-introduction" id="toc-advanced-waves-and-final-project-introduction" class="nav-link active" data-scroll-target="#advanced-waves-and-final-project-introduction"><span class="header-section-number">9.1</span> Advanced Waves and Final Project Introduction</a>
+  <ul>
+  <li><a href="#python-concepts" id="toc-python-concepts" class="nav-link" data-scroll-target="#python-concepts"><span class="header-section-number">9.1.1</span> Python Concepts</a></li>
+  <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application"><span class="header-section-number">9.1.2</span> Application</a>
+  <ul class="collapse">
+  <li><a href="#final-project-overview" id="toc-final-project-overview" class="nav-link" data-scroll-target="#final-project-overview"><span class="header-section-number">9.1.2.1</span> Final Project Overview</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 <div>
     <p>
-        <a href="https://path/to/your/notebook.ipynb">
+        <a href="?meta:notebook-url">
                 <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" ,="" width="100/"></a>
     </p>
 </div>
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Lecture Contents</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture12/01-lecture12.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Lecture 12</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Introduction to Computer-based Physical Modeling</h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Lecture 12</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Frank Cichos </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 14, 2024</p>
-    </div>
-  </div>
   
     
   </div>
   
-<div>
-  <div class="abstract">
-    <div class="block-title">Abstract</div>
-    <p>This book is a collection of lecture notes for the course “Introduction to Computer-based Physical Modeling” at the University of Leipzig. The course is part of the Bachelor’s program in Physics and is intended for all students. The course covers the basics of computer-based physical modeling, including numerical methods, simulation techniques, and data analysis. The book is designed to be used as a reference for students taking the course, as well as for anyone interested in learning more about computer-based physical modeling.</p>
-  </div>
-</div>
 
 
 </header>
 
 
+<section id="advanced-waves-and-final-project-introduction" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="advanced-waves-and-final-project-introduction"><span class="header-section-number">9.1</span> Advanced Waves and Final Project Introduction</h2>
+<section id="python-concepts" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="python-concepts"><span class="header-section-number">9.1.1</span> Python Concepts</h3>
+<ul>
+<li>Introduction to more advanced simulation techniques (e.g., finite difference methods).</li>
+<li>Structuring a Python project (modules, documentation, testing).</li>
+</ul>
+</section>
+<section id="application" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="application"><span class="header-section-number">9.1.2</span> Application</h3>
+<ul>
+<li>Simulating wave propagation, reflection, and transmission in different media.</li>
+<li>Visualization: Animating wave motion and energy transfer.</li>
+</ul>
+<section id="final-project-overview" class="level4" data-number="9.1.2.1">
+<h4 data-number="9.1.2.1" class="anchored" data-anchor-id="final-project-overview"><span class="header-section-number">9.1.2.1</span> Final Project Overview</h4>
+<pre><code>- Introduction to the final project, where students choose a physics problem to model and solve using Python.
+- Discussion of project expectations, timelines, and resources.
+- Homework: Start working on the final project by selecting a topic and outlining the approach.
 
 
+
+## Ideal Gas Simulation with Pressure, Gravity, and Collisions
+
+Use the sliders below to adjust the speed of the gas particles and the gravitational force acting on them. The pressure exerted by the particles on the container walls will be displayed.</code></pre>
+<div>
+  <label for="speedSlider">Adjust Particle Speed:</label>
+  <input type="range" id="speedSlider" min="0.01" max="1.0" value="0.2" step="0.01">
+</div>
+<div>
+  <label for="gravitySlider">Adjust Gravity:</label>
+  <input type="range" id="gravitySlider" min="0" max="0.01" value="0.005" step="0.001">
+</div>
+<p>Pressure: <span id="pressureDisplay">0</span> Pa</p>
+<svg id="gasSimulation" width="600" height="600" style="border:1px solid #000000;"></svg>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+// SVG setup
+const svg = d3.select("#gasSimulation");
+const width = +svg.attr("width");
+const height = +svg.attr("height");
+
+// Define the gradient for shaded spheres
+const gradient = svg.append("defs")
+    .append("radialGradient")
+    .attr("id", "sphereGradient")
+    .attr("cx", "30%")
+    .attr("cy", "30%");
+
+gradient.append("stop")
+    .attr("offset", "0%")
+    .attr("stop-color", "white");
+
+gradient.append("stop")
+    .attr("offset", "100%")
+    .attr("stop-color", "red");
+
+// Particle class definition
+class Particle {
+  constructor(x, y, vx, vy, radius = 5, mass = 1) {
+    this.x = x;
+    this.y = y;
+    this.vx = vx;
+    this.vy = vy;
+    this.radius = radius;
+    this.mass = mass;
+  }
+
+  update(gravity) {
+    let momentumChange = 0;
+
+    this.vy += gravity;
+    this.x += this.vx;
+    this.y += this.vy;
+
+    if (this.x - this.radius < 0 || this.x + this.radius > width) {
+      this.vx = -this.vx;
+      momentumChange += 2 * this.mass * Math.abs(this.vx);
+    }
+    if (this.y - this.radius < 0 || this.y + this.radius > height) {
+      this.vy = -this.vy;
+      momentumChange += 2 * this.mass * Math.abs(this.vy);
+    }
+
+    return momentumChange;
+  }
+
+  checkCollision(otherParticle) {
+    const dx = otherParticle.x - this.x;
+    const dy = otherParticle.y - this.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < this.radius + otherParticle.radius) {
+      const angle = Math.atan2(dy, dx);
+      const sin = Math.sin(angle);
+      const cos = Math.cos(angle);
+
+      const x1 = 0;
+      const y1 = 0;
+
+      const x2 = dx * cos + dy * sin;
+      const y2 = dy * cos - dx * sin;
+
+      const vx1 = this.vx * cos + this.vy * sin;
+      const vy1 = this.vy * cos - this.vx * sin;
+
+      const vx2 = otherParticle.vx * cos + otherParticle.vy * sin;
+      const vy2 = otherParticle.vy * cos - otherParticle.vx * sin;
+
+      const vx1Final = ((this.mass - otherParticle.mass) * vx1 + 2 * otherParticle.mass * vx2) / (this.mass + otherParticle.mass);
+      const vx2Final = ((otherParticle.mass - this.mass) * vx2 + 2 * this.mass * vx1) / (this.mass + otherParticle.mass);
+
+      this.vx = vx1Final * cos - vy1 * sin;
+      this.vy = vy1 * cos + vx1Final * sin;
+
+      otherParticle.vx = vx2Final * cos - vy2 * sin;
+      otherParticle.vy = vy2 * cos + vx2Final * sin;
+
+      const overlap = 0.5 * (this.radius + otherParticle.radius - distance);
+      this.x -= overlap * cos;
+      this.y -= overlap * sin;
+
+      otherParticle.x += overlap * cos;
+      otherParticle.y += overlap * sin;
+    }
+  }
+}
+
+// Array to hold particles
+const particles = [];
+const numParticles = 500; // Reduced for better performance with SVG
+let particleSpeed = 0.2;
+let gravity = 0.005;
+
+// Initialize particles
+for (let i = 0; i < numParticles; i++) {
+  const x = Math.random() * (width - 20) + 10;
+  const y = Math.random() * (height - 20) + 10;
+  const angle = Math.random() * 2 * Math.PI;
+  const vx = particleSpeed * Math.cos(angle);
+  const vy = particleSpeed * Math.sin(angle);
+  particles.push(new Particle(x, y, vx, vy));
+}
+
+// Create SVG circles for particles
+const circles = svg.selectAll("circle")
+    .data(particles)
+    .enter()
+    .append("circle")
+    .attr("r", d => d.radius)
+    .attr("fill", "url(#sphereGradient)");
+
+// Variables for pressure calculation
+let totalMomentumChange = 0;
+let accumulatedMomentumChange = 0;
+const timeInterval = 1;
+const containerArea = 2 * (width + height);
+
+// Function to update the simulation
+function updateSimulation() {
+  totalMomentumChange = 0;
+
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      particles[i].checkCollision(particles[j]);
+    }
+  }
+
+  particles.forEach((particle, i) => {
+    const momentumChange = particle.update(gravity);
+    totalMomentumChange += momentumChange;
+  });
+
+  circles
+    .attr("cx", d => d.x)
+    .attr("cy", d => d.y);
+
+  accumulatedMomentumChange += totalMomentumChange;
+
+  requestAnimationFrame(updateSimulation);
+}
+
+// Function to update the pressure display
+function updatePressureDisplay() {
+  const pressure = accumulatedMomentumChange / (containerArea * timeInterval);
+  document.getElementById('pressureDisplay').innerText = pressure.toFixed(2);
+  accumulatedMomentumChange = 0;
+}
+
+// Event listener for speed slider
+document.getElementById('speedSlider').addEventListener('input', function() {
+  const newSpeed = +this.value;
+  particles.forEach(particle => {
+    const angle = Math.atan2(particle.vy, particle.vx);
+    particle.vx = newSpeed * Math.cos(angle);
+    particle.vy = newSpeed * Math.sin(angle);
+  });
+});
+
+// Event listener for gravity slider
+document.getElementById('gravitySlider').addEventListener('input', function() {
+  gravity = +this.value;
+});
+
+// Start the simulation and pressure update
+updateSimulation();
+setInterval(updatePressureDisplay, 1000);
+</script>
+
+
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -707,10 +913,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../../lectures/lecture02/01-lecture02.html" class="pagination-link" aria-label="Lecture 2">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lecture 2</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./courseinfo/course_info.html" class="pagination-link" aria-label="Course Information">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Course Information</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../seminars/seminar01/01-seminar01.html" class="pagination-link" aria-label="Seminar 1">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,5 +1,115 @@
 [
   {
+    "objectID": "courseinfo/course_info.html",
+    "href": "courseinfo/course_info.html",
+    "title": "2  Course Information",
+    "section": "",
+    "text": "3 Vorlesender\nEmail: lastname@physik.uni-leipzig.de\n\nProf. Dr. Frank Cichos\n\nLinnéstr. 5, 04103 Leipzig\nOffice: 322\nPhone: +0341 97 32571",
+    "crumbs": [
+      "Course Info",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Course Information</span>"
+    ]
+  },
+  {
+    "objectID": "courseinfo/website.html",
+    "href": "courseinfo/website.html",
+    "title": "3  Diese Webseiten",
+    "section": "",
+    "text": "Diese Website enthält alle Informationen, die für unseren Kurs Einführung in die Modellierung Physikalischer Prozesse erforderlich sind. Sie werden hier jede Woche eine neue Vorlesung und eine neue Aufgabe finden. Die Vorlesungshefte werden von Videos begleitet, die den Inhalt der Vorlesung auf Englisch erklären, aber Sie können auch mit dem Lesen auskommen. Die Vorlesungen in Person, werden auf Deutsch stattfinden. Von diesen Webseiten aus werden Sie zu verschiedenen Ressourcen geführt, die Sie nutzen können, um das Programmieren in Python zu lernen. Dabei werden wir einige großartige Tools aus dem Internet nutzen, wie\n\nGoogle Colab Dienst, um auch Jupyter Notebooks (https://colab.research.google.com) zu hosten. Das Google Colab-Projekt bietet eine nützliche Umgebung zur gemeinsamen Nutzung von Notebooks.\n\n\n\ngoogle colab screen\n\n\nWenn Sie die folgende Website besuchen, werden Sie an mehreren Stellen das folgende Symbol sehen.\n![Substitution Name1]\nDieses Symbol zeigt an, dass diese Webseite auf einem Jupyter Notebook basiert. Anstatt nur die Website zu betrachten, können Sie auf das Symbol klicken und der Google Colab-Dienst wird geöffnet, damit Sie das Notizbuch interaktiv nutzen können. Google Colab öffnet sich viel schneller als myBinder, aber die Notizbücher sind für die Arbeit mit myBinder gemacht und nicht alle Funktionen funktionieren mit Colab. Ich arbeite jedoch an der Kompatibilität.\nmyBinder Dienst, um auch Jupyter Notebooks (https://mybinder.org). Das Binder-Projekt bietet einen einfachen Ort für die gemeinsame Nutzung von Computerumgebungen für jedermann\n\n\n\nbinder screen\n\n\nWenn Sie die folgende Website besuchen, werden Sie an mehreren Stellen das folgende Symbol sehen.\n![Substitution Name]\nDieses Symbol zeigt an, dass diese Webseite auf einem Jupyter Notebook basiert. Anstatt nur die Webseite zu betrachten, können Sie auf das Symbol klicken und der myBinder-Dienst wird geöffnet, um Ihnen die interaktive Nutzung des Notebooks zu ermöglichen. Bitte haben Sie etwas Geduld und warten Sie, bis myBinder gestartet ist. Alle Notebooks auf myBinder werden vorübergehend gehostet. Wenn Sie zu lange inaktiv sind, wird der Server die Verbindung schließen. Wenn Sie mit der Arbeit an einem Notebook fertig sind, können Sie es herunterladen, um eine Kopie zu behalten. Klicken Sie einfach auf das Symbol, um ein leeres Notebook zu erhalten.\nGitHub and GitHub Pages Dienst zum Hosting von Websites (https://github.com). GitHub ist ein großartiger Ort, um Ihre kollaborativen Coding-Projekte einschließlich Versionskontrolle zu hosten. In der oberen rechten Ecke finden Sie auch einen Link zum GitHub-Repository, in dem die Notebooks gehostet werden.\n\n\n\ngithub screen\n\n\nAnaconda Jupyter package für Notebooks auf dem eigenen Computer (https://www.anaconda.com/distribution/). Das Paket anaconda stellt Ihnen die Jupyter Notebook-Umgebung einschließlich Python zur Verfügung. Wenn Sie Jupyter zu Hause ohne Online-Zugang verwenden möchten, ist dies ein gutes Paket zur Installation.\n\n\n\nanaconda screen",
+    "crumbs": [
+      "Course Info",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Diese Webseiten</span>"
+    ]
+  },
+  {
+    "objectID": "courseinfo/schedule.html",
+    "href": "courseinfo/schedule.html",
+    "title": "4  Zeitplan für den Kurs",
+    "section": "",
+    "text": "Der Kurs wird wöchentlich mit dem Zeitplan der Vorlesungen aktualisiert. Erwarten Sie also jede\nDienstag ab 17. Oktober 2023, jeweils um 11:15\neine neue Vorlesung und eine neue Aufgabe. Bitte nutzen Sie den ersten Dienstag, um sich die Website und die Einführungsvideos durchzulesen. Bitte benutzen Sie auch das myBinder/Collab-Symbol am oben auf der Seite und versuchen Sie, sich mit den Notizbüchern vertraut zu machen. Die Vorlesung 1 und die Aufgabenstellung 1 folgen am 11. April 2023.\nIch freue mich, wenn Sie im Hörsaal anwesend sind. Das gesamte Material wird online zur Verfügung stehen, so dass Sie jederzeit wiederkommen können, um zu lernen, wann immer es Ihnen passt. Wir werden auch jede Woche Videos (Englisch) hinzufügen, die die Details der Notebooks erklären. Bitte erkunden Sie die neuen Materialien, insbesondere die Hefte auf dem mybinder-Server. Sie werden Ihnen helfen, die wöchentlichen Aufgaben zu erledigen.",
+    "crumbs": [
+      "Course Info",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Zeitplan für den Kurs</span>"
+    ]
+  },
+  {
+    "objectID": "courseinfo/resources.html",
+    "href": "courseinfo/resources.html",
+    "title": "5  Ressourcen",
+    "section": "",
+    "text": "5.1 Molecular Nanophotonics Group",
+    "crumbs": [
+      "Course Info",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
+    ]
+  },
+  {
+    "objectID": "courseinfo/resources.html#molecular-nanophotonics-group",
+    "href": "courseinfo/resources.html#molecular-nanophotonics-group",
+    "title": "5  Ressourcen",
+    "section": "",
+    "text": "Molecular Nanophotonics Group Website\nComputer-based Physical Modeling Website @ MONA\nDiscord Channel Invitation Link for Discussions",
+    "crumbs": [
+      "Course Info",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
+    ]
+  },
+  {
+    "objectID": "courseinfo/resources.html#additional-advanced-courses",
+    "href": "courseinfo/resources.html#additional-advanced-courses",
+    "title": "5  Ressourcen",
+    "section": "5.2 Additional Advanced Courses",
+    "text": "5.2 Additional Advanced Courses\n\nRosenow Group (Theory), Master Course on Statistical Mechanics of Deep Learning",
+    "crumbs": [
+      "Course Info",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
+    ]
+  },
+  {
+    "objectID": "courseinfo/resources.html#python-documentation",
+    "href": "courseinfo/resources.html#python-documentation",
+    "title": "5  Ressourcen",
+    "section": "5.3 Python Documentation",
+    "text": "5.3 Python Documentation\n\nPython\nMatplotlib\nPandas",
+    "crumbs": [
+      "Course Info",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
+    ]
+  },
+  {
+    "objectID": "courseinfo/resources.html#python-tutorials",
+    "href": "courseinfo/resources.html#python-tutorials",
+    "title": "5  Ressourcen",
+    "section": "5.4 Python Tutorials",
+    "text": "5.4 Python Tutorials\n\nIntroduction to Python for Science\nNice MatPlotLib tutorial",
+    "crumbs": [
+      "Course Info",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
+    ]
+  },
+  {
+    "objectID": "courseinfo/resources.html#julia-tutorial",
+    "href": "courseinfo/resources.html#julia-tutorial",
+    "title": "5  Ressourcen",
+    "section": "5.5 Julia Tutorial",
+    "text": "5.5 Julia Tutorial\n\nJulia Programming Language",
+    "crumbs": [
+      "Course Info",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
+    ]
+  },
+  {
+    "objectID": "courseinfo/resources.html#pluto-notebook",
+    "href": "courseinfo/resources.html#pluto-notebook",
+    "title": "5  Ressourcen",
+    "section": "5.6 Pluto NoteBook",
+    "text": "5.6 Pluto NoteBook\n\nPluto GitHub Webpage ```\n\nIn this conversion:\n\nI’ve changed the RST headers to Markdown headers, using # for the main title and ## for subheadings.\nThe links have been converted from RST format to Markdown format.\nThe overall structure remains the same, but it’s now in Quarto-compatible Markdown syntax.",
+    "crumbs": [
+      "Course Info",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
+    ]
+  },
+  {
     "objectID": "lectures/lecture01/01-lecture01.html",
     "href": "lectures/lecture01/01-lecture01.html",
     "title": "7  Introduction to Python and Basic Calculations",
@@ -165,113 +275,25 @@
     ]
   },
   {
-    "objectID": "courseinfo/course_info.html",
-    "href": "courseinfo/course_info.html",
-    "title": "2  Course Information",
+    "objectID": "lectures/lecture12/01-lecture12.html",
+    "href": "lectures/lecture12/01-lecture12.html",
+    "title": "9  Lecture 12",
     "section": "",
-    "text": "3 Vorlesender\nEmail: lastname@physik.uni-leipzig.de\n\nProf. Dr. Frank Cichos\n\nLinnéstr. 5, 04103 Leipzig\nOffice: 322\nPhone: +0341 97 32571",
+    "text": "9.1 Advanced Waves and Final Project Introduction",
     "crumbs": [
-      "Course Info",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Course Information</span>"
+      "Lecture Contents",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Lecture 12</span>"
     ]
   },
   {
-    "objectID": "courseinfo/website.html",
-    "href": "courseinfo/website.html",
-    "title": "3  Diese Webseiten",
+    "objectID": "lectures/lecture12/01-lecture12.html#advanced-waves-and-final-project-introduction",
+    "href": "lectures/lecture12/01-lecture12.html#advanced-waves-and-final-project-introduction",
+    "title": "9  Lecture 12",
     "section": "",
-    "text": "Diese Website enthält alle Informationen, die für unseren Kurs Einführung in die Modellierung Physikalischer Prozesse erforderlich sind. Sie werden hier jede Woche eine neue Vorlesung und eine neue Aufgabe finden. Die Vorlesungshefte werden von Videos begleitet, die den Inhalt der Vorlesung auf Englisch erklären, aber Sie können auch mit dem Lesen auskommen. Die Vorlesungen in Person, werden auf Deutsch stattfinden. Von diesen Webseiten aus werden Sie zu verschiedenen Ressourcen geführt, die Sie nutzen können, um das Programmieren in Python zu lernen. Dabei werden wir einige großartige Tools aus dem Internet nutzen, wie\n\nGoogle Colab Dienst, um auch Jupyter Notebooks (https://colab.research.google.com) zu hosten. Das Google Colab-Projekt bietet eine nützliche Umgebung zur gemeinsamen Nutzung von Notebooks.\n\n\n\ngoogle colab screen\n\n\nWenn Sie die folgende Website besuchen, werden Sie an mehreren Stellen das folgende Symbol sehen.\n![Substitution Name1]\nDieses Symbol zeigt an, dass diese Webseite auf einem Jupyter Notebook basiert. Anstatt nur die Website zu betrachten, können Sie auf das Symbol klicken und der Google Colab-Dienst wird geöffnet, damit Sie das Notizbuch interaktiv nutzen können. Google Colab öffnet sich viel schneller als myBinder, aber die Notizbücher sind für die Arbeit mit myBinder gemacht und nicht alle Funktionen funktionieren mit Colab. Ich arbeite jedoch an der Kompatibilität.\nmyBinder Dienst, um auch Jupyter Notebooks (https://mybinder.org). Das Binder-Projekt bietet einen einfachen Ort für die gemeinsame Nutzung von Computerumgebungen für jedermann\n\n\n\nbinder screen\n\n\nWenn Sie die folgende Website besuchen, werden Sie an mehreren Stellen das folgende Symbol sehen.\n![Substitution Name]\nDieses Symbol zeigt an, dass diese Webseite auf einem Jupyter Notebook basiert. Anstatt nur die Webseite zu betrachten, können Sie auf das Symbol klicken und der myBinder-Dienst wird geöffnet, um Ihnen die interaktive Nutzung des Notebooks zu ermöglichen. Bitte haben Sie etwas Geduld und warten Sie, bis myBinder gestartet ist. Alle Notebooks auf myBinder werden vorübergehend gehostet. Wenn Sie zu lange inaktiv sind, wird der Server die Verbindung schließen. Wenn Sie mit der Arbeit an einem Notebook fertig sind, können Sie es herunterladen, um eine Kopie zu behalten. Klicken Sie einfach auf das Symbol, um ein leeres Notebook zu erhalten.\nGitHub and GitHub Pages Dienst zum Hosting von Websites (https://github.com). GitHub ist ein großartiger Ort, um Ihre kollaborativen Coding-Projekte einschließlich Versionskontrolle zu hosten. In der oberen rechten Ecke finden Sie auch einen Link zum GitHub-Repository, in dem die Notebooks gehostet werden.\n\n\n\ngithub screen\n\n\nAnaconda Jupyter package für Notebooks auf dem eigenen Computer (https://www.anaconda.com/distribution/). Das Paket anaconda stellt Ihnen die Jupyter Notebook-Umgebung einschließlich Python zur Verfügung. Wenn Sie Jupyter zu Hause ohne Online-Zugang verwenden möchten, ist dies ein gutes Paket zur Installation.\n\n\n\nanaconda screen",
+    "text": "9.1.1 Python Concepts\n\nIntroduction to more advanced simulation techniques (e.g., finite difference methods).\nStructuring a Python project (modules, documentation, testing).\n\n\n\n9.1.2 Application\n\nSimulating wave propagation, reflection, and transmission in different media.\nVisualization: Animating wave motion and energy transfer.\n\n\n9.1.2.1 Final Project Overview\n- Introduction to the final project, where students choose a physics problem to model and solve using Python.\n- Discussion of project expectations, timelines, and resources.\n- Homework: Start working on the final project by selecting a topic and outlining the approach.\n\n\n\n## Ideal Gas Simulation with Pressure, Gravity, and Collisions\n\nUse the sliders below to adjust the speed of the gas particles and the gravitational force acting on them. The pressure exerted by the particles on the container walls will be displayed.\n\n  Adjust Particle Speed:\n  \n\n\n  Adjust Gravity:\n  \n\nPressure: 0 Pa",
     "crumbs": [
-      "Course Info",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Diese Webseiten</span>"
-    ]
-  },
-  {
-    "objectID": "courseinfo/schedule.html",
-    "href": "courseinfo/schedule.html",
-    "title": "4  Zeitplan für den Kurs",
-    "section": "",
-    "text": "Der Kurs wird wöchentlich mit dem Zeitplan der Vorlesungen aktualisiert. Erwarten Sie also jede\nDienstag ab 17. Oktober 2023, jeweils um 11:15\neine neue Vorlesung und eine neue Aufgabe. Bitte nutzen Sie den ersten Dienstag, um sich die Website und die Einführungsvideos durchzulesen. Bitte benutzen Sie auch das myBinder/Collab-Symbol am oben auf der Seite und versuchen Sie, sich mit den Notizbüchern vertraut zu machen. Die Vorlesung 1 und die Aufgabenstellung 1 folgen am 11. April 2023.\nIch freue mich, wenn Sie im Hörsaal anwesend sind. Das gesamte Material wird online zur Verfügung stehen, so dass Sie jederzeit wiederkommen können, um zu lernen, wann immer es Ihnen passt. Wir werden auch jede Woche Videos (Englisch) hinzufügen, die die Details der Notebooks erklären. Bitte erkunden Sie die neuen Materialien, insbesondere die Hefte auf dem mybinder-Server. Sie werden Ihnen helfen, die wöchentlichen Aufgaben zu erledigen.",
-    "crumbs": [
-      "Course Info",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Zeitplan für den Kurs</span>"
-    ]
-  },
-  {
-    "objectID": "courseinfo/resources.html",
-    "href": "courseinfo/resources.html",
-    "title": "5  Ressourcen",
-    "section": "",
-    "text": "5.1 Molecular Nanophotonics Group",
-    "crumbs": [
-      "Course Info",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
-    ]
-  },
-  {
-    "objectID": "courseinfo/resources.html#molecular-nanophotonics-group",
-    "href": "courseinfo/resources.html#molecular-nanophotonics-group",
-    "title": "5  Ressourcen",
-    "section": "",
-    "text": "Molecular Nanophotonics Group Website\nComputer-based Physical Modeling Website @ MONA\nDiscord Channel Invitation Link for Discussions",
-    "crumbs": [
-      "Course Info",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
-    ]
-  },
-  {
-    "objectID": "courseinfo/resources.html#additional-advanced-courses",
-    "href": "courseinfo/resources.html#additional-advanced-courses",
-    "title": "5  Ressourcen",
-    "section": "5.2 Additional Advanced Courses",
-    "text": "5.2 Additional Advanced Courses\n\nRosenow Group (Theory), Master Course on Statistical Mechanics of Deep Learning",
-    "crumbs": [
-      "Course Info",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
-    ]
-  },
-  {
-    "objectID": "courseinfo/resources.html#python-documentation",
-    "href": "courseinfo/resources.html#python-documentation",
-    "title": "5  Ressourcen",
-    "section": "5.3 Python Documentation",
-    "text": "5.3 Python Documentation\n\nPython\nMatplotlib\nPandas",
-    "crumbs": [
-      "Course Info",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
-    ]
-  },
-  {
-    "objectID": "courseinfo/resources.html#python-tutorials",
-    "href": "courseinfo/resources.html#python-tutorials",
-    "title": "5  Ressourcen",
-    "section": "5.4 Python Tutorials",
-    "text": "5.4 Python Tutorials\n\nIntroduction to Python for Science\nNice MatPlotLib tutorial",
-    "crumbs": [
-      "Course Info",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
-    ]
-  },
-  {
-    "objectID": "courseinfo/resources.html#julia-tutorial",
-    "href": "courseinfo/resources.html#julia-tutorial",
-    "title": "5  Ressourcen",
-    "section": "5.5 Julia Tutorial",
-    "text": "5.5 Julia Tutorial\n\nJulia Programming Language",
-    "crumbs": [
-      "Course Info",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
-    ]
-  },
-  {
-    "objectID": "courseinfo/resources.html#pluto-notebook",
-    "href": "courseinfo/resources.html#pluto-notebook",
-    "title": "5  Ressourcen",
-    "section": "5.6 Pluto NoteBook",
-    "text": "5.6 Pluto NoteBook\n\nPluto GitHub Webpage ```\n\nIn this conversion:\n\nI’ve changed the RST headers to Markdown headers, using # for the main title and ## for subheadings.\nThe links have been converted from RST format to Markdown format.\nThe overall structure remains the same, but it’s now in Quarto-compatible Markdown syntax.",
-    "crumbs": [
-      "Course Info",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ressourcen</span>"
+      "Lecture Contents",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Lecture 12</span>"
     ]
   }
 ]
