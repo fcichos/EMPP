@@ -536,7 +536,7 @@ print(z.real, " -> ", y, type(y))
 The following code snippets demonstrate the use of variables and basic arithmetic operations in Python. The code snippets include examples of variable assignments, type conversion, and arithmetic operations.
 
 
-```{pyodide}
+```{python}
 #| code-fold: true
 #| code-summary: "Show the code"
 #| code-tools: true
@@ -607,5 +607,26 @@ print(f"Power output: {power_output} watts")
 print(f"Force: {force} newtons")
 ```
 
-- Simple calculations relevant to physics, such as converting units or calculating simple quantities (e.g., distance = speed × time).
-  - Homework: Basic practice problems to reinforce Python syntax and operations.
+
+
+## Quiz
+
+Write a python code that generates the number 1 to 10 and calculates the mean value without loading any additional modules.
+
+```{pyodide}
+#| exercise: ex1
+# Your code here
+```
+
+```{pyodide}
+#| exercise: ex1
+#| check: true
+n = range(1, 11)
+mean = sum(n)/len(n)
+feedback = None
+if (result == mean):
+  feedback = { "correct": True, "message": "Nice work!" }
+else:
+  feedback = { "correct": False, "message": "That's incorrect, sorry." }
+feedback
+```

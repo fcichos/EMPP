@@ -163,7 +163,7 @@ th {
 }
 
 .sidebar-item {
-    padding: 5px 0;
+    padding: 0px 0;
 }
 
 /* Utility Classes */
@@ -218,6 +218,7 @@ footer {
 /* Remove numbering from sidebar navigation */
 .sidebar-item .section-number {
     display: none !important;
+    padding: 0px;
 }
 /* Adjust padding if necessary */
 h1,
@@ -227,12 +228,12 @@ h4,
 h5,
 h6,
 .sidebar-item {
-    padding-left: 0 !important;
+    padding-left: 2px !important;
 }
 
 .chapter-number {
     display: none;
-    margin: -50px;
+    margin: -10px;
 }
 
 .quarto-title {

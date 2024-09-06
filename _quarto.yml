@@ -37,6 +37,7 @@ book:
         - courseinfo/website.qmd
         - courseinfo/schedule.qmd
         - courseinfo/resources.qmd
+        - courseinfo/how_to_quiz.qmd
     - part: "Exam"
       chapters:
         - exam/exam.qmd
@@ -44,7 +45,7 @@ book:
       chapters:
         - lectures/lecture01/01-lecture01.qmd
         - lectures/lecture02/01-lecture02.qmd
-        #- lectures/lecture03/01-lecture03.qmd
+        - lectures/lecture03/01-lecture03.qmd
         #- lectures/lecture04/01-lecture04.qmd
         #- lectures/lecture05/01-lecture05.qmd
         #- lectures/lecture06/01-lecture06.qmd
@@ -72,9 +73,9 @@ format:
     code-fold: false
     backgroundcolor: "#F5F5F5"
     include-before-body: "quarto-header.html"
-    include-in-header:
-      text: |
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jupyterquiz/1.0.0/jupyterquiz.min.js"></script>
+    #include-in-header:
+    #  text: |
+    #    <script src="https://cdnjs.cloudflare.com/ajax/libs/jupyterquiz/1.0.0/jupyterquiz.min.js"></script>
     #header-includes: |
     #  <img src="https://github.com/fcichos/EMPP24/blob/26f772271ecbbaa233e7c8659181ff6c447e73c7/CompSoft_banner.png" style="width: 100%; height: auto; display: block; margin: 0 auto;">
     toc: true
@@ -93,7 +94,7 @@ execute:
   freeze: auto
 
 comments:
-  hypothesis: true
+  hypothesis: false
 
 open-graph:
   title: "Title for Open Graph"

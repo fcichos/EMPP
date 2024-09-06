@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lecture 3</title>
+<title>Introduction to Computer-based Physical Modeling - 10&nbsp; Lecture 3</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,11 +58,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../lectures/lecture12/01-lecture12.html" rel="next">
+<link href="../../lectures/lecture02/01-lecture02.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,12 +75,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -99,13 +104,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script async="" src="https://hypothes.is/embed.js"></script>
-<script>
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    document.body.classList.add('hypothesis-enabled');
-  });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jupyterquiz/1.0.0/jupyterquiz.min.js"></script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -140,48 +140,214 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jupyterquiz/1.0.0/jupyterquiz.min.css">
 <meta property="og:title" content="Title for Open Graph">
+<meta property="og:site_name" content="Introduction to Computer-based Physical Modeling">
 </head>
 
-<body>
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Introduction to Computer-based Physical Modeling</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/fastai/course22"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="../../Introduction-to-Computer-based-Physical-Modeling.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Lecture Contents</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture03/01-lecture03.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lecture 3</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../mona_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Example with Pyodide</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Course Info</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courseinfo/course_info.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Course Information</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courseinfo/website.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Diese Webseiten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courseinfo/schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Zeitplan für den Kurs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courseinfo/resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Ressourcen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courseinfo/how_to_quiz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Anleitung Quiz</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Exam</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../exam/exam.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Exam</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Lecture Contents</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture01/01-lecture01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to Python and Basic Calculations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/01-lecture02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Lecture 2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture03/01-lecture03.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lecture 3</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture12/01-lecture12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lecture 12</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Seminar Contents</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar01/01-seminar01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Seminar 1</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#dynamics-and-simple-motion" id="toc-dynamics-and-simple-motion" class="nav-link active" data-scroll-target="#dynamics-and-simple-motion"><span class="header-section-number">1</span> Dynamics and Simple Motion</a>
+  <li><a href="#dynamics-and-simple-motion" id="toc-dynamics-and-simple-motion" class="nav-link active" data-scroll-target="#dynamics-and-simple-motion"><span class="header-section-number">11</span> Dynamics and Simple Motion</a>
   <ul>
-  <li><a href="#creating-numpy-arrays" id="toc-creating-numpy-arrays" class="nav-link" data-scroll-target="#creating-numpy-arrays"><span class="header-section-number">1.1</span> Creating Numpy Arrays</a>
+  <li><a href="#creating-numpy-arrays" id="toc-creating-numpy-arrays" class="nav-link" data-scroll-target="#creating-numpy-arrays"><span class="header-section-number">11.1</span> Creating Numpy Arrays</a>
   <ul class="collapse">
-  <li><a href="#from-lists" id="toc-from-lists" class="nav-link" data-scroll-target="#from-lists"><span class="header-section-number">1.1.1</span> From lists</a></li>
-  <li><a href="#using-array-generating-functions" id="toc-using-array-generating-functions" class="nav-link" data-scroll-target="#using-array-generating-functions"><span class="header-section-number">1.1.2</span> Using array-generating functions</a></li>
+  <li><a href="#from-lists" id="toc-from-lists" class="nav-link" data-scroll-target="#from-lists"><span class="header-section-number">11.1.1</span> From lists</a></li>
+  <li><a href="#using-array-generating-functions" id="toc-using-array-generating-functions" class="nav-link" data-scroll-target="#using-array-generating-functions"><span class="header-section-number">11.1.2</span> Using array-generating functions</a></li>
   </ul></li>
-  <li><a href="#manipulating-numpy-arrays" id="toc-manipulating-numpy-arrays" class="nav-link" data-scroll-target="#manipulating-numpy-arrays"><span class="header-section-number">1.2</span> Manipulating NumPy arrays</a>
+  <li><a href="#manipulating-numpy-arrays" id="toc-manipulating-numpy-arrays" class="nav-link" data-scroll-target="#manipulating-numpy-arrays"><span class="header-section-number">11.2</span> Manipulating NumPy arrays</a>
   <ul class="collapse">
-  <li><a href="#slicing" id="toc-slicing" class="nav-link" data-scroll-target="#slicing"><span class="header-section-number">1.2.1</span> Slicing</a></li>
-  <li><a href="#reshaping" id="toc-reshaping" class="nav-link" data-scroll-target="#reshaping"><span class="header-section-number">1.2.2</span> Reshaping</a></li>
-  <li><a href="#adding-a-new-dimension-newaxis" id="toc-adding-a-new-dimension-newaxis" class="nav-link" data-scroll-target="#adding-a-new-dimension-newaxis"><span class="header-section-number">1.2.3</span> Adding a new dimension: newaxis</a></li>
-  <li><a href="#stacking-and-repeating-arrays" id="toc-stacking-and-repeating-arrays" class="nav-link" data-scroll-target="#stacking-and-repeating-arrays"><span class="header-section-number">1.2.4</span> Stacking and repeating arrays</a>
+  <li><a href="#slicing" id="toc-slicing" class="nav-link" data-scroll-target="#slicing"><span class="header-section-number">11.2.1</span> Slicing</a></li>
+  <li><a href="#reshaping" id="toc-reshaping" class="nav-link" data-scroll-target="#reshaping"><span class="header-section-number">11.2.2</span> Reshaping</a></li>
+  <li><a href="#adding-a-new-dimension-newaxis" id="toc-adding-a-new-dimension-newaxis" class="nav-link" data-scroll-target="#adding-a-new-dimension-newaxis"><span class="header-section-number">11.2.3</span> Adding a new dimension: newaxis</a></li>
+  <li><a href="#stacking-and-repeating-arrays" id="toc-stacking-and-repeating-arrays" class="nav-link" data-scroll-target="#stacking-and-repeating-arrays"><span class="header-section-number">11.2.4</span> Stacking and repeating arrays</a>
   <ul class="collapse">
-  <li><a href="#tile-and-repeat" id="toc-tile-and-repeat" class="nav-link" data-scroll-target="#tile-and-repeat"><span class="header-section-number">1.2.4.1</span> Tile and repeat</a></li>
-  <li><a href="#concatenate" id="toc-concatenate" class="nav-link" data-scroll-target="#concatenate"><span class="header-section-number">1.2.4.2</span> Concatenate</a></li>
-  <li><a href="#hstack-and-vstack" id="toc-hstack-and-vstack" class="nav-link" data-scroll-target="#hstack-and-vstack"><span class="header-section-number">1.2.4.3</span> Hstack and vstack</a></li>
+  <li><a href="#tile-and-repeat" id="toc-tile-and-repeat" class="nav-link" data-scroll-target="#tile-and-repeat"><span class="header-section-number">11.2.4.1</span> Tile and repeat</a></li>
+  <li><a href="#concatenate" id="toc-concatenate" class="nav-link" data-scroll-target="#concatenate"><span class="header-section-number">11.2.4.2</span> Concatenate</a></li>
+  <li><a href="#hstack-and-vstack" id="toc-hstack-and-vstack" class="nav-link" data-scroll-target="#hstack-and-vstack"><span class="header-section-number">11.2.4.3</span> Hstack and vstack</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#applying-mathematical-functions" id="toc-applying-mathematical-functions" class="nav-link" data-scroll-target="#applying-mathematical-functions"><span class="header-section-number">1.3</span> Applying mathematical functions</a>
+  <li><a href="#applying-mathematical-functions" id="toc-applying-mathematical-functions" class="nav-link" data-scroll-target="#applying-mathematical-functions"><span class="header-section-number">11.3</span> Applying mathematical functions</a>
   <ul class="collapse">
-  <li><a href="#operation-involving-one-array" id="toc-operation-involving-one-array" class="nav-link" data-scroll-target="#operation-involving-one-array"><span class="header-section-number">1.3.1</span> Operation involving one array</a></li>
-  <li><a href="#operations-involving-multiple-arrays" id="toc-operations-involving-multiple-arrays" class="nav-link" data-scroll-target="#operations-involving-multiple-arrays"><span class="header-section-number">1.3.2</span> Operations involving multiple arrays</a></li>
+  <li><a href="#operation-involving-one-array" id="toc-operation-involving-one-array" class="nav-link" data-scroll-target="#operation-involving-one-array"><span class="header-section-number">11.3.1</span> Operation involving one array</a></li>
+  <li><a href="#operations-involving-multiple-arrays" id="toc-operations-involving-multiple-arrays" class="nav-link" data-scroll-target="#operations-involving-multiple-arrays"><span class="header-section-number">11.3.2</span> Operations involving multiple arrays</a></li>
   </ul></li>
-  <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application"><span class="header-section-number">1.4</span> Application</a></li>
+  <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application"><span class="header-section-number">11.4</span> Application</a></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="pdf-book.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -192,9 +358,9 @@ window.Quarto = {
     </p>
 </div>
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Lecture Contents</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture03/01-lecture03.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lecture 3</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lecture 3</h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lecture 3</span></h1>
 </div>
 
 
@@ -211,8 +377,8 @@ window.Quarto = {
 </header>
 
 
-<section id="dynamics-and-simple-motion" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Dynamics and Simple Motion</h1>
+<section id="dynamics-and-simple-motion" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Dynamics and Simple Motion</h1>
 <ul>
 <li>Lists and arrays (introduction to <code>numpy</code> for numerical operations).</li>
 <li>Basic vector operations using <code>numpy</code>.</li>
@@ -230,22 +396,22 @@ Numpy Array
 <p>The NumPy array, formally called ndarray in NumPy documentation, is the real workhorse of data structures for scientific and engineering applications. The NumPy array is similar to a list but where all the elements of the list are of the same type. The elements of a <strong>NumPy array</strong> are usually numbers, but can also be booleans, strings, or other objects. When the elements are numbers, they must all be of the same type. For example, they might be all integers or all floating point numbers. NumPy arrays are more efficient than Python lists for storing and manipulating data.</p>
 </div>
 </div>
-<div id="78ef6a13" class="cell" data-execution_count="1">
+<div id="8bdb2e5d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="creating-numpy-arrays" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="creating-numpy-arrays"><span class="header-section-number">1.1</span> Creating Numpy Arrays</h2>
+<section id="creating-numpy-arrays" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="creating-numpy-arrays"><span class="header-section-number">11.1</span> Creating Numpy Arrays</h2>
 <p>There are a number of ways to initialize new numpy arrays, for example from</p>
 <ul>
 <li>a Python list or tuples using <code>np.array</code></li>
 <li>using functions that are dedicated to generating numpy arrays, such as <code>arange</code>, <code>linspace</code>, etc.</li>
 <li>reading data from files which will be covered in the files section of this course.</li>
 </ul>
-<section id="from-lists" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="from-lists"><span class="header-section-number">1.1.1</span> From lists</h3>
+<section id="from-lists" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="from-lists"><span class="header-section-number">11.1.1</span> From lists</h3>
 <p>For example, to create new vector and matrix arrays from Python lists we can use the <code>numpy.array</code> function. This is demonstrated in the following cells:</p>
-<div id="73a98788" class="cell" data-execution_count="2">
+<div id="6e04a7a9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#this is a list</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">16</span>, <span class="dv">31</span>, <span class="dv">64</span>, <span class="dv">127</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -254,7 +420,7 @@ Numpy Array
 <pre><code>list</code></pre>
 </div>
 </div>
-<div id="d5fb8adf" class="cell" data-execution_count="3">
+<div id="3add5bdf" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  b<span class="op">=</span>np.array(a,dtype<span class="op">=</span><span class="bu">float</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">type</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -262,10 +428,10 @@ Numpy Array
 </div>
 </div>
 </section>
-<section id="using-array-generating-functions" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="using-array-generating-functions"><span class="header-section-number">1.1.2</span> Using array-generating functions</h3>
+<section id="using-array-generating-functions" class="level3" data-number="11.1.2">
+<h3 data-number="11.1.2" class="anchored" data-anchor-id="using-array-generating-functions"><span class="header-section-number">11.1.2</span> Using array-generating functions</h3>
 <p>For larger arrays it is inpractical to initialize the data manually, using explicit python lists. Instead we can use one of the many functions in <code>numpy</code> that generate arrays of different forms and shapes. Some of the more common are:</p>
-<div id="4e4bb899" class="cell" data-execution_count="4">
+<div id="262e34a2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a range</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -275,7 +441,7 @@ Numpy Array
 <pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
 </div>
 </div>
-<div id="bcf7415c" class="cell" data-execution_count="5">
+<div id="520c5728" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">5</span>, <span class="op">-</span><span class="dv">2</span>, <span class="fl">0.1</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -298,7 +464,7 @@ linspace
 <p>The <code>linspace</code> function creates an array of N evenly spaced points between a starting point and an ending point. The form of the function is linspace(start, stop, N).If the third argument N is omitted,then N=50. The function <code>linspace</code> always includes the end points.</p>
 </div>
 </div>
-<div id="75a7a2dc" class="cell" data-execution_count="6">
+<div id="28d0d8da" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># using linspace, both end points ARE included</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  np.linspace(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -323,7 +489,7 @@ logspace
 <p><code>logspace</code> is doing equivelent things with logaritmic spacing. The function <code>logspace</code> generates an array of N points between decades 10^start and 10^stop. The form of the function is logspace(start, stop, N). If the third argument N is omitted, then N=50. The function <code>logspace</code> always includes the end points.</p>
 </div>
 </div>
-<div id="87e8297f" class="cell" data-execution_count="7">
+<div id="ec6d0ad8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  np.logspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">10</span>, base<span class="op">=</span>np.e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -346,10 +512,10 @@ mgrid
 <p><code>mgrid</code> generates a multi-dimensional matrix with increasing value entries, for example in columns and rows. The arguments are similar to <code>arange</code> and <code>linspace</code>.</p>
 </div>
 </div>
-<div id="0484b96f" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="8">
+<div id="ec15859b" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> np.mgrid[<span class="dv">0</span>:<span class="dv">1</span>:<span class="fl">0.1</span>, <span class="dv">0</span>:<span class="dv">5</span>] <span class="co"># similar to meshgrid in MATLAB</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="da395b08" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="9">
+<div id="05bc1832" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>array([[0. , 0. , 0. , 0. , 0. ],
@@ -364,7 +530,7 @@ mgrid
        [0.9, 0.9, 0.9, 0.9, 0.9]])</code></pre>
 </div>
 </div>
-<div id="a2dc2a60" class="cell" data-tags="[]" data-execution_count="10">
+<div id="a9360f3f" class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>array([[0., 1., 2., 3., 4.],
@@ -379,7 +545,7 @@ mgrid
        [0., 1., 2., 3., 4.]])</code></pre>
 </div>
 </div>
-<div id="a34a7e84" class="cell" data-tags="[]" data-execution_count="11">
+<div id="4f9d88e0" class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>],[<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>array([[1, 2, 3],
@@ -400,7 +566,7 @@ diag
 <p><code>diag</code> generates a diagonal matrix with the list supplied to it as the diagonal values. The values can be also offset from the main diagonal by using the optional argument <code>k</code>. If <code>k</code> is positive, the diagonal is above the main diagonal, if negative, below the main diagonal.</p>
 </div>
 </div>
-<div id="b3558f08" class="cell" data-tags="[]" data-execution_count="12">
+<div id="31481ce7" class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a diagonal matrix</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>np.diag([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -409,7 +575,7 @@ diag
        [0, 0, 3]])</code></pre>
 </div>
 </div>
-<div id="4a0e9790" class="cell" data-execution_count="13">
+<div id="e7ac1c8f" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">## diagonal with offset from the main diagonal</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>np.diag([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], k<span class="op">=-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
@@ -432,7 +598,7 @@ zeros and ones
 <p><code>zeros</code> and <code>ones</code> creates a matrix with the dimensions given in the argument and filled with 0 or 1. The argument is a tuple with the dimensions of the matrix. For example, <code>np.zeros((3,3))</code> creates a 3x3 matrix filled with zeros.</p>
 </div>
 </div>
-<div id="c6686f50" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="14">
+<div id="ad27d508" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>np.zeros((<span class="dv">3</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>array([[0., 0., 0.],
@@ -440,7 +606,7 @@ zeros and ones
        [0., 0., 0.]])</code></pre>
 </div>
 </div>
-<div id="93a02895" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="15">
+<div id="b12a50b9" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>np.ones((<span class="dv">3</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>array([[1., 1., 1.],
@@ -450,55 +616,55 @@ zeros and ones
 </div>
 </section>
 </section>
-<section id="manipulating-numpy-arrays" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="manipulating-numpy-arrays"><span class="header-section-number">1.2</span> Manipulating NumPy arrays</h2>
-<section id="slicing" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="slicing"><span class="header-section-number">1.2.1</span> Slicing</h3>
+<section id="manipulating-numpy-arrays" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="manipulating-numpy-arrays"><span class="header-section-number">11.2</span> Manipulating NumPy arrays</h2>
+<section id="slicing" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="slicing"><span class="header-section-number">11.2.1</span> Slicing</h3>
 <p>Slicing is the name for extracting part of an array by the syntax <code>M[lower:upper:step]</code>. When any of these are unspecified, they default to the values <code>lower=0</code>, <code>upper=size of dimension</code>, <code>step=1</code>. We can also use negative indices to count from the end of the array. Here are some examples:</p>
-<div id="8c4fb549" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="16">
+<div id="4c1a13c1" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>])</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>array([1, 2, 3, 4, 5])</code></pre>
 </div>
 </div>
-<div id="7971ffc9" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="17">
+<div id="d8553b35" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">1</span>:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>array([2, 3, 4])</code></pre>
 </div>
 </div>
 <p>Any of the three parameters in <code>M[lower:upper:step]</code> can be ommited.</p>
-<div id="616cb743" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="18">
+<div id="d60f416a" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>A[::] <span class="co"># lower, upper, step all take the default values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>array([1, 2, 3, 4, 5])</code></pre>
 </div>
 </div>
-<div id="bec668ec" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="19">
+<div id="0e1f0e94" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>A[::<span class="dv">2</span>] <span class="co"># step is 2, lower and upper defaults to the beginning and end of the array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>array([1, 3, 5])</code></pre>
 </div>
 </div>
 <p>Negative indices counts from the end of the array (positive index from the begining) and can be used in any of the three slicing parameters. Here are some examples:</p>
-<div id="d4cdb2e5" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="20">
+<div id="8e7c8fd0" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="3ea0e3a4" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="21">
+<div id="72a194dc" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>A[<span class="op">-</span><span class="dv">1</span>] <span class="co"># the last element in the array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>np.int64(5)</code></pre>
 </div>
 </div>
-<div id="e451f2c7" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="22">
+<div id="f2f5a567" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">2</span>:] <span class="co"># the last three elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>array([3, 4, 5])</code></pre>
 </div>
 </div>
 <p>Index slicing works exactly the same way for multidimensional arrays. We can slice along each axis independently. Here are some examples:</p>
-<div id="6007e304" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="23">
+<div id="fba56443" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[n<span class="op">+</span>m<span class="op">*</span><span class="dv">10</span> <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)] <span class="cf">for</span> m <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
@@ -509,7 +675,7 @@ zeros and ones
        [40, 41, 42, 43, 44]])</code></pre>
 </div>
 </div>
-<div id="3681c7dc" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="24">
+<div id="574cb318" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a block from the original array</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</span>:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
@@ -533,11 +699,11 @@ Differences
   \end{equation}\]</span></p>
 </div>
 </div>
-<div id="8c9ad7cd" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="25">
+<div id="46b585f2" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([ <span class="fl">0.</span> , <span class="fl">1.3</span>, <span class="fl">5.</span> , <span class="fl">10.9</span>, <span class="fl">18.9</span>, <span class="fl">28.7</span>, <span class="fl">40.</span> ])</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.array([ <span class="fl">0.</span> , <span class="fl">0.49</span>, <span class="fl">1.</span> , <span class="fl">1.5</span> , <span class="fl">2.08</span>, <span class="fl">2.55</span>, <span class="fl">3.2</span> ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="02ac50bc" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="26">
+<div id="344a919d" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> (y[<span class="dv">1</span>:]<span class="op">-</span>y[:<span class="op">-</span><span class="dv">1</span>])<span class="op">/</span>(t[<span class="dv">1</span>:]<span class="op">-</span>t[:<span class="op">-</span><span class="dv">1</span>])</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
@@ -546,17 +712,17 @@ Differences
 </div>
 </div>
 </section>
-<section id="reshaping" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="reshaping"><span class="header-section-number">1.2.2</span> Reshaping</h3>
+<section id="reshaping" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="reshaping"><span class="header-section-number">11.2.2</span> Reshaping</h3>
 <p>Arrays can be reshaped into any form, which contains the same number of elements. For example, a 4-element array can be reshaped into a 2x2 array, or a 2x2 array can be reshaped into a 4-element array. Here are some examples:</p>
-<div id="ced095df" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="27">
+<div id="999a6993" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>np.zeros(<span class="dv">4</span>)</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>array([0., 0., 0., 0.])</code></pre>
 </div>
 </div>
-<div id="8fcf659d" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2019-04-09T12:09:59.284858Z&quot;,&quot;start_time&quot;:&quot;2019-04-09T12:09:59.280261Z&quot;}" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="28">
+<div id="64857657" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2019-04-09T12:09:59.284858Z&quot;,&quot;start_time&quot;:&quot;2019-04-09T12:09:59.280261Z&quot;}" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>np.reshape(a,(<span class="dv">2</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>array([[0., 0.],
@@ -564,10 +730,10 @@ Differences
 </div>
 </div>
 </section>
-<section id="adding-a-new-dimension-newaxis" class="level3" data-number="1.2.3">
-<h3 data-number="1.2.3" class="anchored" data-anchor-id="adding-a-new-dimension-newaxis"><span class="header-section-number">1.2.3</span> Adding a new dimension: newaxis</h3>
+<section id="adding-a-new-dimension-newaxis" class="level3" data-number="11.2.3">
+<h3 data-number="11.2.3" class="anchored" data-anchor-id="adding-a-new-dimension-newaxis"><span class="header-section-number">11.2.3</span> Adding a new dimension: newaxis</h3>
 <p>With <code>newaxis</code>, we can insert new dimensions in an array, for example converting a vector to a column or row matrix. Here are some examples:</p>
-<div id="480777b9" class="cell" data-execution_count="29">
+<div id="cc3d62c8" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  v <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -575,14 +741,14 @@ Differences
 <pre><code>array([1, 2, 3])</code></pre>
 </div>
 </div>
-<div id="71acf07f" class="cell" data-execution_count="30">
+<div id="c418cb46" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  v.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>(3,)</code></pre>
 </div>
 </div>
-<div id="cb919a48" class="cell" data-execution_count="31">
+<div id="c03cb759" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make a column matrix of the vector v</span></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  v[:, np.newaxis]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -592,7 +758,7 @@ Differences
        [3]])</code></pre>
 </div>
 </div>
-<div id="d1527a44" class="cell" data-execution_count="32">
+<div id="1ce53882" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># column matrix</span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  v[:,np.newaxis].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -600,7 +766,7 @@ Differences
 <pre><code>(3, 1)</code></pre>
 </div>
 </div>
-<div id="d7776f4f" class="cell" data-execution_count="33">
+<div id="bf92b85d" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># row matrix</span></span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  v[np.newaxis,:].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -609,12 +775,12 @@ Differences
 </div>
 </div>
 </section>
-<section id="stacking-and-repeating-arrays" class="level3" data-number="1.2.4">
-<h3 data-number="1.2.4" class="anchored" data-anchor-id="stacking-and-repeating-arrays"><span class="header-section-number">1.2.4</span> Stacking and repeating arrays</h3>
+<section id="stacking-and-repeating-arrays" class="level3" data-number="11.2.4">
+<h3 data-number="11.2.4" class="anchored" data-anchor-id="stacking-and-repeating-arrays"><span class="header-section-number">11.2.4</span> Stacking and repeating arrays</h3>
 <p>Using function <code>repeat</code>, <code>tile</code>, <code>vstack</code>, <code>hstack</code>, and <code>concatenate</code> we can create larger vectors and matrices from smaller ones by repeating or stacking. Please try the individual functions yourself in your notebook. We wont discuss them in detail here.</p>
-<section id="tile-and-repeat" class="level4" data-number="1.2.4.1">
-<h4 data-number="1.2.4.1" class="anchored" data-anchor-id="tile-and-repeat"><span class="header-section-number">1.2.4.1</span> Tile and repeat</h4>
-<div id="c7066f12" class="cell" data-execution_count="34">
+<section id="tile-and-repeat" class="level4" data-number="11.2.4.1">
+<h4 data-number="11.2.4.1" class="anchored" data-anchor-id="tile-and-repeat"><span class="header-section-number">11.2.4.1</span> Tile and repeat</h4>
+<div id="a079c79f" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: skip}</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -623,7 +789,7 @@ Differences
        [3, 4]])</code></pre>
 </div>
 </div>
-<div id="f7ea51c5" class="cell" data-execution_count="35">
+<div id="332ceb1b" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: skip}</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># repeat each element 3 times</span></span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  np.repeat(a, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -631,7 +797,7 @@ Differences
 <pre><code>array([1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4])</code></pre>
 </div>
 </div>
-<div id="799c2130" class="cell" data-execution_count="36">
+<div id="85fe7a0f" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: skip}</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tile the matrix 3 times</span></span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  np.tile(a, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -641,10 +807,10 @@ Differences
 </div>
 </div>
 </section>
-<section id="concatenate" class="level4" data-number="1.2.4.2">
-<h4 data-number="1.2.4.2" class="anchored" data-anchor-id="concatenate"><span class="header-section-number">1.2.4.2</span> Concatenate</h4>
+<section id="concatenate" class="level4" data-number="11.2.4.2">
+<h4 data-number="11.2.4.2" class="anchored" data-anchor-id="concatenate"><span class="header-section-number">11.2.4.2</span> Concatenate</h4>
 <p>Concatenate joins arrays along an existing axis. Here are some examples:</p>
-<div id="9c341270" class="cell" data-execution_count="37">
+<div id="613a6629" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: skip}</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>  a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -653,11 +819,11 @@ Differences
        [3, 4]])</code></pre>
 </div>
 </div>
-<div id="58f360f3" class="cell" data-execution_count="38">
+<div id="c8683d67" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: skip}</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  b <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="554d7d63" class="cell" data-execution_count="39">
+<div id="e00bf80d" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: skip}</span></span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  np.concatenate((a, b), axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
@@ -666,7 +832,7 @@ Differences
        [5, 6]])</code></pre>
 </div>
 </div>
-<div id="b7962530" class="cell" data-execution_count="40">
+<div id="8b012b9f" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: skip}</span></span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>  np.concatenate((a, b.T), axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
@@ -675,15 +841,15 @@ Differences
 </div>
 </div>
 </section>
-<section id="hstack-and-vstack" class="level4" data-number="1.2.4.3">
-<h4 data-number="1.2.4.3" class="anchored" data-anchor-id="hstack-and-vstack"><span class="header-section-number">1.2.4.3</span> Hstack and vstack</h4>
+<section id="hstack-and-vstack" class="level4" data-number="11.2.4.3">
+<h4 data-number="11.2.4.3" class="anchored" data-anchor-id="hstack-and-vstack"><span class="header-section-number">11.2.4.3</span> Hstack and vstack</h4>
 <p>hstack and vstack stack arrays horizontally and vertically. Here are some examples:</p>
-<div id="1da9fc29" class="cell" data-execution_count="41">
+<div id="42024eb0" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: skip}</span></span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  b <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9165bcf4" class="cell" data-execution_count="42">
+<div id="ec164847" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: skip}</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>  np.vstack((a,b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
@@ -691,7 +857,7 @@ Differences
        [2, 3, 4]])</code></pre>
 </div>
 </div>
-<div id="51ae4f70" class="cell" data-execution_count="43">
+<div id="a1c23b48" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: skip}</span></span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>  np.hstack((a,b.T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
@@ -701,12 +867,12 @@ Differences
 </section>
 </section>
 </section>
-<section id="applying-mathematical-functions" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="applying-mathematical-functions"><span class="header-section-number">1.3</span> Applying mathematical functions</h2>
+<section id="applying-mathematical-functions" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="applying-mathematical-functions"><span class="header-section-number">11.3</span> Applying mathematical functions</h2>
 <p>All kinds of mathematical operations can be carried out on arrays. Typically these operation act element wise as seen from the examples below where <code>a</code> is an array of numbers from 0 to 9.</p>
-<section id="operation-involving-one-array" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="operation-involving-one-array"><span class="header-section-number">1.3.1</span> Operation involving one array</h3>
-<div id="959cc173" class="cell" data-execution_count="44">
+<section id="operation-involving-one-array" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="operation-involving-one-array"><span class="header-section-number">11.3.1</span> Operation involving one array</h3>
+<div id="5cedee47" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>  a<span class="op">=</span>np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="fl">1.5</span>)</span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>  a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -714,21 +880,21 @@ Differences
 <pre><code>array([0. , 1.5, 3. , 4.5, 6. , 7.5, 9. ])</code></pre>
 </div>
 </div>
-<div id="2449403c" class="cell" data-execution_count="45">
+<div id="fb6bb3b0" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>  a<span class="op">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>array([0.  , 0.75, 1.5 , 2.25, 3.  , 3.75, 4.5 ])</code></pre>
 </div>
 </div>
-<div id="03e53e93" class="cell" data-execution_count="46">
+<div id="0849cc40" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>  a<span class="op">**</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>array([ 0.  ,  2.25,  9.  , 20.25, 36.  , 56.25, 81.  ])</code></pre>
 </div>
 </div>
-<div id="0d745aa1" class="cell" data-execution_count="47">
+<div id="9b4bff43" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  np.sin(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
@@ -736,7 +902,7 @@ Differences
         0.93799998,  0.41211849])</code></pre>
 </div>
 </div>
-<div id="266bb12d" class="cell" data-execution_count="48">
+<div id="ee4e3d0b" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>  np.exp(<span class="op">-</span>a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
@@ -744,7 +910,7 @@ Differences
        2.47875218e-03, 5.53084370e-04, 1.23409804e-04])</code></pre>
 </div>
 </div>
-<div id="1b8ad292" class="cell" data-execution_count="49">
+<div id="32f8aadb" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>  (a<span class="op">+</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
@@ -753,16 +919,16 @@ Differences
 </div>
 </div>
 </section>
-<section id="operations-involving-multiple-arrays" class="level3" data-number="1.3.2">
-<h3 data-number="1.3.2" class="anchored" data-anchor-id="operations-involving-multiple-arrays"><span class="header-section-number">1.3.2</span> Operations involving multiple arrays</h3>
+<section id="operations-involving-multiple-arrays" class="level3" data-number="11.3.2">
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="operations-involving-multiple-arrays"><span class="header-section-number">11.3.2</span> Operations involving multiple arrays</h3>
 <p>Operation between multiple vectors allow in particular very quick operations. The operations address then elements of the same index. These operations are called vector operations since the concern the whole array at the same time. The product between two vectors results therefore not in a dot product, which gives one number but in an array of multiplied elements.</p>
-<div id="e4693c2f" class="cell" data-execution_count="50">
+<div id="757097c0" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| ExecuteTime: {end_time: '2017-04-20T21:16:34.978152+02:00', start_time: '2017-04-20T21:16:34.973278'}</span></span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> np.array([<span class="fl">34.</span>, <span class="op">-</span><span class="dv">12</span>, <span class="fl">5.</span>,<span class="fl">1.2</span>])</span>
 <span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>  b <span class="op">=</span> np.array([<span class="fl">68.</span>, <span class="fl">5.0</span>, <span class="fl">20.</span>,<span class="fl">40.</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="fd7968b7" class="cell" data-execution_count="51">
+<div id="c05f6029" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| ExecuteTime: {end_time: '2017-04-20T21:16:41.810170+02:00', start_time: '2017-04-20T21:16:41.804038'}</span></span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>  a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -770,7 +936,7 @@ Differences
 <pre><code>array([102. ,  -7. ,  25. ,  41.2])</code></pre>
 </div>
 </div>
-<div id="452d7fc4" class="cell" data-execution_count="52">
+<div id="2bf77757" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| ExecuteTime: {end_time: '2017-04-20T21:16:48.002366+02:00', start_time: '2017-04-20T21:16:47.996136'}</span></span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| tags: []</span></span>
@@ -780,7 +946,7 @@ Differences
 </div>
 </div>
 <p>xxw</p>
-<div id="af052dd4" class="cell" data-execution_count="53">
+<div id="39c2782c" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| ExecuteTime: {end_time: '2017-04-20T21:20:19.373091+02:00', start_time: '2017-04-20T21:20:19.367493'}</span></span>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>  a<span class="op">*</span>np.exp(<span class="op">-</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -788,15 +954,15 @@ Differences
 <pre><code>array([ 9.98743918e-29, -8.08553640e-02,  1.03057681e-08,  5.09802511e-18])</code></pre>
 </div>
 </div>
-<div id="0ca9f170" class="cell" data-execution_count="54">
+<div id="caf1511c" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| tags: []</span></span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>  v1<span class="op">=</span>np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
 <span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>  v2<span class="op">=</span>np.array([<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="application" class="level2 section-application" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="application"><span class="header-section-number">1.4</span> Application</h2>
+<section id="application" class="level2 section-application" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="application"><span class="header-section-number">11.4</span> Application</h2>
 <ul>
 <li>Simulating and plotting the trajectory of a projectile under the influence of gravity (2D motion).</li>
 <li>Introduction to vector addition and resolving vectors into components.</li>
@@ -806,9 +972,34 @@ Differences
 </section>
 
 
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
 </section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../lectures/lecture03";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1218,6 +1409,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../lectures/lecture02/01-lecture02.html" class="pagination-link" aria-label="Lecture 2">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Lecture 2</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../lectures/lecture12/01-lecture12.html" class="pagination-link" aria-label="Lecture 12">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lecture 12</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

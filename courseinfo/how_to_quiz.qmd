@@ -1,0 +1,48 @@
+---
+title: "Anleitung Quiz"
+format: live-html
+live:
+  show-hints: true
+  show-solutions: true
+notebook-url: "https://github.com/yourusername/yourrepository/blob/main/notebooks/my-document.ipynb"
+---
+
+
+
+## Quiz
+
+**Question:** Write a python code that generates the number 1 to 10 and calculates the mean value without loading any additional modules.
+
+```{pyodide}
+#| exercise: ex1
+# Replace this comment with your code
+# For example add the lines:
+# n = range(1, 10)
+# sum(n)/len(n)
+#
+# The last line will define the result and willbe checked.
+```
+
+```{pyodide}
+#| exercise: ex1
+#| check: true
+#| solution: true
+
+n = range(1, 11)
+mean = sum(n)/len(n)
+feedback = None
+if (result == mean):
+  feedback = { "correct": True, "message": "Nice work!" }
+else:
+  feedback = { "correct": False, "message": "That's incorrect, sorry." }
+feedback
+```
+
+::: { .hint exercise="ex1"}
+::: { .callout-note collapse="false"}
+# Hint
+
+Use the `range`, `sum` and `len` functions.
+
+:::
+:::
