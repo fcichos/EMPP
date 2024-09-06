@@ -1,3 +1,7 @@
+---
+book: false
+---
+
 # Ressourcen
 
 Es gibt eine Menge weiterer gut strukturierter Ressourcen zu Python im Netz. Nachfolgend finden Sie nur eine sehr kleine Auswahl.

@@ -1,0 +1,12 @@
+{
+  "hash": "2ef427d57ed032f604dea691f7e65bd9",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: Python Example with Pyodide\nformat: live-html\nengine-url: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/\nlive:\n  show-hints: true\n  show-solutions: true\n---\n\n# Python Example\n\nThis example demonstrates running Python code in the browser using Pyodide.\n\n\n\n\n```{pyodide}\n#| exercise: ex_1_py\n#| check: true\nn = range(1, 11)\nmean = sum(n)/len(n)\nfeedback = None\nif (result == mean):\n  feedback = { \"correct\": True, \"message\": \"Nice work!\" }\nelse:\n  feedback = { \"correct\": False, \"message\": \"That's incorrect, sorry.\" }\nfeedback\n```\n\n\n\nThis is then not working anymore.\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

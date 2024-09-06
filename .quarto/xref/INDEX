@@ -62,13 +62,16 @@
     "01-lecture01.html": "4d6f7727"
   },
   "courseinfo/course_info.qmd": {
-    "course_info.html": "1b48360d"
+    "course_info.html": "1b48360d",
+    "course_info.ipynb": "7dc60493"
   },
   "exam/exam.qmd": {
-    "exam.html": "838e4024"
+    "exam.html": "838e4024",
+    "exam.ipynb": "ba4e2d36"
   },
   "seminars/seminar01/01-seminar01.qmd": {
-    "01-seminar01.html": "d5946f4a"
+    "01-seminar01.html": "d5946f4a",
+    "01-seminar01.ipynb": "82b008a6"
   },
   "courseinfo/website.qmd": {
     "website.html": "dba8a815"
@@ -78,5 +81,11 @@
   },
   "courseinfo/resources.qmd": {
     "resources.html": "1fe59f06"
+  },
+  "tt.ipynb": {
+    "tt.html": "3cf11606"
+  },
+  "lectures/lecture02/4_modules.qmd": {
+    "4_modules.html": "08dc82f9"
   }
 }

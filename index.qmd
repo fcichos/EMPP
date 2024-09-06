@@ -1,4 +1,28 @@
 ---
-title: "Home"
-notebook-url: "https://path/to/your/notebook.ipynb"
+title: Python Example with Pyodide
+format: live-html
+engine-url: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/
+live:
+  show-hints: true
+  show-solutions: true
 ---
+
+# Python Example
+
+This example demonstrates running Python code in the browser using Pyodide.
+
+
+```{pyodide}
+#| exercise: ex_1_py
+#| check: true
+n = range(1, 11)
+mean = sum(n)/len(n)
+feedback = None
+if (result == mean):
+  feedback = { "correct": True, "message": "Nice work!" }
+else:
+  feedback = { "correct": False, "message": "That's incorrect, sorry." }
+feedback
+```
+
+This is then not working anymore.

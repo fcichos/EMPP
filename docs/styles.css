@@ -236,7 +236,7 @@ h6,
 }
 
 .quarto-title {
-    padding: -50px;
+    display: none;
 }
 
 .callout-body {

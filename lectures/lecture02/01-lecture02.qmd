@@ -14,7 +14,8 @@ A function in Python is defined using the `def` keyword followed by the name of 
 
 Here's an example:
 
-```{python}
+```{pyodide}
+#| autorun: false
 # Define a function that takes two numbers as input and returns their sum
 def add_numbers(a: int, b: int) -> int:
   return a + b
@@ -25,7 +26,8 @@ def add_numbers(a: int, b: int) -> int:
 Functions can be called by specifying the name of the function followed by parentheses containing the arguments. The arguments passed to the function should match the number and type of parameters defined in the function.
 Here's an example:
 
-```{python}
+```{pyodide}
+#| autorun: false
 # Call the function with two numbers as input
 result = add_numbers(2, 3)
 print(result)  # prints 5
@@ -39,7 +41,8 @@ Loops are used to execute a block of code repeatedly. There are two main types o
 
 A `for` loop in Python is used to iterate over a sequence (such as a list or string) and execute a block of code for each item in the sequence. Here's an example:
 
-```{python}
+```{pyodide}
+#| autorun: false
 # Define a function that prints numbers from 1 to 10
 def print_numbers():
   for i in range(1, 11):
@@ -52,7 +55,8 @@ print_numbers()
 
 A `while` loop in Python is used to execute a block of code while a certain condition is met. The loop continues as long as the condition is true. Here's an example:
 
-```{python}
+```{pyodide}
+#| autorun: false
 # Define a function that prints numbers from 1 to 10 using a while loop
 def print_numbers_while():
   i = 1
@@ -71,7 +75,8 @@ Conditional statements are used to control the flow of your program based on con
 
 An `if` statement in Python is used to execute a block of code if a certain condition is met. Here's an example:
 
-```{python}
+```{pyodide}
+#| autorun: false
 # Define a function that prints "hello" or "goodbye" depending on the hour of day
 def print_hello_or_goodbye():
   current_hour = 12
@@ -88,7 +93,8 @@ print_hello_or_goodbye()
 
 An `else` statement in Python is used to execute a block of code if the condition in an `if` statement is not met.  Here's an example:
 
-```{python}
+```{pyodide}
+#| autorun: false
 # Define a function that prints "hello" or "goodbye" depending on the hour of day
 def print_hello_or_goodbye():
   current_hour = 12
@@ -107,8 +113,8 @@ Most of the functionality in Python is provided by *modules*. The Python Standar
 
 To use a module in a Python module it first has to be imported. A module can be imported using the `import` statement. For example, to import the module `math`, which contains many standard mathematical functions, we can do:
 
-```{python}
-#| tags: []
+```{pyodide}
+#| autorun: false
 import math
 import numpy
 
@@ -120,8 +126,8 @@ print(x)
 
 This includes the whole module and makes it available for use later in the program. Alternatively, we can chose to import all symbols (functions and variables) in a module so that we don't need to use the prefix "`math.`" every time we use something from the `math` module:
 
-```{python}
-#| tags: []
+```{pyodide}
+#| autorun: false
 from math import *
 
 x = cos(2 * pi)
@@ -223,8 +229,8 @@ Creating and using modules and packages in Python helps you organize your code b
 A namespace is an identifier used to organize objects, e.g. the methods and variables of a module. The prefix `math.` we have used in the previous section is such a namespace. You may also create your own namespace for a module. This is done by using the `import math as mymath` pattern.
 :::
 
-```{python}
-#| tags: []
+```{pyodide}
+#| autorun: false
 import math as m
 
 x = m.sqrt(2)
@@ -234,8 +240,8 @@ print(x)
 
 You may also only import specific functions of a module.
 
-```{python}
-#| tags: []
+```{pyodide}
+#| autorun: false
 from math import sinh as mysinh
 ```
 
@@ -243,9 +249,8 @@ from math import sinh as mysinh
 
 Once a module is imported, we can list the symbols it provides using the `dir` function:
 
-```{python}
-#| slideshow: {slide_type: fragment}
-#| tags: []
+```{pyodide}
+#| autorun: false
 import math
 
 print(dir(math))
@@ -253,19 +258,19 @@ print(dir(math))
 
 And using the function `help` we can get a description of each function (almost .. not all functions have docstrings, as they are technically called, but the vast majority of functions are documented this way).
 
-```{python}
-#| slideshow: {slide_type: fragment}
-#| tags: []
+```{pyodide}
+#| autorun: false
+
 help(math.log)
 ```
 
-```{python}
+```{pyodide}
 #| slideshow: {slide_type: fragment}
 #| tags: []
 math.log(10)
 ```
 
-```{python}
+```{pyodide}
 #| slideshow: {slide_type: fragment}
 math.log(8, 2)
 ```

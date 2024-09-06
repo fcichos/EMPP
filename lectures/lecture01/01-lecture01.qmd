@@ -1,17 +1,16 @@
 ---
-format:
-  ipynb: default
+title: "Introduction to Python and Basic Calculations"
+format: live-html
 notebook-url: "https://github.com/yourusername/yourrepository/blob/main/notebooks/my-document.ipynb"
 ---
 
-# Introduction to Python and Basic Calculations
-# What is Jupyter Notebook?
+## What is Jupyter Notebook?
 
 A Jupyter Notebook is a web browser based **interactive computing environment** that enables users to create documents that include code to be executed, results from the executed code such as plots and images,and finally also an additional documentation in form of markdown text including equations in LaTeX.
 
 These documents provide a **complete and self-contained record of a computation** that can be converted to various formats and shared with others using email,  version control systems (like git/[GitHub](https://github.com)) or [nbviewer.jupyter.org](http://nbviewer.jupyter.org).
 
-## Key Components of a Notebook
+### Key Components of a Notebook
 
 The Jupyter Notebook ecosystem consists of three main components:
 
@@ -21,7 +20,12 @@ The Jupyter Notebook ecosystem consists of three main components:
 
 Let's explore each of these components in detail:
 
-### Notebook Editor
+
+::: {.column-margin}
+new chapter
+:::
+
+#### Notebook Editor
 
 The Notebook editor is an interactive web-based application for creating and editing notebook documents. It allows users to write and run code interactively, as well as add rich text and multimedia content. When running Jupyter on a server, you'll typically use either the classic Jupyter Notebook interface or JupyterLab, which is a more advanced and feature-rich version of the notebook editor.
 
@@ -379,7 +383,7 @@ The assignment operator in Python is `=`. Python is a dynamically typed language
 
 Assigning a value to a new variable creates the variable:
 
-```{python}
+```{pyodide}
 # variable assignments
 x = 1.0
 my_favorite_variable = 12.2
@@ -389,24 +393,24 @@ x
 Although not explicitly specified, a variable does have a type associated with it (e.g., integer, float, string).
 The type is derived from the value that was assigned to it. To determine the type of a variable, we can use the `type` function.
 
-```{python}
+```{pyodide}
 type(x)
 ```
 
 If we assign a new value to a variable, its type can change.
 
-```{python}
+```{pyodide}
 x = 1
 ```
 
-```{python}
+```{pyodide}
 type(x)
 ```
 
 If we try to use a variable that has not yet been defined, we get a `NameError` error.
 
 
-```{python}
+```{pyodide}
 #print(g)
 ```
 
@@ -431,14 +435,14 @@ Python supports various number types, including integers, floating-point numbers
 **Integer Representation:**  Integers are whole numbers without a decimal point.
 
 
-```{python}
+```{pyodide}
 x = 1
 type(x)
 ```
 
 **Binary, Octal, and Hexadecimal:** Integers can be represented in different bases:
 
-```{python}
+```{pyodide}
 0b1010111110  # Binary
 0x0F          # Hexadecimal
 ```
@@ -447,14 +451,14 @@ type(x)
 
 **Floating Point Representation:** Numbers with a decimal point are treated as floating-point values.
 
-```{python}
+```{pyodide}
 x = 3.141
 type(x)
 ```
 
 **Maximum Float Value:** Python handles large floats, converting them to infinity if they exceed the maximum representable value.
 
-```{python}
+```{pyodide}
 1.7976931348623157e+308 * 2  # Output: inf
 ```
 
@@ -462,7 +466,7 @@ type(x)
 
 **Complex Number Representation:** Complex numbers have a real and an imaginary part.
 
-```{python}
+```{pyodide}
 c = 2 + 4j
 type(c)
 ```
@@ -471,14 +475,14 @@ type(c)
   - `c.real`: Real part of the complex number.
   - `c.imag`: Imaginary part of the complex number.
 
-```{python}
+```{pyodide}
 print(c.real)
 print(c.imag)
 ```
 
 **Complex Conjugate:** Use the `.conjugate()` method to get the complex conjugate.
 
-```{python}
+```{pyodide}
 c = c.conjugate()
 print(c)
 ```
@@ -492,7 +496,7 @@ print(c)
 
 Python automatically converts types during operations involving mixed types. The result is a type that can accommodate all the values involved in the operation. This is known as implicit type conversion. For example, adding an integer and a float results in a float.
 
-```{python}
+```{pyodide}
 integer_number = 123
 float_number = 1.23
 new_number = integer_number + float_number
@@ -503,7 +507,7 @@ type(new_number)
 
 Use functions like `int()`, `float()`, and `str()` to explicitly convert types from one to another. Explicit type conversion is also known as type casting. For example, converting a string to an integer.
 
-```{python}
+```{pyodide}
 num_string = "12"
 num_string = int(num_string)
 type(num_string)
@@ -512,7 +516,7 @@ type(num_string)
 Converting a float to an integer truncates the decimal part.
 
 
-```{python}
+```{pyodide}
 x = 5 / 2
 x = int(x)
 z = complex(x)
@@ -521,7 +525,7 @@ z = complex(x)
 ::: {.callout-tip title="Handling Complex Numbers"}
 Complex numbers cannot be directly converted to floats or integers; extract the real or imaginary part first.
 
-```{python}
+```{pyodide}
 y = bool(z.real)
 print(z.real, " -> ", y, type(y))
 ```
@@ -532,7 +536,7 @@ print(z.real, " -> ", y, type(y))
 The following code snippets demonstrate the use of variables and basic arithmetic operations in Python. The code snippets include examples of variable assignments, type conversion, and arithmetic operations.
 
 
-```{python}
+```{pyodide}
 #| code-fold: true
 #| code-summary: "Show the code"
 #| code-tools: true

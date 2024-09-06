@@ -1,14 +1,17 @@
 project:
   type: book
   output-dir: docs
+
 book:
   title: "Introduction to Computer-based Physical Modeling"
   author:
     name: "Frank Cichos"
-    position: center
-    style: italic
+    email: cichos@physik.uni-leipzig.de
+    affiliation:
+      - name: Leipzig University
+        city: Leipzig
+        url: http://www.uni-leipzig.de/~mona
   date: "8/14/2024"
-  # cover-image: "CompSoft_banner.png"
   abstract: |
     This book is a collection of lecture notes for the course "Introduction to Computer-based Physical Modeling" at the University of Leipzig. The course is part of the Bachelor's program in Physics and is intended for all students. The course covers the basics of computer-based physical modeling, including numerical methods, simulation techniques, and data analysis. The book is designed to be used as a reference for students taking the course, as well as for anyone interested in learning more about computer-based physical modeling.
   search: true
@@ -59,14 +62,19 @@ number-sections: true
 bibliography: references.bib
 
 format:
-  html:
+  live-html:
     theme:
       - cosmo
       - custom.scss
-    css: styles.css
+    css:
+      - styles.css
+      - https://cdnjs.cloudflare.com/ajax/libs/jupyterquiz/1.0.0/jupyterquiz.min.css
     code-fold: false
     backgroundcolor: "#F5F5F5"
     include-before-body: "quarto-header.html"
+    include-in-header:
+      text: |
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jupyterquiz/1.0.0/jupyterquiz.min.js"></script>
     #header-includes: |
     #  <img src="https://github.com/fcichos/EMPP24/blob/26f772271ecbbaa233e7c8659181ff6c447e73c7/CompSoft_banner.png" style="width: 100%; height: auto; display: block; margin: 0 auto;">
     toc: true
@@ -76,7 +84,10 @@ format:
 
   pdf:
     documentclass: scrreprt
+    cover-image: "CompSoft_banner.png"
     output-file: pdf-book
+    exclude:
+      - "courseinfo/"
 
 execute:
   freeze: auto
