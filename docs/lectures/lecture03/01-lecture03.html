@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Computer-based Physical Modeling - 10&nbsp; Lecture 3</title>
+<title>13&nbsp; Lecture 3 – Introduction to Computer-based Physical Modeling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../lectures/lecture12/01-lecture12.html" rel="next">
-<link href="../../lectures/lecture02/01-lecture02.html" rel="prev">
+<link href="../../lectures/lecture02/04-lecture02.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -155,7 +155,7 @@ window.Quarto = {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -167,18 +167,18 @@ window.Quarto = {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
     <a href="../../Introduction-to-Computer-based-Physical-Modeling.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Lecture Contents</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture03/01-lecture03.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lecture 3</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture03/01-lecture03.html">Lecture 3</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture03/01-lecture03.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Lecture 3</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -197,14 +197,14 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Example with Pyodide</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">This Book</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course Info</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -236,16 +236,16 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../courseinfo/how_to_quiz.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Anleitung Quiz</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Anleitung für das Quiz</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Exam</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -260,52 +260,92 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Lecture Contents</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Lecture 1</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture01/01-lecture01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to Python and Basic Calculations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Jupyter Notebooks</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture02/01-lecture02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Lecture 2</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture03/01-lecture03.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lecture 3</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture12/01-lecture12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lecture 12</span></span></a>
+  <a href="../../lectures/lecture01/02-lecture01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Python Overview</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Seminar Contents</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Lecture 2</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/01-lecture02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Python Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/02-lecture02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/04-lecture02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Plotting</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lecture 3</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture03/01-lecture03.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Lecture 3</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture12/01-lecture12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Lecture 12</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Seminar Contents</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../seminars/seminar01/01-seminar01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Seminar 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Seminar 1</span></span></a>
   </div>
 </li>
       </ul>
@@ -320,31 +360,31 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#dynamics-and-simple-motion" id="toc-dynamics-and-simple-motion" class="nav-link active" data-scroll-target="#dynamics-and-simple-motion"><span class="header-section-number">11</span> Dynamics and Simple Motion</a>
+  <li><a href="#dynamics-and-simple-motion" id="toc-dynamics-and-simple-motion" class="nav-link active" data-scroll-target="#dynamics-and-simple-motion"><span class="header-section-number">14</span> Dynamics and Simple Motion</a>
   <ul>
-  <li><a href="#creating-numpy-arrays" id="toc-creating-numpy-arrays" class="nav-link" data-scroll-target="#creating-numpy-arrays"><span class="header-section-number">11.1</span> Creating Numpy Arrays</a>
+  <li><a href="#creating-numpy-arrays" id="toc-creating-numpy-arrays" class="nav-link" data-scroll-target="#creating-numpy-arrays"><span class="header-section-number">14.1</span> Creating Numpy Arrays</a>
   <ul class="collapse">
-  <li><a href="#from-lists" id="toc-from-lists" class="nav-link" data-scroll-target="#from-lists"><span class="header-section-number">11.1.1</span> From lists</a></li>
-  <li><a href="#using-array-generating-functions" id="toc-using-array-generating-functions" class="nav-link" data-scroll-target="#using-array-generating-functions"><span class="header-section-number">11.1.2</span> Using array-generating functions</a></li>
+  <li><a href="#from-lists" id="toc-from-lists" class="nav-link" data-scroll-target="#from-lists"><span class="header-section-number">14.1.1</span> From lists</a></li>
+  <li><a href="#using-array-generating-functions" id="toc-using-array-generating-functions" class="nav-link" data-scroll-target="#using-array-generating-functions"><span class="header-section-number">14.1.2</span> Using array-generating functions</a></li>
   </ul></li>
-  <li><a href="#manipulating-numpy-arrays" id="toc-manipulating-numpy-arrays" class="nav-link" data-scroll-target="#manipulating-numpy-arrays"><span class="header-section-number">11.2</span> Manipulating NumPy arrays</a>
+  <li><a href="#manipulating-numpy-arrays" id="toc-manipulating-numpy-arrays" class="nav-link" data-scroll-target="#manipulating-numpy-arrays"><span class="header-section-number">14.2</span> Manipulating NumPy arrays</a>
   <ul class="collapse">
-  <li><a href="#slicing" id="toc-slicing" class="nav-link" data-scroll-target="#slicing"><span class="header-section-number">11.2.1</span> Slicing</a></li>
-  <li><a href="#reshaping" id="toc-reshaping" class="nav-link" data-scroll-target="#reshaping"><span class="header-section-number">11.2.2</span> Reshaping</a></li>
-  <li><a href="#adding-a-new-dimension-newaxis" id="toc-adding-a-new-dimension-newaxis" class="nav-link" data-scroll-target="#adding-a-new-dimension-newaxis"><span class="header-section-number">11.2.3</span> Adding a new dimension: newaxis</a></li>
-  <li><a href="#stacking-and-repeating-arrays" id="toc-stacking-and-repeating-arrays" class="nav-link" data-scroll-target="#stacking-and-repeating-arrays"><span class="header-section-number">11.2.4</span> Stacking and repeating arrays</a>
+  <li><a href="#slicing" id="toc-slicing" class="nav-link" data-scroll-target="#slicing"><span class="header-section-number">14.2.1</span> Slicing</a></li>
+  <li><a href="#reshaping" id="toc-reshaping" class="nav-link" data-scroll-target="#reshaping"><span class="header-section-number">14.2.2</span> Reshaping</a></li>
+  <li><a href="#adding-a-new-dimension-newaxis" id="toc-adding-a-new-dimension-newaxis" class="nav-link" data-scroll-target="#adding-a-new-dimension-newaxis"><span class="header-section-number">14.2.3</span> Adding a new dimension: newaxis</a></li>
+  <li><a href="#stacking-and-repeating-arrays" id="toc-stacking-and-repeating-arrays" class="nav-link" data-scroll-target="#stacking-and-repeating-arrays"><span class="header-section-number">14.2.4</span> Stacking and repeating arrays</a>
   <ul class="collapse">
-  <li><a href="#tile-and-repeat" id="toc-tile-and-repeat" class="nav-link" data-scroll-target="#tile-and-repeat"><span class="header-section-number">11.2.4.1</span> Tile and repeat</a></li>
-  <li><a href="#concatenate" id="toc-concatenate" class="nav-link" data-scroll-target="#concatenate"><span class="header-section-number">11.2.4.2</span> Concatenate</a></li>
-  <li><a href="#hstack-and-vstack" id="toc-hstack-and-vstack" class="nav-link" data-scroll-target="#hstack-and-vstack"><span class="header-section-number">11.2.4.3</span> Hstack and vstack</a></li>
+  <li><a href="#tile-and-repeat" id="toc-tile-and-repeat" class="nav-link" data-scroll-target="#tile-and-repeat"><span class="header-section-number">14.2.4.1</span> Tile and repeat</a></li>
+  <li><a href="#concatenate" id="toc-concatenate" class="nav-link" data-scroll-target="#concatenate"><span class="header-section-number">14.2.4.2</span> Concatenate</a></li>
+  <li><a href="#hstack-and-vstack" id="toc-hstack-and-vstack" class="nav-link" data-scroll-target="#hstack-and-vstack"><span class="header-section-number">14.2.4.3</span> Hstack and vstack</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#applying-mathematical-functions" id="toc-applying-mathematical-functions" class="nav-link" data-scroll-target="#applying-mathematical-functions"><span class="header-section-number">11.3</span> Applying mathematical functions</a>
+  <li><a href="#applying-mathematical-functions" id="toc-applying-mathematical-functions" class="nav-link" data-scroll-target="#applying-mathematical-functions"><span class="header-section-number">14.3</span> Applying mathematical functions</a>
   <ul class="collapse">
-  <li><a href="#operation-involving-one-array" id="toc-operation-involving-one-array" class="nav-link" data-scroll-target="#operation-involving-one-array"><span class="header-section-number">11.3.1</span> Operation involving one array</a></li>
-  <li><a href="#operations-involving-multiple-arrays" id="toc-operations-involving-multiple-arrays" class="nav-link" data-scroll-target="#operations-involving-multiple-arrays"><span class="header-section-number">11.3.2</span> Operations involving multiple arrays</a></li>
+  <li><a href="#operation-involving-one-array" id="toc-operation-involving-one-array" class="nav-link" data-scroll-target="#operation-involving-one-array"><span class="header-section-number">14.3.1</span> Operation involving one array</a></li>
+  <li><a href="#operations-involving-multiple-arrays" id="toc-operations-involving-multiple-arrays" class="nav-link" data-scroll-target="#operations-involving-multiple-arrays"><span class="header-section-number">14.3.2</span> Operations involving multiple arrays</a></li>
   </ul></li>
-  <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application"><span class="header-section-number">11.4</span> Application</a></li>
+  <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application"><span class="header-section-number">14.4</span> Application</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -358,9 +398,9 @@ window.Quarto = {
     </p>
 </div>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Lecture Contents</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture03/01-lecture03.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lecture 3</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture03/01-lecture03.html">Lecture 3</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture03/01-lecture03.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Lecture 3</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lecture 3</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Lecture 3</span></h1>
 </div>
 
 
@@ -377,8 +417,8 @@ window.Quarto = {
 </header>
 
 
-<section id="dynamics-and-simple-motion" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Dynamics and Simple Motion</h1>
+<section id="dynamics-and-simple-motion" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Dynamics and Simple Motion</h1>
 <ul>
 <li>Lists and arrays (introduction to <code>numpy</code> for numerical operations).</li>
 <li>Basic vector operations using <code>numpy</code>.</li>
@@ -400,16 +440,16 @@ Numpy Array
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="creating-numpy-arrays" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="creating-numpy-arrays"><span class="header-section-number">11.1</span> Creating Numpy Arrays</h2>
+<section id="creating-numpy-arrays" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="creating-numpy-arrays"><span class="header-section-number">14.1</span> Creating Numpy Arrays</h2>
 <p>There are a number of ways to initialize new numpy arrays, for example from</p>
 <ul>
 <li>a Python list or tuples using <code>np.array</code></li>
 <li>using functions that are dedicated to generating numpy arrays, such as <code>arange</code>, <code>linspace</code>, etc.</li>
 <li>reading data from files which will be covered in the files section of this course.</li>
 </ul>
-<section id="from-lists" class="level3" data-number="11.1.1">
-<h3 data-number="11.1.1" class="anchored" data-anchor-id="from-lists"><span class="header-section-number">11.1.1</span> From lists</h3>
+<section id="from-lists" class="level3" data-number="14.1.1">
+<h3 data-number="14.1.1" class="anchored" data-anchor-id="from-lists"><span class="header-section-number">14.1.1</span> From lists</h3>
 <p>For example, to create new vector and matrix arrays from Python lists we can use the <code>numpy.array</code> function. This is demonstrated in the following cells:</p>
 <div id="6e04a7a9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#this is a list</span></span>
@@ -428,8 +468,8 @@ Numpy Array
 </div>
 </div>
 </section>
-<section id="using-array-generating-functions" class="level3" data-number="11.1.2">
-<h3 data-number="11.1.2" class="anchored" data-anchor-id="using-array-generating-functions"><span class="header-section-number">11.1.2</span> Using array-generating functions</h3>
+<section id="using-array-generating-functions" class="level3" data-number="14.1.2">
+<h3 data-number="14.1.2" class="anchored" data-anchor-id="using-array-generating-functions"><span class="header-section-number">14.1.2</span> Using array-generating functions</h3>
 <p>For larger arrays it is inpractical to initialize the data manually, using explicit python lists. Instead we can use one of the many functions in <code>numpy</code> that generate arrays of different forms and shapes. Some of the more common are:</p>
 <div id="262e34a2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
@@ -616,10 +656,10 @@ zeros and ones
 </div>
 </section>
 </section>
-<section id="manipulating-numpy-arrays" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="manipulating-numpy-arrays"><span class="header-section-number">11.2</span> Manipulating NumPy arrays</h2>
-<section id="slicing" class="level3" data-number="11.2.1">
-<h3 data-number="11.2.1" class="anchored" data-anchor-id="slicing"><span class="header-section-number">11.2.1</span> Slicing</h3>
+<section id="manipulating-numpy-arrays" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="manipulating-numpy-arrays"><span class="header-section-number">14.2</span> Manipulating NumPy arrays</h2>
+<section id="slicing" class="level3" data-number="14.2.1">
+<h3 data-number="14.2.1" class="anchored" data-anchor-id="slicing"><span class="header-section-number">14.2.1</span> Slicing</h3>
 <p>Slicing is the name for extracting part of an array by the syntax <code>M[lower:upper:step]</code>. When any of these are unspecified, they default to the values <code>lower=0</code>, <code>upper=size of dimension</code>, <code>step=1</code>. We can also use negative indices to count from the end of the array. Here are some examples:</p>
 <div id="4c1a13c1" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>])</span>
@@ -712,8 +752,8 @@ Differences
 </div>
 </div>
 </section>
-<section id="reshaping" class="level3" data-number="11.2.2">
-<h3 data-number="11.2.2" class="anchored" data-anchor-id="reshaping"><span class="header-section-number">11.2.2</span> Reshaping</h3>
+<section id="reshaping" class="level3" data-number="14.2.2">
+<h3 data-number="14.2.2" class="anchored" data-anchor-id="reshaping"><span class="header-section-number">14.2.2</span> Reshaping</h3>
 <p>Arrays can be reshaped into any form, which contains the same number of elements. For example, a 4-element array can be reshaped into a 2x2 array, or a 2x2 array can be reshaped into a 4-element array. Here are some examples:</p>
 <div id="999a6993" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>np.zeros(<span class="dv">4</span>)</span>
@@ -730,8 +770,8 @@ Differences
 </div>
 </div>
 </section>
-<section id="adding-a-new-dimension-newaxis" class="level3" data-number="11.2.3">
-<h3 data-number="11.2.3" class="anchored" data-anchor-id="adding-a-new-dimension-newaxis"><span class="header-section-number">11.2.3</span> Adding a new dimension: newaxis</h3>
+<section id="adding-a-new-dimension-newaxis" class="level3" data-number="14.2.3">
+<h3 data-number="14.2.3" class="anchored" data-anchor-id="adding-a-new-dimension-newaxis"><span class="header-section-number">14.2.3</span> Adding a new dimension: newaxis</h3>
 <p>With <code>newaxis</code>, we can insert new dimensions in an array, for example converting a vector to a column or row matrix. Here are some examples:</p>
 <div id="cc3d62c8" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
@@ -775,11 +815,11 @@ Differences
 </div>
 </div>
 </section>
-<section id="stacking-and-repeating-arrays" class="level3" data-number="11.2.4">
-<h3 data-number="11.2.4" class="anchored" data-anchor-id="stacking-and-repeating-arrays"><span class="header-section-number">11.2.4</span> Stacking and repeating arrays</h3>
+<section id="stacking-and-repeating-arrays" class="level3" data-number="14.2.4">
+<h3 data-number="14.2.4" class="anchored" data-anchor-id="stacking-and-repeating-arrays"><span class="header-section-number">14.2.4</span> Stacking and repeating arrays</h3>
 <p>Using function <code>repeat</code>, <code>tile</code>, <code>vstack</code>, <code>hstack</code>, and <code>concatenate</code> we can create larger vectors and matrices from smaller ones by repeating or stacking. Please try the individual functions yourself in your notebook. We wont discuss them in detail here.</p>
-<section id="tile-and-repeat" class="level4" data-number="11.2.4.1">
-<h4 data-number="11.2.4.1" class="anchored" data-anchor-id="tile-and-repeat"><span class="header-section-number">11.2.4.1</span> Tile and repeat</h4>
+<section id="tile-and-repeat" class="level4" data-number="14.2.4.1">
+<h4 data-number="14.2.4.1" class="anchored" data-anchor-id="tile-and-repeat"><span class="header-section-number">14.2.4.1</span> Tile and repeat</h4>
 <div id="a079c79f" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: skip}</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
@@ -807,8 +847,8 @@ Differences
 </div>
 </div>
 </section>
-<section id="concatenate" class="level4" data-number="11.2.4.2">
-<h4 data-number="11.2.4.2" class="anchored" data-anchor-id="concatenate"><span class="header-section-number">11.2.4.2</span> Concatenate</h4>
+<section id="concatenate" class="level4" data-number="14.2.4.2">
+<h4 data-number="14.2.4.2" class="anchored" data-anchor-id="concatenate"><span class="header-section-number">14.2.4.2</span> Concatenate</h4>
 <p>Concatenate joins arrays along an existing axis. Here are some examples:</p>
 <div id="613a6629" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: skip}</span></span>
@@ -841,8 +881,8 @@ Differences
 </div>
 </div>
 </section>
-<section id="hstack-and-vstack" class="level4" data-number="11.2.4.3">
-<h4 data-number="11.2.4.3" class="anchored" data-anchor-id="hstack-and-vstack"><span class="header-section-number">11.2.4.3</span> Hstack and vstack</h4>
+<section id="hstack-and-vstack" class="level4" data-number="14.2.4.3">
+<h4 data-number="14.2.4.3" class="anchored" data-anchor-id="hstack-and-vstack"><span class="header-section-number">14.2.4.3</span> Hstack and vstack</h4>
 <p>hstack and vstack stack arrays horizontally and vertically. Here are some examples:</p>
 <div id="42024eb0" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: skip}</span></span>
@@ -867,11 +907,11 @@ Differences
 </section>
 </section>
 </section>
-<section id="applying-mathematical-functions" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="applying-mathematical-functions"><span class="header-section-number">11.3</span> Applying mathematical functions</h2>
+<section id="applying-mathematical-functions" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="applying-mathematical-functions"><span class="header-section-number">14.3</span> Applying mathematical functions</h2>
 <p>All kinds of mathematical operations can be carried out on arrays. Typically these operation act element wise as seen from the examples below where <code>a</code> is an array of numbers from 0 to 9.</p>
-<section id="operation-involving-one-array" class="level3" data-number="11.3.1">
-<h3 data-number="11.3.1" class="anchored" data-anchor-id="operation-involving-one-array"><span class="header-section-number">11.3.1</span> Operation involving one array</h3>
+<section id="operation-involving-one-array" class="level3" data-number="14.3.1">
+<h3 data-number="14.3.1" class="anchored" data-anchor-id="operation-involving-one-array"><span class="header-section-number">14.3.1</span> Operation involving one array</h3>
 <div id="5cedee47" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| slideshow: {slide_type: fragment}</span></span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>  a<span class="op">=</span>np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="fl">1.5</span>)</span>
@@ -919,8 +959,8 @@ Differences
 </div>
 </div>
 </section>
-<section id="operations-involving-multiple-arrays" class="level3" data-number="11.3.2">
-<h3 data-number="11.3.2" class="anchored" data-anchor-id="operations-involving-multiple-arrays"><span class="header-section-number">11.3.2</span> Operations involving multiple arrays</h3>
+<section id="operations-involving-multiple-arrays" class="level3" data-number="14.3.2">
+<h3 data-number="14.3.2" class="anchored" data-anchor-id="operations-involving-multiple-arrays"><span class="header-section-number">14.3.2</span> Operations involving multiple arrays</h3>
 <p>Operation between multiple vectors allow in particular very quick operations. The operations address then elements of the same index. These operations are called vector operations since the concern the whole array at the same time. The product between two vectors results therefore not in a dot product, which gives one number but in an array of multiplied elements.</p>
 <div id="757097c0" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#| ExecuteTime: {end_time: '2017-04-20T21:16:34.978152+02:00', start_time: '2017-04-20T21:16:34.973278'}</span></span>
@@ -961,8 +1001,8 @@ Differences
 </div>
 </section>
 </section>
-<section id="application" class="level2 section-application" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="application"><span class="header-section-number">11.4</span> Application</h2>
+<section id="application" class="level2 section-application" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="application"><span class="header-section-number">14.4</span> Application</h2>
 <ul>
 <li>Simulating and plotting the trajectory of a projectile under the influence of gravity (2D motion).</li>
 <li>Introduction to vector addition and resolving vectors into components.</li>
@@ -1035,18 +1075,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1078,7 +1107,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1086,7 +1137,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1411,13 +1462,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../lectures/lecture02/01-lecture02.html" class="pagination-link" aria-label="Lecture 2">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Lecture 2</span></span>
+      <a href="../../lectures/lecture02/04-lecture02.html" class="pagination-link" aria-label="Plotting">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Plotting</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../lectures/lecture12/01-lecture12.html" class="pagination-link" aria-label="Lecture 12">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lecture 12</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Lecture 12</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
