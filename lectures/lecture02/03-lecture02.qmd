@@ -1,0 +1,29 @@
+---
+title: "Plotting"
+pyodide:
+  packages:
+    - matplotlib
+    - numpy
+notebook-url: "https://github.com/fcichos/EMPP24/blob/main/lectures/lecture01/01-lecture01.ipynb"
+---
+
+## Plotting
+  - Writing a Python function to calculate and plot the position vs. time for an object moving with constant velocity or constant acceleration.
+  - Visualization: Use `matplotlib` to plot simple kinematic graphs (position vs. time, velocity vs. time).
+  - Homework: Extend the kinematic function to handle different initial conditions and plot the results.
+
+
+```{pyodide}
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# Set up the figure, the axis, and the plot element we want to animate
+x=np.linspace(0,s*np.pi,100)
+y=np.sin(x)
+
+plt.figure(figsize=(4,3))
+plt.plot(x,y)
+plt.show()
+
+```

@@ -1,0 +1,212 @@
+---
+title: "Modules"
+pyodide:
+  packages:
+    - matplotlib
+    - numpy
+notebook-url: "https://github.com/fcichos/EMPP24/blob/main/lectures/lecture01/01-lecture01.ipynb"
+---
+
+
+## Modules
+
+Most of the functionality in Python is provided by *modules*. The Python Standard Library is a large collection of modules that provides *cross-platform* implementations of common facilities such as access to the operating system, file I/O, string management, network communication, math, web-scraping, text manipulation, machine learning and much more.
+
+To use a module in a Python module it first has to be imported. A module can be imported using the `import` statement. For example, to import the module `math`, which contains many standard mathematical functions, we can do:
+
+```{pyodide}
+#| autorun: false
+import math
+import numpy
+
+x = math.sqrt(2 * math.pi)
+x = numpy.sqrt(2 * numpy.pi)
+
+print(x)
+```
+
+This includes the whole module and makes it available for use later in the program. Alternatively, we can chose to import all symbols (functions and variables) in a module so that we don't need to use the prefix "`math.`" every time we use something from the `math` module:
+
+```{pyodide}
+#| autorun: false
+from math import *
+
+x = cos(2 * pi)
+
+print(x)
+```
+
+This pattern can be very convenient, but in large programs that include many modules it is often a good idea to keep the symbols from each module in their own namespaces, by using the `import math` pattern. This would eliminate potentially confusing problems.
+
+### Namespaces
+
+::: {.callout-note  title="Namespaces"}
+A namespace is an identifier used to organize objects, e.g. the methods and variables of a module. The prefix `math.` we have used in the previous section is such a namespace. You may also create your own namespace for a module. This is done by using the `import math as mymath` pattern.
+:::
+
+```{pyodide}
+#| autorun: false
+import math as m
+
+x = m.sqrt(2)
+
+print(x)
+```
+
+You may also only import specific functions of a module.
+
+```{pyodide}
+#| autorun: false
+from math import sinh as mysinh
+```
+
+### Directory of a module
+
+Once a module is imported, we can list the symbols it provides using the `dir` function:
+
+```{pyodide}
+#| autorun: false
+import math
+
+print(dir(math))
+```
+
+And using the function `help` we can get a description of each function (almost .. not all functions have docstrings, as they are technically called, but the vast majority of functions are documented this way).
+
+```{pyodide}
+#| autorun: false
+
+help(math.log)
+```
+
+```{pyodide}
+#| slideshow: {slide_type: fragment}
+#| tags: []
+math.log(10)
+```
+
+```{pyodide}
+#| slideshow: {slide_type: fragment}
+math.log(8, 2)
+```
+
+We can also use the `help` function directly on modules: Try
+
+    help(math)
+
+Some very useful modules form the Python standard library are `os`, `sys`, `math`, `shutil`, `re`, `subprocess`, `multiprocessing`, `threading`.
+
+A complete lists of standard modules for Python 3 is available at http://docs.python.org/3/library/ .
+
+
+### Advanced topics
+
+::: {.callout-note  title="Create Your Own Modules" collapse=true}
+Creating your own modules in Python is a great way to organize your code and make it reusable. A module is simply a file containing Python definitions and statements. Here's how you can create and use your own module:
+
+#### Creating a Module
+
+To create a module, you just need to save your Python code in a file with a `.py` extension. For example, let's create a module named `mymodule.py` with the following content:
+
+```python
+# mymodule.py
+
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
+
+def add(a: int, b: int) -> int:
+    return a + b
+```
+
+#### Using Your Module
+
+Once you have created your module, you can import it into other Python scripts using the `import` statement. Here's an example of how to use the `mymodule` we just created:
+
+```python
+# main.py
+
+import mymodule
+
+# Use the functions from mymodule
+print(mymodule.greet("Alice"))
+print(mymodule.add(5, 3))
+```
+
+#### Importing Specific Functions
+
+You can also import specific functions from a module using the `from ... import ...` syntax:
+
+```python
+# main.py
+
+from mymodule import greet, add
+
+# Use the imported functions directly
+print(greet("Bob"))
+print(add(10, 7))
+```
+
+#### Module Search Path
+
+When you import a module, Python searches for the module in the following locations:
+1. The directory containing the input script (or the current directory if no script is specified).
+2. The directories listed in the `PYTHONPATH` environment variable.
+3. The default directory where Python is installed.
+
+You can view the module search path by printing the `sys.path` variable:
+
+```python
+import sys
+print(sys.path)
+```
+
+#### Creating Packages
+
+A package is a way of organizing related modules into a directory hierarchy. A package is simply a directory that contains a special file named `__init__.py`, which can be empty. Here's an example of how to create a package:
+
+```
+mypackage/
+    __init__.py
+    module1.py
+    module2.py
+```
+
+You can then import modules from the package using the dot notation:
+
+```python
+# main.py
+
+from mypackage import module1, module2
+
+# Use the functions from the modules
+print(module1.some_function())
+print(module2.another_function())
+```
+
+Creating and using modules and packages in Python helps you organize your code better and makes it easier to maintain and reuse.
+:::
+
+::: {.callout-note  title="Namespaces in Your Modules" collapse=true}
+#### Namespaces in Packages
+
+You can also create sub-packages by adding more directories with `__init__.py` files. This allows you to create a hierarchical structure for your modules:
+
+```
+mypackage/
+    __init__.py
+    subpackage/
+        __init__.py
+        submodule.py
+```
+
+You can then import submodules using the full package name:
+
+```python
+# main.py
+
+from mypackage.subpackage import submodule
+
+# Use the functions from the submodule
+print(submodule.some_sub_function())
+```
+:::
