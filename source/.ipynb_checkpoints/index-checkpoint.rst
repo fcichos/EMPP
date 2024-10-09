@@ -11,13 +11,6 @@ Die Programmiersprache Python ist für alle Arten von wissenschaftlichen und tec
 
 Dieser Kurs soll Sie in die Programmierung mit Python einführen. Er richtet sich vorwiegend an Anfänger, wir hoffen jedoch, dass er auch für Fortgeschrittene interessant ist. Wir beginnen mit einer Einführung in die Jupyter-Notebook-Umgebung, die wir während des gesamten Kurses verwenden werden. Anschließend geben wir eine Einführung in Python und zeigen Ihnen einige grundlegende Funktionen, wie zum Beispiel das Plotten und Analysieren von Daten durch Kurvenanpassung sowie das Lesen und Schreiben von Dateien. Diese Aufgaben werden Ihnen während Ihres Physikstudiums begegnen.
 
-Wir präsentieren Ihnen auch einige fortgeschrittene Themen, wie die Animation in Jupyter und die Simulation physikalischer Prozesse in den Bereichen Mechanik, Elektrostatik, Wellen und Optik. Wir zeigen Ihnen auch einige fortgeschrittene Themen wie die Animation in Jupyter und die Simulation von physikalischen Prozessen in
-
-* Mechanik
-* Elektrostatik
-* Wellen
-* Optik
-
 Wir werden keine umfassende Liste von numerischen Simulationsschemata präsentieren, sondern die Beispiele nutzen, um Ihre Neugierde zu wecken. Da es leichte Unterschiede in der Syntax der verschiedenen Python-Versionen gibt, werden wir uns im Folgenden immer auf den **Python 3**-Standard beziehen.
 
 Der Kurs wird auf Deutsch gehalten werden. Die Webseiten, die Sie für den Überblick zu Python zur Verfügung gestellt bekommen, werden allerdings auf Englisch sein. Übungsaufgaben werden werden auf Deutsch gestellt.
