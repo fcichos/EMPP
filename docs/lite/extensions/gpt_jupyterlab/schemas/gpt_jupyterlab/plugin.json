@@ -1,0 +1,70 @@
+{
+  "jupyter.lab.shortcuts": [
+    {
+      "command": "@gpt_jupyterlab/plugin:run_gpt",
+      "keys": ["Accel Space"],
+      "selector": ".jp-Cell"
+    }
+  ],
+  "title": "gpt_jupyterlab",
+  "description": "gpt_jupyterlab settings.",
+  "type": "object",
+  "jupyter.lab.menus": {
+    "main": [
+      {
+        "id": "jp-mainmenu-edit",
+        "items": [
+          {
+            "command": "@gpt_jupyterlab/plugin:run_gpt",
+            "rank": 500
+          }
+        ]
+      }
+    ]
+  },
+  "properties": {
+    "openai_key": {
+      "type": "string",
+      "title": "Open AI API Key",
+      "description": "Your Open AI key to run GPT-3.",
+      "default": ""
+    },
+    "code_model": {
+      "type": "string",
+      "title": "Code Model",
+      "description": "Default model to use when running code.",
+      "default": "code-davinci-002"
+    },
+    "text_model": {
+      "type": "string",
+      "title": "Text Model",
+      "description": "Default model to use when running on a piece of text.",
+      "default": "text-davinci-003"
+    },
+    "max_tokens": {
+      "type": "integer",
+      "title": "Max Tokens",
+      "description": "The maximum number of tokens to generate in the completion.  The token count of your prompt plus max_tokens cannot exceed the model's context length. Most models have a context length of 2048 tokens (except for the newest models, which support 4096). (From OpenAI Documentation)",
+      "default": 256
+    },
+    "temperature": {
+      "type": "number",
+      "title": "Temperature",
+      "description": "What sampling temperature to use. Higher values means the model will take more risks. Try 0.9 for more creative applications, and 0 (argmax sampling) for ones with a well-defined answer.(From OpenAI Documentation)",
+      "default": 0.7
+    },
+    "presence_penalty": {
+      "type": "number",
+      "title": "Presence Penalty",
+      "description": "Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.(From OpenAI Documentation)",
+      "default": 0
+    },
+    "frequency_penalty": {
+      "type": "number",
+      "title": "Frequency Penalty",
+      "description": "Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.(From OpenAI Documentation)",
+      "default": 0
+    }
+  },
+  "additionalProperties": false
+}
