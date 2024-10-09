@@ -695,7 +695,7 @@ p(x)dx=\frac{1}{\pi \Delta x}\frac{dx}{\sqrt{1-\left (\frac{x(t)}{\Delta x}\righ
 </div>
 </div>
 <p>If you look at the resulting array, you will find, that the entries have not been removed but replaced by <code class="docutils literal notranslate"><span class="pre">--</span></code>, so the values are not existent and thefore not plotted.</p>
-<p><img alt="cefb2a1635e44e6d927b0b32257caf64" class="no-scaled-link" src="../../_images/masked.png" style="width: 400px;" /></p>
+<p><img alt="c3dcc7b1c60c4f5882c67f13227dc48a" class="no-scaled-link" src="../../_images/masked.png" style="width: 400px;" /></p>
 </section>
 </section>
 </section>
@@ -830,6 +830,7 @@ p(x)dx=\frac{1}{\pi \Delta x}\frac{dx}{\sqrt{1-\left (\frac{x(t)}{\Delta x}\righ
 <p class="admonition-title"><strong>Note:</strong> Physics Interlude</p>
 <p>Interference of spherical waves</p>
 </div>
+<details><p>Click here to expand</p>
 <p>We want to use contour plots to explore the interference of two spherical waves. A spherical wave can be given by a complex spatial amplitude</p>
 <p><span class="math">\begin{equation}
 U(r)=U_{0}\frac{e^{-i\,k r}}{r}
@@ -839,8 +840,8 @@ U(r)=U_{0}\frac{e^{-i\,k r}}{r}
 U(r,t)=U_{0}\frac{e^{-i\,k r}}{r}e^{i\omega t}
 \end{equation}</span></p>
 <p>We will however ignore the temporal factor, as we are interested in the spatial interference pattern with a time-averaged intensity.</p>
-<p>To show interference, we just use two of those monochromatic waves located at <span class="math notranslate nohighlight">\(\vec{r}_{1}\)</span> and <span class="math notranslate nohighlight">\(\vec{r}_{2}\)</span>.</p>
-<img alt="interference" src="../../_images/interference.png" />
+</details><p>To show interference, we just use two of those monochromatic waves located at <span class="math notranslate nohighlight">\(\vec{r}_{1}\)</span> and <span class="math notranslate nohighlight">\(\vec{r}_{2}\)</span>.</p>
+<p><img alt="interference" src="../../_images/interference.png" /></p>
 <p>To obtain the total amplitude we have to sum up the wavefunctions of the two sources.</p>
 <p><span class="math">\begin{equation}
 U(\vec{r})=U_{01}\frac{e^{-i\,k |\vec{r}-\vec{r}_1|}}{|\vec{r}-\vec{r}_1|}+U_{02}\frac{e^{-i\,k |\vec{r}-\vec{r}_2|}}{|\vec{r}-\vec{r}_2|}
@@ -936,7 +937,7 @@ I(r)\propto |U(r)|^2
 <h2>Additional Plotting - Explicit Version<a class="headerlink" href="#Additional-Plotting---Explicit-Version" title="Permalink to this heading">#</a></h2>
 <p>While we have so far largely relied on the default setting and the automatic arrangement of plots, there is also a way to precisely design your plot. Python provides the tools of object oriented programming and thus modules provide classes which can be instanced into objects. This explicit interfaces allows you to control all details without the automatisms of <code class="docutils literal notranslate"><span class="pre">pyplot</span></code>.</p>
 <p>The figure below, which is taken from the matplotlib documentation website shows the sets of commands and the objects in the figure, the commands refer to. It is a nice reference, when creating a figure.</p>
-<img alt="anatomy of a figure" src="../../_images/anatomy_oaf.png" />
+<p><img alt="anatomy of a figure" src="../../_images/anatomy_oaf.png" /></p>
 <section id="Plots-with-Multiple-Spines">
 <h3>Plots with Multiple Spines<a class="headerlink" href="#Plots-with-Multiple-Spines" title="Permalink to this heading">#</a></h3>
 <p>Sometimes it is very useful to plot different quantities in the same plot with the same x-axis but with different y-axes. Here is some example, where each line plot has its own y-axis.</p>
@@ -1286,7 +1287,7 @@ I(r)\propto |U(r)|^2
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Jan 30, 2024</div>
+              Last updated on Oct 09, 2024</div>
           </div>
           <div class="right-details">
             
