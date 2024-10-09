@@ -165,7 +165,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../course-info/website.html">Diese Webseiten</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../course-info/schedule.html">Zeitplan für den Kurs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../course-info/assignments.html">Übungsaufgaben</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../course-info/exam.html">PrüfungM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../course-info/exam.html">Prüfung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../course-info/resources.html">Ressourcen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../course-info/instructor.html">Vorlesender</a></li>
 </ul>
@@ -182,9 +182,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/L1/overview_1.html">Lecture Contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1_variables.html">Variables and types</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Operators and comparisons</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Interactive-Pyodide-Code-Example">Interactive Pyodide Code Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Input-parameters">Input parameters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Call-the-function">Call the function</a></li>
 </ul>
 
 </div>
@@ -309,20 +306,15 @@
 8
 </pre></div></div>
 </div>
-</section>
-<section id="Interactive-Pyodide-Code-Example">
-<h1>Interactive Pyodide Code Example<a class="headerlink" href="#Interactive-Pyodide-Code-Example" title="Permalink to this heading">#</a></h1>
-<p>In this example, we define a simple function and execute it using Pyodide in the browser.</p>
-<p>```{code-cell} python3 :kernel: pyodide :execution_mode: manual # Define a function that takes two numbers as input and returns their sum def add_numbers(a, b): return a + b</p>
-</section>
-<section id="Input-parameters">
-<h1>Input parameters<a class="headerlink" href="#Input-parameters" title="Permalink to this heading">#</a></h1>
-<p>a = 5 b = 7</p>
-</section>
-<section id="Call-the-function">
-<h1>Call the function<a class="headerlink" href="#Call-the-function" title="Permalink to this heading">#</a></h1>
-<p>result = add_numbers(a, b) print(f”The sum of {a} and {b} is {result}”) ```</p>
-<div class="admonition warning">
+<div id="jupyterlite"></div><script>
+     const lite = new JupyterLite.IFrame({
+         baseUrl: 'https://jupyterlite.github.io/demo',
+         iframeId: 'jupyterlite-iframe',
+         iframeContainer: document.getElementById('jupyterlite'),
+         kernelType: 'python',
+     });
+     lite.load();
+ </script><div class="admonition warning">
 <p class="admonition-title"><strong>Note:</strong> Division</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">/</span></code> operator always performs a floating point division in Python 3.x. This is not true in Python 2.x, where the result of <code class="docutils literal notranslate"><span class="pre">/</span></code> is always an integer if the operands are integers. To be more specific, <code class="docutils literal notranslate"><span class="pre">1/2</span> <span class="pre">=</span> <span class="pre">0.5</span></code> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) in Python 3.x, and <code class="docutils literal notranslate"><span class="pre">1/2</span> <span class="pre">=</span> <span class="pre">0</span></code> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) in Python 2.x (but <code class="docutils literal notranslate"><span class="pre">1.0/2</span> <span class="pre">=</span> <span class="pre">0.5</span></code> in Python 2.x).</p>
 </div>
