@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Operators and comparisons" href="2_operators.html" /><link rel="prev" title="Lecture Contents" href="../../lectures/L1/overview_1.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
-        <title>Variables and types - Einführung in die Modellierung Physikalischer Prozesse 23 documentation</title>
+        <title>Variables and types - Einführung in die Modellierung Physikalischer Prozesse 24/25 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../_static/theme_overrides.css" />
@@ -125,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">Einführung in die Modellierung Physikalischer Prozesse 23 documentation</div></a>
+      <a href="../../index.html"><div class="brand">Einführung in die Modellierung Physikalischer Prozesse 24/25 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -151,7 +151,6 @@
     <img class="sidebar-logo" src="../../_static/mona_logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Einführung in die Modellierung Physikalischer Prozesse 23 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -340,27 +339,47 @@ Cell <span class="ansi-green-fg">In[15], line 1</span>
 <section id="Number-types">
 <h2>Number types<a class="headerlink" href="#Number-types" title="Permalink to this heading">#</a></h2>
 <p>Python allows as any programming language different types of variables. The type of a variable can be always accessed with the help of the <em>type()</em> command. The variable can store different data types. A list of different data types can be found in the notebook on data types. Here we treat numbers or the numeric data type a bit special.</p>
-<p>Numbers can be represented in different number systems by adding a special character in the number</p>
+<section id="Comparison-of-Number-Types">
+<h3>Comparison of Number Types<a class="headerlink" href="#Comparison-of-Number-Types" title="Permalink to this heading">#</a></h3>
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Number System</p></th>
-<th class="head"><p>Prefix</p></th>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Limits</p></th>
+<th class="head"><p>Use Cases</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Binary</p></td>
-<td><p>0b or 0B</p></td>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>42</p></td>
+<td><p>Whole numbers</p></td>
+<td><p>Unlimited precision (bounded by available memory)</p></td>
+<td><p>Counting, indexing</p></td>
 </tr>
-<tr class="row-odd"><td><p>Octal</p></td>
-<td><p>0o or 0O</p></td>
+<tr class="row-odd"><td><p>float</p></td>
+<td><p>3.14159</p></td>
+<td><p>Decimal numbers</p></td>
+<td><p>Typically ±1.8e308 with 15-17 digits of precision (64-bit)</p></td>
+<td><p>Scientific calculations, prices</p></td>
 </tr>
-<tr class="row-even"><td><p>Hexadecimal</p></td>
-<td><p>00x or 0X</p></td>
+<tr class="row-even"><td><p>complex</p></td>
+<td><p>2 + 3j</p></td>
+<td><p>Numbers with real and imaginary parts</p></td>
+<td><p>Same as float for both real and imaginary parts</p></td>
+<td><p>Signal processing, electrical engineering</p></td>
+</tr>
+<tr class="row-odd"><td><p>bool</p></td>
+<td><p>True / False</p></td>
+<td><p>Logical values</p></td>
+<td><p>Only two values: True (1) and False (0)</p></td>
+<td><p>Conditional operations, flags</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 <section id="Integers">
 <h3>Integers<a class="headerlink" href="#Integers" title="Permalink to this heading">#</a></h3>
 <p>Python treats numbers without a decimal point automatically as an integer. In Python 2 there has been a maximum integer possible, which does not exist in Python 3 anymore.</p>
@@ -802,7 +821,7 @@ float
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2023, Frank Cichos
+                Copyright &#169; 2024, Frank Cichos
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -833,6 +852,7 @@ float
 <li><a class="reference internal" href="#Symbol-names">Symbol names</a></li>
 <li><a class="reference internal" href="#Variable-Assignment">Variable Assignment</a></li>
 <li><a class="reference internal" href="#Number-types">Number types</a><ul>
+<li><a class="reference internal" href="#Comparison-of-Number-Types">Comparison of Number Types</a></li>
 <li><a class="reference internal" href="#Integers">Integers</a></li>
 <li><a class="reference internal" href="#Floating-Point">Floating Point</a></li>
 <li><a class="reference internal" href="#Complex-Numbers">Complex Numbers</a></li>
@@ -855,7 +875,6 @@ float
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"TeX": {"equationNumbers": {"autoNumber": "AMS", "useLabelIds": true}}, "tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>

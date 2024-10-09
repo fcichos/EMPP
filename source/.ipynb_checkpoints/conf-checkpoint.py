@@ -34,6 +34,7 @@ html_theme_options = {
     "source_repository": "https://github.com/fcichos/EMPP/",
     "source_branch": "main",
     "source_directory": "source/",
+    "sidebar_hide_name": True,
 }
 
 html_last_updated_fmt = ""
