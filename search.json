@@ -355,18 +355,136 @@
     "text": "Consider a generalised description of the oscillation by\n\\[\\begin{equation}\n    f(t)=a(t)\\cos(\\omega_S t)\n\\end{equation}\\]\nWhere \\(a(t)\\) is the time varying amplitude. This product of two functions can be treated with the help of the so-called convolution theorem. A convolution is represented by\n\\[\\begin{equation}\\label{eq:convint}\n    f(t)*g(t)=\\int_{-\\infty}^{\\infty} f(\\tau)g(t-\\tau)d\\tau\n\\end{equation}\\]\nwhich means, that one sums up all contributions of a function \\(g(t)\\) centered at a time value of \\(\\tau\\) with amplitude \\(f(\\tau)\\). Convolutions play an important role for example in optics, where the microscope resolution function convolutes the structural images of all objects.\nThis convolution integral can be transformed into a product of the Fourier transforms \\((\\mathscr{F}\\)) of both functions\n\\[\\begin{equation}\n    H(\\omega)G(\\omega)=\\mathscr{F}(f*g)\n\\end{equation}\\]\nSo the product of the Fourier transform of the individual functions in the product is the same as the Fourier transform of the convolution integral Eq. \\(\\ref{eq:convint}\\).\nWhat is relevant in the discussed case of the oscillating guitar string is the inverse relation of the convolution theorem\n\\[\\begin{equation}\n    H(\\omega)*G(\\omega)=\\mathscr{F}(f(t) g(t))\n\\end{equation}\\]\nThis means that the Fourier transform of a product of two functions is equivalent to a convolution of the Fourier transforms of the individual functions.\nThe convolution integral of the Fourier transformed function then corresponds to\n\\[\\begin{equation}\\label{eq:inverse_conv}\n    H(\\omega)*G(\\omega)=\\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^{\\infty} F(\\Omega)G(\\omega-\\Omega)d\\Omega\n\\end{equation}\\]\nUsing this relation and\n\\[\\begin{equation}\n    H(\\omega)=\\mathscr{F}(\\cos(\\omega_S t))\n\\end{equation}\\]\nand\n\\[\\begin{equation}\n    G(\\omega)=\\mathscr{F}(\\Theta(t) e^{-t/\\tau})\n\\end{equation}\\]\nI can compute all types of amplitude modulated harmonic oscillations in Fourier space. In particular, the Fourier transform \\(\\mathscr{F}\\) of a harmonic function \\(\\cos(\\omega_S t)\\) results in a so-called delta function (\\(\\delta(t)\\))\n\\[\\begin{equation}\\label{eq:cosineft}\n    H(\\omega)=\\mathscr{F}(\\cos(\\omega_S t))=\\sqrt{\\frac{\\pi}{2}} \\delta(\\omega+\\omega_S)-\\sqrt{\\frac{\\pi}{2}} \\delta(\\omega+\\omega_S)\n\\end{equation}\\]\nThe \\(\\delta\\)-function has the properties as described in section \\(\\ref{sec:delta}\\).\n\\[\\begin{equation}\\label{eq:lorentz}\n    G(\\omega)=\\mathscr{F}(\\Theta(t)e^{-t/\\tau})=\\frac{1}{\\sqrt{2\\pi}}\\frac{i \\tau}{(i-\\tau\\omega)}\n\\end{equation}\\]\nThe squared magnitude of Eq. \\(\\ref{eq:lorentz}\\) yields a Lorentzian lineshape\n\\[\\begin{equation}\n    |G(\\omega)|^{2}=\\frac{1}{2 \\pi} \\frac{\\tau^2}{1+\\tau^{2}\\omega^{2}}\n\\end{equation}\\]\nfor the frequency spectrum, which is very common in physics. This Lorentzian function has a maximum at \\(\\omega=0\\) with \\(|G(\\omega)|^2=\\tau^2/2\\pi\\).\nWith the help of Eq. \\(\\ref{eq:cosineft}\\) and Eq. \\(\\ref{eq:lorentz}\\) I can write the convolution integral \\(\\ref{eq:inverse_conv}\\) as\n\\[\\begin{equation}\\label{Delta Functions}\n    H(\\omega)*G(\\omega)=\\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^{\\infty}  \\sqrt{\\frac{\\pi}{2}} [\\delta(\\Omega-\\omega_S) + \\delta(\\Omega+\\omega_S)] \\frac{1}{\\sqrt{2\\pi}}\\frac{i \\tau}{(i-\\tau (\\omega-\\Omega))} d\\Omega\n\\end{equation}\\]\nThe integration can be carried out using the integration rule in Eq. \\(\\ref{delta}\\) for the delta function which leaves me with the integral of the function displayed in Eq. \\(\\ref{Delta Functions}\\) as equal to\n\\[\\begin{equation}\\label{Hallo}\n    F(\\omega)= H(\\omega)*G(\\omega)=\\frac{1}{\\sqrt{2\\pi}}\\cdot\\frac{\\sqrt\\pi}{\\sqrt2 \\sqrt{2\\pi}}\\left [\\frac{i\\tau}{(i-\\tau(\\omega-\\omega_S))} + \\frac{i\\tau}{(i-\\tau(\\omega+\\omega_S))}\\right ]\n\\end{equation}\\]\nThis yields\n\\[\\begin{equation}\nF(\\omega)=\\frac{1}{\\sqrt{2\\pi}}\\frac{1/\\tau+i\\omega}{(1/\\tau+i\\omega)^2+\\omega_S^2}\n\\end{equation}\\]"
   },
   {
-    "objectID": "lectures/lecture11/1_plane_waves.html",
-    "href": "lectures/lecture11/1_plane_waves.html",
-    "title": "Plane Waves",
-    "section": "",
-    "text": "In the previous parts we have dealt with mechanics essentially. Even if we have described Brownian motion, this has been done by a particular type of Newtons equation of motion, it is much like mechanics. Now we would like to have a look at some examples from electromagnetic waves. We will not solve the wave equation but look at some solution using the complex notion of the electric field. This shall train our use of complex numbers. The special solutions are the plane wave and the spherical wave."
+    "objectID": "lectures/lecture11/1_repetition.html#what-is-a-program",
+    "href": "lectures/lecture11/1_repetition.html#what-is-a-program",
+    "title": "Repetition",
+    "section": "What is a Program?",
+    "text": "What is a Program?\nA program is a sequence of instructions that tells a computer how to perform a specific task. These instructions must be:\n\nPrecise and unambiguous\nWritten in a language the computer understands\nLogically structured\nDesigned to achieve a specific goal",
+    "crumbs": [
+      "Python Basics",
+      "Lecture 11",
+      "Repetition"
+    ]
   },
   {
-    "objectID": "lectures/lecture11/1_plane_waves.html#plane-wave-at-a-boundary",
-    "href": "lectures/lecture11/1_plane_waves.html#plane-wave-at-a-boundary",
-    "title": "Plane Waves",
-    "section": "Plane wave at a boundary",
-    "text": "Plane wave at a boundary\nWe want to go a bit further now and have a look at the wave at a boundary between vaccum and glass for example. At this boundary, the electromagnetic wave is reflected and refracted such that two new wavevectors arise. These are easily calculated by the law of reflection and the law of refraction. Besides that, also the amplitude of the waves change. To calculate the field we need the so-called Fresnel equations.\n\nFresnel equations\nWhen electromagnetic waves hit a boundary, they will be reflected and refracted. The amplitude of the reflected and refracted wave is determined by the refractive index of the two materials, the angles and the polarizations. For the latter we differentiate between a polarization in the incident plane (the p-polarization) and perpendicular to the incident plane (s-polarization).\n\n\n\nFresnel\n\n\nFor each of the polarization we in general obtain a coeffcient for the reflection and one for the refraction. To make our calculation a bit simpler, we will assume only s-polarization. Then the two Fresnel coefficients are calculated as\n\\[\\begin{equation}\n\\left( \\frac{E_{0t}}{E_{0e}} \\right)_s = t_s =\\frac{2n_1 \\cos{\\alpha}}{n_1\\cos{\\alpha}+n_2\\cos{\\beta}}\n\\end{equation}\\]\n\\[\\begin{equation}\n\\left( \\frac{E_{0r}}{E_{0e}} \\right)_s = r_s =\\frac{n_1\\cos{\\alpha}-n_2\\cos{\\beta}}{n_1\\cos{\\alpha}+n_2\\cos{\\beta}}\n\\end{equation}\\]\nwhere \\(\\alpha\\) and \\(\\beta\\) are the incident and refraction angles, respectively. Note that the Fresnel coefficients are for the amplitudes and can be negative to account for a phase jump by \\(\\pi\\). To obtain the coefficients for the intensities, one has to square the Fresnel coefficients.\nTo bring everything correctly together, we therefore have to define a number of things. We will need a function calculating the outgoing angle from Snells law. And we need at least two functions calculating the reflection and transmission coefficient for one polarization. We use the s-polarization, where the electric field is always parallel to the interface.\n\n\n\n\n\n\nWith the definition of the Fresnel coefficients, we may now plot the reflection and the transmission coefficients. Note that the sum of reflection and transmission coefficients for the intensities have to add up to one if there is no absorption.\n\n\n\n\n\n\n\n\nIncident wave\nWe want to study the electric fields and the intensities at various angles. The most interesting one, is a case where we have total internal reflection. This happens, if light is propagating from the higher refractive index to a lower refractive index. If we start in glass (\\(n_1=1.5\\)) and transmit to vacuum \\(n_2=1\\), then at all angles above \\(\\theta_{c}=\\sin^{-1}(n_2/n_1)=41.810314895778596\\) are total internally reflected.\n\n\n\n\n\n\nWe may now specify or calculate the corresponding wavevectors for an incident angle of \\(45^{\\circ}\\). In general all waves (reflect, refracted) have to match with their phase at the boundary. If the boundary is along the x-direction, we therefore have\n\\[\\begin{equation}\nk_{x,in}=k_{x,r}=k_{x,t}\n\\end{equation}\\]\nThis fixes one component of all wavevectors in the plane. What is then missing, is the z-component of the wavevectors. The incident wavevector is providing \\(k_{z,in}\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReflected wave\nFor the reflected wave the z-component of the wavevector is just flipped in sign, e.g. \\(k_{z,r}=-k_{z,in}\\).\n\n\n\n\n\n\n\n\nRefracted wave\nThe magnitude of the z-component of the transmitted wave can be obtained from the conservation of momentum. The momentum of the wave is proportional to the magnitude of the wavevector on both sides.\n\\[\\begin{equation}\nk_{1}^2=k_{2}^{2}\n\\end{equation}\\]\nwhich is, due to \\(k=nk_{0}\\) the same as\n\\[\\begin{equation}\nn_{1}^2(k_{0x,in}^2+k_{0z,in}^{2})=n_2^2 (k_{0x,t}^{2}+k_{0z,t}^2)\n\\end{equation}\\]\nfrom which we get\n\\[\\begin{equation}\nk_{0z,t}=\\pm \\frac{1}{n_{1}}\\sqrt{n_2^2 k_{0z,in}^2 -(n_{1}^2-n_{2}^2)k_{0x}^{2}}\n\\end{equation}\\]\nIf we go from a medium with high refrective index to a lower one, the second term in the root may surpass the first one and the whole solution will become imaginary. The wave in the lower refractive index medium \\(n_{2}\\) is then evanescent.\n\n\n\n\n\n\nThe total field thus containes three components. In medium 1, the field consists of the incident and the reflected wave. In medium 2, we just have the transmitted wave, with a possible evanescent solution.\n\n\n\n\n\n\nThe plots below show the electric field on the left side and the intensity on the right side. Interestingly, the intensity is that of a standing wave in medium 1, while it is just decaying in medium 2. Note that the electric field is oscillating along the interface in medium 2 but not at all in z-direction. This means that there is no energy transport along the z-direction anymore.\n\n\n\n\n\n\nWe will also have a look ath the propagation of the wave yb defining our animation.\ncanvas = Canvas(width=500, height=500,sync_image_data=True)\ndisplay(canvas)\n\ndef animate(k,time):\n    for t in time:\n        field=np.zeros([500,500],dtype=complex)\n        field1=plane_wave(k1,omega0,r1,t)\n        field2=plane_wave(k2,omega0,r1,t)\n        field3=plane_wave(k3,omega0,r2,t)\n\n        beta=snell(n1,n2,alpha)\n        r=rs(n1,n2,alpha,beta)\n        t=ts(n1,n2,alpha,beta)\n\n        field[0:250,:]=field1+r*field2\n        field[250:,:]=t*field3\n        tmp=np.real(field.transpose())\n\n        c=m.to_rgba(tmp)\n        with hold_canvas(canvas):\n            canvas.put_image_data(c[:,:,:3]*255,0,0)\n        sleep(0.02)\n\ntime= np.linspace(0,1e-14,100)\nanimate(k,time)\nAs it is apparent from our simulation, the wave is longitudinal in medium 2 at this angle. Try to modify the incident angles yourself to see if the wave becomes propagating in medium 2.\nIn the last plot, we will have a look at the intensity in medium 1 and medium 2. What is nicely visible, is that the intensity decays in medium 2 with increasing distance. As compared to the absorbing case, there is not oscillation of the field in the z-direction, hence no energy transfer. Convince yourself that this is indeed an exponential decay by using the appropriate semilog plot."
+    "objectID": "lectures/lecture11/1_repetition.html#basic-elements-of-python",
+    "href": "lectures/lecture11/1_repetition.html#basic-elements-of-python",
+    "title": "Repetition",
+    "section": "Basic Elements of Python",
+    "text": "Basic Elements of Python\n\nVariables and Data Types\nIn Python, variables are containers for storing data values. Python is dynamically typed, meaning you don’t need to declare variable types explicitly.\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 1: Unit Conversion\n\n\n\n\n\nWrite a program that converts a temperature from Celsius to Fahrenheit and Kelvin. Use the formulas:\n\n°F = (°C × 9/5) + 32\nK = °C + 273.15\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNumerical Operations\nPython supports all basic mathematical operations:\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 2: Basic Kinematics\n\n\n\n\n\nCalculate the final velocity of an object given its initial velocity, acceleration, and time. Use the formula: v = v₀ + at\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLists and Arrays\nFor physics calculations, we often need to work with collections of numbers:\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 3: Force Calculations\n\n\n\n\n\nCreate an array of masses (in kg) and calculate the force of gravity on each mass. Use F = mg where g = 9.81 m/s². Numpy is already imported and can be used with np\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution",
+    "crumbs": [
+      "Python Basics",
+      "Lecture 11",
+      "Repetition"
+    ]
+  },
+  {
+    "objectID": "lectures/lecture11/1_repetition.html#control-structures",
+    "href": "lectures/lecture11/1_repetition.html#control-structures",
+    "title": "Repetition",
+    "section": "Control Structures",
+    "text": "Control Structures\n\nConditional Statements\nConditional statements allow programs to make decisions:\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 4: Phase of Matter\n\n\n\n\n\nWrite a program that determines the phase of water based on its temperature (assume standard pressure):\n\nBelow 0°C: Solid (Ice)\n0-100°C: Liquid\nAbove 100°C: Gas (Steam)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 5: Projectile Range Calculator\n\n\n\n\n\nWrite a program that calculates if a projectile will hit a target given:\n\nInitial velocity\nLaunch angle\nTarget distance\n\nUse the range formula: \\(R = \\frac{v_0^2 \\sin(2\\theta)}{g}\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLoops\nLoops allow repetition of code:\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 6: Radioactive Decay Calculator\n\n\n\n\n\nWrite a program that simulates radioactive decay over multiple half-lives:\n\nStart with an initial number of atoms (\\(N_0\\))\nCalculate remaining atoms after each half-life period\nContinue for 5 half-lives\n\nUse the formula \\(N(t) = N_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/t_{1/2}}\\) where \\(t_{1/2}\\) is the half-life.\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 7: Time to Ground Calculator\n\n\n\n\n\nWrite a program that calculates how long it takes for an object to reach the ground when dropped from different heights:\n\nStart with an initial height \\(h_0\\)\nCalculate position using \\(y = h_0 - \\frac{1}{2}gt^2\\)\nFind the time when \\(y = 0\\)\nUse small time steps (\\(dt = 0.01s\\))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution",
+    "crumbs": [
+      "Python Basics",
+      "Lecture 11",
+      "Repetition"
+    ]
+  },
+  {
+    "objectID": "lectures/lecture11/1_repetition.html#basic-numerical-calculations",
+    "href": "lectures/lecture11/1_repetition.html#basic-numerical-calculations",
+    "title": "Repetition",
+    "section": "Basic Numerical Calculations",
+    "text": "Basic Numerical Calculations\nFor physics, we often use NumPy for numerical calculations:",
+    "crumbs": [
+      "Python Basics",
+      "Lecture 11",
+      "Repetition"
+    ]
+  },
+  {
+    "objectID": "lectures/lecture11/1_repetition.html#simple-physics-example",
+    "href": "lectures/lecture11/1_repetition.html#simple-physics-example",
+    "title": "Repetition",
+    "section": "Simple Physics Example",
+    "text": "Simple Physics Example\nLet’s calculate the position of a projectile under gravity:",
+    "crumbs": [
+      "Python Basics",
+      "Lecture 11",
+      "Repetition"
+    ]
+  },
+  {
+    "objectID": "lectures/lecture11/1_repetition.html#code-organization",
+    "href": "lectures/lecture11/1_repetition.html#code-organization",
+    "title": "Repetition",
+    "section": "Code Organization",
+    "text": "Code Organization\n\nUse meaningful variable names\nAdd comments to explain complex logic\nBreak down complex problems into smaller functions\nUse consistent indentation",
+    "crumbs": [
+      "Python Basics",
+      "Lecture 11",
+      "Repetition"
+    ]
+  },
+  {
+    "objectID": "lectures/lecture11/1_repetition.html#example-of-well-organized-code",
+    "href": "lectures/lecture11/1_repetition.html#example-of-well-organized-code",
+    "title": "Repetition",
+    "section": "Example of Well-Organized Code",
+    "text": "Example of Well-Organized Code\nHere’s an example calculating the period of a simple pendulum:",
+    "crumbs": [
+      "Python Basics",
+      "Lecture 11",
+      "Repetition"
+    ]
+  },
+  {
+    "objectID": "lectures/lecture11/1_repetition.html#classes-and-objects",
+    "href": "lectures/lecture11/1_repetition.html#classes-and-objects",
+    "title": "Repetition",
+    "section": "Classes and Objects",
+    "text": "Classes and Objects\nClasses are blueprints for creating objects that combine data (attributes) and functions (methods). This is particularly useful for modeling physical systems.\n\nBasic Class Structure\n\n\n\n\n\n\n\n\n\n\n\n\nAdvanced Self-Exercise 8: Electric Charge Class\n\n\n\n\n\nCreate a class representing an electric charge that can:\n\nStore position \\((x, y)\\), charge magnitude \\((q)\\), and mass \\((m)\\)\nCalculate electric potential at a point using \\(V = \\frac{kq}{r}\\)\nCalculate electric force on another charge using \\(F = \\frac{kq_1q_2}{r^2}\\)\nCalculate the direction of force (attraction/repulsion)\n\nUse \\(k = 8.99 \\times 10^9\\) N\\(\\cdot\\)m²/C² (Coulomb’s constant)\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution",
+    "crumbs": [
+      "Python Basics",
+      "Lecture 11",
+      "Repetition"
+    ]
+  },
+  {
+    "objectID": "lectures/lecture11/1_repetition.html#a-physics-example-harmonic-oscillator",
+    "href": "lectures/lecture11/1_repetition.html#a-physics-example-harmonic-oscillator",
+    "title": "Repetition",
+    "section": "A Physics Example: Harmonic Oscillator",
+    "text": "A Physics Example: Harmonic Oscillator\nHere’s a more complete example modeling a harmonic oscillator:",
+    "crumbs": [
+      "Python Basics",
+      "Lecture 11",
+      "Repetition"
+    ]
+  },
+  {
+    "objectID": "lectures/lecture11/1_repetition.html#inheritance",
+    "href": "lectures/lecture11/1_repetition.html#inheritance",
+    "title": "Repetition",
+    "section": "Inheritance",
+    "text": "Inheritance\nClasses can inherit properties and methods from other classes:",
+    "crumbs": [
+      "Python Basics",
+      "Lecture 11",
+      "Repetition"
+    ]
+  },
+  {
+    "objectID": "lectures/lecture11/1_repetition.html#key-points-about-classes",
+    "href": "lectures/lecture11/1_repetition.html#key-points-about-classes",
+    "title": "Repetition",
+    "section": "Key Points About Classes",
+    "text": "Key Points About Classes\n\nClasses combine data (attributes) and functions (methods)\nThe __init__ method initializes new objects\nself refers to the instance of the class\nMethods can modify the object’s state\nInheritance allows creating specialized versions of classes\nClasses help organize code and model real-world systems\n\nClasses are particularly useful in physics for: - Modeling physical systems - Organizing simulation code - Creating reusable components - Building hierarchies of related objects",
+    "crumbs": [
+      "Python Basics",
+      "Lecture 11",
+      "Repetition"
+    ]
   },
   {
     "objectID": "lectures/lecture11/3_diffusion_equation.html",
@@ -810,7 +928,7 @@
     "href": "seminars/seminar07/25_publication_ready_figures.html#ein-dokument-vorbereiten",
     "title": "Erstellung veröffentlichungsreifer Diagramme",
     "section": "Ein Dokument vorbereiten",
-    "text": "Ein Dokument vorbereiten\nWenn man ein Dokument (Bachelorarbeit z.B.) erstellt, ist es nützlich, seine Daten und Texte geschickt zur organisieren, um sich Arbeit zu ersparen. Hier ist ein Beipiel,\n\ndisplay_tree(\"Report\")\n\nReport/\n├── Figures/\n│   ├── Figure1/\n│   │   └── Figure1.ipynb\n│   ├── figure1.pdf\n│   ├── Figure2/\n│   │   └── Figure2.ipynb\n│   └── figure2.pdf\n└── Text/\n    ├── article.aux\n    ├── article.fdb_latexmk\n    ├── article.fls\n    ├── article.log\n    ├── article.pdf\n    ├── article.synctex.gz\n    ├── article.tex\n    ├── content/\n    │   ├── 01_introduction.tex\n    │   ├── 02_theory.tex\n    │   ├── 03_results.tex\n    │   └── 04_conclusions.tex\n    ├── paper.aux\n    ├── paper.bbl\n    ├── paper.blg\n    ├── paper.fdb_latexmk\n    ├── paper.fls\n    ├── paper.log\n    ├── paper.pdf\n    ├── paper.qmd\n    ├── paper.synctex.gz\n    ├── paper.tex\n    └── paperNotes.bib\n\n\n/var/folders/6n/52yj404d5ld29901s85pd6sh0000gn/T/ipykernel_21032/929351223.py:1: DeprecationWarning:\n\nThe `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is \"31st December 2024\"."
+    "text": "Ein Dokument vorbereiten\nWenn man ein Dokument (Bachelorarbeit z.B.) erstellt, ist es nützlich, seine Daten und Texte geschickt zur organisieren, um sich Arbeit zu ersparen. Hier ist ein Beipiel,\n\ndisplay_tree(\"Report\")\n\nReport/\n├── Figures/\n│   ├── Figure1/\n│   │   └── Figure1.ipynb\n│   ├── figure1.pdf\n│   ├── Figure2/\n│   │   └── Figure2.ipynb\n│   └── figure2.pdf\n└── Text/\n    ├── article.aux\n    ├── article.fdb_latexmk\n    ├── article.fls\n    ├── article.log\n    ├── article.pdf\n    ├── article.synctex.gz\n    ├── article.tex\n    ├── content/\n    │   ├── 01_introduction.tex\n    │   ├── 02_theory.tex\n    │   ├── 03_results.tex\n    │   └── 04_conclusions.tex\n    ├── paper.aux\n    ├── paper.bbl\n    ├── paper.blg\n    ├── paper.fdb_latexmk\n    ├── paper.fls\n    ├── paper.log\n    ├── paper.pdf\n    ├── paper.qmd\n    ├── paper.synctex.gz\n    ├── paper.tex\n    └── paperNotes.bib\n\n\n/var/folders/6n/52yj404d5ld29901s85pd6sh0000gn/T/ipykernel_24008/929351223.py:1: DeprecationWarning:\n\nThe `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is \"31st December 2024\"."
   },
   {
     "objectID": "seminars/seminar06/Report/Figures/Figure1/Figure1.html",
@@ -872,7 +990,7 @@
     "href": "seminars/seminar06/25_publication_ready_figures.html#ein-dokument-vorbereiten",
     "title": "Erstellung veröffentlichungsreifer Diagramme",
     "section": "Ein Dokument vorbereiten",
-    "text": "Ein Dokument vorbereiten\nWenn man ein Dokument (Bachelorarbeit z.B.) erstellt, ist es nützlich, seine Daten und Texte geschickt zur organisieren, um sich Arbeit zu ersparen. Hier ist ein Beipiel,\n\ndisplay_tree(\"Report\")\n\nReport/\n├── Figures/\n│   ├── Figure1/\n│   │   └── Figure1.ipynb\n│   ├── figure1.pdf\n│   ├── Figure2/\n│   │   └── Figure2.ipynb\n│   └── figure2.pdf\n└── Text/\n    ├── article.aux\n    ├── article.fdb_latexmk\n    ├── article.fls\n    ├── article.log\n    ├── article.pdf\n    ├── article.synctex.gz\n    ├── article.tex\n    ├── content/\n    │   ├── 01_introduction.tex\n    │   ├── 02_theory.tex\n    │   ├── 03_results.tex\n    │   └── 04_conclusions.tex\n    ├── paper.aux\n    ├── paper.bbl\n    ├── paper.blg\n    ├── paper.fdb_latexmk\n    ├── paper.fls\n    ├── paper.log\n    ├── paper.pdf\n    ├── paper.qmd\n    ├── paper.synctex.gz\n    ├── paper.tex\n    └── paperNotes.bib\n\n\n/var/folders/6n/52yj404d5ld29901s85pd6sh0000gn/T/ipykernel_20863/929351223.py:1: DeprecationWarning:\n\nThe `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is \"31st December 2024\".",
+    "text": "Ein Dokument vorbereiten\nWenn man ein Dokument (Bachelorarbeit z.B.) erstellt, ist es nützlich, seine Daten und Texte geschickt zur organisieren, um sich Arbeit zu ersparen. Hier ist ein Beipiel,\n\ndisplay_tree(\"Report\")\n\nReport/\n├── Figures/\n│   ├── Figure1/\n│   │   └── Figure1.ipynb\n│   ├── figure1.pdf\n│   ├── Figure2/\n│   │   └── Figure2.ipynb\n│   └── figure2.pdf\n└── Text/\n    ├── article.aux\n    ├── article.fdb_latexmk\n    ├── article.fls\n    ├── article.log\n    ├── article.pdf\n    ├── article.synctex.gz\n    ├── article.tex\n    ├── content/\n    │   ├── 01_introduction.tex\n    │   ├── 02_theory.tex\n    │   ├── 03_results.tex\n    │   └── 04_conclusions.tex\n    ├── paper.aux\n    ├── paper.bbl\n    ├── paper.blg\n    ├── paper.fdb_latexmk\n    ├── paper.fls\n    ├── paper.log\n    ├── paper.pdf\n    ├── paper.qmd\n    ├── paper.synctex.gz\n    ├── paper.tex\n    └── paperNotes.bib\n\n\n/var/folders/6n/52yj404d5ld29901s85pd6sh0000gn/T/ipykernel_23836/929351223.py:1: DeprecationWarning:\n\nThe `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is \"31st December 2024\".",
     "crumbs": [
       "Seminars",
       "Seminar06",
@@ -1883,136 +2001,18 @@
     "text": "Interference between a spherical and a plane wave\nIn the section on plane waves, we had a look at the interference pattern of plane waves in space. We now have a look at the interference of a plane wave and a spherical wave. The plane wave thereby probes the distortion of the spherical wavefronts and the interference pattern stores this information on the shape of the spherical wavefronts. This is exactly what is done in holography. Taking this interference pattern as a “diffraction grating” will allow you to restore information on the spherical wavefonts."
   },
   {
-    "objectID": "lectures/lecture11/1_repitition.html#what-is-a-program",
-    "href": "lectures/lecture11/1_repitition.html#what-is-a-program",
-    "title": "Repitition",
-    "section": "What is a Program?",
-    "text": "What is a Program?\nA program is a sequence of instructions that tells a computer how to perform a specific task. These instructions must be:\n\nPrecise and unambiguous\nWritten in a language the computer understands\nLogically structured\nDesigned to achieve a specific goal",
-    "crumbs": [
-      "Python Basics",
-      "Lecture 11",
-      "Repitition"
-    ]
+    "objectID": "lectures/lecture11/1_plane_waves.html",
+    "href": "lectures/lecture11/1_plane_waves.html",
+    "title": "Plane Waves",
+    "section": "",
+    "text": "In the previous parts we have dealt with mechanics essentially. Even if we have described Brownian motion, this has been done by a particular type of Newtons equation of motion, it is much like mechanics. Now we would like to have a look at some examples from electromagnetic waves. We will not solve the wave equation but look at some solution using the complex notion of the electric field. This shall train our use of complex numbers. The special solutions are the plane wave and the spherical wave."
   },
   {
-    "objectID": "lectures/lecture11/1_repitition.html#basic-elements-of-python",
-    "href": "lectures/lecture11/1_repitition.html#basic-elements-of-python",
-    "title": "Repitition",
-    "section": "Basic Elements of Python",
-    "text": "Basic Elements of Python\n\nVariables and Data Types\nIn Python, variables are containers for storing data values. Python is dynamically typed, meaning you don’t need to declare variable types explicitly.\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 1: Unit Conversion\n\n\n\n\n\nWrite a program that converts a temperature from Celsius to Fahrenheit and Kelvin. Use the formulas:\n\n°F = (°C × 9/5) + 32\nK = °C + 273.15\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNumerical Operations\nPython supports all basic mathematical operations:\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 2: Basic Kinematics\n\n\n\n\n\nCalculate the final velocity of an object given its initial velocity, acceleration, and time. Use the formula: v = v₀ + at\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLists and Arrays\nFor physics calculations, we often need to work with collections of numbers:\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 3: Force Calculations\n\n\n\n\n\nCreate an array of masses (in kg) and calculate the force of gravity on each mass. Use F = mg where g = 9.81 m/s². Numpy is already imported and can be used with np\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution",
-    "crumbs": [
-      "Python Basics",
-      "Lecture 11",
-      "Repitition"
-    ]
-  },
-  {
-    "objectID": "lectures/lecture11/1_repitition.html#control-structures",
-    "href": "lectures/lecture11/1_repitition.html#control-structures",
-    "title": "Repitition",
-    "section": "Control Structures",
-    "text": "Control Structures\n\nConditional Statements\nConditional statements allow programs to make decisions:\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 4: Phase of Matter\n\n\n\n\n\nWrite a program that determines the phase of water based on its temperature (assume standard pressure):\n\nBelow 0°C: Solid (Ice)\n0-100°C: Liquid\nAbove 100°C: Gas (Steam)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 5: Projectile Range Calculator\n\n\n\n\n\nWrite a program that calculates if a projectile will hit a target given:\n\nInitial velocity\nLaunch angle\nTarget distance\n\nUse the range formula: \\(R = \\frac{v_0^2 \\sin(2\\theta)}{g}\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLoops\nLoops allow repetition of code:\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 6: Radioactive Decay Calculator\n\n\n\n\n\nWrite a program that simulates radioactive decay over multiple half-lives:\n\nStart with an initial number of atoms (\\(N_0\\))\nCalculate remaining atoms after each half-life period\nContinue for 5 half-lives\n\nUse the formula \\(N(t) = N_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/t_{1/2}}\\) where \\(t_{1/2}\\) is the half-life.\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Exercise 7: Time to Ground Calculator\n\n\n\n\n\nWrite a program that calculates how long it takes for an object to reach the ground when dropped from different heights:\n\nStart with an initial height \\(h_0\\)\nCalculate position using \\(y = h_0 - \\frac{1}{2}gt^2\\)\nFind the time when \\(y = 0\\)\nUse small time steps (\\(dt = 0.01s\\))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution",
-    "crumbs": [
-      "Python Basics",
-      "Lecture 11",
-      "Repitition"
-    ]
-  },
-  {
-    "objectID": "lectures/lecture11/1_repitition.html#basic-numerical-calculations",
-    "href": "lectures/lecture11/1_repitition.html#basic-numerical-calculations",
-    "title": "Repitition",
-    "section": "Basic Numerical Calculations",
-    "text": "Basic Numerical Calculations\nFor physics, we often use NumPy for numerical calculations:",
-    "crumbs": [
-      "Python Basics",
-      "Lecture 11",
-      "Repitition"
-    ]
-  },
-  {
-    "objectID": "lectures/lecture11/1_repitition.html#simple-physics-example",
-    "href": "lectures/lecture11/1_repitition.html#simple-physics-example",
-    "title": "Repitition",
-    "section": "Simple Physics Example",
-    "text": "Simple Physics Example\nLet’s calculate the position of a projectile under gravity:",
-    "crumbs": [
-      "Python Basics",
-      "Lecture 11",
-      "Repitition"
-    ]
-  },
-  {
-    "objectID": "lectures/lecture11/1_repitition.html#code-organization",
-    "href": "lectures/lecture11/1_repitition.html#code-organization",
-    "title": "Repitition",
-    "section": "Code Organization",
-    "text": "Code Organization\n\nUse meaningful variable names\nAdd comments to explain complex logic\nBreak down complex problems into smaller functions\nUse consistent indentation",
-    "crumbs": [
-      "Python Basics",
-      "Lecture 11",
-      "Repitition"
-    ]
-  },
-  {
-    "objectID": "lectures/lecture11/1_repitition.html#example-of-well-organized-code",
-    "href": "lectures/lecture11/1_repitition.html#example-of-well-organized-code",
-    "title": "Repitition",
-    "section": "Example of Well-Organized Code",
-    "text": "Example of Well-Organized Code\nHere’s an example calculating the period of a simple pendulum:",
-    "crumbs": [
-      "Python Basics",
-      "Lecture 11",
-      "Repitition"
-    ]
-  },
-  {
-    "objectID": "lectures/lecture11/1_repitition.html#classes-and-objects",
-    "href": "lectures/lecture11/1_repitition.html#classes-and-objects",
-    "title": "Repitition",
-    "section": "Classes and Objects",
-    "text": "Classes and Objects\nClasses are blueprints for creating objects that combine data (attributes) and functions (methods). This is particularly useful for modeling physical systems.\n\nBasic Class Structure\n\n\n\n\n\n\n\n\n\n\n\n\nAdvanced Self-Exercise 8: Electric Charge Class\n\n\n\n\n\nCreate a class representing an electric charge that can:\n\nStore position \\((x, y)\\), charge magnitude \\((q)\\), and mass \\((m)\\)\nCalculate electric potential at a point using \\(V = \\frac{kq}{r}\\)\nCalculate electric force on another charge using \\(F = \\frac{kq_1q_2}{r^2}\\)\nCalculate the direction of force (attraction/repulsion)\n\nUse \\(k = 8.99 \\times 10^9\\) N\\(\\cdot\\)m²/C² (Coulomb’s constant)\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution",
-    "crumbs": [
-      "Python Basics",
-      "Lecture 11",
-      "Repitition"
-    ]
-  },
-  {
-    "objectID": "lectures/lecture11/1_repitition.html#a-physics-example-harmonic-oscillator",
-    "href": "lectures/lecture11/1_repitition.html#a-physics-example-harmonic-oscillator",
-    "title": "Repitition",
-    "section": "A Physics Example: Harmonic Oscillator",
-    "text": "A Physics Example: Harmonic Oscillator\nHere’s a more complete example modeling a harmonic oscillator:",
-    "crumbs": [
-      "Python Basics",
-      "Lecture 11",
-      "Repitition"
-    ]
-  },
-  {
-    "objectID": "lectures/lecture11/1_repitition.html#inheritance",
-    "href": "lectures/lecture11/1_repitition.html#inheritance",
-    "title": "Repitition",
-    "section": "Inheritance",
-    "text": "Inheritance\nClasses can inherit properties and methods from other classes:",
-    "crumbs": [
-      "Python Basics",
-      "Lecture 11",
-      "Repitition"
-    ]
-  },
-  {
-    "objectID": "lectures/lecture11/1_repitition.html#key-points-about-classes",
-    "href": "lectures/lecture11/1_repitition.html#key-points-about-classes",
-    "title": "Repitition",
-    "section": "Key Points About Classes",
-    "text": "Key Points About Classes\n\nClasses combine data (attributes) and functions (methods)\nThe __init__ method initializes new objects\nself refers to the instance of the class\nMethods can modify the object’s state\nInheritance allows creating specialized versions of classes\nClasses help organize code and model real-world systems\n\nClasses are particularly useful in physics for: - Modeling physical systems - Organizing simulation code - Creating reusable components - Building hierarchies of related objects",
-    "crumbs": [
-      "Python Basics",
-      "Lecture 11",
-      "Repitition"
-    ]
+    "objectID": "lectures/lecture11/1_plane_waves.html#plane-wave-at-a-boundary",
+    "href": "lectures/lecture11/1_plane_waves.html#plane-wave-at-a-boundary",
+    "title": "Plane Waves",
+    "section": "Plane wave at a boundary",
+    "text": "Plane wave at a boundary\nWe want to go a bit further now and have a look at the wave at a boundary between vaccum and glass for example. At this boundary, the electromagnetic wave is reflected and refracted such that two new wavevectors arise. These are easily calculated by the law of reflection and the law of refraction. Besides that, also the amplitude of the waves change. To calculate the field we need the so-called Fresnel equations.\n\nFresnel equations\nWhen electromagnetic waves hit a boundary, they will be reflected and refracted. The amplitude of the reflected and refracted wave is determined by the refractive index of the two materials, the angles and the polarizations. For the latter we differentiate between a polarization in the incident plane (the p-polarization) and perpendicular to the incident plane (s-polarization).\n\n\n\nFresnel\n\n\nFor each of the polarization we in general obtain a coeffcient for the reflection and one for the refraction. To make our calculation a bit simpler, we will assume only s-polarization. Then the two Fresnel coefficients are calculated as\n\\[\\begin{equation}\n\\left( \\frac{E_{0t}}{E_{0e}} \\right)_s = t_s =\\frac{2n_1 \\cos{\\alpha}}{n_1\\cos{\\alpha}+n_2\\cos{\\beta}}\n\\end{equation}\\]\n\\[\\begin{equation}\n\\left( \\frac{E_{0r}}{E_{0e}} \\right)_s = r_s =\\frac{n_1\\cos{\\alpha}-n_2\\cos{\\beta}}{n_1\\cos{\\alpha}+n_2\\cos{\\beta}}\n\\end{equation}\\]\nwhere \\(\\alpha\\) and \\(\\beta\\) are the incident and refraction angles, respectively. Note that the Fresnel coefficients are for the amplitudes and can be negative to account for a phase jump by \\(\\pi\\). To obtain the coefficients for the intensities, one has to square the Fresnel coefficients.\nTo bring everything correctly together, we therefore have to define a number of things. We will need a function calculating the outgoing angle from Snells law. And we need at least two functions calculating the reflection and transmission coefficient for one polarization. We use the s-polarization, where the electric field is always parallel to the interface.\n\n\n\n\n\n\nWith the definition of the Fresnel coefficients, we may now plot the reflection and the transmission coefficients. Note that the sum of reflection and transmission coefficients for the intensities have to add up to one if there is no absorption.\n\n\n\n\n\n\n\n\nIncident wave\nWe want to study the electric fields and the intensities at various angles. The most interesting one, is a case where we have total internal reflection. This happens, if light is propagating from the higher refractive index to a lower refractive index. If we start in glass (\\(n_1=1.5\\)) and transmit to vacuum \\(n_2=1\\), then at all angles above \\(\\theta_{c}=\\sin^{-1}(n_2/n_1)=41.810314895778596\\) are total internally reflected.\n\n\n\n\n\n\nWe may now specify or calculate the corresponding wavevectors for an incident angle of \\(45^{\\circ}\\). In general all waves (reflect, refracted) have to match with their phase at the boundary. If the boundary is along the x-direction, we therefore have\n\\[\\begin{equation}\nk_{x,in}=k_{x,r}=k_{x,t}\n\\end{equation}\\]\nThis fixes one component of all wavevectors in the plane. What is then missing, is the z-component of the wavevectors. The incident wavevector is providing \\(k_{z,in}\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReflected wave\nFor the reflected wave the z-component of the wavevector is just flipped in sign, e.g. \\(k_{z,r}=-k_{z,in}\\).\n\n\n\n\n\n\n\n\nRefracted wave\nThe magnitude of the z-component of the transmitted wave can be obtained from the conservation of momentum. The momentum of the wave is proportional to the magnitude of the wavevector on both sides.\n\\[\\begin{equation}\nk_{1}^2=k_{2}^{2}\n\\end{equation}\\]\nwhich is, due to \\(k=nk_{0}\\) the same as\n\\[\\begin{equation}\nn_{1}^2(k_{0x,in}^2+k_{0z,in}^{2})=n_2^2 (k_{0x,t}^{2}+k_{0z,t}^2)\n\\end{equation}\\]\nfrom which we get\n\\[\\begin{equation}\nk_{0z,t}=\\pm \\frac{1}{n_{1}}\\sqrt{n_2^2 k_{0z,in}^2 -(n_{1}^2-n_{2}^2)k_{0x}^{2}}\n\\end{equation}\\]\nIf we go from a medium with high refrective index to a lower one, the second term in the root may surpass the first one and the whole solution will become imaginary. The wave in the lower refractive index medium \\(n_{2}\\) is then evanescent.\n\n\n\n\n\n\nThe total field thus containes three components. In medium 1, the field consists of the incident and the reflected wave. In medium 2, we just have the transmitted wave, with a possible evanescent solution.\n\n\n\n\n\n\nThe plots below show the electric field on the left side and the intensity on the right side. Interestingly, the intensity is that of a standing wave in medium 1, while it is just decaying in medium 2. Note that the electric field is oscillating along the interface in medium 2 but not at all in z-direction. This means that there is no energy transport along the z-direction anymore.\n\n\n\n\n\n\nWe will also have a look ath the propagation of the wave yb defining our animation.\ncanvas = Canvas(width=500, height=500,sync_image_data=True)\ndisplay(canvas)\n\ndef animate(k,time):\n    for t in time:\n        field=np.zeros([500,500],dtype=complex)\n        field1=plane_wave(k1,omega0,r1,t)\n        field2=plane_wave(k2,omega0,r1,t)\n        field3=plane_wave(k3,omega0,r2,t)\n\n        beta=snell(n1,n2,alpha)\n        r=rs(n1,n2,alpha,beta)\n        t=ts(n1,n2,alpha,beta)\n\n        field[0:250,:]=field1+r*field2\n        field[250:,:]=t*field3\n        tmp=np.real(field.transpose())\n\n        c=m.to_rgba(tmp)\n        with hold_canvas(canvas):\n            canvas.put_image_data(c[:,:,:3]*255,0,0)\n        sleep(0.02)\n\ntime= np.linspace(0,1e-14,100)\nanimate(k,time)\nAs it is apparent from our simulation, the wave is longitudinal in medium 2 at this angle. Try to modify the incident angles yourself to see if the wave becomes propagating in medium 2.\nIn the last plot, we will have a look at the intensity in medium 1 and medium 2. What is nicely visible, is that the intensity decays in medium 2 with increasing distance. As compared to the absorbing case, there is not oscillation of the field in the z-direction, hence no energy transfer. Convince yourself that this is indeed an exponential decay by using the appropriate semilog plot."
   },
   {
     "objectID": "lectures/lecture11/3_huygens_principle.html",
