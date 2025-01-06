@@ -810,7 +810,7 @@
     "href": "seminars/seminar07/25_publication_ready_figures.html#ein-dokument-vorbereiten",
     "title": "Erstellung veröffentlichungsreifer Diagramme",
     "section": "Ein Dokument vorbereiten",
-    "text": "Ein Dokument vorbereiten\nWenn man ein Dokument (Bachelorarbeit z.B.) erstellt, ist es nützlich, seine Daten und Texte geschickt zur organisieren, um sich Arbeit zu ersparen. Hier ist ein Beipiel,\n\ndisplay_tree(\"Report\")\n\nReport/\n├── Figures/\n│   ├── Figure1/\n│   │   └── Figure1.ipynb\n│   ├── figure1.pdf\n│   ├── Figure2/\n│   │   └── Figure2.ipynb\n│   └── figure2.pdf\n└── Text/\n    ├── article.aux\n    ├── article.fdb_latexmk\n    ├── article.fls\n    ├── article.log\n    ├── article.pdf\n    ├── article.synctex.gz\n    ├── article.tex\n    ├── content/\n    │   ├── 01_introduction.tex\n    │   ├── 02_theory.tex\n    │   ├── 03_results.tex\n    │   └── 04_conclusions.tex\n    ├── paper.aux\n    ├── paper.bbl\n    ├── paper.blg\n    ├── paper.fdb_latexmk\n    ├── paper.fls\n    ├── paper.log\n    ├── paper.pdf\n    ├── paper.qmd\n    ├── paper.synctex.gz\n    ├── paper.tex\n    └── paperNotes.bib\n\n\n/var/folders/6n/52yj404d5ld29901s85pd6sh0000gn/T/ipykernel_8160/929351223.py:1: DeprecationWarning:\n\nThe `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is \"31st December 2024\"."
+    "text": "Ein Dokument vorbereiten\nWenn man ein Dokument (Bachelorarbeit z.B.) erstellt, ist es nützlich, seine Daten und Texte geschickt zur organisieren, um sich Arbeit zu ersparen. Hier ist ein Beipiel,\n\ndisplay_tree(\"Report\")\n\nReport/\n├── Figures/\n│   ├── Figure1/\n│   │   └── Figure1.ipynb\n│   ├── figure1.pdf\n│   ├── Figure2/\n│   │   └── Figure2.ipynb\n│   └── figure2.pdf\n└── Text/\n    ├── article.aux\n    ├── article.fdb_latexmk\n    ├── article.fls\n    ├── article.log\n    ├── article.pdf\n    ├── article.synctex.gz\n    ├── article.tex\n    ├── content/\n    │   ├── 01_introduction.tex\n    │   ├── 02_theory.tex\n    │   ├── 03_results.tex\n    │   └── 04_conclusions.tex\n    ├── paper.aux\n    ├── paper.bbl\n    ├── paper.blg\n    ├── paper.fdb_latexmk\n    ├── paper.fls\n    ├── paper.log\n    ├── paper.pdf\n    ├── paper.qmd\n    ├── paper.synctex.gz\n    ├── paper.tex\n    └── paperNotes.bib\n\n\n/var/folders/6n/52yj404d5ld29901s85pd6sh0000gn/T/ipykernel_13938/929351223.py:1: DeprecationWarning:\n\nThe `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is \"31st December 2024\"."
   },
   {
     "objectID": "seminars/seminar06/Report/Figures/Figure1/Figure1.html",
@@ -872,7 +872,7 @@
     "href": "seminars/seminar06/25_publication_ready_figures.html#ein-dokument-vorbereiten",
     "title": "Erstellung veröffentlichungsreifer Diagramme",
     "section": "Ein Dokument vorbereiten",
-    "text": "Ein Dokument vorbereiten\nWenn man ein Dokument (Bachelorarbeit z.B.) erstellt, ist es nützlich, seine Daten und Texte geschickt zur organisieren, um sich Arbeit zu ersparen. Hier ist ein Beipiel,\n\ndisplay_tree(\"Report\")\n\nReport/\n├── Figures/\n│   ├── Figure1/\n│   │   └── Figure1.ipynb\n│   ├── figure1.pdf\n│   ├── Figure2/\n│   │   └── Figure2.ipynb\n│   └── figure2.pdf\n└── Text/\n    ├── article.aux\n    ├── article.fdb_latexmk\n    ├── article.fls\n    ├── article.log\n    ├── article.pdf\n    ├── article.synctex.gz\n    ├── article.tex\n    ├── content/\n    │   ├── 01_introduction.tex\n    │   ├── 02_theory.tex\n    │   ├── 03_results.tex\n    │   └── 04_conclusions.tex\n    ├── paper.aux\n    ├── paper.bbl\n    ├── paper.blg\n    ├── paper.fdb_latexmk\n    ├── paper.fls\n    ├── paper.log\n    ├── paper.pdf\n    ├── paper.qmd\n    ├── paper.synctex.gz\n    ├── paper.tex\n    └── paperNotes.bib\n\n\n/var/folders/6n/52yj404d5ld29901s85pd6sh0000gn/T/ipykernel_7980/929351223.py:1: DeprecationWarning:\n\nThe `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is \"31st December 2024\".",
+    "text": "Ein Dokument vorbereiten\nWenn man ein Dokument (Bachelorarbeit z.B.) erstellt, ist es nützlich, seine Daten und Texte geschickt zur organisieren, um sich Arbeit zu ersparen. Hier ist ein Beipiel,\n\ndisplay_tree(\"Report\")\n\nReport/\n├── Figures/\n│   ├── Figure1/\n│   │   └── Figure1.ipynb\n│   ├── figure1.pdf\n│   ├── Figure2/\n│   │   └── Figure2.ipynb\n│   └── figure2.pdf\n└── Text/\n    ├── article.aux\n    ├── article.fdb_latexmk\n    ├── article.fls\n    ├── article.log\n    ├── article.pdf\n    ├── article.synctex.gz\n    ├── article.tex\n    ├── content/\n    │   ├── 01_introduction.tex\n    │   ├── 02_theory.tex\n    │   ├── 03_results.tex\n    │   └── 04_conclusions.tex\n    ├── paper.aux\n    ├── paper.bbl\n    ├── paper.blg\n    ├── paper.fdb_latexmk\n    ├── paper.fls\n    ├── paper.log\n    ├── paper.pdf\n    ├── paper.qmd\n    ├── paper.synctex.gz\n    ├── paper.tex\n    └── paperNotes.bib\n\n\n/var/folders/6n/52yj404d5ld29901s85pd6sh0000gn/T/ipykernel_13749/929351223.py:1: DeprecationWarning:\n\nThe `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is \"31st December 2024\".",
     "crumbs": [
       "Seminars",
       "Seminar06",
@@ -1883,23 +1883,11 @@
     "text": "Interference between a spherical and a plane wave\nIn the section on plane waves, we had a look at the interference pattern of plane waves in space. We now have a look at the interference of a plane wave and a spherical wave. The plane wave thereby probes the distortion of the spherical wavefronts and the interference pattern stores this information on the shape of the spherical wavefronts. This is exactly what is done in holography. Taking this interference pattern as a “diffraction grating” will allow you to restore information on the spherical wavefonts."
   },
   {
-    "objectID": "lectures/lecture11/1_repitition.html",
-    "href": "lectures/lecture11/1_repitition.html",
-    "title": "Repitition",
-    "section": "",
-    "text": "A program is a sequence of instructions that tells a computer how to perform a specific task. These instructions must be:\n\nPrecise and unambiguous\nWritten in a language the computer understands\nLogically structured\nDesigned to achieve a specific goal",
-    "crumbs": [
-      "Python Basics",
-      "Lecture 11",
-      "Repitition"
-    ]
-  },
-  {
     "objectID": "lectures/lecture11/1_repitition.html#what-is-a-program",
     "href": "lectures/lecture11/1_repitition.html#what-is-a-program",
     "title": "Repitition",
-    "section": "",
-    "text": "A program is a sequence of instructions that tells a computer how to perform a specific task. These instructions must be:\n\nPrecise and unambiguous\nWritten in a language the computer understands\nLogically structured\nDesigned to achieve a specific goal",
+    "section": "What is a Program?",
+    "text": "What is a Program?\nA program is a sequence of instructions that tells a computer how to perform a specific task. These instructions must be:\n\nPrecise and unambiguous\nWritten in a language the computer understands\nLogically structured\nDesigned to achieve a specific goal",
     "crumbs": [
       "Python Basics",
       "Lecture 11",
@@ -1911,7 +1899,7 @@
     "href": "lectures/lecture11/1_repitition.html#basic-elements-of-python",
     "title": "Repitition",
     "section": "Basic Elements of Python",
-    "text": "Basic Elements of Python\n\nVariables and Data Types\nIn Python, variables are containers for storing data values. Python is dynamically typed, meaning you don’t need to declare variable types explicitly.\n\n# Basic data types\nx = 5           # integer\ny = 3.14        # float\nname = \"Python\" # string\nis_true = True  # boolean\n\n# Print variable types\nprint(f\"x is type: {type(x)}\")\nprint(f\"y is type: {type(y)}\")\nprint(f\"name is type: {type(name)}\")\nprint(f\"is_true is type: {type(is_true)}\")\n\nx is type: &lt;class 'int'&gt;\ny is type: &lt;class 'float'&gt;\nname is type: &lt;class 'str'&gt;\nis_true is type: &lt;class 'bool'&gt;\n\n\n\n\nNumerical Operations\nPython supports all basic mathematical operations:\n\na = 10\nb = 3\n\nprint(f\"Addition: {a + b}\")\nprint(f\"Subtraction: {a - b}\")\nprint(f\"Multiplication: {a * b}\")\nprint(f\"Division: {a / b}\")\nprint(f\"Integer Division: {a // b}\")\nprint(f\"Modulo: {a % b}\")\nprint(f\"Power: {a ** b}\")\n\nAddition: 13\nSubtraction: 7\nMultiplication: 30\nDivision: 3.3333333333333335\nInteger Division: 3\nModulo: 1\nPower: 1000\n\n\n\n\nLists and Arrays\nFor physics calculations, we often need to work with collections of numbers:\n\n# List (basic Python)\nnumbers = [1, 2, 3, 4, 5]\nprint(f\"List: {numbers}\")\n\n# NumPy array (better for calculations)\nimport numpy as np\narray = np.array([1, 2, 3, 4, 5])\nprint(f\"Array: {array}\")\nprint(f\"Array × 2: {array * 2}\")  # Element-wise multiplication\n\nList: [1, 2, 3, 4, 5]\nArray: [1 2 3 4 5]\nArray × 2: [ 2  4  6  8 10]",
+    "text": "Basic Elements of Python\n\nVariables and Data Types\nIn Python, variables are containers for storing data values. Python is dynamically typed, meaning you don’t need to declare variable types explicitly.\n\n\n\n\n\n\n\n\nNumerical Operations\nPython supports all basic mathematical operations:\n\n\n\n\n\n\n\n\nLists and Arrays\nFor physics calculations, we often need to work with collections of numbers:",
     "crumbs": [
       "Python Basics",
       "Lecture 11",
@@ -1923,7 +1911,7 @@
     "href": "lectures/lecture11/1_repitition.html#control-structures",
     "title": "Repitition",
     "section": "Control Structures",
-    "text": "Control Structures\n\nConditional Statements\nConditional statements allow programs to make decisions:\n\ntemperature = 25\n\nif temperature &gt; 30:\n    print(\"It's hot!\")\nelif temperature &gt; 20:\n    print(\"It's pleasant\")\nelse:\n    print(\"It's cool\")\n\nIt's pleasant\n\n\n\n\nLoops\nLoops allow repetition of code:\n\n# For loop\nprint(\"For loop:\")\nfor i in range(5):\n    print(f\"i = {i}\")\n\n# While loop\nprint(\"\\nWhile loop:\")\nj = 0\nwhile j &lt; 3:\n    print(f\"j = {j}\")\n    j += 1\n\nFor loop:\ni = 0\ni = 1\ni = 2\ni = 3\ni = 4\n\nWhile loop:\nj = 0\nj = 1\nj = 2",
+    "text": "Control Structures\n\nConditional Statements\nConditional statements allow programs to make decisions:\n\n\n\n\n\n\n\n\nLoops\nLoops allow repetition of code:",
     "crumbs": [
       "Python Basics",
       "Lecture 11",
@@ -1935,7 +1923,7 @@
     "href": "lectures/lecture11/1_repitition.html#basic-numerical-calculations",
     "title": "Repitition",
     "section": "Basic Numerical Calculations",
-    "text": "Basic Numerical Calculations\nFor physics, we often use NumPy for numerical calculations:\n\nimport numpy as np\n\n# Create array of angles (in radians)\nangles = np.linspace(0, 2*np.pi, 5)\n\n# Calculate sine and cosine\nsines = np.sin(angles)\ncosines = np.cos(angles)\n\n# Print results\nfor angle, sin_val, cos_val in zip(angles, sines, cosines):\n    print(f\"Angle: {angle:.2f}, sin: {sin_val:.2f}, cos: {cos_val:.2f}\")\n\nAngle: 0.00, sin: 0.00, cos: 1.00\nAngle: 1.57, sin: 1.00, cos: 0.00\nAngle: 3.14, sin: 0.00, cos: -1.00\nAngle: 4.71, sin: -1.00, cos: -0.00\nAngle: 6.28, sin: -0.00, cos: 1.00",
+    "text": "Basic Numerical Calculations\nFor physics, we often use NumPy for numerical calculations:",
     "crumbs": [
       "Python Basics",
       "Lecture 11",
@@ -1947,7 +1935,7 @@
     "href": "lectures/lecture11/1_repitition.html#simple-physics-example",
     "title": "Repitition",
     "section": "Simple Physics Example",
-    "text": "Simple Physics Example\nLet’s calculate the position of a projectile under gravity:\n\n# Initial conditions\nv0 = 10  # initial velocity (m/s)\ntheta = 45  # angle (degrees)\ng = 9.81  # gravitational acceleration (m/s²)\n\n# Convert angle to radians\ntheta_rad = np.deg2rad(theta)\n\n# Time array\nt = np.linspace(0, 2*v0*np.sin(theta_rad)/g, 100)\n\n# Position calculations\nx = v0 * np.cos(theta_rad) * t\ny = v0 * np.sin(theta_rad) * t - 0.5 * g * t**2\n\n# Plot trajectory\nimport matplotlib.pyplot as plt\n\nplt.figure(figsize=(8, 6))\nplt.plot(x, y)\nplt.grid(True)\nplt.xlabel('Distance (m)')\nplt.ylabel('Height (m)')\nplt.title('Projectile Motion')\nplt.axis('equal')\nplt.show()",
+    "text": "Simple Physics Example\nLet’s calculate the position of a projectile under gravity:",
     "crumbs": [
       "Python Basics",
       "Lecture 11",
@@ -1971,7 +1959,7 @@
     "href": "lectures/lecture11/1_repitition.html#example-of-well-organized-code",
     "title": "Repitition",
     "section": "Example of Well-Organized Code",
-    "text": "Example of Well-Organized Code\nHere’s an example calculating the period of a simple pendulum:\n\ndef calculate_pendulum_period(length, gravity=9.81):\n    \"\"\"\n    Calculate the period of a simple pendulum.\n\n    Parameters:\n    length (float): Length of pendulum in meters\n    gravity (float): Gravitational acceleration in m/s²\n\n    Returns:\n    float: Period in seconds\n    \"\"\"\n    import numpy as np\n\n    # Calculate period using T = 2π√(L/g)\n    period = 2 * np.pi * np.sqrt(length/gravity)\n    return period\n\n# Example usage\nL = 1.0  # 1 meter pendulum\nT = calculate_pendulum_period(L)\nprint(f\"A {L}m pendulum has a period of {T:.2f} seconds\")\n\nA 1.0m pendulum has a period of 2.01 seconds",
+    "text": "Example of Well-Organized Code\nHere’s an example calculating the period of a simple pendulum:",
     "crumbs": [
       "Python Basics",
       "Lecture 11",
@@ -1983,7 +1971,7 @@
     "href": "lectures/lecture11/1_repitition.html#classes-and-objects",
     "title": "Repitition",
     "section": "Classes and Objects",
-    "text": "Classes and Objects\nClasses are blueprints for creating objects that combine data (attributes) and functions (methods). This is particularly useful for modeling physical systems.\n\nBasic Class Structure\n\nclass Particle:\n    \"\"\"A simple class representing a particle in 2D space.\"\"\"\n\n    def __init__(self, x, y, mass=1.0):\n        \"\"\"Initialize particle with position and mass.\"\"\"\n        self.x = x\n        self.y = y\n        self.mass = mass\n        self.vx = 0  # initial velocity components\n        self.vy = 0\n\n    def set_velocity(self, vx, vy):\n        \"\"\"Set particle velocity.\"\"\"\n        self.vx = vx\n        self.vy = vy\n\n    def kinetic_energy(self):\n        \"\"\"Calculate kinetic energy of particle.\"\"\"\n        return 0.5 * self.mass * (self.vx**2 + self.vy**2)\n\n    def __str__(self):\n        \"\"\"String representation of particle.\"\"\"\n        return f\"Particle at ({self.x}, {self.y}) with mass {self.mass}\"\n\n# Create and use a particle object\np1 = Particle(0, 0, mass=2.0)\np1.set_velocity(3, 4)\nprint(p1)\nprint(f\"Kinetic energy: {p1.kinetic_energy()} J\")\n\nParticle at (0, 0) with mass 2.0\nKinetic energy: 25.0 J",
+    "text": "Classes and Objects\nClasses are blueprints for creating objects that combine data (attributes) and functions (methods). This is particularly useful for modeling physical systems.\n\nBasic Class Structure",
     "crumbs": [
       "Python Basics",
       "Lecture 11",
@@ -1995,7 +1983,7 @@
     "href": "lectures/lecture11/1_repitition.html#a-physics-example-harmonic-oscillator",
     "title": "Repitition",
     "section": "A Physics Example: Harmonic Oscillator",
-    "text": "A Physics Example: Harmonic Oscillator\nHere’s a more complete example modeling a harmonic oscillator:\n\nclass HarmonicOscillator:\n    \"\"\"Class representing a simple harmonic oscillator.\"\"\"\n\n    def __init__(self, mass, spring_constant):\n        \"\"\"\n        Initialize oscillator.\n\n        Parameters:\n        mass (float): Mass in kg\n        spring_constant (float): Spring constant in N/m\n        \"\"\"\n        self.m = mass\n        self.k = spring_constant\n        self.x = 0  # position\n        self.v = 0  # velocity\n\n    def period(self):\n        \"\"\"Calculate the period of oscillation.\"\"\"\n        return 2 * np.pi * np.sqrt(self.m / self.k)\n\n    def energy(self):\n        \"\"\"Calculate total energy (kinetic + potential).\"\"\"\n        kinetic = 0.5 * self.m * self.v**2\n        potential = 0.5 * self.k * self.x**2\n        return kinetic + potential\n\n    def update_state(self, dt):\n        \"\"\"Update position and velocity after time dt.\"\"\"\n        # Simple Euler integration (not ideal for accurate simulation)\n        F = -self.k * self.x  # spring force\n        a = F / self.m        # acceleration\n        self.v += a * dt      # update velocity\n        self.x += self.v * dt # update position\n\n# Create and use an oscillator\nosc = HarmonicOscillator(mass=1.0, spring_constant=10.0)\nprint(f\"Period: {osc.period():.2f} s\")\n\n# Simulate motion\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Initial conditions\nosc.x = 1.0  # start at x = 1 m\ntime = np.linspace(0, 2*osc.period(), 100)\npositions = []\n\n# Run simulation\nfor t in time:\n    positions.append(osc.x)\n    osc.update_state(time[1] - time[0])\n\n# Plot results\nplt.figure(figsize=(8, 6))\nplt.plot(time, positions)\nplt.xlabel('Time (s)')\nplt.ylabel('Position (m)')\nplt.title('Simple Harmonic Motion')\nplt.grid(True)\nplt.show()\n\nPeriod: 1.99 s",
+    "text": "A Physics Example: Harmonic Oscillator\nHere’s a more complete example modeling a harmonic oscillator:",
     "crumbs": [
       "Python Basics",
       "Lecture 11",
@@ -2007,7 +1995,7 @@
     "href": "lectures/lecture11/1_repitition.html#inheritance",
     "title": "Repitition",
     "section": "Inheritance",
-    "text": "Inheritance\nClasses can inherit properties and methods from other classes:\n\nclass ChargedParticle(Particle):\n    \"\"\"A particle with electric charge, inheriting from Particle.\"\"\"\n\n    def __init__(self, x, y, mass=1.0, charge=1.0):\n        \"\"\"Initialize charged particle.\"\"\"\n        super().__init__(x, y, mass)  # call parent class initializer\n        self.charge = charge\n\n    def potential_energy(self, electric_field):\n        \"\"\"Calculate potential energy in electric field.\"\"\"\n        return -self.charge * electric_field * self.y\n\n    def __str__(self):\n        \"\"\"Override string representation to include charge.\"\"\"\n        return f\"Charged Particle at ({self.x}, {self.y}) with q={self.charge}\"\n\n# Create and use a charged particle\nelectron = ChargedParticle(0, 2, mass=9.1e-31, charge=-1.6e-19)\nprint(electron)\nE_field = 1000  # V/m\nprint(f\"Potential energy in field: {electron.potential_energy(E_field):.2e} J\")\n\nCharged Particle at (0, 2) with q=-1.6e-19\nPotential energy in field: 3.20e-16 J",
+    "text": "Inheritance\nClasses can inherit properties and methods from other classes:",
     "crumbs": [
       "Python Basics",
       "Lecture 11",
