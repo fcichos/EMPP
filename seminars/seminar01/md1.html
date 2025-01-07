@@ -705,7 +705,7 @@ window.Quarto = {
 <li><span class="math inline">\(r\)</span> is the distance between particles</li>
 </ul>
 <p>The Lenard Jones potential is good for describing the interaction of non-bonded atoms in a molecular system e.g.&nbsp;in a gas or a liquid and is therefore well suited if we first want to simulate a gas or a liquid.</p>
-<div id="024fac0c" class="cell" data-execution_count="2">
+<div id="9c33f35d" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lennard_jones(r, epsilon<span class="op">=</span><span class="dv">1</span>, sigma<span class="op">=</span><span class="dv">1</span>):</span>
@@ -770,7 +770,7 @@ Values for atomic hydrogen
 <p>where <span class="math inline">\(f'(x_0)\)</span> is the first derivative of <span class="math inline">\(f(x)\)</span> at <span class="math inline">\(x_0\)</span>, <span class="math inline">\(f''(x_0)\)</span> is the second derivative of <span class="math inline">\(f(x)\)</span> at <span class="math inline">\(x_0\)</span>, and so on. We can demonstrate that by expanding a sine function around <span class="math inline">\(x_0 = 0\)</span>:</p>
 <p><span class="math display">\[\sin(x) = \sin(0) + \cos(0)x - \frac{1}{2}\sin(0)x^2 + \cdots = x - \frac{1}{6}x^3 + \cdots\]</span></p>
 <p>Plotting this yields:</p>
-<div id="88b6b921" class="cell" data-execution_count="3">
+<div id="0be5120e" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">1000</span>)</span>
@@ -825,7 +825,7 @@ Values for atomic hydrogen
 <li>Position: <span class="math inline">\(y(t) = y_0 + v_0t - \frac{1}{2}gt^2\)</span></li>
 <li>Velocity: <span class="math inline">\(v(t) = v_0 - gt\)</span></li>
 </ul>
-<div id="1c1d64d7" class="cell" data-execution_count="4">
+<div id="8c2fabe7" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters</span></span>
