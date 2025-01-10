@@ -496,7 +496,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture11/3_diffusion_equation.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture12/3_diffusion_equation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Diffusion Equation</span></a>
   </div>
 </li>
@@ -845,7 +845,7 @@ f(v^{*}) = \sqrt{\left(\frac{1}{2\pi T^{*}}\right)^3} 4\pi v^{*2} \exp\left(-\fr
 <p>In molecular dynamics simulations, it is crucial to control the temperature of the system to ensure that it reflects the desired physical conditions. The temperature of a system in MD simulations is directly related to the kinetic energy of the particles. If the initial velocities of the particles do not correspond to the target temperature, the system will not accurately represent the intended thermodynamic state.</p>
 <p>Scaling the velocities of the particles is a common technique to adjust the temperature of the system. By scaling the velocities, we can ensure that the kinetic energy—and hence the temperature—matches the target value. This process is essential for initializing the system correctly and for maintaining the desired temperature during the simulation.</p>
 <p>The provided code scales the velocities of the atoms to achieve the target temperature. Here’s a step-by-step explanation of the code:</p>
-<div id="fc9799a3" class="cell" data-execution_count="1">
+<div id="090b997b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_temperature(atoms, target_temperature):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">len</span>(atoms)      <span class="co"># number of atoms</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    Nf <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> N         <span class="co"># degrees of freedom in 2D</span></span>
