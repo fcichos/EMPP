@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../seminars/seminar04/md4.html" rel="next">
-<link href="../../seminars/seminar02/md2.html" rel="prev">
+<link href="../../seminars/seminar09/seminar9.html" rel="next">
+<link href="../../seminars/seminar08/seminar8.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -76,8 +76,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
-<link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,14 +103,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
-<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../../styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -140,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar03/md3.html">Seminar03</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar03/md3.html">MD Simulation Part 3</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar09/md_vibration.html">Seminar09</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar09/md_vibration.html">MD Simulation Part 6</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -605,7 +629,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-21" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar03/md3.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../seminars/seminar03/md3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MD Simulation Part 3</span></a>
   </div>
 </li>
@@ -713,7 +737,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-27" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar09/md_vibration.html" class="sidebar-item-text sidebar-link">
+  <a href="../../seminars/seminar09/md_vibration.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">MD Simulation Part 6</span></a>
   </div>
 </li>
@@ -732,22 +756,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#implementations" id="toc-implementations" class="nav-link active" data-scroll-target="#implementations">Implementations</a>
-  <ul class="collapse">
-  <li><a href="#the-atom-class" id="toc-the-atom-class" class="nav-link" data-scroll-target="#the-atom-class">The Atom Class</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar03/md3.html">Seminar03</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar03/md3.html">MD Simulation Part 3</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar09/md_vibration.html">Seminar09</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar09/md_vibration.html">MD Simulation Part 6</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Step-by-Step Development of a Molecular Dynamics Simulation</h1>
 </div>
@@ -772,159 +785,209 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="implementations" class="level2">
-<h2 class="anchored" data-anchor-id="implementations">Implementations</h2>
-<section id="the-atom-class" class="level3">
-<h3 class="anchored" data-anchor-id="the-atom-class">The Atom Class</h3>
-<p>We define a class <code>Atom</code> that contains the properties of an atom. The class <code>Atom</code> has the following attributes:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Atom:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    dimension <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, atom_id, atom_type, position, velocity<span class="op">=</span><span class="va">None</span>, mass<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> atom_id</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> atom_type</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.position <span class="op">=</span> position</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.velocity <span class="op">=</span> velocity <span class="cf">if</span> velocity <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> np.zeros(dimension)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.mass <span class="op">=</span> mass</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.force <span class="op">=</span> np.zeros(dimension)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The class <code>Atom</code> has the following attributes:</p>
-<ul>
-<li><code>id</code>: The unique identifier of the atom</li>
-<li><code>type</code>: The type of the atom (hydrogen or oxygen or …)</li>
-<li><code>position</code>: The position of the atom in 3D space (x, y, z)</li>
-<li><code>velocity</code>: The velocity of the atom in 3D space (vx, vy, vz)</li>
-<li><code>mass</code>: The mass of the atom</li>
-<li><code>force</code>: The force acting on the atom in 3D space (fx, fy, fz)</li>
-</ul>
-<p>In addition, we will need some information on the other atoms that are bound to the atom. We will store this information later in a list of atoms called <code>boundto</code>. Since we start with a monoatomic gas, we will not need this information for now. Note that position, velocity, and force are 3D vectors and we store them in numpy arrays. This is a very convenient way to handle vectors and matrices in Python.</p>
-<p>The class <code>Atom</code> should further implement a number of functions, called methods in object-oriented programming, that allow us to interact with the atom. The following methods are implemented in the <code>Atom</code> class:</p>
-<section id="add_forceforce-adds-a-force-acting-on-the-atom" class="level4">
-<h4 class="anchored" data-anchor-id="add_forceforce-adds-a-force-acting-on-the-atom"><code>add_force(force)</code>: Adds a force acting on the atom</h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_force(<span class="va">self</span>, force):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Add force contribution to total force on atom"""</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.force <span class="op">+=</span> force</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>So far, we have already developed a basic molecular dynamics simulation for simple atoms and interactions by so-called van der Waals forces. Since we are already nearing the end of the course, we would at least like to add some more complexity to the simulation. In this seminar, we would like to make molecules by binding two atoms together. We will then simulate the vibration of these molecules by solving the equations of motion for the atoms.</p>
+<section id="bond-vibrations" class="level2">
+<h2 class="anchored" data-anchor-id="bond-vibrations">Bond vibrations</h2>
+<p>A bond vibration is modeled as a harmonic oscillator where two atoms are coupled by a spring force with spring constant <span class="math inline">\(k\)</span>. The bond force on atom <span class="math inline">\(i\)</span> due to a bond with atom <span class="math inline">\(j\)</span> is then given by</p>
+<p><span class="math display">\[\vec{F}_{bond}^i = -k(\vec{r}_{ij} - \vec{r}_0)\]</span></p>
+<p>where <span class="math inline">\(\vec{r}_{ij}\)</span> is the vector between atom <span class="math inline">\(i\)</span> and atom <span class="math inline">\(j\)</span> and <span class="math inline">\(\vec{r}_0\)</span> is the equilibrium bond length vector. In reality bonds are not harmonic oscillators and deformations lead to a non-linear force curve. However, for small deviations from the equilibrium bond length, the harmonic approximation is quite good. The spring constant <span class="math inline">\(k\)</span> determines the strength of the bond and therefore the frequency <span class="math inline">\(\omega\)</span> of the bond vibration</p>
+<p><span class="math display">\[\omega = \sqrt{\frac{k}{\mu}}\]</span></p>
+<p>where <span class="math inline">\(\mu = \frac{m_1 m_2}{m_1 + m_2}\)</span> is the reduced mass of the two bonded atoms with masses <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span>.</p>
+<section id="reduced-units" class="level3">
+<h3 class="anchored" data-anchor-id="reduced-units">Reduced units</h3>
+<p>As we have defined reduced units for our simulation based on the LJ parameters, we need to express the bond parameters in these units.</p>
+<section id="bond-length" class="level4">
+<h4 class="anchored" data-anchor-id="bond-length">Bond length</h4>
+<p>The bond length <span class="math inline">\(r_0\)</span> is expressed in terms of the Lennard-Jones length scale <span class="math inline">\(\sigma\)</span>. For the bond between two hydrogen atoms, the equilibrium bond length is approximately <span class="math inline">\(0.74\sigma\)</span>.</p>
+<p><span class="math display">\[ r_{\text{bond}}^* = \frac{r_{\text{bond}}}{\sigma_{\text{H}}} = \frac{0.74}{1.0} = 0.74 \]</span></p>
 </section>
-<section id="reset_force-resets-the-force-acting-on-the-atom" class="level4">
-<h4 class="anchored" data-anchor-id="reset_force-resets-the-force-acting-on-the-atom"><code>reset_force()</code>: Resets the force acting on the atom</h4>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reset_force(<span class="va">self</span>):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Reset force to zero at start of each step"""</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.force <span class="op">=</span> np.zeros(dimension)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="update_positiondt-updates-the-position-of-the-atom" class="level4">
-<h4 class="anchored" data-anchor-id="update_positiondt-updates-the-position-of-the-atom"><code>update_position(dt)</code>: Updates the position of the atom</h4>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_position(<span class="va">self</span>, dt):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""First step of velocity Verlet: update position"""</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.position <span class="op">+=</span> <span class="va">self</span>.velocity <span class="op">*</span> dt <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> (<span class="va">self</span>.force<span class="op">/</span><span class="va">self</span>.mass) <span class="op">*</span> dt<span class="op">**</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="update_velocitydt-updates-the-velocity-of-the-atom" class="level4">
-<h4 class="anchored" data-anchor-id="update_velocitydt-updates-the-velocity-of-the-atom"><code>update_velocity(dt)</code>: Updates the velocity of the atom</h4>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_velocity(<span class="va">self</span>, dt, new_force):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Second step of velocity Verlet: update velocity using average force"""</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.velocity <span class="op">+=</span> <span class="fl">0.5</span> <span class="op">*</span> (new_force <span class="op">+</span> <span class="va">self</span>.force)<span class="op">/</span><span class="va">self</span>.mass <span class="op">*</span> dt</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.force <span class="op">=</span> new_force</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="apply_periodic_boundariesbox_size-applies-periodic-boundary-conditions-to-the-atom" class="level4">
-<h4 class="anchored" data-anchor-id="apply_periodic_boundariesbox_size-applies-periodic-boundary-conditions-to-the-atom"><code>apply_periodic_boundaries(box_size)</code>: Applies periodic boundary conditions to the atom</h4>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apply_periodic_boundaries(<span class="va">self</span>, box_size):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Apply periodic boundary conditions"""</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.position <span class="op">=</span> <span class="va">self</span>.position <span class="op">%</span> box_size</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Complete Atom class
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Atom:</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, atom_id, atom_type, position, velocity<span class="op">=</span><span class="va">None</span>, mass<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> atom_id</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> atom_type</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.position <span class="op">=</span> position</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.velocity <span class="op">=</span> velocity <span class="cf">if</span> velocity <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> np.random.randn(<span class="dv">2</span>)<span class="op">*</span><span class="dv">20</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.mass <span class="op">=</span> mass</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.force <span class="op">=</span> np.zeros(<span class="dv">2</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_force(<span class="va">self</span>, force):</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Add force contribution to total force on atom"""</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.force <span class="op">+=</span> force</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reset_force(<span class="va">self</span>):</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Reset force to zero at start of each step"""</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.force <span class="op">=</span> np.zeros(<span class="dv">2</span>)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_position(<span class="va">self</span>, dt):</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""First step of velocity Verlet: update position"""</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.position <span class="op">+=</span> <span class="va">self</span>.velocity <span class="op">*</span> dt <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> (<span class="va">self</span>.force<span class="op">/</span><span class="va">self</span>.mass) <span class="op">*</span> dt<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_velocity(<span class="va">self</span>, dt, new_force):</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Second step of velocity Verlet: update velocity using average force"""</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.velocity <span class="op">+=</span> <span class="fl">0.5</span> <span class="op">*</span> (new_force <span class="op">+</span> <span class="va">self</span>.force)<span class="op">/</span><span class="va">self</span>.mass <span class="op">*</span> dt</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.force <span class="op">=</span> new_force</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> apply_periodic_boundaries(<span class="va">self</span>, box_size):</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>            <span class="co">"""Apply periodic boundary conditions"""</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.position <span class="op">=</span> <span class="va">self</span>.position <span class="op">%</span> box_size</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-<p>This would be a good time to do something simple with the atom class. Let’s create a bunch of atoms and plot them in a 2D space.</p>
-<div>
-<div id="pyodide-1">
-
-</div>
-<script type="pyodide-1-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImV2YWwiOnRydWUsImVkaXQiOmZhbHNlLCJlY2hvIjpmYWxzZX0sImNvZGUiOiJpbXBvcnQgbnVtcHkgYXMgbnBcbmltcG9ydCBtYXRwbG90bGliLnB5cGxvdCBhcyBwbHRcbnBsdC5yY1BhcmFtcy51cGRhdGUoeydmb250LnNpemUnOiA4LFxuICAgICAgICAgICAgICAgICAgICAgJ2xpbmVzLmxpbmV3aWR0aCc6IDEsXG4gICAgICAgICAgICAgICAgICAgICAnbGluZXMubWFya2Vyc2l6ZSc6IDEwLFxuICAgICAgICAgICAgICAgICAgICAgJ2F4ZXMubGFiZWxzaXplJzogMTAsXG4gICAgICAgICAgICAgICAgICAgICAnYXhlcy50aXRsZXNpemUnOiAxMCxcbiAgICAgICAgICAgICAgICAgICAgICd4dGljay5sYWJlbHNpemUnIDogMTAsXG4gICAgICAgICAgICAgICAgICAgICAneXRpY2subGFiZWxzaXplJyA6IDEwLFxuICAgICAgICAgICAgICAgICAgICAgJ3h0aWNrLnRvcCcgOiBUcnVlLFxuICAgICAgICAgICAgICAgICAgICAgJ3h0aWNrLmRpcmVjdGlvbicgOiAnaW4nLFxuICAgICAgICAgICAgICAgICAgICAgJ3l0aWNrLnJpZ2h0JyA6IFRydWUsXG4gICAgICAgICAgICAgICAgICAgICAneXRpY2suZGlyZWN0aW9uJyA6ICdpbicsfSlcblxuZGVmIGdldF9zaXplKHcsaCk6XG4gICAgcmV0dXJuKCh3LzIuNTQsaC8yLjU0KSlcblxuXG5jbGFzcyBBdG9tOlxuICAgIGRlZiBfX2luaXRfXyhzZWxmLCBhdG9tX2lkLCBhdG9tX3R5cGUsIHBvc2l0aW9uLCB2ZWxvY2l0eT1Ob25lLCBtYXNzPU5vbmUpOlxuICAgICAgICBzZWxmLmlkID0gYXRvbV9pZFxuICAgICAgICBzZWxmLnR5cGUgPSBhdG9tX3R5cGVcbiAgICAgICAgc2VsZi5wb3NpdGlvbiA9IHBvc2l0aW9uXG4gICAgICAgIHNlbGYudmVsb2NpdHkgPSB2ZWxvY2l0eSBpZiB2ZWxvY2l0eSBpcyBub3QgTm9uZSBlbHNlIG5wLnJhbmRvbS5yYW5kbigyKSoyMFxuICAgICAgICBzZWxmLm1hc3MgPSBtYXNzXG4gICAgICAgIHNlbGYuZm9yY2UgPSBucC56ZXJvcygyKVxuXG5cbiAgICBkZWYgYWRkX2ZvcmNlKHNlbGYsIGZvcmNlKTpcbiAgICAgICAgXCJcIlwiQWRkIGZvcmNlIGNvbnRyaWJ1dGlvbiB0byB0b3RhbCBmb3JjZSBvbiBhdG9tXCJcIlwiXG4gICAgICAgIHNlbGYuZm9yY2UgKz0gZm9yY2VcblxuICAgIGRlZiByZXNldF9mb3JjZShzZWxmKTpcbiAgICAgICAgXCJcIlwiUmVzZXQgZm9yY2UgdG8gemVybyBhdCBzdGFydCBvZiBlYWNoIHN0ZXBcIlwiXCJcbiAgICAgICAgc2VsZi5mb3JjZSA9IG5wLnplcm9zKDIpXG5cbiAgICBkZWYgdXBkYXRlX3Bvc2l0aW9uKHNlbGYsIGR0KTpcbiAgICAgICAgXCJcIlwiRmlyc3Qgc3RlcCBvZiB2ZWxvY2l0eSBWZXJsZXQ6IHVwZGF0ZSBwb3NpdGlvblwiXCJcIlxuICAgICAgICBzZWxmLnBvc2l0aW9uICs9IHNlbGYudmVsb2NpdHkgKiBkdCArIDAuNSAqIChzZWxmLmZvcmNlL3NlbGYubWFzcykgKiBkdCoqMlxuXG4gICAgZGVmIHVwZGF0ZV92ZWxvY2l0eShzZWxmLCBkdCwgbmV3X2ZvcmNlKTpcbiAgICAgICAgXCJcIlwiU2Vjb25kIHN0ZXAgb2YgdmVsb2NpdHkgVmVybGV0OiB1cGRhdGUgdmVsb2NpdHkgdXNpbmcgYXZlcmFnZSBmb3JjZVwiXCJcIlxuICAgICAgICBzZWxmLnZlbG9jaXR5ICs9IDAuNSAqIChuZXdfZm9yY2UgKyBzZWxmLmZvcmNlKS9zZWxmLm1hc3MgKiBkdFxuICAgICAgICBzZWxmLmZvcmNlID0gbmV3X2ZvcmNlXG5cbiAgICBkZWYgYXBwbHlfcGVyaW9kaWNfYm91bmRhcmllcyhzZWxmLCBib3hfc2l6ZSk6XG4gICAgICAgICAgICBcIlwiXCJBcHBseSBwZXJpb2RpYyBib3VuZGFyeSBjb25kaXRpb25zXCJcIlwiXG4gICAgICAgICAgICBzZWxmLnBvc2l0aW9uID0gc2VsZi5wb3NpdGlvbiAlIGJveF9zaXplIn0=
-</script>
-</div>
-<div>
-<div id="pyodide-2">
-
-</div>
-<script type="pyodide-2-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYXRvbXMgPSBbXG4gICAgQXRvbSgwLCAnQycsIG5wLmFycmF5KFswLjAsIDAuMF0pLCB2ZWxvY2l0eT1ucC5hcnJheShbMS4wLCAxLjBdKSwgbWFzcz0xLjApLFxuICAgIEF0b20oMSwgJ0MnLCBucC5hcnJheShbMi4wLCAyLjBdKSwgdmVsb2NpdHk9bnAuYXJyYXkoWy0xLjAsIDEuMF0pLCBtYXNzPTEuMClcbl1cblxuIyBWaXN1YWxpemUgcG9zaXRpb25zXG5wbHQuZmlndXJlKGZpZ3NpemU9KDYsNikpXG5mb3IgYXRvbSBpbiBhdG9tczpcbiAgICBwbHQucGxvdChhdG9tLnBvc2l0aW9uWzBdLCBhdG9tLnBvc2l0aW9uWzFdLCAnbycpXG4gICAgIyBBZGQgdmVsb2NpdHkgYXJyb3dzXG4gICAgcGx0LmFycm93KGF0b20ucG9zaXRpb25bMF0sIGF0b20ucG9zaXRpb25bMV0sXG4gICAgICAgICAgICAgYXRvbS52ZWxvY2l0eVswXSwgYXRvbS52ZWxvY2l0eVsxXSxcbiAgICAgICAgICAgICBoZWFkX3dpZHRoPTAuMSlcblxucGx0LmF4aXMoJ2VxdWFsJylcbnBsdC5zaG93KCkifQ==
-</script>
-</div>
-
-
-<script type="pyodide-data">
-eyJwYWNrYWdlcyI6eyJwa2dzIjpbInB5b2RpZGVfaHR0cCIsIm1pY3JvcGlwIiwiaXB5dGhvbiIsIm1hdHBsb3RsaWIiLCJudW1weSJdfSwib3B0aW9ucyI6eyJpbmRleFVSTCI6Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9weW9kaWRlL3YwLjI2LjEvZnVsbC8ifX0=
-</script>
-<script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3siaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzIgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzIsIHt9KTtcbiIsImNlbGxOYW1lIjoicHlvZGlkZS0yIiwibWV0aG9kTmFtZSI6ImludGVycHJldCJ9LHsiaW5saW5lIjpmYWxzZSwic291cmNlIjoiX3B5b2RpZGVfdmFsdWVfMSA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRQeXRob24sIGI2NERlY29kZX0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcInB5b2RpZGUtMS1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBQeXRob24gY29kZVxuICBjb25zdCByZXN1bHQgPSBweW9kaWRlT2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjFcIiBpbiBweW9kaWRlT2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgcHl0aG9uXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFB5dGhvbihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHB5b2RpZGVPanMucmVuZGVyZWRPanNbXCIxXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIiwiY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0In0seyJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJweW9kaWRlT2pzID0ge1xuICBjb25zdCB7XG4gICAgUHlvZGlkZUV2YWx1YXRvcixcbiAgICBQeW9kaWRlRW52aXJvbm1lbnRNYW5hZ2VyLFxuICAgIHNldHVwUHl0aG9uLFxuICAgIHN0YXJ0UHlvZGlkZVdvcmtlcixcbiAgICBiNjREZWNvZGUsXG4gICAgY29sbGFwc2VQYXRoLFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIFB5b2RpZGUgc3VwcGxlbWVudGFsIGRhdGEgYW5kIG9wdGlvbnNcbiAgY29uc3QgZGF0YUNvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS1kYXRhXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZGF0YSA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGRhdGFDb250ZW50KSk7XG5cbiAgLy8gR3JhYiBsaXN0IG9mIHJlc291cmNlcyB0byBiZSBkb3dubG9hZGVkXG4gIGNvbnN0IGZpbGVzQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ2ZnMtZmlsZVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGZpbGVzID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZmlsZXNDb250ZW50KSk7XG5cbiAgbGV0IHB5b2RpZGVQcm9taXNlID0gKGFzeW5jICgpID0+IHtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIFB5b2RpZGVgO1xuICAgIGNvbnN0IHB5b2RpZGUgPSBhd2FpdCBzdGFydFB5b2RpZGVXb3JrZXIoZGF0YS5vcHRpb25zKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcGFja2FnZTogbWljcm9waXBgO1xuICAgIGF3YWl0IHB5b2RpZGUubG9hZFBhY2thZ2UoXCJtaWNyb3BpcFwiKTtcbiAgICBjb25zdCBtaWNyb3BpcCA9IGF3YWl0IHB5b2RpZGUucHlpbXBvcnQoXCJtaWNyb3BpcFwiKTtcbiAgICBhd2FpdCBkYXRhLnBhY2thZ2VzLnBrZ3MubWFwKChwa2cpID0+ICgpID0+IHtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcGFja2FnZTogJHtwa2d9YDtcbiAgICAgIHJldHVybiBtaWNyb3BpcC5pbnN0YWxsKHBrZyk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG4gICAgYXdhaXQgbWljcm9waXAuZGVzdHJveSgpO1xuXG4gICAgLy8gRG93bmxvYWQgYW5kIGluc3RhbGwgcmVzb3VyY2VzXG4gICAgYXdhaXQgZmlsZXMubWFwKChmaWxlKSA9PiBhc3luYyAoKSA9PiB7XG4gICAgICBjb25zdCBuYW1lID0gZmlsZS5zdWJzdHJpbmcoZmlsZS5sYXN0SW5kZXhPZignLycpICsgMSk7XG4gICAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIHJlc291cmNlOiAke25hbWV9YDtcbiAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2goZmlsZSk7XG4gICAgICBpZiAoIXJlc3BvbnNlLm9rKSB7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgQ2FuJ3QgZG93bmxvYWQgXFxgJHtmaWxlfVxcYC4gRXJyb3IgJHtyZXNwb25zZS5zdGF0dXN9OiBcIiR7cmVzcG9uc2Uuc3RhdHVzVGV4dH1cIi5gKTtcbiAgICAgIH1cbiAgICAgIGNvbnN0IGRhdGEgPSBhd2FpdCByZXNwb25zZS5hcnJheUJ1ZmZlcigpO1xuXG4gICAgICAvLyBTdG9yZSBVUkxzIGluIHRoZSBjd2Qgd2l0aG91dCBhbnkgc3ViZGlyZWN0b3J5IHN0cnVjdHVyZVxuICAgICAgaWYgKGZpbGUuaW5jbHVkZXMoXCI6Ly9cIikpIHtcbiAgICAgICAgZmlsZSA9IG5hbWU7XG4gICAgICB9XG5cbiAgICAgIC8vIENvbGxhcHNlIGhpZ2hlciBkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBmaWxlID0gY29sbGFwc2VQYXRoKGZpbGUpO1xuXG4gICAgICAvLyBDcmVhdGUgZGlyZWN0b3J5IHRyZWUsIGlnbm9yaW5nIFwiZGlyZWN0b3J5IGV4aXN0c1wiIFZGUyBlcnJvcnNcbiAgICAgIGNvbnN0IHBhcnRzID0gZmlsZS5zcGxpdCgnLycpLnNsaWNlKDAsIC0xKTtcbiAgICAgIGxldCBwYXRoID0gJyc7XG4gICAgICB3aGlsZSAocGFydHMubGVuZ3RoID4gMCkge1xuICAgICAgICBwYXRoICs9IHBhcnRzLnNoaWZ0KCkgKyAnLyc7XG4gICAgICAgIHRyeSB7XG4gICAgICAgICAgYXdhaXQgcHlvZGlkZS5GUy5ta2RpcihwYXRoKTtcbiAgICAgICAgfSBjYXRjaCAoZSkge1xuICAgICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICAgIGlmIChlLmVycm5vICE9PSAyMCkge1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0UHRyID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLl9zdHJlcnJvcihlLmVycm5vKTtcbiAgICAgICAgICAgIGNvbnN0IGVycm9yVGV4dCA9IGF3YWl0IHB5b2RpZGUuX21vZHVsZS5VVEY4VG9TdHJpbmcoZXJyb3JUZXh0UHRyKTtcbiAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICB9XG5cbiAgICAgIC8vIFdyaXRlIHRoaXMgZmlsZSB0byB0aGUgVkZTXG4gICAgICB0cnkge1xuICAgICAgICByZXR1cm4gYXdhaXQgcHlvZGlkZS5GUy53cml0ZUZpbGUoZmlsZSwgbmV3IFVpbnQ4QXJyYXkoZGF0YSkpO1xuICAgICAgfSBjYXRjaCAoZSkge1xuICAgICAgICBpZiAoZS5uYW1lICE9PSBcIkVycm5vRXJyb3JcIikgdGhyb3cgZTtcbiAgICAgICAgY29uc3QgZXJyb3JUZXh0UHRyID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLl9zdHJlcnJvcihlLmVycm5vKTtcbiAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYEZpbGVzeXN0ZW0gRXJyb3IgJHtlLmVycm5vfSBcIiR7ZXJyb3JUZXh0fVwiLmApO1xuICAgICAgfVxuICAgIH0pLnJlZHVjZSgoY3VyLCBuZXh0KSA9PiBjdXIudGhlbihuZXh0KSwgUHJvbWlzZS5yZXNvbHZlKCkpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBQeW9kaWRlIGVudmlyb25tZW50IHNldHVwYDtcbiAgICBhd2FpdCBzZXR1cFB5dGhvbihweW9kaWRlKTtcblxuICAgIHN0YXR1c1RleHQucmVtb3ZlKCk7XG4gICAgaWYgKHN0YXR1c0NvbnRhaW5lci5jaGlsZHJlbi5sZW5ndGggPT0gMCkge1xuICAgICAgc3RhdHVzQ29udGFpbmVyLnBhcmVudE5vZGUucmVtb3ZlKCk7XG4gICAgfVxuICAgIHJldHVybiBweW9kaWRlO1xuICB9KSgpLmNhdGNoKChlcnIpID0+IHtcbiAgICBzdGF0dXNUZXh0LnN0eWxlLmNvbG9yID0gXCJ2YXIoLS1leGVyY2lzZS1lZGl0b3ItaGwtZXIsICNBRDAwMDApXCI7XG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGVyci5tZXNzYWdlO1xuICAgIC8vaW5kaWNhdG9yQ29udGFpbmVyLnF1ZXJ5U2VsZWN0b3IoXCIuc3Bpbm5lci1ncm93XCIpLmNsYXNzTGlzdC5hZGQoXCJkLW5vbmVcIik7XG4gICAgdGhyb3cgZXJyO1xuICB9KTtcblxuICAvLyBLZWVwIHRyYWNrIG9mIGluaXRpYWwgT0pTIGJsb2NrIHJlbmRlclxuICBjb25zdCByZW5kZXJlZE9qcyA9IHt9O1xuXG4gIGNvbnN0IHByb2Nlc3MgPSBhc3luYyAoY29udGV4dCwgaW5wdXRzKSA9PiB7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHB5b2RpZGVQcm9taXNlO1xuICAgIGNvbnN0IGV2YWx1YXRvciA9IG5ldyBQeW9kaWRlRXZhbHVhdG9yKHB5b2RpZGUsIGNvbnRleHQpO1xuICAgIGF3YWl0IGV2YWx1YXRvci5wcm9jZXNzKGlucHV0cyk7XG4gICAgcmV0dXJuIGV2YWx1YXRvci5jb250YWluZXI7XG4gIH1cblxuICByZXR1cm4ge1xuICAgIHB5b2RpZGVQcm9taXNlLFxuICAgIHJlbmRlcmVkT2pzLFxuICAgIHByb2Nlc3MsXG4gIH07XG59XG4iLCJjZWxsTmFtZSI6InB5b2RpZGUtcHJlbHVkZSIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCJ9XX0=
-</script>
-<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
-<div id="exercise-loading-status" class="d-flex gap-2">
-
-</div>
-<div class="spinner-grow spinner-grow-sm">
-
-</div>
-</div>
-<script type="vfs-file">
-W10=
-</script>
+<section id="spring-constant" class="level4">
+<h4 class="anchored" data-anchor-id="spring-constant">Spring constant</h4>
+<p>The spring constant <span class="math inline">\(k\)</span> is expressed in reduced units based on the LJ energy scale <span class="math inline">\(\epsilon\)</span> and length scale <span class="math inline">\(\sigma\)</span>. For a hydrogen molecule, the spring constant is approximately <span class="math inline">\(440\)</span> in reduced units.</p>
+<p><span class="math display">\[ k_{\text{spring}}^* = \frac{k \sigma_{\text{H}}^2}{\epsilon_{\text{H}}} \]</span></p>
 </section>
 </section>
+</section>
+<section id="equations-of-motion" class="level2">
+<h2 class="anchored" data-anchor-id="equations-of-motion">Equations of motion</h2>
+<p>The equations of motion for the two atoms need to account for both the bond forces and the van der Waals forces. The total force on each atom is the sum of these contributions:</p>
+<p><span class="math display">\[m_1 \ddot{\vec{r}}_1 = \vec{F}_{bond}^1 + \vec{F}_{vdW}^1\]</span></p>
+<p><span class="math display">\[m_2 \ddot{\vec{r}}_2 = \vec{F}_{bond}^2 + \vec{F}_{vdW}^2\]</span></p>
+<p>where <span class="math inline">\(\vec{r}_1\)</span> and <span class="math inline">\(\vec{r}_2\)</span> are the positions of the two atoms, <span class="math inline">\(\vec{F}_{bond}\)</span> are the bond forces described above, and <span class="math inline">\(\vec{F}_{vdW}\)</span> are the van der Waals forces we implemented earlier. We can rewrite these equations as a system of first-order differential equations</p>
+<p><span class="math display">\[\dot{\vec{v}}_1 = \frac{\vec{F}_{bond}^1 + \vec{F}_{vdW}^1}{m_1}\]</span></p>
+<p><span class="math display">\[\dot{\vec{v}}_2 = \frac{\vec{F}_{bond}^2 + \vec{F}_{vdW}^2}{m_2}\]</span></p>
+<p><span class="math display">\[\dot{\vec{r}}_1 = \vec{v}_1\]</span></p>
+<p><span class="math display">\[\dot{\vec{r}}_2 = \vec{v}_2\]</span></p>
+<p>The van der Waals forces act between atoms of different molecules while the bond forces act between atoms within the same molecule. Both types of forces are calculated at each timestep and combined to determine the total force on each atom.</p>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<section id="the-bond-class" class="level3">
+<h3 class="anchored" data-anchor-id="the-bond-class">The Bond class</h3>
+<p>As we wrote the simulation quite modular, we can now easily add the bond forces to the simulation. To do so, we will first introduce a new class <code>Bond</code> that will store the bond parameters and the atoms involved in the bond.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Bond:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, atom1, atom2, k, r0):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.atom1 <span class="op">=</span> atom1</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.atom2 <span class="op">=</span> atom2</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.k <span class="op">=</span> k      <span class="co"># spring constant</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.r0 <span class="op">=</span> r0    <span class="co"># equilibrium bond length</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This bond class will be used to store the bond parameters for each bond in the simulation.</p>
+</section>
+<section id="the-diatomicmolecule-class" class="level3">
+<h3 class="anchored" data-anchor-id="the-diatomicmolecule-class">The DiatomicMolecule class</h3>
+<p>While this is just a bond between two atoms, which can be also part of a more complicated molecule, we also need to define a molecule class that will store the atoms and bonds that make up the molecule.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DiatomicMolecule:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, atom1, atom2, bond):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.atom1 <span class="op">=</span> atom1</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.atom2 <span class="op">=</span> atom2</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.bond <span class="op">=</span> bond</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This class will store the two atoms and the bond between them.</p>
+</section>
+<section id="the-forcefield-class-update" class="level3">
+<h3 class="anchored" data-anchor-id="the-forcefield-class-update">The ForceField class update</h3>
+<p>We will also need to update the <code>ForceField</code> class to store the bond parameters and to calculate the bond forces. We will add a list of bonds to the force field and a method to calculate the bond forces.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ForceField:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.parameters <span class="op">=</span> {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">'C'</span>: {<span class="st">'epsilon'</span>: <span class="fl">1.615</span>, <span class="st">'sigma'</span>: <span class="fl">1.36</span>},</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">'H'</span>: {<span class="st">'epsilon'</span>: <span class="fl">1.0</span>, <span class="st">'sigma'</span>: <span class="fl">1.0</span>},</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">'O'</span>: {<span class="st">'epsilon'</span>: <span class="fl">1.846</span>, <span class="st">'sigma'</span>: <span class="fl">3.0</span>},</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.bond_parameters <span class="op">=</span> {</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'H'</span>, <span class="st">'H'</span>): {<span class="st">'k'</span>: <span class="fl">500.0</span>, <span class="st">'r0'</span>: <span class="fl">0.74</span>},  <span class="co"># Example parameters for H2</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            (<span class="st">'O'</span>, <span class="st">'H'</span>): {<span class="st">'k'</span>: <span class="fl">550.0</span>, <span class="st">'r0'</span>: <span class="fl">0.96</span>},  <span class="co"># Example parameters for OH bond</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.box_size <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> calculate_bond_force(<span class="va">self</span>, bond):</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Calculate harmonic bond force"""</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> <span class="va">self</span>.minimum_image_distance(bond.atom1.position, bond.atom2.position)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        r_mag <span class="op">=</span> np.linalg.norm(r)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># F = -k(r - r0)∙(r/|r|)</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        force_mag <span class="op">=</span> <span class="op">-</span>bond.k <span class="op">*</span> (r_mag <span class="op">-</span> bond.r0)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        force <span class="op">=</span> force_mag <span class="op">*</span> r<span class="op">/</span>r_mag</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> force</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># previous code goes here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The new addition provides the bond parameters</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.bond_parameters <span class="op">=</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'H'</span>, <span class="st">'H'</span>): {<span class="st">'k'</span>: <span class="fl">500.0</span>, <span class="st">'r0'</span>: <span class="fl">0.74</span>},  <span class="co"># Example parameters for H2</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'O'</span>, <span class="st">'H'</span>): {<span class="st">'k'</span>: <span class="fl">550.0</span>, <span class="st">'r0'</span>: <span class="fl">0.96</span>},  <span class="co"># Example parameters for OH bond</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>which are exemplary values for the bond between two hydrogen atoms and between an oxygen and a hydrogen atom. The method <code>calculate_bond_force</code> calculates the bond force between two atoms given a bond object.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_bond_force(<span class="va">self</span>, bond):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calculate harmonic bond force"""</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> <span class="va">self</span>.minimum_image_distance(bond.atom1.position, bond.atom2.position)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    r_mag <span class="op">=</span> np.linalg.norm(r)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># F = -k(r - r0)∙(r/|r|)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    force_mag <span class="op">=</span> <span class="op">-</span>bond.k <span class="op">*</span> (r_mag <span class="op">-</span> bond.r0)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    force <span class="op">=</span> force_mag <span class="op">*</span> r<span class="op">/</span>r_mag</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> force</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>As a first step, this function calculates the distance vector between the two atoms and its magnitude. The force is then calculated as <span class="math inline">\(F = -k(r - r_0) \cdot (r/|r|)\)</span>, where <span class="math inline">\(r\)</span> is the distance vector, <span class="math inline">\(r_0\)</span> is the equilibrium bond length, and <span class="math inline">\(k\)</span> is the spring constant. The force is then returned as a vector.</p>
+</section>
+</section>
+<section id="md-simulation-class-update" class="level2">
+<h2 class="anchored" data-anchor-id="md-simulation-class-update">MD Simulation class update</h2>
+<p>The MDSimulation class is the controller of the simulation and needs to be updated to include the molecules and bond forces. We will add a list of molecules to the simulation and update the <code>calculate_forces</code> method to include the bond forces. The method to update the positions and velocities of the atoms will stay the same as we only need to add the bond forces to the total force calculation.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MDSimulation:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, molecules, forcefield, timestep, box_size):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.molecules <span class="op">=</span> molecules</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.atoms <span class="op">=</span> [atom <span class="cf">for</span> mol <span class="kw">in</span> molecules <span class="cf">for</span> atom <span class="kw">in</span> [mol.atom1, mol.atom2]]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.forcefield <span class="op">=</span> forcefield</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.forcefield.box_size <span class="op">=</span> box_size</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.timestep <span class="op">=</span> timestep</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.box_size <span class="op">=</span> np.array(box_size)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.energy_history <span class="op">=</span> []</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> calculate_forces(<span class="va">self</span>):</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Reset all forces</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> atom <span class="kw">in</span> <span class="va">self</span>.atoms:</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            atom.reset_force()</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate bonded forces</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> molecule <span class="kw">in</span> <span class="va">self</span>.molecules:</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>            force <span class="op">=</span> <span class="va">self</span>.forcefield.calculate_bond_force(molecule.bond)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>            molecule.atom1.add_force(force)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            molecule.atom2.add_force(<span class="op">-</span>force)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate non-bonded forces between molecules</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i, mol1 <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.molecules):</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> mol2 <span class="kw">in</span> <span class="va">self</span>.molecules[i<span class="op">+</span><span class="dv">1</span>:]:</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate forces between atoms of different molecules</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> atom1 <span class="kw">in</span> [mol1.atom1, mol1.atom2]:</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">for</span> atom2 <span class="kw">in</span> [mol2.atom1, mol2.atom2]:</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>                        force <span class="op">=</span> <span class="va">self</span>.forcefield.calculate_lj_force(atom1, atom2)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                        atom1.add_force(force)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>                        atom2.add_force(<span class="op">-</span>force)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># def update_positions_and_velocities(self):</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The constructor of the <code>MDSimulation</code> class now takes a list of molecules as an argument. The list of atoms is created by flattening the list of atoms in each molecule. This is all we need in the constructor.</p>
+<p>The <code>calculate_forces</code> method now calculates the bond forces for each molecule and adds them to the atoms. The non-bonded forces are calculated as before. The method<code>update_positions_and_velocities</code> will remain the same as we only need to add the bond forces to the total force calculation.</p>
+</section>
+<section id="create-a-diatomic-molecule" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-diatomic-molecule">Create a diatomic molecule</h2>
+<p>Finally, we need something to create the diatomic molecules for out simulation. We will write a function that creates a number of diatomic molecules with a given box size and atom types. The function will create the atoms at random positions with a small displacement from the center of a grid and create a bond between them.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>```python</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_diatomic_molecules(num_molecules, box_size, type1<span class="op">=</span><span class="st">"H"</span>, type2<span class="op">=</span><span class="st">"H"</span>, mass1<span class="op">=</span><span class="fl">1.0</span>, mass2<span class="op">=</span><span class="fl">1.0</span>):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    molecules <span class="op">=</span> []</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    spacing <span class="op">=</span> np.<span class="bu">min</span>(box_size) <span class="op">/</span> np.ceil(np.sqrt(num_molecules))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_molecules):</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate grid position for molecule center</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> i <span class="op">//</span> <span class="bu">int</span>(np.ceil(np.sqrt(num_molecules)))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        col <span class="op">=</span> i <span class="op">%</span> <span class="bu">int</span>(np.ceil(np.sqrt(num_molecules)))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        center <span class="op">=</span> np.array([col <span class="op">*</span> spacing <span class="op">+</span> spacing<span class="op">/</span><span class="dv">2</span>, row <span class="op">*</span> spacing <span class="op">+</span> spacing<span class="op">/</span><span class="dv">2</span>])</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create atoms with small random displacement for initial bond length</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        displacement <span class="op">=</span> np.random.randn(<span class="dv">2</span>) <span class="op">*</span> <span class="fl">0.1</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        atom1 <span class="op">=</span> Atom(<span class="dv">2</span><span class="op">*</span>i, type1, center <span class="op">+</span> displacement, mass<span class="op">=</span>mass1)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        atom2 <span class="op">=</span> Atom(<span class="dv">2</span><span class="op">*</span>i<span class="op">+</span><span class="dv">1</span>, type2, center <span class="op">-</span> displacement, mass<span class="op">=</span>mass2)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create bond</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        ff <span class="op">=</span> ForceField()</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        bond_params <span class="op">=</span> ff.bond_parameters[(type1, type2)]</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        bond <span class="op">=</span> Bond(atom1, atom2, bond_params[<span class="st">'k'</span>], bond_params[<span class="st">'r0'</span>])</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        molecules.append(DiatomicMolecule(atom1, atom2, bond))</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> molecules</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="md-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="md-simulation">MD Simulation</h2>
+<p>In the last step we need to initialize the simulation with the diatomic molecules and run the simulation.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Initialize simulation as before</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>box_size <span class="op">=</span> np.array([<span class="fl">50.0</span>, <span class="fl">50.0</span>])</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>num_molecules <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>molecules <span class="op">=</span> create_diatomic_molecules(num_molecules, box_size, <span class="st">"H"</span>, <span class="st">"H"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>ff <span class="op">=</span> ForceField()</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>sim <span class="op">=</span> MDSimulation(molecules, ff, <span class="fl">0.001</span>, box_size)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize velocities for all atoms</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>atoms <span class="op">=</span> [atom <span class="cf">for</span> mol <span class="kw">in</span> molecules <span class="cf">for</span> atom <span class="kw">in</span> [mol.atom1, mol.atom2]]</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>initialize_velocities(atoms, temperature<span class="op">=</span><span class="fl">5.0</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">## rest of the simulation goes here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>In this module, we extended our molecular dynamics simulation to include diatomic molecules with bond vibrations. We added several new components:</p>
+<ol type="1">
+<li>A Bond class to model the harmonic bond between two atoms, implementing Hooke’s law for the bond force</li>
+<li>A DiatomicMolecule class to manage pairs of bonded atoms</li>
+<li>Updates to the ForceField class to include bond parameters and force calculations</li>
+<li>Modifications to the MDSimulation class to handle both bonded and non-bonded interactions</li>
+</ol>
+<p>The bond vibrations are modeled as harmonic oscillators with a spring constant k and equilibrium bond length <span class="math inline">\(r_0\)</span>. The total forces on each atom now include both the van der Waals forces between molecules and the bond forces within molecules. We provided functions to create and initialize diatomic molecules in a simulation box, setting up a foundation for simulating more complex molecular systems.</p>
+<p>The implementation maintains the modular structure of our previous code while adding the capability to simulate molecular vibrations, bringing us closer to modeling real molecular systems.</p>
+
+
 </section>
 
 </main> <!-- /main -->
-<script type="ojs-module-contents">
-eyJjb250ZW50cyI6W119
-</script>
-<script type="module">
-if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-window._ojs.paths.runtimeToDoc = "../../seminars/seminar03";
-window._ojs.paths.runtimeToRoot = "../..";
-window._ojs.paths.docToRoot = "../..";
-window._ojs.selfContained = false;
-window._ojs.runtime.interpretFromScriptTags();
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1347,13 +1410,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../seminars/seminar02/md2.html" class="pagination-link" aria-label="MD Simulation Part 2">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">MD Simulation Part 2</span>
+      <a href="../../seminars/seminar08/seminar8.html" class="pagination-link" aria-label="Seminar Coding Session 2">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Seminar Coding Session 2</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../seminars/seminar04/md4.html" class="pagination-link" aria-label="MD Simulation Part 4">
-        <span class="nav-page-text">MD Simulation Part 4</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../seminars/seminar09/seminar9.html" class="pagination-link" aria-label="Seminar 9">
+        <span class="nav-page-text">Seminar 9</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
