@@ -559,7 +559,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 13</span></a>
+ <span class="menu-text">Lecture 14</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -567,7 +567,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture13/3_huygens_principle.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture14/3_huygens_principle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Huygens Principle</span></a>
   </div>
 </li>
@@ -810,7 +810,7 @@ window.Quarto = {
 
 
 <p>In the last lecture, we have modeled electromagnetic waves not by solving the wave equation, but by taking the solutions of wave equations like a plane wave or a spherical wave. Today we will solve a wave equation, but not for electromagnetic waves, but for matter waves. We will solve the stationary Schrödinger equation with the implicit solution scheme, which we have already applied for the diffusion equation. With the help of that we will tackle the particle in a box, the harmonic oscillator and the periodic potential. All of these problems have also analytical solutions, thus we do not need the numerical solution in principle. But it will give us some practice on how to tackle such problems. As not all of you might be familiar with the physical description of quantum mechanics, we will give a short introduction into this field first.</p>
-<div id="45a1449d" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-07-03T11:07:44.101075Z&quot;,&quot;start_time&quot;:&quot;2018-07-03T11:07:44.085892Z&quot;}" data-slideshow="{&quot;slide_type&quot;:&quot;skip&quot;}" data-execution_count="1">
+<div id="5a2a0f0e" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2018-07-03T11:07:44.101075Z&quot;,&quot;start_time&quot;:&quot;2018-07-03T11:07:44.085892Z&quot;}" data-slideshow="{&quot;slide_type&quot;:&quot;skip&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.sparse <span class="im">import</span> diags</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.sparse.linalg <span class="im">import</span> eigsh</span>
