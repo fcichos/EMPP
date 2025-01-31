@@ -842,7 +842,7 @@ window.Quarto = {
 
 
 <p>Neural networks are one of the most commonly used machine learning objects nowadays. Mostly these systems are known as <strong>deep neural networks</strong>, which just says something about how many layers in which neurons are arranged exist. We will in this lecture have a look at the basic unit, the neuron, and how to connect and train a network. We will do all ourselves, that means, we will not use one of the many existing python modules, that simplifies the task. This notebook has been largely developed by <strong>Martin Fränzl</strong>.</p>
-<div id="7a901c03" class="cell" data-tags="[]" data-execution_count="1">
+<div id="501c1839" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -877,12 +877,12 @@ window.Quarto = {
 <p>The MNIST data set contains 70,000 images of hand-written digits, each 28 x 28 pixels, in greyscale with pixel-values from 0 to 255. We could download and preprocess the data ourselves, but the makers of the module <code>sklearn</code> already did that for us:</p>
 <section id="load-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="load-the-data">Load the data</h3>
-<div id="87edde58" class="cell" data-tags="[]" data-execution_count="2">
+<div id="c3cec72c" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_openml</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> fetch_openml(<span class="st">'mnist_784'</span>, version<span class="op">=</span><span class="dv">1</span>, return_X_y<span class="op">=</span><span class="va">True</span>,as_frame<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The images are now contained in the array <code>X</code>, while the labels (so which number it is) are contained in <code>y</code>. Let’s have a look at a random image and label.</p>
-<div id="ccc262be" class="cell" data-tags="[]" data-execution_count="3">
+<div id="01941325" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">33419</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(np.array(X)[i].reshape(<span class="dv">28</span>, <span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
@@ -903,20 +903,20 @@ window.Quarto = {
 <section id="normalize-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="normalize-the-data">Normalize the data</h3>
 <p>To use data in neural networks as training data, it is always useful to normalize the data to the interval [0, 1].</p>
-<div id="e79428f0" class="cell" data-tags="[]" data-execution_count="4">
+<div id="f4894768" class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X<span class="op">/</span><span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="preparing-training-and-testing-data" class="level3">
 <h3 class="anchored" data-anchor-id="preparing-training-and-testing-data">Preparing training and testing data</h3>
 <p>The default MNIST labels say ‘1’ for an image of a one, ‘2’ for an image of a two, etc., but we are just building a zero classifier for now. So we want our labels to say 1 when we have a zero, and 0 otherwise. So we overwrite the labels accordingly:</p>
-<div id="d08c877d" class="cell" data-tags="[]" data-execution_count="5">
+<div id="161ffd34" class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>y_new <span class="op">=</span> np.zeros(y.shape)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y_new[np.where(y <span class="op">==</span> <span class="st">'0'</span>)[<span class="dv">0</span>]] <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We now split the data in a train and test set. The MNIST images are pre-arranged so that the first 60,000 can be used for training, and the last 10,000 for testing. We’ll also transform the data into the shape we want, with each example in a column (instead of a row):</p>
-<div id="bd095e5e" class="cell" data-tags="[]" data-execution_count="6">
+<div id="da28c249" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">60000</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>m_test <span class="op">=</span> X.shape[<span class="dv">0</span>] <span class="op">-</span> m</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -924,13 +924,13 @@ window.Quarto = {
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>y_train, y_test <span class="op">=</span> y[:m].reshape(<span class="dv">1</span>,m), y[m:].reshape(<span class="dv">1</span>, m_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, we shuffle the training set:</p>
-<div id="021e06d9" class="cell" data-tags="[]" data-execution_count="7">
+<div id="199f7398" class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>shuffle_index <span class="op">=</span> np.random.permutation(m)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> X_train[:,shuffle_index], y_train[:,shuffle_index]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s again have a look at random image and label just to check</p>
-<div id="468d2dcc" class="cell" data-tags="[]" data-execution_count="8">
+<div id="b74404bc" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">39</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_train[:,i].reshape(<span class="dv">28</span>, <span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
@@ -989,11 +989,11 @@ y=\sigma( x_{1} w_{1}+ x_{2} w_{2}+b)
 \sigma(z) = \frac{1}{1+{\rm e}^{-z}}\ .
 \end{equation*}\]</span></p>
 <p>The sigmoid function is something we can already define and plot.</p>
-<div id="ead81b53" class="cell" data-execution_count="9">
+<div id="9fdf51ac" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(z):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a2a9bf1f" class="cell" data-execution_count="10">
+<div id="19ae7c86" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">3</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x,sigmoid(x))</span>
@@ -1046,7 +1046,7 @@ L(y,\hat{y}) = -y\log(\hat{y})-(1-y)\log(1-\hat{y})\ .
 L(Y,\hat{Y}) = -\frac{1}{m}\sum_{i = 0}^{m}y^{(i)}\log(\hat{y}^{(i)})-(1-y^{(i)})\log(1-\hat{y}^{(i)})\ .
 \end{equation*}\]</span></p>
 <p>In Python code, this looks like</p>
-<div id="98ff6b09" class="cell" data-execution_count="11">
+<div id="d38f4b86" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_loss(Y, Y_hat):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> Y.shape[<span class="dv">1</span>]</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> <span class="op">-</span>(<span class="fl">1.</span><span class="op">/</span>m)<span class="op">*</span>(np.<span class="bu">sum</span>(np.multiply(np.log(Y_hat), Y)) <span class="op">+</span> np.<span class="bu">sum</span>(np.multiply(np.log(<span class="dv">1</span> <span class="op">-</span> Y_hat), (<span class="dv">1</span> <span class="op">-</span> Y))))</span>
@@ -1133,7 +1133,7 @@ w\leftarrow w-\eta\frac{\partial L}{\partial w}
 <section id="build-an-train" class="level3">
 <h3 class="anchored" data-anchor-id="build-an-train">Build an Train</h3>
 <p>Now we have all things together to create a single neuron network doing the analysis of the MNIST numbers. This type of data processing is called logistic regression based on the sigmoid function, which is a logistic function. So let’s create all in python code and train the network for 100 epochs.</p>
-<div id="e1710cc9" class="cell" data-execution_count="12">
+<div id="90ee2f98" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array(X_train)</span>
@@ -1193,7 +1193,7 @@ Final loss: 0.03579805734492837</code></pre>
 </figure>
 </div>
 <p>The entries in the matrix are called <strong>true positives</strong> (TP), <strong>false positives</strong> (FP), <strong>false negatives</strong> (FN), and <strong>true negatives</strong> (TN). Fortunately we can use a method of the <code>sklearn</code> module to calculate the confusion matrix. We just have to supply the predictions and the actual labels to it. To do so, we use the testing data set <code>X_test</code> which we have splitted earlier.</p>
-<div id="0b2efd93" class="cell" data-execution_count="13">
+<div id="4c8aa8b7" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, classification_report</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.matmul(W.T,X_test) <span class="op">+</span> b</span>
@@ -1208,7 +1208,7 @@ Final loss: 0.03579805734492837</code></pre>
  [  47  947]]</code></pre>
 </div>
 </div>
-<div id="137044ab" class="cell" data-execution_count="14">
+<div id="70207da7" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
@@ -1226,14 +1226,14 @@ weighted avg       0.99      0.99      0.99     10000
 <section id="testing-our-model" class="level3">
 <h3 class="anchored" data-anchor-id="testing-our-model">Testing our model</h3>
 <p>We can check a single image of our testing data with the following line. If the output number is bigger than 0.5, our number is likely a 0.</p>
-<div id="ae12d547" class="cell" data-execution_count="15">
+<div id="760f451b" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="dv">200</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(sigmoid(np.matmul(W.T, np.array(X_test)[:,i])<span class="op">+</span>b)<span class="op">&gt;</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="3e35f166" class="cell" data-execution_count="16">
+<div id="f170e017" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(np.array(X_test)[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>),cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1255,7 +1255,7 @@ weighted avg       0.99      0.99      0.99     10000
 </figure>
 </div>
 <p>So we have now and input layer with 784 inputs that are connected to 64 units in the hidden layer and 1 neuron in the output layer. We will not go through the derivations of all the formulas for the forward and backward passes this time. The code is a simple extension of what we did before and I hope easy to read.</p>
-<div id="f20e64c2" class="cell" data-execution_count="17">
+<div id="1c82ca02" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X_train</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> y_train</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1310,7 +1310,7 @@ Final loss: 0.08367740628296327</code></pre>
 </div>
 </div>
 <p>To judge the newtork quality we do use again the confusion matrix.</p>
-<div id="cb6abe5f" class="cell" data-execution_count="18">
+<div id="4e5ffb22" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>Z1 <span class="op">=</span> np.matmul(W1, X_test) <span class="op">+</span> b1</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> sigmoid(Z1)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>Z2 <span class="op">=</span> np.matmul(W2, A1) <span class="op">+</span> b2</span>
@@ -1343,14 +1343,14 @@ weighted avg       0.97      0.97      0.97     10000
 <pre><code>[0,1,0,0,0,0,0,0,0,0]</code></pre>
 <p>would therefore correspond to the value 1.</p>
 <p>For this purpose, we need to reload the right labels.</p>
-<div id="f8dd5cf0" class="cell" data-execution_count="19">
+<div id="efcf06d3" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_openml</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> fetch_openml(<span class="st">'mnist_784'</span>, version<span class="op">=</span><span class="dv">1</span>, return_X_y<span class="op">=</span><span class="va">True</span>,as_frame<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X <span class="op">/</span> <span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then we’ll one-hot encode MNIST’s labels, to get a 10 x 70,000 array.</p>
-<div id="cb91783e" class="cell" data-execution_count="20">
+<div id="37adaac6" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>digits <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>examples <span class="op">=</span> y.shape[<span class="dv">0</span>]</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1359,14 +1359,14 @@ weighted avg       0.97      0.97      0.97     10000
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>Y_new <span class="op">=</span> np.eye(digits)[y.astype(<span class="st">'int32'</span>)]</span>
 <span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>Y_new <span class="op">=</span> Y_new.T.reshape(digits, examples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="128c2708" class="cell" data-tags="[]" data-execution_count="21">
+<div id="1e758141" class="cell" data-tags="[]" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Y_new.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>(10, 70000)</code></pre>
 </div>
 </div>
 <p>We also seperate into trainging and testing data</p>
-<div id="f08d0991" class="cell" data-execution_count="22">
+<div id="95d07a10" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">60000</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>m_test <span class="op">=</span> X.shape[<span class="dv">0</span>] <span class="op">-</span> m</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1376,7 +1376,7 @@ weighted avg       0.97      0.97      0.97     10000
 <span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>shuffle_index <span class="op">=</span> np.random.permutation(m)</span>
 <span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>X_train, Y_train <span class="op">=</span> X_train[:, shuffle_index], Y_train[:, shuffle_index]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9bc58555" class="cell" data-execution_count="23">
+<div id="948e4912" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">58</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_train[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
@@ -1411,7 +1411,7 @@ L(y,\hat{y}) = -\sum_{i=0}^n y_i\log(\hat{y}_i)\ .
 L(y,\hat{y}) = -\frac{1}{m}\sum_{j=0}^m\sum_{i=0}^n y_i^{(i)}\log(\hat{y}_i^{(i)})\ .
 \end{align*}\]</span></p>
 <p>So let’s define:</p>
-<div id="b1ba6e10" class="cell" data-execution_count="24">
+<div id="ed4bb512" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_multiclass_loss(Y, Y_hat):</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    L_sum <span class="op">=</span> np.<span class="bu">sum</span>(np.multiply(Y, np.log(Y_hat)))</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> Y.shape[<span class="dv">1</span>]</span>
@@ -1430,7 +1430,7 @@ L(y,\hat{y}) = -\frac{1}{m}\sum_{j=0}^m\sum_{i=0}^n y_i^{(i)}\log(\hat{y}_i^{(i)
 <section id="build-and-train" class="level3">
 <h3 class="anchored" data-anchor-id="build-and-train">Build and Train</h3>
 <p>As we have now more weights and classes, the training takes longer and we actually need also more episodes to achieve a good accuracy.</p>
-<div id="2416d4b3" class="cell" data-execution_count="25">
+<div id="7d2ca259" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>n_x <span class="op">=</span> X_train.shape[<span class="dv">0</span>]</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>n_h <span class="op">=</span> <span class="dv">64</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="dv">1</span></span>
@@ -1495,7 +1495,7 @@ Final loss: 0.5636592880338956</code></pre>
 </div>
 </div>
 <p>Let’s see how we did:</p>
-<div id="d7107763" class="cell" data-execution_count="26">
+<div id="c7ddf0ca" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>Z1 <span class="op">=</span> np.matmul(W1, X_test) <span class="op">+</span> b1</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> sigmoid(Z1)</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>Z2 <span class="op">=</span> np.matmul(W2, A1) <span class="op">+</span> b2</span>
@@ -1506,7 +1506,7 @@ Final loss: 0.5636592880338956</code></pre>
 </div>
 <section id="model-performance" class="level4">
 <h4 class="anchored" data-anchor-id="model-performance">Model performance</h4>
-<div id="d5c36f4f" class="cell" data-execution_count="27">
+<div id="fb9dd013" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(predictions, labels))</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1545,7 +1545,7 @@ weighted avg       0.83      0.83      0.83     10000
 </section>
 <section id="test-the-model" class="level2">
 <h2 class="anchored" data-anchor-id="test-the-model">Test the model</h2>
-<div id="d54cba54" class="cell" data-execution_count="28">
+<div id="c877c752" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="dv">2003</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_test[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>predictions[i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
