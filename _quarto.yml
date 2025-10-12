@@ -40,122 +40,122 @@ website:
           - text: "Variables & Numbers (What You Just Used)"
             href: lectures/lecture01/02-lecture01.qmd
 
-      # NEW BLOCK 2: Motion & Visualization (Week 2-3)
-      # Goal: Build on excitement with particle motion
-      - section: "🎯 Week 2-3: Modeling Motion"
-        contents:
-          - text: "Datatypes for Physics"
-            href: lectures/lecture02/3_datatypes.qmd
-          - text: "Functions: Reusable Physics Equations"
-            href: lectures/lecture02/01-lecture02.qmd
-          - text: "Application: Brownian Motion Part 1"
-            href: lectures/lecture05/2_brownian_motion.qmd # MOVED UP!
-          - text: "Arrays with Numpy"
-            href: lectures/lecture03/1_numpy.qmd
+      # # NEW BLOCK 2: Motion & Visualization (Week 2-3)
+      # # Goal: Build on excitement with particle motion
+      # - section: "🎯 Week 2-3: Modeling Motion"
+      #   contents:
+      #     - text: "Datatypes for Physics"
+      #       href: lectures/lecture02/3_datatypes.qmd
+      #     - text: "Functions: Reusable Physics Equations"
+      #       href: lectures/lecture02/01-lecture02.qmd
+      #     - text: "Application: Brownian Motion Part 1"
+      #       href: lectures/lecture05/2_brownian_motion.qmd # MOVED UP!
+      #     - text: "Arrays with Numpy"
+      #       href: lectures/lecture03/1_numpy.qmd
 
-      # NEW BLOCK 3: Real Physics Problems (Week 4-5)
-      # Goal: Show them they can solve real physics now
-      - section: "⚡ Week 4-5: Classical Mechanics"
-        contents:
-          - text: "Planetary Motion"
-            href: lectures/lecture10/2_planetary_motion.qmd # MOVED UP!
-          - text: "Spring Pendulum & Chaos"
-            href: lectures/lecture10/1_spring_pendulum.qmd # MOVED UP!
-          - text: "Tool: Solving ODEs"
-            href: lectures/lecture08/3_solving_ODEs.qmd
-          - text: "Tool: Numerical Integration"
-            href: lectures/lecture08/2_integration.qmd
+      # # NEW BLOCK 3: Real Physics Problems (Week 4-5)
+      # # Goal: Show them they can solve real physics now
+      # - section: "⚡ Week 4-5: Classical Mechanics"
+      #   contents:
+      #     - text: "Planetary Motion"
+      #       href: lectures/lecture10/2_planetary_motion.qmd # MOVED UP!
+      #     - text: "Spring Pendulum & Chaos"
+      #       href: lectures/lecture10/1_spring_pendulum.qmd # MOVED UP!
+      #     - text: "Tool: Solving ODEs"
+      #       href: lectures/lecture08/3_solving_ODEs.qmd
+      #     - text: "Tool: Numerical Integration"
+      #       href: lectures/lecture08/2_integration.qmd
 
-      # NEW BLOCK 4: Organization & Data (Week 6-7)
-      # Goal: Teach organization when they see why it's needed
-      - section: "🔧 Week 6-7: Code Organization"
-        contents:
-          - text: "Modules: Organizing Your Code"
-            href: lectures/lecture02/02-lecture02.qmd
-          - text: "Classes & Objects"
-            href: lectures/lecture05/1_classes.qmd
-          - text: "Advanced: Brownian Motion Part 2"
-            href: lectures/lecture05/2_brownian_motion.qmd
-          - text: "Working with Data Files"
-            href: lectures/lecture06/1_input_output.qmd
-          - text: "Course Feedback"
-            href: https://forms.gle/2Mt4EvvFyQxnDJj78
+      # # NEW BLOCK 4: Organization & Data (Week 6-7)
+      # # Goal: Teach organization when they see why it's needed
+      # - section: "🔧 Week 6-7: Code Organization"
+      #   contents:
+      #     - text: "Modules: Organizing Your Code"
+      #       href: lectures/lecture02/02-lecture02.qmd
+      #     - text: "Classes & Objects"
+      #       href: lectures/lecture05/1_classes.qmd
+      #     - text: "Advanced: Brownian Motion Part 2"
+      #       href: lectures/lecture05/2_brownian_motion.qmd
+      #     - text: "Working with Data Files"
+      #       href: lectures/lecture06/1_input_output.qmd
+      #     - text: "Course Feedback"
+      #       href: https://forms.gle/2Mt4EvvFyQxnDJj78
 
-      # NEW BLOCK 5: Oscillations & Waves (Week 8-9)
-      # Goal: Connect to their mechanics/waves lectures
-      - section: "🌊 Week 8-9: Oscillations & Waves"
-        contents:
-          - text: "Coupled Pendula"
-            href: lectures/lecture09/2_coupled_pendula.qmd
-          - text: "Fourier Analysis"
-            href: lectures/lecture09/3_fourier_analysis.qmd
-          - text: "Plane Waves"
-            href: lectures/lecture13/1_plane_waves.qmd
-          - text: "Spherical Waves"
-            href: lectures/lecture13/2_spherical_waves.qmd
-          - text: "Huygens Principle"
-            href: lectures/lecture14/3_huygens_principle.qmd
+      # # NEW BLOCK 5: Oscillations & Waves (Week 8-9)
+      # # Goal: Connect to their mechanics/waves lectures
+      # - section: "🌊 Week 8-9: Oscillations & Waves"
+      #   contents:
+      #     - text: "Coupled Pendula"
+      #       href: lectures/lecture09/2_coupled_pendula.qmd
+      #     - text: "Fourier Analysis"
+      #       href: lectures/lecture09/3_fourier_analysis.qmd
+      #     - text: "Plane Waves"
+      #       href: lectures/lecture13/1_plane_waves.qmd
+      #     - text: "Spherical Waves"
+      #       href: lectures/lecture13/2_spherical_waves.qmd
+      #     - text: "Huygens Principle"
+      #       href: lectures/lecture14/3_huygens_principle.qmd
 
-      # NEW BLOCK 6: Experimental Physics (Week 10-11)
-      # Goal: Connect to lab work
-      - section: "📊 Week 10-11: Analyzing Experiments"
-        contents:
-          - text: "Curve Fitting to Data"
-            href: lectures/lecture07/1_curve_fitting.qmd
-          - text: "Numerical Differentiation"
-            href: lectures/lecture07/1_differentiation.qmd
-          - text: "Diffusion Equation"
-            href: lectures/lecture12/3_diffusion_equation.qmd
+      # # NEW BLOCK 6: Experimental Physics (Week 10-11)
+      # # Goal: Connect to lab work
+      # - section: "📊 Week 10-11: Analyzing Experiments"
+      #   contents:
+      #     - text: "Curve Fitting to Data"
+      #       href: lectures/lecture07/1_curve_fitting.qmd
+      #     - text: "Numerical Differentiation"
+      #       href: lectures/lecture07/1_differentiation.qmd
+      #     - text: "Diffusion Equation"
+      #       href: lectures/lecture12/3_diffusion_equation.qmd
 
-      # NEW BLOCK 7: Advanced Topics & Exam Prep (Week 12-15)
-      - section: "🎓 Week 12-15: Advanced & Review"
-        contents:
-          - text: "Repetition: ODEs"
-            href: lectures/lecture12/4_repetition.qmd
-          - text: "Repetition: Core Concepts"
-            href: lectures/lecture11/1_repetition.qmd
-          - text: "Repetition: Meshgrid & Arrays"
-            href: lectures/lecture13/4_repetition.qmd
-          - text: "Repetition: ODE Review"
-            href: lectures/lecture15/lecture15a.qmd
+      # # NEW BLOCK 7: Advanced Topics & Exam Prep (Week 12-15)
+      # - section: "🎓 Week 12-15: Advanced & Review"
+      #   contents:
+      #     - text: "Repetition: ODEs"
+      #       href: lectures/lecture12/4_repetition.qmd
+      #     - text: "Repetition: Core Concepts"
+      #       href: lectures/lecture11/1_repetition.qmd
+      #     - text: "Repetition: Meshgrid & Arrays"
+      #       href: lectures/lecture13/4_repetition.qmd
+      #     - text: "Repetition: ODE Review"
+      #       href: lectures/lecture15/lecture15a.qmd
 
-      - text: "---"
+      # - text: "---"
 
-      # KEEP Seminars but reorganize
-      - section: "🛠️ Hands-On Seminars"
-        collapsed: false
-        contents:
-          - section: "MD Simulations (Project Series)"
-            collapsed: true
-            contents:
-              - text: "Part 1: Basics"
-                href: seminars/seminar01/md1.qmd
-              - text: "Part 2: Forces"
-                href: seminars/seminar02/md2.qmd
-              - text: "Part 3: Advanced"
-                href: seminars/seminar03/md3.qmd
-              - text: "Part 4: Optimization"
-                href: seminars/seminar04/md4.qmd
-              - text: "Part 5: Analysis"
-                href: seminars/seminar05/md5.qmd
-              - text: "Part 6: Vibrations"
-                href: seminars/seminar09/md_vibration.qmd
-              - text: "Complete Code"
-                href: seminars/seminar05/mdsim.qmd
+      # # KEEP Seminars but reorganize
+      # - section: "🛠️ Hands-On Seminars"
+      #   collapsed: false
+      #   contents:
+      #     - section: "MD Simulations (Project Series)"
+      #       collapsed: true
+      #       contents:
+      #         - text: "Part 1: Basics"
+      #           href: seminars/seminar01/md1.qmd
+      #         - text: "Part 2: Forces"
+      #           href: seminars/seminar02/md2.qmd
+      #         - text: "Part 3: Advanced"
+      #           href: seminars/seminar03/md3.qmd
+      #         - text: "Part 4: Optimization"
+      #           href: seminars/seminar04/md4.qmd
+      #         - text: "Part 5: Analysis"
+      #           href: seminars/seminar05/md5.qmd
+      #         - text: "Part 6: Vibrations"
+      #           href: seminars/seminar09/md_vibration.qmd
+      #         - text: "Complete Code"
+      #           href: seminars/seminar05/mdsim.qmd
 
-          - section: "Skills Workshops"
-            collapsed: true
-            contents:
-              - text: "Publication-Ready Figures"
-                href: seminars/seminar06/25_publication_ready_figures.qmd
-              - text: "Coding Session 1"
-                href: seminars/seminar07/seminar7.qmd
-              - text: "Coding Session 2"
-                href: seminars/seminar08/seminar8.qmd
-              - text: "Problem Solving 1"
-                href: seminars/seminar09/seminar9.qmd
-              - text: "Problem Solving 2"
-                href: seminars/seminar10/seminar10.qmd
+      #     - section: "Skills Workshops"
+      #       collapsed: true
+      #       contents:
+      #         - text: "Publication-Ready Figures"
+      #           href: seminars/seminar06/25_publication_ready_figures.qmd
+      #         - text: "Coding Session 1"
+      #           href: seminars/seminar07/seminar7.qmd
+      #         - text: "Coding Session 2"
+      #           href: seminars/seminar08/seminar8.qmd
+      #         - text: "Problem Solving 1"
+      #           href: seminars/seminar09/seminar9.qmd
+      #         - text: "Problem Solving 2"
+      #           href: seminars/seminar10/seminar10.qmd
 
 format:
   live-html:
