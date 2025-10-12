@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.7.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Jupyter Notebooks – Einführung in die Modellierung Physikalischer Prozesse</title>
+<title>Getting Started with Jupyter Notebooks – Einführung in die Modellierung Physikalischer Prozesse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,8 +21,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -57,23 +58,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../lectures/lecture01/02-lecture01.html" rel="next">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
+<link href="../../lectures/lecture04/04-plotting.html" rel="next">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-9344fb9851b4da3cab95007ef9d770dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -105,9 +107,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -142,7 +141,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -170,7 +169,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Python Basics</li><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Lecture 1</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Jupyter Notebooks</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">🚀 Week 1: Your First Physics Code</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Setup: Jupyter Notebooks</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -180,11 +179,6 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../mona_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
-      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -197,7 +191,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Course Info</span></a>
+ <span class="menu-text">📋 Course Info</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -233,573 +227,30 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Python Basics</span></a>
+ <span class="menu-text">🚀 Week 1: Your First Physics Code</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture01/01-lecture01.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Jupyter Notebooks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture01/02-lecture01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Variables &amp; Numbers</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 2</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture02/3_datatypes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Datatypes</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 3</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture02/01-lecture02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Functions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture02/02-lecture02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modules</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 4</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture03/1_numpy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Numpy Module</span></a>
+ <span class="menu-text">Setup: Jupyter Notebooks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture04/04-plotting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plotting</span></a>
+ <span class="menu-text">Quick Win: Plotting Your First Graph</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="https://forms.gle/2Mt4EvvFyQxnDJj78" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Short Course Feedback</span></a>
+  <a href="../../lectures/lecture01/02-lecture01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables &amp; Numbers (What You Just Used)</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 5</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture05/1_classes.pdf" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Classes &amp; Objects</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture05/2_brownian_motion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Brownian Motion</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 6</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture05/2_brownian_motion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Brownian Motion</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture06/1_input_output.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Input Output</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
- <span class="menu-text">Numerical Methods</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 7</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture07/1_curve_fitting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Curve Fitting</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture07/1_differentiation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Numerical Differentiation</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 8</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture08/2_integration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Numerical Integration</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture08/3_solving_ODEs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Solving ODEs</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true">
- <span class="menu-text">Physics Problems</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 9</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture09/2_coupled_pendula.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Coupled Pendula</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture09/3_fourier_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fourier Analysis</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 10</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture10/1_spring_pendulum.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Spring Pendulum</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture10/2_planetary_motion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Planetary Motion</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 11</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture11/1_repetition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Repetition</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 12</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture12/3_diffusion_equation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Diffusion Equation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture12/4_repetition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Repetition ODEs</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 13</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture13/1_plane_waves.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Electromagnetic Waves - Plane Waves</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture13/2_spherical_waves.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Electromagnetic Waves - Spherical Waves</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture13/4_repetition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Repetition Meshgrid</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 14</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture14/3_huygens_principle.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Huygens Principle</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 15</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture15/lecture15a.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Repetition ODE</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="true">
- <span class="menu-text">Seminars</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-20" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="true">
- <span class="menu-text">Seminar01</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-21" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar01/md1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MD Simulations Part 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://github.com/fcichos/EMPP24/blob/0a72930701cb672ff404d6b93048c898a132bcbe/docs/seminars/seminar01/MDSimulation.ipynb" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Jupyter Notebook</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" role="navigation" aria-expanded="true">
- <span class="menu-text">Seminar02</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-22" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar02/md2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MD Simulation Part 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://github.com/fcichos/EMPP24/blob/e18cbfb3b8778a835f556e664e5c5aadc6fb82cd/seminars/seminar02/MD%20Simulation.ipynb" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Jupyter Notebook</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-23" role="navigation" aria-expanded="true">
- <span class="menu-text">Seminar03</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-23" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-23" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar03/md3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MD Simulation Part 3</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-24" role="navigation" aria-expanded="true">
- <span class="menu-text">Seminar04</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-24" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-24" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar04/md4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MD Simulation Part 4</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-25" role="navigation" aria-expanded="true">
- <span class="menu-text">Seminar05</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-25" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-25" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar05/md5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MD Simulation Part 5</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar05/mdsim.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MD Simulation Code</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-26" role="navigation" aria-expanded="true">
- <span class="menu-text">Seminar06</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-26" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-26" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar06/25_publication_ready_figures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Figure Formatting</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-27" role="navigation" aria-expanded="true">
- <span class="menu-text">Seminar07</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-27" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-27" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar07/seminar7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seminar Coding Session 1</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" role="navigation" aria-expanded="true">
- <span class="menu-text">Seminar08</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-28" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar08/seminar8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seminar Coding Session 2</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-29" role="navigation" aria-expanded="true">
- <span class="menu-text">Seminar09</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-29" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-29" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar09/md_vibration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MD Simulation Part 6</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar09/seminar9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seminar 9</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-30" role="navigation" aria-expanded="true">
- <span class="menu-text">Seminar10</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-30" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-30" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar10/seminar10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seminar 10</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
       </ul>
   </li>
     </ul>
@@ -812,39 +263,55 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-jupyter-notebook" id="toc-what-is-jupyter-notebook" class="nav-link active" data-scroll-target="#what-is-jupyter-notebook">What is Jupyter Notebook?</a>
+  <li><a href="#why-jupyter" id="toc-why-jupyter" class="nav-link active" data-scroll-target="#why-jupyter">Why Jupyter? 🚀</a></li>
+  <li><a href="#what-is-a-jupyter-notebook" id="toc-what-is-a-jupyter-notebook" class="nav-link" data-scroll-target="#what-is-a-jupyter-notebook">What is a Jupyter Notebook?</a></li>
+  <li><a href="#opening-jupyter-lab" id="toc-opening-jupyter-lab" class="nav-link" data-scroll-target="#opening-jupyter-lab">Opening Jupyter Lab</a>
   <ul class="collapse">
-  <li><a href="#key-components-of-a-notebook" id="toc-key-components-of-a-notebook" class="nav-link" data-scroll-target="#key-components-of-a-notebook">Key Components of a Notebook</a></li>
-  <li><a href="#kernels" id="toc-kernels" class="nav-link" data-scroll-target="#kernels">Kernels</a></li>
-  <li><a href="#jupyterlab-example" id="toc-jupyterlab-example" class="nav-link" data-scroll-target="#jupyterlab-example">JupyterLab Example</a></li>
-  <li><a href="#notebook-documents" id="toc-notebook-documents" class="nav-link" data-scroll-target="#notebook-documents">Notebook Documents</a></li>
+  <li><a href="#option-1-anaconda-navigator-recommended-for-beginners" id="toc-option-1-anaconda-navigator-recommended-for-beginners" class="nav-link" data-scroll-target="#option-1-anaconda-navigator-recommended-for-beginners">Option 1: Anaconda Navigator (Recommended for Beginners)</a></li>
+  <li><a href="#option-2-command-line" id="toc-option-2-command-line" class="nav-link" data-scroll-target="#option-2-command-line">Option 2: Command Line</a></li>
   </ul></li>
-  <li><a href="#using-the-notebook-editor" id="toc-using-the-notebook-editor" class="nav-link" data-scroll-target="#using-the-notebook-editor">Using the Notebook Editor</a>
+  <li><a href="#jupyterlab-interface" id="toc-jupyterlab-interface" class="nav-link" data-scroll-target="#jupyterlab-interface">JupyterLab Interface</a></li>
+  <li><a href="#creating-your-first-notebook" id="toc-creating-your-first-notebook" class="nav-link" data-scroll-target="#creating-your-first-notebook">Creating Your First Notebook</a></li>
+  <li><a href="#two-types-of-cells" id="toc-two-types-of-cells" class="nav-link" data-scroll-target="#two-types-of-cells">Two Types of Cells</a>
   <ul class="collapse">
-  <li><a href="#edit-mode" id="toc-edit-mode" class="nav-link" data-scroll-target="#edit-mode">Edit mode</a></li>
-  <li><a href="#command-mode" id="toc-command-mode" class="nav-link" data-scroll-target="#command-mode">Command mode</a></li>
-  <li><a href="#keyboard-navigation" id="toc-keyboard-navigation" class="nav-link" data-scroll-target="#keyboard-navigation">Keyboard navigation</a></li>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running code</a></li>
+  <li><a href="#code-cells-default" id="toc-code-cells-default" class="nav-link" data-scroll-target="#code-cells-default">Code Cells (Default)</a></li>
+  <li><a href="#markdown-cells" id="toc-markdown-cells" class="nav-link" data-scroll-target="#markdown-cells">Markdown Cells</a></li>
   </ul></li>
-  <li><a href="#managing-the-kernel" id="toc-managing-the-kernel" class="nav-link" data-scroll-target="#managing-the-kernel">Managing the kernel</a></li>
-  <li><a href="#markdown-in-notebooks" id="toc-markdown-in-notebooks" class="nav-link" data-scroll-target="#markdown-in-notebooks">Markdown in Notebooks</a>
+  <li><a href="#your-first-calculation" id="toc-your-first-calculation" class="nav-link" data-scroll-target="#your-first-calculation">Your First Calculation 🎯</a>
   <ul class="collapse">
-  <li><a href="#markdown-basics" id="toc-markdown-basics" class="nav-link" data-scroll-target="#markdown-basics">Markdown basics</a></li>
-  <li><a href="#headings" id="toc-headings" class="nav-link" data-scroll-target="#headings">Headings</a></li>
-  <li><a href="#embedded-code" id="toc-embedded-code" class="nav-link" data-scroll-target="#embedded-code">Embedded code</a></li>
-  <li><a href="#latex-equations" id="toc-latex-equations" class="nav-link" data-scroll-target="#latex-equations">LaTeX equations</a></li>
-  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images">Images</a></li>
-  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos">Videos</a></li>
+  <li><a href="#physics" id="toc-physics" class="nav-link" data-scroll-target="#physics">Physics</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
+  <li><a href="#run-it" id="toc-run-it" class="nav-link" data-scroll-target="#run-it">Run It!</a></li>
   </ul></li>
+  <li><a href="#essential-keyboard-shortcuts" id="toc-essential-keyboard-shortcuts" class="nav-link" data-scroll-target="#essential-keyboard-shortcuts">Essential Keyboard Shortcuts</a>
+  <ul class="collapse">
+  <li><a href="#running-cells" id="toc-running-cells" class="nav-link" data-scroll-target="#running-cells">Running Cells</a></li>
+  <li><a href="#cell-operations-press-esc-first-to-enter-command-mode" id="toc-cell-operations-press-esc-first-to-enter-command-mode" class="nav-link" data-scroll-target="#cell-operations-press-esc-first-to-enter-command-mode">Cell Operations (press <code>Esc</code> first to enter command mode)</a></li>
+  <li><a href="#editing" id="toc-editing" class="nav-link" data-scroll-target="#editing">Editing</a></li>
+  </ul></li>
+  <li><a href="#try-it-multi-step-calculation" id="toc-try-it-multi-step-calculation" class="nav-link" data-scroll-target="#try-it-multi-step-calculation">Try It: Multi-Step Calculation</a></li>
+  <li><a href="#adding-documentation-with-markdown" id="toc-adding-documentation-with-markdown" class="nav-link" data-scroll-target="#adding-documentation-with-markdown">Adding Documentation with Markdown</a>
+  <ul class="collapse">
+  <li><a href="#create-a-markdown-cell" id="toc-create-a-markdown-cell" class="nav-link" data-scroll-target="#create-a-markdown-cell">Create a Markdown Cell</a></li>
+  </ul></li>
+  <li><a href="#saving-your-work" id="toc-saving-your-work" class="nav-link" data-scroll-target="#saving-your-work">Saving Your Work</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next? 📊</a></li>
+  <li><a href="#quick-reference-card" id="toc-quick-reference-card" class="nav-link" data-scroll-target="#quick-reference-card">Quick Reference Card</a>
+  <ul class="collapse">
+  <li><a href="#most-important-commands" id="toc-most-important-commands" class="nav-link" data-scroll-target="#most-important-commands">Most Important Commands</a></li>
+  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting Help</a></li>
+  </ul></li>
+  <li><a href="#advanced-topics-optional" id="toc-advanced-topics-optional" class="nav-link" data-scroll-target="#advanced-topics-optional">Advanced Topics (Optional)</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary ✅</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Python Basics</li><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Lecture 1</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Jupyter Notebooks</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">🚀 Week 1: Your First Physics Code</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture01/01-lecture01.html">Setup: Jupyter Notebooks</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Jupyter Notebooks</h1>
+<h1 class="title">Getting Started with Jupyter Notebooks</h1>
 </div>
 
 
@@ -861,340 +328,539 @@ window.Quarto = {
 </header>
 
 
-<section id="what-is-jupyter-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-jupyter-notebook">What is Jupyter Notebook?</h2>
-<p>A Jupyter Notebook is a web browser based <strong>interactive computing environment</strong> that enables users to create documents that include code to be executed, results from the executed code such as plots and images,and finally also an additional documentation in form of markdown text including equations in LaTeX.</p>
-<p>These documents provide a <strong>complete and self-contained record of a computation</strong> that can be converted to various formats and shared with others using email, version control systems (like git/<a href="https://github.com">GitHub</a>) or <a href="http://nbviewer.jupyter.org">nbviewer.jupyter.org</a>.</p>
-<section id="key-components-of-a-notebook" class="level3">
-<h3 class="anchored" data-anchor-id="key-components-of-a-notebook">Key Components of a Notebook</h3>
-<p>The Jupyter Notebook ecosystem consists of three main components:</p>
-<ol type="1">
-<li>Notebook Editor</li>
-<li>Kernels</li>
-<li>Notebook Documents</li>
-</ol>
-<p>Let’s explore each of these components in detail:</p>
-<section id="notebook-editor" class="level4">
-<h4 class="anchored" data-anchor-id="notebook-editor">Notebook Editor</h4>
-<p>The Notebook editor is an interactive web-based application for creating and editing notebook documents. It enables users to write and run code, add rich text, and multimedia content. When running Jupyter on a server, users typically use either the classic Jupyter Notebook interface or JupyterLab, an advanced version with more features.</p>
-<p>Key features of the Notebook editor include:</p>
+<section id="why-jupyter" class="level2">
+<h2 class="anchored" data-anchor-id="why-jupyter">Why Jupyter? 🚀</h2>
+<p>As physicists, we need to:</p>
 <ul>
-<li><strong>Code Editing:</strong> Write and edit code in individual cells.</li>
-<li><strong>Code Execution:</strong> Run code cells in any order and display computation results in various formats (HTML, LaTeX, PNG, SVG, PDF).</li>
-<li><strong>Interactive Widgets:</strong> Create and use JavaScript widgets that connect user interface controls to kernel-side computations.</li>
-<li><strong>Rich Text:</strong> Add documentation using <a href="https://daringfireball.net/projects/markdown/">Markdown</a> markup language, including LaTeX equations.</li>
+<li><strong>Calculate</strong> results from equations</li>
+<li><strong>Visualize</strong> data and theoretical predictions</li>
+<li><strong>Document</strong> our work with equations and explanations</li>
+<li><strong>Share</strong> reproducible results with colleagues</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled" title="Advance Notebook Editor Info">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<p>Jupyter Notebooks let us do all of this in <strong>one place</strong>!</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What You’ll Create Today
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By the end of Week 1, you’ll generate plots like this:</p>
+<div id="ad87ffb6" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-lecture01_files/figure-html/cell-2-output-1.png" width="661" height="373" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>All from physics equations you already know!</strong></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="what-is-a-jupyter-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-jupyter-notebook">What is a Jupyter Notebook?</h2>
+<p>A Jupyter Notebook is a <strong>web-based interactive document</strong> that combines:</p>
+<ul>
+<li><strong>Code</strong> (Python) that you can run</li>
+<li><strong>Results</strong> (numbers, plots, animations)</li>
+<li><strong>Documentation</strong> (text, equations in LaTeX)</li>
+</ul>
+<p>Think of it as a <strong>digital lab notebook</strong> for computational physics.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Advance Notebook Editor Info
+Key Advantage
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The Notebook editor in Jupyter offers several advanced features:</p>
-<ul>
-<li><p><strong>Cell Metadata:</strong> Each cell has associated metadata that can be used to control its behavior. This includes tags for slideshows, hiding code cells, and controlling cell execution.</p></li>
-<li><p><strong>Magic Commands:</strong> Special commands prefixed with <code>%</code> (line magics) or <code>%%</code> (cell magics) that provide additional functionality, such as timing code execution or displaying plots inline.</p></li>
-<li><p><strong>Auto-completion:</strong> The editor provides context-aware auto-completion for Python code, helping users write code more efficiently.</p></li>
-<li><p><strong>Code Folding:</strong> Users can collapse long code blocks for better readability.</p></li>
-<li><p><strong>Multiple Cursors:</strong> Advanced editing with multiple cursors for simultaneous editing at different locations.</p></li>
-<li><p><strong>Split View:</strong> The ability to split the notebook view, allowing users to work on different parts of the notebook simultaneously.</p></li>
-<li><p><strong>Variable Inspector:</strong> A tool to inspect and manage variables in the kernel’s memory.</p></li>
-<li><p><strong>Integrated Debugger:</strong> Some Jupyter environments offer an integrated debugger for step-by-step code execution and inspection.</p></li>
-</ul>
+<p>Unlike traditional programming where you write everything first and then run it, Jupyter lets you <strong>experiment interactively</strong> - run small pieces of code, see results immediately, and build up your solution step by step.</p>
 </div>
 </div>
-</div>
+<hr>
 </section>
+<section id="opening-jupyter-lab" class="level2">
+<h2 class="anchored" data-anchor-id="opening-jupyter-lab">Opening Jupyter Lab</h2>
+<section id="option-1-anaconda-navigator-recommended-for-beginners" class="level3">
+<h3 class="anchored" data-anchor-id="option-1-anaconda-navigator-recommended-for-beginners">Option 1: Anaconda Navigator (Recommended for Beginners)</h3>
+<ol type="1">
+<li>Open <strong>Anaconda Navigator</strong></li>
+<li>Click <strong>Launch</strong> under <strong>JupyterLab</strong></li>
+<li>Your browser opens automatically</li>
+</ol>
 </section>
-<section id="kernels" class="level3">
-<h3 class="anchored" data-anchor-id="kernels">Kernels</h3>
-<p>Kernels are the computational engines that execute the code contained in a notebook. They are separate processes that run independently of the notebook editor.</p>
-<p>Key responsibilities of kernels include: * Executing user code * Returning computation results to the notebook editor * Handling computations for interactive widgets * Providing features like tab completion and introspection</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Advanced Kernel Info">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<section id="option-2-command-line" class="level3">
+<h3 class="anchored" data-anchor-id="option-2-command-line">Option 2: Command Line</h3>
+<p>Open terminal and type:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Advanced Kernel Info
+Troubleshooting
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Jupyter notebooks are language-agnostic. Different kernels can be installed to support various programming languages such as Python, R, Julia, and many others. The default kernel runs Python code, but users can select different kernels for each notebook via the Kernel menu.</p>
-<p>Kernels communicate with the notebook editor using a JSON-based protocol over ZeroMQ/WebSockets. For more technical details, see the <a href="https://jupyter-client.readthedocs.io/en/latest/messaging.html#messaging">messaging specification</a>.</p>
-<p>Each kernel runs in its own environment, which can be customized to include specific libraries and dependencies. This allows users to create isolated environments for different projects, ensuring that dependencies do not conflict.</p>
-<p>Kernels also support interactive features such as:</p>
-<ul>
-<li><strong>Tab Completion:</strong> Provides suggestions for variable names, functions, and methods as you type, improving coding efficiency.</li>
-<li><strong>Introspection:</strong> Allows users to inspect objects, view documentation, and understand the structure of code elements.</li>
-<li><strong>Rich Output:</strong> Supports various output formats, including text, images, videos, and interactive widgets, enhancing the interactivity of notebooks.</li>
-</ul>
-<p>Advanced users can create custom kernels to support additional languages or specialized computing environments. This involves writing a kernel specification and implementing the necessary communication protocols.</p>
-<p>For managing kernels, Jupyter provides several commands and options:</p>
-<ul>
-<li><strong>Starting a Kernel:</strong> Automatically starts when a notebook is opened.</li>
-<li><strong>Interrupting a Kernel:</strong> Stops the execution of the current code cell, useful for halting long-running computations.</li>
-<li><strong>Restarting a Kernel:</strong> Clears the kernel’s memory and restarts it, useful for resetting the environment or recovering from errors.</li>
-<li><strong>Shutting Down a Kernel:</strong> Stops the kernel and frees up system resources.</li>
-</ul>
-<p>Users can also monitor kernel activity and resource usage through the Jupyter interface, ensuring efficient and effective use of computational resources.</p>
+<p>If Jupyter doesn’t start, check: - Anaconda is installed - You’re connected to the internet (first time only) - Try restarting Anaconda Navigator</p>
 </div>
 </div>
-</div>
+<hr>
 </section>
-<section id="jupyterlab-example" class="level3">
-<h3 class="anchored" data-anchor-id="jupyterlab-example">JupyterLab Example</h3>
-<p>The following is an example of a JupyterLab interface with a notebook editor, code cells, markdown cells, and a kernel selector:</p>
-<button onclick="openFullscreen()">Full Screen</button>
-<iframe id="myIframe" src="https://jupyterlite.github.io/demo/" width="100%" height="600px" allowfullscreen=""></iframe>
-
-<script>
-function openFullscreen() {
-  var iframe = document.getElementById("myIframe");
-  if (iframe.requestFullscreen) {
-    iframe.requestFullscreen();
-  } else if (iframe.webkitRequestFullscreen) { /* Safari */
-    iframe.webkitRequestFullscreen();
-  } else if (iframe.msRequestFullscreen) { /* IE11 */
-    iframe.msRequestFullscreen();
-  }
-}
-</script>
 </section>
-<section id="notebook-documents" class="level3">
-<h3 class="anchored" data-anchor-id="notebook-documents">Notebook Documents</h3>
-<p>Notebook documents are self-contained files that encapsulate all content created in the notebook editor. They include code inputs/outputs, Markdown text, equations, images, and other media. Each document is associated with a specific kernel and serves as both a human-readable record of analysis and an executable script to reproduce the work.</p>
-<p>Characteristics of notebook documents:</p>
+<section id="jupyterlab-interface" class="level2">
+<h2 class="anchored" data-anchor-id="jupyterlab-interface">JupyterLab Interface</h2>
+<p>When JupyterLab opens, you’ll see:</p>
 <ul>
-<li>File Extension: Notebooks are stored as files with a <code>.ipynb</code> extension.</li>
-<li>Structure: Notebooks consist of a linear sequence of cells, which can be one of three types:
-<ul>
-<li><strong>Code cells:</strong> Contain executable code and its output.</li>
-<li><strong>Markdown cells:</strong> Contain formatted text, including LaTeX equations.</li>
-<li><strong>Raw cells:</strong> Contain unformatted text, preserved when converting notebooks to other formats.</li>
-</ul></li>
+<li><strong>Left sidebar</strong>: File browser (like Windows Explorer/Finder)</li>
+<li><strong>Main area</strong>: Where notebooks open</li>
+<li><strong>Launcher tab</strong>: Click “Python 3” under Notebook to create a new notebook</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled" title="Advanced Notebook Documents Info">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Advanced Notebook Documents Info
+Try It Yourself (Embedded Demo)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Here’s a live JupyterLab environment you can experiment with:</p>
+<button onclick="document.getElementById('myIframe').requestFullscreen()">Open Fullscreen</button>
+<iframe id="myIframe" src="https://jupyterlite.github.io/demo/" width="100%" height="500px" allowfullscreen=""></iframe>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="creating-your-first-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="creating-your-first-notebook">Creating Your First Notebook</h2>
+<ol type="1">
+<li>Click <strong>Python 3</strong> tile under “Notebook” in the Launcher</li>
+<li>A new tab opens with an empty notebook</li>
+<li>Save it: <strong>File → Save Notebook As…</strong> → <code>physics_week1.ipynb</code></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+File Extension
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Jupyter notebooks end in <code>.ipynb</code> (IPython Notebook)</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="two-types-of-cells" class="level2">
+<h2 class="anchored" data-anchor-id="two-types-of-cells">Two Types of Cells</h2>
+<p>Jupyter notebooks consist of <strong>cells</strong> - individual blocks that contain either code or text.</p>
+<section id="code-cells-default" class="level3">
+<h3 class="anchored" data-anchor-id="code-cells-default">Code Cells (Default)</h3>
+<ul>
+<li>Write Python code here</li>
+<li>Run to see results</li>
+<li>Identified by <code>[ ]:</code> on the left</li>
+</ul>
+</section>
+<section id="markdown-cells" class="level3">
+<h3 class="anchored" data-anchor-id="markdown-cells">Markdown Cells</h3>
+<ul>
+<li>Write notes, explanations, equations</li>
+<li>Use for documentation</li>
+<li>Change a cell to Markdown: Click cell, then press <strong><code>M</code></strong> key</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="your-first-calculation" class="level2">
+<h2 class="anchored" data-anchor-id="your-first-calculation">Your First Calculation 🎯</h2>
+<p>Let’s calculate gravitational potential energy!</p>
+<section id="physics" class="level3">
+<h3 class="anchored" data-anchor-id="physics">Physics</h3>
+<p><span class="math display">\[E_{\text{pot}} = mgh\]</span></p>
+</section>
+<section id="code" class="level3">
+<h3 class="anchored" data-anchor-id="code">Code</h3>
+<p>Type this in your first cell:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gravitational potential energy</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="fl">2.0</span>    <span class="co"># mass in kg</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span>   <span class="co"># gravity in m/s²</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fl">10.0</span>   <span class="co"># height in m</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>E_pot <span class="op">=</span> m <span class="op">*</span> g <span class="op">*</span> h</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Potential energy: </span><span class="sc">{</span>E_pot<span class="sc">}</span><span class="ss"> J"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="run-it" class="level3">
+<h3 class="anchored" data-anchor-id="run-it">Run It!</h3>
+<ul>
+<li><strong>Click the ▶ button</strong> (top of cell), OR</li>
+<li>Press <strong><code>Shift + Enter</code></strong> (run and move to next cell), OR</li>
+<li>Press <strong><code>Ctrl/Cmd + Enter</code></strong> (run and stay)</li>
+</ul>
+<p>You should see: <code>Potential energy: 196.2 J</code></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Pro Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong><code>Shift + Enter</code></strong> is the most common way to run cells - you’ll use this constantly!</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="essential-keyboard-shortcuts" class="level2">
+<h2 class="anchored" data-anchor-id="essential-keyboard-shortcuts">Essential Keyboard Shortcuts</h2>
+<p>You’ll save tons of time with these shortcuts:</p>
+<section id="running-cells" class="level3">
+<h3 class="anchored" data-anchor-id="running-cells">Running Cells</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Shift + Enter</code></td>
+<td>Run cell and move to next</td>
+</tr>
+<tr class="even">
+<td><code>Ctrl/Cmd + Enter</code></td>
+<td>Run cell and stay</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cell-operations-press-esc-first-to-enter-command-mode" class="level3">
+<h3 class="anchored" data-anchor-id="cell-operations-press-esc-first-to-enter-command-mode">Cell Operations (press <code>Esc</code> first to enter command mode)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>B</code></td>
+<td>Insert cell <strong>below</strong></td>
+</tr>
+<tr class="even">
+<td><code>A</code></td>
+<td>Insert cell <strong>above</strong></td>
+</tr>
+<tr class="odd">
+<td><code>D D</code></td>
+<td><strong>Delete</strong> cell (press D twice)</td>
+</tr>
+<tr class="even">
+<td><code>M</code></td>
+<td>Change to <strong>Markdown</strong> cell</td>
+</tr>
+<tr class="odd">
+<td><code>Y</code></td>
+<td>Change to <strong>Code</strong> cell</td>
+</tr>
+<tr class="even">
+<td><code>Z</code></td>
+<td><strong>Undo</strong> delete</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="editing" class="level3">
+<h3 class="anchored" data-anchor-id="editing">Editing</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Enter</code></td>
+<td>Enter edit mode</td>
+</tr>
+<tr class="even">
+<td><code>Esc</code></td>
+<td>Exit edit mode (command mode)</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Two Modes
+</div>
+</div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>Version Control: Notebook documents can be version controlled using systems like Git. This allows users to track changes, collaborate with others, and revert to previous versions if needed. Tools like <code>nbdime</code> provide diff and merge capabilities specifically designed for Jupyter Notebooks.</p></li>
-<li><p>Cell Tags: Cells in a notebook can be tagged with metadata to control their behavior during execution, export, or presentation. For example, tags can be used to hide input or output, skip execution, or designate cells as slides in a presentation.</p></li>
-<li><p>Interactive Widgets: Notebook documents can include interactive widgets that allow users to manipulate parameters and visualize changes in real-time. This is particularly useful for data exploration and interactive simulations.</p></li>
-<li><p>Extensions: The Jupyter ecosystem supports a wide range of extensions that enhance the functionality of notebook documents. These extensions can add features like spell checking, code formatting, and integration with external tools and services.</p></li>
-<li><p>Security: Notebook documents can include code that executes on the user’s machine, which poses security risks. Jupyter provides mechanisms to sanitize notebooks and prevent the execution of untrusted code. Users should be cautious when opening notebooks from unknown sources.</p></li>
-<li><p>Collaboration: Jupyter Notebooks can be shared and collaboratively edited in real-time using platforms like Google Colab, Microsoft Azure Notebooks, and JupyterHub. These platforms provide cloud-based environments where multiple users can work on the same notebook simultaneously.</p></li>
-<li><p>Customization: Users can customize the appearance and behavior of notebook documents using CSS and JavaScript. This allows for the creation of tailored interfaces and enhanced user experiences.</p></li>
-<li><p>Export Options: In addition to static formats, notebooks can be exported to interactive formats like dashboards and web applications. Tools like <code>Voila</code> convert notebooks into standalone web applications that can be shared and deployed.</p></li>
-<li><p>Provenance: Notebooks can include provenance information that tracks the origin and history of data and computations. This is important for reproducibility and transparency in scientific research.</p></li>
-<li><p>Documentation: Notebook documents can serve as comprehensive documentation for projects, combining code, results, and narrative text. This makes them valuable for teaching, tutorials, and sharing research findings.</p></li>
-<li><p>Performance: Large notebooks with many cells and outputs can become slow and unwieldy. Techniques like cell output clearing, using lightweight data formats, and splitting notebooks into smaller parts can help maintain performance.</p></li>
-<li><p>Integration: Jupyter Notebooks can integrate with a wide range of data sources, libraries, and tools. This includes databases, cloud storage, machine learning frameworks, and visualization libraries, making them a versatile tool for data science and research.</p></li>
-<li><p>Internal Format: Notebook files are <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> text files with binary data encoded in <a href="http://en.wikipedia.org/wiki/Base64">base64</a>, making them easy to manipulate programmatically.</p></li>
-<li><p>Exportability: Notebooks can be exported to various static formats (HTML, reStructuredText, LaTeX, PDF, slide shows) using Jupyter’s <code>nbconvert</code> utility.</p></li>
-<li><p>Sharing: Notebooks can be shared via <a href="http://nbviewer.jupyter.org">nbviewer</a>, which renders notebooks from public URLs or GitHub as static web pages, allowing others to view the content without installing Jupyter.</p></li>
+<li><strong>Edit mode</strong> (green border): Type in cell</li>
+<li><strong>Command mode</strong> (blue border): Use keyboard shortcuts</li>
 </ul>
+<p>Press <code>Esc</code> to switch to command mode, <code>Enter</code> to switch to edit mode.</p>
 </div>
 </div>
-</div>
-<p>This integrated system of editor, kernels, and documents makes Jupyter Notebooks a powerful tool for interactive computing, data analysis, and sharing of computational narratives.</p>
+<hr>
 </section>
 </section>
-<section id="using-the-notebook-editor" class="level2">
-<h2 class="anchored" data-anchor-id="using-the-notebook-editor">Using the Notebook Editor</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/notebook.png" class="img-fluid figure-img"></p>
-<figcaption>Jupyter Notebook Editor</figcaption>
-</figure>
-</div>
-<p>The Jupyter Notebook editor provides an interactive environment for writing code, creating visualizations, and documenting computational workflows. It consists of a web-based interface that allows users to create and edit notebook documents containing code, text, equations, images, and interactive elements. A Jupyter Notebook provides an interface with essentially two modes of operation:</p>
-<ul>
-<li><strong>edit mode</strong> the mode where you edit a cells content.</li>
-<li><strong>command mode</strong> the mode where you execute the cells content.</li>
-</ul>
-<p>In the more advanced version of JupyterLab you can also have a <strong>presentation mode</strong> where you can present your notebook as a slideshow.</p>
-<section id="edit-mode" class="level3">
-<h3 class="anchored" data-anchor-id="edit-mode">Edit mode</h3>
-<p>Edit mode is indicated by a blue cell border and a prompt showing in the editor area when a cell is selected. You can enter edit mode by pressing <code>Enter</code> or using the mouse to click on a cell’s editor area.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/edit_mode.png" class="img-fluid figure-img"></p>
-<figcaption>Edit Mode</figcaption>
-</figure>
-</div>
-<p>When a cell is in edit mode, you can type into the cell, like a normal text editor</p>
-</section>
-<section id="command-mode" class="level3">
-<h3 class="anchored" data-anchor-id="command-mode">Command mode</h3>
-<p>Command mode is indicated by a grey cell border with a blue left margin. When you are in command mode, you are able to edit the notebook as a whole, but not type into individual cells. Most importantly, in command mode, the keyboard is mapped to a set of shortcuts that let you perform notebook and cell actions efficiently.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/command_mode.png" class="img-fluid figure-img"></p>
-<figcaption>Command Mode</figcaption>
-</figure>
-</div>
-<p>If you have a hardware keyboard connected to your iOS device, you can use Jupyter keyboard shortcuts. The modal user interface of the Jupyter Notebook has been optimized for efficient keyboard usage. This is made possible by having two different sets of keyboard shortcuts: one set that is active in edit mode and another in command mode.</p>
-</section>
-<section id="keyboard-navigation" class="level3">
-<h3 class="anchored" data-anchor-id="keyboard-navigation">Keyboard navigation</h3>
-<p>In edit mode, most of the keyboard is dedicated to typing into the cell’s editor area. Thus, in edit mode there are relatively few shortcuts available. In command mode, the entire keyboard is available for shortcuts, so there are many more. Most important ones are:</p>
+<section id="try-it-multi-step-calculation" class="level2">
+<h2 class="anchored" data-anchor-id="try-it-multi-step-calculation">Try It: Multi-Step Calculation</h2>
+<p>Let’s calculate the time for a ball to fall from height h.</p>
+<p><strong>Physics:</strong> <span class="math inline">\(h = \frac{1}{2}gt^2\)</span> → <span class="math inline">\(t = \sqrt{\frac{2h}{g}}\)</span></p>
+<p><strong>Your Task:</strong></p>
 <ol type="1">
-<li>Switch command and edit mods: <code>Enter</code> for edit mode, and <code>Esc</code> or <code>Control</code> for command mode.</li>
-<li>Basic navigation: <code>↑</code>/<code>k</code>, <code>↓</code>/<code>j</code></li>
-<li>Run or render currently selected cell: <code>Shift</code>+<code>Enter</code> or <code>Control</code>+<code>Enter</code></li>
-<li>Saving the notebook: <code>s</code></li>
-<li>Change Cell types: <code>y</code> to make it a <strong>code</strong> cell, <code>m</code> for <strong>markdown</strong> and <code>r</code> for <strong>raw</strong></li>
-<li>Inserting new cells: <code>a</code> to <strong>insert above</strong>, <code>b</code> to <strong>insert below</strong></li>
-<li>Manipulating cells using pasteboard: <code>x</code> for <strong>cut</strong>, <code>c</code> for <strong>copy</strong>, <code>v</code> for <strong>paste</strong>, <code>d</code> for <strong>delete</strong> and <code>z</code> for <strong>undo delete</strong></li>
-<li>Kernel operations: <code>i</code> to <strong>interrupt</strong> and <code>0</code> to <strong>restart</strong></li>
+<li>Create a new cell below (press <code>B</code>)</li>
+<li>Type this code:</li>
 </ol>
-</section>
-<section id="running-code" class="level3">
-<h3 class="anchored" data-anchor-id="running-code">Running code</h3>
-<p>Code cells allow you to enter and run code. Run a code cell by pressing the <code>▶︎</code> button in the bottom-right panel, or <code>Control</code>+<code>Enter</code> on your hardware keyboard.</p>
-<div id="f4200d2f" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">23752636</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>23752636</code></pre>
-</div>
-</div>
-<p>There are a couple of keyboard shortcuts for running code:</p>
-<ul>
-<li><code>Control</code>+<code>Enter</code> run the current cell and enters command mode.</li>
-<li><code>Shift</code>+<code>Enter</code> runs the current cell and moves selection to the one below.</li>
-<li><code>Option</code>+<code>Enter</code> runs the current cell and inserts a new one below.</li>
-</ul>
-</section>
-</section>
-<section id="managing-the-kernel" class="level2">
-<h2 class="anchored" data-anchor-id="managing-the-kernel">Managing the kernel</h2>
-<p>Code is run in a separate process called the <strong>kernel</strong>, which can be interrupted or restarted. You can see kernel indicator in the top-right corner reporting current kernel state: <code>⚪︎</code> means kernel is <strong>ready</strong> to execute code, and <code>⚫︎</code> means kernel is currently <strong>busy</strong>. Tapping kernel indicator will open <strong>kernel menu</strong>, where you can reconnect, interrupt or restart kernel.</p>
-<p>Try running the following cell — kernel indicator will switch from <code>⚪︎</code> to <code>⚫︎</code>, i.e.&nbsp;reporting kernel as “busy”. This means that you won’t be able to run any new cells until current execution finishes, or until kernel is interrupted. You can then go to kernel menu by tapping the kernel indicator and select “Interrupt”.</p>
-</section>
-<section id="markdown-in-notebooks" class="level2">
-<h2 class="anchored" data-anchor-id="markdown-in-notebooks">Markdown in Notebooks</h2>
-<p>Text can be added to Jupyter Notebooks using Markdown cells. This is extremely useful providing a complete documentation of your calculations or simulations. In this way, everything really becomes an notebook. You can change the cell type to Markdown by using the “Cell Actions” menu, or with a hardware keyboard shortcut <code>m</code>. Markdown is a popular markup language that is a superset of HTML. Its specification can be found here:</p>
-<p><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" class="uri">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a></p>
-<p>Markdown cells can either be <strong>rendered</strong> or <strong>unrendered</strong>.</p>
-<p>When they are rendered, you will see a nice formatted representation of the cell’s contents.</p>
-<p>When they are unrendered, you will see the raw text source of the cell. To render the selected cell, click the <code>▶︎</code> button or <code>shift</code>+ <code>enter</code>. To unrender, select the markdown cell, and press <code>enter</code> or just double click.</p>
-<section id="markdown-basics" class="level3">
-<h3 class="anchored" data-anchor-id="markdown-basics">Markdown basics</h3>
-<p>Below are some basic markdown examples, in its rendered form. If you which to access how to create specific appearances, double click the individual cells to put the into an unrendered edit mode.</p>
-<p>You can make text <em>italic</em> or <strong>bold</strong>. You can build nested itemized or enumerated lists:</p>
-<ul>
-<li>First item
-<ul>
-<li>First subitem
-<ul>
-<li>First sub-subitem</li>
-</ul></li>
-<li>Second subitem
-<ul>
-<li>First subitem of second subitem</li>
-<li>Second subitem of second subitem</li>
-</ul></li>
-</ul></li>
-<li>Second item
-<ul>
-<li>First subitem</li>
-</ul></li>
-<li>Third item
-<ul>
-<li>First subitem</li>
-</ul></li>
-</ul>
-<p>Now another list:</p>
-<ol type="1">
-<li>Here we go
-<ol type="1">
-<li>Sublist
-<ol start="2" type="1">
-<li>Sublist</li>
-</ol></li>
-</ol></li>
-<li>There we go</li>
-<li>Now this</li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  <span class="co"># We need square root</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fl">10.0</span>   <span class="co"># height in m</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span>   <span class="co"># gravity in m/s²</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.sqrt(<span class="dv">2</span> <span class="op">*</span> h <span class="op">/</span> g)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Fall time: </span><span class="sc">{</span>t<span class="sc">:.2f}</span><span class="ss"> seconds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Run it! (<code>Shift + Enter</code>)</li>
 </ol>
-<p>Here is a blockquote:</p>
-<blockquote class="blockquote">
-<p>Beautiful is better than ugly. Explicit is better than implicit. Simple is better than complex. Complex is better than complicated. Flat is better than nested. Sparse is better than dense. Readability counts. Special cases aren’t special enough to break the rules. Namespaces are one honking great idea – let’s do more of those!</p>
-</blockquote>
-<p>And Web links:</p>
-<p><a href="http://jupyter.org">Jupyter’s website</a></p>
+<hr>
 </section>
-<section id="headings" class="level3">
-<h3 class="anchored" data-anchor-id="headings">Headings</h3>
-<p>You can add headings by starting a line with one (or multiple) <code>#</code> followed by a space and the title of your section. The number of <code>#</code> you use will determine the size of the heading</p>
-<pre><code># Heading 1
-# Heading 2
-## Heading 2.1
-## Heading 2.2
-### Heading 2.2.1</code></pre>
-</section>
-<section id="embedded-code" class="level3">
-<h3 class="anchored" data-anchor-id="embedded-code">Embedded code</h3>
-<p>You can embed code meant for illustration instead of execution in Python:</p>
-<pre><code>def f(x):
-    """a docstring"""
-    return x**2</code></pre>
-</section>
-<section id="latex-equations" class="level3">
-<h3 class="anchored" data-anchor-id="latex-equations">LaTeX equations</h3>
-<p>Courtesy of MathJax, you can include mathematical expressions both inline: <span class="math inline">\(e^{i\pi} + 1 = 0\)</span> and displayed:</p>
-<p><span class="math display">\[e^x=\sum_{i=0}^\infty \frac{1}{i!}x^i\]</span></p>
-<p>Inline expressions can be added by surrounding the latex code with <code>$</code>:</p>
-<pre><code>$e^{i\pi} + 1 = 0$</code></pre>
-<p>Expressions on their own line are surrounded by <code>$$</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode latex code-with-copy"><code class="sourceCode latex"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$e^x=</span><span class="sc">\sum</span><span class="ss">_{i=0}^</span><span class="sc">\infty</span><span class="ss"> </span><span class="sc">\frac</span><span class="ss">{1}{i!}x^i$$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="images" class="level3">
-<h3 class="anchored" data-anchor-id="images">Images</h3>
-<p>Images may be also directly integrated into a Markdown block.</p>
-<p>To include images use</p>
-<pre><code>![alternative text](url)</code></pre>
-<p>for example</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/particle.png" class="img-fluid figure-img"></p>
-<figcaption>alternative text</figcaption>
-</figure>
+<section id="adding-documentation-with-markdown" class="level2">
+<h2 class="anchored" data-anchor-id="adding-documentation-with-markdown">Adding Documentation with Markdown</h2>
+<p>Good physics notebooks explain what you’re doing!</p>
+<section id="create-a-markdown-cell" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-markdown-cell">Create a Markdown Cell</h3>
+<ol type="1">
+<li>Insert a new cell above your code (press <code>Esc</code>, then <code>A</code>)</li>
+<li>Change it to Markdown (press <code>M</code>)</li>
+<li>Type:</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Free Fall Calculation</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>We calculate the time for an object to fall from height $h = 10$ m.</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>The equation is:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>$$t = \sqrt{\frac{2h}{g}}$$</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>where $g = 9.81 \, \text{m/s}^2$ is gravitational acceleration.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>Run the cell (<code>Shift + Enter</code>) to render it</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+LaTeX Equations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Inline equation: <code>$E = mc^2$</code> → <span class="math inline">\(E = mc^2\)</span></li>
+<li>Display equation: <code>$$E = mc^2$$</code> → <span class="math display">\[E = mc^2\]</span></li>
+</ul>
+</div>
+</div>
+<hr>
 </section>
-<section id="videos" class="level3">
-<h3 class="anchored" data-anchor-id="videos">Videos</h3>
-<p>To include videos, we use HTML code like</p>
-<pre><code>&lt;video src="mov/movie.mp4" width="320" height="200" controls preload&gt;&lt;/video&gt;</code></pre>
-<p>in the Markdown cell. This works with videos stored locally.</p>
-<video src="mov/movie.mp4" width="320" height="200" controls="">
-</video>
-<p>You can embed YouTube Videos as well by using the <code>IPython</code> module.</p>
-<div id="66ca0912" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> YouTubeVideo</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>YouTubeVideo(<span class="st">'QlLx32juGzI'</span>,width<span class="op">=</span><span class="dv">600</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-
-        <iframe width="600" height="300" src="https://www.youtube.com/embed/QlLx32juGzI" frameborder="0" allowfullscreen=""></iframe>
-        
+</section>
+<section id="saving-your-work" class="level2">
+<h2 class="anchored" data-anchor-id="saving-your-work">Saving Your Work</h2>
+<p>Jupyter <strong>auto-saves</strong> every few minutes, but you should also:</p>
+<ul>
+<li><strong>Manual save</strong>: <code>Ctrl/Cmd + S</code> or File → Save Notebook</li>
+<li><strong>Download</strong>: File → Save and Export Notebook As → HTML/PDF</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Saving the notebook saves your <strong>code and markdown</strong>, but also the <strong>output</strong>. If you want a clean notebook, do: Kernel → Restart Kernel and Clear All Outputs before saving.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next? 📊</h2>
+<p>Now that you know the basics:</p>
+<ol type="1">
+<li><strong>Next lesson</strong>: <a href="../../lectures/lecture04/04-plotting.html">Plotting Your First Graph</a>
+<ul>
+<li>You’ll create beautiful physics visualizations</li>
+</ul></li>
+<li><strong>Then</strong>: <a href="../../lectures/lecture01/02-lecture01.html">Variables &amp; Numbers</a>
+<ul>
+<li>Understand what you just used in detail</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="quick-reference-card" class="level2">
+<h2 class="anchored" data-anchor-id="quick-reference-card">Quick Reference Card</h2>
+<section id="most-important-commands" class="level3">
+<h3 class="anchored" data-anchor-id="most-important-commands">Most Important Commands</h3>
+<pre><code>Shift + Enter  → Run cell
+Esc + B        → New cell below
+Esc + M        → Change to Markdown
+Esc + D D      → Delete cell
+Ctrl/Cmd + S   → Save</code></pre>
+</section>
+<section id="getting-help" class="level3">
+<h3 class="anchored" data-anchor-id="getting-help">Getting Help</h3>
+<ul>
+<li><strong>Function help</strong>: Type <code>?function_name</code> in a cell and run</li>
+<li><strong>Documentation</strong>: Press <code>Shift + Tab</code> while cursor is on a function name</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="advanced-topics-optional" class="level2">
+<h2 class="anchored" data-anchor-id="advanced-topics-optional">Advanced Topics (Optional)</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is a Kernel?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The <strong>kernel</strong> is the computational engine that runs your code. Think of it as Python running in the background.</p>
+<p><strong>Kernel indicator</strong> (top-right): - ⚪ <strong>Idle</strong>: Ready to run code - ⚫ <strong>Busy</strong>: Currently executing</p>
+<p><strong>Kernel menu operations</strong>: - <strong>Restart Kernel</strong>: Clears all variables, starts fresh - <strong>Interrupt Kernel</strong>: Stops long-running code</p>
+<p>You’ll need to restart if: - Variables get messy - Code is stuck in an infinite loop (interrupt first, then restart) - You want a clean slate</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Markdown Cheatsheet
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Heading 1</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">## Heading 2</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Heading 3</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>**bold text**</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>*italic text*</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bullet list</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Another item</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Numbered list</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Another item</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Link text</span><span class="co">](https://www.example.com)</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>Inline code: <span class="in">`x = 5`</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>Equation: $E = mc^2$</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>Display equation:</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>$$\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Complete Jupyter Documentation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For more advanced features (magic commands, debugging, widgets), see:</p>
+<ul>
+<li><a href="https://jupyter-notebook.readthedocs.io">Official Jupyter Documentation</a></li>
+<li><a href="https://jupyterlab.readthedocs.io">JupyterLab Documentation</a></li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary ✅</h2>
+<p>You’ve learned:</p>
+<ul>
+<li>✓ What Jupyter notebooks are and why they’re useful for physics</li>
+<li>✓ How to open JupyterLab and create a notebook</li>
+<li>✓ The difference between code and Markdown cells</li>
+<li>✓ How to run code and see results</li>
+<li>✓ Essential keyboard shortcuts</li>
+<li>✓ How to document your work with equations</li>
+</ul>
+<p><strong>You’re ready to start plotting!</strong> Move on to the next lesson.</p>
+<hr>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Practice Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before the next class, try this:</p>
+<ol type="1">
+<li>Create a new notebook called <code>practice.ipynb</code></li>
+<li>Calculate the kinetic energy of a 1000 kg car traveling at 30 m/s</li>
+<li>Use a Markdown cell to write the equation: <span class="math inline">\(E_k = \frac{1}{2}mv^2\)</span></li>
+<li>Print the result in Joules</li>
+<li>Save your notebook</li>
+</ol>
+<p><strong>Solution energy</strong>: 450,000 J (or 450 kJ)</p>
 </div>
 </div>
 
@@ -1214,7 +880,6 @@ eyJjb250ZW50cyI6W119
 W10=
 </script>
 </section>
-</section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
@@ -1229,239 +894,242 @@ window._ojs.selfContained = false;
 window._ojs.runtime.interpretFromScriptTags();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/fcichos\.github\.io\/EMPP24\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/fcichos\.github\.io\/EMPP24\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
-        return container.innerHTML
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1469,191 +1137,167 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../lectures/lecture01/02-lecture01.html" class="pagination-link" aria-label="Variables &amp; Numbers">
-        <span class="nav-page-text">Variables &amp; Numbers</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../lectures/lecture04/04-plotting.html" class="pagination-link" aria-label="Quick Win: Plotting Your First Graph">
+        <span class="nav-page-text">Quick Win: Plotting Your First Graph</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
