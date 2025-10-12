@@ -1,0 +1,267 @@
+---
+title: "Step-by-Step Development of a Molecular Dynamics Simulation"
+author: "Frank Cichos"
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: true
+  packages:
+    - matplotlib
+    - numpy
+---
+
+
+## Temperature and Velocity Initialization
+
+Previously we wrote our simulation with classes for the atoms, the force-field and the MD simulation.Now we want to implement the velocity initialization. We will use the Maxwell-Boltzmann distribution to generate random velocities for the particles in our system. This ensures that our system starts in a state of thermal equilibrium, reflecting the physical reality of molecular motion.
+
+The Maxwell-Boltzmann distribution stands as a cornerstone principle in molecular dynamics (MD) simulations, providing us with a statistical description of particle velocities in a system at thermal equilibrium. This distribution emerged from the kinetic theory of gases and proves invaluable in understanding how molecules move and interact at various temperatures.
+
+### The Distribution
+
+At its heart, the Maxwell-Boltzmann distribution tells us the probability of finding a particle moving at a particular velocity in a system at thermal equilibrium. The mathematical expression for this probability density $f(v)$ is:
+
+$$f(v) = \sqrt{\left(\frac{m}{2\pi k_B T}\right)^3} 4\pi v^2 \exp\left(-\frac{mv^2}{2k_B T}\right)$$
+
+Here, $m$ represents the particle mass, $k_B$ is Boltzmann's constant, $T$ denotes the temperature in Kelvin, and $v$ is the velocity magnitude.
+We can also write down the Maxwell-Boltzmann distribution in terms of the velocity components $v_x$, $v_y$, and $v_z$. For each of these components, the distribution is given by
+
+$$
+f(v_x) = \sqrt{\frac{m}{2\pi k_B T}} \exp\left(-\frac{m v_x^2}{2 k_B T}\right)
+$$
+
+The Maxwell-Boltzmann distribution has the following properties
+
+
+The mean velocity of the particles is of course zero as the system as a whole does not move. The mean magnitude of the velocity can be calculated from
+
+$$
+\bar{v}=\int_0^{\infty} v p(v) \mathrm{d} v
+$$
+
+which results in
+
+$$
+\bar{v}=\sqrt{\frac{8 k_{\mathrm{B}} T}{\pi m}}
+$$
+
+What is also important is the mean squared velocity which can be calculated by
+
+$$
+\overline{v^2}=\int_0^{\infty} v^2 p(v) d v
+$$
+
+since this will provide the mean kinetic energy of the particles. This results in
+
+$$
+\overline{v^2}=\frac{3 k_{\mathrm{B}} T}{m}
+$$
+
+This is consisten with a kinetic energy of $1/2 k_{\mathrm{B}} T$ per degree of freedom.
+
+Since we use in MD simulations with Lennard-Jones atoms reduced units, we can also express the Maxwell-Boltzmann distribution in reduced units. The reduced temperature is defined as $T^{*}=k_{\mathrm{B}} T / \varepsilon$ and the reduced velocity as $v^{*}=v / \sqrt{\varepsilon / m}$. The reduced Maxwell-Boltzmann distribution is then
+
+$$
+f(v^{*}) = \sqrt{\left(\frac{1}{2\pi T^{*}}\right)^3} 4\pi v^{*2} \exp\left(-\frac{v^{2}}{2T^{*}}\right)
+$$
+
+Our goal is to generate random velocities for particles in our MD simulations that follow this distribution. This ensures that our system starts in a state of thermal equilibrium, reflecting the physical reality of molecular motion.
+
+
+
+### Interactive Visualization
+
+```{ojs}
+// | echo: false
+// | fig-align: center
+viewof reducedTemp = Inputs.range([0.1, 5], {
+  step: 0.1,
+  value: 1.0,
+  label: "Reduced Temperature (T*)"
+})
+
+// Generate distribution data in reduced units
+function generateReducedData() {
+  const data = [];
+  // Generate points for reduced velocities from 0 to 5
+  for (let v = 0; v <= 5; v += 0.05) {
+    const term1 = Math.sqrt((1 / (2 * Math.PI * reducedTemp)) ** 3);
+    const term2 = 4 * Math.PI * v * v;
+    const term3 = Math.exp((-v * v) / (2 * reducedTemp));
+    data.push({
+      velocity: v,
+      probability: term1 * term2 * term3
+    });
+  }
+  return data;
+}
+
+Plot.plot({
+  width: 400,
+  height: 400,
+  margin: 50,
+  grid: true,
+  style: {
+    fontSize: 16
+  },
+  x: {
+    label: "Reduced Velocity (v*)",
+    domain: [0, 5],
+  },
+  y: {
+    label: "Probability Density",
+  },
+  marks: [
+    Plot.line(generateReducedData(), {
+      x: "velocity",
+      y: "probability",
+      stroke: "blue"
+    })
+  ]
+})
+```
+
+
+The interactive plot above demonstrates how the Maxwell-Boltzmann distribution changes with temperature and molecular mass. Try adjusting the sliders to see how:
+
+1. Increasing temperature broadens the distribution and shifts the peak to higher velocities
+2. Increasing molecular mass narrows the distribution and shifts the peak to lower velocities
+
+### Application in MD Simulations
+
+When we begin an MD simulation, one of our first tasks is to assign initial velocities to all particles in our system. The Maxwell-Boltzmann distribution guides this process, ensuring that our initial configuration reflects physical reality. We typically generate random velocities following this distribution while ensuring that the total momentum of the system remains zero – a condition that prevents our system from drifting as a whole.
+
+### Implementation in Practice
+
+Here's how we can implement velocity initialization following the Maxwell-Boltzmann distribution:
+
+```python
+def initialize_velocities(atoms, temperature, seed=None):
+    if seed is not None:
+        np.random.seed(seed)
+
+    N = len(atoms)
+    dim = 2
+
+
+    velocities = np.random.normal(0, np.sqrt(temperature), size=(N, dim))
+
+
+    total_momentum = np.sum([atom.mass * velocities[i] for i, atom in enumerate(atoms)], axis=0)
+    total_mass = np.sum([atom.mass for atom in atoms])
+    cm_velocity = total_momentum / total_mass
+
+    for i, atom in enumerate(atoms):
+        atom.velocity = velocities[i] - cm_velocity
+
+    set_temperature(atoms, temperature)
+
+    return atoms
+```
+
+
+In molecular dynamics simulations, it is crucial to control the temperature of the system to ensure that it reflects the desired physical conditions. The temperature of a system in MD simulations is directly related to the kinetic energy of the particles. If the initial velocities of the particles do not correspond to the target temperature, the system will not accurately represent the intended thermodynamic state.
+
+Scaling the velocities of the particles is a common technique to adjust the temperature of the system. By scaling the velocities, we can ensure that the kinetic energy—and hence the temperature—matches the target value. This process is essential for initializing the system correctly and for maintaining the desired temperature during the simulation.
+
+The provided code scales the velocities of the atoms to achieve the target temperature. Here’s a step-by-step explanation of the code:
+
+
+```{python}
+def set_temperature(atoms, target_temperature):
+    N = len(atoms)      # number of atoms
+    Nf = 2 * N         # degrees of freedom in 2D
+
+    # Calculate current kinetic energy
+    current_ke = sum(0.5 * atom.mass * np.sum(atom.velocity**2) for atom in atoms)
+    current_temperature = 2 * current_ke / Nf  # kb = 1 in reduced units
+
+    # Calculate scaling factor
+    scale_factor = np.sqrt(target_temperature / current_temperature)
+
+    # Scale velocities
+    for atom in atoms:
+        atom.velocity *= scale_factor
+```
+
+This code snippet sets the temperature of the system to the target temperature by scaling the velocities of the atoms. Here’s a breakdown of the key steps:
+
+1. **Number of Atoms and Degrees of Freedom:**
+   ```python
+   N = len(atoms)      # number of atoms
+   Nf = 2 * N         # degrees of freedom in 2D
+   ```
+   - `N` is the number of atoms in the system.
+   - `Nf` is the number of degrees of freedom. In a 2D system, each atom has 2 degrees of freedom (one for each spatial dimension), so `Nf = 2 * N`.
+
+2. **Calculate Current Kinetic Energy:**
+   ```python
+   current_ke = sum(0.5 * atom.mass * np.sum(atom.velocity**2) for atom in atoms)
+   current_temperature = 2 * current_ke / Nf  # kb = 1 in reduced units
+   ```
+   - The current kinetic energy (`current_ke`) is calculated by summing the kinetic energy of each atom. The kinetic energy of an atom is given by \( \frac{1}{2} m v^2 \), where `m` is the mass and `v` is the velocity.
+   - The current temperature (`current_temperature`) is then calculated using the relation \( T = \frac{2 \cdot KE}{Nf} \). Here, the Boltzmann constant \( k_B \) is assumed to be 1 in reduced units.
+
+3. **Calculate Scaling Factor:**
+   ```python
+   scale_factor = np.sqrt(target_temperature / current_temperature)
+   ```
+   - The scaling factor is calculated as the square root of the ratio of the target temperature to the current temperature. This factor will be used to scale the velocities of the atoms.
+
+4. **Scale Velocities:**
+   ```python
+   for atom in atoms:
+       atom.velocity *= scale_factor
+   ```
+   - The velocities of all atoms are scaled by the calculated scaling factor. This adjustment ensures that the kinetic energy—and thus the temperature—of the system matches the target temperature.
+
+
+
+## Simulation Setup and Initialization
+
+This now completes our initial code for the MD simulation and we can put it all together to run a simulation.
+
+
+```python
+box_size = np.array([50.0, 50.0])  # Box dimensions
+num_atoms = 200
+
+T=5
+dt = 0.01
+
+# Create atoms and set initial velocities
+atoms = create_grid_atoms(num_atoms, box_size, type="H",mass=1.0, random_offset=0.1)
+atoms = initialize_velocities(atoms, temperature=T)
+
+
+# Create force field
+ff = ForceField()
+
+
+# Create simulation with periodic boundaries
+sim = MDSimulation(atoms, ff, dt, box_size)
+
+fig, ax = plt.subplots(1,1,figsize=(6,6))
+
+for step in range(1000):
+    clear_output(wait=True)
+    set_temperature(atoms, target_temperature=T)
+    sim.update_positions_and_velocities()
+
+    positions = [atom.position for atom in sim.atoms]
+    x_coords = [pos[0] for pos in positions]
+    y_coords = [pos[1] for pos in positions]
+
+    circle=patches.Circle((x_coords[0],y_coords[0]),ff.parameters[atoms[0].type]["sigma"],edgecolor="white",fill=False)
+    ax.add_patch(circle)
+    ax.scatter(x_coords, y_coords,color="red")
+    ax.set_xlim(0, box_size[0])
+    ax.set_ylim(0, box_size[1])
+    ax.axis("off")
+
+    display(fig)
+
+    ax.clear()
+```

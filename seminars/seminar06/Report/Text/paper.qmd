@@ -1,0 +1,61 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "\\documentclass[aps,prl, 9pt,groupedaddress,twocolumn]{revtex4-1}\n",
+        "%\\usepackage[USenglish]{babel} \n",
+        "\\usepackage{amsmath}\n",
+        "\\usepackage{amsfonts}\n",
+        "\\usepackage{graphicx}\n",
+        "\\usepackage{xcolor}\n",
+        "%\\usepackage{float}\n",
+        "%\\bibliographystyle{apsrev4-1}\n",
+        "%\\usepackage{hyperref}\n",
+        "%\\usepackage{color}\n",
+        "\\usepackage{float}\n",
+        "\n",
+        "\n",
+        "\\begin{document}\n",
+        "\\title{The Quirky Adventures of a Mischievous Teapot}\n",
+        "\n",
+        "\\author{Chat GPT}\n",
+        "\\email{chatgpt@physik.uni-leipzig.de}\n",
+        "\\homepage[]{http://www.uni-leipzig.de/~chatgpt}\n",
+        "\\affiliation{Large Language Model Group, Institute of Artificial Physics, University of Leipzig, 04103 Leipzig, Germany}\n",
+        "\n",
+        "\\begin{abstract}\n",
+        "\tIn this whimsical exploration, we delve into the unexpected escapades of a mischievous teapot named Earl Grey. Equipped with a charming personality and an insatiable thirst for adventure, Earl Grey embarks on a quest that transcends the boundaries of the ordinary teapot life. From hosting wild tea parties in enchanted forests to engaging in sassy conversations with talking sugar cubes, Earl Grey's escapades are nothing short of extraordinary.\n",
+        "\tThrough a series of unpredictable events, Earl Grey finds itself caught in a hilarious tea-stealing competition with a gang of misfit coffee mugs. As the rivalry intensifies, Earl Grey's lid becomes a portal to an alternate dimension where gravity is topsy-turvy, and tea leaves dance to their own rhythm. Amidst the chaos, Earl Grey must navigate through a world of whimsy, dodging flying teaspoons and outsmarting gravity-defying tea leaves.\n",
+        "\tWith a comedic blend of wit and charm, this abstract takes you on a hilarious journey that questions the norms of teapot life, celebrates the joy of spontaneity, and reminds us that even in the most unexpected circumstances, a steaming cup of tea can bring laughter and delight to the world.\n",
+        "\tPlease note that this abstract is purely fictional and intended for entertainment purposes.\n",
+        "\\end{abstract}\n",
+        "\n",
+        "\\maketitle\n",
+        "\n",
+        "\\input{content/01_introduction}\n",
+        "\n",
+        "\\input{content/02_theory}\n",
+        "\n",
+        "\\input{content/03_results}\n",
+        "\n",
+        "\\input{content/04_conclusions}\n",
+        "\n",
+        "\n",
+        "\n",
+        "\\end{document}"
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/fci/quarto_env/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 4
+}

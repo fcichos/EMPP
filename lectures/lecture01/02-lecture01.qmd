@@ -1,0 +1,284 @@
+---
+title: "Variables & Numbers"
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - numpy
+notebook-url: "https://github.com/yourusername/yourrepository/blob/main/notebooks/my-document.ipynb"
+---
+
+## What You Just Used! 🎯
+
+In the previous lessons, you created plots and calculations using code like:
+
+```python
+m = 2.0    # mass
+g = 9.81   # gravity
+h = 10.0   # height
+E_pot = m * g * h
+```
+
+But what exactly are `m`, `g`, and `h`? These are **variables** - containers that store values you can use in calculations.
+
+::: {.callout-note icon=false}
+### Why Variables Matter in Physics
+
+In physics, we work with:
+
+- **Physical quantities**: mass, velocity, energy, time
+- **Constants**: gravitational acceleration, speed of light, Planck's constant
+- **Calculated results**: kinetic energy, momentum, force
+
+Variables let us store these values and use them in equations, just like in mathematical physics notation!
+:::
+
+---
+
+## Variables in Python
+
+### Symbol Names
+
+In physics, we use symbols like $m$ for mass, $v$ for velocity, and $F$ for force. Python variable names work similarly, but with some rules.
+
+::: {.content-hidden when-format="reavealjs"}
+Variable names in Python can include alphanumerical characters `a-z`, `A-Z`, `0-9`, and the special character `_`. Normal variable names must start with a letter or an underscore. By convention, variable names typically start with a lower-case letter, while Class names start with a capital letter and internal variables start with an underscore.
+:::
+
+::: {.callout-tip}
+### Physics Variable Naming Tips
+
+**Good physics variable names:**
+- `m`, `mass` for mass
+- `v`, `velocity` for velocity
+- `E_kin`, `E_pot` for kinetic and potential energy
+- `theta`, `phi` for angles (Greek letters spelled out)
+- `g` for gravitational acceleration
+- `c` for speed of light
+
+**Descriptive names for clarity:**
+- `electron_mass` instead of just `m` when you have multiple masses
+- `initial_velocity`, `final_velocity` instead of `v1`, `v2`
+:::
+
+
+::: {.callout-warning title="Reserved Keywords"}
+
+There are a number of Python keywords that cannot be used as variable names because Python uses them for other things. These keywords are:
+
+`and`, `as`, `assert`, `break`, `class`, `continue`, `def`, `del`, `elif`, `else`, `except`, `exec`, `finally`, `for`, `from`, `global`, `if`, `import`, `in`, `is`, `lambda`, `not`, `or`, `pass`, `print`, `raise`, `return`, `try`, `while`, `with`, `yield`
+
+**Important for physics:** The keyword `lambda` cannot be used as a variable name (common for wavelength). Use `lambda_` or `wavelength` instead!
+:::
+
+### Variable Assignment
+
+The assignment operator in Python is `=`. Python is a dynamically typed language, so we do not need to specify the type of a variable when we create one.
+
+Let's assign some physics values:
+
+```{pyodide}
+#| autorun: false
+# Physics variable assignments
+mass = 1.0              # kg
+velocity = 15.5         # m/s
+g = 9.81                # gravitational acceleration in m/s²
+```
+
+**Important:** In Python, `=` means **assignment**, not equality!
+- Math: $F = ma$ (force equals mass times acceleration)
+- Python: `F = m * a` (calculate m*a and store in F)
+
+Although not explicitly specified, a variable does have a type associated with it (e.g., integer, float, string).
+The type is derived from the value that was assigned to it. To determine the type of a variable, we can use the `type` function.
+
+```{pyodide}
+#| autorun: false
+mass = 1.0
+type(mass)
+```
+
+Most physics calculations use **floats** (floating-point numbers) because they have decimal points.
+
+If we assign a new value to a variable, its type can change.
+
+```{pyodide}
+#| autorun: false
+mass = 1  # Now it's an integer!
+type(mass)
+```
+
+If we try to use a variable that has not yet been defined, we get a `NameError` error.
+
+::: {.callout-warning}
+### Common Mistake
+Trying to use a variable before defining it:
+```python
+E_kin = 0.5 * m * v**2  # ERROR if m and v aren't defined yet!
+```
+Always define variables before using them in calculations.
+:::
+
+
+```{pyodide}
+#| autorun: false
+#print(g)
+```
+
+## Number Types
+
+Python supports various number types, including integers, floating-point numbers, and complex numbers. In physics, you'll primarily use **floats** for continuous quantities and **integers** for counting (like number of particles, timesteps, etc.).
+
+::: {.callout-note}
+### Which Type for Physics?
+
+- **Floats**: Mass, energy, position, velocity, time → anything with units and decimals
+- **Integers**: Particle counts, loop iterations, array indices
+- **Complex**: Quantum mechanics, wave functions, AC circuits
+:::
+
+### Comparison of Number Types
+
+| Type    | Example       | Description                          | Physics Use Cases                           |
+|---------|---------------|--------------------------------------|---------------------------------------------|
+| int     | 42            | Whole numbers                        | Particle count, quantum number $n$, array index |
+| float   | 3.14159       | Decimal numbers (15-17 digit precision) | Mass, energy, position, velocity, time   |
+| complex | 2 + 3j        | Numbers with real and imaginary parts | Wave functions $\psi$, AC impedance      |
+| bool    | True / False  | Logical values                       | Collision detection, boundary conditions  |
+
+
+::: {.callout-note title="Examples for Number Types" collapse=true}
+
+### Integers
+
+**Integer Representation:**  Integers are whole numbers without a decimal point.
+
+```{pyodide}
+#| autorun: false
+num_particles = 1000    # Number of atoms in simulation
+n_quantum = 3           # Quantum number
+timesteps = 500         # Number of simulation steps
+
+type(num_particles)
+```
+
+**Physics Example:**
+```{pyodide}
+#| autorun: false
+# Photon energy: E = n * h * f (n is integer for number of photons)
+n_photons = 5
+h = 6.626e-34  # Planck's constant (J·s)
+f = 5e14       # Frequency (Hz)
+
+E_total = n_photons * h * f
+print(f"Total energy: {E_total:.2e} J")
+```
+
+**Binary, Octal, and Hexadecimal:** Integers can be represented in different bases:
+
+```{pyodide}
+#| autorun: false
+0b1010111110  # Binary
+0x0F          # Hexadecimal
+```
+
+### Floating Point Numbers
+
+**Floating Point Representation:** Numbers with a decimal point are treated as floating-point values. This is what you'll use most in physics!
+
+```{pyodide}
+#| autorun: false
+# Physical constants and measurements
+c = 299792458.0         # Speed of light (m/s)
+h = 6.62607015e-34      # Planck's constant (J·s)
+mass_electron = 9.109e-31  # Electron mass (kg)
+
+type(c)
+```
+
+**Scientific Notation:**
+```{pyodide}
+#| autorun: false
+# Large and small numbers common in physics
+distance_to_sun = 1.496e11  # meters (1.496 × 10¹¹)
+atom_radius = 1e-10         # meters (1 × 10⁻¹⁰)
+
+print(f"Distance to sun: {distance_to_sun:.2e} m")
+print(f"Atom radius: {atom_radius:.2e} m")
+```
+
+**Maximum Float Value:** Python handles large floats, converting them to infinity if they exceed the maximum representable value (~10³⁰⁸).
+
+```{pyodide}
+#| autorun: false
+1.7976931348623157e+308 * 2  # Output: inf
+```
+
+::: {.callout-tip}
+### Float Precision in Physics
+
+Floats have ~15-17 significant digits. This is usually more than enough for physics calculations, but be aware:
+
+```python
+g = 9.81                    # Good enough for most problems
+g_precise = 9.80665         # Standard gravity (more digits)
+```
+
+For most undergraduate physics, 3-4 significant figures are sufficient!
+:::
+
+### Complex Numbers
+
+**Complex Number Representation:** Complex numbers have a real and an imaginary part. Essential in quantum mechanics and AC circuit analysis!
+
+```{pyodide}
+#| autorun: false
+# Wave function in quantum mechanics
+psi = 2 + 4j
+type(psi)
+```
+
+::: {.callout-note}
+### Physics Applications
+
+**Quantum Mechanics:** Wave functions are complex: $\psi = a + bi$
+
+**AC Circuits:** Impedance $Z = R + iX$ where $R$ is resistance, $X$ is reactance
+
+**Wave Propagation:** $E = E_0 e^{i(kx - \omega t)}$
+:::
+
+- **Accessors for Complex Numbers:**
+  - `c.real`: Real part of the complex number.
+  - `c.imag`: Imaginary part of the complex number.
+
+```{pyodide}
+#| autorun: false
+psi = 3 + 4j
+print(f"Real part: {psi.real}")
+print(f"Imaginary part: {psi.imag}")
+```
+
+**Complex Conjugate:** Use the `.conjugate()` method to get the complex conjugate (important for calculating probabilities in QM: $|\psi|^2 = \psi \cdot \psi^*$).
+
+```{pyodide}
+#| autorun: false
+psi = 3 + 4j
+psi_star = psi.conjugate()
+probability_density = (psi * psi_star).real
+print(f"ψ* = {psi_star}")
+print(f"|ψ|² = {probability_density}")
+```
+
+**Absolute Value (Magnitude):**
+```{pyodide}
+#| autorun: false
+import numpy as np
+magnitude = np.abs(psi)  # Same as sqrt(3² + 4²) = 5
+print(f"|ψ| = {magnitude}")
+```
+
+:::

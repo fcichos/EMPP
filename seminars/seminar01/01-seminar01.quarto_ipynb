@@ -1,0 +1,70 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Seminar 1\"\n",
+        "format: live-html\n",
+        "live:\n",
+        "  show-hints: true\n",
+        "  show-solutions: true\n",
+        "notebook-url: \"https://github.com/yourusername/yourrepository/blob/main/notebooks/my-document.ipynb\"\n",
+        "---\n",
+        "\n",
+        "\n",
+        "Calculate the average of all of the integers from 1 to 10.\n",
+        "\n",
+        "```{pyodide}\n",
+        "#| exercise: ex_1_py\n",
+        "n = range(1, 11)\n",
+        "______\n",
+        "```\n",
+        "\n",
+        "::: { .hint exercise=\"ex_1_py\"}\n",
+        "use the sum() and len() functions\n",
+        "\n",
+        "```python\n",
+        "n = range(1, 11)\n",
+        "```\n",
+        ":::\n",
+        "\n",
+        "\n",
+        "::: { .solution exercise=\"ex_1_py\" }\n",
+        "```python\n",
+        "n = range(1, 11)                            #<1>\n",
+        "sum(n)/len(n)                               #<2>\n",
+        "```\n",
+        "1. create the range of numbers from 1 to 10.\n",
+        "2. calculate the sum of the numbers and divide by the number of elements in the list.\n",
+        ":::\n",
+        "\n",
+        "```{pyodide}\n",
+        "#| exercise: ex_1_py\n",
+        "#| check: true\n",
+        "n = range(1, 11)\n",
+        "mean = sum(n)/len(n)\n",
+        "feedback = None\n",
+        "\n",
+        "if (result == mean):\n",
+        "  feedback = { \"correct\": True, \"message\": \"Nice work!\" }\n",
+        "else:\n",
+        "  feedback = { \"correct\": False, \"message\": \"That's incorrect, sorry.\" }\n",
+        "feedback\n",
+        "```"
+      ],
+      "id": "1e9cf1e0"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/fci/Library/Jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

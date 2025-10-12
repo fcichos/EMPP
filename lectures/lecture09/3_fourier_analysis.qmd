@@ -1,0 +1,203 @@
+---
+title: Fourier Analysis
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+
+Fourier analysis, or the description of functions as a series of sine and cosine functions, serves as a powerful tool in both numerical data analysis and the solution of differential equations. In experimental physics, Fourier transforms find widespread applications. For instance, optical tweezers utilize frequency spectra to characterize positional fluctuations, while Lock-In detection employs Fourier analysis for specific frequency signals. Additionally, many optical phenomena can be understood through the lens of Fourier transforms.
+
+Fourier analysis extends far beyond these examples, finding applications across numerous fields of physics and engineering. In this lecture, we will examine Fourier Series and Fourier transforms from a mathematical perspective. We will apply these concepts to analyze the frequency spectrum of oscillations in coupled pendula, and later revisit them when simulating the motion of a Gaussian wavepacket in quantum mechanics.
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 12,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+## Fourier series
+A Fourier series represents a periodic function $f(t)$ with period $2\pi$ or, more generally, any arbitrary interval $T$ as a sum of sine and cosine functions:
+
+$$
+f(t)=\frac{A_{0}}{2}+\sum_{k=1}^{\infty}\left ( A_{k}\cos\left (\omega_k t\right) + B_{k}\sin\left (\omega_k t\right)\right )
+$$  {#eq-fourier_sum}
+
+where $\omega_k=\frac{2\pi k}{T}$. Here, $T$ represents the period of the cosine and sine functions, with their amplitudes defined by the coefficients $A_k$ and $B_k$. The term $A_0$ represents a constant offset added to the oscillating functions. @eq-fourier_sum expresses an arbitrary periodic function $f(t)$ on an interval T as a sum of oscillating sine and cosine functions with discrete frequencies ($\omega_k$):
+
+\begin{equation*}
+\omega_k= 0, \frac{2\pi}{T}, \frac{4\pi}{T}, \frac{6\pi}{T}, ... , \frac{n\pi}{T}
+\end{equation*}
+
+and varying amplitudes. We can demonstrate that the cosine and sine functions in the sum (@eq-fourier_sum) are orthogonal using the trigonometric identity:
+
+\begin{equation}
+\sin(\omega_{i} t)\sin(\omega_{k}t )=\frac{1}{2}\lbrace\cos((\omega_{i}-\omega_{k})t)- \cos((\omega_{i}+\omega_{k})t\rbrace
+\end{equation}
+
+This leads to the integral:
+
+\begin{equation}
+\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}}  \sin(\omega_{i}t)\sin (\omega_k t) dt
+\end{equation}
+
+which splits into two integrals over cosine functions with sum $(\omega_{1}+\omega_{2})$ and difference frequency $(\omega_{1}-\omega_{2})$. With $\omega_k=k 2\pi/T$, $(k \in \mathbb{Z}^+ )$, this evaluates to:
+
+\begin{equation}
+\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}}  \sin(\omega_{i}t)\sin (\omega_k t) dt  =\begin{cases}
+0 &\text{for }  i\neq k, \\
+T/2 &\text{for }  i=k
+\end{cases}
+\end{equation}
+
+A similar result holds for cosine functions:
+
+\begin{equation}
+\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}}  \cos(\omega_{i}t)\cos (\omega_k t) dt  =\begin{cases}
+0 &\text{for }  i\neq k, \\
+T/2 &\text{for }  i=k
+\end{cases}
+\end{equation}
+
+The coefficients $A_k$ and $B_k$ are determined by projecting the function $f(t)$ onto these basis functions:
+
+\begin{align}
+\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}} & \cos (\omega_k t) dt  =\begin{cases}
+0 &\text{for }  k\neq0, \\
+T &\text{for }  k=0
+\end{cases} \\
+\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}} & \sin(\omega_k t) dt=0  \text{ for all }k
+\end{align}
+
+For the cosine coefficients:
+
+\begin{equation}\label{A_k}
+A_k=\frac{2}{T}\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}} f(t)\cos(\omega_k t) dt  \text{ for } k \neq 0
+\end{equation}
+
+and the constant term:
+
+\begin{equation}
+A_0= \frac{1}{T}\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}} f(t) dt
+\end{equation}
+
+Finally, for the sine coefficients:
+
+\begin{equation}\label{B_k}
+B_k=\frac{2}{T}\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}} f(t) \sin(\omega_k t) dt,\,  \forall k
+\end{equation}
+
+
+## Fourier transform
+
+The Fourier transform extends the concept of Fourier series by representing arbitrary non-periodic functions $f(t)$ through a continuous spectrum of complex functions $\exp(i\omega t)$. Known as the continuous Fourier transform, this approach replaces the discrete frequency sum of sine and cosine functions found in Fourier series with an integral over complex exponential functions $\exp(i\omega t)$ spanning continuous frequency values $\omega$.
+
+The Fourier transform of a function $f(t)$ is defined as:
+
+$$
+F(\omega)=\int\limits_{-\infty}^{+\infty}f(t)e^{-i\omega t}dt
+$$ {#eq-fourier_transform}
+
+where $F(\omega)$ represents the spectrum of frequencies present in $f(t)$. The inverse Fourier transform recovers the original function $f(t)$ from its frequency spectrum (@eq-fourier_transform):
+
+\begin{equation}\label{eq:inverse_FT}
+f(t)=\frac{1}{2\pi}\int\limits_{-\infty}^{+\infty}F(\omega)e^{+i\omega t}dt
+\end{equation}
+
+The Fourier transform $F(\omega)$ yields a complex number, encoding both phase and amplitude information of the oscillations. The phase of oscillation at frequency $\omega$ is given by:
+
+\begin{equation}
+\phi=\tan^{-1}\left(\frac{Im(F(\omega))}{Re(F(\omega))}\right)
+\end{equation}
+
+while the amplitude at frequency $\omega$ is:
+
+\begin{equation}
+x_{0}^{\rm theo}=|F(\omega)|
+\end{equation}
+
+Modern computing offers efficient algorithms for Fourier transformation, particularly the Fast Fourier Transform (FFT) implemented in libraries like NumPy. We'll use these algorithms to identify oscillation patterns in our signals. Here's an example of using NumPy's FFT functions to compute the transform and generate the corresponding frequency axis:
+
+~~~
+f=np.fft.fft(alpha)
+freq = np.fft.fftfreq(t.shape[-1],time/t.shape[-1])
+~~~
+
+
+## Frequency analysis of our coupled pendula
+
+Let us now apply Fourier analysis to examine the data from our previous simulation of coupled pendula, which includes both normal modes and beat mode oscillations of the harmonic oscillator.
+
+```{pyodide}
+#| tags: []
+nm1=np.loadtxt('nm1.txt',delimiter=',')
+nm2=np.loadtxt('nm2.txt',delimiter=',')
+beats=np.loadtxt('beats.txt',delimiter=',')
+```
+
+First, we extract the time series data and angular displacements into separate arrays for clearer analysis:
+
+```{pyodide}
+#| tags: []
+t=nm1[:,0]
+theta1_nm1=nm1[:,1]
+theta1_nm2=nm2[:,1]
+theta1_beats=beats[:,1]
+```
+
+Next, we perform the Fourier transform of our signals and visualize their frequency spectra:
+
+```{pyodide}
+#| ExecuteTime: {end_time: '2018-05-29T11:01:55.420585Z', start_time: '2018-05-29T11:01:55.415985Z'}
+#| tags: []
+# calculate the frequency spectrum of the oscillations for different initial conditions
+plt.figure(1,figsize=(6,5))
+plt.xlabel('frequency [Hz]', fontsize=16)
+plt.ylabel('Amplitude',fontsize=16)
+plt.tick_params(labelsize=14)
+ft1=np.fft.fft(theta1_nm1)
+freq = np.fft.fftfreq(t.shape[-1],t[-1]/t.shape[-1])
+plt.plot(freq[:1000],np.abs(ft1)[:1000],label='normal mode 1')
+
+ft1=np.fft.fft(theta1_nm2)
+freq = np.fft.fftfreq(t.shape[-1],t[-1]/t.shape[-1])
+plt.plot(freq[:1000],np.abs(ft1)[:1000],label='normal mode 2')
+
+ft1=np.fft.fft(theta1_beats)
+freq = np.fft.fftfreq(t.shape[-1],t[-1]/t.shape[-1])
+plt.plot(freq[:1000],np.abs(ft1)[:1000],'k--',lw=1,label='beat mode')
+
+plt.legend()
+plt.xlim(0.2,0.4)
+plt.show()
+```
+
+Our analysis reveals that the beat mode represents a superposition of the system's two normal modes. This demonstrates a fundamental principle: any possible state of a coupled oscillator system can be constructed from a superposition of its normal modes with specific amplitudes.

@@ -1,0 +1,81 @@
+---
+title: "Matplotlib Cheat Sheet"
+format: live-html
+pyodide:
+  packages:
+    - matplotlib
+    - numpy
+notebook-url: "https://github.com/fcichos/EMPP24/blob/main/lectures/lecture01/01-lecture01.ipynb"
+---
+
+# Matplotlib Cheat Sheet
+
+## Basic Plot Setup
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Create a new figure
+plt.figure(figsize=(width, height))
+
+# Create a plot
+plt.plot(x, y, 'bo-')  # Blue line with circle markers
+
+# Set labels and title
+plt.xlabel('X-axis label')
+plt.ylabel('Y-axis label')
+plt.title('Plot Title')
+
+# Add a legend
+plt.legend(['Label'], loc='best')
+
+# Show the plot
+plt.show()
+```
+
+## Common Plot Types
+- Line plot: `plt.plot(x, y)`
+- Scatter plot: `plt.scatter(x, y)`
+- Bar plot: `plt.bar(x, height)`
+- Histogram: `plt.hist(data, bins=10)`
+- Box plot: `plt.boxplot(data)`
+- Errorbar plot: `plt.errorbar(x, y, yerr=error)`
+
+## Customization
+- Set axis limits: `plt.xlim(xmin, xmax)`, `plt.ylim(ymin, ymax)`
+- Set axis scales: `plt.xscale('log')`, `plt.yscale('log')`
+- Set tick marks: `plt.xticks(ticks, labels)`, `plt.yticks(ticks, labels)`
+- Add a grid: `plt.grid(True)`
+- Change line style: `plt.plot(x, y, linestyle='--', color='r', linewidth=2)`
+- Change marker style: `plt.plot(x, y, marker='o', markersize=5)`
+
+## Multiple Plots
+- Subplots: `fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10,5))`
+- Plot on specific axes: `ax1.plot(x, y)`
+
+## Saving Plots
+```python
+plt.savefig('filename.png', dpi=300, bbox_inches='tight')
+```
+
+## Advanced Plots
+- Contour plot: `plt.contour(X, Y, Z)`
+- 3D plot:
+  ```python
+  from mpl_toolkits.mplot3d import Axes3D
+  fig = plt.figure()
+  ax = fig.add_subplot(111, projection='3d')
+  ax.plot_surface(X, Y, Z)
+  ```
+
+## Useful Settings
+- Adjust layout: `plt.tight_layout()`
+- Set style: `plt.style.use('ggplot')`
+- Colormap: `plt.imshow(data, cmap='viridis')`
+
+## Common Parameters
+- Colors: 'b' (blue), 'g' (green), 'r' (red), 'c' (cyan), 'm' (magenta), 'y' (yellow), 'k' (black), 'w' (white)
+- Markers: '.' (point), 'o' (circle), 's' (square), '^' (triangle up), 'v' (triangle down)
+- Linestyles: '-' (solid), '--' (dashed), ':' (dotted), '-.' (dash-dot)
+
+Remember to always check the Matplotlib documentation for the most up-to-date and detailed information!

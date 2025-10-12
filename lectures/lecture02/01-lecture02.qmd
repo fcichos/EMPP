@@ -1,6 +1,11 @@
 ---
 title: "Python Overview"
+format:
+  live-html:
+    toc: true
+    toc-location: right
 pyodide:
+  autorun: false
   packages:
     - matplotlib
     - numpy

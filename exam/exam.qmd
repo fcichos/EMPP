@@ -1,6 +1,0 @@
----
-title: "Exam"
-format:
-  ipynb: default
-notebook-url: "https://github.com/yourusername/yourrepository/blob/main/notebooks/my-document.ipynb"
----

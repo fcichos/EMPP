@@ -1,0 +1,435 @@
+---
+title: Diffusion equation
+format:
+  live-html:
+    toc: true
+    toc-location: right
+    fig-align: center
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+
+So far, we have always looked at ordinary differential equations, i.e. differential equations where the physical quantity we considered was depending only on one variable. In a lot of physical problems, the observable quantities depend on multiple variables like time and space. The differential equations, which govern those problems are partial differential equations. The diffusion equation is one of them. It pops up in various forms in physics, describing also heat conduction and in a slighly modified way this is corresponding to the time dependent Schrödinger equation.
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import sparse
+from scipy.sparse import linalg  # for sparse.linalg.spsolve
+from scipy.integrate import odeint
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 12,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+## Physical Model
+
+You've probably seen how ink spreads in water - this spreading is called diffusion and is the result of the Brownian motion of ink particles in water. We have already simulated the random motion in Lecture 5 and the real-time animation below shows this process, when all particles are starting at the center of the box. The diffusion equation describes how the concentration of particles (the number of particles per unit volume) changes over time and space.
+
+While physicists describe this with complex equations, our goal in this course is to learn how to simulate this process using Python. So the main task will be to split the diffusion equation into small pieces that we can calculate with a computer.
+
+The basic diffusion equation looks like this:
+
+\begin{equation}
+\frac{\partial c({\bf r},t)}{\partial t}=D\Delta c ({\bf r},t)
+\end{equation}
+
+Here, $c$ represents the concentration (like how much ink is at each point), $t$ is time, and ${\bf r}$ is position. $D$ is just a number that tells us how fast the diffusion happens. Its unit is length squared per time.
+
+To make this easier to program, we'll look at diffusion in just one direction (like along a line). This gives us:
+
+\begin{equation}
+\frac{\partial c(x,t)}{\partial t}=D\frac{\partial^2 c(x,t)}{\partial x^{2}}
+\end{equation}
+
+To turn this equation into code, we need to break up space and time into small pieces. We'll use $c^{n}_{i}$ in our program, where ${\bf n}$ is which time step we're on, and ${\bf i}$ tells us which point in space we're looking at.
+
+***
+
+::: {#fig-diffusion-equation fig-align=center}
+```{ojs}
+//| echo: false
+//| fig-align: center
+width = 600
+height = 600
+margin = ({top: 20, right: 30, bottom: 20, left: 40})
+plotHeight = 100
+
+viewof simulation = {
+  // Create main container
+  const container = d3.create("div")
+    .style("display", "flex")
+    .style("flex-direction", "column");
+
+  // Create SVG for particle simulation
+  const svg = container.append("svg")
+    .attr("width", width)
+    .attr("height", height - plotHeight)
+    .attr("viewBox", [0, 0, width, height - plotHeight]);
+
+  // Create SVG for histogram
+  const histogramSvg = container.append("svg")
+    .attr("width", width)
+    .attr("height", plotHeight)
+    .attr("viewBox", [0, 0, width, plotHeight]);
+
+  const numParticles = 1000;
+  const D = 0.5; // Diffusion coefficient
+  const numBins = 80;
+
+  // Create particles at the center
+  const particles = Array.from({length: numParticles}, () => ({
+    x: width / 2,
+    y: (height - plotHeight) / 2,
+    vx: 0,
+    vy: 0
+  }));
+
+  // Setup scales for histogram
+  const xScale = d3.scaleLinear()
+    .domain([0, width])
+    .range([margin.left, width - margin.right]);
+
+  const yScale = d3.scaleLinear()
+    .domain([0, numParticles/5])
+    .range([plotHeight - margin.bottom, margin.top]);
+
+  // Create histogram generator
+  const histogram = d3.bin()
+    .domain(xScale.domain())
+    .thresholds(xScale.ticks(numBins))
+    .value(d => d.x);
+
+  // Create histogram group
+  const histogramGroup = histogramSvg.append("g");
+
+  // Add axes
+  histogramSvg.append("g")
+    .attr("transform", `translate(0,${plotHeight - margin.bottom})`)
+    .call(d3.axisBottom(xScale));
+/*
+  histogramSvg.append("g")
+    .attr("transform", `translate(${margin.left},0)`)
+    .call(d3.axisLeft(yScale));
+*/
+  // Animation function
+  function animate() {
+    particles.forEach(particle => {
+      // Random walk implementation based on diffusion equation
+      const randomAngle = Math.random() * 2 * Math.PI;
+      const displacement = Math.sqrt(2 * D);
+
+      particle.x += displacement * Math.cos(randomAngle);
+      particle.y += displacement * Math.sin(randomAngle);
+
+      // Bounce off walls
+      if (particle.x < 0) particle.x = 0;
+      if (particle.x > width) particle.x = width;
+      if (particle.y < 0) particle.y = 0;
+      if (particle.y > (height - plotHeight)) particle.y = height - plotHeight;
+    });
+
+    // Update particle positions
+    circles
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y);
+
+    // Update histogram
+    const bins = histogram(particles);
+
+    const bars = histogramGroup.selectAll("rect")
+      .data(bins);
+
+    bars.enter()
+      .append("rect")
+      .merge(bars)
+      .attr("x", d => xScale(d.x0))
+      .attr("y", d => yScale(d.length))
+      .attr("width", d => Math.max(0, xScale(d.x1) - xScale(d.x0) - 1))
+      .attr("height", d => yScale(0) - yScale(d.length))
+      .attr("fill", "steelblue");
+
+    bars.exit().remove();
+  }
+
+  // Create circles for particles
+  const circles = svg.selectAll("circle")
+    .data(particles)
+    .join("circle")
+    .attr("r", 2)
+    .attr("fill", "steelblue")
+    .attr("opacity", 0.6);
+
+  // Start animation
+  d3.timer(animate);
+
+  return container.node();
+}
+```
+Simulation showing the diffusion of particles in a 2D box. Particles move randomly based on the diffusion equation. The histogram shows the distribution of particles along the x-axis.
+
+:::
+***
+
+
+
+
+### Spatial derivative
+
+### Spatial derivative
+
+Let's break down how we handle changes in space. Just like before, we can estimate how quickly the concentration changes in space using three points:
+
+\begin{equation}
+\frac{\partial^{2} c(x,t)}{\partial x^2}\approx\frac{c_{i+1}^{n}-2c_{i}^{n}+c_{i-1}^{n}}{\Delta x^2}
+\end{equation}
+
+Think of this as looking at how the concentration changes between neighboring points. We'll collect all these concentrations at a particular time $n$ into a list: ${\bf C}=\lbrace c_{0}^{n},c_{1}^{n},c_{2}^{n}, \ldots, c_{5}^{n}\rbrace$.
+
+To make calculations easier for the computer, we can write this as a matrix equation:
+
+$M=\frac{\partial^2}{\partial x^2}=\frac{1}{\delta x^2}
+\begin{bmatrix}
+-2 & 1  & 0 & 0 & 0 & 0\\
+ 1 & -2 & 1 & 0 & 0 & 0\\
+ 0 & 1  & -2 & 1 & 0 & 0\\
+ 0 & 0  & 1  & -2 & 1 & 0\\
+ 0 & 0  & 0  &  1 & -2 & 1\\
+ 0 & 0  & 0  &  0 &  1 & -2\\
+\end{bmatrix}
+$
+
+Each row in this matrix represents how we calculate the change at one point using its neighbors. We haven't yet considered what happens at the edges of our system (the boundary conditions).
+
+This lets us write our diffusion equation in a simpler form:
+
+\begin{equation}
+\frac{\partial c(x,t)}{\partial t}\approx DM{\bf C}^{n}
+\end{equation}
+
+Here, $M$ is our matrix from above, and ${\bf C}$ is our list of concentrations. The $n$ tells us we're looking at a specific moment in time.
+
+### Temporal derivative
+
+Just like we split up space into points, we also need to split up time into small steps. The change in concentration over time can be estimated by looking at how much it changes between two time steps:
+
+\begin{equation}
+\frac{\partial c(x,t)}{\partial t}=\frac{c_{i}^{n+1}-c_{i}^{n}}{\delta t}
+\end{equation}
+
+Here, $n$ tells us which time step we're on (just like $i$ told us which space point we were looking at). This equation works for any point in space $i$.
+
+To make our calculation more accurate, we use something called the Crank Nicolson scheme. First, we write our time derivative as:
+
+\begin{equation}
+\frac{\partial c}{\partial t} = f(x)
+\end{equation}
+
+where $f(x)$ is the spatial part we found earlier:
+
+\begin{equation}
+f(x)=D\frac{\partial^2 c(x,t)}{\partial x^{2}}
+\end{equation}
+
+The Crank Nicolson scheme tells us to take the average of this function at the current time step and the next time step:
+
+\begin{equation}
+\frac{\partial c}{\partial t} \approx \frac{1}{2}\left ( f^{n+1}(x)+f^{n}(x)\right)
+\end{equation}
+
+where $n$ keeps track of which time step we're on.
+
+### Bringing all together
+
+We can now bring all sides together to develop our implicit scheme.
+
+
+\begin{equation}
+\frac{{\bf C^{n+1}}-{\bf C}^{n}}{\delta t}=\frac{1}{2} \left (D M {\bf C}^{n+1}+D M {\bf C}^{n} \right)
+\end{equation}
+
+We can transform the last equation to yield the value of of the concentration at the time index $n+1$, i.e.
+
+
+\begin{equation}
+\left({\bf I}-\frac{\delta t}{2}D M \right ){\bf C}^{n+1}=\left({\bf I}+\frac{\delta t}{2}D M \right ){\bf C}^{n}
+\end{equation}
+
+where ${\bf I}$ is the identity matrix. This will correspond in our code to
+
+\begin{equation}
+{\bf A}{\bf C}^{n+1}={\bf B}{\bf C}^{n}
+\end{equation}
+
+where ${\bf A}=\left({\bf I}-\frac{\delta t}{2}D M \right )$ and ${\bf B}=\left({\bf I}+\frac{\delta t}{2}D M \right )$.
+
+## Numerical Solution
+
+We are now ready to write some code. To simulate diffusion, we need two key pieces of information: what happens at the edges of our system (boundary conditions) and how the concentration looks at the start (initial condition).
+
+Let's imagine we're looking at diffusion along a line of length L=1. At both ends of this line (x=0 and x=L), we'll keep the concentration at zero throughout the simulation. This might represent, for example, a situation where any particles that reach the edges are immediately removed:
+
+\begin{equation}
+c(0,t)=c(L,t)=0
+\end{equation}
+
+For our starting condition, we'll create a bell-shaped curve (Gaussian distribution) centered in the middle of our line (at x=L/2). This is like placing a concentrated drop of ink at the center:
+
+\begin{equation}
+c(x,0)=\frac{1}{\sigma\sqrt{2\pi }}e^{-\frac{(x-L/2)^2}{2\sigma^2}}
+\end{equation}
+
+Here, σ=0.05 controls how narrow or wide our initial distribution is - a smaller σ means a more concentrated initial drop.
+
+### Setup Domain
+
+```{pyodide}
+#| autorun: false
+
+L=1.0 ## domain size
+
+NX = 500 ## data points along position direction
+
+dx = 1/(NX+1.0) ## position intervall
+x = np.linspace(0,L,NX+2) ## position vector
+x = x[1:-1] ## just skip the position at the beginning and end of the vector due to the boundary conditions
+
+T = 0.5 ## time intervall
+dt = dx/4 ## time step
+NT = int(T/dt) ## number of time steps
+
+D=0.1 ## diffusion coefficient
+```
+
+### Initial Conditions
+
+```{pyodide}
+#| autorun: false
+
+sigma=0.04 ## initial distribution width
+c = np.exp(-(x-L/2)**2/(2*sigma**2))  # no need for transpose here if x is 1D
+c = c.reshape(-1)  # ensure it's a 1D array
+```
+
+```{pyodide}
+#| autorun: false
+
+plt.figure(figsize=get_size(12, 8))
+plt.xlabel('position x')
+plt.ylabel('concentration c')
+plt.plot(x,c)
+plt.tight_layout()
+plt.show()
+```
+
+### Matrix Setup
+
+```{pyodide}
+#| autorun: false
+
+## the setup is a bit different from the scipy.diags, so we learn something new ;-)
+data = np.ones((3, NX))
+data[1] = -2*data[1]
+diags = [-1,0,1]
+M = sparse.spdiags(data,diags,NX,NX)/(dx**2)
+
+# Identity Matrix
+I = sparse.identity(NX)
+
+```
+
+### Solution
+
+To solve this system of equations, we'll use the `spsolve` function from the `scipy.sparse.linalg` module. This function is designed to solve sparse linear systems efficiently. Here is a detailed explanation of the code:
+
+```python
+data = []                      #<1>
+data.append(c)                 #<2>
+
+for i in range(NT):           #<3>
+    A = (I -dt/2*D*M)         #<4>
+    B = (I + dt/2*D*M)*c      #<5>
+    c = sparse.linalg.spsolve(A, B)  #<6>
+    c = np.array(c)           #<7>
+    data.append(c)            #<8>
+```
+1. Initialize empty list to store concentration profiles
+2. Store initial condition as first element
+3. Loop over all time steps
+4. Create matrix A for left side of equation: (I - dt/2*D*∂²/∂x²)
+5. Create matrix B times current concentration: (I + dt/2*D*∂²/∂x²)*c^n
+6. Solve linear system A*c^(n+1) = B*c^n for next time step
+7. Convert solution to numpy array for consistency
+8. Store concentration profile of current time step
+
+```{pyodide}
+#| autorun: false
+
+data = [] ## store the solutions for the individual timesteps
+data.append(c)
+for i in range(NT): ## loop over all timesteps
+
+    A = (I -dt/2*D*M) ## matrix multiplied to the next timestep solution
+    B = ( I + dt/2*D*M )*c ## matrix multiplied to the current timestep solution, which is c
+    c = sparse.linalg.spsolve(A, B)  # returns numpy array
+    c = np.array(c)  # ensure it's numpy array (redundant but safe)
+
+    data.append(c)
+```
+
+```{pyodide}
+#| autorun: false
+#| fig-align: center
+
+plt.figure(figsize=get_size(12, 8))
+for i in range(0,NT,10):
+    plt.plot(x,data[i])
+
+plt.xlabel('position x')
+plt.ylabel('concentration c')
+plt.tight_layout()
+plt.show()
+```
+
+```{pyodide}
+#| autorun: false
+#| fig-align: center
+
+plt.figure(figsize=get_size(12, 8))
+plt.imshow(np.array(data,dtype=float).reshape(NT+1, NX),  # NT+1 because we included initial condition
+          vmin=0, vmax=0.5,
+          cmap='gray_r',
+          extent=(0,L,T,0))  # extent defines the axis limits
+plt.xlabel('position x')
+plt.ylabel('time t')
+plt.colorbar(label='concentration')  # adding a colorbar is helpful
+plt.tight_layout()
+plt.show()
+```
+
+## Where to go from here
+
+The diffusion equation we have solved here is a simple example of a partial differential equation. A similar type of equation is the heat equation, which describes how heat spreads in a material. Finally, also the Schrödinger equation is a partial differential equation, which describes the time evolution of a quantum system. You could apply your knowledge of the diffusion equation to solve these more complex problems.

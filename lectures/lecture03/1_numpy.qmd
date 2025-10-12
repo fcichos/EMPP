@@ -1,0 +1,392 @@
+---
+title: NumPy Module
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  packages:
+    - numpy
+    - matplotlib
+---
+Numpy is the core library for scientific computing in Python. It provides a high-performance multidimensional array object and tools for working with these arrays. The NumPy array, formally called ndarray in NumPy documentation, is the real workhorse of data structures for scientific and engineering applications. The NumPy array is similar to a list but where all the elements of the list are of the same type. The elements of a **NumPy array** are usually numbers, but can also be booleans, strings, or other objects. When the elements are numbers, they must all be of the same type.
+
+```{pyodide}
+import numpy as np
+```
+
+## Creating Numpy Arrays
+
+There are a number of ways to initialize new numpy arrays, for example from
+
+* a Python list or tuples
+* using functions that are dedicated to generating numpy arrays, such as `arange`, `linspace`, etc.
+* reading data from files which will be covered in the files section
+
+### From lists
+
+For example, to create new vector and matrix arrays from Python lists we can use the `numpy.array` function.
+
+```{pyodide}
+#| autorun: false
+#this is a list
+a = [0, 0, 1, 4, 7, 16, 31, 64, 127]
+```
+
+```{pyodide}
+#| autorun: false
+type(a)
+```
+
+```{pyodide}
+#| autorun: false
+#this creates an array out of a list
+b=np.array(a,dtype=float)
+type(b)
+```
+
+```{pyodide}
+#| autorun: false
+np.array([[1,2,3],[4,5,6],[7,8,9]])
+```
+
+### Using array-generating functions
+
+For larger arrays it is inpractical to initialize the data manually, using explicit python lists. Instead we can use one of the many functions in `numpy` that generate arrays of different forms. Some of the more common are:
+
+```{pyodide}
+#| autorun: false
+# create a range
+
+x = np.arange(0, 10, 1) # arguments: start, stop, step
+x
+```
+
+```{pyodide}
+#| autorun: false
+x = np.arange(-5, -2, 0.1)
+x
+```
+
+#### linspace and logspace
+
+The `linspace` function creates an array of N evenly spaced points between a starting point and an ending point. The form of the function is linspace(start, stop, N).If the third argument N is omitted,then N=50.
+
+```{pyodide}
+#| autorun: false
+# using linspace, both end points ARE included
+np.linspace(0,10,25)
+```
+
+`logspace` is doing equivelent things with logaritmic spacing. Other types of array creation techniques are listed below. Try around with these commands to get a feeling what they do.
+
+```{pyodide}
+#| autorun: false
+np.logspace(0, 10, 10, base=np.e)
+```
+
+#### mgrid
+
+`mgrid` generates a multi-dimensional matrix with increasing value entries, for example in columns and rows:
+
+```{pyodide}
+#| autorun: false
+x, y = np.mgrid[0:1:0.1, 0:5] # similar to meshgrid in MATLAB
+```
+
+```{pyodide}
+#| autorun: false
+x
+```
+
+```{pyodide}
+#| autorun: false
+y
+```
+
+
+
+
+#### diag
+
+`diag` generates a diagonal matrix with the list supplied to it. The values can be also offset from the main diagonal.
+
+```{pyodide}
+#| autorun: false
+# a diagonal matrix
+np.diag([1,2,3])
+```
+
+```{pyodide}
+#| autorun: false
+# diagonal with offset from the main diagonal
+np.diag([1,2,3], k=-1)
+```
+
+#### zeros and ones
+
+`zeros` and `ones` creates a matrix with the dimensions given in the argument and filled with 0 or 1.
+
+```{pyodide}
+#| autorun: false
+np.zeros((3,3))
+```
+
+```{pyodide}
+#| autorun: false
+np.ones((3,3))
+```
+
+## Manipulating NumPy arrays
+
+### Slicing
+
+Slicing is the name for extracting part of an array by the syntax `M[lower:upper:step]`
+
+```{pyodide}
+#| autorun: false
+A = np.array([1,2,3,4,5])
+A
+```
+
+```{pyodide}
+#| autorun: false
+A[1:4]
+```
+
+Any of the three parameters in `M[lower:upper:step]` can be ommited.
+
+```{pyodide}
+#| autorun: false
+A[::] # lower, upper, step all take the default values
+```
+
+```{pyodide}
+#| autorun: false
+A[::2] # step is 2, lower and upper defaults to the beginning and end of the array
+```
+
+Negative indices counts from the end of the array (positive index from the begining):
+
+```{pyodide}
+#| autorun: false
+A = np.array([1,2,3,4,5])
+```
+
+```{pyodide}
+#| autorun: false
+A[-1] # the last element in the array
+```
+
+```{pyodide}
+#| autorun: false
+A[2:] # the last three elements
+```
+
+Index slicing works exactly the same way for multidimensional arrays:
+
+```{pyodide}
+#| autorun: false
+A = np.array([[n+m*10 for n in range(5)] for m in range(5)])
+A
+```
+
+```{pyodide}
+#| autorun: false
+# a block from the original array
+A[1:3, 1:4]
+```
+
+
+::: {.callout-note}
+## Differences
+
+**Slicing** can be effectively used to calculate differences for example for the calculation of derivatives. Here the position $y_i$ of an object has been measured at times $t_i$ and stored in an array each. We wish to calculate the average velocity at the times $t_{i}$ from the arrays by
+
+\begin{equation}
+v_{i}=\frac{y_i-y_{i-1}}{t_{i}-t_{i-1}}
+\end{equation}
+
+:::
+
+```{pyodide}
+#| autorun: false
+y = np.array([ 0. , 1.3, 5. , 10.9, 18.9, 28.7, 40. ])
+t = np.array([ 0. , 0.49, 1. , 1.5 , 2.08, 2.55, 3.2 ])
+```
+
+```{pyodide}
+#| autorun: false
+v = (y[1:]-y[:-1])/(t[1:]-t[:-1])
+v
+```
+
+### Reshaping
+
+Arrays can be reshaped into any form, which contains the same number of elements.
+
+```{pyodide}
+#| autorun: false
+a=np.zeros(4)
+a
+```
+
+```{pyodide}
+#| autorun: false
+np.reshape(a,(2,2))
+```
+
+### Adding a new dimension: newaxis
+
+With `newaxis`, we can insert new dimensions in an array, for example converting a vector to a column or row matrix.
+
+```{pyodide}
+#| autorun: false
+v = np.array([1,2,3])
+v
+```
+
+```{pyodide}
+#| autorun: false
+v.shape
+```
+
+```{pyodide}
+#| autorun: false
+# make a column matrix of the vector v
+v[:, np.newaxis]
+```
+
+```{pyodide}
+#| autorun: false
+# column matrix
+v[:,np.newaxis].shape
+```
+
+```{pyodide}
+#| autorun: false
+# row matrix
+v[np.newaxis,:].shape
+```
+::: {.callout-note collapse=true}
+### Stacking and repeating arrays
+
+Using function `repeat`, `tile`, `vstack`, `hstack`, and `concatenate` we can create larger vectors and matrices from smaller ones. Please try the individual functions yourself in your notebook. We wont discuss them in detail.
+
+#### Tile and repeat
+
+```{pyodide}
+#| autorun: false
+a = np.array([[1, 2], [3, 4]])
+a
+```
+
+```{pyodide}
+#| autorun: false
+# repeat each element 3 times
+np.repeat(a, 3)
+```
+
+```{pyodide}
+#| autorun: false
+# tile the matrix 3 times
+np.tile(a, 3)
+```
+
+#### Concatenate
+
+```{pyodide}
+#| autorun: false
+b = np.array([[5, 6]])
+```
+
+```{pyodide}
+#| autorun: false
+np.concatenate((a, b), axis=0)
+```
+
+```{pyodide}
+#| autorun: false
+np.concatenate((a, b.T), axis=1)
+```
+
+#### Hstack and vstack
+
+```{pyodide}
+#| autorun: false
+np.vstack((a,b))
+```
+
+```{pyodide}
+#| autorun: false
+np.hstack((a,b.T))
+```
+:::
+
+## Applying mathematical functions
+
+All kinds of mathematica operations can be carried out on arrays. Typically these operation act element wise as seen from the examples below.
+
+### Operation involving one array
+
+```{pyodide}
+#| autorun: false
+a=np.arange(0, 10, 1.5)
+a
+```
+
+```{pyodide}
+#| autorun: false
+a/2
+```
+
+```{pyodide}
+#| autorun: false
+a**2
+```
+
+```{pyodide}
+#| autorun: false
+ np.sin(a)
+```
+
+```{pyodide}
+#| autorun: false
+np.exp(-a)
+```
+
+```{pyodide}
+#| autorun: false
+(a+2)/3
+```
+
+### Operations involving multiple arrays
+
+Vector operations enable efficient element-wise calculations where corresponding elements at matching positions are processed simultaneously. Instead of handling elements one by one, these operations work on entire arrays at once, making them particularly fast. When multiplying two vectors using these operations, the result is not a single number (as in a dot product) but rather a new array where each element is the product of the corresponding elements from the input vectors. This element-wise multiplication is just one example of vector operations, which can include addition, subtraction, and other mathematical functions.
+
+```{pyodide}
+#| autorun: false
+a = np.array([34., -12, 5.,1.2])
+b = np.array([68., 5.0, 20.,40.])
+```
+
+```{pyodide}
+#| autorun: false
+a + b
+```
+
+```{pyodide}
+#| autorun: false
+2*b
+```
+
+```{pyodide}
+#| autorun: false
+a*np.exp(-b)
+```
+
+```{pyodide}
+#| autorun: false
+v1=np.array([1,2,3])
+v2=np.array([4,2,3])
+```

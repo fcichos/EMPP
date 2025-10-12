@@ -1,0 +1,106 @@
+---
+title: "Sine function report"
+date: 5/4/2018
+author:
+  - name: Bill Gates
+    orcid: 0000-0003-1689-0557
+    email: bill@gates.com
+    affiliations:
+      - name: Bill & Melinda Gates Foundation
+        address: 440 5th Ave N
+        city: Seattle
+        state: WA
+        postal-code: 98109-4631
+format:
+  pdf:
+    documentclass: article
+    cite-method: biblatex
+    classoption: [twocolumn, portrait]
+    mainfont: Times New Roman
+    colorlinks: true
+bibliography: literature.bib
+---
+
+
+```{python}
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 10,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 10,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+
+
+# Introduction
+
+Since the beginning of the 2st century, the field of chemistry has been revolutionized by the development of new techniques and methods.
+
+
+```{python}
+#| echo: false
+#| fig-cap: "Das ist wieder ein schönes Bild. Box Method Illustration"
+#| label: fig-first-plot
+
+x=np.linspace(0,2*np.pi,100)
+y=np.sin(x)
+
+plt.figure(figsize=get_size(7, 6))
+plt.plot(x,y)
+plt.xlabel("x [cm]")
+plt.ylabel("y [cm]")
+plt.tight_layout()
+plt.show()
+```
+
+As shown in @fig-first-plot, the sine function is a periodic function that repeats itself every $2\pi$. This is pretty neat since I only have to plot the range from 0 to $2\pi$ to see the entire function.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nulla ac @khadem2019delayed .
+This is great and can also be read in @popescu2018effective.
+{{< lipsum 5 >}}
+
+
+```{python}
+#| echo: false
+#| fig-cap: "Das ist wieder ein schönes Bild von einem Cosinus."
+#| label: fig-second-plot
+y=np.cos(x)
+plt.figure(figsize=get_size(7, 6))
+plt.plot(x,y)
+plt.xlabel("x [cm]")
+plt.ylabel("y [cm]")
+plt.show()
+```
+
+
+As shown in  @fig-second-plot, this is a cosinus function.
+
+$$
+y=\cos(x)
+$${#eq-black-scholes}
+
+As shown in @eq-black-scholes, this is a cosinus function. Das ist alles auch in @marinelli1998thermal beschrieben.
+
+
+## Einfüges Bildes
+
+
+![Das ist ein richtiges Bild](Figures/figure1.pdf)
+
+{{< lipsum 5 >}}

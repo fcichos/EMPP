@@ -1,14 +1,15 @@
 ---
 title: "Modules"
+format:
+  live-html:
+    toc: true
+    toc-location: right
 pyodide:
+  autorun: false
   packages:
     - matplotlib
     - numpy
-notebook-url: "https://github.com/fcichos/EMPP24/blob/main/lectures/lecture01/01-lecture01.ipynb"
 ---
-
-
-## Modules
 
 Most of the functionality in Python is provided by *modules*. The Python Standard Library is a large collection of modules that provides *cross-platform* implementations of common facilities such as access to the operating system, file I/O, string management, network communication, math, web-scraping, text manipulation, machine learning and much more.
 
@@ -80,13 +81,12 @@ help(math.log)
 ```
 
 ```{pyodide}
-#| slideshow: {slide_type: fragment}
-#| tags: []
+#| autorun: false
 math.log(10)
 ```
 
 ```{pyodide}
-#| slideshow: {slide_type: fragment}
+#| autorun: false
 math.log(8, 2)
 ```
 
@@ -184,9 +184,7 @@ print(module2.another_function())
 ```
 
 Creating and using modules and packages in Python helps you organize your code better and makes it easier to maintain and reuse.
-:::
 
-::: {.callout-note  title="Namespaces in Your Modules" collapse=true}
 #### Namespaces in Packages
 
 You can also create sub-packages by adding more directories with `__init__.py` files. This allows you to create a hierarchical structure for your modules:

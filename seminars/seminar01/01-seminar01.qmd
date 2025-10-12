@@ -1,6 +1,49 @@
 ---
 title: "Seminar 1"
-format:
-  ipynb: default
+format: live-html
+live:
+  show-hints: true
+  show-solutions: true
 notebook-url: "https://github.com/yourusername/yourrepository/blob/main/notebooks/my-document.ipynb"
 ---
+
+
+Calculate the average of all of the integers from 1 to 10.
+
+```{pyodide}
+#| exercise: ex_1_py
+n = range(1, 11)
+______
+```
+
+::: { .hint exercise="ex_1_py"}
+use the sum() and len() functions
+
+```python
+n = range(1, 11)
+```
+:::
+
+
+::: { .solution exercise="ex_1_py" }
+```python
+n = range(1, 11)                            #<1>
+sum(n)/len(n)                               #<2>
+```
+1. create the range of numbers from 1 to 10.
+2. calculate the sum of the numbers and divide by the number of elements in the list.
+:::
+
+```{pyodide}
+#| exercise: ex_1_py
+#| check: true
+n = range(1, 11)
+mean = sum(n)/len(n)
+feedback = None
+
+if (result == mean):
+  feedback = { "correct": True, "message": "Nice work!" }
+else:
+  feedback = { "correct": False, "message": "That's incorrect, sorry." }
+feedback
+```

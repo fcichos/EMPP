@@ -1,0 +1,324 @@
+---
+title: Numerical Differentiation
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+    - ipywidgets
+---
+
+While we did introduce derivatives shortly already when exploring the slicing of arrays, we will now look at the numerical differentiation in more detail. This will require again a little bit of math.
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import io
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+plt.rcParams.update({'font.size': 18})
+from ipywidgets import interact, interactive, fixed, interact_manual
+import ipywidgets as widgets
+
+# default values for plotting
+plt.rcParams.update({'font.size': 12,
+                     'lines.linewidth': 1,
+                     'lines.markersize': 5,
+                     'axes.labelsize': 11,
+                     'xtick.labelsize' : 10,
+                     'ytick.labelsize' : 10,
+                     'xtick.top' : True,
+                     'xtick.direction' : 'in',
+                     'ytick.right' : True,
+                     'ytick.direction' : 'in',})
+
+def get_size(w,h):
+      return((w/2.54,h/2.54))
+```
+
+## First Order Derivative
+
+Our previous method of finding the derivative was based on the definition of the derivative itself. The derivative of a function $f(x)$ at a point $x$ is defined as the limit of the difference quotient as the interval $\Delta x$ goes to zero:
+
+$$
+f^{\prime}(x) = \lim_{\Delta x \rightarrow 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}
+$$
+
+If we do not take the limit, we can approximate the derivative by:
+
+$$
+f^{\prime}_{i} \approx \frac{f_{i+1} - f_{i}}{\Delta x}
+$$
+
+Here, we look to the right of the current position $i$ and divide by the interval $\Delta x$. It is not difficult to see that the resulting local error $\delta$ at each step is given by:
+
+$$
+\delta = f_{i+1} - f_{i} - \Delta x f^{\prime}(x_i) = \frac{1}{2} \Delta x^2 f^{\prime \prime}(x_i) + O(\Delta x^3)
+$$
+
+It can be seen that the error is proportional to the **square** of the interval $\Delta x$. This is the reason why the method is called first order accurate. The error is of the order of $\Delta x^{2}$.
+
+A better expression can be found using the Taylor expansion around the position $x_0$:
+
+$$
+f(x) = f(x_{0}) + (x - x_0) f^{\prime}(x) + \frac{(x - x_0)^2}{2!} f^{\prime\prime}(x) + \frac{(x - x_0)^3}{3!} f^{(3)}(x) + \ldots
+$$
+
+In discrete notation, this gives:
+
+$$
+f_{i+1} = f_{i} + \Delta x f_{i}^{\prime} + \frac{\Delta x^2}{2!} f_{i}^{\prime\prime} + \frac{\Delta x^3}{3!} f_{i}^{(3)} + \ldots
+$$
+
+The same can be done to obtain the function value at $i-1$:
+
+$$
+f_{i-1} = f_{i} - \Delta x f_{i}^{\prime} + \frac{\Delta x^2}{2!} f_{i}^{\prime\prime} - \frac{\Delta x^3}{3!} f_{i}^{(3)} + \ldots
+$$
+
+Subtracting these two equations, we get:
+
+$$
+f_{i+1} - f_{i-1} = 2 \Delta x f_{i}^{\prime} + O(\Delta x^3)
+$$
+
+such that the second order term in $\Delta x$ disappears. Neglecting the higher-order terms, we have
+
+$$
+f^{\prime}_{i} \approx \frac{f_{i+1} - f_{i-1}}{2 \Delta x}
+$$
+
+an thus have a first order derivative which is even more accurate than the one obtained from the definition of the derivative.
+
+We can continue that type of derivation now to obtain higher order approximation of the first derivative with better accuracy. For that purpose you may calculate now $f_{i\pm 2}$ and combining that with $f_{i+1}-f_{i-1}$ will lead to
+
+\begin{equation}
+f_{i}^{\prime}=\frac{1}{12 \Delta x}(f_{i-2}-8f_{i-1}+8f_{i+1}-f_{i+2})
+\end{equation}
+
+This can be used to give even better values for the first derivative.
+
+Let`s try out one of the formulas in the following code cell. We will write a function that calculates the derivative of a given function at a given position $x$. The function will take the function $f$ as and argument, which is new to us. We will also introduce a small interval $h=\Delta x$ which will be used to calculate the derivative. The function will return the derivative of the function at the given position $x$.
+
+```{pyodide}
+#| autorun: false
+def D(f, x, h=1.e-12, *params):
+    return (f(x+h, *params)-f(x-h, *params))/(2*h)
+```
+
+Note that the definition contains additional parameters `*params` which are passed to the function `f`. This is a general way to pass additional parameters to the function `f` which is used in the definition of the derivative.
+
+We will try to calculate the derivative of the $\sin(x)$  function:
+
+```{pyodide}
+#| autorun: false
+def f(x):
+    return(np.sin(x))
+```
+
+We can plot this and nicely obtain our cosine function
+
+```{pyodide}
+#| autorun: false
+
+x=np.linspace(0.01,np.pi*4,1000)
+
+plt.plot(x,D(f,x))
+```
+
+### Matrix Version of the First Derivative
+
+If we supply the above function with an array of positions $x_{i}$ at which we would like to calculate the derivative, we obtain an array of derivative values. We can also write this procedure in a different way, which will be helpful for solving differential equations later.
+
+If we consider the above finite difference formulas for a set of positions $x_{i}$, we can represent the first derivative at these positions by a matrix operation as well:
+
+$$
+f^{\prime} = \frac{1}{\Delta x}
+\begin{bmatrix}
+-1 & 1  & 0 & 0 & 0 & 0\\
+ 0 & -1 & 1 & 0 & 0 & 0\\
+ 0 & 0  & -1 & 1 & 0 & 0\\
+ 0 & 0  & 0  & -1 & 1 & 0\\
+ 0 & 0  & 0  &  0 & -1 & 1\\
+ 0 & 0  & 0  &  0 &  0 & -1\\
+\end{bmatrix}
+\begin{bmatrix}
+f_{1}\\
+f_{2}\\
+f_{3}\\
+f_{4}\\
+f_{5}\\
+f_{6}\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{f_{2} - f_{1}}{\Delta x}\\
+\frac{f_{3} - f_{2}}{\Delta x}\\
+\frac{f_{4} - f_{3}}{\Delta x}\\
+\frac{f_{5} - f_{4}}{\Delta x}\\
+\frac{f_{6} - f_{5}}{\Delta x}\\
+\frac{0 - f_{6}}{\Delta x}\\
+\end{bmatrix}
+$$
+
+Note that here we took the derivative only to the right side! Each row of the matrix, when multiplied by the vector containing the function values, gives the derivative of the function $f$ at the corresponding position $x_{i}$. The resulting vector represents the derivative in a certain position region.
+
+We will demonstrate how to generate such a matrix with the `SciPy` module below.
+
+## Second order derivative
+
+While we did before calculate the first derivative, we can also calculate the second derivative of a function. In the previous calculations we evaluated $f_{i+1} - f_{i-1}$. We can now also use the sum of both to arrive at
+
+\begin{equation}
+f_{i}^{\prime\prime}\approx \frac{f_{i-1}-2f_{i}+f_{i+1}}{\Delta x^2}
+\end{equation}
+
+which gives the basic equation for calculating the second order derivative and the next order may be obtained from
+
+\begin{equation}
+f_{i}^{\prime\prime}\approx \frac{1}{12 \Delta x^{2}}(-f_{i-2}+16f_{i-1}-30 f_{i}+16f_{i+1}-f_{i+2})
+\end{equation}
+
+which is again better than our previous formula, yet needs more function values to be calculated.
+
+
+## SciPy Module
+
+Of course, we are not the first to define some functions for calculating the derivative of functions numerically. This is already implemented in different modules. One module is the above mentioned `SciPy` module.
+
+The `SciPy` module provides the method `derivative`, which we can call with
+
+~~~
+derivative(f,x,dx=1.0,n=1):
+~~~
+
+This will calculate the n$th$ derivative of the function $f$ at the position $x$ with a intervall $dx=1.0$ (default value).
+
+```{pyodide}
+#| autorun: false
+## the derivative method is hidden in the `misc` sub-module of `SciPy`.
+from scipy.misc import derivative
+```
+
+We also have the option to define the order parameter, which is not the order of the derivative but rather the number of points used to calculate the derivative according to our scheme earlier.
+
+```{pyodide}
+#| autorun: false
+derivative(np.sin,np.pi,dx=0.000001,n=2,order=5)
+```
+
+### Matrix Version
+
+The `SciPy` module allows us to construct matrices as mentioned above. We will need the `diags` method from the `SciPy` module for that purpose.
+
+```{pyodide}
+#| autorun: false
+from scipy.sparse import diags
+```
+
+Let's assume we want to calculate the derivative of the `sin` function at certain positions.
+
+```{pyodide}
+#| autorun: false
+N = 100
+x = np.linspace(-5, 5, N)
+y = np.sin(x)
+```
+
+The `diags` function uses a set of numbers that should be distributed along the diagonals of the matrix. If you supply a list like in the example below, the numbers are distributed using the offsets as defined in the second list. The `shape` keyword defines the shape of the matrix. Try the example in the next cell with the `.todense()` suffix. This converts the otherwise unreadable sparse output to a readable matrix form.
+
+```{pyodide}
+#| autorun: false
+m = diags([-1, 1], [0, 1], shape=(10, 10)).todense()
+print(m)
+```
+
+To comply with our previous definition of $N=100$ data points and the interval $\Delta x$, we define:
+
+```{pyodide}
+#| autorun: false
+dx = x[1] - x[0]
+m = diags([-1, 1], [0, 1], shape=(N, N)) / dx
+```
+
+The derivative is then simply a matrix-vector multiplication, which is done either by `np.dot(m,y)` or just by the `@` operator.
+
+```{pyodide}
+#| autorun: false
+diff = m @ y
+```
+
+Let's plot the original function and its numerical derivative.
+
+```{pyodide}
+#| autorun: false
+plt.figure(figsize=get_size(14,8))
+plt.plot(x[:-1], diff[:-1], label=r'$f^{\prime}(x)$')
+plt.plot(x, y, label=r'$f(x)=\sin(x)$')
+plt.xlabel('x')
+plt.ylabel(r'$f$, $f^{\prime}$')
+plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
+plt.ylim(-1, 1)
+plt.tight_layout()
+plt.show()
+```
+
+Check for yourself that the following line of code will calculate the second derivative.
+
+```{pyodide}
+#| autorun: false
+m = diags([1, -2, 1], [-1, 0, 1], shape=(N, N)) / dx**2
+second_diff = m @ y
+```
+
+Let's plot the original function and its second numerical derivative.
+
+```{pyodide}
+#| autorun: false
+plt.figure(figsize=get_size(14,8))
+plt.plot(x[1:-1], second_diff[1:-1], label=r'$f^{\prime\prime}(x)$')
+plt.plot(x, y, label=r'$f(x)=\sin(x)$')
+plt.xlabel('x')
+plt.ylabel(r'$f$, $f^{\prime\prime}$')
+plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
+plt.ylim(-1, 1)
+plt.tight_layout()
+plt.show()
+```
+
+This demonstrates how to use the `SciPy` module to construct matrices for numerical differentiation and how to apply these matrices to compute first and second derivatives.
+
+
+::: {.callout-note collapse=true}
+## Applications of the Matrix Method
+The matrix method for computing derivatives is particularly useful in several contexts, especially in numerical analysis and computational mathematics. Here are some key applications:
+
+1. **Solving Differential Equations**:
+   - **Ordinary Differential Equations (ODEs)**: The matrix method can be used to discretize ODEs, transforming them into a system of linear equations that can be solved using linear algebra techniques.
+   - **Partial Differential Equations (PDEs)**: Similarly, PDEs can be discretized using finite difference methods, where derivatives are approximated by matrix operations. This is essential in fields like fluid dynamics, heat transfer, and electromagnetics.
+
+2. **Numerical Differentiation**:
+   - The matrix method provides a systematic way to approximate derivatives of functions given discrete data points. This is useful in data analysis, signal processing, and any application where you need to estimate the rate of change from sampled data.
+
+3. **Stability and Accuracy Analysis**:
+   - By representing derivative operations as matrices, it becomes easier to analyze the stability and accuracy of numerical schemes. This is crucial for ensuring that numerical solutions to differential equations are reliable.
+
+4. **Optimization Problems**:
+   - In optimization, especially in gradient-based methods, the matrix method can be used to compute gradients and Hessians efficiently. This is important in machine learning, operations research, and various engineering disciplines.
+
+5. **Finite Element Analysis (FEA)**:
+   - In FEA, the matrix method is used to approximate derivatives and integrals over complex geometries. This is widely used in structural engineering, biomechanics, and materials science.
+
+6. **Control Theory**:
+   - In control theory, especially in the design and analysis of control systems, the matrix method can be used to model and simulate the behavior of dynamic systems.
+
+:::

@@ -1,0 +1,985 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: Neural Networks\n",
+        "jupyter: python3\n",
+        "---\n",
+        "\n",
+        "\n",
+        "\n",
+        "Neural networks are one of the most commonly used machine learning objects nowadays. Mostly these systems are known as **deep neural networks**, which just says something about how many layers in which neurons are arranged exist. We will in this lecture have a look at the basic unit, the neuron, and how to connect and train a network. We will do all ourselves, that means, we will not use one of the many existing python modules, that simplifies the task. This notebook has been largely developed by **Martin Fränzl**."
+      ],
+      "id": "8702c44b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "tags": []
+      },
+      "source": [
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "%matplotlib inline\n",
+        "%config InlineBackend.figure_format = 'retina'\n",
+        "\n",
+        "\n",
+        "plt.rcParams.update({'font.size': 18,\n",
+        "                     'axes.titlesize': 20,\n",
+        "                     'axes.labelsize': 20,\n",
+        "                     'axes.labelpad': 1,\n",
+        "                     'lines.linewidth': 2,\n",
+        "                     'lines.markersize': 10,\n",
+        "                     'xtick.labelsize' : 18,\n",
+        "                     'ytick.labelsize' : 18,\n",
+        "                     'xtick.top' : True,\n",
+        "                     'xtick.direction' : 'in',\n",
+        "                     'ytick.right' : True,\n",
+        "                     'ytick.direction' : 'in'\n",
+        "                    })"
+      ],
+      "id": "fd8815d0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "In this lecture we are going to build a neural network from scratch using Python and NumPy (The high-level libaries like Keras and TensorFlow will be covered in Part 2). We will build a network to recognize hand-written digits, using the famous MNIST data set.\n",
+        "\n",
+        "![MNIS](MNIST.png)\n",
+        "\n",
+        "We will start with the simplest possible “network”: A single node that recognizes just the digit 0. This is actually just an implementation of logistic regression, but it will help us understand some of the key components before things get more complicated. Then we’ll extend that into a network with one hidden layer, still recognizing just 0. Finally, we will extend the network to recognize all the digits 0 through 9. That will give us a 92% accurate digit-recognizer.\n",
+        "\n",
+        "## The MNIST Data Set\n",
+        "\n",
+        "The MNIST data set contains 70,000 images of hand-written digits, each 28 x 28 pixels, in greyscale with pixel-values from 0 to 255. We could download and preprocess the data ourselves, but the makers of the module `sklearn` already did that for us:\n",
+        "\n",
+        "### Load the data"
+      ],
+      "id": "52385b59"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "tags": []
+      },
+      "source": [
+        "from sklearn.datasets import fetch_openml\n",
+        "X, y = fetch_openml('mnist_784', version=1, return_X_y=True,as_frame=False)"
+      ],
+      "id": "15d02c09",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The images are now contained in the array `X`, while the labels (so which number it is) are contained in `y`. Let’s have a look at a random image and label."
+      ],
+      "id": "b233d16e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "tags": []
+      },
+      "source": [
+        "i = 33419\n",
+        "plt.imshow(np.array(X)[i].reshape(28, 28), cmap='gray')\n",
+        "plt.colorbar()\n",
+        "plt.show()\n",
+        "print('label: ',y[i])"
+      ],
+      "id": "3de3ba81",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Normalize the data\n",
+        "\n",
+        "To use data in neural networks as training data, it is always useful to normalize the data to the interval [0, 1]."
+      ],
+      "id": "e33eda4a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "tags": []
+      },
+      "source": [
+        "X = X/255"
+      ],
+      "id": "16c847f7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Preparing training and testing data\n",
+        "\n",
+        "The default MNIST labels say '1' for an image of a one, '2' for an image of a two, etc., but we are just building a zero classifier for now. So we want our labels to say 1 when we have a zero, and 0 otherwise. So we overwrite the labels accordingly:"
+      ],
+      "id": "9df12b02"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "tags": []
+      },
+      "source": [
+        "y_new = np.zeros(y.shape)\n",
+        "y_new[np.where(y == '0')[0]] = 1\n",
+        "y = y_new"
+      ],
+      "id": "69b1d540",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "We now split the data in a train and test set. The MNIST images are pre-arranged so that the first 60,000 can be used for training, and the last 10,000 for testing. We’ll also transform the data into the shape we want, with each example in a column (instead of a row):"
+      ],
+      "id": "d214e803"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "tags": []
+      },
+      "source": [
+        "m = 60000\n",
+        "m_test = X.shape[0] - m\n",
+        "\n",
+        "X_train, X_test = X[:m].T, X[m:].T\n",
+        "y_train, y_test = y[:m].reshape(1,m), y[m:].reshape(1, m_test)"
+      ],
+      "id": "63bf3eed",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Finally, we shuffle the training set:"
+      ],
+      "id": "2d2db1e1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "tags": []
+      },
+      "source": [
+        "np.random.seed(1)\n",
+        "shuffle_index = np.random.permutation(m)\n",
+        "X_train, y_train = X_train[:,shuffle_index], y_train[:,shuffle_index]"
+      ],
+      "id": "9353af72",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Let’s again have a look at random image and label just to check"
+      ],
+      "id": "6ae0e660"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "tags": []
+      },
+      "source": [
+        "i = 39\n",
+        "plt.imshow(X_train[:,i].reshape(28, 28), cmap='gray')\n",
+        "plt.colorbar()\n",
+        "plt.show()\n",
+        "print(y_train[:,i])"
+      ],
+      "id": "bb583f68",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Try to find a zero to check whether the corresponding label is a 1.\n",
+        "\n",
+        "## A Single Neuron\n",
+        "\n",
+        "The basic unit of a neural network is a neuron. A neuron takes inputs, does some math with them, and produces one output. The neuron below does that with two inputs.\n",
+        "\n",
+        "![image](img/neuron.png)\n",
+        "\n",
+        "\n",
+        "### Forward Propogation\n",
+        "\n",
+        "\n",
+        "The neuron does now three things.\n",
+        "\n",
+        "1. Take input values and multipy by weights\n",
+        "\n",
+        "\\begin{eqnarray}\n",
+        "x_{1}\\rightarrow x_{1} w_{1}\\\\\n",
+        "x_{2}\\rightarrow x_{2} w_{2}\n",
+        "\\end{eqnarray}\n",
+        "\n",
+        "2. All the weighted inputs are the added to a bias value $b$\n",
+        "\n",
+        "\\begin{equation}\n",
+        "x_{1} w_{1}+ x_{2} w_{2}+b\n",
+        "\\end{equation}\n",
+        "\n",
+        "3. The output is generated by applying a function $\\sigma()$\n",
+        "\\begin{equation}\n",
+        "y=\\sigma( x_{1} w_{1}+ x_{2} w_{2}+b)\n",
+        "\\end{equation}\n",
+        "\n",
+        "This function is called activation function. The activation function is used to turn an unbounded input value into a bounded output value with a predictable range. A commonly used activation function is the `sigmoid function`.\n",
+        "\n",
+        "For a single input dataset $x$ a more compact writing of the math above is\n",
+        "\n",
+        "\\begin{equation*}\n",
+        "\\hat{y} = \\sigma(w^{\\rm T} x + b)\\ .\n",
+        "\\end{equation*}\n",
+        "\n",
+        "Here $\\sigma$ is the sigmoid function:\n",
+        "\\begin{equation*}\n",
+        "\\sigma(z) = \\frac{1}{1+{\\rm e}^{-z}}\\ .\n",
+        "\\end{equation*}\n",
+        "\n",
+        "The sigmoid function is something we can already define and plot."
+      ],
+      "id": "68144aa4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "def sigmoid(z):\n",
+        "    return 1/(1 + np.exp(-z))"
+      ],
+      "id": "b084d36f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "x=np.linspace(-5,5,100)\n",
+        "plt.figure(figsize=(5,3))\n",
+        "plt.plot(x,sigmoid(x))\n",
+        "plt.xlabel('input')\n",
+        "plt.ylabel('output')\n",
+        "plt.grid()\n",
+        "plt.show()"
+      ],
+      "id": "0932642a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "If we now have this kind of two input neuron with the weights $w$ and the bias value $b$\n",
+        "\n",
+        "\\begin{eqnarray}\n",
+        "w=[0,1]\\\\\n",
+        "b=4\n",
+        "\\end{eqnarray}\n",
+        "\n",
+        "we may supply and input\n",
+        "\n",
+        "\\begin{eqnarray}\n",
+        "x=[2,3]\n",
+        "\\end{eqnarray}\n",
+        "\n",
+        "which gives writing it a s a dot product\n",
+        "\n",
+        "\\begin{equation}\n",
+        "y=f(w\\cdot x+b)=f(7)=0.999\n",
+        "\\end{equation}\n",
+        "\n",
+        "This procedure of propagating the input values to obtain and output value is called **feedforward** or **forward propagation**. Our first goal is now to create a network with a single neuron with 784 inputs (28 x 28), and a single sigmoid unit generating the output.\n",
+        "\n",
+        "The above examples can be written and executed more efficiently in a vectorized form. Generating the output We’ll vectorize by stacking examples side-by-side, so that our input matrix $X$ has an example in each column. The vectorized form of the forward pass is then\n",
+        "\n",
+        "\\begin{equation*}\n",
+        "\\hat{y} = \\sigma(w^{\\rm T} X + b)\\ .\n",
+        "\\end{equation*}\n",
+        "\n",
+        "Note that $\\hat{y}$ is now a vector, not a scalar as it was in the previous equation.\n",
+        "\n",
+        "In our code we will compute this in two stages: `Z = np.matmul(W.T, X) + b` and then `A = sigmoid(Z)` (`A` for Activation). Breaking things up into stages like this is just for clarity - It will make our forward pass computations mirror the steps in our backward propagation computation.\n",
+        "\n",
+        "### Loss Function\n",
+        "\n",
+        "Since we have now data and we also know how to propagate (at least in principle) the input through the single neuron here, we also need to define a measure for how far the output deviates from the input. This measure is called **loss**. The many different ways of defining a suitable loss. The `mean squared error`, as it appeared already during our fitting lecture, could be a suitable loss function\n",
+        "\n",
+        "\\begin{equation}\n",
+        "MSE(y,\\hat{y})=\\frac{1}{n}\\sum_{i=1}^{n}(y-\\hat{y})^2\n",
+        "\\end{equation}\n",
+        "\n",
+        "for a number of $n$ datasets. Here $\\hat{y}$ is the data that is predicted by the network and $y$ is the value which represents the so called ground truth, i.e. the data provided by the training set.\n",
+        "\n",
+        "We will not use the mean squared error bu the  `cross-entropy` for our loss function. The formula for a single training example (one input image) is:\n",
+        "\n",
+        "\\begin{equation*}\n",
+        "L(y,\\hat{y}) = -y\\log(\\hat{y})-(1-y)\\log(1-\\hat{y})\\ .\n",
+        "\\end{equation*}\n",
+        "\n",
+        "This error definition comes from the Shannon entropy definition, which you may look up in the web if you are interested. Averaging over a training set of $m$ examples we then have:\n",
+        "\n",
+        "\\begin{equation*}\n",
+        "L(Y,\\hat{Y}) = -\\frac{1}{m}\\sum_{i = 0}^{m}y^{(i)}\\log(\\hat{y}^{(i)})-(1-y^{(i)})\\log(1-\\hat{y}^{(i)})\\ .\n",
+        "\\end{equation*}\n",
+        "\n",
+        "In Python code, this looks like"
+      ],
+      "id": "c5ca9ccf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "def compute_loss(Y, Y_hat):\n",
+        "    m = Y.shape[1]\n",
+        "    L = -(1./m)*(np.sum(np.multiply(np.log(Y_hat), Y)) + np.sum(np.multiply(np.log(1 - Y_hat), (1 - Y))))\n",
+        "    return L"
+      ],
+      "id": "12ea1f93",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Trainging the Network\n",
+        "\n",
+        "The goal of all neural network training procedures is to minimize the loss and we have to find a way to minimize that loss. This is not so much different from our fitting of function values before.\n",
+        "\n",
+        "### Backward Propagation\n",
+        "\n",
+        "The output of the network is determined by the input values and how we have distributed the weights $w$ and the biases $b$. We can write the loss function therefore as a function of the weights and losses\n",
+        "\n",
+        "$$\n",
+        "L(w_{1},w_{2},w_{3},\\ldots ,b_{1},b_{2},b_{3},\\ldots)\n",
+        "$$\n",
+        "\n",
+        "\n",
+        "To train the network, we would now try to find out, by how much the output values change if we do change a specific weight $w_j$. This can be expressed by the partial derivative\n",
+        "\n",
+        "$$\n",
+        "\\frac{\\partial L}{\\partial w_j}\n",
+        "$$\n",
+        "\n",
+        "We may then take a tiny step and correct the current value of $w_j$ such that the network yields a new output. This way back from the current output of the network and its current loss to a correction of the weights to yield a smaller loss is called **back propagation**.\n",
+        "\n",
+        "**Calculating derivatives**\n",
+        "\n",
+        "Focusing on a single input image will make it easier to derive the formulas we need. Holding all values except $w_j$ fixed, we can think of $L$ as being computed in three steps: $w_j\\rightarrow z \\rightarrow \\hat{y} \\rightarrow L$. The formulas for these steps are:\n",
+        "\\begin{align*}\n",
+        "z &= w^{\\rm T} x + b\\ , \\\\\n",
+        "\\hat{y} &= \\sigma(z)\\ , \\\\\n",
+        "L(y,\\hat{y}) &= -y\\log(\\hat{y})-(1-y)\\log(1-\\hat{y})\\ .\n",
+        "\\end{align*}\n",
+        "\n",
+        "The change of the loss function with the weights can then be split up by the chain rule into\n",
+        "\n",
+        "\\begin{align*}\n",
+        "\\frac{\\partial L}{\\partial w_j} = \\frac{\\partial L}{\\partial \\hat{y}}\\frac{\\partial \\hat{y}}{\\partial z}\\frac{\\partial z}{\\partial w_j}\n",
+        "\\end{align*} <br>\n",
+        "\n",
+        "\n",
+        "There we have a product of three individual partial derivatives, which are a bit tedius to write down, but not to complicated. The read like\n",
+        "\n",
+        "$\\partial L/\\partial\\hat{y}$:\n",
+        "\\begin{align*}\n",
+        "\\frac{\\partial L}{\\partial\\hat{y}} &= \\frac{\\partial}{\\partial\\hat{y}}\\left(-y\\log(\\hat{y})-(1-y)\\log(1-\\hat{y})\\right) \\\\\n",
+        "&= -y\\frac{\\partial}{\\partial\\hat{y}}\\log(\\hat{y})-(1-y)\\frac{\\partial}{\\partial\\hat{y}}\\log(1-\\hat{y}) \\\\\n",
+        "&= -\\frac{y}{\\hat{y}} +\\frac{(1 - y)}{1-\\hat{y}} \\\\\n",
+        "&= \\frac{\\hat{y} - y}{\\hat{y}(1-\\hat{y})}\n",
+        "\\end{align*}\n",
+        "\n",
+        "$\\partial \\hat{y}/\\partial z$:\n",
+        "\\begin{align*}\n",
+        "\\frac{\\partial }{\\partial z}\\sigma(z)\n",
+        "&= \\frac{\\partial }{\\partial z}\\left(\\frac{1}{1 + {\\rm e}^{-z}}\\right) \\\\\n",
+        "&= \\frac{1}{(1 + {\\rm e}^{-z})^2}\\frac{\\partial }{\\partial z}(1 + {\\rm e}^{-z}) \\\\\n",
+        "&= \\frac{{\\rm e}^{-z}}{(1 + {\\rm e}^{-z})^2} \\\\\n",
+        "&= \\frac{1}{1 + {\\rm e}^{-z}}\\frac{{\\rm e}^{-z}}{1 + {\\rm e}^{-z}} \\\\\n",
+        "&= \\frac{1}{1 + {\\rm e}^{-z}}\\left(1 - \\frac{1}{1 + {\\rm e}^{-z}}\\right) \\\\\n",
+        "&= \\sigma(z)(1-\\sigma(z)) \\\\\n",
+        "&= \\hat{y}(1-\\hat{y})\n",
+        "\\end{align*}\n",
+        "\n",
+        "\n",
+        "$\\partial z/\\partial w_j$:\n",
+        "\\begin{align*}\n",
+        "\\frac{\\partial }{\\partial w_j}(w^{\\rm T} x + b) &= \\frac{\\partial }{\\partial w_j}(w_0x_0 + \\dots + w_nx_n + b) \\\\\n",
+        "&= x_j\n",
+        "\\end{align*}\n",
+        "\n",
+        "\n",
+        "Substituting back into the chain rule yields:\n",
+        "\\begin{align*}\n",
+        "\\frac{\\partial L}{\\partial w_j}\n",
+        "&= \\frac{\\partial L}{\\partial \\hat{y}}\\frac{\\partial \\hat{y}}{\\partial z}\\frac{\\partial z}{\\partial w_j} \\\\\n",
+        "&= \\frac{\\hat{y} - y}{\\hat{y}(1-\\hat{y})}\\hat{y}(1-\\hat{y}) x_j \\\\\n",
+        "&= (\\hat{y} - y)x_j\\ .\n",
+        "\\end{align*}\n",
+        "\n",
+        "which does not look that unfriendly anymore.\n",
+        "\n",
+        "In vectorized form with $m$ training examples this gives us\n",
+        "\\begin{align*}\n",
+        "\\frac{\\partial L}{\\partial w} = \\frac{1}{m} X(\\hat{y} - y)^{\\rm T}\\ .\n",
+        "\\end{align*}\n",
+        "\n",
+        "A very similar derivation of $\\partial L/\\partial b$ yields, for a single example:\n",
+        "\\begin{align*}\n",
+        "\\frac{\\partial L}{\\partial b} = (\\hat{y} - y)\\ .\n",
+        "\\end{align*}\n",
+        "\n",
+        "In vectorized form we get\n",
+        "\\begin{align*}\n",
+        "\\frac{\\partial L}{\\partial b} = \\frac{1}{m}\\sum_{i=1}^{m}{(\\hat{y}^{(i)} - y^{(i)})}\\ .\n",
+        "\\end{align*}\n",
+        "\n",
+        "In our code we label these gradients according to their denominators, as `dW` and `db`. So for backpropagation we compute `dW = (1/m) * np.matmul(X, (A-Y).T)` and `db = (1/m)*np.sum(A-Y, axis=1, keepdims=True)`.\n",
+        "\n",
+        "### Stochastic Gradient Descent\n",
+        "\n",
+        "We have all the tools we need to train a neural network now! We’ll use an optimization algorithm called stochastic gradient descent (SGD) that tells us how to change our weights and biases to minimize loss. It is a simple umpdate of the weights and biases, which would read for the weights like\n",
+        "\n",
+        "$$\n",
+        "w\\leftarrow w-\\eta\\frac{\\partial L}{\\partial w}\n",
+        "$$\n",
+        "\n",
+        "where $\\eta$ is a constant called the learning rate that controls how fast we train. All we’re doing is subtracting $\\eta \\partial L/\\partial w$ from $w$\n",
+        "\n",
+        "- If $\\partial L/\\partial w$  is positive, $w$ will decrease, which makes L decrease.\n",
+        "- If $\\partial L/\\partial w$  is negative, $w$ will increase, which makes L decrease.\n",
+        "\n",
+        "The equations look equivalent for the bias $b$. Our back propagation procedure will do that for as many steps we want, i.e. until we feel that the output is close enough to the ground truth. Each back propagation step is called and `epoch`.\n",
+        "\n",
+        "### Build an Train\n",
+        "\n",
+        "Now we have all things together to create a single neuron network doing the analysis of the MNIST numbers. This type of data processing is called logistic regression based on the sigmoid function, which is a logistic function. So let's create all in python code and train the network for 100 epochs."
+      ],
+      "id": "a6896479"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "learning_rate = 1\n",
+        "\n",
+        "X = np.array(X_train)\n",
+        "Y = np.array(y_train)\n",
+        "\n",
+        "n_x = X.shape[0]\n",
+        "m = X.shape[1]\n",
+        "\n",
+        "W = np.random.randn(n_x, 1) * 0.01\n",
+        "b = np.zeros((1, 1))\n",
+        "\n",
+        "for i in range(200):\n",
+        "    Z = np.matmul(W.T, X) + b\n",
+        "    A = sigmoid(Z)\n",
+        "\n",
+        "    loss = compute_loss(Y, A)\n",
+        "\n",
+        "    dW = (1/m)*np.matmul(X, (A-Y).T)\n",
+        "    db = (1/m)*np.sum(A-Y, axis=1, keepdims=True)\n",
+        "\n",
+        "    W = W - learning_rate * dW\n",
+        "    b = b - learning_rate * db\n",
+        "\n",
+        "    if i % 10 == 0:\n",
+        "        print(\"Epoch\", i, \" loss: \", loss)\n",
+        "\n",
+        "print(\"Final loss:\", loss)"
+      ],
+      "id": "8db129c7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "We do not really now how to judge the quality of our trained network. At least we saw that the loss is decreasing, which is good. We may judge the quality of our trained network by calculating the so-called **confusion matrix**. The confusion matrix is creating a matrix giving reports the actual values in the rows and the predicted values in the columns.\n",
+        "\n",
+        "![confusion_matrix](confusion_matrix.png)\n",
+        "\n",
+        "The entries in the matrix are called **true positives** (TP), **false positives** (FP), **false negatives** (FN), and **true negatives** (TN). Fortunately we can use a method of the `sklearn` module to calculate the confusion matrix. We just have to supply the predictions and the actual labels to it. To do so, we use the testing data set `X_test` which we have splitted earlier."
+      ],
+      "id": "60e4603f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from sklearn.metrics import confusion_matrix, classification_report\n",
+        "\n",
+        "Z = np.matmul(W.T,X_test) + b\n",
+        "A = sigmoid(Z)\n",
+        "\n",
+        "predictions = (A>.5)[0,:]\n",
+        "labels = (y_test == 1)[0,:]\n",
+        "\n",
+        "print(confusion_matrix(predictions, labels))"
+      ],
+      "id": "5d67e53b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(classification_report(predictions, labels))"
+      ],
+      "id": "7c4b02c6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Testing our model\n",
+        "\n",
+        "We can check a single image of our testing data with the following line. If the output number is bigger than 0.5, our number is likely a 0."
+      ],
+      "id": "f706a148"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "i=200\n",
+        "bool(sigmoid(np.matmul(W.T, np.array(X_test)[:,i])+b)>0.5)"
+      ],
+      "id": "35d57cc3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plt.imshow(np.array(X_test)[:,i].reshape(28,28),cmap='gray')"
+      ],
+      "id": "c8ee3ca5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Network with Hidden Layers\n",
+        "\n",
+        "In our example above, we just had an input layer and a single output neuron. More complex neural networks are containing many layers between the input layer and the output layer. These inbetween layers are called hidden layers. Here is a simple example of a neural network with a single hidden layer.\n",
+        "\n",
+        "![hidden](image.png)\n",
+        "\n",
+        "So we have now and input layer with 784 inputs that are connected to 64 units in the hidden layer and 1 neuron in the output layer. We will not go through the derivations of all the formulas for the forward and backward passes this time. The code is a simple extension of what we did before and I hope easy to read."
+      ],
+      "id": "10d427e4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "X = X_train\n",
+        "Y = y_train\n",
+        "\n",
+        "n_x = X.shape[0]\n",
+        "n_h = 64\n",
+        "learning_rate = 1\n",
+        "\n",
+        "W1 = np.random.randn(n_h, n_x)\n",
+        "b1 = np.zeros((n_h, 1))\n",
+        "W2 = np.random.randn(1, n_h)\n",
+        "b2 = np.zeros((1, 1))\n",
+        "\n",
+        "for i in range(100):\n",
+        "\n",
+        "    Z1 = np.matmul(W1, X) + b1\n",
+        "    A1 = sigmoid(Z1)\n",
+        "    Z2 = np.matmul(W2, A1) + b2\n",
+        "    A2 = sigmoid(Z2)\n",
+        "\n",
+        "    loss = compute_loss(Y, A2)\n",
+        "\n",
+        "    dZ2 = A2-Y\n",
+        "    dW2 = (1./m) * np.matmul(dZ2, A1.T)\n",
+        "    db2 = (1./m) * np.sum(dZ2, axis=1, keepdims=True)\n",
+        "\n",
+        "    dA1 = np.matmul(W2.T, dZ2)\n",
+        "    dZ1 = dA1 * sigmoid(Z1) * (1 - sigmoid(Z1))\n",
+        "    dW1 = (1./m) * np.matmul(dZ1, X.T)\n",
+        "    db1 = (1./m) * np.sum(dZ1, axis=1, keepdims=True)\n",
+        "\n",
+        "    W2 = W2 - learning_rate * dW2\n",
+        "    b2 = b2 - learning_rate * db2\n",
+        "    W1 = W1 - learning_rate * dW1\n",
+        "    b1 = b1 - learning_rate * db1\n",
+        "\n",
+        "    if i % 10 == 0:\n",
+        "        print(\"Epoch\", i, \"loss: \", loss)\n",
+        "\n",
+        "print(\"Final loss:\", loss)"
+      ],
+      "id": "490f62e8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "To judge the newtork quality we do use again the confusion matrix."
+      ],
+      "id": "cf9dc760"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "Z1 = np.matmul(W1, X_test) + b1\n",
+        "A1 = sigmoid(Z1)\n",
+        "Z2 = np.matmul(W2, A1) + b2\n",
+        "A2 = sigmoid(Z2)\n",
+        "\n",
+        "predictions = (A2>.5)[0,:]\n",
+        "labels = (y_test == 1)[0,:]\n",
+        "\n",
+        "print(confusion_matrix(predictions, labels))\n",
+        "print(classification_report(predictions, labels))"
+      ],
+      "id": "7ea2b33e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Multiclass Network\n",
+        "\n",
+        "So far we did only classify if the number we feed to the network is just a 0 or not. We would like to recognize the different number now and therefore need a multiclass network. Each number is then a class and per class, we have multiple realizations of handwritten numbers. We therefore have to create an output layer, which is not only containing a single neuron, but 10 neurons. Each of these neuron can output a value between 0 and 1. Whenever the output is 1, the index of the neuron represents the number predicted.\n",
+        "\n",
+        "The output array\n",
+        "\n",
+        "~~~\n",
+        "[0,1,0,0,0,0,0,0,0,0]\n",
+        "~~~\n",
+        "\n",
+        "would therefore correspond to the value 1.\n",
+        "\n",
+        "For this purpose, we need to reload the right labels."
+      ],
+      "id": "046662b8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from sklearn.datasets import fetch_openml\n",
+        "X, y = fetch_openml('mnist_784', version=1, return_X_y=True,as_frame=False)\n",
+        "\n",
+        "X = X / 255"
+      ],
+      "id": "f538dbd8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Then we’ll one-hot encode MNIST’s labels, to get a 10 x 70,000 array."
+      ],
+      "id": "2795dd5d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "digits = 10\n",
+        "examples = y.shape[0]\n",
+        "\n",
+        "y = y.reshape(1, examples)\n",
+        "\n",
+        "Y_new = np.eye(digits)[y.astype('int32')]\n",
+        "Y_new = Y_new.T.reshape(digits, examples)"
+      ],
+      "id": "9370fdb3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "tags": []
+      },
+      "source": [
+        "Y_new.shape"
+      ],
+      "id": "2df4f192",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "We also seperate into trainging and testing data"
+      ],
+      "id": "eb0a7bb4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "m = 60000\n",
+        "m_test = X.shape[0] - m\n",
+        "\n",
+        "X_train, X_test = X[:m].T, X[m:].T\n",
+        "Y_train, Y_test = Y_new[:,:m], Y_new[:,m:]\n",
+        "\n",
+        "shuffle_index = np.random.permutation(m)\n",
+        "X_train, Y_train = X_train[:, shuffle_index], Y_train[:, shuffle_index]"
+      ],
+      "id": "461333ab",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "i = 58\n",
+        "plt.imshow(X_train[:,i].reshape(28,28), cmap='gray')\n",
+        "plt.colorbar()\n",
+        "plt.show()\n",
+        "Y_train[:,i]"
+      ],
+      "id": "b5339fe6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Changes to the model\n",
+        "\n",
+        "OK, so let’s consider what changes we need to make to the model itself.\n",
+        "\n",
+        "#### Forward Pass\n",
+        "Only the last layer of our network is changing. To add the softmax, we have to replace our lone, final node with a 10 unit layer. Its final activations are the exponentials of its z-values, normalized across all ten such exponentials. So instead of just computing $\\sigma(z)$, we compute the activation for each unit $i$ using the softmax function:\n",
+        "\\begin{align*}\n",
+        "\\sigma(z)_i = \\frac{{\\rm e}^{z_i}}{\\sum_{j=0}^9{\\rm e}^{z_i}}\\ .\n",
+        "\\end{align*}\n",
+        "\n",
+        "So, in our vectorized code, the last line of forward propagation will be `A2 = np.exp(Z2) / np.sum(np.exp(Z2), axis=0)`.\n",
+        "\n",
+        "#### Loss Function\n",
+        "\n",
+        "Our loss  function now has to generalize to more than two classes. The general formula for $n$ classes is:\n",
+        "\\begin{align*}\n",
+        "L(y,\\hat{y}) = -\\sum_{i=0}^n y_i\\log(\\hat{y}_i)\\ .\n",
+        "\\end{align*}\n",
+        "Averaging over $m$ training examples this becomes:\n",
+        "\\begin{align*}\n",
+        "L(y,\\hat{y}) = -\\frac{1}{m}\\sum_{j=0}^m\\sum_{i=0}^n y_i^{(i)}\\log(\\hat{y}_i^{(i)})\\ .\n",
+        "\\end{align*}\n",
+        "\n",
+        "So let's define:"
+      ],
+      "id": "bf1d9dd0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "def compute_multiclass_loss(Y, Y_hat):\n",
+        "    L_sum = np.sum(np.multiply(Y, np.log(Y_hat)))\n",
+        "    m = Y.shape[1]\n",
+        "    L = -(1/m) * L_sum\n",
+        "    return L"
+      ],
+      "id": "63a81e8a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Back Propagation\n",
+        "\n",
+        "Luckily it turns out that back propagation isn’t really affected by the switch to a softmax. A softmax generalizes the sigmoid activiation we’ve been using, and in such a way that the code we wrote earlier still works. We could verify this by deriving:\n",
+        "\\begin{align*}\n",
+        "\\frac{\\partial L}{\\partial z_i} = \\hat{y}_i - y_i\\ .\n",
+        "\\end{align*}\n",
+        "\n",
+        "But we won’t walk through the steps here. Let’s just go ahead and build our final network.\n",
+        "\n",
+        "### Build and Train\n",
+        "\n",
+        "As we have now more weights and classes, the training takes longer and we actually need also more episodes to achieve a good accuracy."
+      ],
+      "id": "fff3ffd6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "n_x = X_train.shape[0]\n",
+        "n_h = 64\n",
+        "learning_rate = 1\n",
+        "\n",
+        "W1 = np.random.randn(n_h, n_x)\n",
+        "b1 = np.zeros((n_h, 1))\n",
+        "W2 = np.random.randn(digits, n_h)\n",
+        "b2 = np.zeros((digits, 1))\n",
+        "\n",
+        "X = X_train\n",
+        "Y = Y_train\n",
+        "\n",
+        "for i in range(200):\n",
+        "\n",
+        "    Z1 = np.matmul(W1,X) + b1\n",
+        "    A1 = sigmoid(Z1)\n",
+        "    Z2 = np.matmul(W2,A1) + b2\n",
+        "    A2 = np.exp(Z2) / np.sum(np.exp(Z2), axis=0)\n",
+        "\n",
+        "    loss = compute_multiclass_loss(Y, A2)\n",
+        "\n",
+        "    dZ2 = A2-Y\n",
+        "    dW2 = (1./m) * np.matmul(dZ2, A1.T)\n",
+        "    db2 = (1./m) * np.sum(dZ2, axis=1, keepdims=True)\n",
+        "\n",
+        "    dA1 = np.matmul(W2.T, dZ2)\n",
+        "    dZ1 = dA1 * sigmoid(Z1) * (1 - sigmoid(Z1))\n",
+        "    dW1 = (1./m) * np.matmul(dZ1, X.T)\n",
+        "    db1 = (1./m) * np.sum(dZ1, axis=1, keepdims=True)\n",
+        "\n",
+        "    W2 = W2 - learning_rate * dW2\n",
+        "    b2 = b2 - learning_rate * db2\n",
+        "    W1 = W1 - learning_rate * dW1\n",
+        "    b1 = b1 - learning_rate * db1\n",
+        "\n",
+        "    if (i % 10 == 0):\n",
+        "        print(\"Epoch\", i, \"loss: \", loss)\n",
+        "\n",
+        "print(\"Final loss:\", loss)"
+      ],
+      "id": "75128f77",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Let’s see how we did:"
+      ],
+      "id": "3c3e0170"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "Z1 = np.matmul(W1, X_test) + b1\n",
+        "A1 = sigmoid(Z1)\n",
+        "Z2 = np.matmul(W2, A1) + b2\n",
+        "A2 = np.exp(Z2) / np.sum(np.exp(Z2), axis=0)\n",
+        "\n",
+        "predictions = np.argmax(A2, axis=0)\n",
+        "labels = np.argmax(Y_test, axis=0)"
+      ],
+      "id": "234cab40",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Model performance"
+      ],
+      "id": "cb47892c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(confusion_matrix(predictions, labels))\n",
+        "print(classification_report(predictions, labels))"
+      ],
+      "id": "ef7a1952",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "We are at 84% accuray across all digits, which could be of course better. We may now plot image and the corresponding prediction.\n",
+        "\n",
+        "## Test the model"
+      ],
+      "id": "6b395b8d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "i=2003\n",
+        "plt.imshow(X_test[:,i].reshape(28,28), cmap='gray')\n",
+        "predictions[i]"
+      ],
+      "id": "3f121587",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/fci/Library/Jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

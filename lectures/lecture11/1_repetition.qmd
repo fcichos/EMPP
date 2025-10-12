@@ -1,0 +1,774 @@
+---
+title: Repetition
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 12,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+After we have completed the first part of the course, we will have a repetition session to review the main concepts and topics covered so far. This will help reinforce your understanding and prepare you for the final exam. This part contains a number of exercises you can work on to test your knowledge and skills.
+
+## What is a Program?
+A program is a sequence of instructions that tells a computer how to perform a specific task. These instructions must be:
+
+- Precise and unambiguous
+- Written in a language the computer understands
+- Logically structured
+- Designed to achieve a specific goal
+
+## Basic Elements of Python
+
+### Variables and Data Types
+In Python, variables are containers for storing data values. Python is dynamically typed, meaning you don't need to declare variable types explicitly.
+
+```{pyodide}
+#| autorun: false
+# Basic data types
+x = 5           # integer
+y = 3.14        # float
+name = "Python" # string
+is_true = True  # boolean
+
+# Print variable types
+print(f"x is type: {type(x)}")
+print(f"y is type: {type(y)}")
+print(f"name is type: {type(name)}")
+print(f"is_true is type: {type(is_true)}")
+```
+
+::: {.callout-note collapse="true"}
+### Self-Exercise 1: Unit Conversion
+Write a program that converts a temperature from Celsius to Fahrenheit and Kelvin.
+Use the formulas:
+
+- °F = (°C × 9/5) + 32
+- K = °C + 273.15
+
+
+```{pyodide}
+#| exercise: ex_1
+
+# Example starting temperature
+celsius = 25
+
+# Calculate conversions
+# Print results
+
+____
+```
+
+::: { .solution exercise="ex_1" }
+::: { .callout-tip collapse="false"}
+## Solution
+```{pyodide}
+#| autorun: false
+
+celsius = 25
+fahrenheit = (celsius * 9/5) + 32
+kelvin = celsius + 273.15
+
+print(f"{celsius}°C is equal to:")
+print(f"{fahrenheit}°F")
+print(f"{kelvin}K")
+```
+:::
+:::
+:::
+
+
+
+### Numerical Operations
+Python supports all basic mathematical operations:
+
+```{pyodide}
+#| autorun: false
+a = 10
+b = 3
+
+print(f"Addition: {a + b}")
+print(f"Subtraction: {a - b}")
+print(f"Multiplication: {a * b}")
+print(f"Division: {a / b}")
+print(f"Integer Division: {a // b}")
+print(f"Modulo: {a % b}")
+print(f"Power: {a ** b}")
+```
+::: {.callout-note collapse="true"}
+### Self-Exercise 2: Basic Kinematics
+Calculate the final velocity of an object given its initial velocity, acceleration, and time.
+Use the formula: v = v₀ + at
+
+```{pyodide}
+#| exercise: ex_2
+# Given values
+initial_velocity = 0  # m/s
+acceleration = 9.81   # m/s²
+time = 5             # s
+
+# Calculate final velocity
+# Print result
+```
+
+::: { .solution exercise="ex_2" }
+::: { .callout-tip collapse="false"}
+## Solution
+```{pyodide}
+#| autorun: false
+initial_velocity = 0  # m/s
+acceleration = 9.81   # m/s²
+time = 5             # s
+
+final_velocity = initial_velocity + acceleration * time
+print(f"Final velocity: {final_velocity} m/s")
+
+```
+:::
+:::
+:::
+
+
+
+### Lists and Arrays
+For physics calculations, we often need to work with collections of numbers:
+
+```{pyodide}
+#| autorun: false
+# List (basic Python)
+numbers = [1, 2, 3, 4, 5]
+print(f"List: {numbers}")
+
+# NumPy array (better for calculations)
+import numpy as np
+array = np.array([1, 2, 3, 4, 5])
+print(f"Array: {array}")
+print(f"Array × 2: {array * 2}")  # Element-wise multiplication
+```
+
+::: {.callout-note collapse="true"}
+### Self-Exercise 3: Force Calculations
+Create an array of masses (in kg) and calculate the force of gravity on each mass.
+Use F = mg where g = 9.81 m/s². Numpy is already imported and can be used with `np`
+
+```{pyodide}
+#| setup: true
+#| exercise: ex_3
+import numpy as np
+```
+
+```{pyodide}
+#| exercise: ex_3
+
+# Create array of masses (kg)
+masses = np.array([1, 2, 5, 10])
+
+# Calculate forces
+# Print results
+```
+
+
+::: {.solution exercise="ex_3"}
+::: {.callout-tip collapse="false"}
+## Solution
+```{pyodide}
+#| autorun: false
+# Create array of masses (kg)
+masses = np.array([1, 2, 5, 10])
+
+g = 9.81
+forces = masses * g
+for m, f in zip(masses, forces):
+    print(f"A mass of {m}kg experiences a force of {f:.2f}N")
+```
+:::
+:::
+:::
+
+## Control Structures
+
+### Conditional Statements
+Conditional statements allow programs to make decisions:
+
+```{pyodide}
+#| autorun: false
+temperature = 25
+
+if temperature > 30:
+    print("It's hot!")
+elif temperature > 20:
+    print("It's pleasant")
+else:
+    print("It's cool")
+```
+
+::: {.callout-note collapse="true"}
+### Self-Exercise 4: Phase of Matter
+Write a program that determines the phase of water based on its temperature
+(assume standard pressure):
+
+- Below 0°C: Solid (Ice)
+- 0-100°C: Liquid
+- Above 100°C: Gas (Steam)
+
+```{pyodide}
+#| exercise: ex_4
+# Your code here
+temperature = 25  # °C
+
+# Determine phase
+# Print result
+```
+
+:::{ .solution exercise="ex_4"}
+::: { .callout-tip collapse="false"}
+## Solution
+```{pyodide}
+#| autorun: false
+if temperature < 0:
+    phase = "Solid (Ice)"
+elif temperature <= 100:
+    phase = "Liquid"
+else:
+    phase = "Gas (Steam)"
+print(f"At {temperature}°C, water is in {phase} phase")
+"""
+```
+:::
+:::
+:::
+
+
+::: {.callout-note collapse="true"}
+### Self-Exercise 5: Projectile Range Calculator
+Write a program that calculates if a projectile will hit a target given:
+
+- Initial velocity
+- Launch angle
+- Target distance
+
+Use the range formula: $R = \frac{v_0^2 \sin(2\theta)}{g}$
+
+```{pyodide}
+#| exercise: ex_5
+import numpy as np
+
+v0 = 10          # initial velocity (m/s)
+theta = 45       # angle (degrees)
+target = 8       # target distance (m)
+
+# Calculate range
+# Determine if target is hit
+# (consider it a hit if within ±0.5m)
+```
+
+:::{ .solution exercise="ex_5"}
+::: { .callout-tip collapse="false"}
+## Solution
+```{pyodide}
+#| autorun: false
+import numpy as np
+
+v0 = 10          # initial velocity (m/s)
+theta = 45       # angle (degrees)
+target = 8       # target distance (m)
+
+g = 9.81
+theta_rad = np.deg2rad(theta)
+range_distance = (v0**2 * np.sin(2*theta_rad)) / g
+
+if abs(range_distance - target) <= 0.5:
+    print("Hit!")
+else:
+    print("Miss!")
+print(f"Projectile range: {range_distance:.2f}m")
+print(f"Target distance: {target}m")
+```
+:::
+:::
+:::
+
+### Loops
+Loops allow repetition of code:
+
+```{pyodide}
+#| autorun: false
+# For loop
+print("For loop:")
+for i in range(5):
+    print(f"i = {i}")
+
+# While loop
+print("\nWhile loop:")
+j = 0
+while j < 3:
+    print(f"j = {j}")
+    j += 1
+```
+
+::: {.callout-note collapse="true"}
+### Self-Exercise 6: Radioactive Decay Calculator
+Write a program that simulates radioactive decay over multiple half-lives:
+
+- Start with an initial number of atoms ($N_0$)
+- Calculate remaining atoms after each half-life period
+- Continue for 5 half-lives
+
+Use the formula $N(t) = N_0 \cdot \left(\frac{1}{2}\right)^{t/t_{1/2}}$ where $t_{1/2}$ is the half-life.
+
+```{pyodide}
+#| exercise: ex_6
+import numpy as np
+
+N0 = 1000        # initial number of atoms
+half_lives = 5   # number of half-lives to simulate
+
+# Create a loop that:
+# 1. Calculates remaining atoms for each half-life
+# 2. Prints the time (in half-lives) and remaining atoms
+# 3. Runs for 5 half-lives
+```
+
+:::{ .solution exercise="ex_6"}
+::: { .callout-tip collapse="false"}
+## Solution
+```{pyodide}
+#| autorun: false
+import numpy as np
+
+N0 = 1000        # initial number of atoms
+half_lives = 5   # number of half-lives to simulate
+
+for t in range(half_lives + 1):  # +1 to include initial state
+    N = N0 * (0.5)**t
+    print(f"After {t} half-lives: {int(N)} atoms remaining")
+    print(f"Percentage remaining: {(N/N0 * 100):.1f}%")
+```
+:::
+:::
+:::
+
+::: {.callout-note collapse="true"}
+### Self-Exercise 7: Time to Ground Calculator
+Write a program that calculates how long it takes for an object to reach the ground when dropped from different heights:
+
+- Start with an initial height $h_0$
+- Calculate position using $y = h_0 - \frac{1}{2}gt^2$
+- Find the time when $y = 0$
+- Use small time steps ($dt = 0.01s$)
+
+```{pyodide}
+#| exercise: ex_7
+import numpy as np
+
+height = 100     # initial height in meters
+g = 9.81        # acceleration due to gravity
+dt = 0.01       # time step in seconds
+
+# Create a while loop that:
+# 1. Updates the position using y = y₀ - ½gt²
+# 2. Tracks the elapsed time
+# 3. Stops when object hits ground (y ≤ 0)
+```
+
+:::{ .solution exercise="ex_7"}
+::: { .callout-tip collapse="false"}
+## Solution
+```{pyodide}
+#| autorun: false
+import numpy as np
+
+height = 100     # initial height in meters
+g = 9.81        # acceleration due to gravity
+dt = 0.01       # time step in seconds
+
+time = 0
+y = height
+
+while y > 0:
+    time += dt
+    y = height - 0.5 * g * time**2
+
+print(f"Time to reach ground: {time:.2f} seconds")
+print(f"Theoretical time: {np.sqrt(2*height/g):.2f} seconds")
+```
+:::
+:::
+:::
+
+
+# Scientific Computing
+
+## Basic Numerical Calculations
+For physics, we often use NumPy for numerical calculations:
+
+```{pyodide}
+#| autorun: false
+import numpy as np
+
+# Create array of angles (in radians)
+angles = np.linspace(0, 2*np.pi, 5)
+
+# Calculate sine and cosine
+sines = np.sin(angles)
+cosines = np.cos(angles)
+
+# Print results
+for angle, sin_val, cos_val in zip(angles, sines, cosines):
+    print(f"Angle: {angle:.2f}, sin: {sin_val:.2f}, cos: {cos_val:.2f}")
+```
+
+## Simple Physics Example
+Let's calculate the position of a projectile under gravity:
+
+```{pyodide}
+#| autorun: false
+# Initial conditions
+v0 = 10  # initial velocity (m/s)
+theta = 45  # angle (degrees)
+g = 9.81  # gravitational acceleration (m/s²)
+
+# Convert angle to radians
+theta_rad = np.deg2rad(theta)
+
+# Time array
+t = np.linspace(0, 2*v0*np.sin(theta_rad)/g, 100)
+
+# Position calculations
+x = v0 * np.cos(theta_rad) * t
+y = v0 * np.sin(theta_rad) * t - 0.5 * g * t**2
+
+# Plot trajectory
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8, 6))
+plt.plot(x, y)
+plt.grid(True)
+plt.xlabel('Distance (m)')
+plt.ylabel('Height (m)')
+plt.title('Projectile Motion')
+plt.axis('equal')
+plt.show()
+```
+
+# Best Practices
+
+## Code Organization
+- Use meaningful variable names
+- Add comments to explain complex logic
+- Break down complex problems into smaller functions
+- Use consistent indentation
+
+## Example of Well-Organized Code
+Here's an example calculating the period of a simple pendulum:
+
+```{pyodide}
+#| autorun: false
+def calculate_pendulum_period(length, gravity=9.81):
+    """
+    Calculate the period of a simple pendulum.
+
+    Parameters:
+    length (float): Length of pendulum in meters
+    gravity (float): Gravitational acceleration in m/s²
+
+    Returns:
+    float: Period in seconds
+    """
+    import numpy as np
+
+    # Calculate period using T = 2π√(L/g)
+    period = 2 * np.pi * np.sqrt(length/gravity)
+    return period
+
+# Example usage
+L = 1.0  # 1 meter pendulum
+T = calculate_pendulum_period(L)
+print(f"A {L}m pendulum has a period of {T:.2f} seconds")
+```
+
+# Object-Oriented Programming in Python
+
+## Classes and Objects
+Classes are blueprints for creating objects that combine data (attributes) and functions (methods). This is particularly useful for modeling physical systems.
+
+### Basic Class Structure
+```{pyodide}
+#| autorun: false
+class Particle:
+    """A simple class representing a particle in 2D space."""
+
+    def __init__(self, x, y, mass=1.0):
+        """Initialize particle with position and mass."""
+        self.x = x
+        self.y = y
+        self.mass = mass
+        self.vx = 0  # initial velocity components
+        self.vy = 0
+
+    def set_velocity(self, vx, vy):
+        """Set particle velocity."""
+        self.vx = vx
+        self.vy = vy
+
+    def kinetic_energy(self):
+        """Calculate kinetic energy of particle."""
+        return 0.5 * self.mass * (self.vx**2 + self.vy**2)
+
+    def __str__(self):
+        """String representation of particle."""
+        return f"Particle at ({self.x}, {self.y}) with mass {self.mass}"
+
+# Create and use a particle object
+p1 = Particle(0, 0, mass=2.0)
+p1.set_velocity(3, 4)
+print(p1)
+print(f"Kinetic energy: {p1.kinetic_energy()} J")
+```
+
+
+
+::: {.callout-note collapse="true"}
+### Advanced Self-Exercise 8: Electric Charge Class
+Create a class representing an electric charge that can:
+
+1. Store position $(x, y)$, charge magnitude $(q)$, and mass $(m)$
+2. Calculate electric potential at a point using $V = \frac{kq}{r}$
+3. Calculate electric force on another charge using $F = \frac{kq_1q_2}{r^2}$
+4. Calculate the direction of force (attraction/repulsion)
+
+Use $k = 8.99 \times 10^9$ N$\cdot$m²/C² (Coulomb's constant)
+
+```{pyodide}
+#| exercise: ex_8
+import numpy as np
+
+# Create your ElectricCharge class here
+# Include methods for:
+# - initialization (__init__)
+# - calculating potential
+# - calculating force
+# - string representation (__str__)
+
+```
+
+:::{ .solution exercise="ex_8"}
+::: { .callout-tip collapse="false"}
+## Solution
+```{pyodide}
+#| autorun: false
+import numpy as np
+
+class ElectricCharge:
+    """A class representing an electric charge in 2D space."""
+
+    k = 8.99e9  # Coulomb's constant
+
+    def __init__(self, x, y, charge, mass=1.0):
+        """Initialize charge with position, charge magnitude, and mass."""
+        self.x = x
+        self.y = y
+        self.q = charge
+        self.mass = mass
+
+    def distance_to(self, other):
+        """Calculate distance to another charge."""
+        dx = self.x - other.x
+        dy = self.y - other.y
+        return np.sqrt(dx**2 + dy**2)
+
+    def potential_at_point(self, x, y):
+        """Calculate electric potential at a point."""
+        r = np.sqrt((self.x - x)**2 + (self.y - y)**2)
+        if r < 1e-10:  # Avoid division by zero
+            return float('inf')
+        return self.k * self.q / r
+
+    def force_with(self, other):
+        """Calculate electric force with another charge."""
+        r = self.distance_to(other)
+        if r < 1e-10:  # Avoid division by zero
+            return 0
+        force_magnitude = self.k * abs(self.q * other.q) / (r**2)
+        # Determine if attractive (opposite charges) or repulsive (same charges)
+        direction = "attractive" if self.q * other.q < 0 else "repulsive"
+        return force_magnitude, direction
+
+    def __str__(self):
+        """String representation of the charge."""
+        return f"Charge of {self.q}C at ({self.x}, {self.y})"
+
+# Test the class
+q1 = ElectricCharge(0, 0, 1e-6)  # 1 µC at origin
+q2 = ElectricCharge(0.1, 0, -1e-6)  # -1 µC at x=0.1m
+
+# Calculate force between charges
+force, direction = q1.force_with(q2)
+print(f"Force between charges: {force:.2e} N ({direction})")
+
+# Calculate potential at a point
+potential = q1.potential_at_point(0.05, 0)
+print(f"Electric potential at (0.05, 0): {potential:.2e} V")
+```
+:::
+:::
+:::
+
+
+## A Physics Example: Harmonic Oscillator
+Here's a more complete example modeling a harmonic oscillator:
+
+```{pyodide}
+#| autorun: false
+class HarmonicOscillator:
+    """Class representing a simple harmonic oscillator."""
+
+    def __init__(self, mass, spring_constant):
+        """
+        Initialize oscillator.
+
+        Parameters:
+        mass (float): Mass in kg
+        spring_constant (float): Spring constant in N/m
+        """
+        self.m = mass
+        self.k = spring_constant
+        self.x = 0  # position
+        self.v = 0  # velocity
+
+    def period(self):
+        """Calculate the period of oscillation."""
+        return 2 * np.pi * np.sqrt(self.m / self.k)
+
+    def energy(self):
+        """Calculate total energy (kinetic + potential)."""
+        kinetic = 0.5 * self.m * self.v**2
+        potential = 0.5 * self.k * self.x**2
+        return kinetic + potential
+
+    def update_state(self, dt):
+        """Update position and velocity after time dt."""
+        # Simple Euler integration (not ideal for accurate simulation)
+        F = -self.k * self.x  # spring force
+        a = F / self.m        # acceleration
+        self.v += a * dt      # update velocity
+        self.x += self.v * dt # update position
+
+# Create and use an oscillator
+osc = HarmonicOscillator(mass=1.0, spring_constant=10.0)
+print(f"Period: {osc.period():.2f} s")
+
+# Simulate motion
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Initial conditions
+osc.x = 1.0  # start at x = 1 m
+time = np.linspace(0, 2*osc.period(), 100)
+positions = []
+
+# Run simulation
+for t in time:
+    positions.append(osc.x)
+    osc.update_state(time[1] - time[0])
+
+# Plot results
+plt.figure(figsize=(8, 6))
+plt.plot(time, positions)
+plt.xlabel('Time (s)')
+plt.ylabel('Position (m)')
+plt.title('Simple Harmonic Motion')
+plt.show()
+```
+
+## Inheritance
+Classes can inherit properties and methods from other classes:
+
+```{pyodide}
+#| autorun: false
+class ChargedParticle(Particle):
+    """A particle with electric charge, inheriting from Particle."""
+
+    def __init__(self, x, y, mass=1.0, charge=1.0):
+        """Initialize charged particle."""
+        super().__init__(x, y, mass)  # call parent class initializer
+        self.charge = charge
+
+    def potential_energy(self, electric_field):
+        """Calculate potential energy in electric field."""
+        return -self.charge * electric_field * self.y
+
+    def __str__(self):
+        """Override string representation to include charge."""
+        return f"Charged Particle at ({self.x}, {self.y}) with q={self.charge}"
+
+# Create and use a charged particle
+electron = ChargedParticle(0, 2, mass=9.1e-31, charge=-1.6e-19)
+print(electron)
+E_field = 1000  # V/m
+print(f"Potential energy in field: {electron.potential_energy(E_field):.2e} J")
+```
+
+## Key Points About Classes
+
+1. Classes combine data (attributes) and functions (methods)
+2. The `__init__` method initializes new objects
+3. `self` refers to the instance of the class
+4. Methods can modify the object's state
+5. Inheritance allows creating specialized versions of classes
+6. Classes help organize code and model real-world systems
+
+Classes are particularly useful in physics for:
+- Modeling physical systems
+- Organizing simulation code
+- Creating reusable components
+- Building hierarchies of related objects
+
+
+# Common Pitfalls and Tips
+
+1. Remember that Python is zero-indexed (lists start at 0)
+2. Be careful with indentation - it defines code blocks
+3. Use `numpy` for numerical calculations instead of lists
+4. Always check variable types when debugging
+5. Use meaningful variable names
+6. Add comments to explain your code
+7. Break complex problems into smaller steps
+
+# Further Resources
+
+- Python documentation: [python.org](https://docs.python.org)
+- NumPy documentation: [numpy.org](https://numpy.org/doc)
+- SciPy documentation: [scipy.org](https://docs.scipy.org)
+- Matplotlib documentation: [matplotlib.org](https://matplotlib.org/docs)

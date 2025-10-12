@@ -1,0 +1,375 @@
+# %% Load  modules and initialize
+from typing_extensions import ParamSpec
+import numpy as np
+import matplotlib.pyplot as plt
+from IPython.display import clear_output
+import matplotlib.patches as patches
+plt.rcParams.update({'font.size': 8,
+                     'lines.linewidth': 1,
+                     'lines.markersize': 10,
+                     'axes.labelsize': 10,
+                     'axes.titlesize': 10,
+                     'xtick.labelsize' : 10,
+                     'ytick.labelsize' : 10,
+                     'xtick.top' : True,
+                     'xtick.direction' : 'in',
+                     'ytick.right' : True,
+                     'ytick.direction' : 'in',
+                     'figure.facecolor' : 'white',})
+
+def get_size(w,h):
+    return((w/2.54,h/2.54))
+
+# %% Load the atom class we did already in the previous seminar
+class Atom:
+    def __init__(self, atom_id, atom_type, position, velocity=None, mass=None):
+        self.id = atom_id
+        self.type = atom_type
+        self.position = position
+        self.velocity = velocity if velocity is not None else np.random.randn(2)*20
+        self.mass = mass
+        self.force = np.zeros(2)
+
+
+    def add_force(self, force):
+        """Add force contribution to total force on atom"""
+        self.force += force
+
+    def reset_force(self):
+        """Reset force to zero at start of each step"""
+        self.force = np.zeros(2)
+
+    def update_position(self, dt):
+        """First step of velocity Verlet: update position"""
+        self.position += self.velocity * dt + 0.5 * (self.force/self.mass) * dt**2
+
+    def update_velocity(self, dt, new_force):
+        """Second step of velocity Verlet: update velocity using average force"""
+        self.velocity += 0.5 * (new_force + self.force)/self.mass * dt
+        self.force = new_force
+
+    def apply_periodic_boundaries(self, box_size):
+            """Apply periodic boundary conditions"""
+            self.position = self.position % box_size
+
+
+
+class Bond:
+    def __init__(self, atom1, atom2, k, r0):
+        self.atom1 = atom1
+        self.atom2 = atom2
+        self.k = k      # spring constant
+        self.r0 = r0    # equilibrium bond length
+
+
+class ForceField:
+    def __init__(self):
+        self.parameters = {
+            'C': {'epsilon': 1.615, 'sigma': 1.36},
+            'H': {'epsilon': 1.0, 'sigma': 1.0 },
+            'O': {'epsilon': 1.846, 'sigma': 3.0},
+        }
+        self.bond_parameters = {
+            ('H', 'H'): {'k': 440.0, 'r0': 0.74},  # k in units of ε/σ², r0 in units of σ
+            ('O', 'H'): {'k': 970.0, 'r0': 0.96},
+        }
+        self.box_size = None
+
+    def calculate_bond_force(self, bond):
+        """Calculate harmonic bond force"""
+        r = self.minimum_image_distance(bond.atom1.position, bond.atom2.position)
+        r_mag = np.linalg.norm(r)
+
+        # F = -k(r - r0)∙(r/|r|)
+        force_mag = -bond.k * (r_mag - bond.r0)
+        force = force_mag * r/r_mag
+        return force
+
+    def get_pair_parameters(self, type1, type2):
+        # Apply mixing rules when needed
+        eps1 = self.parameters[type1]['epsilon']
+        eps2 = self.parameters[type2]['epsilon']
+        sig1 = self.parameters[type1]['sigma']
+        sig2 = self.parameters[type2]['sigma']
+
+        # Lorentz-Berthelot mixing rules
+        epsilon = np.sqrt(eps1 * eps2)
+        sigma = (sig1 + sig2) / 2
+
+        return epsilon, sigma
+
+    def minimum_image_distance(self, pos1, pos2):
+        """Calculate minimum image distance between two positions"""
+        delta = pos1 - pos2
+        # Apply minimum image convention
+        delta = delta - self.box_size * np.round(delta / self.box_size)
+        return delta
+
+    def calculate_lj_force(self, atom1, atom2):
+        epsilon, sigma = self.get_pair_parameters(atom1.type, atom2.type)
+        r = self.minimum_image_distance(atom1.position, atom2.position)
+        r_mag = np.linalg.norm(r)
+
+        # Add cutoff distance for stability
+        if r_mag > 3.5*sigma:
+            return np.zeros(2)
+
+        force_mag = 24 * epsilon * (
+            2 * (sigma/r_mag)**13
+            - (sigma/r_mag)**7
+        )
+        force = force_mag * r/r_mag
+        return force
+
+
+# %% Diatomic Molecule Definition
+class DiatomicMolecule:
+    def __init__(self, atom1, atom2, bond):
+        self.atom1 = atom1
+        self.atom2 = atom2
+        self.bond = bond
+
+
+# %% Define the MD Simulation master controller class
+
+class MDSimulation:
+    def __init__(self, molecules, forcefield, timestep, box_size):
+        self.molecules = molecules
+        self.atoms = [atom for mol in molecules for atom in [mol.atom1, mol.atom2]]
+        self.forcefield = forcefield
+        self.forcefield.box_size = box_size
+        self.timestep = timestep
+        self.box_size = np.array(box_size)
+        self.energy_history = []
+
+
+    def calculate_forces(self):
+        # Reset all forces
+        for atom in self.atoms:
+            atom.reset_force()
+
+        # Calculate bonded forces
+        for molecule in self.molecules:
+            force = self.forcefield.calculate_bond_force(molecule.bond)
+            molecule.atom1.add_force(force)
+            molecule.atom2.add_force(-force)
+
+        # Calculate non-bonded forces between molecules
+        for i, mol1 in enumerate(self.molecules):
+            for mol2 in self.molecules[i+1:]:
+                # Calculate forces between atoms of different molecules
+                for atom1 in [mol1.atom1, mol1.atom2]:
+                    for atom2 in [mol2.atom1, mol2.atom2]:
+                        force = self.forcefield.calculate_lj_force(atom1, atom2)
+                        atom1.add_force(force)
+                        atom2.add_force(-force)
+
+    def update_positions_and_velocities(self):
+        # First step: Update positions using current forces
+        for atom in self.atoms:
+            atom.update_position(self.timestep)
+            # Apply periodic boundary conditions
+            atom.apply_periodic_boundaries(self.box_size)
+
+        # Recalculate forces with new positions
+        self.calculate_forces()
+
+        # Second step: Update velocities using average of old and new forces
+        for atom in self.atoms:
+            atom.update_velocity(self.timestep, atom.force)
+
+
+# %% Cell 6
+def create_grid_atoms(num_atoms, box_size, type="H",mass=1.0, random_offset=0.1):
+    box_size = np.array(box_size)
+
+    # Calculate grid dimensions
+    n = int(np.ceil(np.sqrt(num_atoms)))
+    spacing = np.min(box_size) / n
+
+    atoms = []
+    for i in range(num_atoms):
+        # Calculate grid position
+        row = i // n
+        col = i % n
+
+        # Base position
+        pos = np.array([col * spacing + spacing/2,
+                       row * spacing + spacing/2])
+
+        # Add random offset
+        pos += (np.random.rand(2) - 0.5) * spacing * random_offset
+
+        # Create atom
+        atoms.append(Atom(i, type, pos, mass=mass))
+
+    return atoms
+
+
+# %% Create diatomic Molecules
+#
+def create_diatomic_molecules(num_molecules, box_size, type1="H", type2="H", mass1=1.0, mass2=1.0):
+    molecules = []
+    spacing = np.min(box_size) / np.ceil(np.sqrt(num_molecules))
+
+    for i in range(num_molecules):
+        # Calculate grid position for molecule center
+        row = i // int(np.ceil(np.sqrt(num_molecules)))
+        col = i % int(np.ceil(np.sqrt(num_molecules)))
+        center = np.array([col * spacing + spacing/2, row * spacing + spacing/2])
+
+        # Create atoms with small random displacement for initial bond length
+        # displacement = np.random.randn(2) * 0.1
+        displacement = 0.8/2
+        atom1 = Atom(2*i, type1, center + displacement, mass=mass1)
+        atom2 = Atom(2*i+1, type2, center - displacement, mass=mass2)
+
+        # Create bond
+        ff = ForceField()
+        bond_params = ff.bond_parameters[(type1, type2)]
+        bond = Bond(atom1, atom2, bond_params['k'], bond_params['r0'])
+
+        molecules.append(DiatomicMolecule(atom1, atom2, bond))
+
+    return molecules
+
+# %% Cell 7
+def set_temperature(atoms, target_temperature):
+    N = len(atoms)      # number of atoms
+    Nf = 2 * N         # degrees of freedom in 2D
+
+    # Calculate current kinetic energy
+    current_ke = sum(0.5 * atom.mass * np.sum(atom.velocity**2) for atom in atoms)
+    current_temperature = 2 * current_ke / Nf  # kb = 1 in reduced units
+    #print(current_temperature)
+    # Calculate scaling factor
+    scale_factor = np.sqrt(target_temperature / current_temperature)
+
+    # Scale velocities
+    for atom in atoms:
+        atom.velocity *= scale_factor
+
+def berendsen_thermostat(atoms, target_temperature, dt, tau=0.1):
+    N = len(atoms)      # number of atoms
+    Nf = 2 * N         # degrees of freedom in 2D
+
+    # Calculate current kinetic energy
+    current_ke = sum(0.5 * atom.mass * np.sum(atom.velocity**2) for atom in atoms)
+    current_temperature = 2 * current_ke / Nf  # kb = 1 in reduced units
+
+    # Calculate scaling factor with relaxation
+    lambda_scale = np.sqrt(1 + (dt/tau) * (target_temperature/current_temperature - 1))
+
+    # Scale velocities
+    for atom in atoms:
+        atom.velocity *= lambda_scale
+
+
+def initialize_velocities(atoms, temperature, seed=None):
+    if seed is not None:
+        np.random.seed(seed)
+
+    N = len(atoms)  # number of atoms
+    dim = 2         # 2D simulation
+
+    # Generate random velocities from normal distribution
+    velocities = np.random.normal(0, np.sqrt(temperature), size=(N, dim))
+
+    # Remove center of mass motion
+    total_momentum = np.sum([atom.mass * velocities[i] for i, atom in enumerate(atoms)], axis=0)
+    total_mass = np.sum([atom.mass for atom in atoms])
+    cm_velocity = total_momentum / total_mass
+
+    # Assign velocities to atoms
+    for i, atom in enumerate(atoms):
+        atom.velocity = velocities[i] - cm_velocity
+
+    # Scale velocities to exact temperature
+    set_temperature(atoms, temperature)
+
+    return atoms
+
+# %% run the simulation
+
+T=5
+dt = 0.01
+box_size = np.array([20.0, 20.0])
+num_molecules = 100
+molecules = create_diatomic_molecules(num_molecules, box_size, "H", "H")
+ff = ForceField()
+sim = MDSimulation(molecules, ff, dt, box_size)
+
+
+atoms = [atom for mol in molecules for atom in [mol.atom1, mol.atom2]]
+initialize_velocities(atoms, temperature=T)
+
+fig, ax = plt.subplots(1,1,figsize=(6,6))
+
+for step in range(1000):
+    clear_output(wait=True)
+    #if step%10==0:
+    #    berendsen_thermostat(atoms, target_temperature=T, dt=dt)
+    #set_temperature(atoms, target_temperature=T)
+    sim.update_positions_and_velocities()
+
+
+    positions = [atom.position for atom in sim.atoms]
+    x_coords = [pos[0] for pos in positions]
+    y_coords = [pos[1] for pos in positions]
+
+    if step == 0:
+        bond_lengths = {i: [] for i in range(len(sim.molecules))}
+    for i, mol in enumerate(sim.molecules):
+        r = sim.forcefield.minimum_image_distance(mol.atom1.position, mol.atom2.position)
+        bond_lengths[i].append(np.linalg.norm(r))
+
+    #circle=patches.Circle((x_coords[0],y_coords[0]),ff.parameters[atoms[0].type]["sigma"],edgecolor="black",fill=False)
+    #ax.add_patch(circle)
+
+
+    for mol in sim.molecules:
+        p1 = mol.atom1.position
+        p2 = mol.atom2.position
+
+        # Get correct vector between periodic images
+        r = sim.forcefield.minimum_image_distance(p1, p2)
+        p2_corrected = p1 - r
+
+        ax.plot([p1[0], p2_corrected[0]], [p1[1], p2_corrected[1]], 'k-',lw=5)
+
+    ax.scatter(x_coords, y_coords,color="red",s=80,zorder=10)
+    ax.set_xlim(0, box_size[0])
+    ax.set_ylim(0, box_size[1])
+    ax.axis("off")
+
+    display(fig)
+    ax.clear()
+
+
+# %% Display coordinates
+#
+
+plt.figure(figsize=(8,4))
+plt.plot(bond_lengths[2])
+plt.xlabel('Time Step')
+plt.ylabel('Bond Length')
+#plt.xlim(400,600)
+plt.show()
+# %% Fourier Transform
+#
+#
+
+# Calculate Fourier transform of bond length oscillations
+molecule_idx = 5  # Choose first molecule
+bond_ts = np.array(bond_lengths[molecule_idx])
+n = len(bond_ts)
+freq = np.fft.fftfreq(n, d=dt)  # Get frequency axis
+fft = np.fft.fft(bond_ts)  # Calculate FFT
+
+plt.figure(figsize=(8,4))
+plt.plot(freq[1:n//2], np.abs(fft)[1:n//2])  # Plot positive frequencies
+plt.xlabel('Frequency (1/timestep)')
+plt.ylabel('|FFT|')
+plt.title('Frequency Spectrum of Bond Oscillations')
+plt.grid(True)
+plt.show()

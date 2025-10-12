@@ -1,0 +1,759 @@
+---
+title: Neural Networks
+jupyter: python3
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+    - pandas
+---
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+import pandas as pd
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 12,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+# Introduction to Neural Networks in Physics
+
+## What are Neural Networks?
+Neural networks are computational models inspired by how our brains process information. Just like our brain consists of interconnected neurons that process and transmit signals, artificial neural networks consist of mathematical "neurons" that process numerical information. They're particularly powerful for:
+
+- Recognizing patterns in data
+- Making predictions
+- Classifying information
+- Solving complex problems
+
+## Why Neural Networks in Physics?
+
+In physics, we often encounter situations that push the boundaries of traditional approaches. Sometimes the mathematical models grow too complex to solve directly, while in other cases we face the challenge of analyzing vast amounts of experimental data. We frequently need to make predictions even when we have incomplete information about a system. These scenarios represent key areas where neural networks can provide valuable solutions.
+
+Neural networks help us with these challenges! Some real-world applications include:
+
+- Particle physics: Identifying particles in detector data
+- Astronomy: Classifying galaxies
+- Materials science: Predicting material properties
+- Quantum mechanics: Solving many-body problems
+- Biological physics: Modeling neural activity
+- Active matter: Predicting collective behavior
+
+
+## Data for Neural Networks: Teaching Computers to Read Numbers
+
+Let's start our journey into neural networks with an exciting challenge: teaching a computer to read handwritten numbers! We'll build this step by step using Python, starting with the basics and working our way up to something quite impressive.
+
+Think of this like teaching a child to recognize numbers - we'll start by teaching our computer to recognize just one number (zero), and then build up to recognizing all digits from 0 to 9.
+
+![MNIS](MNIST.png)
+
+We'll use a famous collection of handwritten numbers called the MNIST dataset. Imagine asking 70,000 different people to write down numbers - that's what this dataset is! Each number is written on a small 28 x 28 grid (like graph paper), where each square (or pixel) is shaded in grayscale from white (0) to black (255).
+
+## Getting Started with MNIST
+
+Just like we need data from experiments in physics, we need data to train our neural network. Fortunately, other scientists have already collected this data for us:
+
+### Loading Our Training Data
+
+```{pyodide}
+#| autorun: false
+from sklearn.datasets import fetch_openml
+X, y = fetch_openml('mnist_784', version=1, return_X_y=True,as_frame=False)
+```
+
+Here, `X` contains all our images, and `y` contains the correct answer for each image (which number it is). Let's look at one:
+
+```{pyodide}
+#| autorun: false
+i = 33419
+plt.figure(figsize=get_size(4,4))
+plt.imshow(np.array(X)[i].reshape(28, 28), cmap='gray')
+plt.colorbar()
+plt.tight_layout()
+plt.show()
+print('label: ',y[i])
+```
+
+### Making the Data Easier to Work With
+
+Just like we often normalize measurements in physics experiments (like dividing by the maximum value), we'll normalize our image data to be between 0 and 1:
+
+```{pyodide}
+#| autorun: false
+X = X/255  # Dividing by maximum pixel value
+```
+
+### Preparing Our Training and Testing Sets
+
+For now, we'll start simple: we'll just teach our network to recognize zeros. We'll mark zeros with a 1 and all other numbers with a 0:
+
+```{pyodide}
+#| autorun: false
+y_new = np.zeros(y.shape)
+y_new[np.where(y == '0')[0]] = 1
+y = y_new
+```
+
+Like any good scientific experiment, we need both training data (to teach the network) and testing data (to check how well it learned). We'll use:
+- 60,000 images for training
+- 10,000 images for testing
+
+```{pyodide}
+#| autorun: false
+m = 60000
+m_test = X.shape[0] - m
+
+X_train, X_test = X[:m].T, X[m:].T
+y_train, y_test = y[:m].reshape(1,m), y[m:].reshape(1, m_test)
+```
+
+Finally, we shuffle our training data (like shuffling flashcards when studying):
+
+```{pyodide}
+#| autorun: false
+np.random.seed(1)
+shuffle_index = np.random.permutation(m)
+X_train, y_train = X_train[:,shuffle_index], y_train[:,shuffle_index]
+```
+
+Let's check our work by looking at one of our training images:
+
+```{pyodide}
+#| autorun: false
+i = 39
+plt.figure(figsize=get_size(4,4))
+plt.imshow(X_train[:,i].reshape(28, 28), cmap='gray')
+plt.colorbar()
+plt.tight_layout()
+plt.show()
+print(y_train[:,i])
+```
+
+Try looking at different images (change the number 39 above) until you find a zero - its label should be 1!
+
+
+## A Single Neuron
+
+The basic building block of any neural network is an artificial neuron. Similar to neurons in the human brain that process incoming signals and decide whether to fire or not, an artificial neuron processes numerical inputs through mathematical operations to produce a single output value. The following diagram shows a simple artificial neuron with two input values:
+
+![](img/neuron.png)
+
+### Understanding Forward Propagation
+
+An artificial neuron processes information in three distinct steps that together form what is called forward propagation:
+
+1. Input Weighting
+Each input value gets multiplied by a weight parameter. These weights determine how much influence each input has on the final output, similar to how synapses in biological neurons can be stronger or weaker. For two inputs, this operation looks like:
+
+\begin{eqnarray}
+x_{1}\rightarrow x_{1} w_{1}\\
+x_{2}\rightarrow x_{2} w_{2}
+\end{eqnarray}
+
+2. Bias Addition
+After weighting the inputs, a bias value $b$ is added to the sum. The bias helps the neuron learn by shifting the weighted sum up or down, making it easier or harder for the neuron to produce a strong output signal:
+
+\begin{equation}
+x_{1} w_{1}+ x_{2} w_{2}+b
+\end{equation}
+
+3. Activation Function
+The final step applies an activation function $\sigma()$ to the weighted sum plus bias. This function introduces non-linearity into the network, allowing it to learn complex patterns:
+
+\begin{equation}
+y=\sigma( x_{1} w_{1}+ x_{2} w_{2}+b)
+\end{equation}
+
+The activation function used in this example is called the sigmoid function. This function is particularly useful because it takes any input number (positive or negative, large or small) and transforms it into an output between 0 and 1. This property makes the sigmoid function ideal for tasks where the output should represent a probability or a binary decision.
+
+For mathematical convenience, the above steps can be written more compactly using vector notation:
+
+\begin{equation*}
+\hat{y} = \sigma(w^{\rm T} x + b)\ .
+\end{equation*}
+
+The sigmoid function has the following mathematical form:
+\begin{equation*}
+\sigma(z) = \frac{1}{1+{\rm e}^{-z}}\ .
+\end{equation*}
+
+Here is a Python implementation of the sigmoid function:
+
+```{pyodide}
+#| autorun: false
+def sigmoid(z):
+    return 1/(1 + np.exp(-z))
+```
+
+The following code visualizes how the sigmoid function transforms input values:
+
+```{pyodide}
+#| autorun: false
+x=np.linspace(-5,5,100)
+plt.figure(figsize=get_size(8,6))
+plt.plot(x,sigmoid(x))
+plt.xlabel('input')
+plt.ylabel('output')
+plt.grid()
+plt.tight_layout()
+plt.show()
+```
+
+To understand how these components work together, consider a simple example with two inputs. Given:
+
+\begin{eqnarray}
+w=[0,1]\\
+b=4
+\end{eqnarray}
+
+And input values:
+
+\begin{eqnarray}
+x=[2,3]
+\end{eqnarray}
+
+The computation becomes:
+
+\begin{equation}
+y=f(w\cdot x+b)=f(7)=0.999
+\end{equation}
+
+This process of moving from inputs to output through these mathematical operations is called forward propagation. The goal is to extend this concept to create a network capable of processing images, which requires 784 inputs (one for each pixel in a 28 x 28 image) and producing meaningful outputs.
+
+For computational efficiency, these calculations can be performed on multiple inputs simultaneously using matrix operations. The forward pass equation becomes:
+
+\begin{equation*}
+\hat{y} = \sigma(w^{\rm T} X + b)\ .
+\end{equation*}
+
+In this matrix form, $\hat{y}$ represents a vector of outputs rather than a single value. The implementation splits this computation into two parts:
+
+1. Calculate the weighted sum: `Z = np.matmul(W.T, X) + b`
+2. Apply the activation function: `A = sigmoid(Z)`
+
+This separation into distinct steps makes the code clearer and prepares for the more complex calculations needed in the backward propagation phase.
+
+### Loss Function: Measuring How Wrong We Are
+
+Now that our network can make predictions, we need a way to measure how accurate those predictions are. Just like we measure error in physics experiments, we need to measure the error (or "loss") in our neural network's predictions.
+
+The simplest way would be to use mean squared error, which you've seen before in data fitting:
+
+\begin{equation}
+MSE(y,\hat{y})=\frac{1}{n}\sum_{i=1}^{n}(y-\hat{y})^2
+\end{equation}
+
+Here, $y$ is the true value (what we know is correct) and $\hat{y}$ is our network's prediction.
+
+However, for this type of classification problem, we'll use a different measure called `cross-entropy`. For a single training example, it looks like this:
+
+\begin{equation*}
+L(y,\hat{y}) = -y\log(\hat{y})-(1-y)\log(1-\hat{y})\ .
+\end{equation*}
+
+When we have many training examples ($m$ of them), we take the average:
+
+\begin{equation*}
+L(Y,\hat{Y}) = -\frac{1}{m}\sum_{i = 0}^{m}y^{(i)}\log(\hat{y}^{(i)})-(1-y^{(i)})\log(1-\hat{y}^{(i)})\ .
+\end{equation*}
+
+Here's how we implement this in code:
+
+```{pyodide}
+#| autorun: false
+def compute_loss(Y, Y_hat):
+    m = Y.shape[1]
+    L = -(1./m)*(np.sum(np.multiply(np.log(Y_hat), Y)) + np.sum(np.multiply(np.log(1 - Y_hat), (1 - Y))))
+    return L
+```
+
+## Training the Network: Making Our Network Learn
+
+Think of training a neural network like teaching a student - we need to:
+1. See how well they're doing (measure the loss)
+2. Give feedback on what to improve
+3. Let them practice and improve
+
+### Backward Propagation: Learning from Mistakes
+
+Just like we adjust our aim when throwing a ball based on how far we missed, our network needs to adjust its weights and biases based on its errors. The loss function depends on all our weights and biases:
+
+$$
+L(w_{1},w_{2},w_{3},\ldots ,b_{1},b_{2},b_{3},\ldots)
+$$
+
+To improve, we need to know how changing each weight affects our error. We can find this using partial derivatives:
+
+$$
+\frac{\partial L}{\partial w_j}
+$$
+
+This tells us "if we change weight $w_j$ a little bit, how much will our error change?" This process of calculating how to adjust weights based on errors is called **back propagation**.
+
+**Calculating How to Improve**
+
+Let's break this down into steps. For a single image, we can follow how changes flow through the network:
+\begin{align*}
+z &= w^{\rm T} x + b\ , \\
+\hat{y} &= \sigma(z)\ , \\
+L(y,\hat{y}) &= -y\log(\hat{y})-(1-y)\log(1-\hat{y})\ .
+\end{align*}
+
+Using the chain rule from calculus:
+
+\begin{align*}
+\frac{\partial L}{\partial w_j} = \frac{\partial L}{\partial \hat{y}}\frac{\partial \hat{y}}{\partial z}\frac{\partial z}{\partial w_j}
+\end{align*} <br>
+
+After working through the calculus (which we won't detail here), we get three parts, each representing how different components of our network affect the final loss:
+
+First, we calculate how the loss changes with respect to our prediction ($\hat{y}$):
+
+$\partial L/\partial\hat{y}$:
+\begin{align*}
+\frac{\partial L}{\partial\hat{y}} &= \frac{\hat{y} - y}{\hat{y}(1-\hat{y})}
+\end{align*}
+
+Next, we find how our prediction changes with respect to the weighted input ($z$). This is just the derivative of the sigmoid function:
+
+$\partial \hat{y}/\partial z$:
+\begin{align*}
+\frac{\partial }{\partial z}\sigma(z) &= \hat{y}(1-\hat{y})
+\end{align*}
+
+Finally, we calculate how the weighted input changes with respect to each weight. This is simply the corresponding input value:
+
+$\partial z/\partial w_j$:
+\begin{align*}
+\frac{\partial }{\partial w_j}(w^{\rm T} x + b) &= x_j
+\end{align*}
+
+When we multiply these three components together using the chain rule, something remarkable happens - most terms cancel out, leaving us with this elegantly simple result:
+\begin{align*}
+\frac{\partial L}{\partial w_j} = (\hat{y} - y)x_j\ .
+\end{align*}
+
+This tells us that the adjustment to each weight should be proportional to both the prediction error ($\hat{y} - y$) and the input value ($x_j$).
+
+When dealing with multiple training examples, we need to average these gradients:
+
+\begin{align*}
+\frac{\partial L}{\partial w} = \frac{1}{m} X(\hat{y} - y)^{\rm T}\ .
+\end{align*}
+
+The bias term follows a similar pattern. For a single example:
+\begin{align*}
+\frac{\partial L}{\partial b} = (\hat{y} - y)\ .
+\end{align*}
+
+And for multiple training examples, we average the gradients:
+\begin{align*}
+\frac{\partial L}{\partial b} = \frac{1}{m}\sum_{i=1}^{m}{(\hat{y}^{(i)} - y^{(i)})}\ .
+\end{align*}
+
+In our code, these mathematical formulas translate directly into matrix operations:
+`dW = (1/m) * np.matmul(X, (A-Y).T)` and `db = (1/m)*np.sum(A-Y, axis=1, keepdims=True)`.
+
+### Stochastic Gradient Descent: Teaching Our Network to Learn
+
+Now comes the exciting part - making our network learn! Just like how you adjust your throw when playing catch based on whether you threw too far or too short, our network needs to adjust its weights and biases based on its mistakes.
+
+We'll use a learning method called stochastic gradient descent (SGD). Don't let the fancy name scare you - it's actually quite simple! Think of it like walking down a hill:
+
+1. Look around to see which way is steepest downhill (that's the gradient)
+2. Take a small step in that direction
+3. Repeat until you reach the bottom
+
+Mathematically, we update each weight using this formula:
+
+$$
+w\leftarrow w-\eta\frac{\partial L}{\partial w}
+$$
+
+Here, $\eta$ (eta) is called the learning rate - it controls how big our steps are:
+
+- Too large: We might overshoot the bottom
+- Too small: Learning will take forever
+
+The term $\frac{\partial L}{\partial w}$ tells us which direction to step:
+
+- If positive: The weight is too large, so decrease it
+- If negative: The weight is too small, so increase it
+
+We do the same thing for the bias $b$. Each complete pass through all our training data is called an "epoch".
+
+**Physics Connection:** This is similar to finding the minimum of a potential well - we follow the direction where the potential decreases most rapidly!
+
+### Building and Training Our First Network
+
+Let's put everything together to create a network that can recognize handwritten numbers. We'll train it for 200 epochs (learning cycles) and watch how the loss decreases:
+
+```{pyodide}
+#| autorun: false
+learning_rate = 1
+
+X = np.array(X_train)
+Y = np.array(y_train)
+
+n_x = X.shape[0]
+m = X.shape[1]
+
+# Initialize weights and bias with small random values
+W = np.random.randn(n_x, 1) * 0.01
+b = np.zeros((1, 1))
+
+# Training loop
+for i in range(200):
+    # Forward pass
+    Z = np.matmul(W.T, X) + b
+    A = sigmoid(Z)
+
+    # Calculate loss
+    loss = compute_loss(Y, A)
+
+    # Backward pass - compute gradients
+    dW = (1/m)*np.matmul(X, (A-Y).T)
+    db = (1/m)*np.sum(A-Y, axis=1, keepdims=True)
+
+    # Update parameters
+    W = W - learning_rate * dW
+    b = b - learning_rate * db
+
+    # Print progress every 10 epochs
+    if i % 10 == 0:
+        print(f"Epoch {i:3d}, Loss: {loss:.6f}")
+
+print(f"Final loss: {loss:.6f}")
+```
+
+### Evaluating Our Network: How Well Did We Do?
+
+Just like in physics experiments, we need ways to measure how well our model performs. One powerful tool is the **confusion matrix**. Think of it as a report card for our network:
+
+![confusion_matrix](confusion_matrix.png)
+
+The confusion matrix shows:
+- True Positives (TP): We predicted "yes" and were right
+- False Positives (FP): We predicted "yes" but were wrong
+- True Negatives (TN): We predicted "no" and were right
+- False Negatives (FN): We predicted "no" but were wrong
+
+Let's calculate this for our network:
+
+```{pyodide}
+#| autorun: false
+from sklearn.metrics import confusion_matrix, classification_report
+
+# Make predictions on test data
+Z = np.matmul(W.T,X_test) + b
+A = sigmoid(Z)
+
+# Convert to binary predictions (0 or 1)
+predictions = (A>.5)[0,:]
+labels = (y_test == 1)[0,:]
+
+print("Confusion Matrix:")
+print(confusion_matrix(predictions, labels))
+print("\nDetailed Performance Report:")
+print(classification_report(predictions, labels))
+```
+
+### Testing Individual Images
+
+Let's see our network in action! We can test it on individual images:
+
+```{pyodide}
+#| autorun: false
+# Pick a test image
+i=200
+prediction = bool(sigmoid(np.matmul(W.T, np.array(X_test)[:,i])+b)>0.5)
+print(f"Network prediction: {'Zero' if prediction else 'Not Zero'}")
+
+# Display the image
+plt.figure(figsize=get_size(6,6))
+plt.imshow(np.array(X_test)[:,i].reshape(28,28), cmap='gray')
+plt.axis('off')
+plt.tight_layout()
+plt.show()
+```
+
+## Network with Hidden Layers
+
+In our example above, we just had an input layer and a single output neuron. More complex neural networks are containing many layers between the input layer and the output layer. These inbetween layers are called hidden layers. Here is a simple example of a neural network with a single hidden layer.
+
+![hidden](image.png)
+
+So we have now and input layer with 784 inputs that are connected to 64 units in the hidden layer and 1 neuron in the output layer. We will not go through the derivations of all the formulas for the forward and backward passes this time. The code is a simple extension of what we did before and I hope easy to read.
+
+```{pyodide}
+#| autorun: false
+X = X_train
+Y = y_train
+
+n_x = X.shape[0]
+n_h = 64
+learning_rate = 1
+
+W1 = np.random.randn(n_h, n_x)
+b1 = np.zeros((n_h, 1))
+W2 = np.random.randn(1, n_h)
+b2 = np.zeros((1, 1))
+
+for i in range(100):
+
+    Z1 = np.matmul(W1, X) + b1
+    A1 = sigmoid(Z1)
+    Z2 = np.matmul(W2, A1) + b2
+    A2 = sigmoid(Z2)
+
+    loss = compute_loss(Y, A2)
+
+    dZ2 = A2-Y
+    dW2 = (1./m) * np.matmul(dZ2, A1.T)
+    db2 = (1./m) * np.sum(dZ2, axis=1, keepdims=True)
+
+    dA1 = np.matmul(W2.T, dZ2)
+    dZ1 = dA1 * sigmoid(Z1) * (1 - sigmoid(Z1))
+    dW1 = (1./m) * np.matmul(dZ1, X.T)
+    db1 = (1./m) * np.sum(dZ1, axis=1, keepdims=True)
+
+    W2 = W2 - learning_rate * dW2
+    b2 = b2 - learning_rate * db2
+    W1 = W1 - learning_rate * dW1
+    b1 = b1 - learning_rate * db1
+
+    if i % 10 == 0:
+        print("Epoch", i, "loss: ", loss)
+
+print("Final loss:", loss)
+```
+
+To judge the newtork quality we do use again the confusion matrix.
+
+```{pyodide}
+#| autorun: false
+Z1 = np.matmul(W1, X_test) + b1
+A1 = sigmoid(Z1)
+Z2 = np.matmul(W2, A1) + b2
+A2 = sigmoid(Z2)
+
+predictions = (A2>.5)[0,:]
+labels = (y_test == 1)[0,:]
+
+print(confusion_matrix(predictions, labels))
+print(classification_report(predictions, labels))
+```
+
+## Multiclass Network
+
+So far we did only classify if the number we feed to the network is just a 0 or not. We would like to recognize the different number now and therefore need a multiclass network. Each number is then a class and per class, we have multiple realizations of handwritten numbers. We therefore have to create an output layer, which is not only containing a single neuron, but 10 neurons. Each of these neuron can output a value between 0 and 1. Whenever the output is 1, the index of the neuron represents the number predicted.
+
+The output array
+
+~~~
+[0,1,0,0,0,0,0,0,0,0]
+~~~
+
+would therefore correspond to the value 1.
+
+For this purpose, we need to reload the right labels.
+
+```{pyodide}
+#| autorun: false
+from sklearn.datasets import fetch_openml
+X, y = fetch_openml('mnist_784', version=1, return_X_y=True,as_frame=False)
+
+X = X / 255
+```
+
+Then we'll one-hot encode MNIST's labels, to get a 10 x 70,000 array.
+
+```{pyodide}
+#| autorun: false
+digits = 10
+examples = y.shape[0]
+
+y = y.reshape(1, examples)
+
+Y_new = np.eye(digits)[y.astype('int32')]
+Y_new = Y_new.T.reshape(digits, examples)
+```
+
+```{pyodide}
+#| autorun: false
+
+Y_new.shape
+```
+
+We also seperate into trainging and testing data
+
+```{pyodide}
+#| autorun: false
+m = 60000
+m_test = X.shape[0] - m
+
+X_train, X_test = X[:m].T, X[m:].T
+Y_train, Y_test = Y_new[:,:m], Y_new[:,m:]
+
+shuffle_index = np.random.permutation(m)
+X_train, Y_train = X_train[:, shuffle_index], Y_train[:, shuffle_index]
+```
+
+```{pyodide}
+#| autorun: false
+i = 58
+plt.imshow(X_train[:,i].reshape(28,28), cmap='gray')
+plt.colorbar()
+plt.tight_layout()
+plt.show()
+Y_train[:,i]
+```
+
+### Changes to the model
+
+OK, so let's consider what changes we need to make to the model itself.
+
+#### Forward Pass
+Only the last layer of our network is changing. To add the softmax, we have to replace our lone, final node with a 10 unit layer. Its final activations are the exponentials of its z-values, normalized across all ten such exponentials. So instead of just computing $\sigma(z)$, we compute the activation for each unit $i$ using the softmax function:
+\begin{align*}
+\sigma(z)_i = \frac{{\rm e}^{z_i}}{\sum_{j=0}^9{\rm e}^{z_i}}\ .
+\end{align*}
+
+So, in our vectorized code, the last line of forward propagation will be `A2 = np.exp(Z2) / np.sum(np.exp(Z2), axis=0)`.
+
+#### Loss Function
+
+Our loss  function now has to generalize to more than two classes. The general formula for $n$ classes is:
+\begin{align*}
+L(y,\hat{y}) = -\sum_{i=0}^n y_i\log(\hat{y}_i)\ .
+\end{align*}
+Averaging over $m$ training examples this becomes:
+\begin{align*}
+L(y,\hat{y}) = -\frac{1}{m}\sum_{j=0}^m\sum_{i=0}^n y_i^{(i)}\log(\hat{y}_i^{(i)})\ .
+\end{align*}
+
+So let's define:
+
+```{pyodide}
+#| autorun: false
+def compute_multiclass_loss(Y, Y_hat):
+    L_sum = np.sum(np.multiply(Y, np.log(Y_hat)))
+    m = Y.shape[1]
+    L = -(1/m) * L_sum
+    return L
+```
+
+#### Back Propagation
+
+Luckily it turns out that back propagation isn't really affected by the switch to a softmax. A softmax generalizes the sigmoid activiation we've been using, and in such a way that the code we wrote earlier still works. We could verify this by deriving:
+\begin{align*}
+\frac{\partial L}{\partial z_i} = \hat{y}_i - y_i\ .
+\end{align*}
+
+But we won't walk through the steps here. Let's just go ahead and build our final network.
+
+### Build and Train
+
+As we have now more weights and classes, the training takes longer and we actually need also more episodes to achieve a good accuracy.
+
+```{pyodide}
+#| autorun: false
+n_x = X_train.shape[0]
+n_h = 64
+learning_rate = 1
+
+W1 = np.random.randn(n_h, n_x)
+b1 = np.zeros((n_h, 1))
+W2 = np.random.randn(digits, n_h)
+b2 = np.zeros((digits, 1))
+
+X = X_train
+Y = Y_train
+
+for i in range(200):
+
+    Z1 = np.matmul(W1,X) + b1
+    A1 = sigmoid(Z1)
+    Z2 = np.matmul(W2,A1) + b2
+    A2 = np.exp(Z2) / np.sum(np.exp(Z2), axis=0)
+
+    loss = compute_multiclass_loss(Y, A2)
+
+    dZ2 = A2-Y
+    dW2 = (1./m) * np.matmul(dZ2, A1.T)
+    db2 = (1./m) * np.sum(dZ2, axis=1, keepdims=True)
+
+    dA1 = np.matmul(W2.T, dZ2)
+    dZ1 = dA1 * sigmoid(Z1) * (1 - sigmoid(Z1))
+    dW1 = (1./m) * np.matmul(dZ1, X.T)
+    db1 = (1./m) * np.sum(dZ1, axis=1, keepdims=True)
+
+    W2 = W2 - learning_rate * dW2
+    b2 = b2 - learning_rate * db2
+    W1 = W1 - learning_rate * dW1
+    b1 = b1 - learning_rate * db1
+
+    if (i % 10 == 0):
+        print("Epoch", i, "loss: ", loss)
+
+print("Final loss:", loss)
+```
+
+Let's see how we did:
+
+```{pyodide}
+#| autorun: false
+Z1 = np.matmul(W1, X_test) + b1
+A1 = sigmoid(Z1)
+Z2 = np.matmul(W2, A1) + b2
+A2 = np.exp(Z2) / np.sum(np.exp(Z2), axis=0)
+
+predictions = np.argmax(A2, axis=0)
+labels = np.argmax(Y_test, axis=0)
+```
+
+#### Model performance
+
+```{pyodide}
+#| autorun: false
+print(confusion_matrix(predictions, labels))
+print(classification_report(predictions, labels))
+```
+
+We are at 84% accuray across all digits, which could be of course better. We may now plot image and the corresponding prediction.
+
+## Test the model
+
+```{pyodide}
+#| autorun: false
+i=2003
+plt.imshow(X_test[:,i].reshape(28,28), cmap='gray')
+predictions[i]
+```

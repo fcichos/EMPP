@@ -1,0 +1,48 @@
+```{=html}
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+  import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAswFfnIzeBu55zZSR25_x_RlyLoGzydZ4",
+    authDomain: "empp24-e7c40.firebaseapp.com",
+    projectId: "empp24-e7c40",
+    storageBucket: "empp24-e7c40.appspot.com",
+    messagingSenderId: "109449265661",
+    appId: "1:109449265661:web:ef751de6e9a9d6bb975994",
+    databaseURL: "https://empp24-e7c40-default-rtdb.europe-west1.firebasedatabase.app/" // Add this line with your database URL
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  console.log(database);
+  function saveToFirebase(data) {
+    const resultsRef = ref(database, 'results');
+    push(resultsRef, data)
+      .then(() => console.log('Data saved successfully'))
+      .catch((error) => console.error('Error saving data:', error));
+  }
+
+  // Your number and result string
+  const myNumber = "42";
+  const resultString = "The answer to life, the universe, and everything";
+
+  // Save both to the database
+  //saveToFirebase({
+  //  matrikel: myNumber,
+  //  result: resultString
+  //});
+
+  // Make saveToFirebase available globally for Pyodide
+  window.saveToFirebase = saveToFirebase;
+</script>
+<script>
+  window.myJavaScriptFunction = function(arg) {
+    console.log("Called from Python with:", arg);
+    return "Hello from JavaScript!";
+  };
+</script>
+```

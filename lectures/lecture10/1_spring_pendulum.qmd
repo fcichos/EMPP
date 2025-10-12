@@ -1,0 +1,273 @@
+---
+title: Spring Pendulum
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+In the last lectures, we have explored the use the **scipy** module **odeint** to do the work of solving differential equations for us. We have studied coupled pendula and explored the details of the solutions. This time we have two more projects ahead of us. We first want to consider the motion of a spring pendulum and then come from that to the motion of planets. Both are examples where we have not only a tangential accelaration but also a radial component. Otherwise, these problems do look similar than the ones we considered before.
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 12,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+
+## Physical Model
+
+The image below shows the situation we would like to cover in our second project. This is also a kind of coupled pendula, however, the situation is more subtle.
+
+
+We have a single spring which is mounted to a support and a mass. The spring can be elongated in length but also in angle so that you finally have a pendulum and a spring. Both motions are coupled now in a similar way as for the coupled pendula we treated. This time, however, the length change of the spring modulates the frequency of the pendulum.
+
+
+![SpringPendulum.png](img/SpringPendulum.png)
+
+### Equations of motion
+
+A mass $m$ is attached to a spring with spring constant $k$, which is attached to a support point as shown in the figure. The length of the resulting pendulum at any given time is the spring rest length $L_0$ plus the stretch (or compression) $L$, and the angle of the pendulum with respect to the vertical is $\theta$.
+
+The differential equations for this system are given by
+
+\begin{eqnarray}
+\ddot{L}&=&(L_0+L)\dot{\theta}^2-\frac{k}{m}L+g\cos(\theta)\\
+\ddot{\theta}&=&-\frac{1}{L_0+L}[g\sin(\theta)+2\dot{L}\dot{\theta}]
+\end{eqnarray}
+
+
+Let's break down the terms in these equations:
+
+For the radial motion (L):
+
+- $(L_0+L)\dot{\theta}^2$ represents the centrifugal force term
+- $-\frac{k}{m}L$ is the restoring force of the spring (Hooke's law)
+- $g\cos(\theta)$ is the component of gravity along the radial direction
+
+For the angular motion (θ):
+
+- $g\sin(\theta)$ represents the gravitational torque
+- $2\dot{L}\dot{\theta}$ is the Coriolis force term
+- The factor $\frac{1}{L_0+L}$ comes from the moment of inertia
+
+
+The equations are coupled - the radial and angular motions affect each other. The system shows interesting behavior like:
+
+   - Energy exchange between radial and angular modes
+   - Non-linear oscillations
+   - Potential for chaotic motion under certain conditions
+
+
+The key players in this equation are the centrifugal and Coriolis forces. These forces are fictitious forces that arise when we consider the motion of an object in a rotating frame of reference. The centrifugal force is the force that pushes an object away from the center of rotation, while the Coriolis force is the force that acts perpendicular to the direction of motion of an object in a rotating frame.
+
+Centrifugal Force:
+
+\begin{equation}
+\vec{F}_{\text{centrifugal}} = m(\vec{\omega} \times (\vec{\omega} \times \vec{r}))
+\end{equation}
+
+Coriolis Force:
+\begin{equation}
+\vec{F}_{\text{Coriolis}} = 2m(\vec{\omega} \times \vec{v}_{\text{rel}})
+\end{equation}
+
+where:
+
+- $m$ is the mass
+- $\vec{\omega}$ is the angular velocity vector
+- $\vec{r}$ is the position vector
+- $\vec{v}_{\text{rel}}$ is the velocity relative to the rotating frame
+- $\times$ denotes the cross product
+
+In component form, if we consider rotation about the z-axis with $\vec{\omega} = \omega\hat{k}$, these become:
+
+Centrifugal Force:
+\begin{equation}
+\vec{F}_{\text{centrifugal}} = m\omega^2(x\hat{i} + y\hat{j})
+\end{equation}
+
+Coriolis Force:
+\begin{equation}
+\vec{F}_{\text{Coriolis}} = 2m\omega(-v_y\hat{i} + v_x\hat{j})
+\end{equation}
+
+where $\hat{i}$, $\hat{j}$, and $\hat{k}$ are unit vectors in the x, y, and z directions respectively.
+
+
+
+Below we write a program that plots the motion of the mass for some initial $\theta\neq0$. Explore different solutions. We should get that when the spring is very stiff (large k), it reduces approximately to a simple pendulum. When $\theta$ is small, it can show beats between the spring and pendulum modes.
+
+
+```{pyodide}
+#| autorun: false
+
+def spring_pendulum(state, time ):
+    g0 = state[1]
+    g1 = (L_o+state[0])*state[3]*state[3] - k/m*state[0] + gravity*np.cos(state[2])
+    g2 = state[3]
+    g3 = -(gravity*np.sin(state[2]) + 2.0*state[1]*state[3])/(L_o + state[0])
+    return np.array([g0, g1, g2, g3])
+```
+
+## Numerical Solution
+
+For the numerical solution of the differential equations, we will use the **odeint** function from the **scipy** module. So this is another training for us to use this function.
+
+
+### Initial parameters
+
+We will have to think about the initial conditions. We will later modify them to see how the system behaves in different regimes.
+
+```{pyodide}
+#| autorun: false
+# mass m1, m2, length of pendula L1, L2, position of the coupling, spring constant k, gravitational acceleration
+
+# Chaotic regime parameters
+# k = 5.0  # lower spring constant
+# L_o = 2.0  # shorter equilibrium length
+# theta_o = 1.0  # larger initial angle
+# v_o = 1.0  # non-zero initial velocity
+
+N = 10000
+state = np.zeros ([4])
+L_o = 5
+L = 0.1
+v_o = 0.0
+theta_o = 0.1
+omega_o = 0.0
+
+
+state[0]=L
+state[1]=v_o
+state[2] = theta_o
+state[3] = omega_o
+
+time = np.linspace(0, 500, N)
+
+k = 10 # spring constant
+m = 1 # mass
+gravity =9.81
+```
+
+### Solution
+
+The solution of the differential equations is done by the **odeint** function.
+
+```{pyodide}
+#| autorun: false
+answer = odeint ( spring_pendulum , state , time )
+```
+The provided answer is a 2D array with the first column being the length of the spring, the second column the velocity of the spring, the third column the angle of the pendulum, and the fourth column the angular velocity of the pendulum.
+
+```{pyodide}
+#| autorun: false
+answer.shape
+```
+
+We can convert the answer to the x and y positions of the mass. This is done by the following code. As the length $L$ is only the elongation of the spring, we have to add the equilibrium length $L_0$ to get the total length of the spring. The x and y positions are then given by $L\sin(\theta)$ and $L\cos(\theta)$.
+
+```{pyodide}
+#| autorun: false
+
+xdata = ( L_o + answer[:,0])*np.sin(answer[:,2])
+ydata = -(L_o + answer[:,0])*np.cos(answer[:,2])
+```
+
+### Plotting
+
+The plots below show the motion of the mass in the x-y plane.
+
+```{pyodide}
+#| autorun: false
+#| fig-align: center
+
+fig=plt.figure(1, figsize = get_size(10,10) )
+plt.plot(xdata,ydata, 'r-')
+plt.xlabel('Horizontal position',fontsize=16)
+plt.ylabel('Vertical position',fontsize=16)
+plt.tick_params(labelsize=14)
+plt.ylim(ydata.min(),0)
+#plt.xlim(ydata.min(),-ydata.min())
+plt.tight_layout()
+plt.show()
+```
+
+The next plot is providing the so called phase space plot. This is a plot of the velocity of the mass versus the position of the mass. This plot is very useful to understand the dynamics of the system.
+
+```{pyodide}
+#| autorun: false
+#| fig-align: center
+
+fig=plt.figure(1, figsize = get_size(10,10) )
+plt.plot(answer[:,0],answer[:,1])
+plt.xlabel('$L$',fontsize=16)
+plt.ylabel('$\dot{L}$',fontsize=16)
+plt.title('phase space spring')
+plt.tick_params(labelsize=14)
+plt.tight_layout()
+plt.show()
+```
+
+Finally we plot the phase space of the pendulum. This is the angle of the pendulum versus the angular velocity of the pendulum.
+
+```{pyodide}
+#| autorun: false
+#| fig-align: center
+
+fig=plt.figure(1, figsize = get_size(10,10) )
+plt.plot(answer[:,2],answer[:,3])
+plt.xlabel(r'$\theta$',fontsize=16)
+plt.ylabel(r'$\dot{\theta}$',fontsize=16)
+plt.title('phase space pendulum')
+plt.tick_params(labelsize=14)
+plt.tight_layout()
+plt.show()
+```
+
+#### Angle and Length over Time
+
+```{pyodide}
+#| autorun: false
+
+# plot the angle of the spring as a function of time
+
+plt.figure(figsize=get_size(12,10))
+plt.xlabel('time [s]', fontsize=16)
+plt.ylabel(r'$x,y$',fontsize=16)
+plt.tick_params(labelsize=14)
+plt.plot(time,answer[:,0],label=r'L')
+plt.plot(time,answer[:,2]*10,label=r'$10\cdot \theta$')
+
+plt.legend()
+plt.xlim(0,150)
+plt.tight_layout()
+plt.show()
+```

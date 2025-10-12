@@ -1,0 +1,156 @@
+::: {.callout-note}
+### Example 6: Simple Particle Class
+Create a `Particle` class to represent a point mass with basic properties (mass, position, velocity) and methods to calculate its kinetic and potential energy. This introduces basic class concepts without getting too complex.
+
+*Time estimate: 20 minutes*
+
+```{pyodide}
+#| exercise: ex_6
+
+class Particle:
+    def __init__(self, mass, position, velocity):
+        # Initialize particle properties
+        ____
+
+    def kinetic_energy(self):
+        # Calculate K = 1/2 * m * v^2
+        ____
+
+    def potential_energy(self, height):
+        # Calculate U = m * g * h
+        ____
+
+    def total_energy(self, height):
+        # Calculate total energy E = K + U
+        ____
+
+# Test the Particle class
+p = Particle(mass=1.0, position=[0, 0, 10], velocity=[5, 0, 0])
+print(f"Kinetic Energy: {p.kinetic_energy():.2f} J")
+print(f"Potential Energy: {p.potential_energy(10):.2f} J")
+print(f"Total Energy: {p.total_energy(10):.2f} J")
+```
+
+::: {.hint exercise="ex_6"}
+::: { .callout-tip collapse="false"}
+You'll need to:
+
+1. Store mass, position, and velocity as class attributes (self.mass etc.)
+2. Use numpy arrays for position and velocity vectors
+3. Define gravitational constant g = 9.81
+4. Use np.linalg.norm() to calculate speed from velocity vector
+5. Remember formulas: K = 1/2mv², U = mgh, E = K + U
+:::
+:::
+
+::: {.solution exercise="ex_6"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+import numpy as np
+
+class Particle:
+    def __init__(self, mass, position, velocity):
+        self.mass = mass
+        self.position = np.array(position)
+        self.velocity = np.array(velocity)
+        self.g = 9.81
+
+    def kinetic_energy(self):
+        speed = np.linalg.norm(self.velocity)
+        return 0.5 * self.mass * speed**2
+
+    def potential_energy(self, height):
+        return self.mass * self.g * height
+
+    def total_energy(self, height):
+        return self.kinetic_energy() + self.potential_energy(height)
+
+# Test the Particle class
+p = Particle(mass=1.0, position=[0, 0, 10], velocity=[5, 0, 0])
+print(f"Kinetic Energy: {p.kinetic_energy():.2f} J")
+print(f"Potential Energy: {p.potential_energy(10):.2f} J")
+print(f"Total Energy: {p.total_energy(10):.2f} J")
+```
+:::
+:::
+:::
+
+
+::: {.callout-note}
+### Example 8: Two-Body System
+Create a simple class to calculate the gravitational force and potential energy between two masses. This introduces basic physics calculations in an object-oriented way.
+
+*Time estimate: 20 minutes*
+
+```{pyodide}
+#| exercise: ex_8
+
+import numpy as np
+
+class TwoBodySystem:
+    def __init__(self, m1, m2, r):
+        self.m1 = m1      # mass 1
+        self.m2 = m2      # mass 2
+        self.r = r        # distance between masses
+        self.G = 6.67e-11 # gravitational constant
+
+    def gravitational_force(self):
+        # Calculate F = G*m1*m2/r^2
+        ____
+
+    def potential_energy(self):
+        # Calculate U = -G*m1*m2/r
+        ____
+
+    def print_info(self):
+        # Print force and potential energy
+        ____
+
+# Test the system with Earth and Moon parameters
+earth_moon = TwoBodySystem(5.97e24, 7.34e22, 3.84e8)
+earth_moon.print_info()
+```
+
+::: {.hint exercise="ex_8"}
+::: { .callout-tip collapse="false"}
+You'll need to:
+
+1. Use the gravitational force equation F = G*m1*m2/r²
+2. Use the gravitational potential energy equation U = -G*m1*m2/r
+3. Create a method to calculate and print both values
+4. Use scientific notation (:.2e) for readable output
+5. Include units (N for force, J for energy) in the output
+:::
+:::
+
+::: {.solution exercise="ex_8"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+import numpy as np
+
+class TwoBodySystem:
+    def __init__(self, m1, m2, r):
+        self.m1 = m1
+        self.m2 = m2
+        self.r = r
+        self.G = 6.67e-11
+
+    def gravitational_force(self):
+        return self.G * self.m1 * self.m2 / (self.r**2)
+
+    def potential_energy(self):
+        return -self.G * self.m1 * self.m2 / self.r
+
+    def print_info(self):
+        force = self.gravitational_force()
+        energy = self.potential_energy()
+        print(f"Gravitational Force: {force:.2e} N")
+        print(f"Potential Energy: {energy:.2e} J")
+
+# Test the system with Earth and Moon parameters
+earth_moon = TwoBodySystem(5.97e24, 7.34e22, 3.84e8)
+earth_moon.print_info()
+```
+:::
+:::
+:::

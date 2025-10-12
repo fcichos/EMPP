@@ -1,0 +1,348 @@
+---
+title: Huygens principle
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+Huygens' principle is a theorem from wave optics that states that each point in space experiencing an electromagnetic wave acts as a source of spherical waves. This means that any wave can be expanded into a superposition of spherical waves, which is fundamental to phenomena like Mie scattering. While the classical understanding is that accelerated charges are the source of electromagnetic waves, Huygens' principle provides a powerful mathematical framework for describing wave propagation and diffraction effects.
+
+::: {#fig-huygens}
+![](img/huygens.png)
+
+Huygens principle. Each point in space is the source of a spherical wave.
+:::
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 10,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+## Diffraction pattern of a single slit
+
+Let's use Huygens principle to understand how waves behave when they pass through a small opening like a slit. We can do this by treating many points along the slit as sources of waves, and seeing how these waves combine. This will help us understand diffraction - what happens when waves bend around edges. Remember the function we wrote down the last lecture, i.e.
+
+\begin{equation}
+E=\frac{E_{0}}{|\vec{r}-\vec{r}_{0}|}e^{i k|\vec{r}-\vec{r}_{0}|} e^{-i\omega t}
+\end{equation}
+
+that describes the spherical wave. We can use this as a python function
+
+
+```{pyodide}
+#| autorun: false
+def spherical_wave(k,omega,r,r0,t):
+    k=np.linalg.norm(k)
+    d=np.linalg.norm(r-r0)
+    return( np.exp(1j*(k*d-omega*t))/d)
+```
+
+to calculate the electric field at a point in space.
+Let's show first of all that we can reconstruct a plane wave from many spherical waves. We can do this by summing up many spherical waves with the same wavevector $\vec{k}$ but different positions $\vec{r}_{0}$. The code below does this for a plane wave propagating in the z-direction.
+
+```{pyodide}
+#| autorun: false
+
+def plane_wave_sum(k, omega, r, t,N=200):
+    x0 = np.linspace(-10e-6, 10e-6, N)
+    r0 = np.stack([x0, np.zeros_like(x0), -0.1e-6 * np.ones_like(x0)], axis=1)
+    fields = np.array([spherical_wave(k, omega, r, r0_i, t) for r0_i in r0])
+    return np.sum(fields, axis=0)
+
+x = np.linspace(-5e-6, 5e-6, 300)
+z = np.linspace(0, 10e-6, 300)
+
+X, Z = np.meshgrid(x, z)
+r = np.array([X, 0, Z], dtype=object)
+
+wavelength = 532e-9
+k0 = 2*np.pi/wavelength
+c = 299792458
+omega0 = k0*c
+k = k0*np.array([0, 0, 1.])
+
+extent = np.min(z)*1e6, np.max(z)*1e6, np.min(x)*1e6, np.max(x)*1e6
+d = 5e-6
+field = plane_wave_sum(k, omega0, r, 0,200)
+field = field/np.max(field)
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=get_size(16, 8))
+ax1.imshow(np.real(field.transpose()), extent=extent, vmin=-1, vmax=1, cmap='seismic')
+ax1.set_xlabel('z [µm]')
+ax1.set_ylabel('x [µm]')
+
+ax2.imshow(np.log(np.abs(field.transpose())**2), extent=extent, cmap='gray')
+ax2.set_xlabel('z [µm]')
+ax2.set_ylabel('x [µm]')
+
+plt.tight_layout()
+plt.show()
+```
+The result nicely shows the emergence of a plane wave from a sum of spherical waves. The intensity pattern is almost constant in the x-z plane, which is what we expect from a plane wave. The samll deviations are the result of the limited number of sources we used to sum up the spherical waves.
+
+We now want to do the same but only over a limited range of x. This is what we would do for a single slit. The code below does this for a single slit of width $d=2$ µm. The next cell defines the space for our calculation again. The value of $d$ denotes the slit width, which we want to vary to see the effect of changing slit width vs. wavelength, which we chose to be $\lambda=532$ nm.
+
+```{pyodide}
+#| autorun: false
+x=np.linspace(-5e-6,5e-6,300)
+z=np.linspace(0,10e-6,300)
+
+X,Z=np.meshgrid(x,z)
+r=np.array([X,0,Z],dtype=object)
+
+wavelength=532e-9
+k0=2*np.pi/wavelength
+c=299792458
+omega0=k0*c
+k=k0*np.array([0,0,1.])
+
+d=2e-6
+```
+
+The next cell sums up the electric field of 200 spherical waves in the x-z plane, similar to the plane_wave_sum() function above but limited to sources within the slit width, such that we can plot the intensity or the field in space. Like the plane wave example, this demonstrates how multiple spherical waves combine, but now with sources constrained to a finite region.
+
+```{pyodide}
+#| autorun: false
+def slit(d,r):
+    field=0
+    for x0 in np.linspace(-d/2,d/2,200):
+        r0=np.array([x0,0,-0.1e-6])
+        field=field+spherical_wave(k,omega0,r,r0,0)
+
+    field=field/np.max(field)
+    return(field)
+```
+Let us plot the wavefronts and the intensity pattern in space. As the intensity decays strongly with distance from the slit, we do that by taking the log of the intensity. The left plot shows the real part of the field, revealing the wave fronts as they emerge from the slit and propagate outward. The right plot shows the logarithm of the intensity pattern, which helps visualize how the light spreads out as it diffracts through the slit opening. The wave fronts start planar at the slit but gradually curve outward, while the intensity pattern shows characteristic diffraction fringes.
+
+```{pyodide}
+#| autorun: false
+extent = np.min(z)*1e6, np.max(z)*1e6,np.min(x)*1e6, np.max(x)*1e6
+d=5e-6
+field=slit(d,r)
+plt.figure(figsize=get_size(16,8))
+plt.subplot(1,2,1)
+plt.imshow(np.real(field.transpose()),extent=extent,vmin=-1,vmax=1,cmap='seismic')
+plt.xlabel('z [µm]')
+plt.ylabel('x [µm]')
+
+
+plt.subplot(1,2,2)
+plt.imshow(np.log(np.abs(field.transpose())**2),extent=extent,cmap='gray')
+plt.xlabel('z [µm]')
+plt.ylabel('x [µm]')
+
+plt.tight_layout()
+plt.show()
+```
+
+## Farfield vs. nearfield
+
+When light passes through a slit, the pattern of light we observe depends on how far away we measure it from the slit. We can divide this into two regions: the "near field" (at distance $r \sim \lambda$) and the "far field" (at distance $r \gg \lambda$). In the near field, which is typically within a few wavelengths $\lambda$ from the slit, the light pattern closely resembles the shape of the slit itself. However, in the far field, which is at distances $r \gg \lambda$, the light spreads out significantly and creates distinctive patterns of bright and dark bands. This spreading out of light is called diffraction. To demonstrate this difference, let's look at two distances: a near field measurement at $r = 1$ µm from the slit, and a far field measurement at $r = 100$ µm away. These measurements will show how dramatically different the light patterns can be in these two regions.
+
+```{pyodide}
+#| autorun: false
+x1=np.linspace(-10e-6,10e-6,1000)
+z=np.array([1e-6])
+X,Z=np.meshgrid(x1,z)
+r=np.array([X,0,Z],dtype=object)
+d=5e-6
+
+## near field calculation
+field=slit(d,r)
+
+x2=np.linspace(-50e-6,50e-6,1000)
+z=np.array([100e-6])
+X,Z=np.meshgrid(x2,z)
+r=np.array([X,0,Z],dtype=object)
+
+## far field calculation
+field1=slit(d,r)
+```
+
+The two plots below show the drastic difference between the diffraction pattern in the near field and the far field. The near field resembles indeed the shadow picture, while the far field intensity pattern is considerable wider than the slit. This even becomes worse, if we make the slit narrower.
+
+```{pyodide}
+#| autorun: false
+plt.figure(figsize=get_size(16,8))
+plt.subplot(1,2,1)
+plt.plot(x1*1e6,np.abs(field[0,:])**2)
+plt.axvline(x=-d/2*1e6,ls='--')
+plt.axvline(x=d/2*1e6,ls='--')
+plt.title("near field")
+plt.xlabel('x [µm]')
+plt.ylabel('intensity [a.u.]')
+
+
+plt.subplot(1,2,2)
+plt.plot(x2*1e6,np.abs(field1[0,:])**2)
+
+plt.axvline(x=-d/2*1e6,ls='--')
+plt.axvline(x=d/2*1e6,ls='--')
+plt.title("far field")
+plt.xlabel('x [µm]')
+plt.ylabel('intensity [a.u.]')
+plt.tight_layout()
+
+plt.show()
+```
+
+## Comparison to the analytical solution
+
+Now that we understand how to calculate the diffraction pattern by adding up many Huygens sources (those spherical waves we created above), we can compare this to what physicists have worked out mathematically. When physicists solve this problem on paper, they do essentially the same thing we did in our code - they add up the contributions from many points along the slit, each acting as a source of waves. After doing all the math (which involves some complex calculus we won't worry about now), they get a relatively simple formula for the intensity pattern far from the slit:
+
+\begin{equation}
+I=I_{0}\left (\frac{\sin(\delta)}{\delta}\right )^2
+\end{equation}
+
+where
+\begin{equation}
+\delta=\frac{\pi d}{\lambda}\sin(\theta)
+\end{equation}
+
+Here, $I_0$ is just the maximum intensity, $d$ is the width of our slit, $\lambda$ is the wavelength of light we're using, and $\theta$ is the angle away from the center of the pattern (imagine drawing a line from the slit to any point on our screen - $\theta$ is the angle between this line and the straight-ahead direction). Let's see how well this mathematical formula matches up with our numerical calculation where we added up all those Huygens sources one by one.
+
+```{pyodide}
+#| autorun: false
+def single_slit(d,z,x):
+    theta=np.arctan2(x,z)
+    delta=np.pi*d/wavelength*np.sin(theta)
+    return((np.sin(delta)/delta)**2)
+```
+
+```{pyodide}
+#| autorun: false
+intensity=single_slit(d,100e-6,x2)
+```
+
+The plot below compares two ways of calculating the same thing: the black dotted line shows our numerical simulation using 200 point sources of waves, while the solid black line shows the mathematical formula that physicists derived. As you can see, they match quite well! This tells us that our computer simulation using Huygens' principle (adding up lots of wave sources) gives nearly the same result as the mathematical solution.
+
+An interesting question to consider is: how many wave sources do we need to get an accurate result? Right now we're using 200 sources spread across the width of the slit, but would 100 be enough? What about 1000? You can modify the code above to try different numbers of sources and see how it affects the accuracy of the simulation compared to the mathematical solution. This helps us understand how many "points" of light we need to consider to get a good approximation of reality.
+
+```{pyodide}
+#| autorun: false
+plt.figure(figsize=get_size(16,8))
+plt.plot(x2*1e6,np.abs(field1[0,:])**2,'k-.',lw=4,alpha=0.3)
+plt.plot(x2*1e6,intensity,'k')
+plt.xlabel('x [µm]')
+plt.ylabel('intensity [a.u.]')
+
+plt.tight_layout()
+plt.show()
+```
+
+Let's explore how changing different parameters affects our diffraction pattern! Two key things we can adjust are:
+
+1. The wavelength of light (λ) - try using red light (650nm) versus blue light (450nm)
+2. The width of the slit (d) - what happens when you make it wider or narrower?
+
+You can modify these values in the code above and observe how the pattern changes. What patterns do you notice? Does the diffraction spread out more or less when you use longer wavelengths? What about with wider slits?
+
+An even more interesting case is when we have multiple slits side by side - this is called a diffraction grating. Diffraction gratings are used in many real-world applications, from spectrometers that analyze starlight to the rainbow patterns you see on DVDs and CDs.
+
+Let's look at what happens with 10 slits in a row, each separated by a distance D. The mathematical formula for this gets a bit more complicated, but it's just combining two effects:
+
+1. The single-slit diffraction pattern we saw before (the sin(δ)/δ term)
+2. A new term that accounts for how the waves from multiple slits interfere (the sin(Nγ)/sin(γ) term)
+
+Here's the full formula for the intensity pattern:
+
+\begin{equation}
+I=I_{0}\left (\frac{\sin(\delta)}{\delta}\right )^2\left (\frac{\sin(N\gamma)}{\sin(\gamma)}\right )^2
+\end{equation}
+
+where
+
+\begin{equation}
+  \gamma=\frac{\pi D}{\lambda}\sin(\theta)
+\end{equation}
+
+N is the number of slits (10 in our case), D is the distance between slits, and the other terms are the same as before.
+
+Try modifying the code to simulate this multiple-slit case! Some questions to consider:
+
+- What happens when you change the spacing D between slits?
+- How does the pattern change if you use more or fewer slits?
+- Can you explain why a CD or DVD creates rainbow patterns in sunlight based on what you've learned about diffraction gratings?
+
+
+## Focus pattern of a spherical mirror
+
+Huygens' principle can also be used to understand how light reflects off a spherical mirror. When light hits a mirror, it reflects off at an angle equal to the angle of incidence. This means that the light rays all converge at a single point called the focal point $f$. We can use Huygens' principle to understand how this happens by treating each point on the mirror as a source of waves. The code below calculates the electric field at a point in space due to a spherical mirror with radius of curvature $R = 10$ µm.
+
+```{pyodide}
+#| autorun: false
+
+def circle_arc(N, R, theta, r):
+    angles = np.linspace(-theta/2, theta/2, N)
+    x0 = R * np.sin(angles)
+    z0 = -R * np.cos(angles)
+    r0 = np.stack([x0, np.zeros_like(x0), z0], axis=1)
+
+    fields = np.zeros_like(r[0], dtype=complex)
+    for r0_i in r0:
+        fields += spherical_wave(k, omega0, r, r0_i, 0)
+
+    return fields/np.max(np.abs(fields))
+
+
+x = np.linspace(-5e-6, 5e-6, 300)
+z = np.linspace(-5e-6, 5e-6, 300)
+
+X, Z = np.meshgrid(x, z)
+r = np.array([X, 0, Z], dtype=object)
+
+wavelength = 532e-9
+k0 = 2*np.pi/wavelength
+c = 299792458
+omega0 = k0*c
+k = k0*np.array([0, 0, 1.])
+
+R = 10e-6
+field = circle_arc(1000, R, np.pi/1.5, r)
+
+extent = np.min(z)*1e6, np.max(z)*1e6, np.min(x)*1e6, np.max(x)*1e6
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=get_size(16, 8))
+ax1.imshow(np.real(field.transpose()), extent=extent, vmin=-1, vmax=1, cmap='seismic')
+ax1.set_xlabel('z [µm]')
+ax1.set_ylabel('x [µm]')
+ax1.set_title('Electric Field')
+
+ax2.imshow((np.abs(field.transpose())**2), extent=extent, cmap='gray')
+ax2.set_xlabel('z [µm]')
+ax2.set_ylabel('x [µm]')
+ax2.set_title('Intensity Pattern')
+
+plt.tight_layout()
+plt.show()
+```
+The two images show the field and the intensity pattern of the spherical mirror. The field plot shows the wavefronts converging at the focal point, while the intensity plot shows the bright spot at the focal point where the light rays all converge. The spot in the center is the focal point. The intensity pattern is called the point-spread function of the mirror, and it tells us how light from a point source will spread out after reflecting off the mirror.

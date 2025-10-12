@@ -1,0 +1,102 @@
+---
+title: 'Appendix: Fourier Analysis of a damped oscillation'
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+Consider a generalised description of the oscillation by
+
+\begin{equation}
+    f(t)=a(t)\cos(\omega_S t)
+\end{equation}
+
+Where $a(t)$ is the time varying amplitude. This product of two functions can be treated with the help of the so-called convolution theorem.
+A convolution is represented by
+
+\begin{equation}\label{eq:convint}
+    f(t)*g(t)=\int_{-\infty}^{\infty} f(\tau)g(t-\tau)d\tau
+\end{equation}
+
+which means, that one sums up all contributions of a function $g(t)$ centered at a time value of $\tau$ with amplitude $f(\tau)$. Convolutions play an important role for example in optics, where the microscope resolution function convolutes the structural images of all objects.
+
+This convolution integral can be transformed into a product of the Fourier transforms $(\mathscr{F}$) of both functions
+
+\begin{equation}
+    H(\omega)G(\omega)=\mathscr{F}(f*g)
+\end{equation}
+
+So the product of the Fourier transform of the individual functions in the product is the same as the Fourier transform of the convolution integral Eq. \ref{eq:convint}.
+
+What is relevant in the discussed case of the oscillating guitar string is the inverse relation of the convolution theorem
+
+\begin{equation}
+    H(\omega)*G(\omega)=\mathscr{F}(f(t) g(t))
+\end{equation}
+
+This means that the Fourier transform of a product of two functions is equivalent to a convolution of the Fourier transforms of the individual functions.
+
+The convolution integral of the Fourier transformed function then corresponds to
+
+
+\begin{equation}\label{eq:inverse_conv}
+    H(\omega)*G(\omega)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} F(\Omega)G(\omega-\Omega)d\Omega
+\end{equation}
+
+Using this relation and
+
+\begin{equation}
+    H(\omega)=\mathscr{F}(\cos(\omega_S t))
+\end{equation}
+
+and
+
+\begin{equation}
+    G(\omega)=\mathscr{F}(\Theta(t) e^{-t/\tau})
+\end{equation}
+
+I can compute all types of amplitude modulated harmonic oscillations in Fourier space.
+In particular, the Fourier transform $\mathscr{F}$ of a harmonic function $\cos(\omega_S t)$ results in a so-called delta function ($\delta(t)$)
+
+\begin{equation}\label{eq:cosineft}
+    H(\omega)=\mathscr{F}(\cos(\omega_S t))=\sqrt{\frac{\pi}{2}} \delta(\omega+\omega_S)-\sqrt{\frac{\pi}{2}} \delta(\omega+\omega_S)
+\end{equation}
+
+The $\delta$-function has the properties as described in section \ref{sec:delta}.
+
+\begin{equation}\label{eq:lorentz}
+    G(\omega)=\mathscr{F}(\Theta(t)e^{-t/\tau})=\frac{1}{\sqrt{2\pi}}\frac{i \tau}{(i-\tau\omega)}
+\end{equation}
+
+The squared magnitude of Eq. \ref{eq:lorentz} yields a Lorentzian lineshape
+
+\begin{equation}
+    |G(\omega)|^{2}=\frac{1}{2 \pi} \frac{\tau^2}{1+\tau^{2}\omega^{2}}
+\end{equation}
+
+for the frequency spectrum, which is very common in physics. This Lorentzian function has a maximum at $\omega=0$ with $|G(\omega)|^2=\tau^2/2\pi$.
+
+With the help of Eq. \ref{eq:cosineft} and Eq. \ref{eq:lorentz} I can write  the convolution integral \ref{eq:inverse_conv} as
+
+\begin{equation}\label{Delta Functions}
+    H(\omega)*G(\omega)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}  \sqrt{\frac{\pi}{2}} [\delta(\Omega-\omega_S) + \delta(\Omega+\omega_S)] \frac{1}{\sqrt{2\pi}}\frac{i \tau}{(i-\tau (\omega-\Omega))} d\Omega
+\end{equation}
+
+The integration can be carried out using the integration rule in Eq. \ref{delta} for the delta function which leaves me with the integral of the function displayed in Eq. \ref{Delta Functions} as equal to
+
+\begin{equation}\label{Hallo}
+    F(\omega)= H(\omega)*G(\omega)=\frac{1}{\sqrt{2\pi}}\cdot\frac{\sqrt\pi}{\sqrt2 \sqrt{2\pi}}\left [\frac{i\tau}{(i-\tau(\omega-\omega_S))} + \frac{i\tau}{(i-\tau(\omega+\omega_S))}\right ]
+\end{equation}
+
+This yields
+
+\begin{equation}
+F(\omega)=\frac{1}{\sqrt{2\pi}}\frac{1/\tau+i\omega}{(1/\tau+i\omega)^2+\omega_S^2}
+\end{equation}

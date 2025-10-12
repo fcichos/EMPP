@@ -1,0 +1,248 @@
+---
+title: Seminar Coding Session 1
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 12,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+To practice the concepts covered in the lectures, we have prepared a few coding exercises. These exercises are designed to help you to get further used into programming. Each question is related to a physics problem and all of them have a solution that you can check after you have tried to solve them.
+
+Each exercise is also equipped with a time estimate to help you plan your work. The time estimates are approximate and rather valid for students without prior knowledge of programming and python before this course.
+
+You are going to solve at least two of the four exercises below in the seminar. You can choose the exercises you want to solve. One of the students will present the solution to the exercise and we will discuss the solution together.
+
+::: {.callout-note}
+### Example 1: Distance Calculation
+Calculate the total distance traveled by a car moving at constant velocity for different time intervals. This problem demonstrates the linear relationship between distance and time when velocity remains constant.
+
+Using the formula for uniform motion $d = v \cdot t$, where $d$ is displacement, $v$ is velocity, and $t$ is time, we'll calculate distances for several time points and visualize the results in a plot. This will help illustrate how distance increases linearly with time when velocity is constant.
+
+*Time estimate: 20-25 minutes*
+
+```{pyodide}
+#| exercise: ex_1
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Given velocity in m/s
+v = 10
+
+# Create time array from 0 to 10 seconds
+# Calculate distances
+# Create plot
+
+____
+```
+::: {.hint exercise="ex_1"}
+::: { .callout-tip collapse="false"}
+Create an array of time points from 0 to 10 seconds and calculate the distance traveled at each time point using the formula $d = v \cdot t$. Use a for loop to print the time and distance values. Finally, create a simple plot of distance vs time using `plt.plot()`.
+:::
+:::
+
+::: {.solution exercise="ex_1"}
+::: {.callout-note collapse="false"}
+```{pyodide}
+import numpy as np
+import matplotlib.pyplot as plt
+
+v = 10
+t = np.array([0, 2, 4, 6, 8, 10])  # time points in seconds
+d = v * t  # distance in meters
+
+plt.plot(t, d, 'o-')
+plt.xlabel('time [s]')
+plt.ylabel('distance [m]')
+plt.title('Distance vs Time')
+plt.show()
+
+print("Time (s)  Distance (m)")
+for i in range(len(t)):
+    print(f"{t[i]:6.1f} {d[i]:12.1f}")
+```
+:::
+:::
+:::
+
+
+
+
+::: {.callout-note}
+### Example 2: Weight on Different Planets
+Calculate weight ($F = mg$) of an object on different planets using a list of gravitational accelerations. The weight force depends on both the mass of the object and the local gravitational acceleration. By comparing the weight of the same object across different planets, we can understand how gravitational forces vary throughout our solar system. We'll use Newton's second law in the form $F = mg$ where $m$ is the object's mass and $g$ is the local gravitational acceleration.
+
+*Time estimate: 10-15 minutes*
+
+```{pyodide}
+#| exercise: ex_2
+
+# Mass of object in kg
+mass = 1.0
+
+# List of planets and their g values (m/s²)
+planets = ['Mercury', 'Venus', 'Earth', 'Mars']
+g_values = [3.7, 8.87, 9.81, 3.72]
+
+# Calculate and print weights
+
+____
+```
+
+::: {.hint exercise="ex_2"}
+::: { .callout-tip collapse="false"}
+Calculate and print the weights in a for loop. Try to use the`zip()` function to iterate over two lists simultaneously. Think about formatted printing using f-strings. `f"{variable:.2f}"` inside the print function will print the variable with two decimal places.
+:::
+:::
+
+::: {.solution exercise="ex_2"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+mass = 1.0
+planets = ['Mercury', 'Venus', 'Earth', 'Mars']
+g_values = [3.7, 8.87, 9.81, 3.72]
+
+print("Weight on different planets:")
+print("-" * 30)
+for planet, g in zip(planets, g_values):
+    weight = mass * g
+    print(f"{planet}: {weight:.2f} N")
+```
+:::
+:::
+:::
+
+
+
+
+
+::: {.callout-note}
+### Example 3: Simple Kinetic Energy Calculator
+Write a function to calculate kinetic energy ($KE = \frac{1}{2}mv^2$) and test it with different values. This example demonstrates how to create and use a function to calculate the kinetic energy of objects with different masses moving at a given velocity. Kinetic energy is a scalar quantity that depends on both mass and velocity, with velocity having a squared relationship. By testing the function with multiple masses, we can observe how kinetic energy scales with mass while keeping velocity constant.
+
+*Time estimate: 15-20 minutes*
+```{pyodide}
+#| exercise: ex_3
+
+# Write function to calculate kinetic energy
+def calculate_ke(mass, velocity):
+    ____
+
+# Test with different values
+masses = [1, 2, 3]  # in kg
+velocity = 5  # in m/s
+
+# Calculate and print results
+____
+```
+::: {.hint exercise="ex_3"}
+::: { .callout-tip collapse="false"}
+Define a function `calculate_ke(mass, velocity)` that returns the kinetic energy. Use a for loop to calculate and print the kinetic energy for different masses. Use formatted printing to print the results.
+:::
+:::
+
+::: {.solution exercise="ex_3"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+def calculate_ke(mass, velocity):
+    ke = 0.5 * mass * velocity**2
+    return ke
+
+masses = [1, 2, 3]  # in kg
+velocity = 5  # m/s
+
+print("Mass (kg)  KE (Joules)")
+print("-" * 25)
+for m in masses:
+    ke = calculate_ke(m, velocity)
+    print(f"{m:8.1f} {ke:12.1f}")
+```
+:::
+:::
+:::
+
+
+
+
+
+::: {.callout-note}
+### Example 4: Average Speed Calculator
+Calculate average speed from a list of distances and times (segments of a journey). First, sum up the total distances traveled and times taken for the complete journey. Then, use the formula $v_{avg} = \frac{\text{total distance}}{\text{total time}}$ to find the overall average speed. We'll also calculate individual segment speeds for comparison.
+
+*Time estimate: 20-25 minutes*
+
+```{pyodide}
+#| exercise: ex_4
+
+# Lists of distances (in meters) and times (in seconds)
+distances = [100, 150, 200]
+times = [20, 25, 30]
+
+# Calculate total distance and total time
+# Calculate average speed
+# Print results
+
+____
+```
+
+::: {.hint exercise="ex_4"}
+::: { .callout-tip collapse="false"}
+Calculate the total distance and total time using the `sum()` function. Calculate the average speed using the formula $v_{avg} = \frac{\text{total distance}}{\text{total time}}$. Use a for loop to calculate and print the speed for each segment.
+:::
+:::
+
+::: {.solution exercise="ex_4"}
+::: { .callout-tip collapse="false"}
+```{pyodide}
+distances = [100, 150, 200]
+times = [20, 25, 30]
+
+total_distance = sum(distances)
+total_time = sum(times)
+average_speed = total_distance / total_time
+
+print(f"Total distance: {total_distance} m")
+print(f"Total time: {total_time} s")
+print(f"Average speed: {average_speed:.2f} m/s")
+
+# Print individual segments
+print("\nSegment details:")
+for i in range(len(distances)):
+    speed = distances[i] / times[i]
+    print(f"Segment {i+1}: {speed:.2f} m/s")
+```
+:::
+:::
+:::

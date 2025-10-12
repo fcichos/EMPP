@@ -1,0 +1,243 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Repetiion\"\n",
+        "jupyter: python3\n",
+        "format:\n",
+        "  html:\n",
+        "    toc: true\n",
+        "    toc-location: right\n",
+        "pyodide:\n",
+        "  packages:\n",
+        "    - matplotlib\n",
+        "    - numpy\n",
+        "---\n",
+        "\n",
+        "## Setup"
+      ],
+      "id": "b1636a3c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "# Set plotting style\n",
+        "#plt.style.use('seaborn')"
+      ],
+      "id": "aa158d76",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Introduction: Neural Networks as Physical Systems\n",
+        "\n",
+        "Neural networks might seem complicated, but we can understand them using physics concepts you already know! Let's explore how these computational tools are similar to physical systems we've studied.\n",
+        "\n",
+        "## 1. Neural Networks as Energy Flow\n",
+        "\n",
+        "Just like we study energy flow through physical systems, a neural network processes information flowing through it:\n",
+        "\n",
+        "- **Input values**: Like initial energy\n",
+        "- **Weights**: Like how efficiently energy transfers (think spring constants)\n",
+        "- **Bias**: Like a baseline energy level\n",
+        "- **Output**: Like final energy state"
+      ],
+      "id": "839e3077"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Simple example\n",
+        "input_value = 2    # Like initial energy\n",
+        "weight = 0.5       # Like energy transfer efficiency\n",
+        "bias = 1          # Like baseline energy level\n",
+        "output = weight * input_value + bias\n",
+        "\n",
+        "print(f\"Input energy: {input_value}\")\n",
+        "print(f\"Transfer efficiency: {weight}\")\n",
+        "print(f\"Baseline: {bias}\")\n",
+        "print(f\"Final state: {output}\")"
+      ],
+      "id": "24efe60a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## 2. The Sigmoid Function: Nature's Barrier\n",
+        "\n",
+        "Many physical systems have natural limits. Think about:\n",
+        "- Terminal velocity in air resistance\n",
+        "- Saturation in magnetic materials\n",
+        "- Maximum compression of a spring\n",
+        "\n",
+        "Neural networks use a similar concept called the sigmoid function:"
+      ],
+      "id": "8614065b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "def sigmoid(x):\n",
+        "    return 1/(1 + np.exp(-x))\n",
+        "\n",
+        "x = np.linspace(-10, 10, 100)\n",
+        "plt.figure(figsize=(8, 5))\n",
+        "plt.plot(x, sigmoid(x))\n",
+        "plt.title('Sigmoid Function: Like a Physical Barrier')\n",
+        "plt.xlabel('Input (like force)')\n",
+        "plt.ylabel('Output (like displacement)')\n",
+        "plt.grid(True)\n",
+        "plt.show()"
+      ],
+      "id": "a99aa7b4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## 3. Learning as Finding Minimum Potential Energy\n",
+        "\n",
+        "Training a neural network is like a ball rolling down a hill:\n",
+        "1. Start somewhere on the hill (initial weights)\n",
+        "2. Look which way is downhill (calculate error)\n",
+        "3. Take a small step in that direction (update weights)\n",
+        "4. Repeat until you reach the bottom (minimum error)"
+      ],
+      "id": "f892ec30"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Visualize a simple \"energy landscape\"\n",
+        "x = np.linspace(-5, 5, 100)\n",
+        "y = x**2  # Simple parabola like potential energy well\n",
+        "\n",
+        "plt.figure(figsize=(8, 5))\n",
+        "plt.plot(x, y)\n",
+        "plt.title('Learning is Like Finding Minimum Potential Energy')\n",
+        "plt.xlabel('Weight Value')\n",
+        "plt.ylabel('Error (like Potential Energy)')\n",
+        "plt.grid(True)\n",
+        "\n",
+        "# Mark the minimum\n",
+        "plt.plot(0, 0, 'ro', label='Minimum Error')\n",
+        "plt.legend()\n",
+        "plt.show()"
+      ],
+      "id": "3981298c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## 4. Practical Example: Particle Detection\n",
+        "\n",
+        "Let's build a simple \"neuron\" that could help detect particles:"
+      ],
+      "id": "ea22bb20"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "def simple_neuron(energy, momentum, weight1, weight2, bias):\n",
+        "    # Combine inputs like forces combining\n",
+        "    total_input = weight1 * energy + weight2 * momentum + bias\n",
+        "    # Convert to probability using sigmoid\n",
+        "    probability = sigmoid(total_input)\n",
+        "    return probability\n",
+        "\n",
+        "# Example values\n",
+        "energy = 100  # MeV\n",
+        "momentum = 50 # MeV/c\n",
+        "w1, w2 = 0.01, 0.02  # Some random weights\n",
+        "b = -1\n",
+        "\n",
+        "probability = simple_neuron(energy, momentum, w1, w2, b)\n",
+        "print(f\"Probability this is our particle: {probability:.2%}\")"
+      ],
+      "id": "235eb45c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## 5. Visualizing Decision Boundaries\n",
+        "\n",
+        "Just like phase transitions in physics separate different states of matter, neural networks create boundaries between different classifications:"
+      ],
+      "id": "b836dea4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a grid of points\n",
+        "E, M = np.meshgrid(np.linspace(0, 200, 100), np.linspace(0, 100, 100))\n",
+        "Z = simple_neuron(E, M, w1, w2, b)\n",
+        "\n",
+        "plt.figure(figsize=(10, 6))\n",
+        "plt.contourf(E, M, Z, levels=20)\n",
+        "plt.colorbar(label='Classification Probability')\n",
+        "plt.title('Particle Classification Boundary')\n",
+        "plt.xlabel('Energy (MeV)')\n",
+        "plt.ylabel('Momentum (MeV/c)')\n",
+        "plt.show()"
+      ],
+      "id": "47cdb573",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Key Takeaways\n",
+        "\n",
+        "Neural Networks are like physical systems:\n",
+        "1. Process inputs like energy flow\n",
+        "2. Have natural limits (like terminal velocity)\n",
+        "3. Find minimum energy states during training\n",
+        "4. Create boundaries between different states\n",
+        "5. Follow principles of optimization we see in nature\n",
+        "\n",
+        "## Try It Yourself!\n",
+        "\n",
+        "Change the weights and bias in the particle detection example above. How does this affect the decision boundary? This is similar to adjusting the parameters of a physical system!"
+      ],
+      "id": "2052db8a"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/fci/Library/Jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

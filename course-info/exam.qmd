@@ -1,0 +1,42 @@
+---
+title: "Prüfung"
+format: live-html
+---
+
+
+## Erstteilnehmer
+
+Die Prüfungsleistung in diesem Modul ist eine Portfolio-Prüfung und besteht aus zwei Portfolio-Teilen:
+
+1. **Übungsaufgaben:**
+   - 6 Serien von Aufgaben, die nicht benotet werden
+   - Mindestens 50% der Gesamtpunktzahl aller Übungsaufgaben muss erreicht werden
+
+2. **Zwei Tests:**
+   - Jeder Test dauert 45 Minuten
+   - Finden in Person während zwei Übungsseminare statt
+   - Die Tests werden vorher angekündigt
+   - Die Punkte beider Tests werden addiert und ergeben eine Gesamtnote
+
+Wichtige Hinweise:
+- Beide Portfolio-Teile (Übungsaufgaben und Tests) müssen bestanden werden, um das Modul erfolgreich abzuschließen.
+- Die Gesamtnote der Tests entspricht der Abschlussnote des Moduls.
+
+
+
+## Wiederholer
+
+Für Studierende, die das Modul bereits im WS 2023/24 belegt haben und nun wiederholen:
+
+1. **Übungsaufgaben**:
+   - Wenn Sie im WS 2023/24 ≥50% erreicht haben: Nur Projektabgabe erforderlich
+   - Wenn Sie im WS 2023/24 <50% erreicht haben: Übungsaufgaben und Projektabgabe erforderlich
+   - Eine Liste der erreichten Übungspunkte wird im internen Bereich der MONA Webseite veröffentlicht
+
+2. **Einschreibung**:
+   - Erneute Moduleinschreibung nicht notwendig
+   - Für Moodle-Zugang: Kontaktieren Sie Andrea Kramer per Uni-E-Mail
+
+3. **Projektabgabe für Wiederholer**:
+   - Frist: 12.03.2025, 13:00 Uhr
+   - Spätere Abgaben werden nicht berücksichtigt

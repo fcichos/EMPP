@@ -1,0 +1,451 @@
+---
+title: Data Types in Python
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  packages:
+    - numpy
+---
+
+It's time to look at different data types we may find useful in our course. Besides the number types mentioned previously, there are also other types like **strings**, **lists**, **tuples**, **dictionaries** and **sets**.
+
+| Data Type | Classes | Description |
+|-----------|---------|-------------|
+| Numeric   | `int`, `float`, `complex` | Holds numeric values. `int` for integers, `float` for decimal numbers, `complex` for complex numbers. |
+| String    | `str` | Stores sequences of characters. Immutable. |
+| Sequence  | `list`, `tuple`, `range` | Stores ordered collections of items. `list` is mutable, `tuple` is immutable, `range` represents a sequence of numbers. |
+| Mapping   | `dict` | Stores data as key-value pairs. Mutable and unordered. |
+| Boolean   | `bool` | Holds either `True` or `False`. Used for logical operations. |
+| Set       | `set`, `frozenset` | Holds collections of unique items. `set` is mutable, `frozenset` is immutable. |
+| None      | `NoneType` | Represents the absence of a value or a null value. |
+| Binary    | `bytes`, `bytearray`, `memoryview` | Used for handling binary data. |
+
+
+
+Each of these data types has a number of connected `methods` (functions) which allow to manipulate the data contained in a variable. If you want to know which methods are available for a certain object use the command `dir`, e.g.
+
+~~~
+s="string"
+dir(s)
+~~~
+
+The following few cells will give you a short introduction into each type.
+
+## Strings
+
+**Strings** are lists of keyboard characters as well as other characters not on your keyboard. They are useful for printing results on the screen, during reading and writing of data.
+
+```{pyodide}
+#| autorun: false
+s="Hello" # string variable
+type(s)
+```
+
+```{pyodide}
+#| autorun: false
+t="world!"
+```
+
+String can be concatenated using the *+* operator.
+
+```{pyodide}
+#| autorun: false
+c=s+' '+t
+```
+
+```{pyodide}
+#| autorun: false
+print(c)
+```
+
+As strings are lists, each character in a string can be accessed by addressing the position in the string (see Lists section)
+
+```{pyodide}
+#| autorun: false
+c[1]
+```
+
+Strings can also be made out of numbers.
+
+```{pyodide}
+#| autorun: false
+"975"+"321"
+```
+
+If you want to obtain a number of a string, you can use what is known as type casting. Using type casting you may convert the string or any other data type into a different type if this is possible. To find out if a string is a pure number you may use the `str.isnumeric` method. For the above string, we may want to do a conversion to the type *int* by typing:
+
+```{pyodide}
+#| autorun: false
+("975"+"321").isnumeric() # or you may use as well str.isnumeric("975"+"321")
+```
+
+```{pyodide}
+#| autorun: false
+int("975"+"321")
+```
+
+There are a number of methods connected to the string data type. Usually the relate to formatting or finding sub-strings. Formatting will be a topic in our next lecture. Here we just refer to one simple find example.
+
+```{pyodide}
+#| autorun: false
+t
+```
+
+```{pyodide}
+#| autorun: false
+t.find('rld') ## returns the index at which the sub string 'ld' starts in t
+```
+
+```{pyodide}
+#| autorun: false
+t[2:5]
+```
+
+```{pyodide}
+#| autorun: false
+t.capitalize()
+```
+
+## Lists
+
+**Lists** have a variety of uses. They are useful, for example, in various bookkeeping tasks that arise in computer programming. Like arrays, they are sometimes used to store data. However, lists do not have the specialized properties and tools that make arrays so powerful for scientific computing. So in general, we prefer arrays to lists for working with scientific data. For other tasks, lists work just fine and can even be preferable to arrays.
+
+```{pyodide}
+#| autorun: false
+a=[]
+```
+
+```{pyodide}
+#| autorun: false
+a = [0, 1, 1, 2, 3, 5, 8, 13]
+```
+
+```{pyodide}
+#| autorun: false
+b = [5., "girl", 2+0j, "horse", 21]
+```
+
+Individual elements in a list can be accessed by the variable name and the number (index) of the list element put in square brackets. Note that the index for the elements start at *0* for the first element (left).
+
+:::{.callout-note}
+## Indices in Python
+
+The first element of a list or array is accessed by the index 0. If the array has N elements, the last entries index is N-1.
+
+:::
+
+```{pyodide}
+#| autorun: false
+b[0],b[1]
+```
+
+Elements may be also accessed from the back by nagative indices. *b[-1]* denotes the last element in the list and *b[-2]*, the element before the last.
+
+```{pyodide}
+#| autorun: false
+b[-1]
+```
+
+```{pyodide}
+#| autorun: false
+b[-2]
+```
+
+The length of a list can be obtained by the `len` command if you need the number of elements in the list for your calculations.
+
+```{pyodide}
+#| autorun: false
+len(b)
+```
+
+There are powerful ways to iterate through a list and also through arrays in form of *iterator*. This is called *list comprehension*. We will talk about them later in more detail. Here is an example, which shows the powerful options you have in Python.
+
+```{pyodide}
+#| autorun: false
+[x+2 for x in b if type(x)!=str]
+```
+
+Individual elements in a list can be replaced by assigning a new value to them
+
+```{pyodide}
+#| autorun: false
+b[-2]='cat'
+```
+
+```{pyodide}
+#| autorun: false
+b
+```
+
+Lists can be concatanated by the *+* operator
+
+```{pyodide}
+#| autorun: false
+c=a+b
+c
+```
+
+A very useful feature for lists in python is the **slicing** of lists. Slicing means, that we access only a range of elements in the list, i.e. element 3 to 7. This is done by inserting the starting and the ending element number separated by a colon (:) in the square brackets. The index numbers can be positive or negative again.
+
+```{pyodide}
+#| autorun: false
+c[3:6]
+```
+
+Inserting a second colon behind the ending element index together with a thrid number allows even to select only ever second or third element from a list.
+
+```{pyodide}
+#| autorun: false
+c[3:9:2]
+```
+
+It is sometimes also useful to reverse a list. This can be easily done with the reverse command.
+
+```{pyodide}
+#| autorun: false
+c.reverse()
+c
+```
+
+Lists may be created in different ways. An empty list can be created by assigning emtpy square brackets to a variable name. You can append elements to the list with the help of the append command which has to be added to the variable name as shown below. This way of adding a particular function, which is part of a certain variable class is part of object oriented programming.
+
+```{pyodide}
+#| autorun: false
+a=[0]
+```
+
+```{pyodide}
+#| autorun: false
+a.append(7)
+```
+
+```{pyodide}
+#| autorun: false
+a
+```
+
+```{pyodide}
+#| autorun: false
+a=[1]*10
+```
+
+```{pyodide}
+#| autorun: false
+a
+```
+
+A list of numbers can be easily created by the `range()` command.
+
+```{pyodide}
+#| autorun: false
+list(range(1,10))
+```
+
+```{pyodide}
+#| autorun: false
+list(range(3,10))
+```
+
+```{pyodide}
+#| autorun: false
+list(range(3,10,2))
+```
+
+Lists (and also tuples below) can be multidimensional as well, i.e. for an image. The individual elements may then be addressed by supplying two indices in two square brackets.
+
+```{pyodide}
+#| autorun: false
+a = [[3, 9], [8, 5], [11, 1]]
+```
+
+```{pyodide}
+#| autorun: false
+a[1]
+```
+
+```{pyodide}
+#| autorun: false
+a[2][0]
+```
+
+## Tuples
+
+**Tuples** are also list, but immutable. That means, if a tuple has been once defined, it cannot be changed. Try to change an element to see the result.
+
+```{pyodide}
+#| autorun: false
+point = 10, 20
+
+print(point, type(point))
+```
+
+Tuples may be unpacked, e.g. its values may be assigned to normal variables in the following way
+
+```{pyodide}
+#| autorun: false
+point[1]
+```
+
+```{pyodide}
+#| autorun: false
+x, y = point
+
+print("x =", x)
+print("y =", y)
+```
+
+## Dictionaries
+
+
+**Dictionaries** are like lists, but the elements of dictionaries are accessed in a different way than for lists. The elements of lists and arrays are numbered consecutively, and to access an element of a list or an array, you simply refer to the number corresponding to its position in the sequence. The elements of dictionaries are accessed by “keys”, which can be either strings or (arbitrary) integers (in no particular order). Dictionaries are an important part of core Python. However, we do not make much use of them in this introduction to scientific Python, so our discussion of them is limited.
+
+```{pyodide}
+#| autorun: false
+room = {"a":"b", "Frank":322, "Dekan":550}
+```
+
+```{pyodide}
+#| autorun: false
+room['Frank']
+```
+
+```{pyodide}
+#| autorun: false
+room.keys()
+```
+
+```{pyodide}
+#| autorun: false
+room.values()
+```
+
+## Sets
+
+
+**Sets** are like lists but have immutable unique entries, which means the elements can not be changed once defined.
+An emtpy set is created by the `set()` method.
+
+
+```{pyodide}
+#| autorun: false
+phone_id = {112, 114, 116, 118, 115,112}
+print('Phone ID:', phone_id)
+```
+
+```{pyodide}
+#| autorun: false
+type(phone_id)
+```
+
+```{pyodide}
+#| autorun: false
+fruits = {'Banana', 'Mango', 'Kiwi', 'Strawberry', 'Orange'}
+print('Fruits:', fruits)
+```
+
+```{pyodide}
+#| tags: []
+mixed_set = {'Python', 112, -2, 'Good'}
+print('Set of mixed data types:', mixed_set)
+```
+
+You may add elements to a set with the `add` method:
+
+You may also remove objects with the `discard` method:
+
+```{pyodide}
+#| autorun: false
+fruits.discard("Orange")
+```
+
+You may also apply a variety of operation to sets checking their *intersection*, *union* or *difference*.
+
+```{pyodide}
+#| autorun: false
+A = {1, 3, 5}
+B = {1, 2, 3}
+```
+
+```{pyodide}
+#| autorun: false
+#intersection
+A & B
+```
+
+```{pyodide}
+#| autorun: false
+#symmetric difference
+B^A
+```
+
+```{pyodide}
+#| autorun: false
+# union
+A | B
+```
+
+
+## Quiz: Data Types in Python
+
+Let's test your understanding of Python data types!
+
+::: {.quiz}
+
+1. What is the output of the following code?
+   ```python
+   a = [1, 2, 3]
+   b = (1, 2, 3)
+   print(type(a), type(b))
+   ```
+
+   - [ ] `<class 'list'> <class 'list'>`
+   - [ ] `<class 'list'> <class 'tuple'>`
+   - [ ] `<class 'tuple'> <class 'list'>`
+   - [ ] `<class 'tuple'> <class 'tuple'>`
+
+2. Which of the following is mutable?
+
+   - [ ] List
+   - [ ] Tuple
+   - [ ] String
+   - [ ] Integer
+
+3. What will be the output of this code?
+   ```python
+   my_dict = {'a': 1, 'b': 2, 'c': 3}
+   print(my_dict['b'])
+   ```
+
+   - [ ] a
+   - [ ] 2
+   - [ ] b
+   - [ ] KeyError
+
+4. How do you create an empty set in Python?
+
+   - [ ] `{}`
+   - [ ] `[]`
+   - [ ] `set()`
+   - [ ] `()`
+
+5. What is the result of `3 + 4.0`?
+
+   - [ ] 7
+   - [ ] 7.0
+   - [ ] '7.0'
+   - [ ] TypeError
+
+:::
+
+
+::: {.callout-tip collapse="true"}
+## Click to reveal answers
+
+1. `<class 'list'> <class 'tuple'>`
+2. List
+3. 2
+4. `set()`
+5. 7.0
+:::

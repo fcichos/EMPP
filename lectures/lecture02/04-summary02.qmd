@@ -1,0 +1,102 @@
+
+## Matplotlib Plotting Cheat Sheet
+
+::: {.callout-tip collapse="true"}
+## Click to expand Matplotlib Plotting Cheat Sheet
+
+## Basic Setup
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.figure(figsize=(width, height))
+```
+
+## Line Plots
+```python
+plt.plot(x, y, 'bo-')  # Blue line with circle markers
+plt.xlabel('X-axis label')
+plt.ylabel('Y-axis label')
+plt.title('Plot Title')
+plt.legend(['Label'], loc='best')
+```
+
+## Scatter Plots
+```python
+plt.scatter(x, y, marker='o')
+```
+
+## Histograms
+```python
+plt.hist(data, bins=10, density=True)
+```
+
+## Combined Plots
+```python
+plt.plot(x, y1, 'b-', label='Line 1')
+plt.scatter(x, y2, color='r', label='Scatter')
+plt.legend()
+```
+
+## Saving Figures
+```python
+plt.savefig('filename.pdf')
+```
+
+## Error Bars
+```python
+plt.errorbar(x, y, yerr=yerror, fmt='ro', ecolor='black')
+```
+
+## Setting Plot Limits
+```python
+plt.xlim(xmin, xmax)
+plt.ylim(ymin, ymax)
+```
+
+## Masked Arrays
+```python
+masked_data = np.ma.masked_where(condition, data)
+```
+
+## Logarithmic Plots
+```python
+plt.semilogx(x, y)  # Log scale on x-axis
+plt.semilogy(x, y)  # Log scale on y-axis
+plt.loglog(x, y)    # Log scale on both axes
+```
+
+## Multiple Subplots
+```python
+plt.subplot(rows, cols, plot_number)
+```
+
+## Contour Plots
+```python
+plt.contour(X, Y, Z, levels)
+plt.contourf(X, Y, Z, levels)  # Filled contour plot
+```
+
+## Image Plots
+```python
+plt.imshow(data, extent=[xmin, xmax, ymin, ymax], cmap='colormap')
+```
+
+## 3D Plots
+```python
+from mpl_toolkits import mplot3d
+ax = plt.axes(projection='3d')
+ax.plot3D(x, y, z)
+ax.scatter3D(x, y, z)
+ax.plot_surface(X, Y, Z)
+```
+
+## Customization
+```python
+plt.rcParams.update({'font.size': 12, 'lines.linewidth': 2})
+plt.tight_layout()
+```
+
+Remember to always call `plt.show()` to display your plots!
+
+:::

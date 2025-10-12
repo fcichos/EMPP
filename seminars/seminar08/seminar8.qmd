@@ -1,0 +1,454 @@
+---
+title: Seminar Coding Exercises 2
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 12,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+
+Building on our previous coding exercise, we have prepared another set of problems to further develop your programming skills. Like before, these exercises apply physics concepts and include solutions you can check after attempting them yourself.
+
+Each exercise includes a time estimate to help you plan your work. These estimates are approximate and particularly relevant for students who are still new to programming and Python.
+
+As in the previous seminar, you will choose and solve two of the five exercises below. One student will present their solution to each chosen exercise, followed by a group discussion of the approach and implementation.
+
+
+
+
+::: {.callout-note}
+### Example 1: Free Fall Motion
+Write a program that calculates and visualizes the position and velocity of a freely falling object at different times. This exercise will help you understand how to implement basic physics equations in Python and create meaningful visualizations of the results.
+
+Use the equations of motion for an object under constant acceleration (gravity):
+
+- $y(t) = y_0 + v_0t - \frac{1}{2}gt^2$
+- $v(t) = v_0 - gt$
+
+Where $g = 9.81$ m/s² (acceleration due to gravity), initial height $y_0 = 100$m, and initial velocity $v_0 = 0$ m/s.
+Calculate values for the first 5 seconds in 0.5s intervals and create plots showing how both position and velocity change over time.
+
+*Time estimate: 15-20 minutes*
+
+```{pyodide}
+#| exercise: ex_1
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+g = 9.81    # acceleration due to gravity (m/s²)
+y0 = 100    # initial height (m)
+v0 = 0      # initial velocity (m/s)
+
+# Create time array
+# Calculate position and velocity arrays
+# Create plots
+
+____
+```
+::: {.hint exercise="ex_1"}
+::: { .callout-tip collapse="false"}
+You'll need to:
+
+1. Create a time array using np.arange() from 0 to 5s with 0.5s steps
+2. Use the equations to calculate position and velocity arrays
+3. Create a figure with two subplots:
+   - Left subplot: Position vs Time
+   - Right subplot: Velocity vs Time
+4. Label your axes and add titles
+:::
+:::
+
+::: {.solution exercise="ex_1"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+import numpy as np
+import matplotlib.pyplot as plt
+
+g = 9.81
+y0 = 100
+v0 = 0
+
+t = np.arange(0, 5.1, 0.5)
+y = y0 + v0*t - 0.5*g*t**2
+v = v0 - g*t
+
+plt.figure(figsize=(10, 4))
+
+plt.subplot(1, 2, 1)
+plt.plot(t, y)
+plt.xlabel('Time (s)')
+plt.ylabel('Position (m)')
+plt.title('Position vs Time')
+
+plt.subplot(1, 2, 2)
+plt.plot(t, v)
+plt.xlabel('Time (s)')
+plt.ylabel('Velocity (m/s)')
+plt.title('Velocity vs Time')
+
+plt.tight_layout()
+plt.show()
+```
+:::
+:::
+:::
+
+::: {.callout-note}
+### Example 2: Projectile Range Calculator
+Write a function that calculates the range of a projectile given its initial velocity and launch angle. This exercise will help you understand how to implement trigonometric functions and explore how launch angle affects projectile motion.
+
+Use:
+
+- Range = $(v_0^2 \sin(2\theta)) / g$
+
+where $v_0$ is the initial velocity and $\theta$ is the launch angle.
+
+Test the function for angles between 0° and 90° in steps of 15° and determine which angle gives the maximum range. Consider how this relates to the theoretical maximum at 45°.
+
+*Time estimate: 15-20 minutes*
+
+```{pyodide}
+#| exercise: ex_2
+
+import numpy as np
+
+# Define function to calculate range
+# Calculate and display ranges for different angles
+# Find the angle that gives maximum range
+
+____
+```
+
+::: {.hint exercise="ex_2"}
+::: { .callout-tip collapse="false"}
+You'll need to:
+
+1. Define a function that takes initial velocity ($v_0$) and angle ($\theta$) as inputs
+2. Convert the angle from degrees to radians using $\text{np.deg2rad}()$
+3. Use the range equation: $\frac{v_0^2 \sin(2\theta)}{g}$
+4. Test the function with angles from $0^\circ$ to $90^\circ$ in steps of $15^\circ$
+5. Print the range for each angle
+6. Calculate and print the maximum range at $45^\circ$
+:::
+:::
+
+::: {.solution exercise="ex_2"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+import numpy as np
+
+def calculate_range(v0, angle_deg):
+    g = 9.81
+    angle_rad = np.deg2rad(angle_deg)
+    range_val = (v0**2 * np.sin(2*angle_rad)) / g
+    return range_val
+
+v0 = 20  # initial velocity in m/s
+angles = np.arange(0, 91, 15)
+
+for angle in angles:
+    range_val = calculate_range(v0, angle)
+    print(f"Angle: {angle}°, Range: {range_val:.2f} m")
+
+# Find maximum range
+max_range = calculate_range(v0, 45)
+print(f"\nMaximum range occurs at 45° and is {max_range:.2f} m")
+```
+:::
+:::
+:::
+
+::: {.callout-note}
+### Example 3: Simple Harmonic Motion
+Calculate and plot the position of a mass on a spring over time using:
+
+- $x(t) = A\cos(\omega t)$
+
+where $A$ is amplitude and $\omega$ is angular frequency ($\omega = \sqrt{k/m}$). Plot the position over several oscillation periods to visualize the periodic motion. Use appropriate axis labels and title to clearly show what is being plotted.
+
+*Time estimate: 15-20 minutes*
+
+```{pyodide}
+#| exercise: ex_3
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+k = 10      # spring constant (N/m)
+m = 1       # mass (kg)
+A = 0.5     # amplitude (m)
+
+# Calculate angular frequency
+# Create time array and position array
+# Plot the motion
+
+____
+```
+
+::: {.hint exercise="ex_3"}
+::: { .callout-note collapse="false"}
+You'll need to:
+
+1. Calculate omega using $\omega = \sqrt{k/m}$
+2. Create a time array using np.linspace() from 0 to 10s with 1000 points
+3. Calculate position using $x(t) = A\cos(\omega t)$
+4. Create a plot with:
+   - Position vs Time
+   - Appropriate axis labels
+   - Title
+   - Grid
+:::
+:::
+
+::: {.solution exercise="ex_3"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+import numpy as np
+import matplotlib.pyplot as plt
+
+k = 10
+m = 1
+A = 0.5
+
+omega = np.sqrt(k/m)
+t = np.linspace(0, 10, 1000)
+x = A * np.cos(omega * t)
+
+plt.figure(figsize=(8, 4))
+plt.plot(t, x)
+plt.xlabel('Time (s)')
+plt.ylabel('Position (m)')
+plt.title('Simple Harmonic Motion')
+plt.grid(True)
+plt.show()
+```
+:::
+:::
+:::
+
+
+::: {.callout-note}
+### Example 4: Work and Energy
+Calculate the work done by a variable force $F(x) = kx^2$ over a distance.
+Use numerical integration (simple Riemann sum) to find the work:
+
+- $W = \int_{x_1}^{x_2} F(x)dx$
+
+Create a function that takes the force constant k, start position x1, end position x2, and number of integration steps as inputs. Calculate the work done by breaking the interval into small steps and summing the force times the distance for each step.
+
+*Time estimate: 15-20 minutes*
+
+```{pyodide}
+#| exercise: ex_4
+
+import numpy as np
+
+# Define force function
+def force(x, k):
+    return k * x**2
+
+# Calculate work using numerical integration
+def calculate_work(x1, x2, n_steps, k):
+    # Create array of x values
+    # Calculate force at each point
+    # Calculate work using Riemann sum
+
+    ____
+
+# Test the function
+k = 2  # force constant
+x1 = 0  # start position
+x2 = 3  # end position
+n_steps = 1000  # number of steps for integration
+
+work = calculate_work(x1, x2, n_steps, k)
+print(f"Work done = {work:.2f} Joules")
+```
+
+::: {.hint exercise="ex_4"}
+::: { .callout-tip collapse="false"}
+You'll need to:
+
+1. Create a function that takes x and k as inputs to calculate force
+2. Create a function that:
+   - Creates an array of x values using np.linspace()
+   - Calculates step size dx
+   - Calculates force at each x value
+   - Multiplies force by dx and sums to get total work
+3. Test the function with sample values and display result
+:::
+:::
+
+::: {.solution exercise="ex_4"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+import numpy as np
+
+def force(x, k):
+    return k * x**2
+
+def calculate_work(x1, x2, n_steps, k):
+    x = np.linspace(x1, x2, n_steps)
+    dx = (x2 - x1) / (n_steps - 1)
+    f = force(x, k)
+    work = np.sum(f * dx)
+    return work
+
+k = 2
+x1 = 0
+x2 = 3
+n_steps = 1000
+
+work = calculate_work(x1, x2, n_steps, k)
+print(f"Work done = {work:.2f} Joules")
+```
+:::
+:::
+:::
+
+
+::: {.callout-note}
+### Example 5: Elastic Collision Analysis
+Write a program that analyzes an elastic collision between two objects. Given initial velocities and masses, calculate final velocities using conservation of momentum and kinetic energy:
+
+- Conservation of Momentum: $m_1v_1 + m_2v_2 = m_1v_1' + m_2v_2'$
+- Conservation of Energy: $\frac{1}{2}m_1v_1^2 + \frac{1}{2}m_2v_2^2 = \frac{1}{2}m_1v_1'^2 + \frac{1}{2}m_2v_2'^2$
+
+Write a function that takes masses and initial velocities as inputs and returns the final velocities. Then test the function with different combinations of masses and velocities to verify that both momentum and energy are conserved in each case.
+
+*Time estimate: 20-25 minutes*
+
+```{pyodide}
+#| exercise: ex_5
+
+import numpy as np
+
+def calculate_final_velocities(m1, m2, v1_initial, v2_initial):
+    """
+    Calculate final velocities after elastic collision
+    Input: masses (m1, m2) and initial velocities (v1, v2)
+    Output: final velocities (v1_final, v2_final)
+    """
+    # Calculate final velocities using conservation laws
+    # v1_final = ...
+    # v2_final = ...
+
+    ____
+
+    return v1_final, v2_final
+
+# Test cases
+test_cases = [
+    # m1, m2, v1, v2
+    (1.0, 1.0, 2.0, -1.0),  # Equal masses
+    (2.0, 1.0, 1.0, 0.0),   # Unequal masses
+    (1.0, 2.0, 0.0, 1.0)    # Initially stationary object
+]
+
+# Run and display results for each test case
+____
+```
+
+::: {.hint exercise="ex_5"}
+::: { .callout-tip collapse="false"}
+You'll need to:
+
+1. Use the elastic collision equations:
+   - $v_1' = \frac{m_1 - m_2}{m_1 + m_2}v_1 + \frac{2m_2}{m_1 + m_2}v_2$
+   - $v_2' = \frac{2m_1}{m_1 + m_2}v_1 + \frac{m_2 - m_1}{m_1 + m_2}v_2$
+2. Create a function that:
+   - Takes masses and initial velocities as input
+   - Returns final velocities using the equations
+3. For each test case:
+   - Calculate final velocities
+   - Verify momentum conservation
+   - Verify energy conservation
+4. Print results showing:
+   - Initial conditions
+   - Final velocities
+   - Conservation of momentum and energy
+:::
+:::
+
+
+::: {.solution exercise="ex_5"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+import numpy as np
+
+def calculate_final_velocities(m1, m2, v1_initial, v2_initial):
+    """
+    Calculate final velocities after elastic collision
+    """
+    v1_final = (m1 - m2)/(m1 + m2) * v1_initial + (2*m2)/(m1 + m2) * v2_initial
+    v2_final = (2*m1)/(m1 + m2) * v1_initial + (m2 - m1)/(m1 + m2) * v2_initial
+
+    return v1_final, v2_final
+
+# Test cases
+test_cases = [
+    (1.0, 1.0, 2.0, -1.0),
+    (2.0, 1.0, 1.0, 0.0),
+    (1.0, 2.0, 0.0, 1.0)
+]
+
+# Run test cases
+for i, (m1, m2, v1, v2) in enumerate(test_cases, 1):
+    v1_final, v2_final = calculate_final_velocities(m1, m2, v1, v2)
+
+    # Calculate and verify momentum conservation
+    p_initial = m1*v1 + m2*v2
+    p_final = m1*v1_final + m2*v2_final
+
+    # Calculate and verify energy conservation
+    E_initial = 0.5*m1*v1**2 + 0.5*m2*v2**2
+    E_final = 0.5*m1*v1_final**2 + 0.5*m2*v2_final**2
+
+    print(f"\nTest Case {i}:")
+    print(f"Masses: m1 = {m1}kg, m2 = {m2}kg")
+    print(f"Initial velocities: v1 = {v1}m/s, v2 = {v2}m/s")
+    print(f"Final velocities: v1' = {v1_final:.2f}m/s, v2' = {v2_final:.2f}m/s")
+    print(f"Initial momentum: {p_initial:.2f} kg⋅m/s")
+    print(f"Final momentum: {p_final:.2f} kg⋅m/s")
+    print(f"Initial energy: {E_initial:.2f} J")
+    print(f"Final energy: {E_final:.2f} J")
+```
+:::
+:::
+:::

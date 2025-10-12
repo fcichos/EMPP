@@ -1,0 +1,63 @@
+project:
+  type: book
+  output-dir: pdf_output
+execute:
+  echo: false # This will hide the code
+  output: true # This will show the output
+  freeze: false # This will freeze the output
+book:
+  title: "Introduction to Computer-based Physical Modeling"
+  author:
+    name: "Frank Cichos"
+    email: cichos@physik.uni-leipzig.de
+    affiliation:
+      - name: Leipzig University
+        city: Leipzig
+        url: http://www.uni-leipzig.de/~mona
+  date: "8/14/2024"
+  chapters:
+    - index.qmd
+    - part: "Lecture 1"
+      chapters:
+        - lectures/lecture01/01-lecture01.qmd
+        - lectures/lecture01/02-lecture01.qmd
+    - part: "Lecture 2"
+      chapters:
+        - lectures/lecture02/3_datatypes.qmd
+    - part: "Lecture 3"
+      chapters:
+        - lectures/lecture02/01-lecture02.qmd
+        - lectures/lecture02/02-lecture02.qmd
+    - part: "Lecture 4"
+      chapters:
+        - lectures/lecture03/1_numpy.qmd
+        - lectures/lecture04/04-plotting.qmd
+    - part: "Lecture 5"
+      chapters:
+        - lectures/lecture05/1_classes.qmd
+        - lectures/lecture05/2_brownian_motion.qmd
+    - part: "Lecture 6"
+      chapters:
+        - lectures/lecture06/1_input_output.qmd
+        - lectures/lecture06/1_curve_fitting.qmd
+    - part: "Lecture 7"
+      chapters:
+        - lectures/lecture06/1_curve_fitting.qmd
+        - lectures/lecture07/1_differentiation.qmd
+    - part: "Lecture 8"
+      chapters:
+        - lectures/lecture08/2_integration.qmd
+        - lectures/lecture08/3_solving_ODEs.qmd
+format:
+  pdf:
+    documentclass: book
+    papersize: a4
+    toc: true
+    number-sections: true
+    number-depth: 2
+    colorlinks: true
+    geometry:
+      - top=30mm
+      - left=20mm
+      - right=20mm
+      - bottom=30mm

@@ -1,0 +1,145 @@
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import sparse
+
+# Parameters
+L = 1.0        # length of string
+T = 2.0        # total time
+c = 1.0        # wave speed
+nx = 100       # spatial points
+nt = 1000      # time points
+dx = L/nx
+dt = T/nt
+
+# Check stability (CFL condition)
+if c*dt/dx > 1:
+    print("Warning: Solution may be unstable!")
+
+# Initialize arrays
+x = np.linspace(0, L, nx)
+t = np.linspace(0, T, nt)
+
+# Initial conditions (for example, a Gaussian pulse)
+u = np.exp(-(x-L/2)**2/0.01)  # initial displacement
+v = np.zeros_like(x)           # initial velocity
+
+# Create matrices for spatial derivatives
+diagonals = [[1], [-2], [1]]
+offsets = [-1, 0, 1]
+D2 = sparse.diags(diagonals, offsets, shape=(nx-2, nx-2))/(dx**2)
+
+# Time stepping matrices
+I = sparse.eye(nx-2)
+A = I - (c*dt/2)**2 * D2
+B = 2*I + (c*dt)**2 * D2
+
+# Arrays to store solution
+u_history = np.zeros((nt, nx))
+u_history[0, 1:-1] = u[1:-1]
+
+# First time step (using forward difference)
+u_history[1, 1:-1] = u[1:-1] + dt*v[1:-1] + (c*dt)**2/2 * D2.dot(u[1:-1])
+
+# Main time-stepping loop
+for n in range(1, nt-1):
+    # Solve for next time step
+    rhs = B.dot(u_history[n, 1:-1]) - A.dot(u_history[n-1, 1:-1])
+    u_history[n+1, 1:-1] = sparse.linalg.spsolve(A, rhs)
+
+# Plot results
+plt.figure(figsize=(10, 6))
+plt.imshow(u_history, aspect='auto', extent=[0, L, T, 0])
+plt.colorbar(label='Displacement')
+plt.xlabel('Position')
+plt.ylabel('Time')
+plt.title('Wave Equation Solution')
+plt.show()
+```
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.sparse import diags
+from scipy.sparse.linalg import solve
+
+def crank_nicolson_wave(L=1.0, T=1.0, nx=100, nt=1000, c=1.0):
+    """
+    Solve the wave equation using Crank-Nicolson scheme
+    ∂²u/∂t² = c²(∂²u/∂x²)
+
+    Parameters:
+    L: length of spatial domain
+    T: total time
+    nx: number of spatial points
+    nt: number of time points
+    c: wave speed
+    """
+
+    # Set up grid
+    dx = L/nx
+    dt = T/nt
+    x = np.linspace(0, L, nx+1)
+    t = np.linspace(0, T, nt+1)
+
+    # Compute stability parameter
+    r = (c*dt/dx)**2
+
+    # Initialize solution array
+    u = np.zeros((nt+1, nx+1))
+
+    # Initial condition (plane wave)
+    k = 2*np.pi/L  # wavenumber
+    u[0,:] = np.sin(k*x)  # Initial displacement
+
+    # Initial velocity
+    u[1,:] = u[0,:] + c*k*np.cos(k*x)*dt
+
+    # Set up matrices for implicit scheme
+    main_diag = 2*(1-r)*np.ones(nx-1)
+    off_diag = r*np.ones(nx-2)
+
+    A = diags([off_diag, main_diag, off_diag], [-1, 0, 1], format='csc')
+
+    # Time stepping
+    for n in range(1, nt):
+        # Right hand side
+        b = 2*u[n,1:-1] - u[n-1,1:-1]
+
+        # Solve system
+        u[n+1,1:-1] = solve(A, b)
+
+        # Apply boundary conditions (periodic)
+        u[n+1,0] = u[n+1,-2]
+        u[n+1,-1] = u[n+1,1]
+
+    return x, t, u
+
+# Run simulation
+L = 1.0  # Length of domain
+T = 1.0  # Total time
+nx = 100  # Number of spatial points
+nt = 1000  # Number of time points
+c = 1.0   # Wave speed
+
+x, t, u = crank_nicolson_wave(L, T, nx, nt, c)
+
+# Plot results at specific times
+plt.figure(figsize=(12, 8))
+times = [0, 0.25, 0.5, 0.75, 1.0]  # Times at which to show solution
+for time in times:
+    time_index = int(time * nt/T)
+    plt.plot(x, u[time_index,:], label=f't = {time:.2f}')
+
+plt.xlabel('Position (z)')
+plt.ylabel('Electric field amplitude (E)')
+plt.title('Electromagnetic Wave Propagation')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Optional: Print maximum amplitude at each time for stability check
+print("\nMaximum amplitudes at selected times:")
+for time in times:
+    time_index = int(time * nt/T)
+    print(f"t = {time:.2f}: {np.max(np.abs(u[time_index,:])):.6f}")
+```

@@ -1,0 +1,53 @@
+---
+title: Input and output
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  packages:
+    - numpy
+    - matplotlib
+    - ipywidgets
+---
+
+
+To try out all of the functions of todays notebook, we will need to use the embedded JupyterLite notebook. To use the notebook, click ob `File -> Open from URL` and paste the following link into the input field:
+
+
+```
+https://raw.githubusercontent.com/fcichos/EMPP24/refs/heads/main/seminars/1_input_output.ipynb
+```
+
+To download the data files, click ob `File -> Open from URL` and paste the following links into the input field:
+
+```
+https://raw.githubusercontent.com/fcichos/EMPP24/refs/heads/main/seminars/MyData.txt
+```
+
+```
+https://raw.githubusercontent.com/fcichos/EMPP24/refs/heads/main/seminars/2018-04-11_sds011_sensor_12253.csv
+```
+
+```
+https://raw.githubusercontent.com/fcichos/EMPP24/refs/heads/main/seminars/2018-04-12_sds011_sensor_12253.csv
+```
+
+You should then have 3 data files and one notebook. You can then go into fullscreen mode.
+
+```{=html}
+<button onclick="openFullscreen()">Full Screen</button>
+   <iframe id="myIframe" src="https://jupyterlite.github.io/demo/" width="100%" height="600px" allowfullscreen></iframe>
+   <script>
+   function openFullscreen() {
+     var iframe = document.getElementById("myIframe");
+     if (iframe.requestFullscreen) {
+       iframe.requestFullscreen();
+     } else if (iframe.webkitRequestFullscreen) { /* Safari */
+       iframe.webkitRequestFullscreen();
+     } else if (iframe.msRequestFullscreen) { /* IE11 */
+       iframe.msRequestFullscreen();
+     }
+   }
+   </script>
+```

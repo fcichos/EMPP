@@ -1,0 +1,290 @@
+---
+title: Repetition Meshgrid and Vector Fields
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 12,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+This time, the exercises are a bit more complicated and perhaps only for the more advanced. You may, however, do some training with the easier repetitions before and come back and test yourself. We will focus on creating visualizations of vector fields using meshgrids and quiver plots. Vector fields are used to represent the spatial distribution of physical quantities like electric fields, fluid velocities, or magnetic fields. By visualizing vector fields, we can gain insights into the behavior of these quantities in different regions of space.
+
+**Note that matplotlib and numpy are already imported and may be used with `plt` and `np` respectively.**
+
+::: {.callout-note}
+### Self-Exercise 1: Electric Field of a Point Charge
+Create a 2D vector field plot of the electric field from a point charge located at the origin. The electric field vectors should point radially outward from the charge, with magnitude proportional to 1/r². This visualization helps understand the spatial distribution of electric fields.
+
+The electric field is given by: $\vec{E}(\vec{r}) = \frac{q}{4\pi\epsilon_0} \frac{\vec{r}}{r^3}$
+
+where:
+
+- $\vec{E}$ is the electric field vector
+- $q$ is the charge
+- $\epsilon_0$ is the permittivity of free space
+- $\vec{r}$ is the position vector
+- $r$ is the distance from the charge
+
+Look up the `plt.quiver()` function in the [Matplotlib documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.quiver.html) for plotting vector fields or check out the hint.
+
+
+```{pyodide}
+#| exercise: ex_1
+
+# Create coordinate grid
+x = np.linspace(-2, 2, 20)
+y = np.linspace(-2, 2, 20)
+
+# Create meshgrid and calculate field components
+____
+
+# Plot vector field
+____
+```
+
+::: {.hint exercise="ex_1"}
+1. Use `np.meshgrid(x, y)` to create X, Y grids
+2. Calculate R = sqrt(X² + Y²) for distance
+3. Calculate Ex = X/R³ and Ey = Y/R³
+4. Use `plt.quiver(X, Y, Ex, Ey)` for the vector field
+5. Remember to avoid division by zero at the origin
+:::
+
+::: {.solution exercise="ex_1"}
+::: {.callout-note collapse="false"}
+## Solution
+```{pyodide}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Create coordinate grid
+x = np.linspace(-2, 2, 20)
+y = np.linspace(-2, 2, 20)
+
+# Create meshgrid
+X, Y = np.meshgrid(x, y)
+
+# Calculate distance from origin (add small number to avoid division by zero)
+R = np.sqrt(X**2 + Y**2 + 1e-16)
+
+# Calculate field components
+Ex = X/R**3
+Ey = Y/R**3
+
+# Create plot
+plt.figure(figsize=get_size(8, 8))
+plt.quiver(X, Y, Ex, Ey)
+plt.xlabel('x position (m)')
+plt.ylabel('y position (m)')
+plt.axis('equal')
+plt.tight_layout()
+plt.show()
+
+# Optional: Add magnitude plot
+plt.figure(figsize=get_size(8, 8))
+E_mag = np.sqrt(Ex**2 + Ey**2)
+plt.contourf(X, Y, E_mag)
+plt.colorbar(label='Field Magnitude')
+plt.xlabel('x position (m)')
+plt.ylabel('y position (m)')
+plt.axis('equal')
+plt.show()
+```
+:::
+:::
+:::
+
+
+
+::: {.callout-note}
+### Self-Exercise 2: Standing Wave Pattern
+Visualize a 2D standing wave pattern that might occur in a square membrane (like a drum head). This type of visualization is useful in understanding wave modes in musical instruments or quantum mechanical systems.
+
+The wave function is given by: $\psi(x,y,t) = \sin(mx)\cos(ny)$
+
+where:
+- $m, n$ are mode numbers (integers)
+- $x, y$ are positions on the membrane
+- $\psi$ is the displacement amplitude
+
+```{pyodide}
+#| exercise: ex_2
+
+# Create coordinate grid
+x = np.linspace(-np.pi, np.pi, 100)
+y = np.linspace(-np.pi, np.pi, 100)
+
+# Create meshgrid and calculate wave pattern
+____
+
+# Create visualization
+____
+```
+
+::: {.hint exercise="ex_2"}
+1. Use `np.meshgrid(x, y)` to create X, Y grids
+2. Try different mode numbers (m, n) for different patterns
+3. Use `plt.contourf()` for filled contours
+4. Add a colorbar to show amplitude scale
+5. Look up the matplotlib plotting of surfaces with
+  `ax = plt.subplot(122, projection='3d')`
+  `surf = ax.plot_surface()`
+:::
+
+::: {.solution exercise="ex_2"}
+::: {.callout-note collapse="false"}
+## Solution
+```{pyodide}
+
+
+x = np.linspace(-np.pi, np.pi, 100)
+y = np.linspace(-np.pi, np.pi, 100)
+
+
+X, Y = np.meshgrid(x, y)
+
+# Set mode numbers
+m, n = 2, 3
+
+psi = np.sin(m*X) * np.cos(n*Y)
+
+plt.figure(figsize=get_size(16, 8))
+
+plt.subplot(121)
+plt.contourf(X, Y, psi, levels=20, cmap='RdBu')
+plt.colorbar(label='Amplitude')
+plt.xlabel('x position')
+plt.ylabel('y position')
+plt.axis('equal')
+
+
+ax = plt.subplot(122, projection='3d')
+surf = ax.plot_surface(X, Y, psi, cmap='RdBu')
+#plt.colorbar(surf, label='Amplitude')
+ax.set_xlabel('x position')
+ax.set_ylabel('y position')
+ax.set_zlabel('Amplitude')
+
+plt.tight_layout()
+plt.show()
+```
+:::
+:::
+:::
+
+::: {.callout-note}
+### Self-Exercise 3: Quantum Wave Packet
+Create a 3D visualization of a Gaussian wave packet, which represents a localized quantum particle. This type of visualization is fundamental in understanding quantum mechanical states and probability distributions.
+
+The wave function is given by: $\psi(x,y) = A\exp\left(-\frac{(x-x_0)^2 + (y-y_0)^2}{2\sigma^2}\right)$
+
+where:
+- $A$ is the amplitude
+- $(x_0, y_0)$ is the center position
+- $\sigma$ is the width of the packet
+
+```{pyodide}
+#| exercise: ex_3
+
+
+# Create coordinate grid
+x = np.linspace(-5, 5, 100)
+y = np.linspace(-5, 5, 100)
+
+# Create meshgrid and calculate wave function
+____
+
+# Create 3D visualization
+____
+```
+
+::: {.hint exercise="ex_3"}
+1. Use `np.meshgrid(x, y)` to create X, Y grids
+2. Calculate ψ using the Gaussian formula
+3. Create both a 3D surface plot and a 2D probability density plot
+4. Use as the probability density is |ψ|²
+5. Look up the matplotlib plotting of surfaces with
+  `ax = plt.subplot(133, projection='3d')`
+  `surf = ax.plot_surface(X, Y, prob_density, cmap='viridis')`
+:::
+
+::: {.solution exercise="ex_3"}
+::: {.callout-note collapse="false"}
+## Solution
+```{pyodide}
+
+x = np.linspace(-5, 5, 100)
+y = np.linspace(-5, 5, 100)
+
+X, Y = np.meshgrid(x, y)
+
+x0, y0 = 1.0, 0.0  # center position
+sigma = 1.0  # width
+A = 1.0  # amplitude
+
+psi = A * np.exp(-((X-x0)**2 + (Y-y0)**2)/(2*sigma**2))
+
+prob_density = np.abs(psi)**2
+
+plt.figure(figsize=get_size(15, 5))
+
+# Wave function amplitude
+plt.subplot(131)
+plt.contourf(X, Y, np.real(psi), levels=20, cmap='RdBu')
+plt.xlabel('x position')
+plt.ylabel('y position')
+plt.title('Wave Function')
+plt.axis('equal')
+
+plt.subplot(132)
+plt.contourf(X, Y, prob_density, levels=20, cmap='viridis')
+plt.xlabel('x position')
+plt.ylabel('y position')
+plt.title('Probability Density')
+plt.axis('equal')
+
+# 3D surface plot
+ax = plt.subplot(133, projection='3d')
+surf = ax.plot_surface(X, Y, prob_density, cmap='viridis')
+ax.set_xlabel('x position')
+ax.set_ylabel('y position')
+ax.set_zlabel('Probability Density')
+ax.set_title('3D View')
+
+plt.tight_layout()
+plt.show()
+```
+:::
+:::
+:::

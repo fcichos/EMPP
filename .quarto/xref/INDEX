@@ -1,94 +1,385 @@
 {
   "index.qmd": {
-    "index.html": "2c52db27",
-    "01-lecture01.ipynb": "f5b02a55"
-  },
-  "intro.qmd": {
-    "intro.html": "2120c856"
-  },
-  "summary.qmd": {
-    "summary.html": "3832d5de"
-  },
-  "references.qmd": {
-    "references.html": "e7d87cb8"
-  },
-  "lectures/lecture01/intro.qmd": {
-    "intro.html": "77282e88"
-  },
-  "lectures/lecture02/01-python.qmd": {
-    "01-python.html": "75f55550"
-  },
-  "lectures/lecture01/01-intro.qmd": {
-    "01-intro.html": "f4586578"
-  },
-  "lectures/lecture03/01-lecture03.qmd": {
-    "01-lecture03.html": "eaa99b70"
-  },
-  "lectures/lecture04/01-lecture04.qmd": {
-    "01-lecture04.html": "3a73a5e8"
-  },
-  "lectures/lecture05/01-lecture05.qmd": {
-    "01-lecture05.html": "fb2fbcf9"
-  },
-  "lectures/lecture06/01-lecture06.qmd": {
-    "01-lecture06.html": "da7ee6a0"
-  },
-  "lectures/lecture07/01-lecture07.qmd": {
-    "01-lecture07.html": "86d8c2ea"
-  },
-  "lectures/lecture08/01-lecture08.qmd": {
-    "01-lecture08.html": "b610f078"
-  },
-  "lectures/lecture09/01-lecture09.qmd": {
-    "01-lecture09.html": "9e5ff60d"
-  },
-  "lectures/lecture10/01-lecture10.qmd": {
-    "01-lecture10.html": "f9b2e5a2"
-  },
-  "lectures/lecture11/01-lecture11.qmd": {
-    "01-lecture11.html": "d2bc78b6"
-  },
-  "lectures/lecture12/01-lecture12.qmd": {
-    "01-lecture12.html": "a6384445"
+    "index.html": "ff518dd3"
   },
   "lectures/lecture01/01-lecture01.qmd": {
-    "01-lecture01.html": "c1878c5f",
-    "01-lecture01.ipynb": "fa560433"
+    "01-lecture01.html": "3a37b0ed"
+  },
+  "lectures/lecture01/02-lecture01.qmd": {
+    "02-lecture01.html": "c49524bc"
+  },
+  "lectures/lecture02/3_datatypes.qmd": {
+    "3_datatypes.html": "26da68a9"
   },
   "lectures/lecture02/01-lecture02.qmd": {
-    "01-lecture02.html": "0a45e58b"
+    "01-lecture02.html": "06bf1aab"
   },
-  "lectures/lecture01/01-lecture01.md": {
-    "01-lecture01.html": "4d6f7727"
+  "lectures/lecture02/02-lecture02.qmd": {
+    "02-lecture02.html": "78d4f2ce"
   },
-  "courseinfo/course_info.qmd": {
-    "course_info.html": "1b48360d",
-    "course_info.ipynb": "7dc60493"
+  "lectures/lecture03/1_numpy.qmd": {
+    "1_numpy.html": "c7e4b8e1"
   },
-  "exam/exam.qmd": {
-    "exam.html": "838e4024",
-    "exam.ipynb": "ba4e2d36"
+  "lectures/lecture04/04-plotting.qmd": {
+    "04-plotting.html": "a9c15549"
+  },
+  "lectures/lecture05/1_classes.qmd": {
+    "1_classes.html": "a36ef1f1",
+    "1_classes.tex": "15e0eccd"
+  },
+  "lectures/lecture05/2_brownian_motion.qmd": {
+    "2_brownian_motion.html": "102e64c3"
+  },
+  "lectures/lecture06/1_input_output.qmd": {
+    "1_input_output.html": "ac8e4c5c"
+  },
+  "lectures/lecture06/1_curve_fitting.qmd": {
+    "1_curve_fitting.html": "476a5185"
+  },
+  "lectures/lecture07/1_differentiation.qmd": {
+    "1_differentiation.html": "30790a88"
+  },
+  "course-info/assignments.qmd": {
+    "assignments.html": "c1967dc1"
+  },
+  "course-info/intructors.qmd": {
+    "intructors.html": "f000b04a",
+    "intructors.tex": "8c6a3979"
+  },
+  "course-info/website.qmd": {
+    "website.html": "11df0600",
+    "website.tex": "27fe58b2"
+  },
+  "course-info/how_to_quiz.qmd": {
+    "how_to_quiz.html": "6b104015"
+  },
+  "course-info/exam.qmd": {
+    "exam.html": "edd47051"
+  },
+  "course-info/resources.qmd": {
+    "resources.html": "c2e8dd1a",
+    "resources.tex": "603f18ff"
+  },
+  "course-info/course_info.qmd": {
+    "course_info.ipynb": "91e3132c"
+  },
+  "course-info/schedule.qmd": {
+    "schedule.html": "ae09a934",
+    "schedule.tex": "9024cec7"
+  },
+  "summary.qmd": {
+    "summary.html": "ffa31d08",
+    "summary.tex": "bd4c92eb"
+  },
+  "seminars/seminar05/mdsim.qmd": {
+    "mdsim.html": "e2894c51"
+  },
+  "seminars/seminar05/md5.qmd": {
+    "md5.html": "1c0f8c3e"
+  },
+  "seminars/seminar02/MD Simulation.ipynb": {
+    "MD Simulation.html": "3e0a1d1c",
+    "MD-Simulation.tex": "1a4c6f93"
+  },
+  "seminars/seminar02/md2.qmd": {
+    "md2.html": "942ac10d"
+  },
+  "seminars/Assignment 1/Assignment 1.ipynb": {
+    "Assignment 1.html": "5661e2c4",
+    "Assignment-1.tex": "b2f08d7e"
+  },
+  "seminars/seminar03/MD Simulation.ipynb": {
+    "MD Simulation.html": "5e4e0780",
+    "MD-Simulation.tex": "5334aaf6"
+  },
+  "seminars/seminar03/md3.qmd": {
+    "md3.html": "4dab8018"
+  },
+  "seminars/seminar04/25_publication_ready_figures.qmd": {
+    "25_publication_ready_figures.html": "0fb8bcbc"
+  },
+  "seminars/seminar04/md4.qmd": {
+    "md4.html": "123e5e4f"
+  },
+  "seminars/seminar04/Report/Figures/Figure2/Figure2.ipynb": {
+    "Figure2.html": "730923cf",
+    "Figure2.tex": "939b3c87"
+  },
+  "seminars/seminar04/Report/Figures/Figure1/Figure1.ipynb": {
+    "Figure1.html": "b2ac68d1",
+    "Figure1.tex": "90533d1d"
+  },
+  "seminars/Assignment 3.ipynb": {
+    "Assignment 3.html": "db8fdaaf",
+    "Assignment-3.tex": "8b8cebb3"
   },
   "seminars/seminar01/01-seminar01.qmd": {
-    "01-seminar01.html": "d5946f4a",
-    "01-seminar01.ipynb": "82b008a6"
+    "01-seminar01.html": "196e33ef"
   },
-  "courseinfo/website.qmd": {
-    "website.html": "dba8a815"
+  "seminars/seminar01/MDSimulation.ipynb": {
+    "MDSimulation.html": "443919de",
+    "MDSimulation.tex": "c27798fb"
   },
-  "courseinfo/schedule.qmd": {
-    "schedule.html": "0cd5c635"
+  "seminars/seminar01/mdX.qmd": {
+    "mdX.html": "6d0e0547",
+    "mdX.tex": "0e7ee3a7"
   },
-  "courseinfo/resources.qmd": {
-    "resources.html": "1fe59f06"
+  "seminars/seminar01/md2.qmd": {
+    "md2.html": "1ad819c2",
+    "md2.tex": "fa15fc27"
   },
-  "tt.ipynb": {
-    "tt.html": "3cf11606"
+  "seminars/seminar01/md1.qmd": {
+    "md1.html": "0b487ada"
   },
-  "lectures/lecture02/4_modules.qmd": {
-    "4_modules.html": "08dc82f9"
+  "old_html.qmd": {
+    "old_html.html": "add0cb80",
+    "old_html.tex": "96dc1ef1"
   },
-  "courseinfo/how_to_quiz.qmd": {
-    "how_to_quiz.html": "b6ba0a54"
+  "lectures/lecture04/2_particle_in_a_box.qmd": {
+    "2_particle_in_a_box.html": "d5d7ad62"
+  },
+  "lectures/lecture04/1_quantum_mechanics.qmd": {
+    "1_quantum_mechanics.html": "9d2e79a0",
+    "1_quantum_mechanics.tex": "316c6699"
+  },
+  "lectures/lecture04/2_brownian_motion copy.qmd": {
+    "2_brownian_motion copy.html": "1055adad"
+  },
+  "lectures/lecture04/01-lecture04.qmd": {
+    "01-lecture04.html": "f4ba2940",
+    "01-lecture04.tex": "a938f30e"
+  },
+  "lectures/lecture03/01-lecture03.qmd": {
+    "01-lecture03.html": "610b090c"
+  },
+  "lectures/lecture02/04-summary02.qmd": {
+    "04-summary02.html": "a44e4fa3",
+    "04-summary02.tex": "58e99f10"
+  },
+  "lectures/lecture02/datatypes_quiz.qmd": {
+    "datatypes_quiz.html": "53a3254c"
+  },
+  "lectures/lecture02/05-lecture02.qmd": {
+    "05-lecture02.html": "08f4c545"
+  },
+  "lectures/lecture02/01-summary02.qmd": {
+    "01-summary02.html": "f172bd16",
+    "01-summary02.tex": "b0be3609"
+  },
+  "lectures/lecture05/01-lecture05.qmd": {
+    "01-lecture05.html": "0859e476",
+    "01-lecture05.tex": "5d44ab78"
+  },
+  "lectures/lecture11/01-lecture11.qmd": {
+    "01-lecture11.html": "45cafd16",
+    "01-lecture11.tex": "b299d1e6"
+  },
+  "lectures/lecture10/01-lecture10.qmd": {
+    "01-lecture10.html": "58cfa913",
+    "01-lecture10.tex": "dc9b1682"
+  },
+  "lectures/lecture07/1_curve_fitting.qmd": {
+    "1_curve_fitting.html": "47dff34d"
+  },
+  "lectures/lecture09/01-lecture09.qmd": {
+    "01-lecture09.html": "c1faa02d",
+    "01-lecture09.tex": "7cff2a2e"
+  },
+  "lectures/lecture08/2_integration.qmd": {
+    "2_integration.html": "427f0e3e"
+  },
+  "lectures/lecture08/3_solving_ODEs.qmd": {
+    "3_solving_ODEs.html": "15d7fe26"
+  },
+  "lectures/lecture06/test.qmd": {
+    "test.html": "5847387f",
+    "test.tex": "f999997b"
+  },
+  "lectures/lecture06/01-lecture06.qmd": {
+    "01-lecture06.html": "106bced4",
+    "01-lecture06.tex": "c6f0e327"
+  },
+  "lectures/lecture01/3_datatypes.qmd": {
+    "3_datatypes.html": "9ab95a4a"
+  },
+  "lectures/lecture01/02-summary01.qmd": {
+    "02-summary01.html": "ad92d353",
+    "02-summary01.tex": "853edc19"
+  },
+  "lectures/lecture12/01-lecture12.qmd": {
+    "01-lecture12.html": "f579e870",
+    "01-lecture12.tex": "03c6973c"
+  },
+  "references.qmd": {
+    "references.html": "06bf8a51",
+    "references.tex": "5454a988"
+  },
+  "Assignment 4.ipynb": {
+    "Assignment 4.html": "8929f6c3"
+  },
+  "4_solving_ODEs.qmd": {
+    "4_solving_ODEs.html": "214d6800"
+  },
+  "lectures/lecture08/4_solving_ODEs.qmd": {
+    "4_solving_ODEs.html": "d1262ebe"
+  },
+  "lectures/lecture09/2_coupled_pendula.qmd": {
+    "2_coupled_pendula.html": "7b520f53"
+  },
+  "lectures/lecture09/DampedOscillation.qmd": {
+    "DampedOscillation.html": "4849a66d"
+  },
+  "lectures/lecture09/3_fourier_analysis.qmd": {
+    "3_fourier_analysis.html": "7c5ef4ff"
+  },
+  "seminars/seminar06/25_publication_ready_figures.qmd": {
+    "25_publication_ready_figures.html": "878fbac1"
+  },
+  "seminars/seminar06/Report/Figures/Figure2/Figure2.ipynb": {
+    "Figure2.html": "f3a72aa5"
+  },
+  "seminars/seminar06/Report/Figures/Figure1/Figure1.ipynb": {
+    "Figure1.html": "8126b914"
+  },
+  "seminars/seminar06/Report/Text/paper.qmd": {
+    "paper.html": "3b06a187"
+  },
+  "seminars/seminar06/Example/main.qmd": {
+    "main.tex": "7df830ca"
+  },
+  "seminars/Assignment5.ipynb": {
+    "Assignment5.html": "00d3d890"
+  },
+  "seminars/seminar07/25_publication_ready_figures.qmd": {
+    "25_publication_ready_figures.html": "bb846ba3"
+  },
+  "seminars/seminar07/Example/main.qmd": {
+    "main.tex": "284f4a1b"
+  },
+  "seminars/seminar07/Report/Figures/Figure2/Figure2.ipynb": {
+    "Figure2.html": "c2c2277b"
+  },
+  "seminars/seminar07/Report/Figures/Figure1/Figure1.ipynb": {
+    "Figure1.html": "9da9d11c"
+  },
+  "seminars/seminar07/Report/Text/paper.qmd": {
+    "paper.html": "0c84e6ea"
+  },
+  "NiceFigures.ipynb": {
+    "NiceFigures.html": "adfe1ad0"
+  },
+  "pdf_output/Assignment 6.ipynb": {
+    "Assignment 6.html": "9936f159"
+  },
+  "seminars/seminar06/Example/data/Figure1/Figure1.ipynb": {
+    "Figure1.html": "419f54e1"
+  },
+  "lectures/lecture10/DampedOscillation.qmd": {
+    "DampedOscillation.html": "62b08988"
+  },
+  "lectures/lecture10/1_spring_pendulum.qmd": {
+    "1_spring_pendulum.html": "7bad8092"
+  },
+  "lectures/lecture10/3_diffusion_equation.qmd": {
+    "3_diffusion_equation.html": "da744242"
+  },
+  "lectures/lecture10/2_planetary_motion.qmd": {
+    "2_planetary_motion.html": "ef721431"
+  },
+  "lectures/lecture11/2_spherical_waves.qmd": {
+    "2_spherical_waves.html": "4b379df9"
+  },
+  "lectures/lecture11/3_diffusion_equation.qmd": {
+    "3_diffusion_equation.html": "be687730"
+  },
+  "lectures/lecture11/1_plane_waves.qmd": {
+    "1_plane_waves.html": "4f23bd4e"
+  },
+  "lectures/lecture11/3_huygens_principle.qmd": {
+    "3_huygens_principle.html": "bdbc120d"
+  },
+  "lectures/lecture11/1_repitition.qmd": {
+    "1_repitition.html": "0b473aba"
+  },
+  "lectures/lecture11/1_repetition.qmd": {
+    "1_repetition.html": "70b689c3"
+  },
+  "seminars/seminar8.qmd": {
+    "seminar8.html": "ea4c7783"
+  },
+  "seminars/seminar08/seminar8.qmd": {
+    "seminar8.html": "03cf0b15"
+  },
+  "seminars/seminar07/seminar7.qmd": {
+    "seminar7.html": "c06c88d8"
+  },
+  "lectures/lecture12/2_spherical_waves.qmd": {
+    "2_spherical_waves.html": "93897c2a"
+  },
+  "lectures/lecture12/3_diffusion_equation.qmd": {
+    "3_diffusion_equation.html": "04b79657"
+  },
+  "lectures/lecture12/1_plane_waves.qmd": {
+    "1_plane_waves.html": "09e45531"
+  },
+  "lectures/lecture12/3_huygens_principle.qmd": {
+    "3_huygens_principle.html": "60d3824b"
+  },
+  "lectures/lecture12/3_diffusion_equation copy.qmd": {
+    "3_diffusion_equation copy.html": "d709f680"
+  },
+  "lectures/lecture12/4_repetition.qmd": {
+    "4_repetition.html": "9d2ae79b"
+  },
+  "lectures/lecture12/wave_equation.qmd": {
+    "wave_equation.html": "e0616465"
+  },
+  "docs/course-info/course_info.ipynb": {
+    "course_info.html": "3bffe287"
+  },
+  "lectures/lecture13/2_spherical_waves.qmd": {
+    "2_spherical_waves.html": "2bbe0c9a",
+    "2_spherical_waves.tex": "71add780"
+  },
+  "lectures/lecture13/1_plane_waves.qmd": {
+    "1_plane_waves.html": "6af1d9ca",
+    "1_plane_waves.tex": "c4faf17d"
+  },
+  "lectures/lecture13/3_huygens_principle.qmd": {
+    "3_huygens_principle.html": "5b167d25",
+    "3_huygens_principle.tex": "bf39c0ff"
+  },
+  "lectures/lecture13/4_repetition.qmd": {
+    "4_repetition.html": "580a6f28"
+  },
+  "seminars/seminar05/mdsim copy.qmd": {
+    "mdsim copy.html": "84bdac86"
+  },
+  "seminars/seminar09/md_vibration.qmd": {
+    "md_vibration.html": "88d5b879"
+  },
+  "seminars/seminar09/seminar9.qmd": {
+    "seminar9.html": "18fc4ec1"
+  },
+  "seminars/seminar09/add ons.qmd": {
+    "add ons.html": "413cf92a"
+  },
+  "lectures/lecture14/3_huygens_principle.qmd": {
+    "3_huygens_principle.html": "8781df5c"
+  },
+  "seminars/seminar10/seminar10.qmd": {
+    "seminar10.html": "a86e6557"
+  },
+  "seminars/seminar10/1_deep_learning.qmd": {
+    "1_deep_learning.html": "3dd8ce93"
+  },
+  "seminars/seminar10/seminar11.qmd": {
+    "seminar11.html": "e345a7c2"
+  },
+  "lectures/lecture15/lecture15a.qmd": {
+    "lecture15a.html": "5e409107"
+  },
+  "lectures/lecture15/lecture15.qmd": {
+    "lecture15.html": "7489816f"
   }
 }

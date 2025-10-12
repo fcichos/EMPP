@@ -1,0 +1,60 @@
+---
+title: "Interactive Python Quiz"
+format: html
+---
+
+# Interactive Python Quiz with Skulpt
+
+In this quiz, you can write and execute Python code directly in your browser.
+
+## Question 1
+
+Write a function `square(n)` that returns the square of a number.
+
+```{=html}
+<!-- Include Skulpt libraries -->
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+
+<!-- Code editor -->
+<textarea id="yourcode" rows="10" cols="50">
+# Write your Python code here
+def square(n):
+    return n * n
+
+print(square(5))
+</textarea>
+<br>
+<button onclick="runit()">Run Code</button>
+<pre id="output"></pre>
+
+<!-- JavaScript functions -->
+<script>
+function outf(text) {
+    var mypre = document.getElementById("output");
+    mypre.innerHTML = mypre.innerHTML + text;
+}
+
+function runit() {
+    var prog = document.getElementById("yourcode").value;
+    var mypre = document.getElementById("output");
+    mypre.innerHTML = '';
+    Sk.configure({output:outf, read:builtinRead});
+    var myPromise = Sk.misceval.asyncToPromise(function() {
+        return Sk.importMainWithBody("<stdin>", false, prog, true);
+    });
+    myPromise.then(function(mod) {
+        console.log('success');
+    },
+    function(err) {
+        mypre.innerHTML = mypre.innerHTML + err.toString();
+    });
+}
+
+function builtinRead(x) {
+    if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+        throw "File not found: '" + x + "'";
+    return Sk.builtinFiles["files"][x];
+}
+</script>
+```

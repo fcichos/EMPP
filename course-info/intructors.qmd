@@ -1,0 +1,10 @@
+---
+title: "Instructor"
+---
+
+## Prof. Dr. Frank Cichos
+
+- Linnéstr. 5, 04103 Leipzig
+- Office: 322
+- Phone: +49 341 97 32571
+- Email: *lastname@physik.uni-leipzig.de*

@@ -1,0 +1,1031 @@
+---
+title: Solving Ordinary Differential Equations (ODEs)
+subtitle: From Basic Methods to Advanced Applications
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+## Introduction
+
+This lecture covers methods for solving ordinary differential equations (ODEs), which are fundamental to many physics problems. We'll explore different numerical approaches, from basic to more sophisticated methods.
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.sparse import diags
+from scipy.integrate import odeint
+
+# Set plotting defaults
+plt.rcParams.update({
+    'font.size': 12,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    """Convert dimensions from cm to inches"""
+    return (w/2.54, h/2.54)
+```
+
+## The Harmonic Oscillator
+
+::: {.callout-note}
+## The Classical Harmonic Oscillator
+
+The harmonic oscillator represents one of the most important physical systems, appearing in:
+- Mechanical oscillations (springs, pendulums)
+- Electrical circuits (LC circuits)
+- Quantum mechanics (quantum harmonic oscillator)
+- Molecular vibrations
+
+The equation of motion is:
+
+\begin{equation}
+\frac{d^2x}{dt^2} + \omega^2 x = 0
+\end{equation}
+
+where:
+- $x$ is the displacement
+- $t$ is time
+- $\omega = \sqrt{k/m}$ is the angular frequency
+- $k$ is the spring constant
+- $m$ is the mass
+
+Initial conditions required:
+- Initial position: $x(t=0) = x_0$
+- Initial velocity: $\dot{x}(t=0) = v_0$
+:::
+
+## Numerical Solution Methods
+
+### 1. Implicit Solution (Crank-Nicolson Method)
+
+The matrix approach transforms our second-order ODE into a system of coupled equations. This method is particularly stable for oscillatory systems.
+
+#### Matrix Construction
+
+For $N$ time points, we construct two matrices:
+
+1. The second derivative matrix ($T$):
+
+\begin{equation}
+T=\frac{1}{\delta t^2}
+\begin{bmatrix}
+-2 & 1  & 0 & \cdots & 0\\
+1 & -2 & 1 & \cdots & 0\\
+\vdots & \ddots & \ddots & \ddots & \vdots\\
+0 & \cdots & 1 & -2 & 1\\
+0 & \cdots & 0 & 1 & -2
+\end{bmatrix}
+\end{equation}
+
+2. The potential term matrix ($V$):
+
+\begin{equation}
+V = \omega^2
+\begin{bmatrix}
+1 & 0 & \cdots & 0\\
+0 & 1 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & 1
+\end{bmatrix}
+\end{equation}
+
+```{pyodide}
+def build_matrices(N, omega, dt):
+    # Second derivative matrix with correct finite difference
+    T = diags([1, -2, 1], [-1, 0, 1], shape=(N, N)).todense()
+
+    # Combined matrix including potential term
+    M = T/(dt**2) + omega**2 * np.eye(N)
+
+    # Initial conditions
+    M[0,:] = 0
+    M[0,0] = 1  # x(0) = x0
+
+    M[1,:] = 0
+    M[1,0] = -1
+    M[1,1] = 1  # Forward difference for velocity
+
+    return M
+
+def solve_harmonic_oscillator(k=15.5, m=0.2, L=10.0, N=1000, x0=1.0, v0=0.0):
+    """
+    Solve the harmonic oscillator equation.
+
+    Parameters:
+    -----------
+    k : float
+        Spring constant
+    m : float
+        Mass
+    L : float
+        Time period to solve for
+    N : int
+        Number of time points
+    x0 : float
+        Initial position
+    v0 : float
+        Initial velocity
+
+    Returns:
+    --------
+    t : numpy.ndarray
+        Time points
+    x : numpy.ndarray
+        Solution positions
+    """
+    # Calculate system parameters
+    omega = np.sqrt(k/m)
+    t = np.linspace(0, L, N)
+    dt = t[1] - t[0]
+
+    # Initialize right-hand side vector
+    b = np.zeros(N)
+    b[0] = x0
+    b[1] = v0 * dt + x0  # Correct initial velocity condition
+
+    # Build and solve system
+    M = build_matrices(N, omega, dt)
+    x = np.linalg.solve(M, b)
+
+    return t, x
+
+# Solve and compare with analytical solution
+t, x_num = solve_harmonic_oscillator(k=15.5, m=0.2, L=10.0, N=1000, x0=1.0, v0=0.0)
+
+# Analytical solution
+omega = np.sqrt(15.5/0.2)
+x_anal = np.cos(omega * t)  # For x0=1, v0=0
+
+# Plot both solutions
+plt.figure(figsize=get_size(12,8))
+plt.plot(t, x_num, 'b-', label='Numerical', linewidth=2)
+plt.plot(t, x_anal, 'r--', label='Analytical', alpha=0.7)
+plt.xlabel('Time (s)')
+plt.ylabel('Position x(t)')
+plt.title('Harmonic Oscillator: Numerical vs Analytical Solution')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+
+# Calculate and print maximum difference
+max_diff = np.max(np.abs(x_num - x_anal))
+print(f"Maximum difference between solutions: {max_diff:.2e}")
+
+plt.show()
+
+# Plot difference
+plt.figure(figsize=get_size(12,4))
+plt.plot(t, x_num - x_anal, 'k-', label='Difference')
+plt.xlabel('Time (s)')
+plt.ylabel('Difference')
+plt.title('Difference between Numerical and Analytical Solutions')
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()
+```
+
+
+## Explicit Solution Methods
+
+### State-Space Representation
+
+To implement explicit numerical methods effectively, we first convert our second-order ODE into a system of first-order equations. This state-space representation is crucial for numerical integration.
+
+For the harmonic oscillator:
+
+\begin{equation}
+\ddot{x} + \omega^2x = 0
+\end{equation}
+
+We define:
+- Position: $x$
+- Velocity: $v = \dot{x}$
+
+This gives us the system:
+
+\begin{equation}
+\begin{bmatrix} \dot{x} \\ \dot{v} \end{bmatrix} =
+\begin{bmatrix} v \\ -\omega^2x \end{bmatrix}
+\end{equation}
+
+Our state vector is:
+
+\begin{equation}
+y = \begin{bmatrix} x \\ v \end{bmatrix}
+\end{equation}
+
+### 1. Euler Method
+
+The Euler method is the simplest numerical integration technique. It comes directly from the Taylor expansion:
+
+\begin{equation}
+y(t + \Delta t) = y(t) + \dot{y}(t)\Delta t + O(\Delta t^2)
+\end{equation}
+
+```{pyodide}
+def euler_step(y, t, dt, deriv_func, params=None):
+    """
+    Perform one step of the Euler method.
+
+    Parameters:
+    -----------
+    y : numpy.ndarray
+        Current state vector [position, velocity]
+    t : float
+        Current time
+    dt : float
+        Time step
+    deriv_func : callable
+        Function that returns derivatives
+    params : dict, optional
+        Additional parameters for deriv_func
+
+    Returns:
+    --------
+    numpy.ndarray
+        Next state vector
+    """
+    if params is None:
+        dy = deriv_func(y, t)
+    else:
+        dy = deriv_func(y, t, **params)
+    return y + dy * dt
+
+def euler_integrate(deriv_func, y0, t, params=None):
+    """
+    Integrate using Euler method.
+
+    Parameters:
+    -----------
+    deriv_func : callable
+        Function that returns derivatives
+    y0 : numpy.ndarray
+        Initial state vector
+    t : numpy.ndarray
+        Time points
+    params : dict, optional
+        Additional parameters for deriv_func
+
+    Returns:
+    --------
+    numpy.ndarray
+        Solution array, shape (len(t), len(y0))
+    """
+    y = np.zeros((len(t), len(y0)))
+    y[0] = y0
+    dt = t[1] - t[0]
+
+    for i in range(len(t)-1):
+        y[i+1] = euler_step(y[i], t[i], dt, deriv_func, params)
+
+    return y
+```
+
+### 2. Euler-Cromer Method
+
+The Euler-Cromer method (also known as the semi-implicit Euler method) is particularly good for oscillatory systems because it conserves energy better than the standard Euler method.
+
+Key difference:
+- Uses the updated velocity to compute position
+- Better energy conservation for oscillatory systems
+
+\begin{align}
+v_{i+1} &= v_i - \omega^2 x_i \Delta t \\
+x_{i+1} &= x_i + v_{i+1} \Delta t
+\end{align}
+
+```{pyodide}
+def euler_cromer_step(y, t, dt, deriv_func, params=None):
+    """
+    Perform one step of the Euler-Cromer method.
+
+    Parameters:
+    -----------
+    y : numpy.ndarray
+        Current state vector [position, velocity]
+    t : float
+        Current time
+    dt : float
+        Time step
+    deriv_func : callable
+        Function that returns derivatives
+    params : dict, optional
+        Additional parameters for deriv_func
+
+    Returns:
+    --------
+    numpy.ndarray
+        Next state vector
+    """
+    if params is None:
+        derivatives = deriv_func(y, t)
+    else:
+        derivatives = deriv_func(y, t, **params)
+
+    # First update velocity
+    v_new = y[1] + derivatives[1] * dt
+
+    # Use new velocity to update position
+    x_new = y[0] + v_new * dt
+
+    return np.array([x_new, v_new])
+
+def euler_cromer_integrate(deriv_func, y0, t, params=None):
+    """
+    Integrate using Euler-Cromer method.
+    """
+    y = np.zeros((len(t), len(y0)))
+    y[0] = y0
+    dt = t[1] - t[0]
+
+    for i in range(len(t)-1):
+        y[i+1] = euler_cromer_step(y[i], t[i], dt, deriv_func, params)
+
+    return y
+```
+
+### 3. Velocity Verlet Method
+
+The Velocity Verlet method is a symplectic integrator that provides excellent energy conservation for Hamiltonian systems. It's particularly useful for molecular dynamics simulations.
+
+The algorithm:
+1. Update position using current velocity and acceleration
+2. Calculate new acceleration at new position
+3. Update velocity using average of old and new accelerations
+
+\begin{align}
+x_{i+1} &= x_i + v_i\Delta t + \frac{1}{2}a_i\Delta t^2 \\
+a_{i+1} &= -\omega^2 x_{i+1} \\
+v_{i+1} &= v_i + \frac{1}{2}(a_i + a_{i+1})\Delta t
+\end{align}
+
+```{pyodide}
+def verlet_step(y, t, dt, force_func, params=None):
+    """
+    Perform one step of the Velocity Verlet method.
+
+    Parameters:
+    -----------
+    y : numpy.ndarray
+        Current state vector [position, velocity]
+    t : float
+        Current time
+    dt : float
+        Time step
+    force_func : callable
+        Function that returns acceleration
+    params : dict, optional
+        Additional parameters for force_func
+
+    Returns:
+    --------
+    numpy.ndarray
+        Next state vector
+    """
+    x, v = y
+
+    # Calculate current acceleration
+    if params is None:
+        a = force_func(x, t)
+    else:
+        a = force_func(x, t, **params)
+
+    # Update position
+    x_new = x + v*dt + 0.5*a*dt**2
+
+    # Calculate new acceleration
+    if params is None:
+        a_new = force_func(x_new, t + dt)
+    else:
+        a_new = force_func(x_new, t + dt, **params)
+
+    # Update velocity
+    v_new = v + 0.5*(a + a_new)*dt
+
+    return np.array([x_new, v_new])
+
+def verlet_integrate(force_func, y0, t, params=None):
+    """
+    Integrate using Velocity Verlet method.
+    """
+    y = np.zeros((len(t), len(y0)))
+    y[0] = y0
+    dt = t[1] - t[0]
+
+    for i in range(len(t)-1):
+        y[i+1] = verlet_step(y[i], t[i], dt, force_func, params)
+
+    return y
+```
+
+### Comparison of Methods
+
+Let's compare these methods for the harmonic oscillator:
+
+```{pyodide}
+def harmonic_oscillator_deriv(y, t, omega=1.0):
+    """
+    Define harmonic oscillator equations.
+
+    Returns derivatives [dx/dt, dv/dt]
+    """
+    return np.array([y[1], -omega**2 * y[0]])
+
+def compare_methods(T=20.0, N=1000, x0=1.0, v0=0.0, omega=1.0):
+    """Compare different integration methods"""
+    t = np.linspace(0, T, N)
+    y0 = np.array([x0, v0])
+    params = {'omega': omega}
+
+    # Compute solutions using different methods
+    y_euler = euler_integrate(harmonic_oscillator_deriv, y0, t, params)
+    y_euler_cromer = euler_cromer_integrate(harmonic_oscillator_deriv, y0, t, params)
+
+    # Exact solution
+    exact_x = x0 * np.cos(omega * t)
+    exact_v = -x0 * omega * np.sin(omega * t)
+
+    # Create comparison plots
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=get_size(15, 12))
+
+    # Position plot
+    ax1.plot(t, y_euler[:, 0], 'b-', label='Euler', alpha=0.7)
+    ax1.plot(t, y_euler_cromer[:, 0], 'r-', label='Euler-Cromer', alpha=0.7)
+    ax1.plot(t, exact_x, 'k--', label='Exact')
+    ax1.set_ylabel('Position')
+    ax1.legend()
+    ax1.grid(True)
+
+    # Phase space plot
+    ax2.plot(y_euler[:, 0], y_euler[:, 1], 'b-', label='Euler', alpha=0.7)
+    ax2.plot(y_euler_cromer[:, 0], y_euler_cromer[:, 1], 'r-', label='Euler-Cromer', alpha=0.7)
+    ax2.plot(exact_x, exact_v, 'k--', label='Exact')
+    ax2.set_xlabel('Position')
+    ax2.set_ylabel('Velocity')
+    ax2.legend()
+    ax2.grid(True)
+
+    plt.tight_layout()
+    plt.show()
+
+# Run comparison
+compare_methods()
+```
+
+::: {.callout-note}
+## Method Characteristics
+
+1. **Euler Method**:
+   - Simplest method
+   - First-order accurate ($O(\Delta t)$)
+   - Often unstable for oscillatory systems
+   - Energy tends to increase over time
+
+2. **Euler-Cromer Method**:
+   - Better energy conservation
+   - Still first-order accurate
+   - More stable for oscillatory systems
+   - Energy tends to decrease slightly over time
+
+3. **Velocity Verlet Method**:
+   - Second-order accurate ($O(\Delta t^2)$)
+   - Excellent energy conservation
+   - Symplectic (preserves phase space volume)
+   - Recommended for long-time integration
+:::
+
+
+## Solving ODEs with SciPy
+
+SciPy provides sophisticated ODE solvers through `scipy.integrate.odeint` and `scipy.integrate.solve_ivp`. These implementations use advanced algorithms with automatic step size adjustment and error control.
+
+### Using scipy.integrate.odeint
+
+The `odeint` function uses the LSODA algorithm from the FORTRAN library ODEPACK, which automatically switches between methods for stiff and non-stiff problems.
+
+::: {.callout-note}
+## Stiff vs Non-stiff Problems
+
+- **Stiff problems**: Have multiple timescales with widely different magnitudes
+- **Non-stiff problems**: Have timescales of similar magnitude
+
+LSODA uses:
+- Adams method for non-stiff problems
+- BDF method (Backward Differentiation Formula) for stiff problems
+:::
+
+```{pyodide}
+from scipy.integrate import odeint
+
+def harmonic_oscillator_scipy(y, t, omega=1.0):
+    """
+    Define harmonic oscillator system for scipy.integrate.odeint
+
+    Parameters:
+    -----------
+    y : array_like
+        State vector [position, velocity]
+    t : float
+        Time
+    omega : float
+        Angular frequency
+
+    Returns:
+    --------
+    array_like
+        Derivatives [dx/dt, dv/dt]
+    """
+    x, v = y
+    return [v, -omega**2 * x]
+
+def solve_ho_scipy(T=20.0, N=1000, x0=1.0, v0=0.0, omega=1.0):
+    """
+    Solve harmonic oscillator using SciPy's odeint
+    """
+    t = np.linspace(0, T, N)
+    y0 = [x0, v0]
+
+    # Solve ODE
+    solution = odeint(harmonic_oscillator_scipy, y0, t, args=(omega,))
+
+    # Plot results
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=get_size(15, 12))
+
+    # Position vs time
+    ax1.plot(t, solution[:, 0], 'b-', label='Position')
+    ax1.set_xlabel('Time')
+    ax1.set_ylabel('Position')
+    ax1.grid(True)
+    ax1.legend()
+
+    # Phase space
+    ax2.plot(solution[:, 0], solution[:, 1], 'r-', label='Phase Space')
+    ax2.set_xlabel('Position')
+    ax2.set_ylabel('Velocity')
+    ax2.grid(True)
+    ax2.legend()
+
+    plt.tight_layout()
+    plt.show()
+
+    return t, solution
+
+# Example usage
+t, solution = solve_ho_scipy()
+```
+
+### Using scipy.integrate.solve_ivp
+
+The newer `solve_ivp` function provides more control over the integration process and supports multiple modern solving methods.
+
+```{pyodide}
+from scipy.integrate import solve_ivp
+
+def solve_ho_ivp(T=20.0, x0=1.0, v0=0.0, omega=1.0, method='RK45'):
+    """
+    Solve harmonic oscillator using SciPy's solve_ivp
+
+    Parameters:
+    -----------
+    T : float
+        End time
+    x0, v0 : float
+        Initial conditions
+    omega : float
+        Angular frequency
+    method : str
+        Integration method ('RK45', 'RK23', 'DOP853', 'BDF', 'LSODA')
+    """
+    def system(t, y):
+        return [y[1], -omega**2 * y[0]]
+
+    # Time span
+    t_span = (0, T)
+    # Initial conditions
+    y0 = [x0, v0]
+
+    # Solve ODE
+    sol = solve_ivp(system, t_span, y0, method=method,
+                    dense_output=True, rtol=1e-8)
+
+    # Generate smooth solution for plotting
+    t = np.linspace(0, T, 1000)
+    y = sol.sol(t)
+
+    # Plot results
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=get_size(15, 12))
+
+    # Position vs time
+    ax1.plot(t, y[0], 'b-', label=f'Position ({method})')
+    ax1.set_xlabel('Time')
+    ax1.set_ylabel('Position')
+    ax1.grid(True)
+    ax1.legend()
+
+    # Phase space
+    ax2.plot(y[0], y[1], 'r-', label=f'Phase Space ({method})')
+    ax2.set_xlabel('Position')
+    ax2.set_ylabel('Velocity')
+    ax2.grid(True)
+    ax2.legend()
+
+    plt.tight_layout()
+    plt.show()
+
+    return t, y
+
+# Compare different methods
+methods = ['RK45', 'RK23', 'DOP853', 'BDF', 'LSODA']
+
+def compare_scipy_methods(T=20.0, x0=1.0, v0=0.0, omega=1.0):
+    """Compare different SciPy integration methods"""
+    plt.figure(figsize=get_size(15, 10))
+
+    for method in methods:
+        t, y = solve_ho_ivp(T, x0, v0, omega, method)
+        plt.plot(t, y[0], label=method, alpha=0.7)
+
+    plt.xlabel('Time')
+    plt.ylabel('Position')
+    plt.title('Comparison of Integration Methods')
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
+# Run comparison
+compare_scipy_methods()
+```
+
+::: {.callout-note}
+## Available Methods in solve_ivp
+
+1. **RK45** (default):
+   - Explicit Runge-Kutta method of order 5(4)
+   - Good general-purpose method
+   - Adaptive step size
+
+2. **RK23**:
+   - Explicit Runge-Kutta method of order 3(2)
+   - Usually faster but less accurate than RK45
+   - Good for rough solutions
+
+3. **DOP853**:
+   - Explicit Runge-Kutta method of order 8
+   - High accuracy
+   - More expensive computationally
+
+4. **BDF**:
+   - Implicit method
+   - Good for stiff problems
+   - Variable order (1 to 5)
+
+5. **LSODA**:
+   - Automatic method switching
+   - Adapts between Adams and BDF
+   - Good all-purpose solver
+:::
+
+### Advantages of SciPy Methods
+
+1. **Adaptive Step Size**:
+   - Automatically adjusts step size for efficiency
+   - Maintains desired accuracy
+   - Handles rapid changes better
+
+2. **Error Control**:
+   - Specified through relative and absolute tolerances
+   - Ensures solution reliability
+   - Provides error estimates
+
+3. **Method Selection**:
+   - Choose method based on problem characteristics
+   - Automatic stiffness detection (LSODA)
+   - Higher-order methods available
+
+4. **Dense Output**:
+   - Continuous solution representation
+   - Interpolation between steps
+   - Efficient for plotting or further analysis
+
+```{pyodide}
+def analyze_efficiency():
+    """Compare computational efficiency of different methods"""
+    import time
+
+    results = {}
+    T = 100.0  # longer time period for better comparison
+
+    for method in methods:
+        start_time = time.time()
+        _, _ = solve_ho_ivp(T, method=method)
+        end_time = time.time()
+        results[method] = end_time - start_time
+
+    # Plot timing results
+    plt.figure(figsize=get_size(10, 6))
+    plt.bar(results.keys(), results.values())
+    plt.ylabel('Computation Time (s)')
+    plt.title('Computational Efficiency Comparison')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
+
+# Run efficiency analysis
+analyze_efficiency()
+```
+
+
+## Damped Driven Pendulum
+
+The damped driven pendulum is an excellent example of a nonlinear system that can exhibit both regular and chaotic behavior.
+
+::: {.callout-note}
+## The Damped Driven Pendulum Equation
+
+The equation of motion is:
+
+\begin{equation}
+\ddot{\theta} + \frac{g}{L}\sin(\theta) + b\dot{\theta} = \beta\cos(\omega t)
+\end{equation}
+
+where:
+- $\theta$ is the angle from vertical
+- $g$ is gravitational acceleration
+- $L$ is pendulum length
+- $b$ is damping coefficient
+- $\beta$ is driving amplitude
+- $\omega$ is driving frequency
+:::
+
+```{pyodide}
+def damped_driven_pendulum(state, t, g=9.81, L=1.0, b=0.2, beta=1.0, omega=2/3):
+    """
+    Define the damped driven pendulum system.
+
+    Parameters:
+    -----------
+    state : array_like
+        [theta, omega] - angle and angular velocity
+    t : float
+        Time
+    g : float
+        Gravitational acceleration
+    L : float
+        Pendulum length
+    b : float
+        Damping coefficient
+    beta : float
+        Driving amplitude
+    omega : float
+        Driving frequency
+
+    Returns:
+    --------
+    array_like
+        Derivatives [dtheta/dt, domega/dt]
+    """
+    theta, theta_dot = state
+
+    # Angular acceleration
+    theta_ddot = -g/L * np.sin(theta) - b*theta_dot + beta*np.cos(omega*t)
+
+    return [theta_dot, theta_ddot]
+
+class PendulumSimulation:
+    """Class to handle pendulum simulation and analysis"""
+
+    def __init__(self, g=9.81, L=1.0, b=0.2, beta=1.0, omega=2/3):
+        self.params = {
+            'g': g,
+            'L': L,
+            'b': b,
+            'beta': beta,
+            'omega': omega
+        }
+
+    def solve_pendulum(self, T=100.0, theta0=0.1, omega0=0.0, N=10000):
+        """Solve pendulum equation for given time period"""
+        t = np.linspace(0, T, N)
+        y0 = [theta0, omega0]
+
+        solution = odeint(damped_driven_pendulum, y0, t, args=(
+            self.params['g'], self.params['L'],
+            self.params['b'], self.params['beta'],
+            self.params['omega']))
+
+        return t, solution
+
+    def plot_solution(self, T=100.0, theta0=0.1, omega0=0.0, N=10000):
+        """Plot the pendulum motion"""
+        t, solution = self.solve_pendulum(T, theta0, omega0, N)
+
+        fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=get_size(15, 18))
+
+        # Angle vs time
+        ax1.plot(t, solution[:, 0], 'b-', label='θ(t)')
+        ax1.set_xlabel('Time')
+        ax1.set_ylabel('Angle θ')
+        ax1.grid(True)
+        ax1.legend()
+
+        # Angular velocity vs time
+        ax2.plot(t, solution[:, 1], 'r-', label='ω(t)')
+        ax2.set_xlabel('Time')
+        ax2.set_ylabel('Angular Velocity ω')
+        ax2.grid(True)
+        ax2.legend()
+
+        # Phase space
+        ax3.plot(solution[:, 0], solution[:, 1], 'g-', label='Phase Space')
+        ax3.set_xlabel('Angle θ')
+        ax3.set_ylabel('Angular Velocity ω')
+        ax3.grid(True)
+        ax3.legend()
+
+        plt.tight_layout()
+        plt.show()
+
+    def phase_space_analysis(self, T=100.0, n_trajectories=5):
+        """Analyze phase space with multiple initial conditions"""
+        theta0_range = np.linspace(-np.pi, np.pi, n_trajectories)
+
+        plt.figure(figsize=get_size(12, 12))
+
+        for theta0 in theta0_range:
+            _, solution = self.solve_pendulum(T, theta0=theta0)
+            plt.plot(solution[:, 0], solution[:, 1], '-', alpha=0.5,
+                    label=f'θ₀ = {theta0:.2f}')
+
+        plt.xlabel('Angle θ')
+        plt.ylabel('Angular Velocity ω')
+        plt.title('Phase Space Analysis')
+        plt.grid(True)
+        plt.legend()
+        plt.show()
+
+    def poincare_section(self, T=1000.0, N=100000):
+        """Generate Poincaré section"""
+        t, solution = self.solve_pendulum(T, N=N)
+
+        # Find points where driving force period is complete
+        dt = t[1] - t[0]
+        drive_period = 2*np.pi/self.params['omega']
+        points_per_period = int(drive_period/dt)
+
+        # Extract points
+        indices = np.arange(0, len(t), points_per_period)
+
+        plt.figure(figsize=get_size(10, 10))
+        plt.scatter(solution[indices, 0], solution[indices, 1],
+                   s=1, c='b', alpha=0.5)
+        plt.xlabel('Angle θ')
+        plt.ylabel('Angular Velocity ω')
+        plt.title('Poincaré Section')
+        plt.grid(True)
+        plt.show()
+
+# Create simulation instances with different parameters
+def demonstrate_pendulum_behavior():
+    """Demonstrate different pendulum behaviors"""
+
+    # Regular motion
+    print("Regular Motion (small driving force)")
+    pendulum1 = PendulumSimulation(beta=0.5, omega=2/3)
+    pendulum1.plot_solution(T=50)
+
+    # Chaotic motion
+    print("\nChaotic Motion (larger driving force)")
+    pendulum2 = PendulumSimulation(beta=1.5, omega=2/3)
+    pendulum2.plot_solution(T=50)
+
+    # Phase space analysis
+    print("\nPhase Space Analysis")
+    pendulum1.phase_space_analysis()
+
+    # Poincaré section for chaotic case
+    print("\nPoincaré Section (Chaotic Case)")
+    pendulum2.poincare_section()
+
+# Run demonstrations
+demonstrate_pendulum_behavior()
+```
+
+### Parameter Study: Transition to Chaos
+
+Let's examine how the system behavior changes with driving amplitude:
+
+```{pyodide}
+def parameter_study(beta_range=np.linspace(0.1, 2.0, 5)):
+    """Study system behavior for different driving amplitudes"""
+
+    fig, axes = plt.subplots(len(beta_range), 1,
+                            figsize=get_size(15, 4*len(beta_range)))
+
+    for i, beta in enumerate(beta_range):
+        pendulum = PendulumSimulation(beta=beta)
+        t, solution = pendulum.solve_pendulum(T=50)
+
+        axes[i].plot(t, solution[:, 0], 'b-', alpha=0.7)
+        axes[i].set_ylabel('θ')
+        axes[i].set_title(f'β = {beta:.2f}')
+        axes[i].grid(True)
+
+    axes[-1].set_xlabel('Time')
+    plt.tight_layout()
+    plt.show()
+
+# Run parameter study
+parameter_study()
+```
+
+::: {.callout-note}
+## Key Features of the Damped Driven Pendulum
+
+1. **Regular Motion**:
+   - Small driving forces lead to periodic motion
+   - System settles into a stable orbit
+   - Predictable long-term behavior
+
+2. **Chaotic Motion**:
+   - Larger driving forces can lead to chaos
+   - Sensitive dependence on initial conditions
+   - Unpredictable long-term behavior
+
+3. **Bifurcations**:
+   - System can transition between different types of motion
+   - Critical points where behavior changes qualitatively
+   - Period doubling route to chaos
+
+4. **Energy Balance**:
+   - Driving force adds energy
+   - Damping removes energy
+   - Competition leads to rich dynamics
+:::
+
+### Energy Analysis
+
+Let's analyze the system's energy over time:
+
+```{pyodide}
+def energy_analysis(pendulum, T=50.0):
+    """Analyze system energy components"""
+    t, solution = pendulum.solve_pendulum(T)
+
+    # Calculate energies
+    theta, theta_dot = solution[:, 0], solution[:, 1]
+    g, L = pendulum.params['g'], pendulum.params['L']
+
+    # Kinetic energy
+    KE = 0.5 * (L * theta_dot)**2
+
+    # Potential energy
+    PE = g * L * (1 - np.cos(theta))
+
+    # Total mechanical energy
+    E = KE + PE
+
+    plt.figure(figsize=get_size(12, 8))
+    plt.plot(t, KE, 'r-', label='Kinetic', alpha=0.7)
+    plt.plot(t, PE, 'b-', label='Potential', alpha=0.7)
+    plt.plot(t, E, 'k-', label='Total', alpha=0.7)
+    plt.xlabel('Time')
+    plt.ylabel('Energy')
+    plt.title('Energy Components')
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
+# Regular and chaotic cases
+pendulum_regular = PendulumSimulation(beta=0.5)
+pendulum_chaotic = PendulumSimulation(beta=1.5)
+
+print("Energy Analysis - Regular Motion")
+energy_analysis(pendulum_regular)
+
+print("\nEnergy Analysis - Chaotic Motion")
+energy_analysis(pendulum_chaotic)
+```
+
+This completes our analysis of the damped driven pendulum, demonstrating its rich dynamical behavior and various analysis techniques. The system serves as an excellent example of how nonlinearity can lead to complex behavior in even seemingly simple mechanical systems.

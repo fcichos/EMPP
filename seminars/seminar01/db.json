@@ -1,0 +1,10 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyAswFfnIzeBu55zZSR25_x_RlyLoGzydZ4",
+  authDomain: "empp24-e7c40.firebaseapp.com",
+  databaseURL: "https://empp24-e7c40-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "empp24-e7c40",
+  storageBucket: "empp24-e7c40.appspot.com",
+  messagingSenderId: "109449265661",
+  appId: "1:109449265661:web:ef751de6e9a9d6bb975994",
+  measurementId: "G-N0KYBQ57ZJ"
+};

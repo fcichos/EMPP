@@ -1,0 +1,760 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Brownian Motion},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Brownian Motion}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+We will apply our newly acquired knowledge about classes to simulate
+Brownian motion. This task aligns perfectly with the principles of
+object-oriented programming, as each Brownian particle (or colloid) can
+be represented as an object instantiated from the same class, albeit
+with different properties. For instance, some particles might be larger
+while others are smaller. We have already touched on some aspects of
+this in previous lectures.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#| autorun: true}
+\NormalTok{\#| edit: false}
+\NormalTok{\#| echo: false}
+\NormalTok{import numpy as np}
+\NormalTok{import matplotlib.pyplot as plt}
+\NormalTok{import pandas as pd}
+
+\NormalTok{plt.rcParams.update(\{\textquotesingle{}font.size\textquotesingle{}: 12,}
+\NormalTok{                     \textquotesingle{}lines.linewidth\textquotesingle{}: 1,}
+\NormalTok{                     \textquotesingle{}lines.markersize\textquotesingle{}: 10,}
+\NormalTok{                     \textquotesingle{}axes.labelsize\textquotesingle{}: 11,}
+\NormalTok{                     \textquotesingle{}xtick.labelsize\textquotesingle{} : 10,}
+\NormalTok{                     \textquotesingle{}ytick.labelsize\textquotesingle{} : 10,}
+\NormalTok{                     \textquotesingle{}xtick.top\textquotesingle{} : True,}
+\NormalTok{                     \textquotesingle{}xtick.direction\textquotesingle{} : \textquotesingle{}in\textquotesingle{},}
+\NormalTok{                     \textquotesingle{}ytick.right\textquotesingle{} : True,}
+\NormalTok{                     \textquotesingle{}ytick.direction\textquotesingle{} : \textquotesingle{}in\textquotesingle{},\})}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Brownian Motion}\label{brownian-motion}
+
+\subsubsection{What is Brownian Motion?}\label{what-is-brownian-motion}
+
+Imagine a dust particle floating in water. If you look at it under a
+microscope, you'll see it moving in a random, zigzag pattern. This is
+Brownian motion!
+
+\subsubsection{Why Does This Happen?}\label{why-does-this-happen}
+
+When we observe Brownian motion, we're seeing the effects of countless
+molecular collisions. Water isn't just a smooth, continuous fluid - it's
+made up of countless tiny molecules that are in constant motion. These
+water molecules are continuously colliding with our particle from all
+directions. Each individual collision causes the particle to move just a
+tiny bit, barely noticeable on its own. However, when millions of these
+tiny collisions happen every second from random directions, they create
+the distinctive zigzag motion we observe.
+
+\phantomsection\label{fig_brownian}
+\begin{center}
+\includegraphics[width=0.4\textwidth,height=\textheight]{img/Brownian Motion.gif}
+\end{center}
+
+Animation of Brownian motion (c) Wikipedia.
+
+\subsubsection{The Simplified Math Behind
+It}\label{the-simplified-math-behind-it}
+
+When our particle moves:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Each step is random in direction
+\item
+  The size of each step depends on:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Temperature (warmer = more movement)
+  \item
+    Time between steps
+  \item
+    A property called the ``diffusion coefficient'' (D)
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{How We Can Simulate
+This?}\label{how-we-can-simulate-this}
+
+In Python, we can simulate these random steps using random number. These
+random numbers can be generated with the numpy library. Numpy provides a
+number of different functions that provide random numbers from different
+distributions. For Brownian motion, we use a special distribution called
+the ``normal distribution''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{step\_size }\OperatorTok{=}\NormalTok{ np.sqrt(}\DecValTok{2} \OperatorTok{*}\NormalTok{ D }\OperatorTok{*}\NormalTok{ time\_step)}
+\NormalTok{dx }\OperatorTok{=}\NormalTok{ random\_number }\OperatorTok{*}\NormalTok{ step\_size  }\CommentTok{\# Random step in x direction}
+\NormalTok{dy }\OperatorTok{=}\NormalTok{ random\_number }\OperatorTok{*}\NormalTok{ step\_size  }\CommentTok{\# Random step in y direction}
+
+\NormalTok{new\_x }\OperatorTok{=}\NormalTok{ old\_x }\OperatorTok{+}\NormalTok{ dx}
+\NormalTok{new\_y }\OperatorTok{=}\NormalTok{ old\_y }\OperatorTok{+}\NormalTok{ dy}
+\end{Highlighting}
+\end{Shaded}
+
+Where:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{D} is how easily the particle moves (diffusion coefficient)
+\item
+  \texttt{time\_step} is how often we update the position
+\item
+  \texttt{random\_number} is chosen from a special ``normal
+  distribution''
+\end{itemize}
+
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, rightrule=.15mm, breakable, colbacktitle=quarto-callout-tip-color!10!white, coltitle=black, colback=white, arc=.35mm, leftrule=.75mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, toprule=.15mm, left=2mm]
+
+When simulating Brownian motion, we use \texttt{np.random.normal} to
+generate random steps following this distribution. The normal
+distribution is characterized by two parameters: the mean and the
+standard deviation. The mean is the average value, and the standard
+deviation is a measure of how spread out the values are. For Brownian
+motion, we use a standard deviation that depends on the diffusion
+coefficient and the time step. The standard deviation
+\(\sigma=\sqrt{2D \Delta t}\) determines the typical step size, which we
+can use as a parameter in the normal distribution.
+
+\end{tcolorbox}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#| autorun: false}
+
+\NormalTok{\# some space to test out some of the random numbers}
+
+
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, rightrule=.15mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, colback=white, arc=.35mm, leftrule=.75mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Advanced Mathematical Details}, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, toprule=.15mm, left=2mm]
+
+The Brownian motion of a colloidal particle results from collisions with
+surrounding solvent molecules. These collisions lead to a probability
+distribution described by:
+
+\[
+p(x,\Delta t)=\frac{1}{\sqrt{4\pi D \Delta t}}e^{-\frac{x^2}{4D \Delta t}}
+\]
+
+where: - \(D\) is the diffusion coefficient - \(\Delta t\) is the time
+step - The variance is \(\sigma^2=2D \Delta t\)
+
+This distribution emerges from the \textbf{central limit theorem}, as
+shown by Lindenberg and Lévy, when considering many infinitesimally
+small random steps.
+
+The evolution of the probability density function \(p(x,t)\) is governed
+by the diffusion equation:
+
+\[
+\frac{\partial p}{\partial t}=D\frac{\partial^2 p}{\partial x^2}
+\]
+
+This partial differential equation, also known as Fick's second law,
+describes how the concentration of particles evolves over time due to
+diffusive processes. The Gaussian distribution above is the fundamental
+solution (Green's function) of this diffusion equation, representing how
+an initially localized distribution spreads out over time.
+
+The connection between the microscopic random motion and the macroscopic
+diffusion equation was first established by Einstein in his 1905 paper
+on Brownian motion, providing one of the earliest quantitative links
+between statistical mechanics and thermodynamics.
+
+\end{tcolorbox}
+
+\subsection{Why Use a Class?}\label{why-use-a-class}
+
+A class is perfect for this physics simulation because each colloidal
+particle:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Has specific properties
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Size (radius)
+  \item
+    Current position
+  \item
+    Movement history
+  \item
+    Diffusion coefficient
+  \end{itemize}
+\item
+  Follows certain behaviors
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Moves randomly (Brownian motion)
+  \item
+    Updates its position over time
+  \item
+    Keeps track of where it's been
+  \end{itemize}
+\item
+  Can exist alongside other particles
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Many particles can move independently
+  \item
+    Each particle keeps track of its own properties
+  \item
+    Particles can have different sizes
+  \end{itemize}
+\item
+  Needs to track its state over time
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Remember previous positions
+  \item
+    Calculate distances moved
+  \item
+    Maintain its own trajectory
+  \end{itemize}
+\end{enumerate}
+
+This natural mapping between real particles and code objects makes
+classes an ideal choice for our simulation.
+
+\subsection{Class Design}\label{class-design}
+
+Let's design a Python class to simulate colloidal particles undergoing
+Brownian motion. This object-oriented approach will help us manage
+multiple particles with different properties and behaviors.
+
+\subsubsection{Class-Level Properties}\label{class-level-properties}
+
+The \texttt{Colloid} class will maintain information shared by all
+particles:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A counter for the total number of particles
+\item
+  The physical constant \(k_B T/(6\pi\eta) = 2.2×10^{-19}\) (combining
+  temperature and fluid properties)
+\end{enumerate}
+
+\subsubsection{Class Methods}\label{class-methods}
+
+The class will provide these shared functions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{how\_many()}: Reports the total number of particles
+\item
+  \texttt{\_\_str\_\_}: Creates a readable description of a particle's
+  properties
+\end{enumerate}
+
+\subsubsection{Instance Properties}\label{instance-properties}
+
+Each individual particle object will have:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Radius (R)
+\item
+  Position history (x and y coordinates)
+\item
+  Unique identifier (index)
+\item
+  Diffusion coefficient (\(D = k_B T/(6\pi\eta R)\))
+\end{enumerate}
+
+\subsubsection{Instance Methods}\label{instance-methods}
+
+Each particle will be able to:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{sim\_trajectory()}: Generate a complete motion path
+\item
+  \texttt{update(dt)}: Calculate one step of Brownian motion
+\item
+  \texttt{get\_trajectory()}: Return its movement history
+\item
+  \texttt{get\_D()}: Provide its diffusion coefficient
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#| autorun: false}
+\NormalTok{\# Class definition}
+\NormalTok{class Colloid:}
+
+\NormalTok{    \# A class variable, counting the number of Colloids}
+\NormalTok{    number = 0}
+\NormalTok{    f = 2.2e{-}19 \# this is k\_B T/(6 pi eta) in m\^{}3/s}
+
+\NormalTok{    \# constructor}
+\NormalTok{    def \_\_init\_\_(self,R, x0=0, y0=0):}
+\NormalTok{        \# add initialisation code here}
+\NormalTok{        self.R=R}
+\NormalTok{        self.x=[x0]}
+\NormalTok{        self.y=[y0]}
+\NormalTok{        Colloid.number=Colloid.number+1}
+\NormalTok{        self.index=Colloid.number}
+\NormalTok{        self.D=Colloid.f/self.R}
+
+\NormalTok{    def get\_D(self):}
+\NormalTok{        return(self.D)}
+
+\NormalTok{    def sim\_trajectory(self,N,dt):}
+\NormalTok{        for i in range(N):}
+\NormalTok{            self.update(dt)}
+
+\NormalTok{    def update(self,dt):}
+\NormalTok{        self.x.append(self.x[{-}1]+np.random.normal(0.0, np.sqrt(2*self.D*dt)))}
+\NormalTok{        self.y.append(self.y[{-}1]+np.random.normal(0.0, np.sqrt(2*self.D*dt)))}
+\NormalTok{        return(self.x[{-}1],self.y[{-}1])}
+
+\NormalTok{    def get\_trajectory(self):}
+\NormalTok{        return(pd.DataFrame(\{\textquotesingle{}x\textquotesingle{}:self.x,\textquotesingle{}y\textquotesingle{}:self.y\}))}
+
+\NormalTok{    \# class method accessing a class variable}
+\NormalTok{    @classmethod}
+\NormalTok{    def how\_many(cls):}
+\NormalTok{        return(Colloid.number)}
+
+\NormalTok{    \# insert something that prints the particle position in a formatted way when printing}
+\NormalTok{    def \_\_str\_\_(self):}
+\NormalTok{        return("I\textquotesingle{}m a particle with radius R=\{0:0.3e\} at x=\{1:0.3e\},y=\{2:0.3e\}.".format(self.R, self.x[{-}1], self.y[{-}1]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, rightrule=.15mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, colback=white, arc=.35mm, leftrule=.75mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, toprule=.15mm, left=2mm]
+
+Note that the function \texttt{sim\_trajectory} is actually calling the
+function \texttt{update} of the same object to generate the whole
+trajectory at once.
+
+\end{tcolorbox}
+
+\subsection{Simulating}\label{simulating}
+
+With the help of this Colloid class, we would like to carry out
+simulations of Brownian motion of multiple particles. The simulations
+shall
+
+\begin{itemize}
+\tightlist
+\item
+  take n=200 particles
+\item
+  have N=200 trajectory points each
+\item
+  start all at 0,0
+\item
+  particle objects should be stored in a list p\_list
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#| autorun: false}
+\NormalTok{N=200 \# the number of trajectory points}
+\NormalTok{n=200 \# the number of particles}
+
+\NormalTok{p\_list=[]}
+\NormalTok{dt=0.05}
+
+\NormalTok{\# creating all objects}
+\NormalTok{for i in range(n):}
+\NormalTok{    p\_list.append(Colloid(1e{-}6))}
+
+
+\NormalTok{for (index,p) in enumerate(p\_list):}
+\NormalTok{    p.sim\_trajectory(N,dt)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#| autorun: false}
+\NormalTok{print(p\_list[42])}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Plotting the trajectories}\label{plotting-the-trajectories}
+
+The next step is to plot all the trajectories.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#| autorun: false}
+\NormalTok{\# we take real world diffusion coefficients so scale up the data to avoid nasty exponentials}
+\NormalTok{scale=1e6}
+
+\NormalTok{plt.figure(figsize=(4,4))}
+
+\NormalTok{[plt.plot(np.array(p.x[:])*scale,np.array(p.y[:])*scale,\textquotesingle{}k{-}\textquotesingle{},alpha=0.1,lw=1) for p in p\_list]}
+\NormalTok{plt.xlim({-}10,10)}
+\NormalTok{plt.ylim({-}10,10)}
+\NormalTok{plt.xlabel(\textquotesingle{}x [µm]\textquotesingle{})}
+\NormalTok{plt.ylabel(\textquotesingle{}y [µm]\textquotesingle{})}
+\NormalTok{plt.tight\_layout()}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Characterizing the Brownian
+motion}\label{characterizing-the-brownian-motion}
+
+Now that we have a number of trajectories, we can analyze the motion of
+our Brownian particles.
+
+\subsubsection{Calculate the particle
+speed}\label{calculate-the-particle-speed}
+
+One way is to calculate its speed by measuring how far it traveled
+within a certain time \(n\, dt\), where \(dt\) is the timestep of out
+simulation. We can do that as
+
+\begin{equation}
+v(n dt) = \frac{<\sqrt{(x_{i+n}-x_{i})^2+(y_{i+n}-y_{i})^2}>}{n\,dt}
+\end{equation}
+
+The angular brackets on the top take care of the fact that we can
+measure the distance traveled within a certain time \(n\, dt\) several
+times along a trajectory.
+
+These values can be used to calculate a mean speed. Note that there is
+not an equal amount of data pairs for all separations available. For
+\(n=1\) there are 5 distances available. For \(n=5\), however, only 1.
+This changes the statistical accuracy of the mean.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#| autorun: false}
+\NormalTok{time=np.array(range(1,N))*dt}
+
+\NormalTok{plt.figure(figsize=(4,4))}
+\NormalTok{for j in range(100):}
+\NormalTok{    t=p\_list[j].get\_trajectory()}
+\NormalTok{    md=[np.mean(np.sqrt(t.x.diff(i)**2+t.y.diff(i)**2)) for i in range(1,N)]}
+\NormalTok{    md=md/time}
+\NormalTok{    plt.plot(time,md,alpha=0.4)}
+
+\NormalTok{plt.ylabel(\textquotesingle{}speed [m/s]\textquotesingle{})}
+\NormalTok{plt.xlabel(\textquotesingle{}time [s]\textquotesingle{})}
+\NormalTok{plt.tight\_layout()}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+The result of this analysis shows, that each particle has an apparent
+speed which seems to increase with decreasing time of observation or
+which decreases with increasing time. This would mean that there is some
+friction at work, which slows down the particle in time, but this is
+apparently not true. Also an infinite speed at zero time appears to be
+unphysical. The correct answer is just that the speed is no good measure
+to characterize the motion of a Brownian particle.
+
+\subsubsection{Calculate the particle mean squared
+displacement}\label{calculate-the-particle-mean-squared-displacement}
+
+A better way to characterize the motion of a Brownian particle is the
+mean squared displacement, as we have already mentioned it in previous
+lectures. We may compare our simulation now to the theoretical
+prediction, which is
+
+\begin{equation}
+\langle \Delta r^{2}(t)\rangle=2 d D t
+\end{equation}
+
+where \(d\) is the dimension of the random walk, which is \(d=2\) in our
+case.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#| autorun: false}
+\NormalTok{time=np.array(range(1,N))*dt}
+
+\NormalTok{plt.figure(figsize=(4,4))}
+\NormalTok{for j in range(100):}
+\NormalTok{    t=p\_list[j].get\_trajectory()}
+\NormalTok{    msd=[np.mean(t.x.diff(i).dropna()**2+t.y.diff(i).dropna()**2) for i in range(1,N)]}
+\NormalTok{    plt.plot(time,msd,alpha=0.4)}
+
+
+\NormalTok{plt.plot(time, 4*p\_list[0].D*time,\textquotesingle{}k{-}{-}\textquotesingle{},lw=2,label=\textquotesingle{}theory\textquotesingle{})}
+\NormalTok{plt.legend()}
+\NormalTok{plt.xlabel(\textquotesingle{}time [s]\textquotesingle{})}
+\NormalTok{plt.ylabel(\textquotesingle{}msd $[m\^{}2/s]$\textquotesingle{})}
+\NormalTok{plt.tight\_layout()}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+The results show that the mean squared displacement of the individual
+particles follows \emph{on average} the theoretical predictions of a
+linear growth in time. That means, we are able to read the diffusion
+coefficient from the slope of the MSD of the individual particles if
+recorded in a simulation or an experiment.
+
+Yet, each individual MSD is deviating strongly from the theoretical
+prediction especially at large times. This is due to the fact mentioned
+earlier that our simulation (or experimental) data only has a limited
+number of data points, while the theoretical prediction is made for the
+limit of infinite data points.
+
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, rightrule=.15mm, breakable, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, colback=white, arc=.35mm, leftrule=.75mm, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Analysis of MSD data}, colframe=quarto-callout-warning-color-frame, bottomrule=.15mm, toprule=.15mm, left=2mm]
+
+Single particle tracking, either in the experiment or in numerical
+simulations can therefore only deliver an estimate of the diffusion
+coefficient and care should be taken when using the whole MSD to obtain
+the diffusion coefficient. One typically uses only a short fraction of
+the whole MSD data at short times.
+
+\end{tcolorbox}
+
+
+
+
+\end{document}

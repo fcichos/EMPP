@@ -1,0 +1,169 @@
+---
+title: Data Types
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  packages:
+    - numpy
+---
+
+It's time to look at different data types we may find useful in our course. Besides the number types mentioned previously, there are also other types like **strings**, **lists**, **tuples**, **dictionaries** and **sets**.
+
+| Data Types | Classes | Description |
+| :--- | :--- | :--- |
+| Numeric | int, float, complex | Holds numeric values |
+| String | str | Stores sequence of characters |
+| Sequence | list, tuple, range | Stores ordered collection of items |
+| Mapping | dict | Stores data as key-value pairs |
+| Boolean | bool | Holds either True or False |
+| Set | set, frozenset | Holds collection of unique items |
+
+
+Each of these data types has a number of connected `methods` (functions) which allow to manipulate the data contained in a variable. If you want to know which methods are available for a certain object use the command `dir`, e.g.
+
+~~~
+s="string"
+dir(s)
+~~~
+
+The following few cells will give you a short introduction into each type.
+
+## Strings
+
+**Strings** are lists of keyboard characters as well as other characters not on your keyboard. They are useful for printing results on the screen, during reading and writing of data.
+
+```{pyodide}
+#| autorun: false
+s="Hello" # string variable
+type(s)
+```
+
+```{pyodide}
+#| autorun: false
+t="world!"
+```
+
+String can be concatenated using the *+* operator.
+
+```{pyodide}
+#| autorun: false
+c=s+' '+t
+```
+
+```{pyodide}
+#| autorun: false
+print(c)
+```
+
+As strings are lists, each character in a string can be accessed by addressing the position in the string (see Lists section)
+
+```{pyodide}
+#| autorun: false
+c[1]
+```
+
+Strings can also be made out of numbers.
+
+```{pyodide}
+#| autorun: false
+"975"+"321"
+```
+
+If you want to obtain a number of a string, you can use what is known as type casting. Using type casting you may convert the string or any other data type into a different type if this is possible. To find out if a string is a pure number you may use the `str.isnumeric` method. For the above string, we may want to do a conversion to the type *int* by typing:
+
+```{pyodide}
+#| autorun: false
+("975"+"321").isnumeric() # or you may use as well str.isnumeric("975"+"321")
+```
+
+```{pyodide}
+#| autorun: false
+int("975"+"321")
+```
+
+There are a number of methods connected to the string data type. Usually the relate to formatting or finding sub-strings. Formatting will be a topic in our next lecture. Here we just refer to one simple find example.
+
+```{pyodide}
+#| autorun: false
+t
+```
+
+```{pyodide}
+#| autorun: false
+t.find('rld') ## returns the index at which the sub string 'ld' starts in t
+```
+
+```{pyodide}
+#| autorun: false
+t[2:5]
+```
+
+```{pyodide}
+#| autorun: false
+t.capitalize()
+```
+## Quiz: Data Types in Python
+
+Let's test your understanding of Python data types!
+
+::: {.quiz}
+
+1. What is the output of the following code?
+   ```python
+   a = [1, 2, 3]
+   b = (1, 2, 3)
+   print(type(a), type(b))
+   ```
+
+   - [ ] `<class 'list'> <class 'list'>`
+   - [x] `<class 'list'> <class 'tuple'>`
+   - [ ] `<class 'tuple'> <class 'list'>`
+   - [ ] `<class 'tuple'> <class 'tuple'>`
+
+2. Which of the following is mutable?
+
+   - [x] List
+   - [ ] Tuple
+   - [ ] String
+   - [ ] Integer
+
+3. What will be the output of this code?
+   ```python
+   my_dict = {'a': 1, 'b': 2, 'c': 3}
+   print(my_dict['b'])
+   ```
+
+   - [ ] a
+   - [x] 2
+   - [ ] b
+   - [ ] KeyError
+
+4. How do you create an empty set in Python?
+
+   - [ ] `{}`
+   - [ ] `[]`
+   - [x] `set()`
+   - [ ] `()`
+
+5. What is the result of `3 + 4.0`?
+
+   - [ ] 7
+   - [x] 7.0
+   - [ ] '7.0'
+   - [ ] TypeError
+
+:::
+
+
+::: {.callout-tip collapse="true"}
+## Click to reveal answers
+
+1. `<class 'list'> <class 'tuple'>`
+2. List
+3. 2
+4. `set()`
+5. 7.0
+
+:::

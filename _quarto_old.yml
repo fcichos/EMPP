@@ -1,0 +1,214 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  search: true
+  title: "Einführung in die Modellierung Physikalischer Prozesse"
+  page-navigation: true
+  navbar:
+    background: primary
+    search: true
+    right:
+      - icon: github
+  sidebar:
+    style: "floating" # Options: "floating", "sticky"
+    logo: mona_logo.png
+    collapse-level: 3
+    contents:
+      - text: Home
+        href: index.qmd
+      - text: "---" # This creates a divider
+      - section: "Course Info"
+        contents:
+          - text: Vorlesender
+            href: course-info/intructors.qmd
+          - text: Ressourcen
+            href: course-info/resources.qmd
+          - text: Übungsaufgaben
+            href: course-info/assignments.qmd
+          - text: Prüfungen
+            href: course-info/exam.qmd
+      - text: "---" # This creates a divider
+      - section: Python Basics
+        contents:
+          - section: "Lecture 1"
+            contents:
+              - text: Jupyter Notebooks
+                href: lectures/lecture01/01-lecture01.qmd
+              - text: Variables & Numbers
+                href: lectures/lecture01/02-lecture01.qmd
+          - section: "Lecture 2"
+            contents:
+              - text: Datatypes
+                href: lectures/lecture02/3_datatypes.qmd
+          - section: "Lecture 3"
+            contents:
+              - text: Functions
+                href: lectures/lecture02/01-lecture02.qmd
+              - text: Modules
+                href: lectures/lecture02/02-lecture02.qmd
+          - section: "Lecture 4"
+            contents:
+              - text: Numpy Module
+                href: lectures/lecture03/1_numpy.qmd
+              - text: Plotting
+                href: lectures/lecture04/04-plotting.qmd
+              - text: Short Course Feedback
+                href: https://forms.gle/2Mt4EvvFyQxnDJj78
+          - section: "Lecture 5"
+            contents:
+              - text: Classes & Objects
+                href: lectures/lecture05/1_classes.qmd
+              - text: Brownian Motion
+                href: lectures/lecture05/2_brownian_motion.qmd
+          - section: "Lecture 6"
+            contents:
+              - text: Brownian Motion
+                href: lectures/lecture05/2_brownian_motion.qmd
+              - text: Input Output
+                href: lectures/lecture06/1_input_output.qmd
+      - section: Numerical Methods
+        contents:
+          - section: "Lecture 7"
+            contents:
+              - text: Curve Fitting
+                href: lectures/lecture07/1_curve_fitting.qmd
+              - text: Numerical Differentiation
+                href: lectures/lecture07/1_differentiation.qmd
+          - section: "Lecture 8"
+            contents:
+              - text: Numerical Integration
+                href: lectures/lecture08/2_integration.qmd
+              - text: Solving ODEs
+                href: lectures/lecture08/3_solving_ODEs.qmd
+      - section: Physics Problems
+        contents:
+          - section: "Lecture 9"
+            contents:
+              - text: Coupled Pendula
+                href: lectures/lecture09/2_coupled_pendula.qmd
+              - text: Fourier Analysis
+                href: lectures/lecture09/3_fourier_analysis.qmd
+          - section: "Lecture 10"
+            contents:
+              - text: Spring Pendulum
+                href: lectures/lecture10/1_spring_pendulum.qmd
+              - text: Planetary Motion
+                href: lectures/lecture10/2_planetary_motion.qmd
+          - section: "Lecture 11"
+            contents:
+              - text: Repetition
+                href: lectures/lecture11/1_repetition.qmd
+          - section: "Lecture 12"
+            contents:
+              - text: Diffusion Equation
+                href: lectures/lecture12/3_diffusion_equation.qmd
+              - text: Repetition ODEs
+                href: lectures/lecture12/4_repetition.qmd
+          - section: "Lecture 13"
+            contents:
+              - text: Electromagnetic Waves - Plane Waves
+                href: lectures/lecture13/1_plane_waves.qmd
+              - text: Electromagnetic Waves - Spherical Waves
+                href: lectures/lecture13/2_spherical_waves.qmd
+              - text: Repetition Meshgrid
+                href: lectures/lecture13/4_repetition.qmd
+          - section: "Lecture 14"
+            contents:
+              - text: Huygens Principle
+                href: lectures/lecture14/3_huygens_principle.qmd
+          - section: "Lecture 15"
+            contents:
+              - text: Repetition ODE
+                href: lectures/lecture15/lecture15a.qmd
+          # - section: "Lecture 11"
+          #   contents:
+          #     - text: Plane Waves
+          #       href: lectures/lecture11/1_plane_waves.qmd
+          #     - text: Spherical Waves
+          #       href: lectures/lecture11/2_spherical_waves.qmd
+          #     - text: Huygens Principle
+          #       href: lectures/lecture11/3_huygens_principle.qmd
+          #- text: Solving ODEs
+          #  href: lectures/lecture08/4_solving_ODEs.qmd
+      # - section: Physics & Applications
+      #   contents:
+      #     - section: "Lecture 8"
+      #       contents:
+      #         - text: Curve Fitting
+      #           href: lectures/lecture04/1_classes.qmd
+      # #          href: lectures/lecture08/1_curve_fitting.qmd
+      #         - text: Particle in a Box
+      #           href: lectures/lecture04/2_particle_in_a_box.qmd
+      # - section: "Lecture 3"
+      #   contents:
+      #     - text: Numpy Module
+      #       href: lectures/lecture03/01-lecture03.qmd
+      # - section: "Lecture 4"
+      #   contents:
+      #     - text: Classes
+      #       href: lectures/lecture04/1_classes.qmd
+      #     - text: Brownian Motion
+      #       href: lectures/lecture04/2_brownian_motion.qmd
+      - text: "---" # This creates a divider
+      - section: "Seminars"
+        contents:
+          - section: "Seminar01"
+            contents:
+              - text: MD Simulations Part 1
+                href: seminars/seminar01/md1.qmd
+              - text: Jupyter Notebook
+                href: https://github.com/fcichos/EMPP24/blob/0a72930701cb672ff404d6b93048c898a132bcbe/docs/seminars/seminar01/MDSimulation.ipynb
+          - section: "Seminar02"
+            contents:
+              - text: MD Simulation Part 2
+                href: seminars/seminar02/md2.qmd
+              - text: Jupyter Notebook
+                href: https://github.com/fcichos/EMPP24/blob/e18cbfb3b8778a835f556e664e5c5aadc6fb82cd/seminars/seminar02/MD%20Simulation.ipynb
+          - section: "Seminar03"
+            contents:
+              - text: MD Simulation Part 3
+                href: seminars/seminar03/md3.qmd
+          - section: "Seminar04"
+            contents:
+              - text: MD Simulation Part 4
+                href: seminars/seminar04/md4.qmd
+          - section: "Seminar05"
+            contents:
+              - text: MD Simulation Part 5
+                href: seminars/seminar05/md5.qmd
+              - text: MD Simulation Code
+                href: seminars/seminar05/mdsim.qmd
+          - section: "Seminar06"
+            contents:
+              - text: Figure Formatting
+                href: seminars/seminar06/25_publication_ready_figures.qmd
+          - section: "Seminar07"
+            contents:
+              - text: Seminar Coding Session 1
+                href: seminars/seminar07/seminar7.qmd
+          - section: "Seminar08"
+            contents:
+              - text: Seminar Coding Session 2
+                href: seminars/seminar08/seminar8.qmd
+          - section: "Seminar09"
+            contents:
+              - text: MD Simulation Part 6
+                href: seminars/seminar09/md_vibration.qmd
+              - text: Seminar 9
+                href: seminars/seminar09/seminar9.qmd
+          - section: "Seminar10"
+            contents:
+              - text: Seminar 10
+                href: seminars/seminar10/seminar10.qmd
+
+format:
+  live-html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 3
+
+comments:
+  hypothesis: false

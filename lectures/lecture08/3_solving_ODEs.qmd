@@ -1,0 +1,853 @@
+---
+title: Solving ODEs
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+All the stuff we have defined in the previous sections is useful for solving ordinary differential equations. This will bring us closer to solving out physics problems now.
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import io
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.sparse import diags
+
+# default values for plotting
+plt.rcParams.update({'font.size': 12,
+                     'lines.linewidth': 1,
+                     'lines.markersize': 5,
+                     'axes.labelsize': 11,
+                     'xtick.labelsize' : 10,
+                     'ytick.labelsize' : 10,
+                     'xtick.top' : True,
+                     'xtick.direction' : 'in',
+                     'ytick.right' : True,
+                     'ytick.direction' : 'in',})
+
+def get_size(w,h):
+      return((w/2.54,h/2.54))
+```
+
+## Harmonic Oscillator
+
+
+::: {.callout-note}
+## Physics Interlude: The harmonic oscillator
+
+We are going to tackle as a first very simple problem, the harmonic oscillator and we will demonstrate that with the matrix (Crank-Nicholson method or implicit scheme), the Euler type integration method and using some 'unknown' integrator in the module `SciPy`.
+
+The equation of motion for a classical harmonic oscillator is given
+
+\begin{equation}
+\frac{\mathrm{d}^2x}{\mathrm{d}t^2}+\omega^2 x=0
+\end{equation}
+
+This is a second order differential equation which requires for its solution two initial conditions. The first initial condition is the initial elongation $x(t=0)=x_{0}$ and the second the initial velocity $\dot{x}(t=0)=v_{0}$.
+:::
+
+## Implicit Solution
+
+Lets start with the matrix appraoch we have just learned about. Using the matrix version, we can transform the above equation into a system of coupled equations, which we can solve with some standard methods available from e.g. the `SciPy` module.
+
+### Define Matrices
+
+Our matrix will consist of two parts. The first containing the second derivative and the second just the elongation. Suppose we want to calculate the position $x(t)$ at 6 instances in time $t_{i}$
+then the matrix version of the second derivative reads as
+
+($x_{1}=x(t_{1}), \ldots$).
+
+$T=\frac{d^2x}{dt^2}=\frac{1}{\delta t^2}
+\begin{bmatrix}
+-2 & 1  & 0 & 0 & 0 & 0\\
+ 1 & -2 & 1 & 0 & 0 & 0\\
+ 0 & 1  & -2 & 1 & 0 & 0\\
+ 0 & 0  & 1  & -2 & 1 & 0\\
+ 0 & 0  & 0  &  1 & -2 & 1\\
+ 0 & 0  & 0  &  0 &  1 & -2\\
+\end{bmatrix}
+\begin{bmatrix}
+x_{1}\\
+x_{2}\\
+x_{3}\\
+x_{4}\\
+x_{5}\\
+x_{6}
+\end{bmatrix}$
+
+The second term in the equation of motion is a multiplication of the elongation $x(t_{i})$ by $\omega^{2}$ and can be written as
+
+
+$V=\omega^2 x=\begin{bmatrix}
+\omega^2  & 0  & 0 & 0 & 0 & 0\\
+ 0 & \omega^2  & 0 & 0 & 0 & 0\\
+ 0 & 0  & \omega^2  & 0 & 0 & 0\\
+ 0 & 0  & 0  & \omega^2  & 0 & 0\\
+ 0 & 0  & 0  &  0 & \omega^2  & 0\\
+ 0 & 0  & 0  &  0 &  0 & \omega^2 \\
+\end{bmatrix}
+\begin{bmatrix}
+x_{1}\\
+x_{2}\\
+x_{3}\\
+x_{4}\\
+x_{5}\\
+x_{6}
+\end{bmatrix}$
+
+The left hand side of the would threfore contain a sum of the two matrices $M=T+V$ multiplied by the vector $x$.
+We have therfore almost all things together to solve this differential equation with the help of an implicit scheme. What we have ignored so far are the initial conditions.
+
+
+### Use Initial Conditions
+
+The matrix given for the second detivative actually implies already some initial (bounary) conditions. You probably noticed that the matrix contains incomplete coefficients for the second derivative in the first and last line. The first line contains $(-2,1)$, but the second derivative should contain $(1,-2,1)$. This $(-2,1)$ thus always includes the boundary condition that $x_{0}=0$. To include our own initial/boundary conditions, we have to construct the matrix for the second derivative slightly differently and modify the differential equation to
+
+\begin{equation}
+\frac{\mathrm{d}^2x}{\mathrm{d}t^2}+\omega^2 x=b
+\end{equation}
+
+where the vector b takes care of the initial conditions.
+
+If we have $N$ positions in time at which we calculate the elongation $x$, we have a $N\times N$ matrix of for the second derivatives. The lower $N-2$ lines will contain the the coefficients for the second derivative $(1,-2,1)$. The first two lines supply the initial/boundary conditions.
+
+The initial condition for the elongation $x(t=0)=x_{0}$ is obtained when the first element of the first line is a **1**.
+The matrix multiplication $M\, x=b$ for yields thus in the first line $x_{1}=b_{1}$ and we set $b_{1}=x_{0}$. The second line shall give the initial velocity. So the matrix entries of the second line contain a first derivative $(-1,1)$. The matrix multiplication thus yields $x_{2}-x_{1}=b_{2}$. We can therefore need to set $b_{2}=v_{0}\delta t$. All of the other entries of $b$ shall be set to zero according to the differential equation of the harmonic oscillator.
+
+Our final problem $M\, x=b$ will thus have the following shape
+
+\begin{equation}
+\begin{bmatrix}
+1 & 0  & 0 & 0 & 0 & 0\\
+-1 & 1 & 0 & 0 & 0 & 0\\
+1 & -2+\omega^2*\delta t^2  & 1 & 0 & 0 & 0\\
+0 & 1  & -2+\omega^2*\delta t^2  & 1 & 0 & 0\\
+0 & 0  & 1  &  -2+\omega^2*\delta t^2 & 1 & 0\\
+0 & 0  & 0  &  1 &  -2+\omega^2*\delta t^2 & 1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_{1}\\
+x_{2}\\
+x_{3}\\
+x_{4}\\
+x_{5}\\
+x_{6}
+\end{bmatrix}=
+\begin{bmatrix}
+x_{0}\\
+v_{0}\delta t\\
+0\\
+0\\
+0\\
+0
+\end{bmatrix}
+\end{equation}
+
+### Solution
+
+This is the final system of coupled equations which we can supply to any matrix solver. We will use a solver from the `scipy.linalg` module. Lets have a look at the details below.
+
+```python
+N=10
+
+(diags([-2., 1., 1.], [-1,-2, 0],
+    shape=(N, N))+diags([1], [-1], shape=(N, N))* omega**2*dt**2)
+```
+
+```{pyodide}
+#| autorun: false
+from scipy.sparse import diags
+
+k = 15.5 # spring constant
+m = 0.2 # mass
+omega=np.sqrt(k/m) # frequency of the oscillator
+
+L = np.pi # time period over which we solve the ODE
+N = 500 # number of data points
+t = np.linspace(0, L, N) # time axis
+
+b = np.zeros(N) # initial conditions vector
+b[0]=1 # initial elongation
+b[1]=0 # initial velocity
+
+x = np.zeros(N) # solution vector
+dt = t[1] - t[0] # time intervall of each step
+
+# construct the matrix
+T= diags([-2., 1., 1.], [-1,-2, 0], shape=(N, N)).todense()
+V= diags([1], [-1], shape=(N, N)).todense()
+M= T/dt**2 + V*omega**2
+
+M[0,0]=1 # initial condition for amplitude, x1=1
+M[1,0]=-1 # initial condition for velocity, dx/dt=0
+M[1,1]=1
+
+# initial condition vector
+b=b.transpose()
+
+x= np.linalg.solve(M, b) # this is the solution
+```
+
+```{pyodide}
+#| autorun: false
+#| fig-align: center
+plt.figure(figsize=get_size(8,6))
+plt.plot(t,x)
+plt.xlabel('time t')
+plt.ylabel('elongation x(t)')
+plt.tight_layout()
+plt.show()
+```
+
+## Explicit Solution - Numerical Integration
+
+Before implementing explicit numerical schemes, let's develop a standardized approach for solving ODEs. This framework will allow us to solve different problems using various methods with minimal code modification.
+
+Let's examine the free fall problem as an example:
+
+\begin{equation}
+\ddot{x}= -g
+\end{equation}
+
+This second-order equation can be transformed into a system of two first-order equations:
+
+\begin{eqnarray}
+\dot{x} &= v \\
+\dot{v} &= -g
+\end{eqnarray}
+
+Using the Euler method, these equations become:
+
+\begin{eqnarray}
+x_{i+1} &= x_i + v_i \Delta t \\
+v_{i+1} &= v_i - g\Delta t
+\end{eqnarray}
+
+Note: The original equations had $\dot{x}$ and $\dot{v}$ in the right-hand side, which should be replaced with their actual values ($v$ and $-g$ respectively).
+
+These equations can be written more compactly in vector form:
+
+\begin{equation}
+\vec{y}_{i+1} = \vec{y}_i + \dot{\vec{y}}_i \Delta t
+\end{equation}
+
+where
+
+\begin{equation}
+\vec{y}=
+\begin{bmatrix}
+x \\
+v
+\end{bmatrix}
+\end{equation}
+
+and
+
+\begin{equation}
+\dot{\vec{y}}=
+\begin{bmatrix}
+v \\
+-g
+\end{bmatrix}
+\end{equation}
+
+This vector formulation allows us to separate:
+1. Problem definition (specifying $\dot{\vec{y}}$ as a function of $\vec{y}$ and $t$)
+2. Solution method (implementing the numerical integration scheme)
+
+We'll explore three numerical methods:
+
+- **Euler Method**: First-order accurate
+- **Euler-Cromer Method**: Modified Euler method, better for oscillatory systems
+- **Midpoint Method**: Second-order accurate
+
+More sophisticated methods like the Runge-Kutta family offer higher accuracy but are not covered here.
+
+
+### Euler Method
+
+The **Euler method** is derived from the Taylor expansion of the solution $\vec{y}(t)$ around the current time $t$:
+
+\begin{equation}
+\vec{y}(t+\Delta t)=\vec{y}(t)+\dot{\vec{y}}(t)\Delta t+\frac{1}{2}\ddot{\vec{y}}(t)\Delta t^{2}+ \mathcal{O}(\Delta t^3)
+\end{equation}
+
+The Euler method approximates this by truncating after the first-order term:
+
+\begin{equation}
+\vec{y}(t+\Delta t) \approx \vec{y}(t) + \dot{\vec{y}}(t) \Delta t
+\end{equation}
+
+For our free fall example, this becomes:
+
+\begin{equation}
+\begin{bmatrix} x_{i+1} \\ v_{i+1} \end{bmatrix} =
+\begin{bmatrix} x_i \\ v_i \end{bmatrix} +
+\begin{bmatrix} v_i \\ -g \end{bmatrix} \Delta t
+\end{equation}
+
+Error Analysis:
+The method has two distinct types of errors. The local truncation error, which represents the error made in a single step, is of order $\mathcal{O}(\Delta t^2)$. This corresponds to the first term omitted in the Taylor expansion. The global truncation error, which accumulates over the entire integration interval $[0,\tau]$, is of order $\mathcal{O}(\Delta t)$. This can be understood by considering that we take $N = \tau/\Delta t$ steps, each contributing an error proportional to $\Delta t^2$. The total error thus scales as $N \cdot \Delta t^2 = \tau \Delta t$.
+
+Limitations and Extensions:
+The method is directly applicable only to first-order systems of the form $\dot{\vec{y}} = \vec{f}(\vec{y},t)$. However, this is not a fundamental limitation as higher-order equations can be converted to systems of first-order equations. For example, a second-order equation $\ddot{x} = f(x,\dot{x},t)$ can be transformed into a system of two first-order equations by introducing the velocity as an additional variable. The resulting system becomes:
+
+\begin{equation}
+\begin{bmatrix} \dot{x} \\ \dot{v} \end{bmatrix} =
+\begin{bmatrix} v \\ f(x,v,t) \end{bmatrix}
+\end{equation}
+
+This transformation allows us to apply the method to a wider class of problems while maintaining its fundamental characteristics.
+
+### Euler-Cromer Method
+
+The **Euler-Cromer method** (also known as the semi-implicit Euler method) modifies the basic Euler method by using the updated velocity when calculating the position. For a system described by position and velocity:
+
+\begin{equation}
+\begin{aligned}
+\dot{x} &= v \\
+\dot{v} &= f(x,v,t)
+\end{aligned}
+\end{equation}
+
+The integration steps are:
+
+\begin{equation}
+\begin{aligned}
+v_{i+1} &= v_i + f(x_i,v_i,t_i)\Delta t \\
+x_{i+1} &= x_i + v_{i+1}\Delta t
+\end{aligned}
+\end{equation}
+
+For our free fall example:
+\begin{equation}
+\begin{aligned}
+v_{i+1} &= v_i - g\Delta t \\
+x_{i+1} &= x_i + v_{i+1}\Delta t
+\end{aligned}
+\end{equation}
+
+Energy Behavior:
+The method shows improved energy conservation for oscillatory systems compared to the standard Euler method. While the Euler method typically increases energy over time, the Euler-Cromer method exhibits small energy oscillations around the correct value.
+
+Error Analysis:
+The method maintains a local truncation error of $\mathcal{O}(\Delta t^2)$ and a global truncation error of $\mathcal{O}(\Delta t)$. Despite having the same order of accuracy as the Euler method, it provides more stable solutions for oscillatory systems.
+
+Advantages:
+The Euler-Cromer method represents a simple modification of the Euler method that achieves better stability for oscillatory systems without requiring additional function evaluations.
+
+Limitations:
+The method remains first-order accurate globally and is not symmetric in time. While it performs well for certain types of problems, particularly oscillatory systems, it may not be suitable for all differential equations.
+
+Comparison with Euler Method:
+
+```python
+# Euler Method
+v[i+1] = v[i] + f(x[i],v[i],t[i])*dt
+x[i+1] = x[i] + v[i]*dt       # Uses old velocity
+
+# Euler-Cromer Method
+v[i+1] = v[i] + f(x[i],v[i],t[i])*dt
+x[i+1] = x[i] + v[i+1]*dt     # Uses new velocity
+```
+
+
+### Midpoint Method
+
+The **Midpoint Method** (also known as the second-order Runge-Kutta method) improves upon both the Euler and Euler-Cromer methods by using the average of the derivatives at the current point and an estimated midpoint.
+
+For a system of first-order differential equations:
+
+\begin{equation}
+\dot{\vec{y}} = \vec{f}(\vec{y},t)
+\end{equation}
+
+The algorithm proceeds in two steps:
+
+1. Calculate an intermediate point using an Euler step to the midpoint:
+\begin{equation}
+\vec{k}_1 = \vec{f}(\vec{y}_i,t_i)
+\end{equation}
+\begin{equation}
+\vec{y}_{i+1/2} = \vec{y}_i + \frac{\Delta t}{2}\vec{k}_1
+\end{equation}
+
+2. Use the derivative at this midpoint for the full step:
+\begin{equation}
+\vec{k}_2 = \vec{f}(\vec{y}_{i+1/2},t_i+\Delta t/2)
+\end{equation}
+\begin{equation}
+\vec{y}_{i+1} = \vec{y}_i + \Delta t\vec{k}_2
+\end{equation}
+
+For our free fall example, this becomes:
+
+\begin{equation}
+\begin{aligned}
+v_{i+1/2} &= v_i - \frac{g\Delta t}{2} \\
+x_{i+1/2} &= x_i + v_i\frac{\Delta t}{2} \\
+v_{i+1} &= v_i - g\Delta t \\
+x_{i+1} &= x_i + v_{i+1/2}\Delta t
+\end{aligned}
+\end{equation}
+
+Error Analysis:
+The method achieves higher accuracy than both Euler and Euler-Cromer methods with:
+
+- Local truncation error: $\mathcal{O}(\Delta t^3)$
+- Global truncation error: $\mathcal{O}(\Delta t^2)$
+
+Implementation:
+```python
+def midpoint_step(y, t, dt, f):
+    # Calculate k1
+    k1 = f(y, t)
+
+    # Calculate midpoint
+    y_mid = y + 0.5 * dt * k1
+
+    # Calculate k2 at midpoint
+    k2 = f(y_mid, t + 0.5*dt)
+
+    # Full step using midpoint derivative
+    return y + dt * k2
+```
+
+```{python}
+#| echo: false
+#| code-fold: true
+#| fig-align: center
+## high precision
+import numpy as np
+import matplotlib.pyplot as plt
+
+def get_size(w, h):
+    """Convert cm to inches for figure size"""
+    return (w/2.54, h/2.54)
+
+def set_plot_style():
+    """Set default plotting parameters"""
+    plt.rcParams.update({
+        'font.size': 10,
+        'lines.linewidth': 1,
+        'lines.markersize': 5,
+        'axes.labelsize': 10,
+        'xtick.labelsize': 10,
+        'ytick.labelsize': 10,
+        'xtick.top': True,
+        'xtick.direction': 'in',
+        'ytick.right': True,
+        'ytick.direction': 'in',
+    })
+
+def euler_method(t, x0, v0, g):
+    """Implement Euler method"""
+    v = np.zeros_like(t)
+    x = np.zeros_like(t)
+    v[0], x[0] = v0, x0
+    dt = t[1] - t[0]
+
+    for i in range(len(t)-1):
+        v[i+1] = v[i] + g*dt
+        x[i+1] = x[i] + v[i]*dt
+
+    return x, v
+
+def euler_cromer_method(t, x0, v0, g):
+    """Implement Euler-Cromer method"""
+    v = np.zeros_like(t)
+    x = np.zeros_like(t)
+    v[0], x[0] = v0, x0
+    dt = t[1] - t[0]
+
+    for i in range(len(t)-1):
+        v[i+1] = v[i] + g*dt
+        x[i+1] = x[i] + v[i+1]*dt
+
+    return x, v
+
+def midpoint_method(t, x0, v0, g):
+    """Implement Midpoint method"""
+    v = np.zeros_like(t)
+    x = np.zeros_like(t)
+    v[0], x[0] = v0, x0
+    dt = t[1] - t[0]
+
+    for i in range(len(t)-1):
+        v[i+1] = v[i] + g*dt
+        x[i+1] = x[i] + (v[i+1] + v[i])*dt/2
+
+    return x, v
+
+def analytical_solution(t, x0, v0, g):
+    """Calculate analytical solution"""
+    return x0 + v0*t + 0.5*g*t**2
+
+def compare_methods(T=2.0, N_coarse=5, N_fine=1000, x0=0, v0=10, g=-9.81):
+    """Compare all methods with analytical solution"""
+    # Fine grid for analytical solution
+    t_fine = np.linspace(0, T, N_fine)
+    x_analytical = analytical_solution(t_fine, x0, v0, g)
+
+    # Coarse grid for numerical methods
+    t_coarse = np.linspace(0, T, N_coarse)
+
+    # Calculate solutions
+    x_euler, _ = euler_method(t_coarse, x0, v0, g)
+    x_euler_cromer, _ = euler_cromer_method(t_coarse, x0, v0, g)
+    x_midpoint, _ = midpoint_method(t_coarse, x0, v0, g)
+
+    # Plotting
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=get_size(20, 10))
+
+    # Plot full trajectories
+    ax1.plot(t_fine, x_analytical, 'k-', linewidth=0.5, label='Analytical')
+    ax1.plot(t_coarse, x_euler, 'bo-', linewidth=0.5, label='Euler')
+    ax1.plot(t_coarse, x_euler_cromer, 'ro-', linewidth=0.5, label='Euler-Cromer')
+    ax1.plot(t_coarse, x_midpoint, 'go-', linewidth=0.5, label='Midpoint')
+
+    # Add grid lines
+    for t in t_coarse:
+        ax1.axvline(x=t, color='black', linewidth=0.2)
+
+    # Add annotations
+    for i, (t, x) in enumerate(zip(t_coarse, x_euler)):
+        ax1.annotate(f'$x_{i}$', xy=(t, x), xytext=(5, 5),
+                    textcoords='offset points', fontsize=15)
+
+    ax1.set_xlabel('t [s]', fontsize=16)
+    ax1.set_ylabel('x [m]', fontsize=16)
+    ax1.legend(loc='lower left')
+    ax1.grid(True)
+
+    # Plot errors
+    x_analytical_coarse = analytical_solution(t_coarse, x0, v0, g)
+    errors_euler = np.abs(x_euler - x_analytical_coarse)
+    errors_euler_cromer = np.abs(x_euler_cromer - x_analytical_coarse)
+    errors_midpoint = np.abs(x_midpoint - x_analytical_coarse)
+
+    ax2.plot(t_coarse, errors_euler, 'bo-', label='Euler Error')
+    ax2.plot(t_coarse, errors_euler_cromer, 'ro-', label='Euler-Cromer Error')
+    ax2.semilogy(t_coarse, errors_midpoint, 'gx-', label='Midpoint Error')
+    ax2.set_xlabel('t [s]', fontsize=16)
+    ax2.set_ylabel('absolute error', fontsize=16)
+    ax2.legend()
+    ax2.grid(True)
+
+    plt.tight_layout()
+    plt.show()
+
+# Set plot style and run comparison
+set_plot_style()
+compare_methods()
+```
+
+### Putting it all together
+
+Now we can implement our numerical solution by combining our understanding of both the physical system and numerical methods. This implementation consists of two main parts: defining the differential equation and solving it numerically.
+
+#### The Definition of the Problem
+
+For the simple harmonic oscillator, we start with the second-order differential equation:
+
+\begin{equation}
+\frac{d^2x}{dt^2} + \omega^2x = 0
+\end{equation}
+
+To solve this numerically, we convert it to a system of first-order equations using our state vector $\vec{y} = [x, v]^T$:
+
+\begin{equation}
+\frac{d}{dt}\begin{bmatrix} x \\ v \end{bmatrix} =
+\begin{bmatrix} v \\ -\omega^2x \end{bmatrix}
+\end{equation}
+
+This is implemented as:
+~~~
+def SHO(state, time):
+    """
+    Define the harmonic oscillator system.
+    state[0] : position x
+    state[1] : velocity v
+    returns  : [dx/dt, dv/dt]
+    """
+    g0 = state[1]         # dx/dt = v
+    g1 = -k/m*state[0]    # dv/dt = -ω²x
+    return np.array([g0, g1])
+~~~
+
+This function defines our physical system by returning the derivatives of our state variables at any given point.
+
+#### Solving the Problem
+
+With our system defined, we can implement the numerical solution using Euler's method. The basic algorithm takes the current state and advances it by one time step:
+
+~~~
+def euler(y, t, dt, derivs):
+    """
+    Perform one step of the Euler method.
+    y      : current state [x, v]
+    t      : current time
+    dt     : time step
+    derivs : function returning derivatives
+    """
+    y_next = y + derivs(y, t) * dt
+    return y_next
+~~~
+
+This simple structure allows us to solve different physical problems by just changing the derivative function. For example, we can solve the free fall problem with initial conditions $x_0=0$ and $v_0=10$, or the harmonic oscillator with specified spring constant $k$ and mass $m$.
+
+The key advantage of this structure lies in its flexibility. We can change the physical system by providing a different derivative function, implement various numerical methods by modifying the integration step, and explore the system behavior by adjusting parameters and initial conditions. This modular approach allows us to study a wide range of physical systems using the same basic numerical framework.
+
+```{pyodide}
+#| autorun: false
+# Parameters
+N = 2000  # number of steps
+tau = 4*np.pi  # time period
+xo = 1.0  # initial position
+vo = 0.0  # initial velocity
+
+k = 3.5
+m = 0.2
+gravity = 9.8
+
+dt = tau/float(N-1)
+time = np.linspace(0, tau, N)
+
+y = np.zeros([N, 2])
+y[0, 0] = xo
+y[0, 1] = vo
+
+
+##  defining the problem
+def free_fall(state , time):
+    g0 = state[1]
+    g1 = -gravity
+    return(np.array([g0, g1]))
+
+
+def SHO(y, t, b=0, k=3.5):
+    x, v = y
+    dydt = [v, -b*v - k*x]
+    return np.array(dydt)
+
+
+def MMM(state, time):
+    g0 = state[1]-1.1*state[1]
+    g1 = -k/m * state[0]-12
+    return(np.array([g0, g1]))
+
+##  solving the problem with euler
+def euler(y, t, dt, derivs):
+    y_next = y + derivs(y,t)* dt
+    return(y_next)
+
+def runge_kutta2(y, time, dt, derivs):
+    k0 = dt * derivs(y, time)
+    k1 = dt * derivs(y + k0, time + dt)
+    y_next = y + 0.5 * (k0 + k1)
+    return y_next
+
+# Solve the differential equation
+for j in range(N-1):
+    y[j+1] = euler(y[j], time[j], dt, SHO)
+
+# Plot results
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
+
+ax1.plot(time, y[:, 0])
+ax1.set_title("Position")
+ax1.set_xlabel('time [s]', fontsize=16)
+ax1.set_ylabel('position x [m]', fontsize=16)
+ax1.tick_params(labelsize=14)
+
+ax2.plot(time, y[:, 1])
+ax2.set_title("Velocity")
+ax2.set_xlabel('time [s]', fontsize=16)
+ax2.set_ylabel('velocity v [m/s]', fontsize=16)
+ax2.tick_params(labelsize=14)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Solving the Harmonic Oscillator with SciPy {#sec-solving-ODE}
+
+Having explored basic numerical integration methods, we can now utilize more sophisticated tools available in SciPy. The `scipy.integrate.odeint()` function provides a robust and accurate integration method with several advantages over our simple implementations.
+
+To use SciPy's integrator:
+```python
+from scipy.integrate import odeint
+```
+
+The basic syntax is:
+```python
+solution = odeint(derivative_function, initial_conditions, time_points)
+```
+
+where:
+
+- `derivative_function` defines the system (like our `SHO` function)
+- `initial_conditions` is a vector containing $[x_0, v_0]$
+- `time_points` is an array of times at which to compute the solution
+
+The `odeint` function offers several significant advantages over our simple implementations. It features adaptive step size control, which automatically adjusts the integration step size based on the local error. The function performs continuous error estimation and correction to maintain accuracy throughout the integration. It also provides various integration methods that can be selected based on the problem's requirements. The function is capable of handling stiff equations, which are particularly challenging for simpler methods, and generally provides better numerical stability across a wide range of problems.
+
+For example, to solve the harmonic oscillator:
+```python
+def SHO(state, t, k=1.0, m=1.0):
+    x, v = state
+    return [v, -k/m * x]
+
+# Initial conditions
+y0 = [1.0, 0.0]  # x₀ = 1, v₀ = 0
+t = np.linspace(0, 10, 1000)
+
+# Solve the system
+solution = odeint(SHO, y0, t)
+```
+
+The solution array contains:
+
+- `solution[:, 0]`: position values
+- `solution[:, 1]`: velocity values
+
+Having understood the fundamentals of numerical integration through our implementations of Euler and other methods, we can now confidently use this more sophisticated tool for solving differential equations more accurately and efficiently.
+
+### Setup
+
+```{pyodide}
+#| autorun: false
+from scipy.integrate import odeint
+
+N = 1000  # number of steps
+xo = 1.0 # initial position
+vo = 0.0 # initial velocity
+tau = 4*np.pi # time period
+
+k = 3.5
+m = 0.2
+gravity = 9.8
+
+time = np.linspace(0, tau, N)
+
+y = np.zeros(2)
+y[0] = xo
+y[1] = vo
+
+```
+
+### Definition
+
+```{pyodide}
+#| autorun: false
+##  defining the problem
+def SHO(state, time):
+    g0 = state[1]
+    g1 = -k/m * state [0]
+    return(np.array([g0, g1]))
+```
+
+### Solution
+
+```{pyodide}
+#| autorun: false
+
+answer = odeint( SHO, y , time )
+```
+
+### Plotting
+
+```{pyodide}
+#| autorun: false
+fig=plt.figure(1, figsize = (10,5) )
+plt.subplot(1, 2, 1)
+plt.plot(time, answer[:,0])
+plt.ylabel("position , velocity")
+plt.xlabel('time [s]', fontsize=16)
+plt.ylabel('position x [m]',fontsize=16)
+plt.tick_params(labelsize=14)
+
+plt.subplot(1, 2, 2)
+plt.plot(time, answer[:,1])
+plt.xlabel('time [s]', fontsize=16)
+plt.ylabel('velocity v [m/s]',fontsize=16)
+plt.tick_params(labelsize=14)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Damped Driven Pendulum in SciPy
+
+Write a `derivs` function for a damped driven pendulum:
+
+\begin{equation}
+\ddot{\theta}=-\frac{g}{L}\sin(\theta)-b \dot{\theta}+\beta\cos(\omega t)
+\end{equation}
+
+Use this *derivs* function with the *SciPy* solver and plot the result for different parameters. Vary the damping parameter $b$. Observe the contributions of the homogeneous and the particular solution. Plot the amplitude of the stationary solution as a function of frequency!
+
+### Setup
+
+```{pyodide}
+#| autorun: false
+N = 10000  # number of steps
+theta_o = 1.0 # initial position
+vo = -0.0 # initial velocity
+tau = 100.0 # time period
+
+length=10.0
+b=0.2
+beta=np.pi/2
+gravity = 9.8
+omega=np.sqrt(gravity/length)
+
+
+time = np.linspace(0, tau, N)
+
+y = np.zeros (2)
+y[0] = theta_o
+y[1] = vo
+```
+
+### Definition
+
+```{pyodide}
+#| autorun: false
+def pendulum_def(state , time):
+    g0 = state[1]
+    g1 = -gravity/length * np.sin(state[0]) - b*state[1] + beta*np.cos(omega * time)
+    return(np.array([g0, g1]) )
+```
+
+### Solution
+
+```{pyodide}
+#| autorun: false
+answer = odeint( pendulum_def, y , time )
+```
+
+### Plotting
+
+```{pyodide}
+#| autorun: false
+fig=plt.figure(1, figsize = (8,6) )
+plt.plot(time,beta*np.cos(omega * time),'r--',alpha=0.3)
+plt.plot(time, answer[:,0])
+plt.xlabel('time [s]', fontsize=16)
+plt.ylabel('angular velocity',fontsize=16)
+plt.tick_params(labelsize=14)
+plt.show()
+```

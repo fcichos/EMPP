@@ -1,0 +1,165 @@
+---
+title: Diffusion equation
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+
+
+```{ojs}
+//| echo: false
+//| fig-align: center
+
+diffusionViz = {
+  const width = 800, height = 400;
+  const margin = {top: 30, right: 30, bottom: 30, left: 40};
+
+  // Grid parameters
+  const nx = 20;  // number of spatial points
+  const nt = 10;  // number of time points
+  const dx = 1.0/(nx-1);
+  const dt = 0.1;
+  const D = 0.1;
+
+  // Create SVG
+  const svg = d3.create("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+  // Setup scales
+  const xScale = d3.scaleLinear()
+    .domain([0, 1])
+    .range([margin.left, width - margin.right]);
+
+  const yScale = d3.scaleLinear()
+    .domain([0, (nt-1)*dt])
+    .range([margin.top, height - margin.bottom]);
+
+  // Draw grid
+  for(let i = 0; i < nx; i++) {
+    svg.append("line")
+      .attr("x1", xScale(i*dx))
+      .attr("y1", margin.top)
+      .attr("x2", xScale(i*dx))
+      .attr("y2", height - margin.bottom)
+      .attr("stroke", "#ddd")
+      .attr("stroke-width", 1);
+  }
+
+  for(let j = 0; j < nt; j++) {
+    svg.append("line")
+      .attr("x1", margin.left)
+      .attr("y1", yScale(j*dt))
+      .attr("x2", width - margin.right)
+      .attr("y2", yScale(j*dt))
+      .attr("stroke", "#ddd")
+      .attr("stroke-width", 1);
+  }
+
+  // Create solution array
+  let u = Array(nt).fill().map(() => Array(nx).fill(0));
+
+  // Initial condition (Gaussian)
+  u[0] = Array.from({length: nx}, (_, i) => {
+    const x = i*dx;
+    const sigma = 0.1, mu = 0.5;
+    const exponent = -Math.pow(x-mu, 2)/(2*Math.pow(sigma, 2));
+    return Math.exp(exponent);
+  });
+
+  // Compute solution
+  for(let j = 0; j < nt-1; j++) {
+    for(let i = 1; i < nx-1; i++) {
+      u[j+1][i] = u[j][i] + D*dt/(dx*dx)*(u[j][i+1] - 2*u[j][i] + u[j][i-1]);
+    }
+  }
+
+  // Draw solution points
+  const points = svg.append("g");
+  let currentTime = 0;
+
+  function update() {
+    // Clear previous points
+    points.selectAll("*").remove();
+
+    // Draw all points up to current time
+    for(let j = 0; j <= currentTime; j++) {
+      for(let i = 0; i < nx; i++) {
+        points.append("circle")
+          .attr("cx", xScale(i*dx))
+          .attr("cy", yScale(j*dt))
+          .attr("r", 3)
+          .attr("fill", u[j][i] > 0.1 ? "steelblue" : "#ddd");
+      }
+    }
+
+    // Highlight current computation points
+    if(currentTime < nt-1) {
+      for(let i = 1; i < nx-1; i++) {
+        // Previous time points (inputs)
+        points.append("circle")
+          .attr("cx", xScale((i-1)*dx))
+          .attr("cy", yScale(currentTime*dt))
+          .attr("r", 5)
+          .attr("fill", "orange");
+
+        points.append("circle")
+          .attr("cx", xScale(i*dx))
+          .attr("cy", yScale(currentTime*dt))
+          .attr("r", 5)
+          .attr("fill", "orange");
+
+        points.append("circle")
+          .attr("cx", xScale((i+1)*dx))
+          .attr("cy", yScale(currentTime*dt))
+          .attr("r", 5)
+          .attr("fill", "orange");
+
+        // Current point being computed
+        points.append("circle")
+          .attr("cx", xScale(i*dx))
+          .attr("cy", yScale((currentTime+1)*dt))
+          .attr("r", 5)
+          .attr("fill", "red");
+      }
+    }
+
+    currentTime = (currentTime + 1) % nt;
+  }
+
+  // Add axes
+  svg.append("g")
+    .attr("transform", `translate(0,${height - margin.bottom})`)
+    .call(d3.axisBottom(xScale).ticks(nx-1));
+
+  svg.append("g")
+    .attr("transform", `translate(${margin.left},0)`)
+    .call(d3.axisLeft(yScale).ticks(nt-1));
+
+  // Add labels
+  svg.append("text")
+    .attr("x", width/2)
+    .attr("y", height - 5)
+    .attr("text-anchor", "middle")
+    .text("Space (x)");
+
+  svg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("x", -height/2)
+    .attr("y", 15)
+    .attr("text-anchor", "middle")
+    .text("Time (t)");
+
+  d3.interval(update, 1000);
+
+  return svg.node();
+}
+```

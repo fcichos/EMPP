@@ -1,0 +1,86 @@
+---
+title: Datatypes Quiz
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - numpy
+---
+
+
+## Python Data Types Quiz
+
+Test your knowledge of Python data types with this interactive quiz!
+
+::: {.quiz}
+
+1. What is the output of `len("Hello, World!")`?
+
+   ```{pyodide}
+   #| autorun: false
+   print(len("Hello, World!"))
+   ```
+
+   - [ ] 10
+   - [ ] 11
+   - [ ] 13
+   - [ ] 14
+
+2. What is the result of `[1, 2, 3] + [4, 5]`?
+
+   ```{pyodide}
+   #| autorun: false
+   print([1, 2, 3] + [4, 5])
+   ```
+
+   - [ ] (1, 2, 3, 4, 5)
+   - [ ] [1, 2, 3, 4, 5]
+   - [ ] [5, 7, 8]
+   - [ ] Error
+
+3. Which of the following creates an empty dictionary?
+
+   - [ ] `{}`
+   - [ ] `[]`
+   - [ ] `()`
+   - [ ] Both `{}` and `dict()`
+
+4. What is the output of `set([1, 2, 2, 3, 3, 3])`?
+
+   ```{pyodide}
+   #| autorun: false
+   print(set([1, 2, 2, 3, 3, 3]))
+   ```
+
+   - [ ] [1, 2, 2, 3, 3, 3]
+   - [ ] {1, 2, 3}
+   - [ ] {1, 2, 2, 3, 3, 3}
+   - [ ] Error
+
+5. What is the result of `"Hello" * 3`?
+
+   ```{pyodide}
+   #| autorun: false
+   print("Hello" * 3)
+   ```
+
+   - [ ] Hello Hello Hello
+   - [ ] HelloHelloHello
+   - [ ] Hello3
+   - [ ] Error
+
+:::
+
+::: {.callout-tip collapse="true"}
+## Click to reveal answers
+
+1. 13
+2. [1, 2, 3, 4, 5]
+3. Both `{}` and `dict()`
+4. {1, 2, 3}
+5. HelloHelloHello
+
+:::

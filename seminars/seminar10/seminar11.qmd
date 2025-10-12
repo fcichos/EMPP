@@ -1,0 +1,441 @@
+---
+title: Neural Networks
+jupyter: python3
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 12,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+# Introduction to Neural Networks in Physics
+
+## What are Neural Networks?
+Neural networks are computational models inspired by how our brains process information. Just like our brain consists of interconnected neurons that process and transmit signals, artificial neural networks consist of mathematical "neurons" that process numerical information. They're particularly powerful for:
+
+- Recognizing patterns in data
+- Making predictions
+- Classifying information
+- Solving complex problems
+
+## Why Neural Networks in Physics?
+
+In physics, we often encounter problems where:
+
+1. Traditional mathematical models become too complex
+2. We need to analyze large amounts of experimental data
+3. We want to make predictions based on incomplete information
+
+Neural networks help us with these challenges! Some real-world applications include:
+
+- Particle physics: Identifying particles in detector data
+- Astronomy: Classifying galaxies
+- Materials science: Predicting material properties
+- Quantum mechanics: Solving many-body problems
+- Biological physics: Modeling neural activity
+- Active matter: Predicting collective behavior
+
+
+## A Single Neuron: Building Our First AI Unit
+
+### The Big Picture
+
+Before diving into the details, let's understand what we're trying to build. Imagine you're creating a smart device that can recognize handwritten numbers. The most basic version of this device would be a single artificial neuron - think of it as an electronic version of a brain cell that can make simple yes/no decisions.
+
+### From Biology to Mathematics
+Just like a biological neuron receives signals from other neurons, our artificial neuron processes numerical inputs through mathematical operations to produce a single output value.
+
+The neuron performs three distinct steps:
+
+1. **Input Weighting**
+Each input value gets multiplied by a weight parameter:
+
+\begin{eqnarray}
+x_{1}\rightarrow x_{1} w_{1}\\
+x_{2}\rightarrow x_{2} w_{2}
+\end{eqnarray}
+
+2. **Bias Addition**
+A bias value $b$ is added to the weighted sum:
+
+\begin{equation}
+x_{1} w_{1}+ x_{2} w_{2}+b
+\end{equation}
+
+3. **Activation Function**
+The final step applies an activation function $\sigma()$:
+
+\begin{equation}
+y=\sigma( x_{1} w_{1}+ x_{2} w_{2}+b)
+\end{equation}
+
+For mathematical convenience, we can write this more compactly using vector notation:
+
+\begin{equation*}
+\hat{y} = \sigma(w^{\rm T} x + b)
+\end{equation*}
+
+The sigmoid function has the following mathematical form:
+\begin{equation*}
+\sigma(z) = \frac{1}{1+{\rm e}^{-z}}
+\end{equation*}
+
+Let's implement the sigmoid function and visualize how it transforms inputs:
+
+```{pyodide}
+def sigmoid(z):
+    return 1/(1 + np.exp(-z))
+```
+
+```{pyodide}
+x=np.linspace(-5,5,100)
+plt.figure(figsize=(5,3))
+plt.plot(x,sigmoid(x))
+plt.xlabel('input')
+plt.ylabel('output')
+plt.grid()
+plt.tight_layout()
+plt.show()
+```
+
+Now let's see how a neuron processes inputs through these operations. Given:
+
+\begin{eqnarray}
+w=[0,1]\\
+b=4
+\end{eqnarray}
+
+And input values:
+
+\begin{eqnarray}
+x=[2,3]
+\end{eqnarray}
+
+The computation becomes:
+
+```{pyodide}
+# Example neuron computation
+w = np.array([0, 1])
+x = np.array([2, 3])
+b = 4
+
+output = sigmoid(np.dot(w, x) + b)
+print(f"Neuron output: {output:.3f}")
+```
+
+For computational efficiency, these calculations can be performed on multiple inputs simultaneously using matrix operations:
+
+\begin{equation*}
+\hat{y} = \sigma(w^{\rm T} X + b)
+\end{equation*}
+
+
+## Loss Function: Measuring Our Network's Mistakes
+
+### Why Do We Need a Loss Function?
+Just like we need a way to measure error in physics experiments, we need a way to measure how wrong our neural network's predictions are. The loss function serves this purpose - it tells us how far our predictions are from the true values.
+
+### Understanding Cross-Entropy Loss
+While we could use simpler measures like mean squared error:
+
+\begin{equation}
+MSE(y,\hat{y})=\frac{1}{n}\sum_{i=1}^{n}(y-\hat{y})^2
+\end{equation}
+
+We'll use a more sophisticated measure called cross-entropy loss. For a single training example, the formula is:
+
+\begin{equation*}
+L(y,\hat{y}) = -y\log(\hat{y})-(1-y)\log(1-\hat{y})
+\end{equation*}
+
+**Physics Analogy:** This is similar to entropy in thermodynamics - it measures the disorder or uncertainty in our predictions.
+
+When dealing with multiple training examples ($m$ of them), we average the loss:
+
+\begin{equation*}
+L(Y,\hat{Y}) = -\frac{1}{m}\sum_{i = 0}^{m}y^{(i)}\log(\hat{y}^{(i)})-(1-y^{(i)})\log(1-\hat{y}^{(i)})
+\end{equation*}
+
+Let's implement this in code:
+
+```{pyodide}
+def compute_loss(Y, Y_hat):
+    m = Y.shape[1]
+    L = -(1./m)*(np.sum(np.multiply(np.log(Y_hat), Y)) +
+                 np.sum(np.multiply(np.log(1 - Y_hat), (1 - Y))))
+    return L
+
+# Let's test our loss function with some example predictions
+Y_true = np.array([[1, 0, 1, 0]])  # True values
+Y_pred = np.array([[0.9, 0.1, 0.8, 0.2]])  # Network predictions
+
+loss = compute_loss(Y_true, Y_pred)
+print(f"Loss for these predictions: {loss:.4f}")
+```
+
+### Training the Network: The Big Picture
+The goal of training is to minimize this loss function. We do this by adjusting the weights and biases of our network. Let's see how this works:
+
+```{pyodide}
+# Visualize how different predictions affect loss
+def plot_loss_curve():
+    y_true = 1  # True value
+    y_pred = np.linspace(0.01, 0.99, 100)  # Range of predictions
+    loss = -y_true * np.log(y_pred) - (1-y_true) * np.log(1-y_pred)
+
+    plt.figure(figsize=(8, 4))
+    plt.plot(y_pred, loss)
+    plt.xlabel('Prediction')
+    plt.ylabel('Loss')
+    plt.title('Cross-Entropy Loss for True Value = 1')
+    plt.grid(True)
+    plt.show()
+
+plot_loss_curve()
+```
+
+### Backward Propagation: Finding the Path to Improvement
+
+The loss function $L$ depends on all our weights and biases:
+
+$$
+L(w_{1},w_{2},w_{3},\ldots ,b_{1},b_{2},b_{3},\ldots)
+$$
+
+To minimize the loss, we need to know how it changes when we adjust each weight. This is where partial derivatives come in:
+
+$$
+\frac{\partial L}{\partial w_j}
+$$
+
+Breaking this down step by step, we use the chain rule:
+
+\begin{align*}
+\frac{\partial L}{\partial w_j} = \frac{\partial L}{\partial \hat{y}}\frac{\partial \hat{y}}{\partial z}\frac{\partial z}{\partial w_j}
+\end{align*}
+
+Let's calculate each term:
+
+1. $\partial L/\partial\hat{y}$:
+\begin{align*}
+\frac{\partial L}{\partial\hat{y}} &= \frac{\partial}{\partial\hat{y}}\left(-y\log(\hat{y})-(1-y)\log(1-\hat{y})\right) \\
+&= -\frac{y}{\hat{y}} +\frac{(1 - y)}{1-\hat{y}} \\
+&= \frac{\hat{y} - y}{\hat{y}(1-\hat{y})}
+\end{align*}
+
+2. $\partial \hat{y}/\partial z$:
+\begin{align*}
+\frac{\partial }{\partial z}\sigma(z) &= \sigma(z)(1-\sigma(z)) \\
+&= \hat{y}(1-\hat{y})
+\end{align*}
+
+3. $\partial z/\partial w_j$:
+\begin{align*}
+\frac{\partial }{\partial w_j}(w^{\rm T} x + b) = x_j
+\end{align*}
+
+Putting it all together:
+\begin{align*}
+\frac{\partial L}{\partial w_j} = (\hat{y} - y)x_j
+\end{align*}
+
+For multiple training examples, in vector form:
+\begin{align*}
+\frac{\partial L}{\partial w} = \frac{1}{m} X(\hat{y} - y)^{\rm T}
+\end{align*}
+
+Similarly for the bias:
+\begin{align*}
+\frac{\partial L}{\partial b} = \frac{1}{m}\sum_{i=1}^{m}{(\hat{y}^{(i)} - y^{(i)})}
+\end{align*}
+
+### Interactive Example: Watching Gradients
+
+```{pyodide}
+# Demonstrate how gradients change with different predictions
+def compute_gradient_example():
+    x = np.array([1, 2])  # Sample input
+    y = 1  # True value
+    w = np.array([0.1, 0.2])  # Initial weights
+    y_hat = sigmoid(np.dot(w, x))
+
+    # Compute gradient
+    dw = x * (y_hat - y)
+
+    print(f"Prediction (y_hat): {y_hat:.4f}")
+    print(f"Gradient (dw): {dw}")
+
+compute_gradient_example()
+```
+
+### Key Points to Remember:
+- The loss function measures prediction errors
+- Cross-entropy loss is particularly suitable for classification problems
+- Gradients tell us how to adjust weights and biases
+- The chain rule helps us compute these gradients efficiently
+
+
+## Training the Network: Putting It All Together
+
+### Stochastic Gradient Descent (SGD)
+Now that we understand how to compute gradients, we can use them to train our network. The basic idea is simple:
+1. Calculate how wrong we are (loss)
+2. Calculate how to improve (gradients)
+3. Take a small step in the right direction
+
+This process is called Stochastic Gradient Descent (SGD). The mathematical update rule is:
+
+$$
+w\leftarrow w-\eta\frac{\partial L}{\partial w}
+$$
+
+where $\eta$ is the learning rate - a small number that controls how big our improvement steps are.
+
+**Physics Analogy:** This is similar to finding the minimum of a potential well. The gradient tells us which way is "downhill", and we take small steps in that direction.
+
+### Building Our First Complete Network
+
+Let's implement a complete training loop. We'll use:
+- Learning rate $\eta = 1$
+- 200 training epochs (complete passes through the data)
+
+```{pyodide}
+learning_rate = 1
+
+X = np.array(X_train)
+Y = np.array(y_train)
+
+n_x = X.shape[0]  # number of input features
+m = X.shape[1]    # number of training examples
+
+# Initialize weights and bias
+W = np.random.randn(n_x, 1) * 0.01  # small random weights
+b = np.zeros((1, 1))
+
+# Training loop
+for i in range(200):
+    # Forward propagation
+    Z = np.matmul(W.T, X) + b
+    A = sigmoid(Z)
+
+    # Compute loss
+    loss = compute_loss(Y, A)
+
+    # Backward propagation
+    dW = (1/m)*np.matmul(X, (A-Y).T)
+    db = (1/m)*np.sum(A-Y, axis=1, keepdims=True)
+
+    # Update parameters
+    W = W - learning_rate * dW
+    b = b - learning_rate * db
+
+    # Print progress every 10 epochs
+    if i % 10 == 0:
+        print(f"Epoch {i:3d}, Loss: {loss:.6f}")
+
+print(f"Final loss: {loss:.6f}")
+```
+
+### Evaluating Our Network: The Confusion Matrix
+
+To understand how well our network performs, we use a confusion matrix. This shows:
+- True Positives (TP): Correctly predicted positive cases
+- False Positives (FP): Incorrectly predicted positive cases
+- True Negatives (TN): Correctly predicted negative cases
+- False Negatives (FN): Incorrectly predicted negative cases
+
+![confusion_matrix](confusion_matrix.png)
+
+Let's evaluate our model on the test data:
+
+```{pyodide}
+from sklearn.metrics import confusion_matrix, classification_report
+
+# Generate predictions on test data
+Z = np.matmul(W.T,X_test) + b
+A = sigmoid(Z)
+
+# Convert probabilities to binary predictions
+predictions = (A > 0.5)[0,:]
+labels = (y_test == 1)[0,:]
+
+# Compute and display confusion matrix
+print("Confusion Matrix:")
+print(confusion_matrix(predictions, labels))
+
+# Display detailed classification report
+print("\nClassification Report:")
+print(classification_report(predictions, labels))
+```
+
+### Testing Individual Predictions
+
+Let's visualize how our network performs on a single test image:
+
+```{pyodide}
+def test_single_image(index):
+    # Get prediction for single image
+    prediction = bool(sigmoid(np.matmul(W.T, np.array(X_test)[:,index])+b) > 0.5)
+
+    # Display image and prediction
+    plt.figure(figsize=(4,4))
+    plt.imshow(np.array(X_test)[:,index].reshape(28,28), cmap='gray')
+    plt.title(f'Prediction: {prediction}')
+    plt.axis('off')
+    plt.show()
+
+    return prediction
+
+# Test an example image
+test_index = 200
+result = test_single_image(test_index)
+print(f"Predicted class: {result}")
+```
+
+### Understanding the Results:
+- The confusion matrix shows us where our model makes mistakes
+- The classification report gives us metrics like:
+  - Precision: How many of our positive predictions were correct
+  - Recall: How many actual positive cases did we catch
+  - F1-score: A balanced measure of precision and recall
+
+### Key Points to Remember:
+1. Training is an iterative process of:
+   - Forward propagation
+   - Loss calculation
+   - Backward propagation
+   - Parameter updates
+2. The learning rate controls how quickly we update our parameters
+3. We evaluate performance using confusion matrices and classification metrics

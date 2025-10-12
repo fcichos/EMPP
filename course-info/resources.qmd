@@ -1,0 +1,42 @@
+---
+title: "Quellen"
+---
+
+Vor allen anderen Sachen ist es für diesen Kurs wichtig, dass Sie während der Vorlesung einen Internetzugang haben. Wir werden viele Beispiele und Übungen durchführen, die auf Online-Ressourcen verweisen.
+
+Innerhalb der Universität können die Eduroam-Netzwerke verwendet werden. Die notwendigen Profildaten können Sie [hier](https://www.urz.uni-leipzig.de/servicedesk-und-hilfe/hilfe-zu-unseren-services/netz-und-zugang/hilfe-wireless-lan-wlan-eduroam) finden.
+
+Weiterhin gibt es eine Menge weiterer gut strukturierter Ressourcen zu Python im Netz. Nachfolgend finden Sie nur eine sehr kleine Auswahl.
+
+## Hypothesis Annotation Tool
+
+* [Invite to the Hypothesis annotation tool](https://hypothes.is/groups/V81QVQXo/empp24-lectures)
+
+
+## Molecular Nanophotonics Group
+
+* [Molecular Nanophotonics Group Website](https://home.uni-leipzig.de/~physik/sites/mona/)
+* [Hypothesis Annotation Tool Invite](https://hypothes.is/groups/V81QVQXo/empp24-lectures)
+
+## Additional Advanced Courses
+
+* Rosenow Group (Theory), Master Course on [Statistical Mechanics of Deep Learning](https://home.uni-leipzig.de/stp/Statistical_Deep_SS21.html)
+
+## Python Documentation
+
+* [Python](https://docs.python.org/3.12/)
+* [Matplotlib](https://matplotlib.org/stable/users/index)
+* [Pandas](https://pandas.pydata.org/docs/user_guide/index.html)
+
+## Python Tutorials
+
+* [Introduction to Python for Science](https://physics.nyu.edu/pine/pymanual/html/pymanMaster.html)
+* [Nice MatPlotLib tutorial](https://github.com/rougier/matplotlib-tutorial)
+
+## Julia Tutorial
+
+* [Julia Programming Language](https://julialang.org)
+
+## Pluto NoteBook
+
+* [Pluto GitHub Webpage](https://github.com/fonsp/Pluto.jl)

@@ -1,0 +1,200 @@
+```{pyodide}
+#| exercise: ex_1_py
+#| check: true
+import js
+from pyodide.ffi import to_js
+
+n = range(1, 11)
+mean = sum(n)/len(n)
+js_data = to_js({'matrikel': "444", 'result': result})
+##js.saveToFirebase(js_data)
+
+print(myresult)  # Should print: Hello from JavaScript!
+feedback = None
+if (result == mean):
+  feedback = { "correct": True, "message": "Nice work!" }
+else:
+  feedback = { "correct": False, "message": "That's incorrect, sorry." }
+myresult,feedback
+```
+
+
+
+
+import pyodide
+from pyodide.ffi import to_js
+
+import sys
+
+print("Python version:", sys.version)
+print("Modules in sys.modules:")
+for module in sys.modules:
+    if module.startswith('js') or module == 'pyodide':
+        print(f"  {module}")
+
+def write_to_firebase(path, data):
+    XMLHttpRequest = js.XMLHttpRequest.new()
+
+    def on_load(event):
+        if XMLHttpRequest.status == 200:
+            print(f"Data written successfully: {XMLHttpRequest.responseText}")
+        else:
+            print(f"Error: {XMLHttpRequest.statusText}")
+
+    def on_error(event):
+        print("Network Error occurred")
+
+    XMLHttpRequest.open("PUT", f"https://empp24-e7c40-default-rtdb.europe-west1.firebasedatabase.app/{path}.json", False)  # False for synchronous request
+    XMLHttpRequest.setRequestHeader("Content-Type", "application/json")
+    XMLHttpRequest.onload = on_load
+    XMLHttpRequest.onerror = on_error
+
+    js_data = to_js(data)
+    XMLHttpRequest.send(js.JSON.stringify(js_data))
+
+    # The response is immediately available after send() for synchronous requests
+    if XMLHttpRequest.status == 200:
+        print(f"Data written successfully: {XMLHttpRequest.responseText}")
+    else:
+        print(f"Error: {XMLHttpRequest.statusText}")
+
+path = "users/123"
+data = {"name": "John Doe", "email": "john@example.com"}
+
+write_to_firebase(path, data)
+
+
+## old stuff
+
+
+```{=html}
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+  import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAswFfnIzeBu55zZSR25_x_RlyLoGzydZ4",
+    authDomain: "empp24-e7c40.firebaseapp.com",
+    projectId: "empp24-e7c40",
+    storageBucket: "empp24-e7c40.appspot.com",
+    messagingSenderId: "109449265661",
+    appId: "1:109449265661:web:ef751de6e9a9d6bb975994",
+    databaseURL: "https://empp24-e7c40-default-rtdb.europe-west1.firebasedatabase.app/" // Add this line with your database URL
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  console.log(database);
+  function saveToFirebase(data) {
+    const resultsRef = ref(database, 'results');
+    push(resultsRef, data)
+      .then(() => console.log('Data saved successfully'))
+      .catch((error) => console.error('Error saving data:', error));
+  }
+
+  // Your number and result string
+  const myNumber = "42";
+  const resultString = "The answer to life, the universe, and everything";
+
+  // Save both to the database
+  //saveToFirebase({
+  //  matrikel: myNumber,
+  //  result: resultString
+  //});
+
+  // Make saveToFirebase available globally for Pyodide
+  window.saveToFirebase = saveToFirebase;
+</script>
+<script>
+window.myJavaScriptFunction = function(arg) {
+  console.log("Called from Python with argument:", arg);
+  return "Hello from JavaScript!";
+};
+</script>
+```
+
+
+
+
+database_url = 'https://empp24-e7c40-default-rtdb.europe-west1.firebasedatabase.app/'
+
+
+
+## Application
+
+The following code snippets demonstrate the use of variables and basic arithmetic operations in Python. The code snippets include examples of variable assignments, type conversion, and arithmetic operations.
+
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| code-tools: true
+
+# 1. Converting Units of Distance
+# Distance in kilometers
+distance_km = 5.0
+
+# Conversion factor from kilometers to meters
+conversion_factor = 1000
+
+# Convert distance to meters
+distance_meters = distance_km * conversion_factor
+
+# 2. Calculating Time from Distance and Speed
+# Given distance in meters
+distance = 1000.0  # meters
+
+# Given speed in meters per second
+speed = 5.0  # meters per second
+
+# Calculate time in seconds
+time = distance / speed
+
+# 3. Energy Calculation Using Kinetic Energy Formula
+# Mass in kilograms
+mass = 70.0  # kg
+
+# Velocity in meters per second
+velocity = 10.0  # m/s
+
+# Calculate kinetic energy
+kinetic_energy = 0.5 * mass * velocity ** 2
+
+# 4. Temperature Conversion (Celsius to Fahrenheit)
+# Temperature in Celsius
+temp_celsius = 25.0  # degrees Celsius
+
+# Convert to Fahrenheit
+temp_fahrenheit = (temp_celsius * 9/5) + 32
+
+# 5. Power Calculation Using Work and Time
+# Work done in joules
+work_done = 500.0  # joules
+
+# Time taken in seconds
+time_taken = 20.0  # seconds
+
+# Calculate power
+power_output = work_done / time_taken
+
+# 6. Calculating Force Using Newton's Second Law
+# Mass in kilograms
+mass = 10.0  # kg
+
+# Acceleration in meters per second squared
+acceleration = 9.8  # m/s^2
+
+# Calculate force
+force = mass * acceleration
+
+# Output Results
+print(f"Distance in meters: {distance_meters} m")
+print(f"Time to travel {distance} meters at {speed} m/s: {time} seconds")
+print(f"Kinetic energy: {kinetic_energy} joules")
+print(f"Temperature in Fahrenheit: {temp_fahrenheit} °F")
+print(f"Power output: {power_output} watts")
+print(f"Force: {force} newtons")
+```

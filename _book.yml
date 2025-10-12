@@ -1,0 +1,80 @@
+# _book.yml
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Introduction to Computer-based Physical Modeling"
+  author:
+    name: "Frank Cichos"
+    email: cichos@physik.uni-leipzig.de
+    affiliation:
+      - name: Leipzig University
+        city: Leipzig
+        url: http://www.uni-leipzig.de/~mona
+  date: "8/14/2024"
+  abstract: |
+    This book is a collection of lecture notes for the course "Introduction to Computer-based Physical Modeling" at the University of Leipzig. The course is part of the Bachelor's program in Physics and is intended for all students. The course covers the basics of computer-based physical modeling, including numerical methods, simulation techniques, and data analysis. The book is designed to be used as a reference for students taking the course, as well as for anyone interested in learning more about computer-based physical modeling.
+  search: true
+  downloads: [pdf]
+  page-navigation: true
+  navbar:
+    background: primary
+    search: true
+    right:
+      - icon: github
+        href: https://github.com/fastai/course22
+  sidebar:
+    style: floating
+    background: light
+    logo: mona_logo.png
+    title: "EMPP"
+    collapse-level: 1
+  chapters:
+    - index.qmd
+    - part: "Course Info"
+      chapters:
+        - courseinfo/course_info.qmd
+    - part: "Lecture Contents"
+      chapters:
+        - lectures/lecture01/01-lecture01.qmd
+        - lectures/lecture02/01-lecture02.qmd
+        - lectures/lecture03/01-lecture03.qmd
+        - lectures/lecture12/01-lecture12.qmd
+    - part: "Seminar Contents"
+      chapters:
+        - seminars/seminar01/01-seminar01.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - custom.scss
+    css:
+      - styles.css
+      - https://cdnjs.cloudflare.com/ajax/libs/jupyterquiz/1.0.0/jupyterquiz.min.css
+    code-fold: false
+    backgroundcolor: "#F5F5F5"
+    include-before-body: "quarto-header.html"
+    toc: true
+    toc-location: right
+    toc-title: "On this page"
+    toc-depth: 4
+
+  pdf:
+    documentclass: scrreprt
+    cover-image: "CompSoft_banner.png"
+    output-file: pdf-book
+    margin: 1in
+
+number-sections: true
+bibliography: references.bib
+
+execute:
+  freeze: auto
+
+comments:
+  hypothesis: false
+
+open-graph:
+  title: "Einführung in Computer Based Modelling"

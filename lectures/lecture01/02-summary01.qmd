@@ -1,0 +1,83 @@
+## Python Basics Cheat Sheet
+
+::: {.callout-tip collapse="true"}
+## Click to expand Python Basics Cheat Sheet
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Variables and Assignment
+
+```python
+x = 1.0  # Assigns 1.0 to variable x
+my_variable = "Hello"  # Assigns string "Hello"
+```
+
+#### Naming Rules
+- Use a-z, A-Z, 0-9, and _
+- Start with letter or underscore
+- Case-sensitive
+- Avoid reserved keywords
+
+### Number Types
+
+| Type    | Example   | Description        |
+|---------|-----------|---------------------|
+| int     | 5         | Whole numbers       |
+| float   | 3.14      | Decimal numbers     |
+| complex | 2 + 3j    | Real + imaginary    |
+| bool    | True      | Logical values      |
+
+### Type Conversion
+
+```python
+int_num = int(3.14)    # 3
+float_num = float(5)   # 5.0
+str_num = str(42)      # "42"
+```
+:::
+
+::: {.column width="50%"}
+### Arithmetic Operations
+
+```python
+a, b = 10, 3
+sum_result = a + b   # Addition
+diff_result = a - b  # Subtraction
+prod_result = a * b  # Multiplication
+div_result = a / b   # Division (float)
+int_div_result = a // b  # Integer division
+mod_result = a % b   # Modulus
+power_result = a ** b  # Exponentiation
+```
+
+### Complex Numbers
+
+```python
+c = 2 + 4j
+real_part = c.real     # 2.0
+imag_part = c.imag     # 4.0
+conjugate = c.conjugate()  # 2 - 4j
+```
+
+### Type Checking
+
+```python
+type(variable)  # Returns type
+isinstance(variable, type)  # Checks type
+```
+
+### Common Math Operations
+
+```python
+import math
+
+sqrt_result = math.sqrt(16)
+log_result = math.log(100, 10)
+sin_result = math.sin(math.pi/2)
+```
+:::
+
+::::
+
+:::

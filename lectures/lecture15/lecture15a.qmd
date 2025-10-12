@@ -1,0 +1,432 @@
+---
+title: "Repetition Differential Equations"
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 12,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+In today's lecture, we will review and expand upon the numerical methods for solving differential equations that you've encountered in your mathematics courses. This is particularly important for physics students, as differential equations are the language in which many physical laws are written. Whether we're dealing with $F = ma$ in classical mechanics, Maxwell's equations in electromagnetism, or Schrödinger's equation in quantum mechanics, the ability to solve differential equations is essential.
+
+While analytical solutions are elegant and preferred when available, many real-world physical problems require numerical approaches. We will focus on numerical methods that you can implement yourself, starting with the simplest approaches and building up to more sophisticated techniques.
+
+To begin this review, we will first have a look back at the Taylor expansion of a function $f(t)$ around a point $t_0$:
+
+$$
+f(t) = f(t_{0}) + (t - t_0) f^{\prime}(t_0) + \frac{(t - t_0)^2}{2!} f^{\prime\prime}(t_0) + \frac{(t - t_0)^3}{3!} f^{(3)}(t_0) + \ldots
+$$
+
+which tells us that the function $f(t)$ can be approximated by a polynomial of increasing order around the point $t_0$. The first term is the value of the function at $t_0$, the second term is the slope of the function at $t_0$, the third term is the curvature of the function at $t_0$, and so on.
+
+The Taylor expansion is the basis for many numerical methods for solving differential equations. The simplest of these methods is the Euler method, which approximates the function by a straight line. We will start with the Euler method and then move on to more advanced techniques like the improved Euler method.
+
+## Euler Method
+
+If we truncate the series at the first term, we get the linear approximation of the function:
+
+$$
+f(t) \approx f(t_{0}) + (t - t_0) f^{\prime}(t)= f(t_{0}) + \Delta t f^{\prime}(t)
+$$
+
+This is the equation of a straight line with slope $f^{\prime}(t)$ and intercept $f(t_0)$ and we abbreviated $\Delta t = t - t_0$.
+
+
+### Euler Method for Radioactive Decay
+We would like to try the method with some simple first order problem, which is the radioactive decay. The decay of a radioactive nucleus is described by the first-order differential equation:
+
+$$
+\frac{dN(t)}{dt} = -k N(t)
+$$
+
+where $k$ is a decay constant. If $N(t)$ is the number of radioactive nuclei at time $t$, the equation tells us that the rate of decay is proportional to the number of nuclei present and some rate constant $k$. The solution to this differential equation is:
+
+$$
+N(t) = N(0) e^{-kt}
+$$
+
+where $N(0)$ is the number of nuclei at time $t=0$. We therefore need to know some initial condition, which we define as $N(0) = 100$. Comparing to our Taylor expansion, we can see that $N=f(t)$ and the slope of the function is $f^{\prime}(t) = -kN(t)$. Further we have the value of the function at $t_0 = 0$. We can now use the linear approximation to solve the ODE numerically.
+Inserting the values into the linear approximation, we get:
+
+$$
+N(t + \Delta t) = N(t) + \Delta t f^{\prime}(t)
+$$
+
+We can now implement the Euler method to solve the ODE numerically.
+
+
+```{pyodide}
+#| exercise: ex_1
+#| autorun: false
+
+# the function that defines the deravative
+def decay(N, *params):
+  ___
+
+# the numerical integration method
+def euler(N, t, dt, derivs,*params):
+  ___
+
+
+
+# the initial condition
+t= np.arange(0, 5, 0.1); dt=t[1]-t[0]
+N = np.zeros(len(t)); N[0] = 100
+
+
+# solve the ODE
+for j in range(1, len(t)):
+  ___
+
+# plot the result
+___
+
+```
+
+::: {.solution exercise="ex_1"}
+::: { .callout-note collapse="false"}
+## Solution Radioactive Decay
+```{pyodide}
+#| autorun: false
+
+# the function that defines the deravative
+def decay(N, *params):
+    k = params[0]
+    return -k*N
+
+# the numerical integration method
+def euler(N, t, dt, derivs,*params):
+    return N+derivs(N,*params)*dt
+
+
+
+# the initial condition
+t= np.arange(0, 5, 0.1); dt=t[1]-t[0]
+N = np.zeros(len(t)); N[0] = 100
+
+
+# solve the ODE
+for j in range(1, len(t)):
+    N[j] = euler(N[j-1], t, dt, decay, 1)
+
+# plot the result
+plt.figure(figsize=get_size(14,10))
+plt.scatter(t, N, c="k",alpha=0.4,label='Euler method')
+plt.plot(t, N[0]*np.exp(-np.array(t)), "k--",label='Analytical solution')
+plt.xlabel('t')
+plt.ylabel('y(t)')
+plt.legend()
+plt.show()
+```
+:::
+:::
+### Improved Euler Method
+
+While the above code is what we did fo the simples numerical integration, you can now modify the code inside the `euler` function to implement any  improved Euler method. An improved Euler method (also called Heun's method) is based on averaging the slopes at two points. To understand why this works better than the simple Euler method, let's look at the Taylor expansion again around $t_0$:
+
+$$
+f(t_0 + \Delta t) \approx f(t_0) + \Delta t f'(t_0)
+$$
+
+We can improve this simple formula by taking the avarage of the derivative at $t_0$ and the derivative at the predicted point $t_0 + \Delta t$:
+
+$$
+f(t_0 + \Delta t) \approx f(t_0) + \frac{\Delta t}{2} (f'(t_0) + f'(t_0 + \Delta t))
+$$
+
+This effectively now introduces the curvature of the function at $t_0$ into the approximation. We can see this by expanding the improved Euler method in a Taylor series. The first derivative at $t_0$ is $f'(t_0)$, and the derivative at the predicted point $f'(t_0 + \Delta t)$ can be expanded as $f'(t_0) + \Delta t f''(t_0)$. When we average these two derivatives and multiply by $\Delta t$, we get $\Delta t f'(t_0) + \frac{\Delta t^2}{2} f''(t_0)$, which matches the first two terms in the Taylor expansion. This is why the improved Euler method has an error of order $O(\Delta t^2)$ compared to $O(\Delta t)$ for the simple Euler method.
+
+```{pyodide}
+#| exercise: ex_2
+#| autorun: false
+
+# the function that defines the deravative
+def decay(N, *params):
+    k = params[0]
+    return -k*N
+
+# the numerical integration method using midpoint method
+def improved_euler(N, t, dt, derivs, *params):
+  ___
+
+# the initial condition
+t= np.arange(0, 5, 0.1); dt=t[1]-t[0]
+N = np.zeros(len(t)); N[0] = 100
+
+# solve the ODE using improved Euler method
+for j in range(1, len(t)):
+    N[j] = improved_euler(N[j-1], t, dt, decay, 1)
+
+# plot the result
+___
+```
+
+::: {.solution exercise="ex_2"}
+::: { .callout-note collapse="false"}
+## Solution Radioactive Decay Improved Euler
+```{pyodide}
+#| autorun: false
+
+# the function that defines the deravative
+def decay(N, *params):
+    k = params[0]
+    return -k*N
+
+# the numerical integration method using midpoint method
+def improved_euler(N, t, dt, derivs, *params):
+    # Calculate predicted value using Euler's method
+    N_pred = N + derivs(N, *params) * dt
+
+    # Use average of derivatives at current and predicted points
+    return N + 0.5 * dt * (derivs(N, *params) + derivs(N_pred, *params))
+
+# the initial condition
+t= np.arange(0, 5, 0.1); dt=t[1]-t[0]
+N = np.zeros(len(t)); N[0] = 100
+
+# solve the ODE using improved Euler method
+for j in range(1, len(t)):
+    N[j] = improved_euler(N[j-1], t, dt, decay, 1)
+
+# plot the result
+plt.figure(figsize=get_size(14,10))
+plt.scatter(t, N, c="k",alpha=0.4,label='Improved Euler method')
+plt.plot(t, N[0]*np.exp(-np.array(t)), "k--",label='Analytical solution')
+plt.xlabel('t')
+plt.ylabel('y(t)')
+plt.tight_layout()
+plt.show()
+```
+:::
+:::
+
+This already provides a very good approximation to the analytical solution.
+
+
+### Higher order differential equations
+
+The above methods can be easily extended to higher order differential equations. For example, the second order differential equation
+
+$$
+\frac{d^2 y}{dt^2} = -k^2 y
+$$
+
+can be converted into two first order differential equations by introducing a new variable $v = \frac{dy}{dt}$:
+
+$$
+\begin{align}
+\frac{dy}{dt} &= v \\
+\frac{dv}{dt} &= -k^2 y
+\end{align}
+$$
+
+We can now use the improved Euler method to solve these two equations simultaneously. The code below shows how to solve the above second order differential equation.
+
+```{pyodide}
+#| exercise: ex_3
+#| edit: true
+#| autorun: false
+
+# the function that defines the deravative
+def harmonic_oscillator(y, *params):
+  ___
+
+# the numerical integration method
+def euler_2(y, t, dt, derivs, *params):
+    y_pred = y + derivs(y, *params) * dt
+    return y + 0.5 * dt * (derivs(y, *params) + derivs(y_pred, *params))
+
+# the initial condition
+t= np.arange(0, 10, 0.1); dt=t[1]-t[0]
+y = np.zeros((len(t), 2)); y[0] = [1, 0]
+
+# solve the ODE
+for j in range(1, len(t)):
+    y[j] = euler_2(y[j-1], t, dt, harmonic_oscillator, 1)
+
+# plot the result
+___
+```
+
+::: {.solution exercise="ex_3"}
+::: {.callout-note collapse="false"}
+## Solution Harmonic Oscillator
+```{pyodide}
+#| autorun: false
+
+# the function that defines the deravative
+def harmonic_oscillator(y, *params):
+    k = params[0]
+    return np.array([y[1], -k**2*y[0]])
+
+# the numerical integration method
+def euler_2(y, t, dt, derivs, *params):
+    # Calculate predicted value using Euler's method
+    y_pred = y + derivs(y, *params) * dt
+
+    # Use average of derivatives at current and predicted points
+    return y + 0.5 * dt * (derivs(y, *params) + derivs(y_pred, *params))
+
+# the initial condition
+t = np.arange(0, 10, 0.1); dt=t[1]-t[0]
+y = np.zeros((len(t), 2)); y[0] = [1, 0]
+
+# solve the ODE
+for j in range(1, len(t)):
+    y[j] = euler_2(y[j-1], t, dt, harmonic_oscillator, 1)
+
+# plot the result
+
+plt.figure(figsize=get_size(14,10))
+plt.scatter(t, y[:,0], c="k",alpha=0.4,label='Euler method')
+plt.plot(t, np.cos(t), "k--",label='Analytical solution')
+plt.xlabel('t')
+plt.ylabel('y(t)')
+plt.tight_layout()
+plt.show()
+```
+:::
+:::
+
+## Solving Coupled Differential Equations
+
+We may also solve systems of coupled differential equations such as the Lotka-Volterra equations which describe predator-prey dynamics. In this system, we have two populations $x(t)$ (prey) and $y(t)$ (predators) that interact according to:
+
+$$
+\begin{align}
+\frac{dx}{dt} &= \alpha x - \beta xy \\
+\frac{dy}{dt} &= \delta xy - \gamma y
+\end{align}
+$$
+
+where $\alpha$, $\beta$, $\gamma$, and $\delta$ are positive constants representing the interaction between the species. Here $\alpha$ is the growth rate of prey in absence of predators, $\beta$ is the rate at which predators eat prey, $\delta$ is the efficiency of turning eaten prey into new predators, and $\gamma$ is the death rate of predators in absence of prey.
+
+
+```{pyodide}
+#| exercise: ex_4
+#| edit: true
+#| autorun: false
+
+# the function that defines the derivatives for Lotka-Volterra
+def lotka_volterra(z, *params):
+  ___
+
+# the numerical integration method
+def euler_2(y, t, dt, derivs, *params):
+    y_pred = y + derivs(y, *params) * dt
+    return y + 0.5 * dt * (derivs(y, *params) + derivs(y_pred, *params))
+
+# the initial conditions and parameters
+t = np.arange(0, 300, 0.01); dt = t[1]-t[0]
+
+___ # solution vector
+___ # initial populations
+___ # alpha, beta, gamma, delta
+
+# solve using improved Euler method
+for j in range(1, len(t)):
+    z[j] = euler_2(z[j-1], t, dt, lotka_volterra, *params)
+
+# plot the results
+plt.figure(figsize=get_size(14,10))
+plt.plot(t, z[:,0], 'b-', label='Prey')
+plt.plot(t, z[:,1], 'r-', label='Predator')
+plt.xlabel('Time')
+plt.ylabel('Population')
+plt.legend()
+plt.tight_layout()
+plt.show()
+```
+
+::: {.solution exercise="ex_4"}
+::: {.callout-note collapse="false"}
+## Solution Lotka-Volterra
+```{pyodide}
+#| autorun: false
+
+# the function that defines the derivatives for Lotka-Volterra
+def lotka_volterra(z, *params):
+    alpha, beta, gamma, delta = params
+    x, y = z
+    return np.array([alpha*x - beta*x*y, delta*x*y - gamma*y])
+
+# the numerical integration method
+def euler_2(y, t, dt, derivs, *params):
+    # Calculate predicted value using Euler's method
+    y_pred = y + derivs(y, *params) * dt
+
+    # Use average of derivatives at current and predicted points
+    return y + 0.5 * dt * (derivs(y, *params) + derivs(y_pred, *params))
+
+# the initial conditions and parameters
+t = np.arange(0, 300, 0.01); dt = t[1]-t[0]
+z = np.zeros((len(t), 2))
+z[0] = [10, 7]  # initial populations
+params = (1.0, 0.1, 0.1, 0.075)  # alpha, beta, gamma, delta
+
+# solve using improved Euler method
+for j in range(1, len(t)):
+    z[j] = euler_2(z[j-1], t, dt, lotka_volterra, *params)
+
+# plot the results
+plt.figure(figsize=get_size(14,10))
+plt.plot(t, z[:,0], 'b-', label='Prey')
+plt.plot(t, z[:,1], 'r-', label='Predator')
+plt.xlabel('Time')
+plt.ylabel('Population')
+plt.legend()
+plt.tight_layout()
+plt.show()
+```
+:::
+:::
+
+The Lotka-Volterra equations show the cyclic behavior of predator-prey populations. The prey population grows until it reaches a maximum, at which point the predator population increases due to the abundance of prey. The predators then reduce the prey population, leading to a decrease in the predator population. This cycle continues indefinitely, demonstrating the complex dynamics of ecological systems.
+
+```{pyodide}
+#| autorun: false
+
+# plot the Limit Cycle
+plt.figure(figsize=get_size(14,10))
+plt.plot( z[:,0], z[:,1], 'b-')
+plt.xlabel('Prey Population')
+plt.ylabel('Predator Population')
+plt.tight_layout()
+plt.show()
+```
+
+The population values below 1 mean that we have less than one individual in our population, which is not physically meaningful in a biological context. Our model treats populations as continuous variables, but real populations consist of discrete individuals. When the numerical solution shows population values less than 1, this indicates that the model has entered a regime where its continuous approximation breaks down and we should instead use a discrete model that can properly handle individual organisms. In practice, once a population drops below 1, we should consider it extinct.
+
+This limitation of continuous models is particularly important in conservation biology and population management, where understanding the threshold for population viability is crucial. When modeling endangered species or small populations, we often need to switch to discrete population models or include additional factors like demographic stochasticity that become important at low population numbers.

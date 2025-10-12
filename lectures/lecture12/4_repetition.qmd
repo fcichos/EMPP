@@ -1,0 +1,144 @@
+---
+title: Repetition solving ODEs
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+
+
+Since we have already solved ODEs in one of the past lectures, we should repeat this here. The following exercises will help you to get a better understanding of the solution of ODEs. Try to solve the exercises by yourself and with the help of the contents of [Lecture 8](../lecture08/3_solving_ODEs.qmd#sec-solving-ODE).
+
+::: {.callout-note}
+### Self-Exercise 1: Simple Harmonic Oscillator
+Write a program to solve the equation of motion for a simple harmonic oscillator. This example demonstrates how to solve a second-order differential equation using scipy's `odeint`.
+
+The equation of motion is: $\frac{d^2x}{dt^2} + \omega^2x = 0$
+
+This represents an idealized spring-mass system or pendulum with small oscillations.
+
+
+```{pyodide}
+#| exercise: ex_1
+
+import numpy as np
+from scipy.integrate import odeint
+import matplotlib.pyplot as plt
+
+def oscillator(state, t, omega):
+    x, v = state
+    return [v, -omega**2 * x]
+
+# Set parameters
+omega = 2.0
+t = np.linspace(0, 10, 1000)
+initial_state = [1, 0]
+
+# Solve ODE and plot solution
+____
+```
+
+::: {.hint exercise="ex_1"}
+Use `odeint(oscillator, initial_state, t, args=(omega,))` to solve the system. The solution will have two columns: position ([:,0]) and velocity ([:,1]). Create a plot showing position vs time using matplotlib. Remember to label your axes and add a title.
+:::
+
+::: {.solution exercise="ex_1"}
+::: {.callout-note collapse="false"}
+## Solution
+```{pyodide}
+import numpy as np
+from scipy.integrate import odeint
+import matplotlib.pyplot as plt
+
+def oscillator(state, t, omega):
+    x, v = state
+    return [v, -omega**2 * x]
+
+omega = 2.0
+t = np.linspace(0, 10, 1000)
+initial_state = [1, 0]
+
+solution = odeint(oscillator, initial_state, t, args=(omega,))
+
+plt.figure(figsize=(10, 4))
+plt.plot(t, solution[:, 0])
+plt.xlabel('Time (s)')
+plt.ylabel('Position (m)')
+plt.title('Simple Harmonic Motion')
+plt.grid(True)
+plt.show()
+```
+:::
+:::
+:::
+
+
+
+::: {.callout-note}
+### Self-Exercise 2: Radioactive Decay
+Model the process of radioactive decay, a fundamental concept in nuclear physics. This exercise shows how to solve a first-order differential equation that describes exponential decay.
+
+The decay equation is: $\frac{dN}{dt} = -\lambda N$
+
+Where $N$ is the number of atoms and $\lambda$ is the decay constant.
+
+```{pyodide}
+#| exercise: ex_2
+
+import numpy as np
+from scipy.integrate import odeint
+import matplotlib.pyplot as plt
+
+def decay(N, t, lambda_):
+    return -lambda_ * N
+
+# Set parameters
+lambda_ = 0.5
+t = np.linspace(0, 10, 100)
+N0 = 1000
+
+# Solve ODE and plot solution
+____
+```
+
+::: {.hint exercise="ex_2"}
+Use `odeint(decay, N0, t, args=(lambda_,))` to solve the equation. The solution will be a 1D array of N values. Plot N vs t to visualize the exponential decay. Consider adding a horizontal line at N0/2 to show the half-life. Use `plt.grid(True)` to make the plot easier to read.
+:::
+
+::: {.solution exercise="ex_2"}
+::: {.callout-note collapse="false"}
+## Solution
+```{pyodide}
+import numpy as np
+from scipy.integrate import odeint
+import matplotlib.pyplot as plt
+
+def decay(N, t, lambda_):
+    return -lambda_ * N
+
+lambda_ = 0.5
+t = np.linspace(0, 10, 100)
+N0 = 1000
+
+solution = odeint(decay, N0, t, args=(lambda_,))
+
+plt.figure(figsize=(8, 5))
+plt.plot(t, solution)
+plt.axhline(y=N0/2, color='r', linestyle='--', label='Half-life')
+plt.xlabel('Time (s)')
+plt.ylabel('Number of Atoms')
+plt.title('Radioactive Decay')
+plt.grid(True)
+plt.legend()
+plt.show()
+```
+:::
+:::
+:::

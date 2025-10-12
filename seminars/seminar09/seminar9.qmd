@@ -1,0 +1,124 @@
+---
+title: Seminar Coding Exercises 2
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 12,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+
+
+::: {.callout-note}
+### Example1: Damped Oscillator
+
+Create a simple simulation of a damped oscillator using a class structure. Include basic methods to calculate and plot the motion. This introduces both classes and simple differential equations. The damped oscillator is a classic physics problem that demonstrates how energy is dissipated in real systems through friction or air resistance. The motion follows an exponentially decaying sinusoidal pattern, determined by the mass, spring constant, and damping coefficient. We'll use a class to encapsulate these properties and provide methods to analyze the system's behavior over time.
+
+*Time estimate: 20 minutes*
+
+```{pyodide}
+#| exercise: ex_7
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+class DampedOscillator:
+    def __init__(self, mass, k, damping):
+        self.m = mass      # mass
+        self.k = k         # spring constant
+        self.c = damping   # damping coefficient
+
+    def position(self, t, x0):
+        # Calculate position: x(t) = x0 * e^(-ct/2m) * cos(ωt)
+        omega = np.sqrt(self.k/self.m - (self.c/(2*self.m))**2)
+        return x0 * np.exp(-self.c*t/(2*self.m)) * np.cos(omega*t)
+
+    def plot_motion(self, t_max, x0):
+        # Create time array and plot motion
+        ____
+
+# Test the oscillator
+oscillator = DampedOscillator(mass=1.0, k=10.0, damping=0.5)
+oscillator.plot_motion(t_max=10, x0=1.0)
+```
+
+::: {.hint exercise="ex_7"}
+::: { .callout-tip collapse="false"}
+You'll need to:
+
+1. Use np.linspace() to create time array from 0 to t_max
+2. Calculate position for each time point using self.position()
+3. Create a figure using plt.figure()
+4. Plot time vs position using plt.plot()
+5. Add labels, title, and grid
+6. Show the plot using plt.show()
+:::
+:::
+
+::: {.solution exercise="ex_7"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+import numpy as np
+import matplotlib.pyplot as plt
+
+class DampedOscillator:
+    def __init__(self, mass, k, damping):
+        self.m = mass
+        self.k = k
+        self.c = damping
+
+    def position(self, t, x0):
+        omega = np.sqrt(self.k/self.m - (self.c/(2*self.m))**2)
+        return x0 * np.exp(-self.c*t/(2*self.m)) * np.cos(omega*t)
+
+    def plot_motion(self, t_max, x0):
+        t = np.linspace(0, t_max, 500)
+        x = self.position(t, x0)
+
+        plt.figure(figsize=(8, 4))
+        plt.plot(t, x)
+        plt.xlabel('Time (s)')
+        plt.ylabel('Position (m)')
+        plt.title('Damped Oscillator Motion')
+        plt.grid(True)
+        plt.show()
+
+# Test the oscillator
+oscillator = DampedOscillator(mass=1.0, k=10.0, damping=0.5)
+oscillator.plot_motion(t_max=10, x0=1.0)
+```
+:::
+:::
+:::

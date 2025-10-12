@@ -1,0 +1,25 @@
+---
+title: Diese Webseiten
+---
+
+# Diese Webseiten
+
+Diese Website enthält alle Informationen, die für unseren Kurs **Einführung in die Modellierung Physikalischer Prozesse** erforderlich sind. Sie werden hier jede Woche eine neue Vorlesung und eine neue Aufgabe finden. Die Vorlesungshefte werden von Videos begleitet, die den Inhalt der Vorlesung **auf Englisch** erklären, aber Sie können auch mit dem Lesen auskommen. Die Vorlesungen in Person, werden auf Deutsch stattfinden. Von diesen Webseiten aus werden Sie zu verschiedenen Ressourcen geführt, die Sie nutzen können, um das Programmieren in Python zu lernen. Dabei werden wir einige großartige Tools aus dem Internet nutzen, wie
+
+1. **Google Colab** Dienst, um auch Jupyter Notebooks (https://colab.research.google.com) zu hosten. Das Google Colab-Projekt bietet eine nützliche Umgebung zur gemeinsamen Nutzung von Notebooks.
+
+   ![google colab screen](img/colab.png){width=600px fig-align="center"}
+
+   Wenn Sie die folgende Website besuchen, werden Sie an mehreren Stellen das folgende Symbol sehen.
+
+   ![Substitution Name1]
+
+   Dieses Symbol zeigt an, dass diese Webseite auf einem Jupyter Notebook basiert. Anstatt nur die Website zu betrachten, können Sie auf das Symbol klicken und der Google Colab-Dienst wird geöffnet, damit Sie das Notizbuch interaktiv nutzen können. Google Colab öffnet sich viel schneller als myBinder, aber die Notizbücher sind für die Arbeit mit myBinder gemacht und nicht alle Funktionen funktionieren mit Colab. Ich arbeite jedoch an der Kompatibilität.
+
+2. **GitHub and GitHub Pages** Dienst zum Hosting von Websites (https://github.com). GitHub ist ein großartiger Ort, um Ihre kollaborativen Coding-Projekte einschließlich Versionskontrolle zu hosten. In der oberen rechten Ecke finden Sie auch einen Link zum GitHub-Repository, in dem die Notebooks gehostet werden.
+
+   ![github screen](img/github.png){width=600px fig-align="center"}
+
+3. **Anaconda Jupyter package** für Notebooks auf dem eigenen Computer (https://www.anaconda.com/distribution/). Das Paket anaconda stellt Ihnen die Jupyter Notebook-Umgebung einschließlich Python zur Verfügung. Wenn Sie Jupyter zu Hause ohne Online-Zugang verwenden möchten, ist dies ein gutes Paket zur Installation.
+
+   ![anaconda screen](img/anaconda.png){width=600px fig-align="center"}

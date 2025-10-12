@@ -1,0 +1,670 @@
+---
+title: Curve fitting
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+    - ipywidgets
+---
+
+
+Let's take a break from physics-related topics and explore another crucial area: curve fitting. We'll focus on demonstrating how to apply the least-squares method to fit a quadratic function with three parameters to experimental data. It's worth noting that this approach can be applied to more complex functions or even simpler linear models.
+
+Before diving into the fitting process, it's essential to consider how to best estimate your model parameters. In some cases, you may be able to derive explicit estimators for the parameters, which can simplify the fitting procedure. Therefore, it's advisable to carefully consider your approach before beginning the actual fitting process.
+
+For those who want to delve deeper into this subject, you might find it interesting to explore concepts like maximum likelihood estimation. This method offers an alternative approach to parameter estimation and can provide valuable insights in certain scenarios.
+
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import io
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+plt.rcParams.update({'font.size': 18})
+from ipywidgets import interact, interactive, fixed, interact_manual
+import ipywidgets as widgets
+
+# default values for plotting
+plt.rcParams.update({'font.size': 12,
+                     'lines.linewidth': 1,
+                     'lines.markersize': 5,
+                     'axes.labelsize': 11,
+                     'xtick.labelsize' : 10,
+                     'ytick.labelsize' : 10,
+                     'xtick.top' : True,
+                     'xtick.direction' : 'in',
+                     'ytick.right' : True,
+                     'ytick.direction' : 'in',})
+
+def get_size(w,h):
+      return((w/2.54,h/2.54))
+```
+
+```{python}
+#| echo: false
+import pandas as pd
+
+# Data
+data = {
+    'x': [0.000000000000000000e+00, 1.111111111111111049e-01, 2.222222222222222099e-01, 3.333333333333333148e-01, 4.444444444444444198e-01, 5.555555555555555802e-01, 6.666666666666666297e-01, 7.777777777777776791e-01, 8.888888888888888395e-01, 1.000000000000000000e+00],
+    'y': [9.916839204057067425e-01, 1.183667840440161712e+00, 1.310862148961057017e+00, 1.193174867265999639e+00, 1.265354130824580148e+00, 1.234277634100806154e+00, 1.067204799568996387e+00, 7.113706894723520469e-01, 5.111625429539546905e-01, 1.360838209996238390e+00],
+    'error': [5.332818799198481979e-02, 5.339559646742838422e-02, 5.366783326382672248e-02, 5.435097493883071090e-02, 5.576995501488732354e-02, 5.832636573698059268e-02, 6.242706729257353759e-02, 6.840334070620925078e-02, 7.645872257082597656e-02, 4.666811165343753287e-01]
+}
+
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+
+
+ojs_define(data=df)
+# Display DataFrame
+#df
+```
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import pandas as pd
+
+data = {
+    'x': [0.000000000000000000e+00, 1.111111111111111049e-01, 2.222222222222222099e-01, 3.333333333333333148e-01, 4.444444444444444198e-01, 5.555555555555555802e-01, 6.666666666666666297e-01, 7.777777777777776791e-01, 8.888888888888888395e-01, 1.000000000000000000e+00],
+    'y': [9.916839204057067425e-01, 1.183667840440161712e+00, 1.310862148961057017e+00, 1.193174867265999639e+00, 1.265354130824580148e+00, 1.234277634100806154e+00, 1.067204799568996387e+00, 7.113706894723520469e-01, 5.111625429539546905e-01, 1.360838209996238390e+00],
+    'error': [5.332818799198481979e-02, 5.339559646742838422e-02, 5.366783326382672248e-02, 5.435097493883071090e-02, 5.576995501488732354e-02, 5.832636573698059268e-02, 6.242706729257353759e-02, 6.840334070620925078e-02, 7.645872257082597656e-02, 4.666811165343753287e-01]
+}
+df = pd.DataFrame(data)
+
+x_data=df.x.values
+y_data=df.y.values
+err=df.error.values
+
+```
+
+
+
+## Idea
+
+In experimental physics, we often collect data points to understand the underlying physical phenomena. This process involves fitting a mathematical model to the experimental data.
+
+The data typically comes as a series of paired points:
+
+| x-data | y-data |
+|--------|--------|
+| $x_{1}$ | $y_{1}$ |
+| $x_{2}$ | $y_{2}$ |
+| ... | ... |
+| $x_{N}$ | $y_{N}$ |
+
+Each point $\{x_i, y_i\}$ may represent the result of multiple independent measurements. For instance, $y_1$ could be the mean of several measurements $y_{1,j}$:
+
+$$y_1 = \frac{1}{N}\sum_{j=1}^N y_{1,j}$$
+
+When these measurements have an uncertainty $\sigma$ for individual readings, the sum of all measurements has a variance of $N\sigma^2$ and a standard deviation of $\sqrt{N}\sigma$. Consequently, the mean value has an associated error (standard deviation) known as the Standard Error of the Mean (SEOM):
+
+$$\sigma_{SEOM} = \frac{\sigma}{\sqrt{N}}$$
+
+This SEOM is crucial in physics measurements.
+
+It's also important to note the definition of variance:
+
+$$\sigma_1^2 = \frac{1}{N} \sum_{j=1}^N (y_{1,j} - y_1)^2$$
+
+This statistical framework forms the basis for analyzing experimental data and fitting mathematical models to understand the underlying physics.
+
+## Least squares
+
+In experimental physics, we often collect data points to understand the underlying physical phenomena. To make sense of this data, we fit a mathematical model to it. One common method for fitting data is the least squares method.
+
+### Why use least squares fitting?
+
+The goal of least squares fitting is to find the set of parameters for our model that best describes the data. This is done by minimizing the differences (or residuals) between the observed data points and the model's predictions.
+
+### Gaussian uncertainty and probability
+
+When we take measurements, there is always some uncertainty. Often, this uncertainty can be modeled using a Gaussian (normal) distribution. This distribution is characterized by its mean (average value) and standard deviation (a measure of the spread of the data).
+
+If we describe our data with a model function, which delivers a function value $f(x_{i},a)$ for a set of parameters $a$ at the position $x_{i}$, the Gaussian uncertainty dictates a probability of finding a data value $y_{i}$:
+
+\begin{equation}
+p_{y_{i}}=\frac{1}{\sqrt{2\pi}\sigma_{i}}\exp\left(-\frac{(y_{i}-f(x_{i},a))^2}{2\sigma_{i}^2}\right)
+\end{equation}
+
+Here, $\sigma_{i}$ represents the uncertainty in the measurement $y_{i}$.
+
+### Combining probabilities for multiple data points
+
+To understand how well our model fits all the data points, we need to consider the combined probability of observing all the data points. This is done by multiplying the individual probabilities:
+
+\begin{equation}
+p(y_{1},\ldots,y_{N})=\prod_{i=1}^{N}\frac{1}{\sqrt{2\pi}\sigma_{i}}\exp\left(-\frac{(y_{i}-f(x_{i},a))^2}{2\sigma_{i}^2}\right)
+\end{equation}
+
+### Maximizing the joint probability
+
+The best fit of the model to the data is achieved when this joint probability is maximized. To simplify the calculations, we take the logarithm of the joint probability:
+
+\begin{equation}
+\ln(p(y_{1},\ldots,y_{N}))=-\frac{1}{2}\sum_{i=1}^{N}\left( \frac{y_{i}-f(x_{i},a)}{\sigma_{i}}\right)^2 - \sum_{i=1}^{N}\ln\left( \sigma_{i}\sqrt{2\pi}\right)
+\end{equation}
+
+The first term on the right side (except the factor 1/2) is the least squared deviation, also known as $\chi^{2}$:
+
+\begin{equation}
+\chi^{2} =\sum_{i=1}^{N}\left( \frac{y_{i}-f(x_{i},a)}{\sigma_{i}}\right)^2
+\end{equation}
+
+The second term is just a constant value given by the uncertainties of our experimental data.
+
+## Data
+
+Let's have a look at the meaning of this equation. Let's assume we measure the trajectory of a ball that has been thrown at an angle $\alpha$ with an initial velocity $v_{0}$. We have collected data points by measuring the height of the ball above the ground at equally spaced distances from the throwing person.
+
+```{python}
+#| echo: false
+from itables import show
+
+show(df)
+```
+
+The table above shows the measured data points $y_{i}$ at the position $x_{i}$ with the associated uncertainties $\sigma_{i}$.
+
+We can plot the data and expect, of course, a parabola. Therefore, we model our experimental data with a parabola like
+
+\begin{equation}
+y = ax^2 + bx + c
+\end{equation}
+
+where the parameter $a$ must be negative since the parabola is inverted.
+
+I have created an interactive plot with an interact widget, as this allows you to play around with the parameters. The value of $\chi^2$ is also included in the legend, so you can get an impression of how good your fit of the data is.
+
+
+```{ojs}
+//| echo: false
+viewof aSlider = Inputs.range([-4, 0], { label: "a", step: 0.01, value: -1.7 });
+viewof bSlider = Inputs.range([-2, 2], { label: "b", step: 0.01, value: 1.3 });
+viewof cSlider = Inputs.range([-2, 2], { label: "c", step: 0.01, value: 1.0 });
+```
+
+```{ojs}
+//| echo: false
+//| fig-align: center
+filtered = transpose(data);
+// Create the plot
+
+xValues = Array.from({ length: 100 }, (_, i) => i / 100);
+parabolaData = xValues.map(x => ({ x, y: parabola(x, aSlider, bSlider, cSlider) }));
+
+
+parabola = (x, a, b, c) => a * x**2 + b * x + c
+
+calculateChiSquared = (data, a, b, c) => {
+  let chisq = 0
+  let x= data.map(d => d.x)
+  let y= data.map(d => d.y)
+  let err= data.map(d => d.error)
+  for (let i = 0; i < x.length; i++) {
+    let y_model = parabola(x[i], a, b, c)
+    chisq += ((y[i] - y_model) / err[i])**2
+  }
+  return chisq
+}
+
+chisq = calculateChiSquared(filtered, aSlider, bSlider, cSlider)
+
+Plot.plot({
+  marks: [
+    Plot.dot(filtered, { x: "x", y: "y" }),
+    Plot.ruleY(filtered, { x: "x", y1: d => d.y - d.error, y2: d => d.y + d.error }),
+    Plot.line(parabolaData, { x: "x", y: "y" }),
+    Plot.text([{ x: 0.8, y: 1.5, label: `χ²: ${chisq.toFixed(2)}` }], {
+          x: "x",
+          y: "y",
+          text: "label",
+          dy: -10, // Adjust vertical position if needed
+          fill: "black", // Set text color
+          fontSize: 16
+        }),
+    Plot.frame()
+  ],
+  x: {
+    label: "X Axis",
+    labelAnchor: "center",
+    labelOffset: 35,
+    grid: true,
+    tickFormat: ".2f", // Format ticks to 2 decimal places
+    domain: [0, 1]
+  },
+  y: {
+    label: "Y Axis",
+    grid: true,
+    tickFormat: ".2f", // Format ticks to 2 decimal places
+    labelAnchor: "center",  // Center the label on its axis
+    labelAngle: -90,
+    labelOffset: 60,
+    domain: [0, 2],
+  },
+  width: 400,
+  height: 400,
+  marginLeft: 100,
+  marginBottom: 40,
+  style: {
+    fontSize: "14px",          // This sets the base font size
+    "axis.label": {
+      fontSize: "18px",        // This sets the font size for axis labels
+      fontWeight: "bold"       // Optionally make it bold
+    },
+    "axis.tick": {
+      fontSize: "14px"         // This sets the font size for tick labels
+    }
+  },
+})
+```
+
+
+
+```{pyodide}
+#| autorun: false
+#| fig-align: center
+import numpy as np
+import io
+import pandas as pd
+import matplotlib.pyplot as plt
+plt.figure(figsize=get_size(8,8))
+plt.errorbar(df.x,df.y,yerr=df.error,marker='o',fmt="none",color='k')
+
+plt.scatter(df.x,df.y,marker='o',color='k')
+plt.xlabel('x- position')
+plt.ylabel('y- position')
+plt.tight_layout()
+plt.show()
+```
+
+
+We have that troubling point at the right edge with a large uncertainty. However, since the value of $\chi^2$ divides the deviation by the uncertainty $\sigma_{i}$, the weight for this point overall in the $\chi^2$ is smaller than for the other points.
+
+\begin{equation}
+\chi^{2}=\sum_{i=1}^{N}\left( \frac{y_{i}-f(x_{i},a)}{\sigma_{i}}\right)^2
+\end{equation}
+
+You may simply check the effect by changing the uncertainty of the last data points in the error array.
+
+## Least square fitting
+
+To find the best fit of the model to the experimental data, we use the least squares method. This method minimizes the sum of the squared differences between the observed data points and the model's predictions.
+
+Mathematically, we achieve this by minimizing the least squares, i.e., finding the parameters $a$ that minimize the following expression:
+
+\begin{equation}
+\frac{d\chi^{2}}{da}=\sum_{i=1}^{N}\frac{1}{\sigma_{i}^2}\frac{df(x_{i},a)}{da}[y_{i}-f(x_{i},a)]=0
+\end{equation}
+
+This kind of least squares minimization is done by fitting software using different types of algorithms.
+
+### Fitting with SciPy
+
+Let's do some fitting using the `SciPy` library, which is a powerful tool for scientific computing in Python. We will use the `curve_fit` method from the `optimize` sub-module of `SciPy`.
+
+First, we need to define the model function we would like to fit to the data. In this case, we will use our parabola function:
+
+```{pyodide}
+#| autorun: false
+def parabola(x, a, b, c):
+    return a * x**2 + b * x + c
+```
+
+Next, we need to provide initial guesses for the parameters. These initial guesses help the fitting algorithm start the search for the optimal parameters:
+
+```{pyodide}
+#| autorun: false
+init_guess = [-1, 1, 1]
+```
+
+We then call the `curve_fit` function to perform the fitting:
+
+```{pyodide}
+#| autorun: false
+fit = curve_fit(parabola, x_data, y_data, sigma=err, p0=init_guess, absolute_sigma=True)
+```
+
+::: {.callout-note collapse=true}
+### `curve_fit` Function
+
+The `curve_fit` function is used to fit a model function to data. It finds the optimal parameters for the model function that minimize the sum of the squared residuals between the observed data and the model's predictions.
+
+### Parameters
+
+1. **`parabola`**:
+
+   - This is the model function that you want to fit to the data. In this case, `parabola` is a function that represents a quadratic equation of the form \( y = ax^2 + bx + c \).
+
+2. **`x_data`**:
+
+   - This is the array of independent variable data points (the x-values).
+
+3. **`y_data`**:
+
+   - This is the array of dependent variable data points (the y-values).
+
+4. **`sigma=err`**:
+
+   - This parameter specifies the uncertainties (standard deviations) of the y-data points. The `err` array contains the uncertainties for each y-data point. These uncertainties are used to weight the residuals in the least squares optimization.
+
+5. **`p0=init_guess`**:
+
+   - This parameter provides the initial guesses for the parameters of the model function. The `init_guess` array contains the initial guesses for the parameters \( a \), \( b \), and \( c \). Providing good initial guesses can help the optimization algorithm converge more quickly and accurately.
+
+6. **`absolute_sigma=True`**:
+
+   - This parameter indicates whether the provided `sigma` values are absolute uncertainties. If `absolute_sigma` is set to `True`, the `sigma` values are treated as absolute uncertainties. If `absolute_sigma` is set to `False`, the `sigma` values are treated as relative uncertainties, and the covariance matrix of the parameters will be scaled accordingly.
+
+### Return Value
+
+The `curve_fit` function returns two values:
+
+1. **`popt`**:
+
+   - An array containing the optimal values for the parameters of the model function that minimize the sum of the squared residuals.
+
+2. **`pcov`**:
+
+   - The covariance matrix of the optimal parameters. The diagonal elements of this matrix provide the variances of the parameter estimates, and the off-diagonal elements provide the covariances between the parameter estimates.
+:::
+
+The `fit` variable contains the results of the fitting process. It is composed of various results, which we can split into the fitted parameters and the covariance matrix:
+
+```{pyodide}
+#| autorun: false
+ans, cov = fit
+fit_a, fit_b, fit_c = ans
+```
+
+The `ans` variable contains the fitted parameters `fit_a`, `fit_b`, and `fit_c`, while the `cov` variable contains the covariance matrix. Let's have a look at the fit and the $\chi^{2}$ value first:
+
+```{pyodide}
+#| autorun: false
+fit_a, fit_b, fit_c
+```
+
+We can then plot the fitted curve along with the original data points and the $\chi^{2}$ value:
+
+```{pyodide}
+#| autorun: false
+plt.figure(figsize=get_size(8,8))
+chisq = (((y_data - parabola(x_data, fit_a, fit_b, fit_c)) / err)**2).sum()
+plt.plot(x_data, parabola(x_data, fit_a, fit_b, fit_c), label=r'$\chi^2$={0:6.3f}'.format(chisq))
+plt.errorbar(x_data, y_data, yerr=err, marker='o', fmt="none", color='k')
+plt.scatter(x_data, y_data, marker='.', color='k')
+plt.xlabel('x-position')
+plt.ylabel('y-position')
+plt.legend()
+plt.tight_layout()
+plt.show()
+```
+
+
+### $\chi$-squared value
+
+The value of $\chi^2$ gives you a measure of the quality of the fit. We can judge the quality by calculating the expectation value of $\chi^2$:
+
+\begin{equation}
+\langle \chi^{2}\rangle =\sum_{i=1}^{N} \frac{\langle (y_{i}-f(x_{i},a) )^2\rangle }{\sigma_{i}^2}=\sum_{i=1}^{N} \frac{\sigma_{i}^2}{\sigma_{i}^2}=N
+\end{equation}
+
+So, the mean of the least squared deviation increases with the number of data points. Therefore:
+
+* $\chi^{2} \gg N$ means that the fit is bad.
+* $\chi^{2} < N$ means that the uncertainties are wrong.
+
+The first case may occur if you don't have a good fit to your data, for example, if you are using the wrong model. The second case typically occurs if you don't have accurate estimates of the uncertainties and you assume all uncertainties to be constant.
+
+It is really important to have a good estimate of the uncertainties and to include them in your fit. If you include the uncertainties in your fit, it is called a `weighted fit`. If you don't include the uncertainties (meaning you keep them constant), it is called an `unweighted fit`.
+
+For our fit above, we obtain a $\chi^{2}$ which is on the order of $N=10$, which tells you that I have created the data with reasonable accuracy.
+
+### Residuals
+
+Another way to assess the quality of the fit is by looking at the residuals. Residuals are defined as the deviation of the data from the model for the best fit:
+
+\begin{equation}
+r_i = y_i - f(x_{i},a)
+\end{equation}
+
+The residuals can also be expressed as the percentage of the deviation of the data from the fit:
+
+\begin{equation}
+r_i = 100 \left( \frac{y_i - f(x_{i},a)}{y_i} \right)
+\end{equation}
+
+### Importance of Residuals
+
+Residuals are important because they provide insight into how well the model fits the data. If the residuals show only statistical fluctuations around zero, then the fit and likely also the model are good. However, if there are systematic patterns in the residuals, it may indicate that the model is not adequately capturing the underlying relationship in the data.
+
+### Visualizing Residuals
+
+Let's visualize the residuals to better understand their distribution. We will plot the residuals as a function of the independent variable $x$.
+
+```{pyodide}
+#| autorun: false
+plt.figure(figsize=get_size(8,8))
+chisq = (((y_data - parabola(x_data, fit_a, fit_b, fit_c)) / err)**2).sum()
+plt.scatter(x_data, 100 * (y_data - parabola(x_data, fit_a, fit_b, fit_c)) / y_data, marker='o', color='k')
+plt.xlabel('x-position')
+plt.ylabel('residuals [%]')
+plt.tight_layout()
+plt.show()
+```
+
+::: {.callout-note collapse=true}
+### Common Patterns in Residuals
+
+**Random Fluctuations Around Zero**:
+
+   - If the residuals are randomly scattered around zero, it suggests that the model is a good fit for the data.
+
+**Systematic Patterns**:
+
+   - If the residuals show a systematic pattern (e.g., a trend or periodicity), it may indicate that the model is not capturing some aspect of the data. This could suggest the need for a more complex model.
+
+**Increasing or Decreasing Trends**:
+
+   - If the residuals increase or decrease with $x$, it may indicate heteroscedasticity (non-constant variance) or that a different functional form is needed.
+:::
+
+
+## Covariance Matrix
+
+In the previous sections, we discussed how to fit a model to experimental data and assess the quality of the fit using residuals. Now, let's take a closer look at the uncertainties in the fit parameters and how they are related to each other. This is where the covariance matrix comes into play.
+
+### Purpose of the Covariance Matrix
+
+The covariance matrix provides important information about the uncertainties in the fit parameters and how these uncertainties are related to each other. It helps us understand the precision of the parameter estimates and whether the parameters are independent or correlated.
+
+### Understanding Covariance
+
+Covariance is a measure of how much two random variables change together. If the covariance between two variables is positive, it means that they tend to increase or decrease together. If the covariance is negative, it means that one variable tends to increase when the other decreases. If the covariance is zero, it means that the variables are independent.
+
+### Covariance Matrix in Curve Fitting
+
+When we fit a model to data, we obtain estimates for the parameters of the model. These estimates have uncertainties due to the measurement errors in the data. The covariance matrix quantifies these uncertainties and the relationships between them.
+
+For a model with three parameters $(a, b, c)$, the covariance matrix is a $3 \times 3$ matrix that looks like this:
+
+\begin{equation}
+{\rm cov}(p_{i}, p_{j}) =
+\begin{bmatrix}
+\sigma_{aa}^{2} & \sigma_{ab}^{2} & \sigma_{ac}^{2} \\
+\sigma_{ba}^{2} & \sigma_{bb}^{2} & \sigma_{bc}^{2} \\
+\sigma_{ca}^{2} & \sigma_{cb}^{2} & \sigma_{cc}^{2}
+\end{bmatrix}
+\end{equation}
+
+The diagonal elements provide the variances (squared uncertainties) of the fit parameters, while the off-diagonal elements describe the covariances between the parameters.
+
+### Example
+
+Let's calculate the covariance matrix for our fitted model and interpret the results.
+
+```{pyodide}
+#| autorun: false
+# Calculate the covariance matrix
+fit = curve_fit(parabola, x_data, y_data, sigma=err, p0=init_guess, absolute_sigma=True)
+ans, cov = fit
+
+# Print the covariance matrix
+print("Covariance matrix:")
+print(cov)
+```
+
+### Interpreting the Covariance Matrix
+
+The covariance matrix provides valuable information about the uncertainties in the fit parameters:
+
+- **Diagonal Elements**: The diagonal elements represent the variances of the parameters. The square root of these values gives the standard deviations (uncertainties) of the parameters.
+- **Off-Diagonal Elements**: The off-diagonal elements represent the covariances between the parameters. If these values are large, it indicates that the parameters are correlated.
+
+### Generating Synthetic Data
+
+To better understand the covariance matrix, let's generate synthetic data and fit the model to each dataset. This will help us visualize the uncertainties in the parameters.
+
+```{pyodide}
+#| autorun: false
+def data(x, a, b, c):
+    y = a * x**2 + b * x + c
+    err = [np.random.normal() for _ in range(len(x))]
+    err = y * err * 0.05
+    return y + err
+```
+
+```{pyodide}
+#| autorun: false
+x = np.linspace(0, 1, 10)
+ym = np.zeros(10)
+plt.figure(figsize=get_size(8, 8))
+
+for _ in range(10):
+    y = data(x, -2.52, 1.6971755, 1)
+    ym += y
+    p, cov = curve_fit(parabola, x, y, sigma=err, p0=init_guess, absolute_sigma=True)
+    plt.scatter(x, y, color='k', alpha=0.1)
+    xf = np.linspace(0, 1, 100)
+    plt.plot(xf, parabola(xf, p[0], p[1], p[2]), alpha=0.2)
+
+plt.scatter(x, ym / 10, color='b')
+plt.xlabel('x-position')
+plt.ylabel('y-position')
+plt.tight_layout()
+plt.show()
+```
+
+### Correlation Matrix
+
+To better understand the relationships between the parameters, we can normalize the covariance matrix to obtain the correlation matrix. The correlation matrix has values between -1 and 1, where 1 indicates perfect positive correlation, -1 indicates perfect negative correlation, and 0 indicates no correlation.
+
+```{pyodide}
+#| autorun: false
+# Calculate the correlation matrix
+s = np.diag(cov)
+R = np.zeros([3, 3])
+for i in range(3):
+    for j in range(3):
+        R[i, j] = cov[i, j] / np.sqrt(s[i] * s[j])
+
+# Print the correlation matrix
+print("Correlation matrix:")
+print(R)
+```
+
+### Visualizing the Covariance and Correlation
+
+Let's visualize the covariance and correlation between the parameters using scatter plots.
+
+```{pyodide}
+#| autorun: false
+# Generate synthetic data and fit the model
+a = []
+b = []
+c = []
+x = np.linspace(0, 1, 10)
+for _ in range(100):
+    y = data(x, -2.52, 1.6971755, 1)
+    p, cov = curve_fit(parabola, x, y, sigma=err, p0=init_guess, absolute_sigma=True)
+    a.append(p[0])
+    b.append(p[1])
+    c.append(p[2])
+
+# Plot the correlation between parameters a and b
+plt.figure(figsize=get_size(8, 8))
+plt.scatter(a, b, alpha=0.2)
+plt.xlabel('Parameter a')
+plt.ylabel('Parameter b')
+plt.title('Correlation between Parameters a and b')
+plt.tight_layout()
+plt.show()
+```
+
+By examining the covariance and correlation matrices, we can gain a deeper understanding of the uncertainties in the fit parameters and how they are related to each other.
+
+### Improving the Model
+
+If we find that the parameters are highly correlated, we might want to find a better model containing more independent parameters. For example, we can write down a different model:
+
+\begin{equation}
+y = a(x - b)^2 + c
+\end{equation}
+
+This model also contains three parameters, but the parameter $b$ directly refers to the maximum of our parabola, while the parameter $a$ denotes its curvature.
+
+```{pyodide}
+#| autorun: false
+def newmodel(x, a, b, c):
+    return a * (x - b)**2 + c
+```
+
+```{pyodide}
+#| autorun: false
+fit = curve_fit(newmodel, x_data, y_data, sigma=err, p0=init_guess, absolute_sigma=True)
+```
+
+```{pyodide}
+#| autorun: false
+ans, cov = fit
+```
+
+```{pyodide}
+#| autorun: false
+s = np.diag(cov)
+R = np.zeros([3, 3])
+for i in range(3):
+    for j in range(3):
+        R[i, j] = cov[i, j] / np.sqrt(s[i] * s[j])
+```
+
+We see from the covariance matrix that the new model has a smaller correlation of the parameters with each other.
+
+```{pyodide}
+#| autorun: false
+print(cov)
+```
+
+This is also expressed by our correlation matrix.
+
+```{pyodide}
+#| autorun: false
+print(R)
+```
+
+By examining the covariance and correlation matrices, we can gain valuable insights into the uncertainties in the fit parameters and how to improve our model.

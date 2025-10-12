@@ -1,0 +1,83 @@
+## Python Basics Cheat Sheet
+
+::: {.callout-tip collapse="true"}
+## Click to expand Python Basics Cheat Sheet
+
+## Functions
+
+### Defining a Function
+```python
+def function_name(parameter1: type, parameter2: type) -> return_type:
+    # function body
+    return value
+```
+
+### Calling a Function
+```python
+result = function_name(argument1, argument2)
+```
+
+## Loops
+
+### For Loop
+```python
+for item in sequence:
+    # code to be executed for each item
+```
+
+Example:
+```python
+for i in range(1, 11):
+    print(i)
+```
+
+### While Loop
+```python
+while condition:
+    # code to be executed while condition is true
+    # remember to update the condition
+```
+
+Example:
+```python
+i = 1
+while i <= 10:
+    print(i)
+    i += 1
+```
+
+## Conditional Statements
+
+### If Statement
+```python
+if condition:
+    # code to be executed if condition is true
+```
+
+### If-Else Statement
+```python
+if condition:
+    # code to be executed if condition is true
+else:
+    # code to be executed if condition is false
+```
+
+### If-Elif-Else Statement
+```python
+if condition1:
+    # code for condition1
+elif condition2:
+    # code for condition2
+else:
+    # code if no conditions are true
+```
+
+## Tips
+- Use descriptive function names
+- Specify parameter and return types for clarity
+- Indent properly in loops and conditional statements
+- Remember to increment counters in while loops
+- Use `range()` for numeric loops in for statements
+- Consider multiple conditions with elif for complex logic
+
+:::

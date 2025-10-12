@@ -1,0 +1,222 @@
+---
+title: Numerical Integration
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: false
+  packages:
+    - matplotlib
+    - numpy
+    - scipy
+---
+
+This lecture covers numerical integration methods, which are essential for computing definite integrals of functions. We'll explore three different methods with increasing accuracy: the Box method, Trapezoid method, and Simpson's method.
+
+```{pyodide}
+#| edit: false
+#| echo: false
+#| execute: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+
+# Set default plotting parameters
+plt.rcParams.update({
+    'font.size': 12,
+    'lines.linewidth': 1,
+    'lines.markersize': 5,
+    'axes.labelsize': 11,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'xtick.top': True,
+    'xtick.direction': 'in',
+    'ytick.right': True,
+    'ytick.direction': 'in',
+})
+
+def get_size(w, h):
+    return (w/2.54, h/2.54)
+```
+
+## Box Method (Rectangle Method)
+
+![Box Method Illustration](img/box.png)
+
+The Box method is the simplest approach for numerical integration. It approximates the function in each interval $\Delta x$ with a constant value taken at the left endpoint of the interval.
+
+\begin{equation}
+\int_{a}^{b} f(x) dx \approx \sum_{i=1}^{N} f(x_{i}) \Delta x
+\end{equation}
+
+```{pyodide}
+def f(x):
+    """Example function to integrate: f(x) = x"""
+    return x
+
+def int_box(f, a, b, N):
+
+    if N < 2:
+        raise ValueError("N must be at least 2")
+    x = np.linspace(a, b, N)
+    y = f(x)
+    return np.sum((x[1]-x[0])*y)
+
+# Example calculation and convergence demonstration
+N_values = np.arange(10, 10000, 100)
+box_results = [int_box(f, 0, 1, N) for N in N_values]
+
+plt.figure(figsize=get_size(15, 10))
+plt.plot(N_values, box_results, label='Box Method')
+plt.xlabel('Number of points (N)')
+plt.ylabel('Integral value')
+plt.title('Convergence of Box Method')
+plt.grid(True)
+plt.legend()
+plt.show()
+```
+
+## Trapezoid Method
+
+![Trapezoid Method Illustration](img/trapez.png)
+
+The Trapezoid method improves upon the Box method by approximating the function with linear segments between points.
+
+\begin{equation}
+\int_{a}^{b} f(x) dx \approx \sum_{i=1}^{N} \frac{f(x_i) + f(x_{i-1})}{2} \Delta x
+\end{equation}
+
+```{pyodide}
+def int_trap(f, a, b, N):
+    if N < 2:
+        raise ValueError("N must be at least 2")
+    x = np.linspace(a, b, N)
+    y = f(x)
+    return np.sum((y[1:] + y[:-1]) * (x[1]-x[0])/2)
+```
+
+## Simpson's Method
+
+![Simpson's Method Illustration](img/simpson.png)
+
+Simpson's method provides higher accuracy by approximating the function with parabolic segments.
+
+\begin{equation}
+\int_{a}^{b} f(x) dx \approx \frac{\Delta x}{3} \sum_{i=1}^{(N-1)/2} \left(f(x_{i-1}) + 4f(x_i) + f(x_{i+1})\right)
+\end{equation}
+
+```{pyodide}
+def int_simp(f, a, b, N):
+    if N % 2 == 0:
+        raise ValueError("N must be odd for Simpson's method")
+    if N < 3:
+        raise ValueError("N must be at least 3")
+
+    x = np.linspace(a, b, N)
+    y = f(x)
+    return np.sum((y[0:-2:2] + 4*y[1:-1:2] + y[2::2]) * (x[1]-x[0])/3)
+```
+
+::: {.callout-note collapse=true}
+## Simpson's Rule for Numerical Integration
+
+Simpson's Rule is a method for numerical integration that approximates the definite integral of a function by using quadratic polynomials.
+
+
+1) For an integral $\int_a^b f(x)dx$, Simpson's Rule fits a quadratic function through three points:
+
+   - $f(a)$
+   - $f(\frac{a+b}{2})$
+   - $f(b)$
+
+2) Let's define:
+
+   - $h = \frac{b-a}{2}$
+   - $x_0 = a$
+   - $x_1 = \frac{a+b}{2}$
+   - $x_2 = b$
+
+3) The quadratic approximation has the form:
+   $$P(x) = Ax^2 + Bx + C$$
+
+4) This polynomial must satisfy:
+   $$f(x_0) = Ax_0^2 + Bx_0 + C$$
+   $$f(x_1) = Ax_1^2 + Bx_1 + C$$
+   $$f(x_2) = Ax_2^2 + Bx_2 + C$$
+
+5) Using Lagrange interpolation:
+   $$P(x) = f(x_0)L_0(x) + f(x_1)L_1(x) + f(x_2)L_2(x)$$
+
+   where $L_0$, $L_1$, $L_2$ are the Lagrange basis functions.
+
+### Final Formula
+
+The integration of this polynomial leads to Simpson's Rule:
+
+$$\int_a^b f(x)dx \approx \frac{h}{3}[f(a) + 4f(\frac{a+b}{2}) + f(b)]$$
+
+### Error Term
+
+The error in Simpson's Rule is proportional to:
+
+$$-\frac{h^5}{90}f^{(4)}(\xi)$$
+
+for some $\xi \in [a,b]$
+
+### Composite Simpson's Rule
+
+For better accuracy, we can divide the interval into $n$ subintervals (where $n$ is even):
+
+$$\int_a^b f(x)dx \approx \frac{h}{3}[f(x_0) + 4\sum_{i=1}^{n/2}f(x_{2i-1}) + 2\sum_{i=1}^{n/2-1}f(x_{2i}) + f(x_n)]$$
+
+where $h = \frac{b-a}{n}$
+
+
+The method is particularly effective for integrating functions that can be well-approximated by quadratic polynomials over small intervals.
+:::
+
+## Comparison of Methods
+
+Let's compare the accuracy of all three methods:
+
+```{pyodide}
+def compare_methods(f, a, b, N_range):
+    """Compare the accuracy of all three integration methods."""
+    exact = 0.5  # Exact value of integral of f(x)=x from 0 to 1
+
+    errors = {'Box': [], 'Trapezoid': [], 'Simpson': []}
+    N_values = []
+
+    for N in N_range:
+        if N % 2 == 1:  # Only use odd N for fair comparison
+            N_values.append(N)
+            errors['Box'].append(abs(int_box(f, a, b, N) - exact))
+            errors['Trapezoid'].append(abs(int_trap(f, a, b, N) - exact))
+            errors['Simpson'].append(abs(int_simp(f, a, b, N) - exact))
+
+    plt.figure(figsize=get_size(15, 10))
+    plt.loglog(N_values, errors['Box'], 'o-', label='Box Method')
+    plt.loglog(N_values, errors['Trapezoid'], 's-', label='Trapezoid Method')
+    plt.loglog(N_values, errors['Simpson'], '^-', label='Simpson Method')
+    plt.xlabel('Number of points (N)')
+    plt.ylabel('Absolute Error')
+    plt.title('Convergence Comparison of Integration Methods')
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
+# Compare methods for N from 3 to 99 (odd numbers only)
+compare_methods(f, 0, 1, range(3, 100, 2))
+```
+
+## Error Analysis
+
+The three methods have different convergence rates:
+
+- Box Method: Error ∝ $\Delta x$ (linear convergence)
+- Trapezoid Method: Error ∝ $\Delta x^2$ (quadratic convergence)
+- Simpson's Method: Error ∝ $\Delta x^4$ (fourth-order convergence)
+
+This explains why Simpson's method typically achieves higher accuracy with fewer points. For example, doubling the number of points in Simpson's method reduces the error by a factor of 16
