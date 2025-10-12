@@ -381,5 +381,11 @@
   },
   "lectures/lecture15/lecture15.qmd": {
     "lecture15.html": "7489816f"
+  },
+  "WEEK1_CHANGES.md": {
+    "WEEK1_CHANGES.html": "d22c8533"
+  },
+  "seminars/1_input_output.ipynb": {
+    "1_input_output.html": "e0232331"
   }
 }

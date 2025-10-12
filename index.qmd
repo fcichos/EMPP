@@ -1,5 +1,5 @@
 ---
-title: EMPP 2024
+title: EMPP
 format: live-html
 ---
 
