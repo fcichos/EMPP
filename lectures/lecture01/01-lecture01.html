@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../lectures/lecture04/04-plotting.html" rel="next">
+<link href="../../lectures/lecture01/01-plotting-basics.html" rel="next">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -241,7 +241,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture04/04-plotting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture01/01-plotting-basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quick Win: Plotting Your First Graph</span></a>
   </div>
 </li>
@@ -293,6 +293,11 @@ window.Quarto = {
   <li><a href="#adding-documentation-with-markdown" id="toc-adding-documentation-with-markdown" class="nav-link" data-scroll-target="#adding-documentation-with-markdown">Adding Documentation with Markdown</a>
   <ul class="collapse">
   <li><a href="#create-a-markdown-cell" id="toc-create-a-markdown-cell" class="nav-link" data-scroll-target="#create-a-markdown-cell">Create a Markdown Cell</a></li>
+  </ul></li>
+  <li><a href="#your-first-plot" id="toc-your-first-plot" class="nav-link" data-scroll-target="#your-first-plot">Your First Plot! 📊</a>
+  <ul class="collapse">
+  <li><a href="#plotting-a-falling-ball" id="toc-plotting-a-falling-ball" class="nav-link" data-scroll-target="#plotting-a-falling-ball">Plotting a Falling Ball</a></li>
+  <li><a href="#challenge-plot-velocity" id="toc-challenge-plot-velocity" class="nav-link" data-scroll-target="#challenge-plot-velocity">Challenge: Plot Velocity</a></li>
   </ul></li>
   <li><a href="#saving-your-work" id="toc-saving-your-work" class="nav-link" data-scroll-target="#saving-your-work">Saving Your Work</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next? 📊</a></li>
@@ -348,12 +353,12 @@ What You’ll Create Today
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>By the end of Week 1, you’ll generate plots like this:</p>
-<div id="e96c5e2c" class="cell" data-execution_count="1">
+<p>By the end of this Lecture, you’ll generate plots like this:</p>
+<div id="e0b28e04" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="01-lecture01_files/figure-html/cell-2-output-1.png" width="661" height="373" class="figure-img"></p>
+<p><img src="01-lecture01_files/figure-html/cell-2-output-1.png" width="565" height="373" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -694,8 +699,104 @@ LaTeX Equations
 <hr>
 </section>
 </section>
+<section id="your-first-plot" class="level2">
+<h2 class="anchored" data-anchor-id="your-first-plot">Your First Plot! 📊</h2>
+<p>Now let’s <strong>visualize</strong> physics! This is where Jupyter really shines - you can see your calculations come to life.</p>
+<section id="plotting-a-falling-ball" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-a-falling-ball">Plotting a Falling Ball</h3>
+<p>Let’s plot the height of our falling ball over time. Don’t worry about understanding every detail - just see how easy it is to create beautiful graphs!</p>
+<p><strong>Create a new cell and type:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate fall time</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fl">10.0</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>t_fall <span class="op">=</span> np.sqrt(<span class="dv">2</span> <span class="op">*</span> h <span class="op">/</span> g)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create time points from 0 to landing</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, t_fall, <span class="dv">50</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate height at each time: h = h0 - (1/2)gt²</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> h <span class="op">-</span> <span class="fl">0.5</span> <span class="op">*</span> g <span class="op">*</span> t<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>plt.plot(t, height, <span class="st">'b-'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time (s)'</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Height (m)'</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Ball Falling from 10m'</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Run it!</strong> You just created your first physics visualization! 🎉</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What Just Happened?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>matplotlib.pyplot</code> is Python’s plotting library</li>
+<li><code>np.linspace(0, t_fall, 50)</code> creates 50 evenly-spaced time points</li>
+<li><code>plt.plot()</code> draws the curve</li>
+<li>The labels and grid make it look professional</li>
+</ul>
+<p><strong>Don’t memorize this yet</strong> - we’ll cover all the details in Lecture 4. For now, just enjoy seeing your calculation as a graph!</p>
+</div>
+</div>
+</section>
+<section id="challenge-plot-velocity" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-plot-velocity">Challenge: Plot Velocity</h3>
+<p>The velocity increases as the ball falls: <span class="math inline">\(v = gt\)</span></p>
+<p><strong>Try modifying the code to plot velocity vs time instead!</strong></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate velocity at each time point</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>velocity <span class="op">=</span> g <span class="op">*</span> t</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.plot(t, velocity, <span class="st">'r-'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time (s)'</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Velocity (m/s)'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Velocity of Falling Ball'</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Notice how velocity increases linearly - exactly what the equation predicts!</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
 <section id="saving-your-work" class="level2">
 <h2 class="anchored" data-anchor-id="saving-your-work">Saving Your Work</h2>
+<p></p>
+<p><old_text line="276"> ## What’s Next? 📊</old_text></p>
+<p>Now that you know the basics:</p>
+<ol type="1">
+<li><strong>Later</strong>: <a href="../../lectures/lecture04/04-plotting.html">Advanced Plotting Techniques</a>
+<ul>
+<li>Multiple plots, logarithmic scales, 3D plots, animations, and more</li>
+<li>Build on what you just learned!</li>
+</ul></li>
+<li><strong>Next</strong>: <a href="../../lectures/lecture01/02-lecture01.html">Variables &amp; Numbers</a>
+<ul>
+<li>Understand Python fundamentals in detail</li>
+<li>Learn about data types, operations, and more</li>
+</ul></li>
+</ol>
 <p>Jupyter <strong>auto-saves</strong> every few minutes, but you should also:</p>
 <ul>
 <li><strong>Manual save</strong>: <code>Ctrl/Cmd + S</code> or File → Save Notebook</li>
@@ -753,7 +854,7 @@ Ctrl/Cmd + S   → Save</code></pre>
 <section id="advanced-topics-optional" class="level2">
 <h2 class="anchored" data-anchor-id="advanced-topics-optional">Advanced Topics (Optional)</h2>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -762,17 +863,30 @@ What is a Kernel?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The <strong>kernel</strong> is the computational engine that runs your code. Think of it as Python running in the background.</p>
-<p><strong>Kernel indicator</strong> (top-right): - ⚪ <strong>Idle</strong>: Ready to run code - ⚫ <strong>Busy</strong>: Currently executing</p>
-<p><strong>Kernel menu operations</strong>: - <strong>Restart Kernel</strong>: Clears all variables, starts fresh - <strong>Interrupt Kernel</strong>: Stops long-running code</p>
-<p>You’ll need to restart if: - Variables get messy - Code is stuck in an infinite loop (interrupt first, then restart) - You want a clean slate</p>
+<p><strong>Kernel indicator</strong> (top-right):</p>
+<ul>
+<li>⚪ <strong>Idle</strong>: Ready to run code</li>
+<li>⚫ <strong>Busy</strong>: Currently executing</li>
+</ul>
+<p><strong>Kernel menu operations</strong>:</p>
+<ul>
+<li><strong>Restart Kernel</strong>: Clears all variables, starts fresh</li>
+<li><strong>Interrupt Kernel</strong>: Stops long-running code</li>
+</ul>
+<p>You’ll need to restart if:</p>
+<ul>
+<li>Variables get messy</li>
+<li>Code is stuck in an infinite loop (interrupt first, then restart)</li>
+<li>You want a clean slate</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -781,34 +895,34 @@ Markdown Cheatsheet
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Heading 1</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">## Heading 2</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Heading 3</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>**bold text**</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>*italic text*</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bullet list</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Another item</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Numbered list</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Another item</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Link text</span><span class="co">](https://www.example.com)</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>Inline code: <span class="in">`x = 5`</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>Equation: $E = mc^2$</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>Display equation:</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>$$\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Heading 1</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">## Heading 2</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Heading 3</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>**bold text**</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>*italic text*</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bullet list</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Another item</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Numbered list</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Another item</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Link text</span><span class="co">](https://www.example.com)</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>Inline code: <span class="in">`x = 5`</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>Equation: $E = mc^2$</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>Display equation:</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>$$\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -817,7 +931,7 @@ Complete Jupyter Documentation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>For more advanced features (magic commands, debugging, widgets), see:</p>
 <ul>
@@ -858,11 +972,17 @@ Practice Exercise
 <li>Calculate the kinetic energy of a 1000 kg car traveling at 30 m/s</li>
 <li>Use a Markdown cell to write the equation: <span class="math inline">\(E_k = \frac{1}{2}mv^2\)</span></li>
 <li>Print the result in Joules</li>
+<li><strong>Bonus plotting challenge</strong>: Plot how kinetic energy changes with velocity
+<ul>
+<li>Use velocities from 0 to 40 m/s</li>
+<li>Hint: Copy and modify the falling ball plotting code!</li>
+</ul></li>
 <li>Save your notebook</li>
 </ol>
-<p><strong>Solution energy</strong>: 450,000 J (or 450 kJ)</p>
+<p><strong>Solution</strong>: - Energy at 30 m/s: 450,000 J (or 450 kJ) - The plot should show a parabolic curve (energy ∝ v²)</p>
 </div>
 </div>
+<p></p>
 
 
 <script type="ojs-module-contents">
@@ -1296,7 +1416,7 @@ window._ojs.runtime.interpretFromScriptTags();
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../lectures/lecture04/04-plotting.html" class="pagination-link" aria-label="Quick Win: Plotting Your First Graph">
+      <a href="../../lectures/lecture01/01-plotting-basics.html" class="pagination-link" aria-label="Quick Win: Plotting Your First Graph">
         <span class="nav-page-text">Quick Win: Plotting Your First Graph</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
