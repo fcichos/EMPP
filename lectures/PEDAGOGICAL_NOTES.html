@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Diese Webseiten – Einführung in die Modellierung Physikalischer Prozesse</title>
+<title>pedagogical_notes – Einführung in die Modellierung Physikalischer Prozesse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Diese Webseiten</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -233,61 +233,155 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#diese-webseiten" id="toc-diese-webseiten" class="nav-link active" data-scroll-target="#diese-webseiten">Diese Webseiten</a></li>
+  <li><a href="#pedagogical-notes-brownian-motion-restructuring" id="toc-pedagogical-notes-brownian-motion-restructuring" class="nav-link active" data-scroll-target="#pedagogical-notes-brownian-motion-restructuring">Pedagogical Notes: Brownian Motion Restructuring</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#the-problem-with-teaching-classes-in-week-2-3" id="toc-the-problem-with-teaching-classes-in-week-2-3" class="nav-link" data-scroll-target="#the-problem-with-teaching-classes-in-week-2-3">The Problem with Teaching Classes in Week 2-3</a>
+  <ul class="collapse">
+  <li><a href="#cognitive-load-issues" id="toc-cognitive-load-issues" class="nav-link" data-scroll-target="#cognitive-load-issues">Cognitive Load Issues</a></li>
+  <li><a href="#the-original-material-assumed-prior-knowledge" id="toc-the-original-material-assumed-prior-knowledge" class="nav-link" data-scroll-target="#the-original-material-assumed-prior-knowledge">The Original Material Assumed Prior Knowledge</a></li>
+  </ul></li>
+  <li><a href="#the-two-stage-solution" id="toc-the-two-stage-solution" class="nav-link" data-scroll-target="#the-two-stage-solution">The Two-Stage Solution</a>
+  <ul class="collapse">
+  <li><a href="#stage-1-week-2-3---simple-brownian-motion" id="toc-stage-1-week-2-3---simple-brownian-motion" class="nav-link" data-scroll-target="#stage-1-week-2-3---simple-brownian-motion">Stage 1: Week 2-3 - Simple Brownian Motion</a></li>
+  <li><a href="#stage-2-week-6-7---brownian-motion-with-oop" id="toc-stage-2-week-6-7---brownian-motion-with-oop" class="nav-link" data-scroll-target="#stage-2-week-6-7---brownian-motion-with-oop">Stage 2: Week 6-7 - Brownian Motion with OOP</a></li>
+  </ul></li>
+  <li><a href="#pedagogical-principles-applied" id="toc-pedagogical-principles-applied" class="nav-link" data-scroll-target="#pedagogical-principles-applied">Pedagogical Principles Applied</a>
+  <ul class="collapse">
+  <li><a href="#spiral-learning" id="toc-spiral-learning" class="nav-link" data-scroll-target="#spiral-learning">1. Spiral Learning</a></li>
+  <li><a href="#concrete-before-abstract" id="toc-concrete-before-abstract" class="nav-link" data-scroll-target="#concrete-before-abstract">2. Concrete Before Abstract</a></li>
+  <li><a href="#just-in-time-learning" id="toc-just-in-time-learning" class="nav-link" data-scroll-target="#just-in-time-learning">3. Just-in-Time Learning</a></li>
+  <li><a href="#building-confidence" id="toc-building-confidence" class="nav-link" data-scroll-target="#building-confidence">4. Building Confidence</a></li>
+  </ul></li>
+  <li><a href="#teaching-tips" id="toc-teaching-tips" class="nav-link" data-scroll-target="#teaching-tips">Teaching Tips</a>
+  <ul class="collapse">
+  <li><a href="#week-2-3-simple-version" id="toc-week-2-3-simple-version" class="nav-link" data-scroll-target="#week-2-3-simple-version">Week 2-3: Simple Version</a></li>
+  <li><a href="#week-6-7-oop-version" id="toc-week-6-7-oop-version" class="nav-link" data-scroll-target="#week-6-7-oop-version">Week 6-7: OOP Version</a></li>
+  </ul></li>
+  <li><a href="#assessment-implications" id="toc-assessment-implications" class="nav-link" data-scroll-target="#assessment-implications">Assessment Implications</a>
+  <ul class="collapse">
+  <li><a href="#week-2-3-quizhomework" id="toc-week-2-3-quizhomework" class="nav-link" data-scroll-target="#week-2-3-quizhomework">Week 2-3 Quiz/Homework</a></li>
+  <li><a href="#week-6-7-quizhomework" id="toc-week-6-7-quizhomework" class="nav-link" data-scroll-target="#week-6-7-quizhomework">Week 6-7 Quiz/Homework</a></li>
+  </ul></li>
+  <li><a href="#success-metrics" id="toc-success-metrics" class="nav-link" data-scroll-target="#success-metrics">Success Metrics</a></li>
+  <li><a href="#future-considerations" id="toc-future-considerations" class="nav-link" data-scroll-target="#future-considerations">Future Considerations</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Diese Webseiten</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="diese-webseiten" class="level1">
-<h1>Diese Webseiten</h1>
-<p>Diese Website enthält alle Informationen, die für unseren Kurs <strong>Einführung in die Modellierung Physikalischer Prozesse</strong> erforderlich sind. Sie werden hier jede Woche eine neue Vorlesung und eine neue Aufgabe finden. Die Vorlesungshefte werden von Videos begleitet, die den Inhalt der Vorlesung <strong>auf Englisch</strong> erklären, aber Sie können auch mit dem Lesen auskommen. Die Vorlesungen in Person, werden auf Deutsch stattfinden. Von diesen Webseiten aus werden Sie zu verschiedenen Ressourcen geführt, die Sie nutzen können, um das Programmieren in Python zu lernen. Dabei werden wir einige großartige Tools aus dem Internet nutzen, wie</p>
-<ol type="1">
-<li><p><strong>Google Colab</strong> Dienst, um auch Jupyter Notebooks (https://colab.research.google.com) zu hosten. Das Google Colab-Projekt bietet eine nützliche Umgebung zur gemeinsamen Nutzung von Notebooks.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/colab.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>google colab screen</figcaption>
-</figure>
-</div>
-<p>Wenn Sie die folgende Website besuchen, werden Sie an mehreren Stellen das folgende Symbol sehen.</p>
-<p>![Substitution Name1]</p>
-<p>Dieses Symbol zeigt an, dass diese Webseite auf einem Jupyter Notebook basiert. Anstatt nur die Website zu betrachten, können Sie auf das Symbol klicken und der Google Colab-Dienst wird geöffnet, damit Sie das Notizbuch interaktiv nutzen können. Google Colab öffnet sich viel schneller als myBinder, aber die Notizbücher sind für die Arbeit mit myBinder gemacht und nicht alle Funktionen funktionieren mit Colab. Ich arbeite jedoch an der Kompatibilität.</p></li>
-<li><p><strong>GitHub and GitHub Pages</strong> Dienst zum Hosting von Websites (https://github.com). GitHub ist ein großartiger Ort, um Ihre kollaborativen Coding-Projekte einschließlich Versionskontrolle zu hosten. In der oberen rechten Ecke finden Sie auch einen Link zum GitHub-Repository, in dem die Notebooks gehostet werden.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/github.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>github screen</figcaption>
-</figure>
-</div></li>
-<li><p><strong>Anaconda Jupyter package</strong> für Notebooks auf dem eigenen Computer (https://www.anaconda.com/distribution/). Das Paket anaconda stellt Ihnen die Jupyter Notebook-Umgebung einschließlich Python zur Verfügung. Wenn Sie Jupyter zu Hause ohne Online-Zugang verwenden möchten, ist dies ein gutes Paket zur Installation.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/anaconda.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>anaconda screen</figcaption>
-</figure>
-</div></li>
-</ol>
+<section id="pedagogical-notes-brownian-motion-restructuring" class="level1">
+<h1>Pedagogical Notes: Brownian Motion Restructuring</h1>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This document explains the rationale for splitting Brownian motion into two separate modules taught at different points in the course.</p>
+</section>
+<section id="the-problem-with-teaching-classes-in-week-2-3" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-with-teaching-classes-in-week-2-3">The Problem with Teaching Classes in Week 2-3</h2>
+<section id="cognitive-load-issues" class="level3">
+<h3 class="anchored" data-anchor-id="cognitive-load-issues">Cognitive Load Issues</h3>
+<p>By Week 2-3, students have barely mastered: - Basic Python syntax (variables, data types) - Simple functions - Basic plotting</p>
+<p>Introducing <strong>object-oriented programming</strong> at this stage adds: - The concept of <code>self</code> - Constructors (<code>__init__</code>) - Instance vs.&nbsp;class variables - Methods vs.&nbsp;functions - The entire OOP paradigm</p>
+<p>This creates <strong>cognitive overload</strong> when students should be focusing on: - Understanding the physics of random walks - Getting comfortable with numpy - Building confidence with loops and arrays</p>
+</section>
+<section id="the-original-material-assumed-prior-knowledge" class="level3">
+<h3 class="anchored" data-anchor-id="the-original-material-assumed-prior-knowledge">The Original Material Assumed Prior Knowledge</h3>
+<p>The original <code>2_brownian_motion.qmd</code> explicitly states: &gt; “We will apply our <strong>newly acquired knowledge about classes</strong>…”</p>
+<p>This confirms it was designed as an <em>application</em> of OOP, not an introduction to programming fundamentals.</p>
+</section>
+</section>
+<section id="the-two-stage-solution" class="level2">
+<h2 class="anchored" data-anchor-id="the-two-stage-solution">The Two-Stage Solution</h2>
+<section id="stage-1-week-2-3---simple-brownian-motion" class="level3">
+<h3 class="anchored" data-anchor-id="stage-1-week-2-3---simple-brownian-motion">Stage 1: Week 2-3 - Simple Brownian Motion</h3>
+<p><strong>File:</strong> <code>lectures/lecture02/4_brownian_motion_simple.qmd</code></p>
+<p><strong>Focus:</strong> - ✅ Physics first: What is Brownian motion? Why does it happen? - ✅ Simple functions with clear inputs/outputs - ✅ Using lists and numpy arrays - ✅ Basic visualization - ✅ Statistical analysis (MSD)</p>
+<p><strong>Learning Outcomes:</strong> - Students understand the physics - Students can simulate random walks - Students gain confidence with functions and arrays - Students see immediate, satisfying results</p>
+<p><strong>Key Advantage:</strong> Students can focus on <strong>one new concept at a time</strong>: - The physics of diffusion - Random number generation - Trajectory storage in arrays</p>
+</section>
+<section id="stage-2-week-6-7---brownian-motion-with-oop" class="level3">
+<h3 class="anchored" data-anchor-id="stage-2-week-6-7---brownian-motion-with-oop">Stage 2: Week 6-7 - Brownian Motion with OOP</h3>
+<p><strong>File:</strong> <code>lectures/lecture05/2_brownian_motion.qmd</code></p>
+<p><strong>Focus:</strong> - ✅ Revisiting familiar physics with new tools - ✅ Showing <em>why</em> classes help organize code - ✅ Managing multiple particles with different properties - ✅ Encapsulating state and behavior</p>
+<p><strong>Learning Outcomes:</strong> - Students see the value of OOP through direct comparison - Students understand when to use classes - Students can design and implement their own classes - Students appreciate code organization in complex simulations</p>
+<p><strong>Key Advantage:</strong> Students <strong>see the need</strong> for better organization because: - They’ve already written the “messy” version with functions - They understand the physics, so can focus on the programming structure - They can compare the two approaches directly</p>
+</section>
+</section>
+<section id="pedagogical-principles-applied" class="level2">
+<h2 class="anchored" data-anchor-id="pedagogical-principles-applied">Pedagogical Principles Applied</h2>
+<section id="spiral-learning" class="level3">
+<h3 class="anchored" data-anchor-id="spiral-learning">1. Spiral Learning</h3>
+<p>Students encounter Brownian motion twice: - First pass: Understand the physics, basic implementation - Second pass: Better implementation, deeper understanding</p>
+</section>
+<section id="concrete-before-abstract" class="level3">
+<h3 class="anchored" data-anchor-id="concrete-before-abstract">2. Concrete Before Abstract</h3>
+<ul>
+<li>Week 2-3: Concrete “here’s how to simulate random steps”</li>
+<li>Week 6-7: Abstract “here’s how to organize complex simulations”</li>
+</ul>
+</section>
+<section id="just-in-time-learning" class="level3">
+<h3 class="anchored" data-anchor-id="just-in-time-learning">3. Just-in-Time Learning</h3>
+<ul>
+<li>Teach OOP <strong>when students see why they need it</strong></li>
+<li>After managing messy lists of particles, classes make sense</li>
+</ul>
+</section>
+<section id="building-confidence" class="level3">
+<h3 class="anchored" data-anchor-id="building-confidence">4. Building Confidence</h3>
+<ul>
+<li>Week 2-3: “I can simulate physics!”</li>
+<li>Week 6-7: “I can write professional code!”</li>
+</ul>
+</section>
+</section>
+<section id="teaching-tips" class="level2">
+<h2 class="anchored" data-anchor-id="teaching-tips">Teaching Tips</h2>
+<section id="week-2-3-simple-version" class="level3">
+<h3 class="anchored" data-anchor-id="week-2-3-simple-version">Week 2-3: Simple Version</h3>
+<p><strong>Emphasize:</strong> - “Focus on the physics, not the programming tricks” - “This is a ‘quick and dirty’ implementation - we’ll improve it later” - Celebrate when students get their first random walk working</p>
+<p><strong>Common Student Questions:</strong> - Q: “Why are we using lists instead of [something fancier]?” - A: “We’re keeping it simple so we can focus on understanding the physics. We’ll optimize later.”</p>
+<p><strong>Extension Activities:</strong> - Compare different diffusion coefficients - Add boundaries (particles bounce off walls) - Try 3D motion</p>
+</section>
+<section id="week-6-7-oop-version" class="level3">
+<h3 class="anchored" data-anchor-id="week-6-7-oop-version">Week 6-7: OOP Version</h3>
+<p><strong>Emphasize:</strong> - “Remember our Brownian motion simulation? Let’s make it better!” - Compare the two implementations side-by-side - Show how classes reduce bugs (each particle manages its own state)</p>
+<p><strong>Common Student Questions:</strong> - Q: “Is the OOP version really better?” - A: “For this small example, maybe not. But imagine 1000 particles with different sizes, charges, and interactions. Then classes become essential.”</p>
+<p><strong>Extension Activities:</strong> - Add particle-particle interactions - Create different particle types (subclasses) - Implement particle tracking/analysis methods</p>
+</section>
+</section>
+<section id="assessment-implications" class="level2">
+<h2 class="anchored" data-anchor-id="assessment-implications">Assessment Implications</h2>
+<section id="week-2-3-quizhomework" class="level3">
+<h3 class="anchored" data-anchor-id="week-2-3-quizhomework">Week 2-3 Quiz/Homework</h3>
+<p>Test understanding of: - What causes Brownian motion (physics) - How to generate random steps - How to store and plot trajectories - What MSD tells us</p>
+<p><strong>Avoid asking about:</strong> Classes, OOP, complex data structures</p>
+</section>
+<section id="week-6-7-quizhomework" class="level3">
+<h3 class="anchored" data-anchor-id="week-6-7-quizhomework">Week 6-7 Quiz/Homework</h3>
+<p>Test understanding of: - When to use classes vs.&nbsp;functions - How to design a class - Instance vs.&nbsp;class variables - How OOP improves code organization</p>
+<p><strong>Can reference:</strong> The Week 2-3 Brownian motion as a comparison point</p>
+</section>
+</section>
+<section id="success-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="success-metrics">Success Metrics</h2>
+<p>You’ll know this restructuring works when:</p>
+<p>✅ Week 2-3 students are excited about simulating motion (not confused by <code>self</code>)</p>
+<p>✅ Week 6-7 students say “oh, this makes the code cleaner!” (not “why are we doing this?”)</p>
+<p>✅ Fewer questions about syntax, more about physics and design</p>
+<p>✅ Students can extend their simulations independently</p>
+</section>
+<section id="future-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="future-considerations">Future Considerations</h2>
+<p>This two-stage approach could be applied to other topics: - <strong>Planetary motion:</strong> Simple version (Week 4-5), OOP version with multiple planets (Week 8-9) - <strong>Wave simulations:</strong> Function-based first, class-based for complex systems - <strong>Data analysis:</strong> Simple functions, then analysis classes</p>
+<p>The pattern: <strong>Physics first, organization later</strong> works well for computational physics courses where students are learning both domains simultaneously.</p>
+<hr>
+<p><em>Last updated: 2024</em> <em>For questions about this restructuring, see the commit history or course coordinator.</em></p>
 
 
 <script type="ojs-module-contents">
@@ -305,6 +399,7 @@ eyJjb250ZW50cyI6W119
 W10=
 </script>
 </section>
+</section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
@@ -312,7 +407,7 @@ eyJjb250ZW50cyI6W119
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-window._ojs.paths.runtimeToDoc = "../../course-info";
+window._ojs.paths.runtimeToDoc = "../../lectures";
 window._ojs.paths.runtimeToRoot = "../..";
 window._ojs.paths.docToRoot = "..";
 window._ojs.selfContained = false;

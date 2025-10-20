@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Brownian Motion with Object-Oriented Programming – Einführung in die Modellierung Physikalischer Prozesse</title>
+<title>Brownian Motion: Comparing Two Approaches – Einführung in die Modellierung Physikalischer Prozesse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -168,7 +133,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Brownian Motion with Object-Oriented Programming</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Brownian Motion: Comparing Two Approaches</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -297,28 +262,30 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#brownian-motion" id="toc-brownian-motion" class="nav-link active" data-scroll-target="#brownian-motion">Brownian Motion</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#the-same-physics-two-implementations" id="toc-the-same-physics-two-implementations" class="nav-link" data-scroll-target="#the-same-physics-two-implementations">The Same Physics, Two Implementations</a>
   <ul class="collapse">
-  <li><a href="#what-is-brownian-motion" id="toc-what-is-brownian-motion" class="nav-link" data-scroll-target="#what-is-brownian-motion">What is Brownian Motion?</a></li>
-  <li><a href="#why-does-this-happen" id="toc-why-does-this-happen" class="nav-link" data-scroll-target="#why-does-this-happen">Why Does This Happen?</a></li>
-  <li><a href="#the-simplified-math-behind-it" id="toc-the-simplified-math-behind-it" class="nav-link" data-scroll-target="#the-simplified-math-behind-it">The Simplified Math Behind It</a></li>
-  <li><a href="#how-we-can-simulate-this" id="toc-how-we-can-simulate-this" class="nav-link" data-scroll-target="#how-we-can-simulate-this">How We Can Simulate This?</a></li>
+  <li><a href="#approach-1-simple-functions-week-2-3" id="toc-approach-1-simple-functions-week-2-3" class="nav-link" data-scroll-target="#approach-1-simple-functions-week-2-3">Approach 1: Simple Functions (Week 2-3)</a></li>
+  <li><a href="#approach-2-object-oriented-week-6-7" id="toc-approach-2-object-oriented-week-6-7" class="nav-link" data-scroll-target="#approach-2-object-oriented-week-6-7">Approach 2: Object-Oriented (Week 6-7)</a></li>
   </ul></li>
-  <li><a href="#why-use-a-class" id="toc-why-use-a-class" class="nav-link" data-scroll-target="#why-use-a-class">Why Use a Class?</a></li>
-  <li><a href="#class-design" id="toc-class-design" class="nav-link" data-scroll-target="#class-design">Class Design</a>
+  <li><a href="#scaling-up-100-particles" id="toc-scaling-up-100-particles" class="nav-link" data-scroll-target="#scaling-up-100-particles">Scaling Up: 100 Particles</a>
   <ul class="collapse">
-  <li><a href="#class-level-properties" id="toc-class-level-properties" class="nav-link" data-scroll-target="#class-level-properties">Class-Level Properties</a></li>
-  <li><a href="#class-methods" id="toc-class-methods" class="nav-link" data-scroll-target="#class-methods">Class Methods</a></li>
-  <li><a href="#instance-properties" id="toc-instance-properties" class="nav-link" data-scroll-target="#instance-properties">Instance Properties</a></li>
-  <li><a href="#instance-methods" id="toc-instance-methods" class="nav-link" data-scroll-target="#instance-methods">Instance Methods</a></li>
+  <li><a href="#approach-1-requires-lists-of-lists" id="toc-approach-1-requires-lists-of-lists" class="nav-link" data-scroll-target="#approach-1-requires-lists-of-lists">Approach 1: Requires Lists of Lists</a></li>
+  <li><a href="#approach-2-just-a-list-of-objects" id="toc-approach-2-just-a-list-of-objects" class="nav-link" data-scroll-target="#approach-2-just-a-list-of-objects">Approach 2: Just a List of Objects</a></li>
   </ul></li>
-  <li><a href="#simulating" id="toc-simulating" class="nav-link" data-scroll-target="#simulating">Simulating</a></li>
-  <li><a href="#plotting-the-trajectories" id="toc-plotting-the-trajectories" class="nav-link" data-scroll-target="#plotting-the-trajectories">Plotting the trajectories</a></li>
-  <li><a href="#characterizing-the-brownian-motion" id="toc-characterizing-the-brownian-motion" class="nav-link" data-scroll-target="#characterizing-the-brownian-motion">Characterizing the Brownian motion</a>
+  <li><a href="#adding-features-a-real-world-scenario" id="toc-adding-features-a-real-world-scenario" class="nav-link" data-scroll-target="#adding-features-a-real-world-scenario">Adding Features: A Real-World Scenario</a>
   <ul class="collapse">
-  <li><a href="#calculate-the-particle-speed" id="toc-calculate-the-particle-speed" class="nav-link" data-scroll-target="#calculate-the-particle-speed">Calculate the particle speed</a></li>
-  <li><a href="#calculate-the-particle-mean-squared-displacement" id="toc-calculate-the-particle-mean-squared-displacement" class="nav-link" data-scroll-target="#calculate-the-particle-mean-squared-displacement">Calculate the particle mean squared displacement</a></li>
+  <li><a href="#approach-1-gets-messy-fast" id="toc-approach-1-gets-messy-fast" class="nav-link" data-scroll-target="#approach-1-gets-messy-fast">Approach 1: Gets Messy Fast</a></li>
+  <li><a href="#approach-2-natural-and-clean" id="toc-approach-2-natural-and-clean" class="nav-link" data-scroll-target="#approach-2-natural-and-clean">Approach 2: Natural and Clean</a></li>
   </ul></li>
+  <li><a href="#decision-guide-when-to-use-each-approach" id="toc-decision-guide-when-to-use-each-approach" class="nav-link" data-scroll-target="#decision-guide-when-to-use-each-approach">Decision Guide: When to Use Each Approach</a>
+  <ul class="collapse">
+  <li><a href="#use-simple-functions-when" id="toc-use-simple-functions-when" class="nav-link" data-scroll-target="#use-simple-functions-when">Use Simple Functions When:</a></li>
+  <li><a href="#use-classes-when" id="toc-use-classes-when" class="nav-link" data-scroll-target="#use-classes-when">Use Classes When:</a></li>
+  </ul></li>
+  <li><a href="#summary-table" id="toc-summary-table" class="nav-link" data-scroll-target="#summary-table">Summary Table</a></li>
+  <li><a href="#your-turn-practice-both" id="toc-your-turn-practice-both" class="nav-link" data-scroll-target="#your-turn-practice-both">Your Turn: Practice Both!</a></li>
+  <li><a href="#key-takeaway" id="toc-key-takeaway" class="nav-link" data-scroll-target="#key-takeaway">Key Takeaway</a></li>
   </ul>
 </nav>
     </div>
@@ -327,7 +294,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Brownian Motion with Object-Oriented Programming</h1>
+<h1 class="title">Brownian Motion: Comparing Two Approaches</h1>
+<p class="subtitle lead">Simple Functions vs.&nbsp;Object-Oriented Programming</p>
 </div>
 
 
@@ -344,298 +312,223 @@ window.Quarto = {
 </header>
 
 
-<p>Now that you’ve learned about classes and object-oriented programming, let’s revisit Brownian motion! This time, we’ll use OOP principles to create a more sophisticated and organized simulation. Each Brownian particle (or colloid) will be represented as an object instantiated from a <code>Colloid</code> class, allowing particles to have different properties (like size) while sharing common behaviors. This approach will make our code more modular, reusable, and easier to extend.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Comparing Approaches
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you completed the earlier simplified Brownian motion exercise (Week 2-3), you’ll notice how classes help organize the same physics in a cleaner, more scalable way. Instead of managing separate lists and functions, each particle now “knows” its own properties and how to update itself!</p>
-</div>
-</div>
 <div>
 <div id="pyodide-1">
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgbnVtcHkgYXMgbnBcbmltcG9ydCBtYXRwbG90bGliLnB5cGxvdCBhcyBwbHRcbmltcG9ydCBwYW5kYXMgYXMgcGRcblxucGx0LnJjUGFyYW1zLnVwZGF0ZSh7J2ZvbnQuc2l6ZSc6IDEyLFxuICAgICAgICAgICAgICAgICAgICAgJ2xpbmVzLmxpbmV3aWR0aCc6IDEsXG4gICAgICAgICAgICAgICAgICAgICAnbGluZXMubWFya2Vyc2l6ZSc6IDEwLFxuICAgICAgICAgICAgICAgICAgICAgJ2F4ZXMubGFiZWxzaXplJzogMTEsXG4gICAgICAgICAgICAgICAgICAgICAneHRpY2subGFiZWxzaXplJyA6IDEwLFxuICAgICAgICAgICAgICAgICAgICAgJ3l0aWNrLmxhYmVsc2l6ZScgOiAxMCxcbiAgICAgICAgICAgICAgICAgICAgICd4dGljay50b3AnIDogVHJ1ZSxcbiAgICAgICAgICAgICAgICAgICAgICd4dGljay5kaXJlY3Rpb24nIDogJ2luJyxcbiAgICAgICAgICAgICAgICAgICAgICd5dGljay5yaWdodCcgOiBUcnVlLFxuICAgICAgICAgICAgICAgICAgICAgJ3l0aWNrLmRpcmVjdGlvbicgOiAnaW4nLH0pIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgbnVtcHkgYXMgbnBcbmltcG9ydCBtYXRwbG90bGliLnB5cGxvdCBhcyBwbHRcblxucGx0LnJjUGFyYW1zLnVwZGF0ZSh7J2ZvbnQuc2l6ZSc6IDEyLFxuICAgICAgICAgICAgICAgICAgICAgJ2xpbmVzLmxpbmV3aWR0aCc6IDEsXG4gICAgICAgICAgICAgICAgICAgICAnbGluZXMubWFya2Vyc2l6ZSc6IDEwLFxuICAgICAgICAgICAgICAgICAgICAgJ2F4ZXMubGFiZWxzaXplJzogMTEsXG4gICAgICAgICAgICAgICAgICAgICAneHRpY2subGFiZWxzaXplJyA6IDEwLFxuICAgICAgICAgICAgICAgICAgICAgJ3l0aWNrLmxhYmVsc2l6ZScgOiAxMCxcbiAgICAgICAgICAgICAgICAgICAgICd4dGljay50b3AnIDogVHJ1ZSxcbiAgICAgICAgICAgICAgICAgICAgICd4dGljay5kaXJlY3Rpb24nIDogJ2luJyxcbiAgICAgICAgICAgICAgICAgICAgICd5dGljay5yaWdodCcgOiBUcnVlLFxuICAgICAgICAgICAgICAgICAgICAgJ3l0aWNrLmRpcmVjdGlvbicgOiAnaW4nLH0pIn0=
 </script>
 </div>
-<section id="brownian-motion" class="level2">
-<h2 class="anchored" data-anchor-id="brownian-motion">Brownian Motion</h2>
-<section id="what-is-brownian-motion" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-brownian-motion">What is Brownian Motion?</h3>
-<p>Imagine a dust particle floating in water. If you look at it under a microscope, you’ll see it moving in a random, zigzag pattern. This is Brownian motion!</p>
-</section>
-<section id="why-does-this-happen" class="level3">
-<h3 class="anchored" data-anchor-id="why-does-this-happen">Why Does This Happen?</h3>
-<p>When we observe Brownian motion, we’re seeing the effects of countless molecular collisions. Water isn’t just a smooth, continuous fluid - it’s made up of countless tiny molecules that are in constant motion. These water molecules are continuously colliding with our particle from all directions. Each individual collision causes the particle to move just a tiny bit, barely noticeable on its own. However, when millions of these tiny collisions happen every second from random directions, they create the distinctive zigzag motion we observe.</p>
-</section>
-<section id="the-simplified-math-behind-it" class="level3">
-<h3 class="anchored" data-anchor-id="the-simplified-math-behind-it">The Simplified Math Behind It</h3>
-<p>When our particle moves:</p>
-<ol type="1">
-<li>Each step is random in direction</li>
-<li>The size of each step depends on:
-<ul>
-<li>Temperature (warmer = more movement)</li>
-<li>Time between steps</li>
-<li>A property called the “diffusion coefficient” (D)</li>
-</ul></li>
-</ol>
-</section>
-<section id="how-we-can-simulate-this" class="level3">
-<h3 class="anchored" data-anchor-id="how-we-can-simulate-this">How We Can Simulate This?</h3>
-<p>In Python, we can simulate these random steps using random number. These random numbers can be generated with the numpy library. Numpy provides a number of different functions that provide random numbers from different distributions. For Brownian motion, we use a special distribution called the “normal distribution”.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>step_size <span class="op">=</span> np.sqrt(<span class="dv">2</span> <span class="op">*</span> D <span class="op">*</span> time_step)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dx <span class="op">=</span> random_number <span class="op">*</span> step_size  <span class="co"># Random step in x direction</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dy <span class="op">=</span> random_number <span class="op">*</span> step_size  <span class="co"># Random step in y direction</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>new_x <span class="op">=</span> old_x <span class="op">+</span> dx</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>new_y <span class="op">=</span> old_y <span class="op">+</span> dy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Where:</p>
-<ul>
-<li><code>D</code> is how easily the particle moves (diffusion coefficient)</li>
-<li><code>time_step</code> is how often we update the position</li>
-<li><code>random_number</code> is chosen from a special “normal distribution”</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This document compares two ways to simulate Brownian motion: the <strong>simple function-based approach</strong> (Week 2-3) and the <strong>object-oriented approach</strong> (Week 6-7). Both accomplish the same physics, but they organize the code differently.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Key Question
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>When simulating Brownian motion, we use <code>np.random.normal</code> to generate random steps following this distribution. The normal distribution is characterized by two parameters: the mean and the standard deviation. The mean is the average value, and the standard deviation is a measure of how spread out the values are. For Brownian motion, we use a standard deviation that depends on the diffusion coefficient and the time step. The standard deviation <span class="math inline">\(\sigma=\sqrt{2D \Delta t}\)</span> determines the typical step size, which we can use as a parameter in the normal distribution.</p>
+<p>When should you use classes vs.&nbsp;simple functions? This comparison will help you decide!</p>
 </div>
 </div>
+</section>
+<section id="the-same-physics-two-implementations" class="level2">
+<h2 class="anchored" data-anchor-id="the-same-physics-two-implementations">The Same Physics, Two Implementations</h2>
+<p>Let’s simulate 3 particles and compare how each approach handles this task.</p>
+<section id="approach-1-simple-functions-week-2-3" class="level3">
+<h3 class="anchored" data-anchor-id="approach-1-simple-functions-week-2-3">Approach 1: Simple Functions (Week 2-3)</h3>
+<p><strong>Pros:</strong> - ✅ Easy to understand - ✅ Quick to write - ✅ Good for small problems - ✅ Direct and explicit</p>
+<p><strong>Cons:</strong> - ❌ Manual management of multiple particles - ❌ Data and behavior are separated - ❌ Hard to extend (what if particles have different properties?) - ❌ Easy to make mistakes (which array goes with which particle?)</p>
 <div>
 <div id="pyodide-2">
 
 </div>
 <script type="pyodide-2-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBzb21lIHNwYWNlIHRvIHRlc3Qgb3V0IHNvbWUgb2YgdGhlIHJhbmRvbSBudW1iZXJzXG5cblxuIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyA9PT09PT09PT09PT0gQVBQUk9BQ0ggMTogU0lNUExFIEZVTkNUSU9OUyA9PT09PT09PT09PT1cblxuZGVmIHJhbmRvbV9zdGVwKHgsIHksIEQsIGR0KTpcbiAgICBcIlwiXCJPbmUgcmFuZG9tIHN0ZXAgaW4gMkRcIlwiXCJcbiAgICBzaWdtYSA9IG5wLnNxcnQoMiAqIEQgKiBkdClcbiAgICBkeCA9IG5wLnJhbmRvbS5ub3JtYWwoMCwgc2lnbWEpXG4gICAgZHkgPSBucC5yYW5kb20ubm9ybWFsKDAsIHNpZ21hKVxuICAgIHJldHVybiB4ICsgZHgsIHkgKyBkeVxuXG5kZWYgc2ltdWxhdGVfdHJhamVjdG9yeSh4MCwgeTAsIEQsIGR0LCBOKTpcbiAgICBcIlwiXCJTaW11bGF0ZSBjb21wbGV0ZSB0cmFqZWN0b3J5XCJcIlwiXG4gICAgeCA9IG5wLnplcm9zKE4gKyAxKVxuICAgIHkgPSBucC56ZXJvcyhOICsgMSlcbiAgICB4WzBdID0geDBcbiAgICB5WzBdID0geTBcbiAgICBcbiAgICBmb3IgaSBpbiByYW5nZShOKTpcbiAgICAgICAgeFtpKzFdLCB5W2krMV0gPSByYW5kb21fc3RlcCh4W2ldLCB5W2ldLCBELCBkdClcbiAgICBcbiAgICByZXR1cm4geCwgeVxuXG4jIFNpbXVsYXRlIDMgcGFydGljbGVzXG5EID0gMi4yZS0xM1xuZHQgPSAwLjA1XG5OID0gMjAwXG5cbiMgTmVlZCBzZXBhcmF0ZSB2YXJpYWJsZXMgZm9yIGVhY2ggcGFydGljbGVcbngxLCB5MSA9IHNpbXVsYXRlX3RyYWplY3RvcnkoMCwgMCwgRCwgZHQsIE4pXG54MiwgeTIgPSBzaW11bGF0ZV90cmFqZWN0b3J5KDAsIDAsIEQgKiAwLjUsIGR0LCBOKSAgIyBMYXJnZXIgcGFydGljbGVcbngzLCB5MyA9IHNpbXVsYXRlX3RyYWplY3RvcnkoMCwgMCwgRCAqIDIsIGR0LCBOKSAgICAjIFNtYWxsZXIgcGFydGljbGVcblxuIyBQbG90XG5wbHQuZmlndXJlKGZpZ3NpemU9KDcsIDcpKVxuc2NhbGUgPSAxZTZcbnBsdC5wbG90KHgxICogc2NhbGUsIHkxICogc2NhbGUsICdiLScsIGFscGhhPTAuNiwgbGFiZWw9J1BhcnRpY2xlIDEgKEQ9Mi4yZS0xMyknKVxucGx0LnBsb3QoeDIgKiBzY2FsZSwgeTIgKiBzY2FsZSwgJ3ItJywgYWxwaGE9MC42LCBsYWJlbD0nUGFydGljbGUgMiAoRD0xLjFlLTEzKScpXG5wbHQucGxvdCh4MyAqIHNjYWxlLCB5MyAqIHNjYWxlLCAnZy0nLCBhbHBoYT0wLjYsIGxhYmVsPSdQYXJ0aWNsZSAzIChEPTQuNGUtMTMpJylcbnBsdC54bGFiZWwoJ3ggW8K1bV0nKVxucGx0LnlsYWJlbCgneSBbwrVtXScpXG5wbHQudGl0bGUoJ0FwcHJvYWNoIDE6IFNpbXBsZSBGdW5jdGlvbnMnKVxucGx0LmxlZ2VuZCgpXG5wbHQuYXhpcygnZXF1YWwnKVxucGx0LmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxucGx0LnRpZ2h0X2xheW91dCgpXG5wbHQuc2hvdygpXG5cbnByaW50KFwiQXBwcm9hY2ggMTogTmVlZGVkIDYgc2VwYXJhdGUgdmFyaWFibGVzICh4MSwgeTEsIHgyLCB5MiwgeDMsIHkzKVwiKSJ9
 </script>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Advanced Mathematical Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The Brownian motion of a colloidal particle results from collisions with surrounding solvent molecules. These collisions lead to a probability distribution described by:</p>
-<p><span class="math display">\[
-p(x,\Delta t)=\frac{1}{\sqrt{4\pi D \Delta t}}e^{-\frac{x^2}{4D \Delta t}}
-\]</span></p>
-<p>where: - <span class="math inline">\(D\)</span> is the diffusion coefficient - <span class="math inline">\(\Delta t\)</span> is the time step - The variance is <span class="math inline">\(\sigma^2=2D \Delta t\)</span></p>
-<p>This distribution emerges from the <strong>central limit theorem</strong>, as shown by Lindenberg and Lévy, when considering many infinitesimally small random steps.</p>
-<p>The evolution of the probability density function <span class="math inline">\(p(x,t)\)</span> is governed by the diffusion equation:</p>
-<p><span class="math display">\[
-\frac{\partial p}{\partial t}=D\frac{\partial^2 p}{\partial x^2}
-\]</span></p>
-<p>This partial differential equation, also known as Fick’s second law, describes how the concentration of particles evolves over time due to diffusive processes. The Gaussian distribution above is the fundamental solution (Green’s function) of this diffusion equation, representing how an initially localized distribution spreads out over time.</p>
-<p>The connection between the microscopic random motion and the macroscopic diffusion equation was first established by Einstein in his 1905 paper on Brownian motion, providing one of the earliest quantitative links between statistical mechanics and thermodynamics.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="why-use-a-class" class="level2">
-<h2 class="anchored" data-anchor-id="why-use-a-class">Why Use a Class?</h2>
-<p>A class is perfect for this physics simulation because each colloidal particle:</p>
-<ol type="1">
-<li>Has specific properties
-<ul>
-<li>Size (radius)</li>
-<li>Current position</li>
-<li>Movement history</li>
-<li>Diffusion coefficient</li>
-</ul></li>
-<li>Follows certain behaviors
-<ul>
-<li>Moves randomly (Brownian motion)</li>
-<li>Updates its position over time</li>
-<li>Keeps track of where it’s been</li>
-</ul></li>
-<li>Can exist alongside other particles
-<ul>
-<li>Many particles can move independently</li>
-<li>Each particle keeps track of its own properties</li>
-<li>Particles can have different sizes</li>
-</ul></li>
-<li>Needs to track its state over time
-<ul>
-<li>Remember previous positions</li>
-<li>Calculate distances moved</li>
-<li>Maintain its own trajectory</li>
-</ul></li>
-</ol>
-<p>This natural mapping between real particles and code objects makes classes an ideal choice for our simulation.</p>
-</section>
-<section id="class-design" class="level2">
-<h2 class="anchored" data-anchor-id="class-design">Class Design</h2>
-<p>Let’s design a Python class to simulate colloidal particles undergoing Brownian motion. This object-oriented approach will help us manage multiple particles with different properties and behaviors.</p>
-<section id="class-level-properties" class="level3">
-<h3 class="anchored" data-anchor-id="class-level-properties">Class-Level Properties</h3>
-<p>The <code>Colloid</code> class will maintain information shared by all particles:</p>
-<ol type="1">
-<li>A counter for the total number of particles</li>
-<li>The physical constant <span class="math inline">\(k_B T/(6\pi\eta) = 2.2×10^{-19}\)</span> (combining temperature and fluid properties)</li>
-</ol>
-</section>
-<section id="class-methods" class="level3">
-<h3 class="anchored" data-anchor-id="class-methods">Class Methods</h3>
-<p>The class will provide these shared functions:</p>
-<ol type="1">
-<li><code>how_many()</code>: Reports the total number of particles</li>
-<li><code>__str__</code>: Creates a readable description of a particle’s properties</li>
-</ol>
-</section>
-<section id="instance-properties" class="level3">
-<h3 class="anchored" data-anchor-id="instance-properties">Instance Properties</h3>
-<p>Each individual particle object will have:</p>
-<ol type="1">
-<li>Radius (R)</li>
-<li>Position history (x and y coordinates)</li>
-<li>Unique identifier (index)</li>
-<li>Diffusion coefficient (<span class="math inline">\(D = k_B T/(6\pi\eta R)\)</span>)</li>
-</ol>
-</section>
-<section id="instance-methods" class="level3">
-<h3 class="anchored" data-anchor-id="instance-methods">Instance Methods</h3>
-<p>Each particle will be able to:</p>
-<ol type="1">
-<li><code>sim_trajectory()</code>: Generate a complete motion path</li>
-<li><code>update(dt)</code>: Calculate one step of Brownian motion</li>
-<li><code>get_trajectory()</code>: Return its movement history</li>
-<li><code>get_D()</code>: Provide its diffusion coefficient</li>
-</ol>
-<div>
-<div id="pyodide-3">
-
-</div>
-<script type="pyodide-3-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgQ2xhc3MgZGVmaW5pdGlvblxuY2xhc3MgQ29sbG9pZDpcblxuICAgICMgQSBjbGFzcyB2YXJpYWJsZSwgY291bnRpbmcgdGhlIG51bWJlciBvZiBDb2xsb2lkc1xuICAgIG51bWJlciA9IDBcbiAgICBmID0gMi4yZS0xOSAjIHRoaXMgaXMga19CIFQvKDYgcGkgZXRhKSBpbiBtXjMvc1xuXG4gICAgIyBjb25zdHJ1Y3RvclxuICAgIGRlZiBfX2luaXRfXyhzZWxmLFIsIHgwPTAsIHkwPTApOlxuICAgICAgICAjIGFkZCBpbml0aWFsaXNhdGlvbiBjb2RlIGhlcmVcbiAgICAgICAgc2VsZi5SPVJcbiAgICAgICAgc2VsZi54PVt4MF1cbiAgICAgICAgc2VsZi55PVt5MF1cbiAgICAgICAgQ29sbG9pZC5udW1iZXI9Q29sbG9pZC5udW1iZXIrMVxuICAgICAgICBzZWxmLmluZGV4PUNvbGxvaWQubnVtYmVyXG4gICAgICAgIHNlbGYuRD1Db2xsb2lkLmYvc2VsZi5SXG5cbiAgICBkZWYgZ2V0X0Qoc2VsZik6XG4gICAgICAgIHJldHVybihzZWxmLkQpXG5cbiAgICBkZWYgc2ltX3RyYWplY3Rvcnkoc2VsZixOLGR0KTpcbiAgICAgICAgZm9yIGkgaW4gcmFuZ2UoTik6XG4gICAgICAgICAgICBzZWxmLnVwZGF0ZShkdClcblxuICAgIGRlZiB1cGRhdGUoc2VsZixkdCk6XG4gICAgICAgIHNlbGYueC5hcHBlbmQoc2VsZi54Wy0xXStucC5yYW5kb20ubm9ybWFsKDAuMCwgbnAuc3FydCgyKnNlbGYuRCpkdCkpKVxuICAgICAgICBzZWxmLnkuYXBwZW5kKHNlbGYueVstMV0rbnAucmFuZG9tLm5vcm1hbCgwLjAsIG5wLnNxcnQoMipzZWxmLkQqZHQpKSlcbiAgICAgICAgcmV0dXJuKHNlbGYueFstMV0sc2VsZi55Wy0xXSlcblxuICAgIGRlZiBnZXRfdHJhamVjdG9yeShzZWxmKTpcbiAgICAgICAgcmV0dXJuKHBkLkRhdGFGcmFtZSh7J3gnOnNlbGYueCwneSc6c2VsZi55fSkpXG5cbiAgICAjIGNsYXNzIG1ldGhvZCBhY2Nlc3NpbmcgYSBjbGFzcyB2YXJpYWJsZVxuICAgIEBjbGFzc21ldGhvZFxuICAgIGRlZiBob3dfbWFueShjbHMpOlxuICAgICAgICByZXR1cm4oQ29sbG9pZC5udW1iZXIpXG5cbiAgICAjIGluc2VydCBzb21ldGhpbmcgdGhhdCBwcmludHMgdGhlIHBhcnRpY2xlIHBvc2l0aW9uIGluIGEgZm9ybWF0dGVkIHdheSB3aGVuIHByaW50aW5nXG4gICAgZGVmIF9fc3RyX18oc2VsZik6XG4gICAgICAgIHJldHVybihcIkknbSBhIHBhcnRpY2xlIHdpdGggcmFkaXVzIFI9ezA6MC4zZX0gYXQgeD17MTowLjNlfSx5PXsyOjAuM2V9LlwiLmZvcm1hdChzZWxmLlIsIHNlbGYueFstMV0sIHNlbGYueVstMV0pKSJ9
-</script>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Note that the function <code>sim_trajectory</code> is actually calling the function <code>update</code> of the same object to generate the whole trajectory at once.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="simulating" class="level2">
-<h2 class="anchored" data-anchor-id="simulating">Simulating</h2>
-<p>With the help of this Colloid class, we would like to carry out simulations of Brownian motion of multiple particles. The simulations shall</p>
-<ul>
-<li>take n=200 particles</li>
-<li>have N=200 trajectory points each</li>
-<li>start all at 0,0</li>
-<li>particle objects should be stored in a list p_list</li>
-</ul>
-<div>
-<div id="pyodide-4">
-
-</div>
-<script type="pyodide-4-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6Ik49MjAwICMgdGhlIG51bWJlciBvZiB0cmFqZWN0b3J5IHBvaW50c1xubj0yMDAgIyB0aGUgbnVtYmVyIG9mIHBhcnRpY2xlc1xuXG5wX2xpc3Q9W11cbmR0PTAuMDVcblxuIyBjcmVhdGluZyBhbGwgb2JqZWN0c1xuZm9yIGkgaW4gcmFuZ2Uobik6XG4gICAgcF9saXN0LmFwcGVuZChDb2xsb2lkKDFlLTYpKVxuXG5cbmZvciAoaW5kZXgscCkgaW4gZW51bWVyYXRlKHBfbGlzdCk6XG4gICAgcC5zaW1fdHJhamVjdG9yeShOLGR0KSJ9
-</script>
-</div>
-<div>
-<div id="pyodide-5">
-
-</div>
-<script type="pyodide-5-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6InByaW50KHBfbGlzdFs0Ml0pIn0=
-</script>
-</div>
-</section>
-<section id="plotting-the-trajectories" class="level2">
-<h2 class="anchored" data-anchor-id="plotting-the-trajectories">Plotting the trajectories</h2>
-<p>The next step is to plot all the trajectories.</p>
-<div>
-<div id="pyodide-6">
-
-</div>
-<script type="pyodide-6-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgd2UgdGFrZSByZWFsIHdvcmxkIGRpZmZ1c2lvbiBjb2VmZmljaWVudHMgc28gc2NhbGUgdXAgdGhlIGRhdGEgdG8gYXZvaWQgbmFzdHkgZXhwb25lbnRpYWxzXG5zY2FsZT0xZTZcblxucGx0LmZpZ3VyZShmaWdzaXplPSg0LDQpKVxuXG5bcGx0LnBsb3QobnAuYXJyYXkocC54WzpdKSpzY2FsZSxucC5hcnJheShwLnlbOl0pKnNjYWxlLCdrLScsYWxwaGE9MC4xLGx3PTEpIGZvciBwIGluIHBfbGlzdF1cbnBsdC54bGltKC0xMCwxMClcbnBsdC55bGltKC0xMCwxMClcbnBsdC54bGFiZWwoJ3ggW8K1bV0nKVxucGx0LnlsYWJlbCgneSBbwrVtXScpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
-</script>
-</div>
-</section>
-<section id="characterizing-the-brownian-motion" class="level2">
-<h2 class="anchored" data-anchor-id="characterizing-the-brownian-motion">Characterizing the Brownian motion</h2>
-<p>Now that we have a number of trajectories, we can analyze the motion of our Brownian particles.</p>
-<section id="calculate-the-particle-speed" class="level3">
-<h3 class="anchored" data-anchor-id="calculate-the-particle-speed">Calculate the particle speed</h3>
-<p>One way is to calculate its speed by measuring how far it traveled within a certain time <span class="math inline">\(n\, dt\)</span>, where <span class="math inline">\(dt\)</span> is the timestep of out simulation. We can do that as</p>
-<p><span class="math display">\[\begin{equation}
-v(n dt) = \frac{&lt;\sqrt{(x_{i+n}-x_{i})^2+(y_{i+n}-y_{i})^2}&gt;}{n\,dt}
-\end{equation}\]</span></p>
-<p>The angular brackets on the top take care of the fact that we can measure the distance traveled within a certain time <span class="math inline">\(n\, dt\)</span> several times along a trajectory.</p>
-<p>These values can be used to calculate a mean speed. Note that there is not an equal amount of data pairs for all separations available. For <span class="math inline">\(n=1\)</span> there are 5 distances available. For <span class="math inline">\(n=5\)</span>, however, only 1. This changes the statistical accuracy of the mean.</p>
-<div>
-<div id="pyodide-7">
-
-</div>
-<script type="pyodide-7-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6InRpbWU9bnAuYXJyYXkocmFuZ2UoMSxOKSkqZHRcblxucGx0LmZpZ3VyZShmaWdzaXplPSg0LDQpKVxuZm9yIGogaW4gcmFuZ2UoMTAwKTpcbiAgICB0PXBfbGlzdFtqXS5nZXRfdHJhamVjdG9yeSgpXG4gICAgbWQ9W25wLm1lYW4obnAuc3FydCh0LnguZGlmZihpKSoqMit0LnkuZGlmZihpKSoqMikpIGZvciBpIGluIHJhbmdlKDEsTildXG4gICAgbWQ9bWQvdGltZVxuICAgIHBsdC5wbG90KHRpbWUsbWQsYWxwaGE9MC40KVxuXG5wbHQueWxhYmVsKCdzcGVlZCBbbS9zXScpXG5wbHQueGxhYmVsKCd0aW1lIFtzXScpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
-</script>
-</div>
-<p>The result of this analysis shows, that each particle has an apparent speed which seems to increase with decreasing time of observation or which decreases with increasing time. This would mean that there is some friction at work, which slows down the particle in time, but this is apparently not true. Also an infinite speed at zero time appears to be unphysical. The correct answer is just that the speed is no good measure to characterize the motion of a Brownian particle.</p>
-</section>
-<section id="calculate-the-particle-mean-squared-displacement" class="level3">
-<h3 class="anchored" data-anchor-id="calculate-the-particle-mean-squared-displacement">Calculate the particle mean squared displacement</h3>
-<p>A better way to characterize the motion of a Brownian particle is the mean squared displacement, as we have already mentioned it in previous lectures. We may compare our simulation now to the theoretical prediction, which is</p>
-<p><span class="math display">\[\begin{equation}
-\langle \Delta r^{2}(t)\rangle=2 d D t
-\end{equation}\]</span></p>
-<p>where <span class="math inline">\(d\)</span> is the dimension of the random walk, which is <span class="math inline">\(d=2\)</span> in our case.</p>
-<div>
-<div id="pyodide-8">
-
-</div>
-<script type="pyodide-8-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6InRpbWU9bnAuYXJyYXkocmFuZ2UoMSxOKSkqZHRcblxucGx0LmZpZ3VyZShmaWdzaXplPSg0LDQpKVxuZm9yIGogaW4gcmFuZ2UoMTAwKTpcbiAgICB0PXBfbGlzdFtqXS5nZXRfdHJhamVjdG9yeSgpXG4gICAgbXNkPVtucC5tZWFuKHQueC5kaWZmKGkpLmRyb3BuYSgpKioyK3QueS5kaWZmKGkpLmRyb3BuYSgpKioyKSBmb3IgaSBpbiByYW5nZSgxLE4pXVxuICAgIHBsdC5wbG90KHRpbWUsbXNkLGFscGhhPTAuNClcblxuXG5wbHQucGxvdCh0aW1lLCA0KnBfbGlzdFswXS5EKnRpbWUsJ2stLScsbHc9MixsYWJlbD0ndGhlb3J5JylcbnBsdC5sZWdlbmQoKVxucGx0LnhsYWJlbCgndGltZSBbc10nKVxucGx0LnlsYWJlbCgnbXNkICRbbV4yL3NdJCcpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
-</script>
-</div>
-<p>The results show that the mean squared displacement of the individual particles follows <em>on average</em> the theoretical predictions of a linear growth in time. That means, we are able to read the diffusion coefficient from the slope of the MSD of the individual particles if recorded in a simulation or an experiment.</p>
-<p>Yet, each individual MSD is deviating strongly from the theoretical prediction especially at large times. This is due to the fact mentioned earlier that our simulation (or experimental) data only has a limited number of data points, while the theoretical prediction is made for the limit of infinite data points.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Analysis of MSD data
+What if we had 100 particles?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Single particle tracking, either in the experiment or in numerical simulations can therefore only deliver an estimate of the diffusion coefficient and care should be taken when using the whole MSD to obtain the diffusion coefficient. One typically uses only a short fraction of the whole MSD data at short times.</p>
+<p>With the function approach, we’d need either: - 200 separate variables (x1, y1, x2, y2, …, x100, y100) ← Impossible! - Complex nested lists that are hard to manage - Careful indexing that’s error-prone</p>
 </div>
 </div>
+<hr>
+</section>
+<section id="approach-2-object-oriented-week-6-7" class="level3">
+<h3 class="anchored" data-anchor-id="approach-2-object-oriented-week-6-7">Approach 2: Object-Oriented (Week 6-7)</h3>
+<p><strong>Pros:</strong> - ✅ Each particle manages its own data - ✅ Easy to handle many particles - ✅ Each particle can have different properties - ✅ Behavior is bundled with data - ✅ Less error-prone - ✅ Easy to extend</p>
+<p><strong>Cons:</strong> - ❌ More complex syntax (need to learn <code>self</code>, <code>__init__</code>, etc.) - ❌ More setup code initially - ❌ Overkill for very simple problems</p>
+<div>
+<div id="pyodide-3">
+
+</div>
+<script type="pyodide-3-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyA9PT09PT09PT09PT0gQVBQUk9BQ0ggMjogQ0xBU1NFUyA9PT09PT09PT09PT1cblxuY2xhc3MgQ29sbG9pZDpcbiAgICBcIlwiXCJBIEJyb3duaWFuIHBhcnRpY2xlXCJcIlwiXG4gICAgXG4gICAgZGVmIF9faW5pdF9fKHNlbGYsIEQsIHgwPTAsIHkwPTApOlxuICAgICAgICBzZWxmLkQgPSBEICAgICAgICAgICAjIERpZmZ1c2lvbiBjb2VmZmljaWVudFxuICAgICAgICBzZWxmLnggPSBbeDBdICAgICAgICAjIFBvc2l0aW9uIGhpc3RvcnlcbiAgICAgICAgc2VsZi55ID0gW3kwXVxuICAgIFxuICAgIGRlZiB1cGRhdGUoc2VsZiwgZHQpOlxuICAgICAgICBcIlwiXCJUYWtlIG9uZSByYW5kb20gc3RlcFwiXCJcIlxuICAgICAgICBzaWdtYSA9IG5wLnNxcnQoMiAqIHNlbGYuRCAqIGR0KVxuICAgICAgICBkeCA9IG5wLnJhbmRvbS5ub3JtYWwoMCwgc2lnbWEpXG4gICAgICAgIGR5ID0gbnAucmFuZG9tLm5vcm1hbCgwLCBzaWdtYSlcbiAgICAgICAgc2VsZi54LmFwcGVuZChzZWxmLnhbLTFdICsgZHgpXG4gICAgICAgIHNlbGYueS5hcHBlbmQoc2VsZi55Wy0xXSArIGR5KVxuICAgIFxuICAgIGRlZiBzaW11bGF0ZShzZWxmLCBOLCBkdCk6XG4gICAgICAgIFwiXCJcIlNpbXVsYXRlIE4gc3RlcHNcIlwiXCJcbiAgICAgICAgZm9yIF8gaW4gcmFuZ2UoTik6XG4gICAgICAgICAgICBzZWxmLnVwZGF0ZShkdClcbiAgICBcbiAgICBkZWYgZ2V0X3RyYWplY3Rvcnkoc2VsZik6XG4gICAgICAgIFwiXCJcIlJldHVybiB0cmFqZWN0b3J5IGFzIGFycmF5c1wiXCJcIlxuICAgICAgICByZXR1cm4gbnAuYXJyYXkoc2VsZi54KSwgbnAuYXJyYXkoc2VsZi55KVxuXG4jIFNpbXVsYXRlIDMgcGFydGljbGVzIC0gbXVjaCBjbGVhbmVyIVxuRCA9IDIuMmUtMTNcbmR0ID0gMC4wNVxuTiA9IDIwMFxuXG4jIENyZWF0ZSBwYXJ0aWNsZXNcbnAxID0gQ29sbG9pZChEKVxucDIgPSBDb2xsb2lkKEQgKiAwLjUpICAjIExhcmdlciBwYXJ0aWNsZVxucDMgPSBDb2xsb2lkKEQgKiAyKSAgICAjIFNtYWxsZXIgcGFydGljbGVcblxuIyBTaW11bGF0ZVxucDEuc2ltdWxhdGUoTiwgZHQpXG5wMi5zaW11bGF0ZShOLCBkdClcbnAzLnNpbXVsYXRlKE4sIGR0KVxuXG4jIFBsb3RcbnBsdC5maWd1cmUoZmlnc2l6ZT0oNywgNykpXG5zY2FsZSA9IDFlNlxuXG54MSwgeTEgPSBwMS5nZXRfdHJhamVjdG9yeSgpXG54MiwgeTIgPSBwMi5nZXRfdHJhamVjdG9yeSgpXG54MywgeTMgPSBwMy5nZXRfdHJhamVjdG9yeSgpXG5cbnBsdC5wbG90KHgxICogc2NhbGUsIHkxICogc2NhbGUsICdiLScsIGFscGhhPTAuNiwgbGFiZWw9ZidQYXJ0aWNsZSAxIChEPXtwMS5EOi4xZX0pJylcbnBsdC5wbG90KHgyICogc2NhbGUsIHkyICogc2NhbGUsICdyLScsIGFscGhhPTAuNiwgbGFiZWw9ZidQYXJ0aWNsZSAyIChEPXtwMi5EOi4xZX0pJylcbnBsdC5wbG90KHgzICogc2NhbGUsIHkzICogc2NhbGUsICdnLScsIGFscGhhPTAuNiwgbGFiZWw9ZidQYXJ0aWNsZSAzIChEPXtwMy5EOi4xZX0pJylcbnBsdC54bGFiZWwoJ3ggW8K1bV0nKVxucGx0LnlsYWJlbCgneSBbwrVtXScpXG5wbHQudGl0bGUoJ0FwcHJvYWNoIDI6IE9iamVjdC1PcmllbnRlZCcpXG5wbHQubGVnZW5kKClcbnBsdC5heGlzKCdlcXVhbCcpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KClcblxucHJpbnQoXCJBcHByb2FjaCAyOiBKdXN0IDMgb2JqZWN0cyAocDEsIHAyLCBwMykgLSBzY2FsZXMgdG8gYW55IG51bWJlciFcIikifQ==
+</script>
+</div>
+<hr>
+</section>
+</section>
+<section id="scaling-up-100-particles" class="level2">
+<h2 class="anchored" data-anchor-id="scaling-up-100-particles">Scaling Up: 100 Particles</h2>
+<p>Now let’s see which approach scales better:</p>
+<section id="approach-1-requires-lists-of-lists" class="level3">
+<h3 class="anchored" data-anchor-id="approach-1-requires-lists-of-lists">Approach 1: Requires Lists of Lists</h3>
+<div>
+<div id="pyodide-4">
+
+</div>
+<script type="pyodide-4-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyA9PT09PT09PT09PT0gMTAwIFBBUlRJQ0xFUyBXSVRIIEZVTkNUSU9OUyA9PT09PT09PT09PT1cblxubl9wYXJ0aWNsZXMgPSAxMDBcbmFsbF94ID0gW11cbmFsbF95ID0gW11cbkRfdmFsdWVzID0gbnAubGluc3BhY2UoMWUtMTMsIDRlLTEzLCBuX3BhcnRpY2xlcykgICMgRGlmZmVyZW50IEQgZm9yIGVhY2hcblxuZm9yIERfdmFsIGluIERfdmFsdWVzOlxuICAgIHgsIHkgPSBzaW11bGF0ZV90cmFqZWN0b3J5KDAsIDAsIERfdmFsLCBkdCwgTilcbiAgICBhbGxfeC5hcHBlbmQoeClcbiAgICBhbGxfeS5hcHBlbmQoeSlcblxuIyBQbG90dGluZyAtIG5lZWQgY2FyZWZ1bCBpbmRleGluZ1xucGx0LmZpZ3VyZShmaWdzaXplPSg4LCA4KSlcbmZvciBpIGluIHJhbmdlKG5fcGFydGljbGVzKTpcbiAgICBwbHQucGxvdChhbGxfeFtpXSAqIHNjYWxlLCBhbGxfeVtpXSAqIHNjYWxlLCAnay0nLCBhbHBoYT0wLjEpXG5wbHQueGxhYmVsKCd4IFvCtW1dJylcbnBsdC55bGFiZWwoJ3kgW8K1bV0nKVxucGx0LnRpdGxlKCdBcHByb2FjaCAxOiAxMDAgUGFydGljbGVzIChyZXF1aXJlcyBjYXJlZnVsIGxpc3QgbWFuYWdlbWVudCknKVxucGx0LmF4aXMoJ2VxdWFsJylcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKVxuXG4jIFByb2JsZW06IElmIEkgd2FudCBwYXJ0aWNsZSA0MidzIGRpZmZ1c2lvbiBjb2VmZmljaWVudCwgaG93IGRvIEkgZ2V0IGl0P1xuIyBJdCdzIGluIERfdmFsdWVzWzQxXS4uLiBidXQgdGhpcyBpcyBzZXBhcmF0ZWQgZnJvbSB0aGUgdHJhamVjdG9yeSBkYXRhISJ9
+</script>
+</div>
+</section>
+<section id="approach-2-just-a-list-of-objects" class="level3">
+<h3 class="anchored" data-anchor-id="approach-2-just-a-list-of-objects">Approach 2: Just a List of Objects</h3>
+<div>
+<div id="pyodide-5">
+
+</div>
+<script type="pyodide-5-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyA9PT09PT09PT09PT0gMTAwIFBBUlRJQ0xFUyBXSVRIIENMQVNTRVMgPT09PT09PT09PT09XG5cbm5fcGFydGljbGVzID0gMTAwXG5EX3ZhbHVlcyA9IG5wLmxpbnNwYWNlKDFlLTEzLCA0ZS0xMywgbl9wYXJ0aWNsZXMpXG5cbiMgQ3JlYXRlIGFsbCBwYXJ0aWNsZXNcbnBhcnRpY2xlcyA9IFtDb2xsb2lkKERfdmFsKSBmb3IgRF92YWwgaW4gRF92YWx1ZXNdXG5cbiMgU2ltdWxhdGUgYWxsXG5mb3IgcCBpbiBwYXJ0aWNsZXM6XG4gICAgcC5zaW11bGF0ZShOLCBkdClcblxuIyBQbG90XG5wbHQuZmlndXJlKGZpZ3NpemU9KDgsIDgpKVxuZm9yIHAgaW4gcGFydGljbGVzOlxuICAgIHgsIHkgPSBwLmdldF90cmFqZWN0b3J5KClcbiAgICBwbHQucGxvdCh4ICogc2NhbGUsIHkgKiBzY2FsZSwgJ2stJywgYWxwaGE9MC4xKVxucGx0LnhsYWJlbCgneCBbwrVtXScpXG5wbHQueWxhYmVsKCd5IFvCtW1dJylcbnBsdC50aXRsZSgnQXBwcm9hY2ggMjogMTAwIFBhcnRpY2xlcyAoZWFjaCBtYW5hZ2VzIGl0c2VsZiknKVxucGx0LmF4aXMoJ2VxdWFsJylcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKVxuXG4jIEVhc3k6IFBhcnRpY2xlIDQyJ3MgZGlmZnVzaW9uIGNvZWZmaWNpZW50IGlzIGp1c3Q6XG5wcmludChmXCJQYXJ0aWNsZSA0MidzIEQ6IHtwYXJ0aWNsZXNbNDFdLkQ6LjJlfVwiKVxuIyBUaGUgZGF0YSBzdGF5cyB0b2dldGhlciB3aXRoIHRoZSBwYXJ0aWNsZSEifQ==
+</script>
+</div>
+<hr>
+</section>
+</section>
+<section id="adding-features-a-real-world-scenario" class="level2">
+<h2 class="anchored" data-anchor-id="adding-features-a-real-world-scenario">Adding Features: A Real-World Scenario</h2>
+<p>Let’s say you need to add: 1. Particle radius (R) 2. Calculate D from R using Stokes-Einstein: <span class="math inline">\(D = k_BT/(6\pi\eta R)\)</span> 3. Track particle ID</p>
+<section id="approach-1-gets-messy-fast" class="level3">
+<h3 class="anchored" data-anchor-id="approach-1-gets-messy-fast">Approach 1: Gets Messy Fast</h3>
+<div>
+<div id="pyodide-6">
+
+</div>
+<script type="pyodide-6-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyA9PT09PT09PT09PT0gRVhURU5ERUQgVkVSU0lPTiBXSVRIIEZVTkNUSU9OUyA9PT09PT09PT09PT1cbiMgTmVlZCB0byB0cmFjayBtYW55IHBhcmFsbGVsIGxpc3RzIVxuXG5yYWRpaSA9IFsxZS02LCAyZS02LCAwLjVlLTZdICAjIGluIG1ldGVyc1xucGFydGljbGVfaWRzID0gWydBJywgJ0InLCAnQyddXG5rQlRfb3Zlcl82cGlldGEgPSAyLjJlLTE5XG5cbiMgQ2FsY3VsYXRlIEQgdmFsdWVzXG5EX2xpc3QgPSBba0JUX292ZXJfNnBpZXRhIC8gUiBmb3IgUiBpbiByYWRpaV1cblxuIyBTaW11bGF0ZVxudHJhamVjdG9yaWVzX3ggPSBbXVxudHJhamVjdG9yaWVzX3kgPSBbXVxuZm9yIERfdmFsIGluIERfbGlzdDpcbiAgICB4LCB5ID0gc2ltdWxhdGVfdHJhamVjdG9yeSgwLCAwLCBEX3ZhbCwgZHQsIE4pXG4gICAgdHJhamVjdG9yaWVzX3guYXBwZW5kKHgpXG4gICAgdHJhamVjdG9yaWVzX3kuYXBwZW5kKHkpXG5cbiMgSWYgeW91IHdhbnQgaW5mbyBhYm91dCBwYXJ0aWNsZSAnQic6XG4jIC0gcmFkaWlbMV0gZm9yIHJhZGl1c1xuIyAtIERfbGlzdFsxXSBmb3IgZGlmZnVzaW9uIGNvZWZmaWNpZW50ICBcbiMgLSB0cmFqZWN0b3JpZXNfeFsxXSBhbmQgdHJhamVjdG9yaWVzX3lbMV0gZm9yIHRyYWplY3RvcnlcbiMgLSBwYXJ0aWNsZV9pZHNbMV0gZm9yIElEXG4jIEFsbCBpbiBkaWZmZXJlbnQgbGlzdHMhIEVhc3kgdG8gbWFrZSBtaXN0YWtlcyFcblxucHJpbnQoXCJQYXJ0aWNsZSBCOlwiKVxucHJpbnQoZlwiICBJRDoge3BhcnRpY2xlX2lkc1sxXX1cIilcbnByaW50KGZcIiAgUmFkaXVzOiB7cmFkaWlbMV06LjFlfSBtXCIpXG5wcmludChmXCIgIEQ6IHtEX2xpc3RbMV06LjJlfSBtwrIvc1wiKVxucHJpbnQoZlwiICBGaW5hbCBwb3NpdGlvbjogKHt0cmFqZWN0b3JpZXNfeFsxXVstMV06LjJlfSwge3RyYWplY3Rvcmllc195WzFdWy0xXTouMmV9KVwiKSJ9
+</script>
+</div>
+</section>
+<section id="approach-2-natural-and-clean" class="level3">
+<h3 class="anchored" data-anchor-id="approach-2-natural-and-clean">Approach 2: Natural and Clean</h3>
+<div>
+<div id="pyodide-7">
+
+</div>
+<script type="pyodide-7-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyA9PT09PT09PT09PT0gRVhURU5ERUQgVkVSU0lPTiBXSVRIIENMQVNTRVMgPT09PT09PT09PT09XG5cbmNsYXNzIENvbGxvaWRFbmhhbmNlZDpcbiAgICBcIlwiXCJFbmhhbmNlZCBjb2xsb2lkIHdpdGggcmFkaXVzIGFuZCBJRFwiXCJcIlxuICAgIFxuICAgIGtCVF9vdmVyXzZwaWV0YSA9IDIuMmUtMTkgICMgQ2xhc3MgdmFyaWFibGVcbiAgICBjb3VudCA9IDAgICMgUGFydGljbGUgY291bnRlclxuICAgIFxuICAgIGRlZiBfX2luaXRfXyhzZWxmLCBSLCB4MD0wLCB5MD0wLCBuYW1lPU5vbmUpOlxuICAgICAgICBzZWxmLlIgPSBSXG4gICAgICAgIHNlbGYuRCA9IENvbGxvaWRFbmhhbmNlZC5rQlRfb3Zlcl82cGlldGEgLyBSICAjIENhbGN1bGF0ZSBEXG4gICAgICAgIHNlbGYueCA9IFt4MF1cbiAgICAgICAgc2VsZi55ID0gW3kwXVxuICAgICAgICBcbiAgICAgICAgIyBBdXRvLWdlbmVyYXRlIElEXG4gICAgICAgIENvbGxvaWRFbmhhbmNlZC5jb3VudCArPSAxXG4gICAgICAgIHNlbGYuaWQgPSBuYW1lIGlmIG5hbWUgZWxzZSBmXCJQe0NvbGxvaWRFbmhhbmNlZC5jb3VudH1cIlxuICAgIFxuICAgIGRlZiB1cGRhdGUoc2VsZiwgZHQpOlxuICAgICAgICBzaWdtYSA9IG5wLnNxcnQoMiAqIHNlbGYuRCAqIGR0KVxuICAgICAgICBkeCA9IG5wLnJhbmRvbS5ub3JtYWwoMCwgc2lnbWEpXG4gICAgICAgIGR5ID0gbnAucmFuZG9tLm5vcm1hbCgwLCBzaWdtYSlcbiAgICAgICAgc2VsZi54LmFwcGVuZChzZWxmLnhbLTFdICsgZHgpXG4gICAgICAgIHNlbGYueS5hcHBlbmQoc2VsZi55Wy0xXSArIGR5KVxuICAgIFxuICAgIGRlZiBzaW11bGF0ZShzZWxmLCBOLCBkdCk6XG4gICAgICAgIGZvciBfIGluIHJhbmdlKE4pOlxuICAgICAgICAgICAgc2VsZi51cGRhdGUoZHQpXG4gICAgXG4gICAgZGVmIF9fc3RyX18oc2VsZik6XG4gICAgICAgIFwiXCJcIk5pY2Ugc3RyaW5nIHJlcHJlc2VudGF0aW9uXCJcIlwiXG4gICAgICAgIHJldHVybiAoZlwiQ29sbG9pZCB7c2VsZi5pZH06IFI9e3NlbGYuUjouMWV9IG0sIEQ9e3NlbGYuRDouMmV9IG3Csi9zLCBcIlxuICAgICAgICAgICAgICAgIGZcInBvc2l0aW9uPSh7c2VsZi54Wy0xXTouMmV9LCB7c2VsZi55Wy0xXTouMmV9KVwiKVxuXG4jIENyZWF0ZSBwYXJ0aWNsZXNcbnBBID0gQ29sbG9pZEVuaGFuY2VkKDFlLTYsIG5hbWU9J0EnKVxucEIgPSBDb2xsb2lkRW5oYW5jZWQoMmUtNiwgbmFtZT0nQicpXG5wQyA9IENvbGxvaWRFbmhhbmNlZCgwLjVlLTYsIG5hbWU9J0MnKVxuXG4jIFNpbXVsYXRlXG5mb3IgcCBpbiBbcEEsIHBCLCBwQ106XG4gICAgcC5zaW11bGF0ZShOLCBkdClcblxuIyBHZXR0aW5nIGluZm8gaXMgbmF0dXJhbDpcbnByaW50KHBCKSAgIyBFdmVyeXRoaW5nIGFib3V0IHBhcnRpY2xlIEIgaXMgdG9nZXRoZXIhXG5cbiMgUGxvdCB3aXRoIGJldHRlciBsYWJlbHNcbnBsdC5maWd1cmUoZmlnc2l6ZT0oOCwgOCkpXG5mb3IgcCwgY29sb3IgaW4gemlwKFtwQSwgcEIsIHBDXSwgWydiJywgJ3InLCAnZyddKTpcbiAgICB4LCB5ID0gbnAuYXJyYXkocC54KSwgbnAuYXJyYXkocC55KVxuICAgIHBsdC5wbG90KHggKiBzY2FsZSwgeSAqIHNjYWxlLCBjb2xvcj1jb2xvciwgYWxwaGE9MC42LCBcbiAgICAgICAgICAgICBsYWJlbD1mXCJ7cC5pZH06IFI9e3AuUioxZTY6LjFmfSDCtW1cIilcbnBsdC54bGFiZWwoJ3ggW8K1bV0nKVxucGx0LnlsYWJlbCgneSBbwrVtXScpXG5wbHQudGl0bGUoJ0VuaGFuY2VkIFBhcnRpY2xlczogRWFjaCBLbm93cyBJdHMgUHJvcGVydGllcycpXG5wbHQubGVnZW5kKClcbnBsdC5heGlzKCdlcXVhbCcpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
+</script>
+</div>
+<hr>
+</section>
+</section>
+<section id="decision-guide-when-to-use-each-approach" class="level2">
+<h2 class="anchored" data-anchor-id="decision-guide-when-to-use-each-approach">Decision Guide: When to Use Each Approach</h2>
+<section id="use-simple-functions-when" class="level3">
+<h3 class="anchored" data-anchor-id="use-simple-functions-when">Use Simple Functions When:</h3>
+<ul>
+<li>✅ You’re just learning Python</li>
+<li>✅ Quick one-off calculations</li>
+<li>✅ Very simple problems (1-2 particles)</li>
+<li>✅ You won’t need to extend the code</li>
+<li>✅ <strong>Focus is on understanding the physics first</strong></li>
+</ul>
+</section>
+<section id="use-classes-when" class="level3">
+<h3 class="anchored" data-anchor-id="use-classes-when">Use Classes When:</h3>
+<ul>
+<li>✅ Many objects with their own properties</li>
+<li>✅ Objects need to maintain state over time</li>
+<li>✅ You’ll extend or modify the code later</li>
+<li>✅ Multiple people will use your code</li>
+<li>✅ Objects have both data AND behavior</li>
+<li>✅ <strong>You want professional, maintainable code</strong></li>
+</ul>
+</section>
+</section>
+<section id="summary-table" class="level2">
+<h2 class="anchored" data-anchor-id="summary-table">Summary Table</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Simple Functions</th>
+<th>Object-Oriented</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Learning curve</strong></td>
+<td>Easy</td>
+<td>Moderate</td>
+</tr>
+<tr class="even">
+<td><strong>Initial code</strong></td>
+<td>Less</td>
+<td>More</td>
+</tr>
+<tr class="odd">
+<td><strong>Scalability</strong></td>
+<td>Poor (many lists)</td>
+<td>Excellent</td>
+</tr>
+<tr class="even">
+<td><strong>Maintainability</strong></td>
+<td>Difficult beyond 3 particles</td>
+<td>Easy</td>
+</tr>
+<tr class="odd">
+<td><strong>Extensibility</strong></td>
+<td>Hard to add features</td>
+<td>Easy to add features</td>
+</tr>
+<tr class="even">
+<td><strong>Error-prone?</strong></td>
+<td>Yes (index mismatches)</td>
+<td>No (data stays together)</td>
+</tr>
+<tr class="odd">
+<td><strong>Best for</strong></td>
+<td>Learning, simple problems</td>
+<td>Real simulations</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="your-turn-practice-both" class="level2">
+<h2 class="anchored" data-anchor-id="your-turn-practice-both">Your Turn: Practice Both!</h2>
+<p>Try extending each approach to: 1. Add particle color as a property 2. Implement a method to calculate the MSD 3. Add particle-particle interactions (check if they’re too close)</p>
+<p>You’ll quickly see why classes become valuable for complex simulations!</p>
+<div>
+<div id="pyodide-8">
+
+</div>
+<script type="pyodide-8-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBFeHBlcmltZW50IGhlcmUhXG5cblxuIn0=
+</script>
+</div>
+<hr>
+</section>
+<section id="key-takeaway" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaway">Key Takeaway</h2>
+<blockquote class="blockquote">
+<p><strong>Both approaches work for the physics!</strong> The difference is code organization, maintainability, and scalability. Start simple (functions), then use classes when your code gets complex. This is the natural progression of a computational physicist! 🎓</p>
+</blockquote>
 
 
 <script type="pyodide-data">
@@ -655,7 +548,6 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2RO
 <script type="vfs-file">
 W10=
 </script>
-</section>
 </section>
 
 </main> <!-- /main -->
