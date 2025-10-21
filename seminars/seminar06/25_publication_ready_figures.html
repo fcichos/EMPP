@@ -249,29 +249,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">🌟 Week 3: Modeling Motion</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture02/4_brownian_motion_simple.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Application: Brownian Motion (Simple)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture03/1_numpy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Arrays with Numpy</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -338,7 +315,7 @@ plt.show()</code></pre>
 <li><p>Sie werden auch feststellen, dass die Arbeit mit dieser Abbildungsgröße in einem Jupyter-Notebook nicht gut ist. Das hat damit zu tun, wie Jupyter die Ausgabe in eine PNG-Datei übersetzt, die inline angezeigt wird. Eine Möglichkeit, den Plot im Jupyter-Notebook zu vergrößern, aber die PDF-Größe beizubehalten, besteht darin, den Parameter <strong>dpi</strong> im Befehl <code>plt.figure(figsize=(3,2), dpi=150)</code> zu erhöhen. Normalerweise ist er auf dpi=75 eingestellt, was jetzt viel zu klein ist. Eine Einstellung von dpi=150 scheint ein vernünftiger Kompromiss zwischen Bildschirm- und Druckgröße zu sein. Wenn Sie völlig unabhängig sein wollen</p></li>
 <li><p>Der Befehl <code>plt.savefig</code> verwendet einen zusätzlichen <code>bbox_inches = 'tight'</code> Parameter, der sicherstellt, dass die Boundingbox auch wirklich alle Komponenten des Plots genau umschließt.</p></li>
 </ul>
-<div id="189b3361" class="cell" data-edit="false" data-execute="true" data-execution_count="1">
+<div id="39567e39" class="cell" data-edit="false" data-execute="true" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.font_manager <span class="im">as</span> font_manager</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span>
@@ -346,7 +323,7 @@ plt.show()</code></pre>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> directory_tree <span class="im">import</span> display_tree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f6ae046f" class="cell" data-autorun="false" data-execution_count="2">
+<div id="231732a6" class="cell" data-autorun="false" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.size'</span>: <span class="dv">12</span>,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'lines.linewidth'</span>: <span class="dv">1</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'lines.markersize'</span>: <span class="dv">10</span>,</span>
@@ -359,11 +336,11 @@ plt.show()</code></pre>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ytick.direction'</span> : <span class="st">'in'</span>,</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'figure.dpi'</span>: <span class="dv">150</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a4038bf6" class="cell" data-autorun="false" data-execution_count="3">
+<div id="b18eea37" class="cell" data-autorun="false" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_size(w,h):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>((w<span class="op">/</span><span class="fl">2.54</span>,h<span class="op">/</span><span class="fl">2.54</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ef636778" class="cell" data-autorun="false" data-execution_count="4">
+<div id="afc22645" class="cell" data-autorun="false" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>get_size(<span class="dv">7</span>,<span class="dv">6</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="dv">0</span>,np.pi<span class="op">*</span><span class="dv">4</span>,<span class="dv">200</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x,np.sin(x),color<span class="op">=</span><span class="st">'k'</span>)</span>
@@ -406,7 +383,7 @@ Figure&nbsp;1
     figh = float(h)/(t-b)
     ax.figure.set_size_inches(figw, figh)</code></pre>
 <p>wobei Sie die gewünschte Breite und Höhe (in Zoll) der aktuellen Achse <em>ax</em> angeben müssen. Die Funktion gibt nichts zurück, sondern legt direkt die Größe fest.</p>
-<div id="c27f4315" class="cell" data-autorun="false" data-execution_count="5">
+<div id="351a3751" class="cell" data-autorun="false" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_size(w,h, ax<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" w, h: width, height in inches """</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> ax: ax<span class="op">=</span>plt.gca()</span>
@@ -440,7 +417,7 @@ Figure&nbsp;1
 <section id="auswahl-der-schriftarten" class="level2">
 <h2 class="anchored" data-anchor-id="auswahl-der-schriftarten">Auswahl der Schriftarten</h2>
 <p>Matplotlib kann auf eine Reihe von verschiedenen Schriftarten zugreifen. Es kann schwierig sein, die passende Schriftart für den Formelstil Ihres Dokuments oder Ihrer Publikation zu finden. Eine Liste der Schriftarten, die Matplotlib zur Verfügung stehen, kann mit dem folgenden Codeschnipsel abgerufen werden, den ich <a href="https://jonathansoma.com/lede/data-studio/matplotlib/list-all-fonts-available-in-matplotlib-plus-samples/">hier</a> gefunden habe.</p>
-<div id="31f24f88" class="cell" data-autorun="false" data-execution_count="6">
+<div id="842e0849" class="cell" data-autorun="false" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML, display</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_html(fontname):</span>
@@ -888,7 +865,7 @@ Figure&nbsp;1
 </div>
 </div>
 <p>Falls Sie Ihr Dokument in <em>LaTeX</em> schreiben, könnten die <strong>cmXXXX</strong>-Schriften für Sie von Interesse sein, da sie den in <em>LaTeX</em>-Dokumenten verwendeten Schriften entsprechen. Hier ist ein Beispiel:</p>
-<div id="efaecaaf" class="cell" data-autorun="false" data-execution_count="7">
+<div id="f853e93f" class="cell" data-autorun="false" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cmfont <span class="op">=</span> font_manager.FontProperties(fname<span class="op">=</span>mpl.get_data_path() <span class="op">+</span> <span class="st">'/fonts/ttf/cmr10.ttf'</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.size'</span>: <span class="dv">12</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'axes.titlesize'</span>: <span class="dv">12</span>,</span>
@@ -909,10 +886,10 @@ Figure&nbsp;1
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'mathtext.fontset'</span> : <span class="st">'cm'</span></span>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>                    })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="53c06d5f" class="cell" data-autorun="false" data-execution_count="8">
+<div id="bbf4cbc8" class="cell" data-autorun="false" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="dv">0</span>,np.pi,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ddd71eda" class="cell" data-autorun="false" data-execution_count="9">
+<div id="dc0ba263" class="cell" data-autorun="false" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>get_size(<span class="dv">6</span>,<span class="dv">5</span>),dpi<span class="op">=</span><span class="dv">150</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,np.sin(x))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r"velocity </span><span class="dv">$</span><span class="vs">v</span><span class="dv">$</span><span class="vs">"</span>)</span>
@@ -930,7 +907,7 @@ Figure&nbsp;1
 <section id="ein-dokument-vorbereiten" class="level2">
 <h2 class="anchored" data-anchor-id="ein-dokument-vorbereiten">Ein Dokument vorbereiten</h2>
 <p>Wenn man ein Dokument (Bachelorarbeit z.B.) erstellt, ist es nützlich, seine Daten und Texte geschickt zur organisieren, um sich Arbeit zu ersparen. Hier ist ein Beipiel,</p>
-<div id="d106d7f1" class="cell" data-autorun="false" data-execution_count="10">
+<div id="522388b1" class="cell" data-autorun="false" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>display_tree(<span class="st">"Report"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Report/
@@ -1039,7 +1016,7 @@ Figure&nbsp;1
     └── paperNotes.bib</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_58833/929351223.py:1: DeprecationWarning: The `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is "31st December 2024".
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_62515/929351223.py:1: DeprecationWarning: The `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is "31st December 2024".
   display_tree("Report")</code></pre>
 </div>
 </div>
