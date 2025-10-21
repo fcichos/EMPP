@@ -170,7 +170,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture02/3_datatypes.html">🎯 Week 2-3: Modeling Motion</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture02/4_brownian_motion_simple.html">Application: Brownian Motion (Simple)</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture02/4_brownian_motion_simple.html">🌟 Week 3: Modeling Motion</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture02/4_brownian_motion_simple.html">Application: Brownian Motion (Simple)</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -257,7 +257,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">🎯 Week 2-3: Modeling Motion</span></a>
+ <span class="menu-text">🎯 Week 2: Python Building Blocks</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -275,6 +275,17 @@ window.Quarto = {
  <span class="menu-text">Functions: Reusable Physics Equations</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">🌟 Week 3: Modeling Motion</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture02/4_brownian_motion_simple.html" class="sidebar-item-text sidebar-link active">
@@ -334,7 +345,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture02/3_datatypes.html">🎯 Week 2-3: Modeling Motion</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture02/4_brownian_motion_simple.html">Application: Brownian Motion (Simple)</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture02/4_brownian_motion_simple.html">🌟 Week 3: Modeling Motion</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture02/4_brownian_motion_simple.html">Application: Brownian Motion (Simple)</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Brownian Motion: Random Walks in Physics</h1>
 </div>
@@ -382,8 +393,8 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <h3 class="anchored" data-anchor-id="key-ideas">Key Ideas</h3>
 <p>When a particle undergoes Brownian motion:</p>
 <ol type="1">
-<li><strong>Each step is random</strong> in direction</li>
-<li><strong>The step size</strong> depends on:
+<li><p><strong>Each step is random</strong> in direction</p></li>
+<li><p><strong>The step size</strong> depends on:</p>
 <ul>
 <li>Temperature (warmer → more energetic collisions → bigger steps)</li>
 <li>Time between observations (longer time → more collisions → bigger displacement)</li>
@@ -398,7 +409,12 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <p><span class="math display">\[\text{typical distance} \propto \sqrt{t}\]</span></p>
 <p>More precisely, the <strong>mean squared displacement</strong> is:</p>
 <p><span class="math display">\[\langle r^2 \rangle = 4Dt\]</span></p>
-<p>where: - <span class="math inline">\(D\)</span> is the diffusion coefficient (units: m²/s) - <span class="math inline">\(t\)</span> is the elapsed time - The factor of 4 comes from motion in 2D (it would be 6 in 3D)</p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(D\)</span> is the diffusion coefficient (units: m²/s)</li>
+<li><span class="math inline">\(t\)</span> is the elapsed time</li>
+<li>The factor of 4 comes from motion in 2D (it would be 6 in 3D)</li>
+</ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -410,7 +426,11 @@ Random Steps from a Normal Distribution
 </div>
 <div class="callout-body-container callout-body">
 <p>To simulate random motion, we use <code>np.random.normal()</code> which generates random numbers from a <strong>normal (Gaussian) distribution</strong>.</p>
-<p>For Brownian motion, each step has: - <strong>Mean = 0</strong> (no preferred direction) - <strong>Standard deviation = <span class="math inline">\(\sqrt{2D\Delta t}\)</span></strong> (typical step size)</p>
+<p>For Brownian motion, each step has:</p>
+<ul>
+<li><strong>Mean = 0</strong> (no preferred direction)</li>
+<li><strong>Standard deviation = <span class="math inline">\(\sqrt{2D\Delta t}\)</span></strong> (typical step size)</li>
+</ul>
 <p>Try it:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>step <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="fl">1.0</span>)  <span class="co"># mean=0, std=1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -476,7 +496,13 @@ Experiment!
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Run the simulation multiple times. Notice how: - Each trajectory is different - The particle can end up far from the origin or close to it - The path is jagged and random - There’s no preferred direction</p>
+<p>Run the simulation multiple times. Notice how:</p>
+<ul>
+<li>Each trajectory is different</li>
+<li>The particle can end up far from the origin or close to it</li>
+<li>The path is jagged and random</li>
+<li>There’s no preferred direction</li>
+</ul>
 <p>Try changing <code>N</code> (number of steps) or <code>dt</code> (time step) to see how it affects the motion!</p>
 </div>
 </div>
@@ -604,12 +630,28 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6Ilxu
 <p>✅ <strong>What Brownian motion is</strong>: Random motion caused by molecular collisions</p>
 <p>✅ <strong>How to simulate it</strong>: Using random steps from a normal distribution</p>
 <p>✅ <strong>Key equation</strong>: Mean squared displacement <span class="math inline">\(\langle r^2 \rangle = 4Dt\)</span></p>
-<p>✅ <strong>Programming skills</strong>: - Writing functions with multiple return values - Using numpy arrays for trajectories - Creating loops to simulate multiple particles - Plotting and analyzing data</p>
-<p>✅ <strong>Physics insights</strong>: - Individual trajectories are random and unpredictable - Statistical averages follow predictable patterns - The diffusion coefficient can be measured from MSD</p>
+<p>✅ <strong>Programming skills</strong>:</p>
+<ul>
+<li>Writing functions with multiple return values</li>
+<li>Using numpy arrays for trajectories</li>
+<li>Creating loops to simulate multiple particles</li>
+<li>Plotting and analyzing data</li>
+</ul>
+<p>✅ <strong>Physics insights</strong>:</p>
+<ul>
+<li>Individual trajectories are random and unpredictable</li>
+<li>Statistical averages follow predictable patterns</li>
+<li>The diffusion coefficient can be measured from MSD</li>
+</ul>
 </section>
 <section id="next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
-<p>Later in the course, we’ll revisit Brownian motion using <strong>object-oriented programming</strong> (classes), which will make it easier to: - Manage many particles with different properties - Organize complex simulations - Add features like particle interactions</p>
+<p>Later in the course, we’ll revisit Brownian motion using <strong>object-oriented programming</strong> (classes), which will make it easier to:</p>
+<ul>
+<li>Manage many particles with different properties</li>
+<li>Organize complex simulations</li>
+<li>Add features like particle interactions</li>
+</ul>
 <p>But for now, you have all the tools to simulate and analyze Brownian motion! 🎉</p>
 </section>
 <section id="optional-further-explorations" class="level2">

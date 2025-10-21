@@ -884,7 +884,7 @@
     "section": "",
     "text": "It’s time to look at different data types we may find useful in our course. Besides the number types mentioned previously, there are also other types like strings, lists, tuples, dictionaries and sets.\nEach of these data types has a number of connected methods (functions) which allow to manipulate the data contained in a variable. If you want to know which methods are available for a certain object use the command dir, e.g.\nThe following few cells will give you a short introduction into each type.",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🎯 Week 2: Python Building Blocks",
       "Datatypes for Physics"
     ]
   },
@@ -895,7 +895,7 @@
     "section": "Strings",
     "text": "Strings\nStrings are lists of keyboard characters as well as other characters not on your keyboard. They are useful for printing results on the screen, during reading and writing of data.\n\n\n\n\n\n\n\n\n\n\n\n\nString can be concatenated using the + operator.\n\n\n\n\n\n\n\n\n\n\n\n\nAs strings are lists, each character in a string can be accessed by addressing the position in the string (see Lists section)\n\n\n\n\n\n\nStrings can also be made out of numbers.\n\n\n\n\n\n\nIf you want to obtain a number of a string, you can use what is known as type casting. Using type casting you may convert the string or any other data type into a different type if this is possible. To find out if a string is a pure number you may use the str.isnumeric method. For the above string, we may want to do a conversion to the type int by typing:\n\n\n\n\n\n\n\n\n\n\n\n\nThere are a number of methods connected to the string data type. Usually the relate to formatting or finding sub-strings. Formatting will be a topic in our next lecture. Here we just refer to one simple find example.",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🎯 Week 2: Python Building Blocks",
       "Datatypes for Physics"
     ]
   },
@@ -906,7 +906,7 @@
     "section": "Lists",
     "text": "Lists\nLists have a variety of uses. They are useful, for example, in various bookkeeping tasks that arise in computer programming. Like arrays, they are sometimes used to store data. However, lists do not have the specialized properties and tools that make arrays so powerful for scientific computing. So in general, we prefer arrays to lists for working with scientific data. For other tasks, lists work just fine and can even be preferable to arrays.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIndividual elements in a list can be accessed by the variable name and the number (index) of the list element put in square brackets. Note that the index for the elements start at 0 for the first element (left).\n\n\n\n\n\n\nIndices in Python\n\n\n\nThe first element of a list or array is accessed by the index 0. If the array has N elements, the last entries index is N-1.\n\n\n\n\n\n\n\n\nElements may be also accessed from the back by nagative indices. b[-1] denotes the last element in the list and b[-2], the element before the last.\n\n\n\n\n\n\n\n\n\n\n\n\nThe length of a list can be obtained by the len command if you need the number of elements in the list for your calculations.\n\n\n\n\n\n\nThere are powerful ways to iterate through a list and also through arrays in form of iterator. This is called list comprehension. We will talk about them later in more detail. Here is an example, which shows the powerful options you have in Python.\n\n\n\n\n\n\nIndividual elements in a list can be replaced by assigning a new value to them\n\n\n\n\n\n\n\n\n\n\n\n\nLists can be concatanated by the + operator\n\n\n\n\n\n\nA very useful feature for lists in python is the slicing of lists. Slicing means, that we access only a range of elements in the list, i.e. element 3 to 7. This is done by inserting the starting and the ending element number separated by a colon (:) in the square brackets. The index numbers can be positive or negative again.\n\n\n\n\n\n\nInserting a second colon behind the ending element index together with a thrid number allows even to select only ever second or third element from a list.\n\n\n\n\n\n\nIt is sometimes also useful to reverse a list. This can be easily done with the reverse command.\n\n\n\n\n\n\nLists may be created in different ways. An empty list can be created by assigning emtpy square brackets to a variable name. You can append elements to the list with the help of the append command which has to be added to the variable name as shown below. This way of adding a particular function, which is part of a certain variable class is part of object oriented programming.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA list of numbers can be easily created by the range() command.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLists (and also tuples below) can be multidimensional as well, i.e. for an image. The individual elements may then be addressed by supplying two indices in two square brackets.",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🎯 Week 2: Python Building Blocks",
       "Datatypes for Physics"
     ]
   },
@@ -917,7 +917,7 @@
     "section": "Tuples",
     "text": "Tuples\nTuples are also list, but immutable. That means, if a tuple has been once defined, it cannot be changed. Try to change an element to see the result.\n\n\n\n\n\n\nTuples may be unpacked, e.g. its values may be assigned to normal variables in the following way",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🎯 Week 2: Python Building Blocks",
       "Datatypes for Physics"
     ]
   },
@@ -928,7 +928,7 @@
     "section": "Dictionaries",
     "text": "Dictionaries\nDictionaries are like lists, but the elements of dictionaries are accessed in a different way than for lists. The elements of lists and arrays are numbered consecutively, and to access an element of a list or an array, you simply refer to the number corresponding to its position in the sequence. The elements of dictionaries are accessed by “keys”, which can be either strings or (arbitrary) integers (in no particular order). Dictionaries are an important part of core Python. However, we do not make much use of them in this introduction to scientific Python, so our discussion of them is limited.",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🎯 Week 2: Python Building Blocks",
       "Datatypes for Physics"
     ]
   },
@@ -939,7 +939,7 @@
     "section": "Sets",
     "text": "Sets\nSets are like lists but have immutable unique entries, which means the elements can not be changed once defined. An emtpy set is created by the set() method.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou may add elements to a set with the add method:\nYou may also remove objects with the discard method:\n\n\n\n\n\n\nYou may also apply a variety of operation to sets checking their intersection, union or difference.",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🎯 Week 2: Python Building Blocks",
       "Datatypes for Physics"
     ]
   },
@@ -950,7 +950,7 @@
     "section": "Quiz: Data Types in Python",
     "text": "Quiz: Data Types in Python\nLet’s test your understanding of Python data types!\n\n\nWhat is the output of the following code?\na = [1, 2, 3]\nb = (1, 2, 3)\nprint(type(a), type(b))\n\n&lt;class 'list'&gt; &lt;class 'list'&gt;\n&lt;class 'list'&gt; &lt;class 'tuple'&gt;\n&lt;class 'tuple'&gt; &lt;class 'list'&gt;\n&lt;class 'tuple'&gt; &lt;class 'tuple'&gt;\n\nWhich of the following is mutable?\n\nList\nTuple\nString\nInteger\n\nWhat will be the output of this code?\nmy_dict = {'a': 1, 'b': 2, 'c': 3}\nprint(my_dict['b'])\n\na\n2\nb\nKeyError\n\nHow do you create an empty set in Python?\n\n{}\n[]\nset()\n()\n\nWhat is the result of 3 + 4.0?\n\n7\n7.0\n‘7.0’\nTypeError\n\n\n\n\n\n\n\n\n\nClick to reveal answers\n\n\n\n\n\n\n&lt;class 'list'&gt; &lt;class 'tuple'&gt;\nList\n2\nset()\n7.0",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🎯 Week 2: Python Building Blocks",
       "Datatypes for Physics"
     ]
   },
@@ -1080,7 +1080,7 @@
     "section": "",
     "text": "Numpy is the core library for scientific computing in Python. It provides a high-performance multidimensional array object and tools for working with these arrays. The NumPy array, formally called ndarray in NumPy documentation, is the real workhorse of data structures for scientific and engineering applications. The NumPy array is similar to a list but where all the elements of the list are of the same type. The elements of a NumPy array are usually numbers, but can also be booleans, strings, or other objects. When the elements are numbers, they must all be of the same type.",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🌟 Week 3: Modeling Motion",
       "Arrays with Numpy"
     ]
   },
@@ -1091,7 +1091,7 @@
     "section": "Creating Numpy Arrays",
     "text": "Creating Numpy Arrays\nThere are a number of ways to initialize new numpy arrays, for example from\n\na Python list or tuples\nusing functions that are dedicated to generating numpy arrays, such as arange, linspace, etc.\nreading data from files which will be covered in the files section\n\n\nFrom lists\nFor example, to create new vector and matrix arrays from Python lists we can use the numpy.array function.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsing array-generating functions\nFor larger arrays it is inpractical to initialize the data manually, using explicit python lists. Instead we can use one of the many functions in numpy that generate arrays of different forms. Some of the more common are:\n\n\n\n\n\n\n\n\n\n\n\n\n\nlinspace and logspace\nThe linspace function creates an array of N evenly spaced points between a starting point and an ending point. The form of the function is linspace(start, stop, N).If the third argument N is omitted,then N=50.\n\n\n\n\n\n\nlogspace is doing equivelent things with logaritmic spacing. Other types of array creation techniques are listed below. Try around with these commands to get a feeling what they do.\n\n\n\n\n\n\n\n\nmgrid\nmgrid generates a multi-dimensional matrix with increasing value entries, for example in columns and rows:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndiag\ndiag generates a diagonal matrix with the list supplied to it. The values can be also offset from the main diagonal.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nzeros and ones\nzeros and ones creates a matrix with the dimensions given in the argument and filled with 0 or 1.",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🌟 Week 3: Modeling Motion",
       "Arrays with Numpy"
     ]
   },
@@ -1102,7 +1102,7 @@
     "section": "Manipulating NumPy arrays",
     "text": "Manipulating NumPy arrays\n\nSlicing\nSlicing is the name for extracting part of an array by the syntax M[lower:upper:step]\n\n\n\n\n\n\n\n\n\n\n\n\nAny of the three parameters in M[lower:upper:step] can be ommited.\n\n\n\n\n\n\n\n\n\n\n\n\nNegative indices counts from the end of the array (positive index from the begining):\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIndex slicing works exactly the same way for multidimensional arrays:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDifferences\n\n\n\nSlicing can be effectively used to calculate differences for example for the calculation of derivatives. Here the position \\(y_i\\) of an object has been measured at times \\(t_i\\) and stored in an array each. We wish to calculate the average velocity at the times \\(t_{i}\\) from the arrays by\n\\[\\begin{equation}\nv_{i}=\\frac{y_i-y_{i-1}}{t_{i}-t_{i-1}}\n\\end{equation}\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReshaping\nArrays can be reshaped into any form, which contains the same number of elements.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdding a new dimension: newaxis\nWith newaxis, we can insert new dimensions in an array, for example converting a vector to a column or row matrix.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStacking and repeating arrays\n\n\n\n\n\nUsing function repeat, tile, vstack, hstack, and concatenate we can create larger vectors and matrices from smaller ones. Please try the individual functions yourself in your notebook. We wont discuss them in detail.\n\nTile and repeat\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConcatenate\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHstack and vstack",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🌟 Week 3: Modeling Motion",
       "Arrays with Numpy"
     ]
   },
@@ -1113,7 +1113,7 @@
     "section": "Applying mathematical functions",
     "text": "Applying mathematical functions\nAll kinds of mathematica operations can be carried out on arrays. Typically these operation act element wise as seen from the examples below.\n\nOperation involving one array\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOperations involving multiple arrays\nVector operations enable efficient element-wise calculations where corresponding elements at matching positions are processed simultaneously. Instead of handling elements one by one, these operations work on entire arrays at once, making them particularly fast. When multiplying two vectors using these operations, the result is not a single number (as in a dot product) but rather a new array where each element is the product of the corresponding elements from the input vectors. This element-wise multiplication is just one example of vector operations, which can include addition, subtraction, and other mathematical functions.",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🌟 Week 3: Modeling Motion",
       "Arrays with Numpy"
     ]
   },
@@ -1283,7 +1283,7 @@
     "href": "seminars/seminar06/25_publication_ready_figures.html#ein-dokument-vorbereiten",
     "title": "Erstellung veröffentlichungsreifer Diagramme",
     "section": "Ein Dokument vorbereiten",
-    "text": "Ein Dokument vorbereiten\nWenn man ein Dokument (Bachelorarbeit z.B.) erstellt, ist es nützlich, seine Daten und Texte geschickt zur organisieren, um sich Arbeit zu ersparen. Hier ist ein Beipiel,\n\ndisplay_tree(\"Report\")\n\nReport/\n├── Figures/\n│   ├── Figure1/\n│   │   ├── Figure1.ipynb\n│   │   └── Figure1_files/\n│   │       └── libs/\n│   │           ├── bootstrap/\n│   │           │   ├── bootstrap-icons.css\n│   │           │   ├── bootstrap-icons.woff\n│   │           │   ├── bootstrap.min.css\n│   │           │   └── bootstrap.min.js\n│   │           ├── clipboard/\n│   │           │   └── clipboard.min.js\n│   │           ├── quarto-contrib/\n│   │           │   └── live-runtime/\n│   │           │       ├── live-runtime.css\n│   │           │       ├── live-runtime.js\n│   │           │       └── pyodide-worker.js\n│   │           ├── quarto-html/\n│   │           │   ├── anchor.min.js\n│   │           │   ├── popper.min.js\n│   │           │   ├── quarto-syntax-highlighting.css\n│   │           │   ├── quarto.js\n│   │           │   ├── tippy.css\n│   │           │   └── tippy.umd.min.js\n│   │           └── quarto-ojs/\n│   │               ├── quarto-ojs-runtime.js\n│   │               └── quarto-ojs.css\n│   ├── figure1.pdf\n│   ├── Figure2/\n│   │   ├── Figure2.ipynb\n│   │   └── Figure2_files/\n│   │       └── libs/\n│   │           ├── bootstrap/\n│   │           │   ├── bootstrap-icons.css\n│   │           │   ├── bootstrap-icons.woff\n│   │           │   ├── bootstrap.min.css\n│   │           │   └── bootstrap.min.js\n│   │           ├── clipboard/\n│   │           │   └── clipboard.min.js\n│   │           ├── quarto-contrib/\n│   │           │   └── live-runtime/\n│   │           │       ├── live-runtime.css\n│   │           │       ├── live-runtime.js\n│   │           │       └── pyodide-worker.js\n│   │           ├── quarto-html/\n│   │           │   ├── anchor.min.js\n│   │           │   ├── popper.min.js\n│   │           │   ├── quarto-syntax-highlighting.css\n│   │           │   ├── quarto.js\n│   │           │   ├── tippy.css\n│   │           │   └── tippy.umd.min.js\n│   │           └── quarto-ojs/\n│   │               ├── quarto-ojs-runtime.js\n│   │               └── quarto-ojs.css\n│   └── figure2.pdf\n└── Text/\n    ├── article.aux\n    ├── article.fdb_latexmk\n    ├── article.fls\n    ├── article.log\n    ├── article.pdf\n    ├── article.synctex.gz\n    ├── article.tex\n    ├── content/\n    │   ├── 01_introduction.tex\n    │   ├── 02_theory.tex\n    │   ├── 03_results.tex\n    │   └── 04_conclusions.tex\n    ├── paper.aux\n    ├── paper.bbl\n    ├── paper.blg\n    ├── paper.fdb_latexmk\n    ├── paper.fls\n    ├── paper.log\n    ├── paper.pdf\n    ├── paper.qmd\n    ├── paper.synctex.gz\n    ├── paper.tex\n    ├── paper_files/\n    │   └── libs/\n    │       ├── bootstrap/\n    │       │   ├── bootstrap-icons.css\n    │       │   ├── bootstrap-icons.woff\n    │       │   ├── bootstrap.min.css\n    │       │   └── bootstrap.min.js\n    │       ├── clipboard/\n    │       │   └── clipboard.min.js\n    │       ├── quarto-contrib/\n    │       │   └── live-runtime/\n    │       │       ├── live-runtime.css\n    │       │       ├── live-runtime.js\n    │       │       └── pyodide-worker.js\n    │       ├── quarto-html/\n    │       │   ├── anchor.min.js\n    │       │   ├── popper.min.js\n    │       │   ├── quarto-syntax-highlighting.css\n    │       │   ├── quarto.js\n    │       │   ├── tippy.css\n    │       │   └── tippy.umd.min.js\n    │       └── quarto-ojs/\n    │           ├── quarto-ojs-runtime.js\n    │           └── quarto-ojs.css\n    └── paperNotes.bib\n\n\n/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_48139/929351223.py:1: DeprecationWarning: The `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is \"31st December 2024\".\n  display_tree(\"Report\")"
+    "text": "Ein Dokument vorbereiten\nWenn man ein Dokument (Bachelorarbeit z.B.) erstellt, ist es nützlich, seine Daten und Texte geschickt zur organisieren, um sich Arbeit zu ersparen. Hier ist ein Beipiel,\n\ndisplay_tree(\"Report\")\n\nReport/\n├── Figures/\n│   ├── Figure1/\n│   │   ├── Figure1.ipynb\n│   │   └── Figure1_files/\n│   │       └── libs/\n│   │           ├── bootstrap/\n│   │           │   ├── bootstrap-icons.css\n│   │           │   ├── bootstrap-icons.woff\n│   │           │   ├── bootstrap.min.css\n│   │           │   └── bootstrap.min.js\n│   │           ├── clipboard/\n│   │           │   └── clipboard.min.js\n│   │           ├── quarto-contrib/\n│   │           │   └── live-runtime/\n│   │           │       ├── live-runtime.css\n│   │           │       ├── live-runtime.js\n│   │           │       └── pyodide-worker.js\n│   │           ├── quarto-html/\n│   │           │   ├── anchor.min.js\n│   │           │   ├── popper.min.js\n│   │           │   ├── quarto-syntax-highlighting.css\n│   │           │   ├── quarto.js\n│   │           │   ├── tippy.css\n│   │           │   └── tippy.umd.min.js\n│   │           └── quarto-ojs/\n│   │               ├── quarto-ojs-runtime.js\n│   │               └── quarto-ojs.css\n│   ├── figure1.pdf\n│   ├── Figure2/\n│   │   ├── Figure2.ipynb\n│   │   └── Figure2_files/\n│   │       └── libs/\n│   │           ├── bootstrap/\n│   │           │   ├── bootstrap-icons.css\n│   │           │   ├── bootstrap-icons.woff\n│   │           │   ├── bootstrap.min.css\n│   │           │   └── bootstrap.min.js\n│   │           ├── clipboard/\n│   │           │   └── clipboard.min.js\n│   │           ├── quarto-contrib/\n│   │           │   └── live-runtime/\n│   │           │       ├── live-runtime.css\n│   │           │       ├── live-runtime.js\n│   │           │       └── pyodide-worker.js\n│   │           ├── quarto-html/\n│   │           │   ├── anchor.min.js\n│   │           │   ├── popper.min.js\n│   │           │   ├── quarto-syntax-highlighting.css\n│   │           │   ├── quarto.js\n│   │           │   ├── tippy.css\n│   │           │   └── tippy.umd.min.js\n│   │           └── quarto-ojs/\n│   │               ├── quarto-ojs-runtime.js\n│   │               └── quarto-ojs.css\n│   └── figure2.pdf\n└── Text/\n    ├── article.aux\n    ├── article.fdb_latexmk\n    ├── article.fls\n    ├── article.log\n    ├── article.pdf\n    ├── article.synctex.gz\n    ├── article.tex\n    ├── content/\n    │   ├── 01_introduction.tex\n    │   ├── 02_theory.tex\n    │   ├── 03_results.tex\n    │   └── 04_conclusions.tex\n    ├── paper.aux\n    ├── paper.bbl\n    ├── paper.blg\n    ├── paper.fdb_latexmk\n    ├── paper.fls\n    ├── paper.log\n    ├── paper.pdf\n    ├── paper.qmd\n    ├── paper.synctex.gz\n    ├── paper.tex\n    ├── paper_files/\n    │   └── libs/\n    │       ├── bootstrap/\n    │       │   ├── bootstrap-icons.css\n    │       │   ├── bootstrap-icons.woff\n    │       │   ├── bootstrap.min.css\n    │       │   └── bootstrap.min.js\n    │       ├── clipboard/\n    │       │   └── clipboard.min.js\n    │       ├── quarto-contrib/\n    │       │   └── live-runtime/\n    │       │       ├── live-runtime.css\n    │       │       ├── live-runtime.js\n    │       │       └── pyodide-worker.js\n    │       ├── quarto-html/\n    │       │   ├── anchor.min.js\n    │       │   ├── popper.min.js\n    │       │   ├── quarto-syntax-highlighting.css\n    │       │   ├── quarto.js\n    │       │   ├── tippy.css\n    │       │   └── tippy.umd.min.js\n    │       └── quarto-ojs/\n    │           ├── quarto-ojs-runtime.js\n    │           └── quarto-ojs.css\n    └── paperNotes.bib\n\n\n/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_52609/929351223.py:1: DeprecationWarning: The `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is \"31st December 2024\".\n  display_tree(\"Report\")"
   },
   {
     "objectID": "seminars/seminar01/MDSimulation.html",
@@ -2261,7 +2261,7 @@
     "section": "Introduction: What is Brownian Motion?",
     "text": "Introduction: What is Brownian Motion?\nImagine a tiny dust particle floating in water. If you look at it under a microscope, you’ll see something surprising: the particle doesn’t sit still! Instead, it moves in a random, zigzag pattern. This phenomenon is called Brownian motion, named after the botanist Robert Brown who first described it in 1827.\n\nWhy Does This Happen?\nWater isn’t just a smooth, continuous fluid—it’s made up of countless tiny molecules in constant motion. These water molecules continuously collide with our particle from all directions:\n\nEach individual collision is tiny and barely noticeable\nMillions of collisions happen every second\nThe collisions come from random directions\nThe combined effect creates the zigzag motion we observe\n\nThis is a beautiful example of how microscopic randomness creates observable macroscopic behavior!",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🌟 Week 3: Modeling Motion",
       "Application: Brownian Motion (Simple)"
     ]
   },
@@ -2270,9 +2270,9 @@
     "href": "lectures/lecture02/4_brownian_motion_simple.html#the-physics-behind-random-walks",
     "title": "Brownian Motion: Random Walks in Physics",
     "section": "The Physics Behind Random Walks",
-    "text": "The Physics Behind Random Walks\n\nKey Ideas\nWhen a particle undergoes Brownian motion:\n\nEach step is random in direction\nThe step size depends on:\n\nTemperature (warmer → more energetic collisions → bigger steps)\nTime between observations (longer time → more collisions → bigger displacement)\nParticle size (smaller particles move more easily)\nAll captured in the diffusion coefficient \\(D\\)\n\n\n\n\nThe Simple Math\nThe typical distance a particle moves grows with time, but not linearly! Instead:\n\\[\\text{typical distance} \\propto \\sqrt{t}\\]\nMore precisely, the mean squared displacement is:\n\\[\\langle r^2 \\rangle = 4Dt\\]\nwhere: - \\(D\\) is the diffusion coefficient (units: m²/s) - \\(t\\) is the elapsed time - The factor of 4 comes from motion in 2D (it would be 6 in 3D)\n\n\n\n\n\n\nRandom Steps from a Normal Distribution\n\n\n\nTo simulate random motion, we use np.random.normal() which generates random numbers from a normal (Gaussian) distribution.\nFor Brownian motion, each step has: - Mean = 0 (no preferred direction) - Standard deviation = \\(\\sqrt{2D\\Delta t}\\) (typical step size)\nTry it:\nstep = np.random.normal(0, 1.0)  # mean=0, std=1",
+    "text": "The Physics Behind Random Walks\n\nKey Ideas\nWhen a particle undergoes Brownian motion:\n\nEach step is random in direction\nThe step size depends on:\n\nTemperature (warmer → more energetic collisions → bigger steps)\nTime between observations (longer time → more collisions → bigger displacement)\nParticle size (smaller particles move more easily)\nAll captured in the diffusion coefficient \\(D\\)\n\n\n\n\nThe Simple Math\nThe typical distance a particle moves grows with time, but not linearly! Instead:\n\\[\\text{typical distance} \\propto \\sqrt{t}\\]\nMore precisely, the mean squared displacement is:\n\\[\\langle r^2 \\rangle = 4Dt\\]\nwhere:\n\n\\(D\\) is the diffusion coefficient (units: m²/s)\n\\(t\\) is the elapsed time\nThe factor of 4 comes from motion in 2D (it would be 6 in 3D)\n\n\n\n\n\n\n\nRandom Steps from a Normal Distribution\n\n\n\nTo simulate random motion, we use np.random.normal() which generates random numbers from a normal (Gaussian) distribution.\nFor Brownian motion, each step has:\n\nMean = 0 (no preferred direction)\nStandard deviation = \\(\\sqrt{2D\\Delta t}\\) (typical step size)\n\nTry it:\nstep = np.random.normal(0, 1.0)  # mean=0, std=1",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🌟 Week 3: Modeling Motion",
       "Application: Brownian Motion (Simple)"
     ]
   },
@@ -2281,9 +2281,9 @@
     "href": "lectures/lecture02/4_brownian_motion_simple.html#lets-simulate-one-particle",
     "title": "Brownian Motion: Random Walks in Physics",
     "section": "Let’s Simulate One Particle!",
-    "text": "Let’s Simulate One Particle!\nWe’ll build up our simulation step by step, starting with the simplest case: one particle moving in 2D.\n\nStep 1: Setting Up Parameters\n\n\n\n\n\n\n\n\nStep 2: Creating a Function for One Random Step\nLet’s write a function that takes a current position and returns the new position after one random step:\n\n\n\n\n\n\n\n\nStep 3: Simulating a Complete Trajectory\nNow let’s create a function that simulates many steps:\n\n\n\n\n\n\n\n\nStep 4: Plotting the Trajectory\nLet’s visualize the random walk:\n\n\n\n\n\n\n\n\n\n\n\n\nExperiment!\n\n\n\nRun the simulation multiple times. Notice how: - Each trajectory is different - The particle can end up far from the origin or close to it - The path is jagged and random - There’s no preferred direction\nTry changing N (number of steps) or dt (time step) to see how it affects the motion!",
+    "text": "Let’s Simulate One Particle!\nWe’ll build up our simulation step by step, starting with the simplest case: one particle moving in 2D.\n\nStep 1: Setting Up Parameters\n\n\n\n\n\n\n\n\nStep 2: Creating a Function for One Random Step\nLet’s write a function that takes a current position and returns the new position after one random step:\n\n\n\n\n\n\n\n\nStep 3: Simulating a Complete Trajectory\nNow let’s create a function that simulates many steps:\n\n\n\n\n\n\n\n\nStep 4: Plotting the Trajectory\nLet’s visualize the random walk:\n\n\n\n\n\n\n\n\n\n\n\n\nExperiment!\n\n\n\nRun the simulation multiple times. Notice how:\n\nEach trajectory is different\nThe particle can end up far from the origin or close to it\nThe path is jagged and random\nThere’s no preferred direction\n\nTry changing N (number of steps) or dt (time step) to see how it affects the motion!",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🌟 Week 3: Modeling Motion",
       "Application: Brownian Motion (Simple)"
     ]
   },
@@ -2294,7 +2294,7 @@
     "section": "Multiple Particles",
     "text": "Multiple Particles\nNow let’s simulate many particles at once to see the statistical behavior:\n\n\n\n\n\n\n\nVisualizing Multiple Particles\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Do You See?\n\n\n\nEven though each trajectory is random and unpredictable, the ensemble (all particles together) shows clear statistical patterns:\n\nMost particles stay within a certain radius\nThe density decreases with distance from origin\nThe distribution is roughly circular (no preferred direction)",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🌟 Week 3: Modeling Motion",
       "Application: Brownian Motion (Simple)"
     ]
   },
@@ -2305,7 +2305,7 @@
     "section": "Analyzing the Motion: Mean Squared Displacement",
     "text": "Analyzing the Motion: Mean Squared Displacement\nInstead of looking at individual trajectories, let’s measure the mean squared displacement (MSD), which tells us how far particles have moved on average.\n\nComputing MSD for One Particle\n\n\n\n\n\n\n\n\nMSD for Many Particles (Better Statistics!)\n\n\n\n\n\n\n\n\n\n\n\n\nKey Observations\n\n\n\n\nIndividual trajectories fluctuate a lot around the theoretical prediction\nOn average, the MSD follows \\(\\langle r^2 \\rangle = 4Dt\\)\nFluctuations are larger at long times (fewer data points to average)\nThis is why experimentalists use many particles or long trajectories to measure \\(D\\) accurately!",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🌟 Week 3: Modeling Motion",
       "Application: Brownian Motion (Simple)"
     ]
   },
@@ -2316,7 +2316,7 @@
     "section": "Challenge: Measuring the Diffusion Coefficient",
     "text": "Challenge: Measuring the Diffusion Coefficient\nCan you extract the diffusion coefficient from your simulation data?\n\n\n\n\n\n\nHint\n\n\n\n\n\nThe MSD is linear in time: \\(\\text{MSD} = 4Dt\\)\nSo the slope of MSD vs. time gives you \\(4D\\).\nYou can use linear regression or just compute: \\(D = \\text{slope} / 4\\)\nTry fitting a line to your MSD data!",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🌟 Week 3: Modeling Motion",
       "Application: Brownian Motion (Simple)"
     ]
   },
@@ -2325,9 +2325,9 @@
     "href": "lectures/lecture02/4_brownian_motion_simple.html#summary",
     "title": "Brownian Motion: Random Walks in Physics",
     "section": "Summary",
-    "text": "Summary\nIn this notebook, you learned:\n✅ What Brownian motion is: Random motion caused by molecular collisions\n✅ How to simulate it: Using random steps from a normal distribution\n✅ Key equation: Mean squared displacement \\(\\langle r^2 \\rangle = 4Dt\\)\n✅ Programming skills: - Writing functions with multiple return values - Using numpy arrays for trajectories - Creating loops to simulate multiple particles - Plotting and analyzing data\n✅ Physics insights: - Individual trajectories are random and unpredictable - Statistical averages follow predictable patterns - The diffusion coefficient can be measured from MSD",
+    "text": "Summary\nIn this notebook, you learned:\n✅ What Brownian motion is: Random motion caused by molecular collisions\n✅ How to simulate it: Using random steps from a normal distribution\n✅ Key equation: Mean squared displacement \\(\\langle r^2 \\rangle = 4Dt\\)\n✅ Programming skills:\n\nWriting functions with multiple return values\nUsing numpy arrays for trajectories\nCreating loops to simulate multiple particles\nPlotting and analyzing data\n\n✅ Physics insights:\n\nIndividual trajectories are random and unpredictable\nStatistical averages follow predictable patterns\nThe diffusion coefficient can be measured from MSD",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🌟 Week 3: Modeling Motion",
       "Application: Brownian Motion (Simple)"
     ]
   },
@@ -2336,9 +2336,9 @@
     "href": "lectures/lecture02/4_brownian_motion_simple.html#next-steps",
     "title": "Brownian Motion: Random Walks in Physics",
     "section": "Next Steps",
-    "text": "Next Steps\nLater in the course, we’ll revisit Brownian motion using object-oriented programming (classes), which will make it easier to: - Manage many particles with different properties - Organize complex simulations - Add features like particle interactions\nBut for now, you have all the tools to simulate and analyze Brownian motion! 🎉",
+    "text": "Next Steps\nLater in the course, we’ll revisit Brownian motion using object-oriented programming (classes), which will make it easier to:\n\nManage many particles with different properties\nOrganize complex simulations\nAdd features like particle interactions\n\nBut for now, you have all the tools to simulate and analyze Brownian motion! 🎉",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🌟 Week 3: Modeling Motion",
       "Application: Brownian Motion (Simple)"
     ]
   },
@@ -2349,7 +2349,7 @@
     "section": "Optional: Further Explorations",
     "text": "Optional: Further Explorations\nTry modifying the code to explore:\n\nEffect of particle size: Change \\(D\\) (smaller \\(D\\) = larger particle)\n3D Brownian motion: Add a \\(z\\) coordinate (hint: MSD becomes \\(6Dt\\))\nDifferent time steps: How does dt affect the simulation?\nTemperature effects: \\(D\\) is proportional to temperature!\nConfined motion: Add boundaries (particles bounce off walls)",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🌟 Week 3: Modeling Motion",
       "Application: Brownian Motion (Simple)"
     ]
   },
@@ -2360,7 +2360,7 @@
     "section": "",
     "text": "Functions are reusable blocks of code that can be executed multiple times from different parts of your program. They help in organizing code, making it more readable, and reducing redundancy. Functions can take input arguments and return output values.\n\nDefining a FunctionCalling a Function\n\n\nA function in Python is defined using the def keyword followed by the name of the function, which is usually descriptive and indicates what the function does. The parameters inside the parentheses indicate what data the function expects to receive. The -&gt; symbol is used to specify the return type of the function.\nHere’s an example:\n\n\n\n\n\n\n\n\nFunctions can be called by specifying the name of the function followed by parentheses containing the arguments. The arguments passed to the function should match the number and type of parameters defined in the function. Here’s an example:",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🎯 Week 2: Python Building Blocks",
       "Functions: Reusable Physics Equations"
     ]
   },
@@ -2371,7 +2371,7 @@
     "section": "",
     "text": "Functions are reusable blocks of code that can be executed multiple times from different parts of your program. They help in organizing code, making it more readable, and reducing redundancy. Functions can take input arguments and return output values.\n\nDefining a FunctionCalling a Function\n\n\nA function in Python is defined using the def keyword followed by the name of the function, which is usually descriptive and indicates what the function does. The parameters inside the parentheses indicate what data the function expects to receive. The -&gt; symbol is used to specify the return type of the function.\nHere’s an example:\n\n\n\n\n\n\n\n\nFunctions can be called by specifying the name of the function followed by parentheses containing the arguments. The arguments passed to the function should match the number and type of parameters defined in the function. Here’s an example:",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🎯 Week 2: Python Building Blocks",
       "Functions: Reusable Physics Equations"
     ]
   },
@@ -2382,7 +2382,7 @@
     "section": "Loops",
     "text": "Loops\nLoops are used to execute a block of code repeatedly. There are two main types of loops in Python: for loops and while loops.\n\nFor LoopWhile Loop\n\n\nA for loop in Python is used to iterate over a sequence (such as a list or string) and execute a block of code for each item in the sequence. Here’s an example:\n\n\n\n\n\n\n\n\nA while loop in Python is used to execute a block of code while a certain condition is met. The loop continues as long as the condition is true. Here’s an example:",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🎯 Week 2: Python Building Blocks",
       "Functions: Reusable Physics Equations"
     ]
   },
@@ -2393,7 +2393,7 @@
     "section": "Conditional Statements",
     "text": "Conditional Statements\nConditional statements are used to control the flow of your program based on conditions. The main conditional statements in Python are if, else, and elif.\n\nIf StatementElse StatementElif Statement\n\n\nAn if statement in Python is used to execute a block of code if a certain condition is met. Here’s an example:\n\n\n\n\n\n\n\n\nAn else statement in Python is used to execute a block of code if the condition in an if statement is not met. Here’s an example:\n\n\n\n\n\n\n\n\nAn elif statement in Python is used to execute a block of code if the condition in an if statement is not met but under an extra condition. Here’s an example:",
     "crumbs": [
-      "🎯 Week 2-3: Modeling Motion",
+      "🎯 Week 2: Python Building Blocks",
       "Functions: Reusable Physics Equations"
     ]
   },
