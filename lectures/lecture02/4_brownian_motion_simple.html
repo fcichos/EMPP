@@ -65,6 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../lectures/lecture03/1_numpy.html" rel="next">
+<link href="../../lectures/lecture02/01-lecture02.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -168,7 +170,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Brownian Motion: Random Walks in Physics</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture02/01-lecture02.html">🌟 Week 3: Modeling Motion</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture02/4_brownian_motion_simple.html">Application: Brownian Motion (Simple)</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -267,12 +269,63 @@ window.Quarto = {
  <span class="menu-text">Datatypes for Physics</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">🌟 Week 3: Modeling Motion</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture02/01-lecture02.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions: Reusable Physics Equations</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/4_brownian_motion_simple.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Application: Brownian Motion (Simple)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture03/1_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arrays with Numpy</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">🛠️ Hands-On Seminars</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Advanced Topics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Seminar 1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -320,7 +373,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture02/01-lecture02.html">🌟 Week 3: Modeling Motion</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture02/4_brownian_motion_simple.html">Application: Brownian Motion (Simple)</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Brownian Motion: Random Walks in Physics</h1>
 </div>
@@ -350,6 +403,14 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <section id="introduction-what-is-brownian-motion" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-what-is-brownian-motion">Introduction: What is Brownian Motion?</h2>
 <p>Imagine a tiny dust particle floating in water. If you look at it under a microscope, you’ll see something surprising: the particle doesn’t sit still! Instead, it moves in a random, zigzag pattern. This phenomenon is called <strong>Brownian motion</strong>, named after the botanist Robert Brown who first described it in 1827.</p>
+<div id="fig_brownian">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../lecture05/img/Brownian Motion.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Animation of Brownian motion (c) Wikipedia.</p>
+</div>
 <section id="why-does-this-happen" class="level3">
 <h3 class="anchored" data-anchor-id="why-does-this-happen">Why Does This Happen?</h3>
 <p>Water isn’t just a smooth, continuous fluid—it’s made up of countless tiny molecules in constant motion. These water molecules continuously collide with our particle from all directions:</p>
@@ -360,6 +421,42 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1
 <li>The combined effect creates the zigzag motion we observe</li>
 </ul>
 <p>This is a beautiful example of how <strong>microscopic randomness</strong> creates <strong>observable macroscopic behavior</strong>!</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why This Discovery Was Revolutionary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When Robert Brown first observed this motion in 1827, nobody could explain it. For decades, scientists debated: <strong>Are atoms and molecules real, or just a useful fiction?</strong></p>
+<p>In 1905, Albert Einstein provided the crucial breakthrough. He showed mathematically that if matter were made of atoms, Brownian motion would occur <em>exactly</em> as observed. A few years later, Jean Perrin performed careful experiments measuring Brownian motion and used Einstein’s theory to:</p>
+<ul>
+<li><strong>Calculate Avogadro’s number</strong> (the number of molecules in a sample)</li>
+<li><strong>Prove that atoms exist!</strong> This convinced the remaining skeptics that matter truly is made of discrete particles</li>
+</ul>
+<p>This wasn’t just about tiny particles jiggling around—it was definitive proof of the atomic nature of matter.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Deep Connections in Physics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Brownian motion reveals several fundamental principles that appear throughout physics:</p>
+<p><strong>Temperature has a microscopic meaning</strong>: The energy of molecular collisions is directly related to temperature. Warmer water means faster-moving molecules, which create more vigorous Brownian motion. This connects the abstract concept of temperature to the kinetic energy of individual atoms!</p>
+<p><strong>Fluctuation-dissipation relation</strong>: The same molecular collisions that cause random fluctuations (the zigzag motion) also create friction that slows the particle down (dissipation). These aren’t separate phenomena—they’re two sides of the same coin! This deep connection appears everywhere in physics, from electrical circuits to quantum mechanics.</p>
+<p><strong>Statistical mechanics</strong>: Individual molecular collisions are impossibly complex to track, yet their collective behavior follows simple, predictable laws. This is the power of statistical thinking in physics.</p>
+<p>You’ll encounter these ideas again and again as you progress in physics—in thermal physics, quantum mechanics, and even in understanding phenomena like noise in electronic circuits or the behavior of polymers. Brownian motion is where many of these big ideas first became concrete and measurable!</p>
+</div>
+</div>
 </section>
 </section>
 <section id="the-physics-behind-random-walks" class="level2">
@@ -458,7 +555,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6Ilxu
 
 </div>
 <script type="pyodide-5-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBDcmVhdGUgdGhlIHBsb3RcbnBsdC5maWd1cmUoZmlnc2l6ZT0oNiwgNikpXG5cbiMgUGxvdCB0aGUgdHJhamVjdG9yeVxuc2NhbGUgPSAxZTYgICMgQ29udmVydCB0byBtaWNyb21ldGVycyBmb3IgZWFzaWVyIHJlYWRpbmdcbnBsdC5wbG90KHhfdHJhaiAqIHNjYWxlLCB5X3RyYWogKiBzY2FsZSwgJ2ItJywgYWxwaGE9MC41LCBsaW5ld2lkdGg9MSlcblxuIyBNYXJrIHN0YXJ0IGFuZCBlbmRcbnBsdC5wbG90KHhfdHJhalswXSAqIHNjYWxlLCB5X3RyYWpbMF0gKiBzY2FsZSwgJ2dvJywgbWFya2Vyc2l6ZT0xMCwgbGFiZWw9J1N0YXJ0JylcbnBsdC5wbG90KHhfdHJhalstMV0gKiBzY2FsZSwgeV90cmFqWy0xXSAqIHNjYWxlLCAncm8nLCBtYXJrZXJzaXplPTEwLCBsYWJlbD0nRW5kJylcblxucGx0LnhsYWJlbCgneCBbwrVtXScpXG5wbHQueWxhYmVsKCd5IFvCtW1dJylcbnBsdC50aXRsZSgnU2luZ2xlIFBhcnRpY2xlIEJyb3duaWFuIE1vdGlvbicpXG5wbHQuYXhpcygnZXF1YWwnKVxucGx0LmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxucGx0LmxlZ2VuZCgpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBDcmVhdGUgdGhlIHBsb3RcbnBsdC5maWd1cmUoZmlnc2l6ZT0oNiwgNikpXG5cbiMgUGxvdCB0aGUgdHJhamVjdG9yeVxuc2NhbGUgPSAxZTYgICMgQ29udmVydCB0byBtaWNyb21ldGVycyBmb3IgZWFzaWVyIHJlYWRpbmdcbnBsdC5wbG90KHhfdHJhaiAqIHNjYWxlLCB5X3RyYWogKiBzY2FsZSwgJ2ItJywgYWxwaGE9MC41LCBsaW5ld2lkdGg9MSlcblxuIyBNYXJrIHN0YXJ0IGFuZCBlbmRcbnBsdC5wbG90KHhfdHJhalswXSAqIHNjYWxlLCB5X3RyYWpbMF0gKiBzY2FsZSwgJ2dvJywgbWFya2Vyc2l6ZT0xMCwgbGFiZWw9J1N0YXJ0JylcbnBsdC5wbG90KHhfdHJhalstMV0gKiBzY2FsZSwgeV90cmFqWy0xXSAqIHNjYWxlLCAncm8nLCBtYXJrZXJzaXplPTEwLCBsYWJlbD0nRW5kJylcblxucGx0LnhsYWJlbCgneCBbwrVtXScpXG5wbHQueWxhYmVsKCd5IFvCtW1dJylcbnBsdC5heGlzKCdlcXVhbCcpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQubGVnZW5kKClcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
 </script>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -501,7 +598,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6Ilxu
 
 </div>
 <script type="pyodide-7-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxucGx0LmZpZ3VyZShmaWdzaXplPSg3LCA3KSlcblxuc2NhbGUgPSAxZTYgICMgQ29udmVydCB0byBtaWNyb21ldGVyc1xuXG4jIFBsb3QgYWxsIHRyYWplY3Rvcmllc1xuZm9yIGkgaW4gcmFuZ2Uobl9wYXJ0aWNsZXMpOlxuICAgIHBsdC5wbG90KGFsbF94W2ldICogc2NhbGUsIGFsbF95W2ldICogc2NhbGUsICdrLScsIGFscGhhPTAuMSwgbGluZXdpZHRoPTAuNSlcblxuIyBNYXJrIHN0YXJ0aW5nIHBvaW50XG5wbHQucGxvdCgwLCAwLCAnZ28nLCBtYXJrZXJzaXplPTE1LCBsYWJlbD0nU3RhcnQgKGFsbCBwYXJ0aWNsZXMpJywgem9yZGVyPTEwKVxuXG5wbHQueGxpbSgtMTAsIDEwKVxucGx0LnlsaW0oLTEwLCAxMClcbnBsdC54bGFiZWwoJ3ggW8K1bV0nKVxucGx0LnlsYWJlbCgneSBbwrVtXScpXG5wbHQudGl0bGUoZidCcm93bmlhbiBNb3Rpb24gb2Yge25fcGFydGljbGVzfSBQYXJ0aWNsZXMnKVxucGx0LmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxucGx0LmxlZ2VuZCgpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxucGx0LmZpZ3VyZShmaWdzaXplPSg3LCA3KSlcblxuc2NhbGUgPSAxZTYgICMgQ29udmVydCB0byBtaWNyb21ldGVyc1xuXG4jIFBsb3QgYWxsIHRyYWplY3Rvcmllc1xuZm9yIGkgaW4gcmFuZ2Uobl9wYXJ0aWNsZXMpOlxuICAgIHBsdC5wbG90KGFsbF94W2ldICogc2NhbGUsIGFsbF95W2ldICogc2NhbGUsICdrLScsIGFscGhhPTAuMSwgbGluZXdpZHRoPTAuNSlcblxuIyBNYXJrIHN0YXJ0aW5nIHBvaW50XG5wbHQucGxvdCgwLCAwLCAnZ28nLCBtYXJrZXJzaXplPTE1LCBsYWJlbD0nU3RhcnQgKGFsbCBwYXJ0aWNsZXMpJywgem9yZGVyPTEwKVxuXG5wbHQueGxpbSgtMTAsIDEwKVxucGx0LnlsaW0oLTEwLCAxMClcbnBsdC54bGFiZWwoJ3ggW8K1bV0nKVxucGx0LnlsYWJlbCgneSBbwrVtXScpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQubGVnZW5kKClcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
 </script>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -534,7 +631,7 @@ What Do You See?
 
 </div>
 <script type="pyodide-8-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuZGVmIGNvbXB1dGVfbXNkKHgsIHkpOlxuICAgIFwiXCJcIlxuICAgIENvbXB1dGUgbWVhbiBzcXVhcmVkIGRpc3BsYWNlbWVudCBhcyBhIGZ1bmN0aW9uIG9mIGxhZyB0aW1lLlxuXG4gICAgUGFyYW1ldGVyczpcbiAgICAtLS0tLS0tLS0tLVxuICAgIHgsIHkgOiBudW1weSBhcnJheXNcbiAgICAgICAgVHJhamVjdG9yeSBjb29yZGluYXRlc1xuXG4gICAgUmV0dXJuczpcbiAgICAtLS0tLS0tLVxuICAgIG1zZCA6IG51bXB5IGFycmF5XG4gICAgICAgIE1lYW4gc3F1YXJlZCBkaXNwbGFjZW1lbnQgZm9yIGVhY2ggbGFnIHRpbWVcbiAgICBcIlwiXCJcbiAgICBOID0gbGVuKHgpXG4gICAgbXNkID0gbnAuemVyb3MoTiAtIDEpXG5cbiAgICAjIEZvciBlYWNoIGxhZyB0aW1lIG5cbiAgICBmb3IgbiBpbiByYW5nZSgxLCBOKTpcbiAgICAgICAgIyBDYWxjdWxhdGUgYWxsIGRpc3BsYWNlbWVudHMgd2l0aCB0aGlzIGxhZ1xuICAgICAgICBkaXNwbGFjZW1lbnRzX3NxID0gKHhbbjpdIC0geFs6LW5dKSoqMiArICh5W246XSAtIHlbOi1uXSkqKjJcbiAgICAgICAgIyBUYWtlIHRoZSBtZWFuXG4gICAgICAgIG1zZFtuLTFdID0gbnAubWVhbihkaXNwbGFjZW1lbnRzX3NxKVxuXG4gICAgcmV0dXJuIG1zZFxuXG4jIENvbXB1dGUgTVNEIGZvciB0aGUgZmlyc3QgcGFydGljbGVcbm1zZCA9IGNvbXB1dGVfbXNkKGFsbF94WzBdLCBhbGxfeVswXSlcbnRpbWUgPSBucC5hcmFuZ2UoMSwgTisxKSAqIGR0XG5cbiMgUGxvdFxucGx0LmZpZ3VyZShmaWdzaXplPSg2LCA1KSlcbnBsdC5wbG90KHRpbWUsIG1zZCwgJ2ItJywgYWxwaGE9MC43LCBsYWJlbD0nU2ltdWxhdGVkIE1TRCcpXG5cbiMgVGhlb3JldGljYWwgcHJlZGljdGlvbjogTVNEID0gNER0XG5tc2RfdGhlb3J5ID0gNCAqIEQgKiB0aW1lXG5wbHQucGxvdCh0aW1lLCBtc2RfdGhlb3J5LCAnci0tJywgbGluZXdpZHRoPTIsIGxhYmVsPSdUaGVvcnk6IDREdCcpXG5cbnBsdC54bGFiZWwoJ1RpbWUgW3NdJylcbnBsdC55bGFiZWwoJ01TRCBbbcKyXScpXG5wbHQudGl0bGUoJ01lYW4gU3F1YXJlZCBEaXNwbGFjZW1lbnQnKVxucGx0LmxlZ2VuZCgpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuZGVmIGNvbXB1dGVfbXNkKHgsIHkpOlxuICAgIFwiXCJcIlxuICAgIENvbXB1dGUgbWVhbiBzcXVhcmVkIGRpc3BsYWNlbWVudCBhcyBhIGZ1bmN0aW9uIG9mIGxhZyB0aW1lLlxuXG4gICAgUGFyYW1ldGVyczpcbiAgICAtLS0tLS0tLS0tLVxuICAgIHgsIHkgOiBudW1weSBhcnJheXNcbiAgICAgICAgVHJhamVjdG9yeSBjb29yZGluYXRlc1xuXG4gICAgUmV0dXJuczpcbiAgICAtLS0tLS0tLVxuICAgIG1zZCA6IG51bXB5IGFycmF5XG4gICAgICAgIE1lYW4gc3F1YXJlZCBkaXNwbGFjZW1lbnQgZm9yIGVhY2ggbGFnIHRpbWVcbiAgICBcIlwiXCJcbiAgICBOID0gbGVuKHgpXG4gICAgbXNkID0gbnAuemVyb3MoTiAtIDEpXG5cbiAgICAjIEZvciBlYWNoIGxhZyB0aW1lIG5cbiAgICBmb3IgbiBpbiByYW5nZSgxLCBOKTpcbiAgICAgICAgIyBDYWxjdWxhdGUgYWxsIGRpc3BsYWNlbWVudHMgd2l0aCB0aGlzIGxhZ1xuICAgICAgICBkaXNwbGFjZW1lbnRzX3NxID0gKHhbbjpdIC0geFs6LW5dKSoqMiArICh5W246XSAtIHlbOi1uXSkqKjJcbiAgICAgICAgIyBUYWtlIHRoZSBtZWFuXG4gICAgICAgIG1zZFtuLTFdID0gbnAubWVhbihkaXNwbGFjZW1lbnRzX3NxKVxuXG4gICAgcmV0dXJuIG1zZFxuXG4jIENvbXB1dGUgTVNEIGZvciB0aGUgZmlyc3QgcGFydGljbGVcbm1zZCA9IGNvbXB1dGVfbXNkKGFsbF94WzBdLCBhbGxfeVswXSlcbnRpbWUgPSBucC5hcmFuZ2UoMSwgTisxKSAqIGR0XG5cbiMgUGxvdFxucGx0LmZpZ3VyZShmaWdzaXplPSg2LCA1KSlcbnBsdC5wbG90KHRpbWUsIG1zZCwgJ2ItJywgYWxwaGE9MC43LCBsYWJlbD0nU2ltdWxhdGVkIE1TRCcpXG5cbiMgVGhlb3JldGljYWwgcHJlZGljdGlvbjogTVNEID0gNER0XG5tc2RfdGhlb3J5ID0gNCAqIEQgKiB0aW1lXG5wbHQucGxvdCh0aW1lLCBtc2RfdGhlb3J5LCAnci0tJywgbGluZXdpZHRoPTIsIGxhYmVsPSdUaGVvcnk6IDREdCcpXG5cbnBsdC54bGFiZWwoJ1RpbWUgW3NdJylcbnBsdC55bGFiZWwoJ01TRCBbbcKyXScpXG5wbHQubGVnZW5kKClcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
 </script>
 </div>
 </section>
@@ -545,7 +642,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6Ilxu
 
 </div>
 <script type="pyodide-9-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxucGx0LmZpZ3VyZShmaWdzaXplPSg3LCA1KSlcblxuIyBQbG90IE1TRCBmb3IgbWFueSBwYXJ0aWNsZXNcbmZvciBpIGluIHJhbmdlKDUwKTogICMgUGxvdCBmaXJzdCA1MCB0byBhdm9pZCBjbHV0dGVyXG4gICAgbXNkID0gY29tcHV0ZV9tc2QoYWxsX3hbaV0sIGFsbF95W2ldKVxuICAgIHBsdC5wbG90KHRpbWUsIG1zZCwgJ2ItJywgYWxwaGE9MC4yLCBsaW5ld2lkdGg9MSlcblxuIyBUaGVvcmV0aWNhbCBwcmVkaWN0aW9uXG5tc2RfdGhlb3J5ID0gNCAqIEQgKiB0aW1lXG5wbHQucGxvdCh0aW1lLCBtc2RfdGhlb3J5LCAnci0tJywgbGluZXdpZHRoPTMsIGxhYmVsPSdUaGVvcnk6IDREdCcpXG5cbnBsdC54bGFiZWwoJ1RpbWUgW3NdJylcbnBsdC55bGFiZWwoJ01TRCBbbcKyXScpXG5wbHQudGl0bGUoJ01lYW4gU3F1YXJlZCBEaXNwbGFjZW1lbnQgKE11bHRpcGxlIFBhcnRpY2xlcyknKVxucGx0LmxlZ2VuZCgpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxucGx0LmZpZ3VyZShmaWdzaXplPSg3LCA1KSlcblxuIyBQbG90IE1TRCBmb3IgbWFueSBwYXJ0aWNsZXNcbmZvciBpIGluIHJhbmdlKDUwKTogICMgUGxvdCBmaXJzdCA1MCB0byBhdm9pZCBjbHV0dGVyXG4gICAgbXNkID0gY29tcHV0ZV9tc2QoYWxsX3hbaV0sIGFsbF95W2ldKVxuICAgIHBsdC5wbG90KHRpbWUsIG1zZCwgJ2ItJywgYWxwaGE9MC4yLCBsaW5ld2lkdGg9MSlcblxuIyBUaGVvcmV0aWNhbCBwcmVkaWN0aW9uXG5tc2RfdGhlb3J5ID0gNCAqIEQgKiB0aW1lXG5wbHQucGxvdCh0aW1lLCBtc2RfdGhlb3J5LCAnci0tJywgbGluZXdpZHRoPTMsIGxhYmVsPSdUaGVvcnk6IDREdCcpXG5cbnBsdC54bGFiZWwoJ1RpbWUgW3NdJylcbnBsdC55bGFiZWwoJ01TRCBbbcKyXScpXG5wbHQubGVnZW5kKClcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
 </script>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -572,7 +669,7 @@ Key Observations
 <h2 class="anchored" data-anchor-id="challenge-measuring-the-diffusion-coefficient">Challenge: Measuring the Diffusion Coefficient</h2>
 <p>Can you extract the diffusion coefficient from your simulation data?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -581,7 +678,7 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The MSD is linear in time: <span class="math inline">\(\text{MSD} = 4Dt\)</span></p>
 <p>So the slope of MSD vs.&nbsp;time gives you <span class="math inline">\(4D\)</span>.</p>
@@ -1079,6 +1176,18 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../lectures/lecture02/01-lecture02.html" class="pagination-link" aria-label="Functions: Reusable Physics Equations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Functions: Reusable Physics Equations</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../lectures/lecture03/1_numpy.html" class="pagination-link" aria-label="Arrays with Numpy">
+        <span class="nav-page-text">Arrays with Numpy</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

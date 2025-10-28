@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.34">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Machine Learning and Neural Networks 🤖 – Einführung in die Modellierung Physikalischer Prozesse</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../lectures/lecture03/1_numpy.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-9344fb9851b4da3cab95007ef9d770dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Einführung in die Modellierung Physikalischer Prozesse</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">🛠️ Hands-On Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar01/2_reinforcement_learning.html">Advanced Topics</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar01/2_reinforcement_learning.html">Advanced Seminar 1</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">📋 Course Info</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/intructors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorlesender</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ressourcen</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übungsaufgaben</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/exam.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prüfungen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">🚀 Week 1: Your First Physics Code</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture01/01-lecture01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup: Jupyter Notebooks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture01/01-plotting-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quick Win: Plotting Your First Graph</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">🎯 Week 2: Python Building Blocks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture01/02-lecture01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables &amp; Numbers (What You Just Used)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/3_datatypes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Datatypes for Physics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">🌟 Week 3: Modeling Motion</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/01-lecture02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions: Reusable Physics Equations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/4_brownian_motion_simple.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Application: Brownian Motion (Simple)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture03/1_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arrays with Numpy</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">🛠️ Hands-On Seminars</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced Topics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Advanced Seminar 1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview 🌐</a></li>
+  <li><a href="#reinforcement-learning" id="toc-reinforcement-learning" class="nav-link" data-scroll-target="#reinforcement-learning">Reinforcement Learning 🎮</a>
+  <ul class="collapse">
+  <li><a href="#applications-in-physics" id="toc-applications-in-physics" class="nav-link" data-scroll-target="#applications-in-physics">🔬 Applications in Physics</a></li>
+  <li><a href="#markov-decision-process" id="toc-markov-decision-process" class="nav-link" data-scroll-target="#markov-decision-process">Markov Decision Process 🎲</a></li>
+  <li><a href="#understanding-q-learning" id="toc-understanding-q-learning" class="nav-link" data-scroll-target="#understanding-q-learning">Understanding Q-Learning 🧠</a></li>
+  <li><a href="#the-q-learning-update-rule" id="toc-the-q-learning-update-rule" class="nav-link" data-scroll-target="#the-q-learning-update-rule">The Q-Learning Update Rule 📝</a></li>
+  </ul></li>
+  <li><a href="#navigating-a-grid-world" id="toc-navigating-a-grid-world" class="nav-link" data-scroll-target="#navigating-a-grid-world">Navigating a Grid World 🗺️</a>
+  <ul class="collapse">
+  <li><a href="#step-1-initialize-reinforcement-learning" id="toc-step-1-initialize-reinforcement-learning" class="nav-link" data-scroll-target="#step-1-initialize-reinforcement-learning">Step 1: Initialize Reinforcement Learning 🚀</a></li>
+  <li><a href="#step-2-define-the-actions" id="toc-step-2-define-the-actions" class="nav-link" data-scroll-target="#step-2-define-the-actions">Step 2: Define the Actions 🎮</a></li>
+  <li><a href="#step-3-choose-initial-state" id="toc-step-3-choose-initial-state" class="nav-link" data-scroll-target="#step-3-choose-initial-state">Step 3: Choose Initial State 🎲</a></li>
+  <li><a href="#step-4-the-learning-loop" id="toc-step-4-the-learning-loop" class="nav-link" data-scroll-target="#step-4-the-learning-loop">Step 4: The Learning Loop! 🔄</a></li>
+  <li><a href="#step-5-visualize-convergence" id="toc-step-5-visualize-convergence" class="nav-link" data-scroll-target="#step-5-visualize-convergence">Step 5: Visualize Convergence 📈</a></li>
+  <li><a href="#step-6-extract-the-policy" id="toc-step-6-extract-the-policy" class="nav-link" data-scroll-target="#step-6-extract-the-policy">Step 6: Extract the Policy 🗺️</a></li>
+  <li><a href="#step-7-visualize-the-learned-policy" id="toc-step-7-visualize-the-learned-policy" class="nav-link" data-scroll-target="#step-7-visualize-the-learned-policy">Step 7: Visualize the Learned Policy! 🎨</a></li>
+  </ul></li>
+  <li><a href="#experiments-and-challenges" id="toc-experiments-and-challenges" class="nav-link" data-scroll-target="#experiments-and-challenges">🎯 Experiments and Challenges</a></li>
+  <li><a href="#what-youve-learned" id="toc-what-youve-learned" class="nav-link" data-scroll-target="#what-youve-learned">🎓 What You’ve Learned</a>
+  <ul class="collapse">
+  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts ✅</a></li>
+  <li><a href="#programming-skills" id="toc-programming-skills" class="nav-link" data-scroll-target="#programming-skills">Programming Skills 💻</a></li>
+  <li><a href="#physics-connections" id="toc-physics-connections" class="nav-link" data-scroll-target="#physics-connections">Physics Connections 🔬</a></li>
+  </ul></li>
+  <li><a href="#where-to-go-from-here" id="toc-where-to-go-from-here" class="nav-link" data-scroll-target="#where-to-go-from-here">🚀 Where to Go From Here</a>
+  <ul class="collapse">
+  <li><a href="#immediate-next-steps" id="toc-immediate-next-steps" class="nav-link" data-scroll-target="#immediate-next-steps">Immediate Next Steps</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">📚 Further Reading</a></li>
+  <li><a href="#real-world-applications" id="toc-real-world-applications" class="nav-link" data-scroll-target="#real-world-applications">Real-World Applications 🌍</a></li>
+  <li><a href="#debugging-tips" id="toc-debugging-tips" class="nav-link" data-scroll-target="#debugging-tips">Debugging Tips 🐛</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">🎊 Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">🛠️ Hands-On Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar01/2_reinforcement_learning.html">Advanced Topics</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar01/2_reinforcement_learning.html">Advanced Seminar 1</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Machine Learning and Neural Networks 🤖</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>We are close to the end of the course and covered different applications of Python to physical problems. The course is not intended to teach the physics, but exercise the application of Python. One field, which is increasingly important also in physics is the field of machine learning. Machine learning is the summarizing term for a number of computational procedures to extract useful information from data. We would like to spend the rest of the course to introduce you into a tiny part of machine learning. We will do that in a way that you calculate as much as possible in pure Python without any additional packages.</p>
+<div>
+<div id="pyodide-1">
+
+</div>
+<script type="pyodide-1-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1ZX0sImNvZGUiOiJcbmltcG9ydCBudW1weSBhcyBucFxuaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuZnJvbSBzY2lweS5jb25zdGFudHMgaW1wb3J0ICpcbmZyb20gc2NpcHkuc3BhcnNlIGltcG9ydCBkaWFnc1xuZnJvbSBzY2lweSBpbXBvcnQgc3BhcnNlIGFzIHNwYXJzZVxuZnJvbSBzY2lweS5zcGFyc2UgaW1wb3J0IGxpbmFsZyBhcyBsblxuZnJvbSB0aW1lIGltcG9ydCBzbGVlcCx0aW1lXG5pbXBvcnQgbWF0cGxvdGxpYi5wYXRjaGVzIGFzIHBhdGNoZXNcbmZyb20gaXB5Y2FudmFzIGltcG9ydCBNdWx0aUNhbnZhcywgaG9sZF9jYW52YXMsQ2FudmFzXG5cbiMgZGVmYXVsdCB2YWx1ZXMgZm9yIHBsb3R0aW5nXG4jIERlZmF1bHQgcGxvdHRpbmcgcGFyYW1ldGVyc1xucGx0LnJjUGFyYW1zLnVwZGF0ZSh7XG4gICAgJ2ZvbnQuc2l6ZSc6IDEyLFxuICAgICdsaW5lcy5saW5ld2lkdGgnOiAxLFxuICAgICdsaW5lcy5tYXJrZXJzaXplJzogNSxcbiAgICAnYXhlcy5sYWJlbHNpemUnOiAxMSxcbiAgICAneHRpY2subGFiZWxzaXplJzogMTAsXG4gICAgJ3l0aWNrLmxhYmVsc2l6ZSc6IDEwLFxuICAgICd4dGljay50b3AnOiBUcnVlLFxuICAgICd4dGljay5kaXJlY3Rpb24nOiAnaW4nLFxuICAgICd5dGljay5yaWdodCc6IFRydWUsXG4gICAgJ3l0aWNrLmRpcmVjdGlvbic6ICdpbicsXG59KVxuXG5kZWYgZ2V0X3NpemUodywgaCk6XG4gICAgcmV0dXJuICh3LzIuNTQsIGgvMi41NCkifQ==
+</script>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+📚 Prerequisites
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before diving into this seminar, you should be comfortable with:</p>
+<ul>
+<li>✅ <strong>NumPy arrays</strong>: Creating arrays, indexing, and basic operations</li>
+<li>✅ <strong>Basic probability</strong>: Understanding random numbers and distributions</li>
+<li>✅ <strong>Loops and conditionals</strong>: <code>for</code> loops, <code>if</code> statements</li>
+<li>✅ <strong>Function optimization</strong>: The concept of finding maximum/minimum values</li>
+</ul>
+<p>Don’t worry if you’re not an expert—we’ll explain everything step by step!</p>
+</div>
+</div>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview 🌐</h2>
+<p>Machine learning has its origins long time ago and many of the currently very popular approaches have been developed in the past century. Two things have been stimulating the current hype of machine learning techniques. One is the computational power that is available already at the level of your smartphone. The second one is the availability of data. Machine learning is divided into different areas, which are denoted as</p>
+<ul>
+<li><strong>Supervised learning</strong> 👨‍🏫: telling the system what is right or wrong</li>
+<li><strong>Semi-supervised learning</strong> 🎯: having only sparse information on what is right or wrong</li>
+<li><strong>Unsupervised learning</strong> 🔍: let the system figure out what is right or wrong</li>
+</ul>
+<p>The graphics below gives a small summary. In our course, we cannot cover all methods. We will focus on <strong>Reinforcement Learning</strong> and <strong>Neural Networks</strong> just to show you, how things could look in Python.</p>
+<p><img src="img/ml_overview.png" class="img-fluid"></p>
+<p>Image taken from F. Cichos et al.&nbsp;Nature Machine Intelligence (2020).</p>
+</section>
+<section id="reinforcement-learning" class="level2">
+<h2 class="anchored" data-anchor-id="reinforcement-learning">Reinforcement Learning 🎮</h2>
+<p>Reinforcement learning is learning what to do—how to map situations to actions—so as to maximize a numerical reward signal. The learner or agent is not told which actions to take, as in most forms of machine learning, but instead must discover which actions yield the most reward by trying them. In the most interesting and challenging cases, actions may affect not only the immediate reward but also the next situation and, through that, all subsequent rewards. These two characteristics—<strong>trial-and-error search</strong> and <strong>delayed reward</strong>—are the two most important distinguishing features of reinforcement learning.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🎯 Think of it Like This
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Imagine teaching a dog a new trick:</p>
+<ul>
+<li>You don’t tell the dog <em>exactly</em> how to move its paws</li>
+<li>Instead, you give treats (rewards) when it does something right</li>
+<li>The dog learns through trial and error</li>
+<li>Eventually, it figures out the sequence of actions that gets treats!</li>
+</ul>
+<p>Reinforcement learning works the same way with computers.</p>
+</div>
+</div>
+<p>It has been around since the 1950s but gained momentum only in 2013 with the demonstrations of DeepMind on how to learn play Atari games like pong. The graphic below shows some of its applications in the field of robotics and gaming.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/overview_RL.png" class="img-fluid figure-img"></p>
+<figcaption>overview_rl</figcaption>
+</figure>
+</div>
+<section id="applications-in-physics" class="level3">
+<h3 class="anchored" data-anchor-id="applications-in-physics">🔬 Applications in Physics</h3>
+<p>Reinforcement learning offers particularly exciting applications in areas such as:</p>
+<ul>
+<li>🧪 Optimizing experimental design parameters</li>
+<li>⚛️ Controlling quantum systems and quantum state preparation</li>
+<li>🌡️ Finding energy-efficient paths in phase space</li>
+<li>🔬 Optimizing molecular dynamics simulations</li>
+<li>💎 Discovering new materials with desired properties</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔗 Connection to Physics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The mathematical framework of reinforcement learning shares conceptual connections with statistical physics, particularly in how systems evolve toward equilibrium states that maximize certain potentials. The exploration-exploitation tradeoff in RL has parallels to thermodynamic concepts like entropy maximization under constraints.</p>
+</div>
+</div>
+</section>
+<section id="markov-decision-process" class="level3">
+<h3 class="anchored" data-anchor-id="markov-decision-process">Markov Decision Process 🎲</h3>
+<p>The key element of reinforcement learning is the so-called <strong>Markov Decision Process</strong> (MDP). The Markov decision process denotes a formalism of planning actions in the face of uncertainty. A MDP consists formally of:</p>
+<ul>
+<li><span class="math inline">\(S\)</span>: a set of accessible states in the world 🗺️</li>
+<li><span class="math inline">\(D\)</span>: an initial distribution to be in a state 🎯</li>
+<li><span class="math inline">\(P_{sa}\)</span>: transition probability between states ➡️</li>
+<li><span class="math inline">\(A\)</span>: a set of possible actions to take in each state 🎮</li>
+<li><span class="math inline">\(\gamma\)</span>: the discount factor, which is a number between 0 and 1 ⏰</li>
+<li><span class="math inline">\(R\)</span>: a reward function 🎁</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔗 Physics Analogies
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It’s worth noting the connection to concepts you’re likely familiar with:</p>
+<ul>
+<li><strong>State space <span class="math inline">\(S\)</span></strong> is analogous to phase space in classical mechanics</li>
+<li><strong>Transition probabilities <span class="math inline">\(P_{sa}\)</span></strong> resemble stochastic processes like the Fokker-Planck equation</li>
+<li><strong>The Markov property</strong> (future states depend only on the current state, not history) is similar to memoryless processes in statistical mechanics</li>
+<li><strong>The reward function <span class="math inline">\(R\)</span></strong> plays a role similar to Hamiltonians or Lagrangians in that the system “seeks” to optimize it</li>
+</ul>
+</div>
+</div>
+<p>We begin in an initial state <span class="math inline">\(s_{i,j}\)</span> drawn from the distribution <span class="math inline">\(D\)</span>. At each time step <span class="math inline">\(t\)</span>, we then have to pick an action, for example <span class="math inline">\(a_1(t)\)</span>, as a result of which our state transitions to some state <span class="math inline">\(s_{i,j+1}\)</span>. The states do not necessarily correspond to spatial positions, however, as we talk about the gridworld later we may use this example to understand the procedures.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/gw_with_path.png" class="img-fluid figure-img"></p>
+<figcaption>gw_with_path</figcaption>
+</figure>
+</div>
+<p>By repeatedly picking actions, we traverse some sequence of states</p>
+<p><span class="math display">\[
+s_{0,0}\rightarrow s_{0,1}\rightarrow s_{1,1}+\ldots
+\]</span></p>
+<p>Our total reward is then the sum of discounted rewards along this sequence of states</p>
+<p><span class="math display">\[
+R(s_{0,0})+\gamma R(s_{0,1})+ \gamma^2 R(s_{1,1})+ \ldots
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+💰 Why Discount Future Rewards?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The discount factor <span class="math inline">\(\gamma\)</span> (typically between 0 and 1) makes rewards obtained <strong>immediately</strong> more valuable than those obtained <strong>in the future</strong>. This makes sense because:</p>
+<ul>
+<li><strong>Uncertainty increases</strong> with time (future rewards are less certain)</li>
+<li><strong>Immediate gratification</strong> helps the algorithm converge faster</li>
+<li>If <span class="math inline">\(\gamma = 0\)</span>: Only care about immediate reward (very myopic!)</li>
+<li>If <span class="math inline">\(\gamma = 1\)</span>: All future rewards count equally (can be unstable)</li>
+<li>Typical values: <span class="math inline">\(\gamma = 0.9\)</span> or <span class="math inline">\(\gamma = 0.95\)</span></li>
+</ul>
+<p>Think of it like compound interest, but in reverse!</p>
+</div>
+</div>
+<p>In reinforcement learning, our goal is to find a way of choosing actions <span class="math inline">\(a_0\)</span>, <span class="math inline">\(a_1, \ldots\)</span> over time, so as to <strong>maximize the expected value</strong> of the rewards. The sequence of actions that realizes the maximum reward is called the <strong>optimal policy</strong> <span class="math inline">\(\pi^{*}\)</span>. A sequence of actions in general is called a <strong>policy</strong> <span class="math inline">\(\pi\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+⚖️ Physics Analogy: Principle of Least Action
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This optimization can be viewed as analogous to the principle of least action in classical mechanics, where a system evolves along paths that minimize the action integral. The key difference is that in RL, we <strong>maximize rewards</strong> rather than minimize action.</p>
+</div>
+</div>
+<section id="methods-of-rl" class="level4">
+<h4 class="anchored" data-anchor-id="methods-of-rl">Methods of RL 🛠️</h4>
+<p>There are different methods available to find the optimal policy:</p>
+<p><strong>Model-based algorithms</strong> 📊: If we know the transition probabilities <span class="math inline">\(P_{sa}\)</span>, we can use methods like value iteration. Think of this as having a map before you start navigating.</p>
+<p><strong>Model-free algorithms</strong> 🗺️: If we don’t know the transition probabilities, we use methods like <strong>Q-learning</strong>. This is like exploring a city without a map—you learn as you go!</p>
+<p>We will focus on <strong>Q-learning</strong>, a model-free algorithm.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔬 Common RL Methods in Physics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For physics applications, common reinforcement learning methods include:</p>
+<ul>
+<li><strong>Deep Q-Networks (DQN)</strong>: Extensions of Q-learning using neural networks</li>
+<li><strong>Policy Gradient methods</strong>: Directly optimizing the policy rather than value functions</li>
+<li><strong>Actor-Critic methods</strong>: Combining value function approximation with policy optimization</li>
+<li><strong>Monte Carlo Tree Search</strong>: Used notably in AlphaGo and similar systems</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="understanding-q-learning" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-q-learning">Understanding Q-Learning 🧠</h3>
+<p>In Q-learning, the value of an action in a state is measured by its <strong>Q-value</strong>. The expectation value <span class="math inline">\(E\)</span> of the rewards with an initial state and action for a given policy is the Q-function or Q-value.</p>
+<p><span class="math display">\[
+Q^{\pi}(s,a)=E[R(s_{0},a_{0})+\gamma R(s_{1},a_{1})+ \gamma^2 R(s_{2},a_{2})+ \ldots | s_{0}=s,a_{0}=a,a_{t}=\pi(s_{t})]
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+💡 What is a Q-Value?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This sounds complicated but is in principle easy. Think of Q-value as <strong>“how good is taking action <span class="math inline">\(a\)</span> in state <span class="math inline">\(s\)</span>?”</strong></p>
+<ul>
+<li><strong>High Q-value</strong> = “This action looks promising!” ✅</li>
+<li><strong>Low Q-value</strong> = “This action is probably bad” ❌</li>
+</ul>
+<p>There is a Q-value for <strong>all actions</strong> of <strong>each state</strong>. Thus if we have 4 actions and 25 states, we have to store in total <strong>100 Q-values</strong> (stored in a matrix).</p>
+</div>
+</div>
+<p>For the optimal sequence of actions—for the best way to go—this Q value becomes a maximum:</p>
+<p><span class="math display">\[
+Q^{*}(s,a)=\max_{\pi}Q^{\pi}(s,a)
+\]</span></p>
+<p>The policy which gives the sequence of actions to be carried out to get the maximum reward is then calculated by:</p>
+<p><span class="math display">\[
+\pi^{*}(s)=\arg\max_{a}Q^{*}(s,a)
+\]</span></p>
+<p>This simply means: <strong>“In state <span class="math inline">\(s\)</span>, choose the action <span class="math inline">\(a\)</span> with the highest Q-value!”</strong></p>
+</section>
+<section id="the-q-learning-update-rule" class="level3">
+<h3 class="anchored" data-anchor-id="the-q-learning-update-rule">The Q-Learning Update Rule 📝</h3>
+<p>The <strong>Q-learning algorithm</strong> is an iterative procedure of updating the Q-value of each state and action which converges to the optimal policy <span class="math inline">\(\pi^{*}\)</span>. It is given by:</p>
+<p><span class="math display">\[
+Q_{t+\Delta t}(s,a)  = Q_t(s,a) + \alpha\big[R(s) + \gamma \max_{a'}Q_t(s',a')-Q_t(s,a)\big]
+\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔍 Breaking Down This Equation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let’s understand each term:</p>
+<ol type="1">
+<li><p><strong><span class="math inline">\(Q_t(s,a)\)</span></strong>: Our current estimate of “how good this action is”</p></li>
+<li><p><strong><span class="math inline">\(R(s)\)</span></strong>: The immediate reward we got from this action</p></li>
+<li><p><strong><span class="math inline">\(\gamma \max_{a'}Q_t(s',a')\)</span></strong>: The discounted value of the best action we could take next</p></li>
+<li><p><strong><span class="math inline">\(R(s) + \gamma \max_{a'}Q_t(s',a') - Q_t(s,a)\)</span></strong>: This is our <strong>prediction error</strong></p>
+<ul>
+<li>“Where we thought we’d end up” vs.&nbsp;“Where we actually could end up”</li>
+</ul></li>
+<li><p><strong><span class="math inline">\(\alpha\)</span></strong>: The <strong>learning rate</strong> (0 to 1)</p>
+<ul>
+<li>How much we trust this new information</li>
+<li><span class="math inline">\(\alpha = 0\)</span>: Never learn anything (ignore new info)</li>
+<li><span class="math inline">\(\alpha = 1\)</span>: Completely replace old estimate (ignore old info)</li>
+<li>Typical: <span class="math inline">\(\alpha = 0.1\)</span> to <span class="math inline">\(0.5\)</span></li>
+</ul></li>
+</ol>
+<p><strong>The key insight</strong>: We update our Q-value based on the difference between what we expected and what we observed!</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+⚛️ Physics Perspective
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>From a physics perspective, this update rule resembles a <strong>relaxation method</strong> for finding equilibrium states. The term in brackets can be interpreted as a “force” that drives the Q-values toward their optimal values, with <span class="math inline">\(\alpha\)</span> controlling the rate of convergence, similar to a damping constant in physics. The Bellman equation, which underpins this update rule, is also a form of dynamic programming that shares mathematical similarities with the Hamilton-Jacobi-Bellman equation in control theory.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="navigating-a-grid-world" class="level2">
+<h2 class="anchored" data-anchor-id="navigating-a-grid-world">Navigating a Grid World 🗺️</h2>
+<p>For our Python course we will have a look at the standard problem of reinforcement learning, which is the navigation in a grid world. This is like teaching an agent to find its way home!</p>
+<p>Each of the grid cells below represents a state <span class="math inline">\(s\)</span> in which an object could reside. In each of these states, the object can take several actions. If it may step to left, right, up or down, there are <strong>4 actions</strong>, which we may call <span class="math inline">\(a_{1},a_{2},a_{3}\)</span> and <span class="math inline">\(a_{4}\)</span>.</p>
+<p>This image below shows our gridworld, with 25 states, where the shaded state is the <strong>goal state</strong> 🎯 where we want the agent to go to independent of its initial state.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/gridworld.png" class="img-fluid figure-img"></p>
+<figcaption>gridworld</figcaption>
+</figure>
+</div>
+<p>In each of these states, we have 4 possible actions as depicted below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/state_n_action.png" class="img-fluid figure-img"></p>
+<figcaption>actions</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🎮 The Game Plan
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Our agent will:</p>
+<ol type="1">
+<li><strong>Start</strong> at a random position</li>
+<li><strong>Take actions</strong> (move up/down/left/right)</li>
+<li><strong>Get penalties</strong> (-1) for each move (to encourage finding the shortest path)</li>
+<li><strong>Get a big reward</strong> (+10) when it reaches the goal! 🎉</li>
+<li><strong>Learn</strong> which actions lead to the goal fastest</li>
+</ol>
+</div>
+</div>
+<section id="step-1-initialize-reinforcement-learning" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-initialize-reinforcement-learning">Step 1: Initialize Reinforcement Learning 🚀</h3>
+<p>At first we would like to initialize our problem. We have as depicted above 25 states, where one state is the goal state. We would like to use 4 actions to move between the states so our Q-value matrix has <strong>100 entries</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🎯 Setting up Rewards and Penalties
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We would like to give a <strong>penalty</strong> of <span class="math inline">\(R=-1\)</span> for all states except for the goal state where we give a <strong>reward</strong> of <span class="math inline">\(R=10\)</span>.</p>
+<p><strong>Why the -1 penalty?</strong> This encourages the agent to find the <strong>shortest path</strong> to the goal. Every step costs something, so the agent learns to minimize the number of steps!</p>
+</div>
+</div>
+<p>Our agent shall learn with a <strong>learning rate</strong> of <span class="math inline">\(\alpha=0.5\)</span> and we will <strong>discount future rewards</strong> with <span class="math inline">\(\gamma=0.5\)</span>.</p>
+<div>
+<div id="pyodide-2">
+
+</div>
+<script type="pyodide-2-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBHcmlkIGRpbWVuc2lvbnNcbm5fYWN0aW9ucyA9IDQgICAgICAgICAgIyBOdW1iZXIgb2YgcG9zc2libGUgYWN0aW9ucyAodXAsIGRvd24sIGxlZnQsIHJpZ2h0KVxubl9yb3dzID0gbl9jb2x1bW5zID0gNSAgIyA1eDUgZ3JpZCA9IDI1IHN0YXRlc1xuXG4jIEluaXRpYWxpemUgUS12YWx1ZSBtYXRyaXggd2l0aCBzbWFsbCByYW5kb20gdmFsdWVzXG4jIFNoYXBlOiAocm93cywgY29sdW1ucywgYWN0aW9ucykgPSAoNSwgNSwgNCkgPSAxMDAgUS12YWx1ZXMgdG90YWxcblEgPSBucC5yYW5kb20ucmFuZChuX3Jvd3MsIG5fY29sdW1ucywgbl9hY3Rpb25zKVxuXG4jIEluaXRpYWxpemUgcmV3YXJkIG1hdHJpeFxuIyAtMSBwZW5hbHR5IGZvciBldmVyeSBzdGF0ZSAoZW5jb3VyYWdlcyBmaW5kaW5nIHNob3J0ZXN0IHBhdGgpXG5SID0gLTEgKiBucC5vbmVzKFtuX3Jvd3MsIG5fY29sdW1uc10pXG5cbiMgQmlnIHJld2FyZCBhdCB0aGUgZ29hbCBzdGF0ZSAoYm90dG9tLXJpZ2h0IGNvcm5lcilcblJbbl9yb3dzLTEsIG5fY29sdW1ucy0xXSA9IDEwXG5cbiMgTGVhcm5pbmcgcGFyYW1ldGVyc1xuZV9ncmVlZHkgPSAwLjIgICMgRXBzaWxvbi1ncmVlZHkgZmFjdG9yICgyMCUgcmFuZG9tIGV4cGxvcmF0aW9uKVxuYWxwaGEgPSAwLjUgICAgICMgTGVhcm5pbmcgcmF0ZSAoaG93IG11Y2ggd2UgdHJ1c3QgbmV3IGluZm9ybWF0aW9uKVxuZ2FtbWEgPSAwLjUgICAgICMgRGlzY291bnQgZmFjdG9yIChob3cgbXVjaCB3ZSB2YWx1ZSBmdXR1cmUgcmV3YXJkcylcblxucHJpbnQoZlwi4pyFIEluaXRpYWxpemVkIFEtbWF0cml4IHdpdGggc2hhcGU6IHtRLnNoYXBlfVwiKVxucHJpbnQoZlwi4pyFIFRvdGFsIFEtdmFsdWVzIHRvIGxlYXJuOiB7US5zaXplfVwiKVxucHJpbnQoZlwi8J+OryBHb2FsIHBvc2l0aW9uOiAoe25fcm93cy0xfSwge25fY29sdW1ucy0xfSlcIilcbnByaW50KGZcIvCfk4ogTGVhcm5pbmcgcmF0ZSDOsSA9IHthbHBoYX1cIilcbnByaW50KGZcIuKPsCBEaXNjb3VudCBmYWN0b3IgzrMgPSB7Z2FtbWF9XCIpXG5wcmludChmXCLwn46yIFJhbmRvbSBleHBsb3JhdGlvbiDOtSA9IHtlX2dyZWVkeX1cIikifQ==
+</script>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🎲 The ε-Greedy Strategy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There is one tiny detail, which is crucial to understand: <strong>the ε-greedy factor</strong>.</p>
+<p><strong>The Problem</strong>: If we always choose the action with the highest Q-value, we might get stuck in a suboptimal strategy. Imagine your initial random Q-values happen to favor “always go right”—you might never discover that “go left” leads to a shortcut!</p>
+<p><strong>The Solution</strong>: The <strong>ε-greedy strategy</strong> says: - <strong>80% of the time</strong> (when random &gt; 0.2): Choose the best known action (exploit) - <strong>20% of the time</strong> (when random ≤ 0.2): Choose a random action (explore)</p>
+<p>This is called the <strong>exploration-exploitation tradeoff</strong>: - <strong>Exploitation</strong> 🎯: Use what you know (choose best action) - <strong>Exploration</strong> 🔍: Try new things (random action)</p>
+<p>We set ε = 0.2, meaning that <strong>20% of actions are chosen randomly</strong> to explore new possibilities.</p>
+</div>
+</div>
+</section>
+<section id="step-2-define-the-actions" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-define-the-actions">Step 2: Define the Actions 🎮</h3>
+<p>The actions, which we can take in each state are defined by 2-D vectors here which increase either the row or the column index in our gridworld.</p>
+<div>
+<div id="pyodide-3">
+
+</div>
+<script type="pyodide-3-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBEZWZpbmUgYWN0aW9uIHZlY3RvcnNcbiMgRWFjaCBhY3Rpb24gaXMgYSBbcm93X2NoYW5nZSwgY29sdW1uX2NoYW5nZV0gdmVjdG9yXG5hY2wgPSBucC5hcnJheShbXG4gICAgWzEsIDBdLCAgICMgQWN0aW9uIDA6IE1vdmUgRE9XTiAoaW5jcmVhc2Ugcm93KVxuICAgIFswLCAxXSwgICAjIEFjdGlvbiAxOiBNb3ZlIFJJR0hUIChpbmNyZWFzZSBjb2x1bW4pXG4gICAgWy0xLCAwXSwgICMgQWN0aW9uIDI6IE1vdmUgVVAgKGRlY3JlYXNlIHJvdylcbiAgICBbMCwgLTFdICAgIyBBY3Rpb24gMzogTW92ZSBMRUZUIChkZWNyZWFzZSBjb2x1bW4pXG5dKVxuXG5wcmludChcIvCfjq4gQWN0aW9uIGRlZmluaXRpb25zOlwiKVxucHJpbnQoXCIgIEFjdGlvbiAwOiBET1dOICDirIfvuI8gIFsrMSwgIDBdXCIpXG5wcmludChcIiAgQWN0aW9uIDE6IFJJR0hUIOKeoe+4jyAgWyAwLCArMV1cIilcbnByaW50KFwiICBBY3Rpb24gMjogVVAgICAg4qyG77iPICBbLTEsICAwXVwiKVxucHJpbnQoXCIgIEFjdGlvbiAzOiBMRUZUICDirIXvuI8gIFsgMCwgLTFdXCIpIn0=
+</script>
+</div>
+</section>
+<section id="step-3-choose-initial-state" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-choose-initial-state">Step 3: Choose Initial State 🎲</h3>
+<p>We choose the initial state from which we start randomly. We also initialize a list, where we register the sum of all Q-values. This is helpful to monitor the <strong>convergence</strong> of our algorithm.</p>
+<div>
+<div id="pyodide-4">
+
+</div>
+<script type="pyodide-4-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBTdGFydCBhdCBhIHJhbmRvbSBwb3NpdGlvbiBpbiB0aGUgZ3JpZFxuY3Vycl9zdGF0ZSA9IG5wLmFycmF5KFtucC5yYW5kb20ucmFuZGludChuX3Jvd3MpLCBucC5yYW5kb20ucmFuZGludChuX2NvbHVtbnMpXSlcblxuIyBDb3VudGVyIGZvciBjb21wbGV0ZWQgZXBpc29kZXMgKHJlYWNoaW5nIGdvYWwpXG5lcCA9IDBcblxuIyBMaXN0IHRvIHRyYWNrIHN1bSBvZiBRLXZhbHVlcyBvdmVyIHRpbWUgKGZvciBtb25pdG9yaW5nIGNvbnZlcmdlbmNlKVxucXN1bSA9IFtdXG5cbnByaW50KGZcIvCfjqwgU3RhcnRpbmcgcG9zaXRpb246IHtjdXJyX3N0YXRlfVwiKVxucHJpbnQoZlwi8J+OryBHb2FsIHBvc2l0aW9uOiAoe25fcm93cy0xfSwge25fY29sdW1ucy0xfSlcIilcbnByaW50KGZcIvCfk48gRGlzdGFuY2UgdG8gZ29hbDoge2FicyhjdXJyX3N0YXRlWzBdLShuX3Jvd3MtMSkpICsgYWJzKGN1cnJfc3RhdGVbMV0tKG5fY29sdW1ucy0xKSl9IHN0ZXBzIChNYW5oYXR0YW4pXCIpIn0=
+</script>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+📊 What to Expect
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>After running the learning loop:</p>
+<ul>
+<li>The sum of Q-values should <strong>converge</strong> to a stable negative value</li>
+<li>Most Q-values will be negative (because most states give -1 penalty)</li>
+<li>Only Q-values leading toward the goal will become positive</li>
+<li>The convergence plot will show: initial fluctuations → stabilization</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="step-4-the-learning-loop" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-the-learning-loop">Step 4: The Learning Loop! 🔄</h3>
+<p>The cell below is all you need for learning how to navigate the grid world. This is where the magic happens! ✨</p>
+<div>
+<div id="pyodide-5">
+
+</div>
+<script type="pyodide-5-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBSdW4gMTAsMDAwIGxlYXJuaW5nIGl0ZXJhdGlvbnNcbmZvciBpIGluIHJhbmdlKDEwMDAwKTpcblxuICAgICMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4gICAgIyBTVEVQIDE6IENob29zZSBBY3Rpb24gKM61LWdyZWVkeSBzdHJhdGVneSlcbiAgICAjID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuICAgIGlmIG5wLnJhbmRvbS5yYW5kb20oKSA+IGVfZ3JlZWR5OlxuICAgICAgICAjIEVYUExPSVQ6IDgwJSBvZiB0aGUgdGltZSwgY2hvb3NlIHRoZSBiZXN0IGtub3duIGFjdGlvblxuICAgICAgICBhY3Rpb24gPSBucC5hcmdtYXgoUVtjdXJyX3N0YXRlWzBdLCBjdXJyX3N0YXRlWzFdLCA6XSlcbiAgICBlbHNlOlxuICAgICAgICAjIEVYUExPUkU6IDIwJSBvZiB0aGUgdGltZSwgY2hvb3NlIGEgcmFuZG9tIGFjdGlvblxuICAgICAgICBhY3Rpb24gPSBucC5yYW5kb20ucmFuZGludCg0KVxuXG4gICAgIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbiAgICAjIFNURVAgMjogVGFrZSBBY3Rpb24gYW5kIE9ic2VydmUgTmV3IFN0YXRlXG4gICAgIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbiAgICBuZXh0X3N0YXRlID0gY3Vycl9zdGF0ZSArIGFjbFthY3Rpb25dXG5cbiAgICAjID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuICAgICMgU1RFUCAzOiBVcGRhdGUgUS1WYWx1ZSAoVGhlIExlYXJuaW5nIFN0ZXAhKVxuICAgICMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbiAgICAjIENoZWNrIGlmIG5leHRfc3RhdGUgaXMgd2l0aGluIGdyaWQgYm91bmRhcmllc1xuICAgIGlmIG5wLmFsbChuZXh0X3N0YXRlIDw9IG5fcm93cy0xKSBhbmQgbnAuYWxsKG5leHRfc3RhdGUgPj0gMCk6XG5cbiAgICAgICAgIyBWYWxpZCBtb3ZlIC0gdXBkYXRlIFEtdmFsdWUgdXNpbmcgUS1sZWFybmluZyBmb3JtdWxhXG5cbiAgICAgICAgIyBGaW5kIHRoZSBiZXN0IGFjdGlvbiB0byB0YWtlIGluIHRoZSBuZXh0IHN0YXRlXG4gICAgICAgIG5leHRfYWN0aW9uID0gbnAuYXJnbWF4KFFbbmV4dF9zdGF0ZVswXSwgbmV4dF9zdGF0ZVsxXSwgOl0pXG4gICAgICAgIG5leHRfUSA9IFFbbmV4dF9zdGF0ZVswXSwgbmV4dF9zdGF0ZVsxXSwgbmV4dF9hY3Rpb25dXG5cbiAgICAgICAgIyBRLWxlYXJuaW5nIHVwZGF0ZSBydWxlOlxuICAgICAgICAjIFEocyxhKSDihpAgUShzLGEpICsgzrFbUihzKSArIM6zwrdtYXgoUShzJyxhJykpIC0gUShzLGEpXVxuICAgICAgICAjICAgICAgICAgIF5eXl5eXiAgIF5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXG4gICAgICAgICMgICAgICAgICBvbGQgdmFsdWUgICAgICAgIHByZWRpY3Rpb24gZXJyb3JcblxuICAgICAgICBjdXJyZW50X1EgPSBRW2N1cnJfc3RhdGVbMF0sIGN1cnJfc3RhdGVbMV0sIGFjdGlvbl1cbiAgICAgICAgcmV3YXJkID0gUltjdXJyX3N0YXRlWzBdLCBjdXJyX3N0YXRlWzFdXVxuXG4gICAgICAgICMgVGhlIHVwZGF0ZSFcbiAgICAgICAgUVtjdXJyX3N0YXRlWzBdLCBjdXJyX3N0YXRlWzFdLCBhY3Rpb25dID0gY3VycmVudF9RICsgYWxwaGEgKiAoXG4gICAgICAgICAgICByZXdhcmQgKyBnYW1tYSAqIG5leHRfUSAtIGN1cnJlbnRfUVxuICAgICAgICApXG5cbiAgICAgICAgIyBDaGVjayBpZiB3ZSByZWFjaGVkIHRoZSBnb2FsXG4gICAgICAgIGlmIG5leHRfc3RhdGVbMF0gPT0gbl9yb3dzLTEgYW5kIG5leHRfc3RhdGVbMV0gPT0gbl9jb2x1bW5zLTE6XG4gICAgICAgICAgICAjIEVwaXNvZGUgY29tcGxldGUhIPCfjokgU3RhcnQgZnJvbSBhIG5ldyByYW5kb20gcG9zaXRpb25cbiAgICAgICAgICAgIG5leHRfc3RhdGUgPSBucC5hcnJheShbbnAucmFuZG9tLnJhbmRpbnQobl9yb3dzKSwgbnAucmFuZG9tLnJhbmRpbnQobl9jb2x1bW5zKV0pXG4gICAgICAgICAgICBlcCArPSAxICAjIEluY3JlbWVudCBlcGlzb2RlIGNvdW50ZXJcblxuICAgIGVsc2U6XG4gICAgICAgICMgSW52YWxpZCBtb3ZlICh0cmllZCB0byBnbyBvdXRzaWRlIGdyaWQgYm91bmRhcmllcylcbiAgICAgICAgIyBHaXZlIGEgbGFyZ2UgcGVuYWx0eSB0byBkaXNjb3VyYWdlIHRoaXMhXG4gICAgICAgIGN1cnJlbnRfUSA9IFFbY3Vycl9zdGF0ZVswXSwgY3Vycl9zdGF0ZVsxXSwgYWN0aW9uXVxuICAgICAgICBRW2N1cnJfc3RhdGVbMF0sIGN1cnJfc3RhdGVbMV0sIGFjdGlvbl0gPSBjdXJyZW50X1EgKyBhbHBoYSAqICgtMTAwIC0gY3VycmVudF9RKVxuXG4gICAgICAgICMgUmVzZXQgdG8gYSBuZXcgcmFuZG9tIHBvc2l0aW9uXG4gICAgICAgIG5leHRfc3RhdGUgPSBucC5hcnJheShbbnAucmFuZG9tLnJhbmRpbnQobl9yb3dzKSwgbnAucmFuZG9tLnJhbmRpbnQobl9jb2x1bW5zKV0pXG4gICAgICAgIGVwICs9IDFcblxuICAgICMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4gICAgIyBTVEVQIDQ6IFRyYWNrIFByb2dyZXNzXG4gICAgIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbiAgICBxc3VtLmFwcGVuZChucC5zdW0oUSkpICAjIFN0b3JlIHN1bSBvZiBhbGwgUS12YWx1ZXNcblxuICAgICMgTW92ZSB0byBuZXh0IHN0YXRlXG4gICAgY3Vycl9zdGF0ZSA9IG5leHRfc3RhdGVcblxucHJpbnQoZlwi4pyFIFRyYWluaW5nIGNvbXBsZXRlIVwiKVxucHJpbnQoZlwi8J+OryBFcGlzb2RlcyBjb21wbGV0ZWQ6IHtlcH1cIilcbnByaW50KGZcIvCflIQgVG90YWwgdHJhbnNpdGlvbnM6IHtpKzF9XCIpXG5wcmludChmXCLwn5OKIEZpbmFsIFEtdmFsdWUgc3VtOiB7cXN1bVstMV06LjJmfVwiKSJ9
+</script>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔍 What’s Happening in the Loop?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let’s trace through one iteration:</p>
+<ol type="1">
+<li><strong>Agent is in state (2, 3)</strong></li>
+<li><strong>Chooses action</strong> “move right” (80% best action, 20% random)</li>
+<li><strong>Moves to</strong> new state (2, 4)</li>
+<li><strong>Gets reward</strong> -1 (penalty for each move)</li>
+<li><strong>Updates Q-value</strong> based on: immediate reward + discounted future reward</li>
+<li><strong>Repeats</strong> from new position</li>
+</ol>
+<p>After 10,000 iterations, the agent has explored many paths and learned which actions lead to the goal most efficiently!</p>
+</div>
+</div>
+</section>
+<section id="step-5-visualize-convergence" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-visualize-convergence">Step 5: Visualize Convergence 📈</h3>
+<p>The convergence of our learning is best judged from the sum of all Q-values in the matrix. This should converge to a negative value as most of the time our agent is getting the penalty <span class="math inline">\(R=-1\)</span> and only sparsely <span class="math inline">\(R=10\)</span> at the goal.</p>
+<div>
+<div id="pyodide-6">
+
+</div>
+<script type="pyodide-6-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxucGx0LmZpZ3VyZShmaWdzaXplPSg4LCA1KSlcbnBsdC5wbG90KHFzdW0sIGxpbmV3aWR0aD0xKVxucGx0LnhsYWJlbCgnVHJhbnNpdGlvbiBOdW1iZXInKVxucGx0LnlsYWJlbChyJ1N1bSBvZiBBbGwgUS1WYWx1ZXMgKCRcXHN1bSBRJCknKVxucGx0LnRpdGxlKCfwn46TIExlYXJuaW5nIFByb2dyZXNzOiBRLVZhbHVlIENvbnZlcmdlbmNlJylcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC5heGhsaW5lKHk9cXN1bVstMV0sIGNvbG9yPSdyJywgbGluZXN0eWxlPSctLScsIGFscGhhPTAuNSwgbGFiZWw9ZidGaW5hbCB2YWx1ZToge3FzdW1bLTFdOi4xZn0nKVxucGx0LmxlZ2VuZCgpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KClcblxucHJpbnQoXCLwn5OKIFdoYXQgeW91IHNob3VsZCBzZWU6XCIpXG5wcmludChcIiAg4pyFIEluaXRpYWwgZmx1Y3R1YXRpb25zIChyYW5kb20gZXhwbG9yYXRpb24pXCIpXG5wcmludChcIiAg4pyFIEdyYWR1YWwgc3RhYmlsaXphdGlvbiAobGVhcm5pbmcgdGhlIG9wdGltYWwgcG9saWN5KVwiKVxucHJpbnQoXCIgIOKchSBDb252ZXJnZW5jZSB0byBhIG5lZ2F0aXZlIHZhbHVlIChwZW5hbHRpZXMgZG9taW5hdGUpXCIpIn0=
+</script>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔍 Interpreting the Convergence Plot
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Early phase</strong> (first ~2000 transitions): - Large fluctuations as the agent explores randomly - Q-values are being updated rapidly</p>
+<p><strong>Middle phase</strong> (2000-5000 transitions): - Fluctuations decrease - Agent is finding better paths</p>
+<p><strong>Late phase</strong> (5000+ transitions): - Values stabilize - Optimal policy has been learned! ✅</p>
+<p>If the plot doesn’t stabilize, try: - Increasing the number of iterations - Adjusting the learning rate α - Checking for bugs in the code</p>
+</div>
+</div>
+</section>
+<section id="step-6-extract-the-policy" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-extract-the-policy">Step 6: Extract the Policy 🗺️</h3>
+<p>The policy is obtained by taking the best actions with the largest Q-value from our Q-matrix.</p>
+<p><span class="math display">\[
+\pi^{*}(s)=\arg\max_{a}Q^{*}(s,a)
+\]</span></p>
+<p>In plain English: <strong>“For each state, find which action has the highest Q-value”</strong></p>
+<div>
+<div id="pyodide-7">
+
+</div>
+<script type="pyodide-7-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBGb3IgZWFjaCBzdGF0ZSwgZmluZCB0aGUgYWN0aW9uIHdpdGggbWF4aW11bSBRLXZhbHVlXG4jIGF4aXM9MiBtZWFucyB3ZSdyZSBmaW5kaW5nIHRoZSBtYXggYWNyb3NzIHRoZSBhY3Rpb24gZGltZW5zaW9uXG5wb2xpY3kgPSBucC5hcmdtYXgoUVs6LCA6LCA6XSwgYXhpcz0yKVxuXG4jIEF0IHRoZSBnb2FsIHN0YXRlLCB3ZSBkb24ndCBuZWVkIGFueSBhY3Rpb24gKHdlJ3JlIGRvbmUhKVxucG9saWN5W25fcm93cy0xLCBuX2NvbHVtbnMtMV0gPSAtMSAgIyBNYXJrIGdvYWwgd2l0aCAtMVxuXG5wcmludChcIvCfl7rvuI8gT3B0aW1hbCBwb2xpY3kgbGVhcm5lZCFcIilcbnByaW50KGZcIvCfk4ogUG9saWN5IG1hdHJpeCBzaGFwZToge3BvbGljeS5zaGFwZX1cIilcbnByaW50KGZcIlxcblBvbGljeSBtYXRyaXggKGFjdGlvbiBpbmRpY2VzKTpcIilcbnByaW50KFwiICAwPURPV04g4qyH77iPLCAxPVJJR0hUIOKeoe+4jywgMj1VUCDirIbvuI8sIDM9TEVGVCDirIXvuI8sIC0xPUdPQUwg8J+Or1xcblwiKVxucHJpbnQocG9saWN5KSJ9
+</script>
+</div>
+</section>
+<section id="step-7-visualize-the-learned-policy" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-visualize-the-learned-policy">Step 7: Visualize the Learned Policy! 🎨</h3>
+<p>Now let’s see the beautiful result—a visual map showing the optimal action to take in each state!</p>
+<div>
+<div id="pyodide-8">
+
+</div>
+<script type="pyodide-8-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuZiwgYXggPSBwbHQuc3VicGxvdHMoMSwgZmlnc2l6ZT0oNywgNykpXG5cbmYgPSBwbHQuZ2NhKClcbmkgPSAwXG5cbiMgTG9vcCB0aHJvdWdoIGVhY2ggZ3JpZCBjZWxsXG5mb3IgaywgeSBpbiBlbnVtZXJhdGUocmFuZ2UoMywgbl9yb3dzKjYsIDYpKTpcbiAgICBmb3IgbCwgeCBpbiBlbnVtZXJhdGUocmFuZ2UoMywgbl9jb2x1bW5zKjYsIDYpKTpcblxuICAgICAgICBpZiBwb2xpY3lbaywgbF0gIT0gLTE6XG4gICAgICAgICAgICAjIERyYXcgYXJyb3cgc2hvd2luZyB0aGUgb3B0aW1hbCBhY3Rpb25cbiAgICAgICAgICAgIHZlYyA9IGFjbFtwb2xpY3lbaywgbF1dICogMlxuICAgICAgICAgICAgaWYgaSAhPSBuX3Jvd3MgKiBuX2NvbHVtbnM6XG4gICAgICAgICAgICAgICAgcGx0LmFycm93KHggLSB2ZWNbMV0vMiwgeSAtIHZlY1swXS8yLCB2ZWNbMV0sIHZlY1swXSxcbiAgICAgICAgICAgICAgICAgICAgICAgICBmYz1cImtcIiwgZWM9XCJrXCIsIGhlYWRfd2lkdGg9MC42LCBoZWFkX2xlbmd0aD0wLjgsXG4gICAgICAgICAgICAgICAgICAgICAgICAgd2lkdGg9MC4wMSwgYWxwaGE9MC41KVxuICAgICAgICBlbHNlOlxuICAgICAgICAgICAgIyBNYXJrIHRoZSBnb2FsIHN0YXRlIHdpdGggYSBncmVlbiBzcXVhcmVcbiAgICAgICAgICAgIHJlY3QgPSBwYXRjaGVzLlJlY3RhbmdsZSgoeC0zLCB5LTMpLCA2LCA2LCBjb2xvcj0nZ3JlZW4nLCBhbHBoYT0wLjMpXG4gICAgICAgICAgICBheC5hZGRfcGF0Y2gocmVjdClcbiAgICAgICAgaSA9IGkgKyAxXG5cbnBsdC54dGlja3MobnAuYXJhbmdlKDAsIG5fcm93cypuX2NvbHVtbnMsIHN0ZXA9NikpXG5wbHQueXRpY2tzKG5wLmFyYW5nZSgwLCBuX3Jvd3Mqbl9jb2x1bW5zLCBzdGVwPTYpKVxucGx0LnhsaW0oMCwgNipuX2NvbHVtbnMpXG5wbHQueWxpbSgwLCA2Km5fcm93cylcbnBsdC5ncmlkKGx3PTEsIGNvbG9yPSdrJywgbHM9Jy0tJylcbnBsdC50aXRsZSgn8J+Xuu+4jyBPcHRpbWFsIFBvbGljeTogRm9sbG93IHRoZSBBcnJvd3MgdG8gdGhlIEdvYWwhIPCfjq8nLCBmb250c2l6ZT0xNCwgcGFkPTE1KVxuXG5mLmF4ZXMueGF4aXMuc2V0X3RpY2tsYWJlbHMoW10pXG5mLmF4ZXMueWF4aXMuc2V0X3RpY2tsYWJlbHMoW10pXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KClcblxucHJpbnQoXCLwn46JIFN1Y2Nlc3MhIFRoZSBhZ2VudCBoYXMgbGVhcm5lZCB0aGUgb3B0aW1hbCBwYXRoIVwiKVxucHJpbnQoXCLwn5OMIEVhY2ggYXJyb3cgc2hvd3MgdGhlIGJlc3QgYWN0aW9uIHRvIHRha2UgaW4gdGhhdCBzdGF0ZVwiKVxucHJpbnQoXCLwn46vIEFsbCBwYXRocyBsZWFkIHRvIHRoZSBncmVlbiBnb2FsIHNxdWFyZSFcIikifQ==
+</script>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🎉 What You Should See
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The plot shows arrows in each grid cell indicating the optimal action!</p>
+<p><strong>Key observations</strong>: - ✅ Arrows point <strong>toward the goal</strong> from all positions - ✅ The paths are <strong>optimal</strong> (shortest) - ✅ From any starting position, following the arrows reaches the goal - ✅ The green square is the goal (bottom-right)</p>
+<p>This is the power of reinforcement learning—the agent discovered these optimal paths entirely through trial and error! No explicit programming of paths needed.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="experiments-and-challenges" class="level2">
+<h2 class="anchored" data-anchor-id="experiments-and-challenges">🎯 Experiments and Challenges</h2>
+<p>Now that you understand the basics, try these modifications to deepen your understanding:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🟢 Easy Challenge: Change the Goal Location
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Task</strong>: Move the goal to a different corner (e.g., top-left at position [0, 0])</p>
+<p><strong>What to change</strong>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instead of:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>R[n_rows<span class="op">-</span><span class="dv">1</span>, n_columns<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Try:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>R[<span class="dv">0</span>, <span class="dv">0</span>] <span class="op">=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>What to observe</strong>: Does the policy adapt? Do all arrows now point to the new goal?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🟡 Medium Challenge: Add a Second Goal
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Task</strong>: Add a second goal state with a smaller reward (e.g., R=5)</p>
+<p><strong>What to change</strong>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>R[<span class="dv">0</span>, n_columns<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">5</span>  <span class="co"># Top-right corner</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>What to observe</strong>: - Which goal does the agent prefer? - Does it depend on starting position? - How do the arrows show this preference?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🟠 Advanced Challenge: Add Walls (Obstacles)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Task</strong>: Make some cells impassable “walls”</p>
+<p><strong>What to change</strong>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add large negative rewards to wall cells</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>R[<span class="dv">2</span>, <span class="dv">2</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">100</span>  <span class="co"># Wall in center</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>R[<span class="dv">2</span>, <span class="dv">3</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">100</span>  <span class="co"># Another wall</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>What to observe</strong>: Does the policy route around the walls? Try creating a maze!</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔴 Expert Challenge: Stochastic Environment
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Task</strong>: Make actions succeed only 80% of the time (20% random slip)</p>
+<p><strong>What to change</strong>: Modify the action selection to sometimes execute a different action than intended:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># After choosing action, add randomness:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> np.random.random() <span class="op">&lt;</span> <span class="fl">0.2</span>:  <span class="co"># 20% chance of slip</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> np.random.randint(<span class="dv">4</span>)  <span class="co"># Random direction instead</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>What to observe</strong>: How does uncertainty affect the learned policy? Do paths change?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🎓 Research Challenge: Parameter Sensitivity
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Task</strong>: Systematically vary parameters and observe effects</p>
+<p><strong>Parameters to explore</strong>: - <strong>Learning rate α</strong>: Try 0.1, 0.5, 0.9 - How does this affect convergence speed? - <strong>Discount factor γ</strong>: Try 0.1, 0.5, 0.9 - How does this affect the policy? - <strong>Epsilon ε</strong>: Try 0.0, 0.2, 0.5 - How does exploration rate matter?</p>
+<p><strong>Create plots</strong> showing: 1. Convergence speed for different α values 2. Final policy for different γ values 3. Learning stability for different ε values</p>
+</div>
+</div>
+</div>
+</section>
+<section id="what-youve-learned" class="level2">
+<h2 class="anchored" data-anchor-id="what-youve-learned">🎓 What You’ve Learned</h2>
+<p>Congratulations! You’ve just implemented reinforcement learning from scratch! 🎉</p>
+<section id="key-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="key-concepts">Key Concepts ✅</h3>
+<ul>
+<li>✅ <strong>Markov Decision Processes</strong>: States, actions, rewards, and policies</li>
+<li>✅ <strong>Q-Learning</strong>: Learning action values through trial and error</li>
+<li>✅ <strong>Exploration vs.&nbsp;Exploitation</strong>: The ε-greedy strategy balances learning and performing</li>
+<li>✅ <strong>Bellman Equation</strong>: How to update Q-values based on immediate and future rewards</li>
+<li>✅ <strong>Convergence</strong>: Monitoring learning progress through Q-value sums</li>
+</ul>
+</section>
+<section id="programming-skills" class="level3">
+<h3 class="anchored" data-anchor-id="programming-skills">Programming Skills 💻</h3>
+<ul>
+<li>✅ Multi-dimensional NumPy arrays for storing Q-values</li>
+<li>✅ Implementing iterative update algorithms</li>
+<li>✅ Balancing exploration and exploitation in decision-making</li>
+<li>✅ Visualizing policies with matplotlib</li>
+<li>✅ Tracking and plotting convergence metrics</li>
+</ul>
+</section>
+<section id="physics-connections" class="level3">
+<h3 class="anchored" data-anchor-id="physics-connections">Physics Connections 🔬</h3>
+<ul>
+<li>✅ <strong>Statistical Mechanics</strong>: Ensemble averages and equilibrium states</li>
+<li>✅ <strong>Optimization</strong>: Similar to finding minimum energy configurations</li>
+<li>✅ <strong>Stochastic Processes</strong>: Random exploration and probabilistic decisions</li>
+<li>✅ <strong>Relaxation Methods</strong>: Iterative convergence to optimal solutions</li>
+</ul>
+</section>
+</section>
+<section id="where-to-go-from-here" class="level2">
+<h2 class="anchored" data-anchor-id="where-to-go-from-here">🚀 Where to Go From Here</h2>
+<section id="immediate-next-steps" class="level3">
+<h3 class="anchored" data-anchor-id="immediate-next-steps">Immediate Next Steps</h3>
+<div>
+<div id="pyodide-9">
+
+</div>
+<script type="pyodide-9-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyDwn5KhIFRyeSB0aGlzOiBBbmltYXRlIHRoZSBsZWFybmluZyBwcm9jZXNzIVxuIyBTaG93IHRoZSBwb2xpY3kgZXZvbHZpbmcgb3ZlciB0aW1lIGFzIFEtdmFsdWVzIHVwZGF0ZVxuXG4jIPCfkqEgT3IgdGhpczogVHJhY2sgdGhlIGFnZW50J3MgYWN0dWFsIHBhdGhcbiMgU3RvcmUgYW5kIHZpc3VhbGl6ZSBhIGNvbXBsZXRlIHRyYWplY3RvcnkgZnJvbSBzdGFydCB0byBnb2FsXG5cbiMg8J+SoSBPciB0aGlzOiBDb21wYXJlIGRpZmZlcmVudCBsZWFybmluZyByYXRlc1xuIyBSdW4gbXVsdGlwbGUgZXhwZXJpbWVudHMgd2l0aCDOsSA9IFswLjEsIDAuMywgMC41LCAwLjcsIDAuOV1cbiMgUGxvdCBjb252ZXJnZW5jZSBzcGVlZCB2cyBsZWFybmluZyByYXRlXG5cbiMgWW91ciBleHBsb3JhdGlvbiBzcGFjZSFcblxuIn0=
+</script>
+</div>
+</section>
+<section id="further-reading" class="level3">
+<h3 class="anchored" data-anchor-id="further-reading">📚 Further Reading</h3>
+<p>If you want to know more about Reinforcement Learning:</p>
+<ul>
+<li>📖 <strong>Sutton and Barto</strong>: <a href="http://incompleteideas.net/book/bookdraft2017nov5.pdf">Reinforcement Learning: An Introduction</a> - The classic textbook (free PDF!)</li>
+<li>🎮 <strong>OpenAI Gym</strong>: Practice RL on more complex environments</li>
+<li>🧠 <strong>Deep RL</strong>: Combine Q-learning with neural networks (next seminar!)</li>
+<li>🔬 <strong>RL in Physics</strong>: Look for papers on quantum control, molecular dynamics, materials discovery</li>
+</ul>
+</section>
+<section id="real-world-applications" class="level3">
+<h3 class="anchored" data-anchor-id="real-world-applications">Real-World Applications 🌍</h3>
+<p>The simple grid world you just solved scales up to:</p>
+<ul>
+<li>🤖 <strong>Robot navigation</strong> in real environments</li>
+<li>🎯 <strong>Optimal control</strong> of quantum systems</li>
+<li>🔬 <strong>Experimental design</strong> for physics measurements</li>
+<li>💎 <strong>Materials discovery</strong> through high-dimensional search</li>
+<li>⚛️ <strong>Particle accelerator</strong> tuning and optimization</li>
+</ul>
+</section>
+<section id="debugging-tips" class="level3">
+<h3 class="anchored" data-anchor-id="debugging-tips">Debugging Tips 🐛</h3>
+<p>If your implementation doesn’t converge:</p>
+<ol type="1">
+<li><strong>Check</strong>: Are Q-values exploding? → Reduce learning rate α</li>
+<li><strong>Check</strong>: Policy seems random? → Increase training iterations</li>
+<li><strong>Check</strong>: Convergence too slow? → Adjust ε or increase α</li>
+<li><strong>Check</strong>: Agent going in circles? → Verify action vectors are correct</li>
+<li><strong>Check</strong>: Arrows not pointing to goal? → Ensure reward is highest at goal</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🎯 The Big Picture
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What you’ve learned here is powerful:</p>
+<p><strong>From randomness to intelligence</strong>: You started with random Q-values and random actions. Through nothing but trial, error, and a simple update rule, your agent discovered the optimal path!</p>
+<p><strong>No explicit programming</strong>: You never told the agent “go to the goal.” You only defined rewards. The agent figured out the strategy itself.</p>
+<p><strong>Generalizable approach</strong>: The same algorithm works for: - Different grid sizes - Multiple goals - 3D spaces - Continuous state spaces (with modifications) - Complex physics problems</p>
+<p>This is the essence of machine learning: <strong>letting the computer discover solutions through experience rather than explicit programming.</strong></p>
+</div>
+</div>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">🎊 Summary</h2>
+<p>You’ve successfully:</p>
+<ol type="1">
+<li>✅ Understood the fundamentals of reinforcement learning</li>
+<li>✅ Implemented Q-learning from scratch in pure Python</li>
+<li>✅ Trained an agent to navigate a gridworld optimally</li>
+<li>✅ Visualized the learning process and final policy</li>
+<li>✅ Connected RL concepts to physics principles</li>
+</ol>
+<p><strong>Next seminar</strong>: We’ll explore neural networks and see how they can be combined with reinforcement learning to solve even more complex problems! 🧠🚀</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🌟 Final Thought
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The gridworld is simple, but the principles you learned apply to cutting-edge research. Scientists are using these exact same ideas to:</p>
+<ul>
+<li>Design better solar cells</li>
+<li>Optimize quantum computers</li>
+<li>Control fusion reactors</li>
+<li>Discover new drugs</li>
+<li>Understand complex physical systems</li>
+</ul>
+<p>You’re now equipped with a fundamental tool of modern computational physics! 🎉</p>
+</div>
+</div>
+
+
+<script type="pyodide-data">
+eyJvcHRpb25zIjp7ImluZGV4VVJMIjoiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L3B5b2RpZGUvdjAuMjYuMS9mdWxsLyJ9LCJwYWNrYWdlcyI6eyJwa2dzIjpbInB5b2RpZGVfaHR0cCIsIm1pY3JvcGlwIiwiaXB5dGhvbiIsIm1hdHBsb3RsaWIiLCJudW1weSIsInNjaXB5Il19fQ==
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTkiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl85ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzkgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzksIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS04LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzggPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl83ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS03LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzcgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTYiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl82ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzYgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS01LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzUgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl80ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzQgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzIgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoiX3B5b2RpZGVfdmFsdWVfMSA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRQeXRob24sIGI2NERlY29kZX0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcInB5b2RpZGUtMS1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBQeXRob24gY29kZVxuICBjb25zdCByZXN1bHQgPSBweW9kaWRlT2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjFcIiBpbiBweW9kaWRlT2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgcHl0aG9uXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFB5dGhvbihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHB5b2RpZGVPanMucmVuZGVyZWRPanNbXCIxXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIn0seyJjZWxsTmFtZSI6InB5b2RpZGUtcHJlbHVkZSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InB5b2RpZGVPanMgPSB7XG4gIGNvbnN0IHtcbiAgICBQeW9kaWRlRXZhbHVhdG9yLFxuICAgIFB5b2RpZGVFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBQeXRob24sXG4gICAgc3RhcnRQeW9kaWRlV29ya2VyLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGgsXG4gIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHN0YXR1c0NvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1zdGF0dXNcIik7XG4gIGNvbnN0IGluZGljYXRvckNvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGluZGljYXRvckNvbnRhaW5lci5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpO1xuXG4gIGxldCBzdGF0dXNUZXh0ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKVxuICBzdGF0dXNUZXh0LmNsYXNzTGlzdCA9IFwiZXhlcmNpc2UtbG9hZGluZy1kZXRhaWxzXCI7XG4gIHN0YXR1c1RleHQgPSBzdGF0dXNDb250YWluZXIuYXBwZW5kQ2hpbGQoc3RhdHVzVGV4dCk7XG4gIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5pdGlhbGlzZWA7XG5cbiAgLy8gSG9pc3QgaW5kaWNhdG9yIG91dCBmcm9tIGZpbmFsIHNsaWRlIHdoZW4gcnVubmluZyB1bmRlciByZXZlYWxcbiAgY29uc3QgcmV2ZWFsU3RhdHVzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgLmV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpZiAocmV2ZWFsU3RhdHVzKSB7XG4gICAgcmV2ZWFsU3RhdHVzLnJlbW92ZSgpO1xuICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsID4gLnNsaWRlc1wiKS5hcHBlbmRDaGlsZChyZXZlYWxTdGF0dXMpO1xuICB9XG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../seminars/seminar01";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/fcichos\.github\.io\/EMPP24\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../lectures/lecture03/1_numpy.html" class="pagination-link" aria-label="Arrays with Numpy">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Arrays with Numpy</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
