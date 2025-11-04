@@ -65,6 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../seminars/seminar01/2_reinforcement_learning.html" rel="next">
+<link href="../../lectures/lecture07/1_differentiation.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -168,7 +170,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Solving ODEs</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture03/1_numpy.html">⚡ Week 4-5: Classical Mechanics</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture08/3_solving_ODEs.html">Tool: Solving ODEs</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -290,32 +292,55 @@ window.Quarto = {
  <span class="menu-text">Application: Brownian Motion (Simple)</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">⚡ Week 4-5: Classical Mechanics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture03/1_numpy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Arrays with Numpy</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture07/1_differentiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numerical Differentiation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture08/3_solving_ODEs.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Tool: Solving ODEs</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">🛠️ Hands-On Seminars</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
  <span class="menu-text">Advanced Topics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link">
@@ -336,41 +361,29 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#harmonic-oscillator" id="toc-harmonic-oscillator" class="nav-link active" data-scroll-target="#harmonic-oscillator">Harmonic Oscillator</a></li>
-  <li><a href="#implicit-solution" id="toc-implicit-solution" class="nav-link" data-scroll-target="#implicit-solution">Implicit Solution</a>
+  <li><a href="#introduction-what-are-odes" id="toc-introduction-what-are-odes" class="nav-link active" data-scroll-target="#introduction-what-are-odes">Introduction: What are ODEs?</a>
   <ul class="collapse">
-  <li><a href="#define-matrices" id="toc-define-matrices" class="nav-link" data-scroll-target="#define-matrices">Define Matrices</a></li>
-  <li><a href="#use-initial-conditions" id="toc-use-initial-conditions" class="nav-link" data-scroll-target="#use-initial-conditions">Use Initial Conditions</a></li>
-  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  <li><a href="#odes-in-physics" id="toc-odes-in-physics" class="nav-link" data-scroll-target="#odes-in-physics">ODEs in Physics</a></li>
+  <li><a href="#from-derivatives-to-odes" id="toc-from-derivatives-to-odes" class="nav-link" data-scroll-target="#from-derivatives-to-odes">From Derivatives to ODEs</a></li>
+  <li><a href="#converting-to-first-order-systems" id="toc-converting-to-first-order-systems" class="nav-link" data-scroll-target="#converting-to-first-order-systems">Converting to First-Order Systems</a></li>
   </ul></li>
-  <li><a href="#explicit-solution---numerical-integration" id="toc-explicit-solution---numerical-integration" class="nav-link" data-scroll-target="#explicit-solution---numerical-integration">Explicit Solution - Numerical Integration</a>
+  <li><a href="#the-practical-tool-scipys-odeint" id="toc-the-practical-tool-scipys-odeint" class="nav-link" data-scroll-target="#the-practical-tool-scipys-odeint">The Practical Tool: SciPy’s <code>odeint</code></a>
   <ul class="collapse">
-  <li><a href="#euler-method" id="toc-euler-method" class="nav-link" data-scroll-target="#euler-method">Euler Method</a></li>
-  <li><a href="#euler-cromer-method" id="toc-euler-cromer-method" class="nav-link" data-scroll-target="#euler-cromer-method">Euler-Cromer Method</a></li>
-  <li><a href="#midpoint-method" id="toc-midpoint-method" class="nav-link" data-scroll-target="#midpoint-method">Midpoint Method</a></li>
-  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together">Putting it all together</a></li>
+  <li><a href="#basic-usage" id="toc-basic-usage" class="nav-link" data-scroll-target="#basic-usage">Basic Usage</a></li>
+  <li><a href="#example-1-simple-harmonic-oscillator" id="toc-example-1-simple-harmonic-oscillator" class="nav-link" data-scroll-target="#example-1-simple-harmonic-oscillator">Example 1: Simple Harmonic Oscillator</a></li>
+  <li><a href="#example-2-damped-driven-pendulum" id="toc-example-2-damped-driven-pendulum" class="nav-link" data-scroll-target="#example-2-damped-driven-pendulum">Example 2: Damped Driven Pendulum</a></li>
   </ul></li>
-  <li><a href="#sec-solving-ODE" id="toc-sec-solving-ODE" class="nav-link" data-scroll-target="#sec-solving-ODE">Solving the Harmonic Oscillator with SciPy</a>
-  <ul class="collapse">
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition">Definition</a></li>
-  <li><a href="#solution-1" id="toc-solution-1" class="nav-link" data-scroll-target="#solution-1">Solution</a></li>
-  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting">Plotting</a></li>
-  </ul></li>
-  <li><a href="#damped-driven-pendulum-in-scipy" id="toc-damped-driven-pendulum-in-scipy" class="nav-link" data-scroll-target="#damped-driven-pendulum-in-scipy">Damped Driven Pendulum in SciPy</a>
-  <ul class="collapse">
-  <li><a href="#setup-1" id="toc-setup-1" class="nav-link" data-scroll-target="#setup-1">Setup</a></li>
-  <li><a href="#definition-1" id="toc-definition-1" class="nav-link" data-scroll-target="#definition-1">Definition</a></li>
-  <li><a href="#solution-2" id="toc-solution-2" class="nav-link" data-scroll-target="#solution-2">Solution</a></li>
-  <li><a href="#plotting-1" id="toc-plotting-1" class="nav-link" data-scroll-target="#plotting-1">Plotting</a></li>
-  </ul></li>
+  <li><a href="#summary-how-to-solve-odes" id="toc-summary-how-to-solve-odes" class="nav-link" data-scroll-target="#summary-how-to-solve-odes">Summary: How to Solve ODEs</a></li>
+  <li><a href="#advanced-understanding-numerical-integration-methods" id="toc-advanced-understanding-numerical-integration-methods" class="nav-link" data-scroll-target="#advanced-understanding-numerical-integration-methods">Advanced: Understanding Numerical Integration Methods</a></li>
+  <li><a href="#advanced-matrix-methods-for-odes" id="toc-advanced-matrix-methods-for-odes" class="nav-link" data-scroll-target="#advanced-matrix-methods-for-odes">Advanced: Matrix Methods for ODEs</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next?</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture03/1_numpy.html">⚡ Week 4-5: Classical Mechanics</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture08/3_solving_ODEs.html">Tool: Solving ODEs</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Solving ODEs</h1>
 </div>
@@ -389,479 +402,333 @@ window.Quarto = {
 </header>
 
 
-<p>All the stuff we have defined in the previous sections is useful for solving ordinary differential equations. This will bring us closer to solving out physics problems now.</p>
+<p>In the previous lecture, we learned how to calculate derivatives numerically. Now we’ll use that knowledge to solve <strong>Ordinary Differential Equations (ODEs)</strong> - one of the most important tools in physics!</p>
 <div>
 <div id="pyodide-1">
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1ZX0sImNvZGUiOiJcbmltcG9ydCBudW1weSBhcyBucFxuaW1wb3J0IGlvXG5pbXBvcnQgcGFuZGFzIGFzIHBkXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5mcm9tIHNjaXB5LnNwYXJzZSBpbXBvcnQgZGlhZ3NcblxuIyBkZWZhdWx0IHZhbHVlcyBmb3IgcGxvdHRpbmdcbnBsdC5yY1BhcmFtcy51cGRhdGUoeydmb250LnNpemUnOiAxMixcbiAgICAgICAgICAgICAgICAgICAgICdsaW5lcy5saW5ld2lkdGgnOiAxLFxuICAgICAgICAgICAgICAgICAgICAgJ2xpbmVzLm1hcmtlcnNpemUnOiA1LFxuICAgICAgICAgICAgICAgICAgICAgJ2F4ZXMubGFiZWxzaXplJzogMTEsXG4gICAgICAgICAgICAgICAgICAgICAneHRpY2subGFiZWxzaXplJyA6IDEwLFxuICAgICAgICAgICAgICAgICAgICAgJ3l0aWNrLmxhYmVsc2l6ZScgOiAxMCxcbiAgICAgICAgICAgICAgICAgICAgICd4dGljay50b3AnIDogVHJ1ZSxcbiAgICAgICAgICAgICAgICAgICAgICd4dGljay5kaXJlY3Rpb24nIDogJ2luJyxcbiAgICAgICAgICAgICAgICAgICAgICd5dGljay5yaWdodCcgOiBUcnVlLFxuICAgICAgICAgICAgICAgICAgICAgJ3l0aWNrLmRpcmVjdGlvbicgOiAnaW4nLH0pXG5cbmRlZiBnZXRfc2l6ZSh3LGgpOlxuICAgICAgcmV0dXJuKCh3LzIuNTQsaC8yLjU0KSkifQ==
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1ZX0sImNvZGUiOiJcbmltcG9ydCBudW1weSBhcyBucFxuaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuZnJvbSBzY2lweS5pbnRlZ3JhdGUgaW1wb3J0IG9kZWludFxuZnJvbSBzY2lweS5zcGFyc2UgaW1wb3J0IGRpYWdzXG5cbiMgZGVmYXVsdCB2YWx1ZXMgZm9yIHBsb3R0aW5nXG5wbHQucmNQYXJhbXMudXBkYXRlKHsnZm9udC5zaXplJzogMTIsXG4gICAgICAgICAgICAgICAgICAgICAnbGluZXMubGluZXdpZHRoJzogMSxcbiAgICAgICAgICAgICAgICAgICAgICdsaW5lcy5tYXJrZXJzaXplJzogNSxcbiAgICAgICAgICAgICAgICAgICAgICdheGVzLmxhYmVsc2l6ZSc6IDExLFxuICAgICAgICAgICAgICAgICAgICAgJ3h0aWNrLmxhYmVsc2l6ZScgOiAxMCxcbiAgICAgICAgICAgICAgICAgICAgICd5dGljay5sYWJlbHNpemUnIDogMTAsXG4gICAgICAgICAgICAgICAgICAgICAneHRpY2sudG9wJyA6IFRydWUsXG4gICAgICAgICAgICAgICAgICAgICAneHRpY2suZGlyZWN0aW9uJyA6ICdpbicsXG4gICAgICAgICAgICAgICAgICAgICAneXRpY2sucmlnaHQnIDogVHJ1ZSxcbiAgICAgICAgICAgICAgICAgICAgICd5dGljay5kaXJlY3Rpb24nIDogJ2luJyx9KVxuXG5kZWYgZ2V0X3NpemUodyxoKTpcbiAgICAgIHJldHVybigody8yLjU0LGgvMi41NCkpIn0=
 </script>
 </div>
-<section id="harmonic-oscillator" class="level2">
-<h2 class="anchored" data-anchor-id="harmonic-oscillator">Harmonic Oscillator</h2>
+<section id="introduction-what-are-odes" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-what-are-odes">Introduction: What are ODEs?</h2>
+<section id="odes-in-physics" class="level3">
+<h3 class="anchored" data-anchor-id="odes-in-physics">ODEs in Physics</h3>
+<p>Many fundamental laws of physics are expressed as <strong>differential equations</strong> - equations that involve derivatives. For example:</p>
+<p><strong>Newton’s Second Law:</strong> <span class="math display">\[F = ma = m\frac{d^2x}{dt^2}\]</span></p>
+<p><strong>Simple Harmonic Oscillator (mass on a spring):</strong> <span class="math display">\[m\frac{d^2x}{dt^2} = -kx\]</span></p>
+<p>or equivalently: <span class="math display">\[\frac{d^2x}{dt^2} + \omega^2 x = 0\]</span> where <span class="math inline">\(\omega = \sqrt{k/m}\)</span> is the angular frequency.</p>
+<p><strong>Damped Driven Pendulum:</strong> <span class="math display">\[\frac{d^2\theta}{dt^2} = -\frac{g}{L}\sin(\theta) - b\frac{d\theta}{dt} + \beta\cos(\omega t)\]</span></p>
+<p>These are all <strong>Ordinary Differential Equations (ODEs)</strong> - equations involving derivatives with respect to a single variable (usually time).</p>
+</section>
+<section id="from-derivatives-to-odes" class="level3">
+<h3 class="anchored" data-anchor-id="from-derivatives-to-odes">From Derivatives to ODEs</h3>
+<p>In the last lecture, we learned how to <strong>calculate</strong> derivatives numerically from known data points. Now we face the opposite problem:</p>
+<blockquote class="blockquote">
+<p><strong>Given:</strong> A differential equation and initial conditions <strong>Find:</strong> The solution <span class="math inline">\(x(t)\)</span> that satisfies the equation</p>
+</blockquote>
+<p>This is called <strong>solving</strong> or <strong>integrating</strong> a differential equation.</p>
+</section>
+<section id="converting-to-first-order-systems" class="level3">
+<h3 class="anchored" data-anchor-id="converting-to-first-order-systems">Converting to First-Order Systems</h3>
+<p>Most numerical methods work with <strong>first-order</strong> differential equations. A second-order equation like:</p>
+<p><span class="math display">\[\frac{d^2x}{dt^2} = f(x, \frac{dx}{dt}, t)\]</span></p>
+<p>can be converted to a system of two first-order equations by introducing velocity as a separate variable:</p>
+<p><span class="math display">\[\vec{y} = \begin{bmatrix} x \\ v \end{bmatrix}\]</span></p>
+<p>Then: <span class="math display">\[\frac{d\vec{y}}{dt} = \begin{bmatrix} \frac{dx}{dt} \\ \frac{dv}{dt} \end{bmatrix} = \begin{bmatrix} v \\ f(x, v, t) \end{bmatrix}\]</span></p>
+<p>For example, the harmonic oscillator becomes:</p>
+<p><span class="math display">\[\frac{d}{dt}\begin{bmatrix} x \\ v \end{bmatrix} = \begin{bmatrix} v \\ -\omega^2 x \end{bmatrix}\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why Convert to First-Order?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Standard ODE solvers expect first-order systems in the form: <span class="math display">\[\frac{d\vec{y}}{dt} = \vec{f}(\vec{y}, t)\]</span></p>
+<p>By converting higher-order equations to this form, we can use powerful numerical tools!</p>
+</div>
+</div>
+</section>
+</section>
+<section id="the-practical-tool-scipys-odeint" class="level2">
+<h2 class="anchored" data-anchor-id="the-practical-tool-scipys-odeint">The Practical Tool: SciPy’s <code>odeint</code></h2>
+<p>For most physics problems, we don’t need to implement numerical integration from scratch. Python’s <strong>SciPy</strong> library provides excellent ODE solvers.</p>
+<section id="basic-usage" class="level3">
+<h3 class="anchored" data-anchor-id="basic-usage">Basic Usage</h3>
+<p>The main function we’ll use is <code>scipy.integrate.odeint</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> odeint</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>solution <span class="op">=</span> odeint(derivative_function, initial_conditions, time_points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Parameters:</strong> - <code>derivative_function</code>: A function that returns <span class="math inline">\(\frac{d\vec{y}}{dt}\)</span> given <span class="math inline">\(\vec{y}\)</span> and <span class="math inline">\(t\)</span> - <code>initial_conditions</code>: A vector containing <span class="math inline">\([x_0, v_0, ...]\)</span> - <code>time_points</code>: An array of times at which to compute the solution</p>
+<p><strong>Returns:</strong> - A 2D array where each row is the state at one time point</p>
+</section>
+<section id="example-1-simple-harmonic-oscillator" class="level3">
+<h3 class="anchored" data-anchor-id="example-1-simple-harmonic-oscillator">Example 1: Simple Harmonic Oscillator</h3>
+<p>Let’s solve the harmonic oscillator equation:</p>
+<p><span class="math display">\[\frac{d^2x}{dt^2} + \omega^2 x = 0\]</span></p>
+<p><strong>Step 1: Convert to first-order system</strong></p>
+<p><span class="math display">\[\frac{d}{dt}\begin{bmatrix} x \\ v \end{bmatrix} = \begin{bmatrix} v \\ -\omega^2 x \end{bmatrix}\]</span></p>
+<p><strong>Step 2: Define the derivative function</strong></p>
+<div>
+<div id="pyodide-2">
+
+</div>
+<script type="pyodide-2-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImZyb20gc2NpcHkuaW50ZWdyYXRlIGltcG9ydCBvZGVpbnRcblxuZGVmIGhhcm1vbmljX29zY2lsbGF0b3Ioc3RhdGUsIHQsIGssIG0pOlxuICAgIFwiXCJcIlxuICAgIERlcml2YXRpdmUgZnVuY3Rpb24gZm9yIHNpbXBsZSBoYXJtb25pYyBvc2NpbGxhdG9yLlxuXG4gICAgUGFyYW1ldGVyczpcbiAgICAtLS0tLS0tLS0tLVxuICAgIHN0YXRlIDogYXJyYXkgW3gsIHZdXG4gICAgICAgIEN1cnJlbnQgcG9zaXRpb24gYW5kIHZlbG9jaXR5XG4gICAgdCA6IGZsb2F0XG4gICAgICAgIEN1cnJlbnQgdGltZVxuICAgIGsgOiBmbG9hdFxuICAgICAgICBTcHJpbmcgY29uc3RhbnRcbiAgICBtIDogZmxvYXRcbiAgICAgICAgTWFzc1xuXG4gICAgUmV0dXJuczpcbiAgICAtLS0tLS0tLVxuICAgIGFycmF5IFtkeC9kdCwgZHYvZHRdXG4gICAgXCJcIlwiXG4gICAgeCwgdiA9IHN0YXRlICAjIFVucGFjayBwb3NpdGlvbiBhbmQgdmVsb2NpdHlcblxuICAgIG9tZWdhX3NxdWFyZWQgPSBrIC8gbVxuXG4gICAgZHhfZHQgPSB2XG4gICAgZHZfZHQgPSAtb21lZ2Ffc3F1YXJlZCAqIHhcblxuICAgIHJldHVybiBbZHhfZHQsIGR2X2R0XSJ9
+</script>
+</div>
+<p><strong>Step 3: Set up and solve</strong></p>
+<div>
+<div id="pyodide-3">
+
+</div>
+<script type="pyodide-3-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBQYXJhbWV0ZXJzXG5rID0gMTUuNSAgIyBzcHJpbmcgY29uc3RhbnQgW04vbV1cbm0gPSAwLjIgICAjIG1hc3MgW2tnXVxub21lZ2EgPSBucC5zcXJ0KGsvbSlcblxuIyBJbml0aWFsIGNvbmRpdGlvbnM6IHgoMCkgPSAxLjAgbSwgdigwKSA9IDAuMCBtL3NcbmluaXRpYWxfc3RhdGUgPSBbMS4wLCAwLjBdXG5cbiMgVGltZSBwb2ludHMgd2hlcmUgd2Ugd2FudCB0aGUgc29sdXRpb25cbnQgPSBucC5saW5zcGFjZSgwLCA0Km5wLnBpL29tZWdhLCAxMDAwKVxuXG4jIFNvbHZlIHRoZSBPREUhXG5zb2x1dGlvbiA9IG9kZWludChoYXJtb25pY19vc2NpbGxhdG9yLCBpbml0aWFsX3N0YXRlLCB0LCBhcmdzPShrLCBtKSlcblxuIyBFeHRyYWN0IHBvc2l0aW9uIGFuZCB2ZWxvY2l0eVxueCA9IHNvbHV0aW9uWzosIDBdXG52ID0gc29sdXRpb25bOiwgMV0ifQ==
+</script>
+</div>
+<p><strong>Step 4: Plot the results</strong></p>
+<div>
+<div id="pyodide-4">
+
+</div>
+<script type="pyodide-4-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuZmlnLCAoYXgxLCBheDIpID0gcGx0LnN1YnBsb3RzKDEsIDIsIGZpZ3NpemU9KDEyLCA0KSlcblxuIyBQbG90IHBvc2l0aW9uIHZzIHRpbWVcbmF4MS5wbG90KHQsIHgsICdiLScsIGxpbmV3aWR0aD0yLCBsYWJlbD0nUG9zaXRpb24nKVxuYXgxLnNldF94bGFiZWwoJ1RpbWUgW3NdJylcbmF4MS5zZXRfeWxhYmVsKCdQb3NpdGlvbiBbbV0nKVxuYXgxLnNldF90aXRsZSgnSGFybW9uaWMgT3NjaWxsYXRvcjogUG9zaXRpb24nKVxuYXgxLmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxuYXgxLmxlZ2VuZCgpXG5cbiMgUGxvdCB2ZWxvY2l0eSB2cyB0aW1lXG5heDIucGxvdCh0LCB2LCAnci0nLCBsaW5ld2lkdGg9MiwgbGFiZWw9J1ZlbG9jaXR5JylcbmF4Mi5zZXRfeGxhYmVsKCdUaW1lIFtzXScpXG5heDIuc2V0X3lsYWJlbCgnVmVsb2NpdHkgW20vc10nKVxuYXgyLnNldF90aXRsZSgnSGFybW9uaWMgT3NjaWxsYXRvcjogVmVsb2NpdHknKVxuYXgyLmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxuYXgyLmxlZ2VuZCgpXG5cbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
+</script>
+</div>
+<p><strong>Step 5: Phase space diagram</strong></p>
+<p>A useful way to visualize oscillatory systems is in <strong>phase space</strong> (position vs velocity):</p>
+<div>
+<div id="pyodide-5">
+
+</div>
+<script type="pyodide-5-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxucGx0LmZpZ3VyZShmaWdzaXplPSg2LCA2KSlcbnBsdC5wbG90KHgsIHYsICdiLScsIGxpbmV3aWR0aD0yKVxucGx0LnBsb3QoeFswXSwgdlswXSwgJ2dvJywgbWFya2Vyc2l6ZT0xMCwgbGFiZWw9J1N0YXJ0JylcbnBsdC5wbG90KHhbLTFdLCB2Wy0xXSwgJ3JvJywgbWFya2Vyc2l6ZT0xMCwgbGFiZWw9J0VuZCcpXG5wbHQueGxhYmVsKCdQb3NpdGlvbiB4IFttXScpXG5wbHQueWxhYmVsKCdWZWxvY2l0eSB2IFttL3NdJylcbnBsdC50aXRsZSgnUGhhc2UgU3BhY2UgRGlhZ3JhbScpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQuYXhpcygnZXF1YWwnKVxucGx0LmxlZ2VuZCgpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
+</script>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Physics Interlude: The harmonic oscillator
+Understanding the Phase Space
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We are going to tackle as a first very simple problem, the harmonic oscillator and we will demonstrate that with the matrix (Crank-Nicholson method or implicit scheme), the Euler type integration method and using some ‘unknown’ integrator in the module <code>SciPy</code>.</p>
-<p>The equation of motion for a classical harmonic oscillator is given</p>
-<p><span class="math display">\[\begin{equation}
-\frac{\mathrm{d}^2x}{\mathrm{d}t^2}+\omega^2 x=0
-\end{equation}\]</span></p>
-<p>This is a second order differential equation which requires for its solution two initial conditions. The first initial condition is the initial elongation <span class="math inline">\(x(t=0)=x_{0}\)</span> and the second the initial velocity <span class="math inline">\(\dot{x}(t=0)=v_{0}\)</span>.</p>
+<p>The circular trajectory in phase space shows that energy is conserved in the harmonic oscillator. Each point on the circle represents a different state <span class="math inline">\((x, v)\)</span>, and the system traces this circle repeatedly as it oscillates.</p>
 </div>
 </div>
 </section>
-<section id="implicit-solution" class="level2">
-<h2 class="anchored" data-anchor-id="implicit-solution">Implicit Solution</h2>
-<p>Lets start with the matrix appraoch we have just learned about. Using the matrix version, we can transform the above equation into a system of coupled equations, which we can solve with some standard methods available from e.g.&nbsp;the <code>SciPy</code> module.</p>
-<section id="define-matrices" class="level3">
-<h3 class="anchored" data-anchor-id="define-matrices">Define Matrices</h3>
-<p>Our matrix will consist of two parts. The first containing the second derivative and the second just the elongation. Suppose we want to calculate the position <span class="math inline">\(x(t)\)</span> at 6 instances in time <span class="math inline">\(t_{i}\)</span> then the matrix version of the second derivative reads as</p>
-<p>(<span class="math inline">\(x_{1}=x(t_{1}), \ldots\)</span>).</p>
-<p><span class="math inline">\(T=\frac{d^2x}{dt^2}=\frac{1}{\delta t^2}
-\begin{bmatrix}
--2 &amp; 1  &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
-1 &amp; -2 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\
-0 &amp; 1  &amp; -2 &amp; 1 &amp; 0 &amp; 0\\
-0 &amp; 0  &amp; 1  &amp; -2 &amp; 1 &amp; 0\\
-0 &amp; 0  &amp; 0  &amp;  1 &amp; -2 &amp; 1\\
-0 &amp; 0  &amp; 0  &amp;  0 &amp;  1 &amp; -2\\
-\end{bmatrix}
-\begin{bmatrix}
-x_{1}\\
-x_{2}\\
-x_{3}\\
-x_{4}\\
-x_{5}\\
-x_{6}
-\end{bmatrix}\)</span></p>
-<p>The second term in the equation of motion is a multiplication of the elongation <span class="math inline">\(x(t_{i})\)</span> by <span class="math inline">\(\omega^{2}\)</span> and can be written as</p>
-<p><span class="math inline">\(V=\omega^2 x=\begin{bmatrix}
-\omega^2  &amp; 0  &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
-0 &amp; \omega^2  &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
-0 &amp; 0  &amp; \omega^2  &amp; 0 &amp; 0 &amp; 0\\
-0 &amp; 0  &amp; 0  &amp; \omega^2  &amp; 0 &amp; 0\\
-0 &amp; 0  &amp; 0  &amp;  0 &amp; \omega^2  &amp; 0\\
-0 &amp; 0  &amp; 0  &amp;  0 &amp;  0 &amp; \omega^2 \\
-\end{bmatrix}
-\begin{bmatrix}
-x_{1}\\
-x_{2}\\
-x_{3}\\
-x_{4}\\
-x_{5}\\
-x_{6}
-\end{bmatrix}\)</span></p>
-<p>The left hand side of the would threfore contain a sum of the two matrices <span class="math inline">\(M=T+V\)</span> multiplied by the vector <span class="math inline">\(x\)</span>. We have therfore almost all things together to solve this differential equation with the help of an implicit scheme. What we have ignored so far are the initial conditions.</p>
-</section>
-<section id="use-initial-conditions" class="level3">
-<h3 class="anchored" data-anchor-id="use-initial-conditions">Use Initial Conditions</h3>
-<p>The matrix given for the second detivative actually implies already some initial (bounary) conditions. You probably noticed that the matrix contains incomplete coefficients for the second derivative in the first and last line. The first line contains <span class="math inline">\((-2,1)\)</span>, but the second derivative should contain <span class="math inline">\((1,-2,1)\)</span>. This <span class="math inline">\((-2,1)\)</span> thus always includes the boundary condition that <span class="math inline">\(x_{0}=0\)</span>. To include our own initial/boundary conditions, we have to construct the matrix for the second derivative slightly differently and modify the differential equation to</p>
-<p><span class="math display">\[\begin{equation}
-\frac{\mathrm{d}^2x}{\mathrm{d}t^2}+\omega^2 x=b
-\end{equation}\]</span></p>
-<p>where the vector b takes care of the initial conditions.</p>
-<p>If we have <span class="math inline">\(N\)</span> positions in time at which we calculate the elongation <span class="math inline">\(x\)</span>, we have a <span class="math inline">\(N\times N\)</span> matrix of for the second derivatives. The lower <span class="math inline">\(N-2\)</span> lines will contain the the coefficients for the second derivative <span class="math inline">\((1,-2,1)\)</span>. The first two lines supply the initial/boundary conditions.</p>
-<p>The initial condition for the elongation <span class="math inline">\(x(t=0)=x_{0}\)</span> is obtained when the first element of the first line is a <strong>1</strong>. The matrix multiplication <span class="math inline">\(M\, x=b\)</span> for yields thus in the first line <span class="math inline">\(x_{1}=b_{1}\)</span> and we set <span class="math inline">\(b_{1}=x_{0}\)</span>. The second line shall give the initial velocity. So the matrix entries of the second line contain a first derivative <span class="math inline">\((-1,1)\)</span>. The matrix multiplication thus yields <span class="math inline">\(x_{2}-x_{1}=b_{2}\)</span>. We can therefore need to set <span class="math inline">\(b_{2}=v_{0}\delta t\)</span>. All of the other entries of <span class="math inline">\(b\)</span> shall be set to zero according to the differential equation of the harmonic oscillator.</p>
-<p>Our final problem <span class="math inline">\(M\, x=b\)</span> will thus have the following shape</p>
-<p><span class="math display">\[\begin{equation}
-\begin{bmatrix}
-1 &amp; 0  &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
--1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
-1 &amp; -2+\omega^2*\delta t^2  &amp; 1 &amp; 0 &amp; 0 &amp; 0\\
-0 &amp; 1  &amp; -2+\omega^2*\delta t^2  &amp; 1 &amp; 0 &amp; 0\\
-0 &amp; 0  &amp; 1  &amp;  -2+\omega^2*\delta t^2 &amp; 1 &amp; 0\\
-0 &amp; 0  &amp; 0  &amp;  1 &amp;  -2+\omega^2*\delta t^2 &amp; 1\\
-\end{bmatrix}
-\begin{bmatrix}
-x_{1}\\
-x_{2}\\
-x_{3}\\
-x_{4}\\
-x_{5}\\
-x_{6}
-\end{bmatrix}=
-\begin{bmatrix}
-x_{0}\\
-v_{0}\delta t\\
-0\\
-0\\
-0\\
-0
-\end{bmatrix}
-\end{equation}\]</span></p>
-</section>
-<section id="solution" class="level3">
-<h3 class="anchored" data-anchor-id="solution">Solution</h3>
-<p>This is the final system of coupled equations which we can supply to any matrix solver. We will use a solver from the <code>scipy.linalg</code> module. Lets have a look at the details below.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>N<span class="op">=</span><span class="dv">10</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>(diags([<span class="op">-</span><span class="fl">2.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>], [<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>],</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    shape<span class="op">=</span>(N, N))<span class="op">+</span>diags([<span class="dv">1</span>], [<span class="op">-</span><span class="dv">1</span>], shape<span class="op">=</span>(N, N))<span class="op">*</span> omega<span class="op">**</span><span class="dv">2</span><span class="op">*</span>dt<span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div>
-<div id="pyodide-2">
-
-</div>
-<script type="pyodide-2-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImZyb20gc2NpcHkuc3BhcnNlIGltcG9ydCBkaWFnc1xuXG5rID0gMTUuNSAjIHNwcmluZyBjb25zdGFudFxubSA9IDAuMiAjIG1hc3Ncbm9tZWdhPW5wLnNxcnQoay9tKSAjIGZyZXF1ZW5jeSBvZiB0aGUgb3NjaWxsYXRvclxuXG5MID0gbnAucGkgIyB0aW1lIHBlcmlvZCBvdmVyIHdoaWNoIHdlIHNvbHZlIHRoZSBPREVcbk4gPSA1MDAgIyBudW1iZXIgb2YgZGF0YSBwb2ludHNcbnQgPSBucC5saW5zcGFjZSgwLCBMLCBOKSAjIHRpbWUgYXhpc1xuXG5iID0gbnAuemVyb3MoTikgIyBpbml0aWFsIGNvbmRpdGlvbnMgdmVjdG9yXG5iWzBdPTEgIyBpbml0aWFsIGVsb25nYXRpb25cbmJbMV09MCAjIGluaXRpYWwgdmVsb2NpdHlcblxueCA9IG5wLnplcm9zKE4pICMgc29sdXRpb24gdmVjdG9yXG5kdCA9IHRbMV0gLSB0WzBdICMgdGltZSBpbnRlcnZhbGwgb2YgZWFjaCBzdGVwXG5cbiMgY29uc3RydWN0IHRoZSBtYXRyaXhcblQ9IGRpYWdzKFstMi4sIDEuLCAxLl0sIFstMSwtMiwgMF0sIHNoYXBlPShOLCBOKSkudG9kZW5zZSgpXG5WPSBkaWFncyhbMV0sIFstMV0sIHNoYXBlPShOLCBOKSkudG9kZW5zZSgpXG5NPSBUL2R0KioyICsgVipvbWVnYSoqMlxuXG5NWzAsMF09MSAjIGluaXRpYWwgY29uZGl0aW9uIGZvciBhbXBsaXR1ZGUsIHgxPTFcbk1bMSwwXT0tMSAjIGluaXRpYWwgY29uZGl0aW9uIGZvciB2ZWxvY2l0eSwgZHgvZHQ9MFxuTVsxLDFdPTFcblxuIyBpbml0aWFsIGNvbmRpdGlvbiB2ZWN0b3JcbmI9Yi50cmFuc3Bvc2UoKVxuXG54PSBucC5saW5hbGcuc29sdmUoTSwgYikgIyB0aGlzIGlzIHRoZSBzb2x1dGlvbiJ9
-</script>
-</div>
-<div>
-<div id="pyodide-3">
-
-</div>
-<script type="pyodide-3-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJmaWctYWxpZ24iOiJjZW50ZXIifSwiY29kZSI6InBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSg4LDYpKVxucGx0LnBsb3QodCx4KVxucGx0LnhsYWJlbCgndGltZSB0JylcbnBsdC55bGFiZWwoJ2Vsb25nYXRpb24geCh0KScpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
-</script>
-</div>
-</section>
-</section>
-<section id="explicit-solution---numerical-integration" class="level2">
-<h2 class="anchored" data-anchor-id="explicit-solution---numerical-integration">Explicit Solution - Numerical Integration</h2>
-<p>Before implementing explicit numerical schemes, let’s develop a standardized approach for solving ODEs. This framework will allow us to solve different problems using various methods with minimal code modification.</p>
-<p>Let’s examine the free fall problem as an example:</p>
-<p><span class="math display">\[\begin{equation}
-\ddot{x}= -g
-\end{equation}\]</span></p>
-<p>This second-order equation can be transformed into a system of two first-order equations:</p>
-<p><span class="math display">\[\begin{eqnarray}
-\dot{x} &amp;= v \\
-\dot{v} &amp;= -g
-\end{eqnarray}\]</span></p>
-<p>Using the Euler method, these equations become:</p>
-<p><span class="math display">\[\begin{eqnarray}
-x_{i+1} &amp;= x_i + v_i \Delta t \\
-v_{i+1} &amp;= v_i - g\Delta t
-\end{eqnarray}\]</span></p>
-<p>Note: The original equations had <span class="math inline">\(\dot{x}\)</span> and <span class="math inline">\(\dot{v}\)</span> in the right-hand side, which should be replaced with their actual values (<span class="math inline">\(v\)</span> and <span class="math inline">\(-g\)</span> respectively).</p>
-<p>These equations can be written more compactly in vector form:</p>
-<p><span class="math display">\[\begin{equation}
-\vec{y}_{i+1} = \vec{y}_i + \dot{\vec{y}}_i \Delta t
-\end{equation}\]</span></p>
-<p>where</p>
-<p><span class="math display">\[\begin{equation}
-\vec{y}=
-\begin{bmatrix}
-x \\
-v
-\end{bmatrix}
-\end{equation}\]</span></p>
-<p>and</p>
-<p><span class="math display">\[\begin{equation}
-\dot{\vec{y}}=
-\begin{bmatrix}
-v \\
--g
-\end{bmatrix}
-\end{equation}\]</span></p>
-<p>This vector formulation allows us to separate: 1. Problem definition (specifying <span class="math inline">\(\dot{\vec{y}}\)</span> as a function of <span class="math inline">\(\vec{y}\)</span> and <span class="math inline">\(t\)</span>) 2. Solution method (implementing the numerical integration scheme)</p>
-<p>We’ll explore three numerical methods:</p>
-<ul>
-<li><strong>Euler Method</strong>: First-order accurate</li>
-<li><strong>Euler-Cromer Method</strong>: Modified Euler method, better for oscillatory systems</li>
-<li><strong>Midpoint Method</strong>: Second-order accurate</li>
-</ul>
-<p>More sophisticated methods like the Runge-Kutta family offer higher accuracy but are not covered here.</p>
-<section id="euler-method" class="level3">
-<h3 class="anchored" data-anchor-id="euler-method">Euler Method</h3>
-<p>The <strong>Euler method</strong> is derived from the Taylor expansion of the solution <span class="math inline">\(\vec{y}(t)\)</span> around the current time <span class="math inline">\(t\)</span>:</p>
-<p><span class="math display">\[\begin{equation}
-\vec{y}(t+\Delta t)=\vec{y}(t)+\dot{\vec{y}}(t)\Delta t+\frac{1}{2}\ddot{\vec{y}}(t)\Delta t^{2}+ \mathcal{O}(\Delta t^3)
-\end{equation}\]</span></p>
-<p>The Euler method approximates this by truncating after the first-order term:</p>
-<p><span class="math display">\[\begin{equation}
-\vec{y}(t+\Delta t) \approx \vec{y}(t) + \dot{\vec{y}}(t) \Delta t
-\end{equation}\]</span></p>
-<p>For our free fall example, this becomes:</p>
-<p><span class="math display">\[\begin{equation}
-\begin{bmatrix} x_{i+1} \\ v_{i+1} \end{bmatrix} =
-\begin{bmatrix} x_i \\ v_i \end{bmatrix} +
-\begin{bmatrix} v_i \\ -g \end{bmatrix} \Delta t
-\end{equation}\]</span></p>
-<p>Error Analysis: The method has two distinct types of errors. The local truncation error, which represents the error made in a single step, is of order <span class="math inline">\(\mathcal{O}(\Delta t^2)\)</span>. This corresponds to the first term omitted in the Taylor expansion. The global truncation error, which accumulates over the entire integration interval <span class="math inline">\([0,\tau]\)</span>, is of order <span class="math inline">\(\mathcal{O}(\Delta t)\)</span>. This can be understood by considering that we take <span class="math inline">\(N = \tau/\Delta t\)</span> steps, each contributing an error proportional to <span class="math inline">\(\Delta t^2\)</span>. The total error thus scales as <span class="math inline">\(N \cdot \Delta t^2 = \tau \Delta t\)</span>.</p>
-<p>Limitations and Extensions: The method is directly applicable only to first-order systems of the form <span class="math inline">\(\dot{\vec{y}} = \vec{f}(\vec{y},t)\)</span>. However, this is not a fundamental limitation as higher-order equations can be converted to systems of first-order equations. For example, a second-order equation <span class="math inline">\(\ddot{x} = f(x,\dot{x},t)\)</span> can be transformed into a system of two first-order equations by introducing the velocity as an additional variable. The resulting system becomes:</p>
-<p><span class="math display">\[\begin{equation}
-\begin{bmatrix} \dot{x} \\ \dot{v} \end{bmatrix} =
-\begin{bmatrix} v \\ f(x,v,t) \end{bmatrix}
-\end{equation}\]</span></p>
-<p>This transformation allows us to apply the method to a wider class of problems while maintaining its fundamental characteristics.</p>
-</section>
-<section id="euler-cromer-method" class="level3">
-<h3 class="anchored" data-anchor-id="euler-cromer-method">Euler-Cromer Method</h3>
-<p>The <strong>Euler-Cromer method</strong> (also known as the semi-implicit Euler method) modifies the basic Euler method by using the updated velocity when calculating the position. For a system described by position and velocity:</p>
-<p><span class="math display">\[\begin{equation}
-\begin{aligned}
-\dot{x} &amp;= v \\
-\dot{v} &amp;= f(x,v,t)
-\end{aligned}
-\end{equation}\]</span></p>
-<p>The integration steps are:</p>
-<p><span class="math display">\[\begin{equation}
-\begin{aligned}
-v_{i+1} &amp;= v_i + f(x_i,v_i,t_i)\Delta t \\
-x_{i+1} &amp;= x_i + v_{i+1}\Delta t
-\end{aligned}
-\end{equation}\]</span></p>
-<p>For our free fall example: <span class="math display">\[\begin{equation}
-\begin{aligned}
-v_{i+1} &amp;= v_i - g\Delta t \\
-x_{i+1} &amp;= x_i + v_{i+1}\Delta t
-\end{aligned}
-\end{equation}\]</span></p>
-<p>Energy Behavior: The method shows improved energy conservation for oscillatory systems compared to the standard Euler method. While the Euler method typically increases energy over time, the Euler-Cromer method exhibits small energy oscillations around the correct value.</p>
-<p>Error Analysis: The method maintains a local truncation error of <span class="math inline">\(\mathcal{O}(\Delta t^2)\)</span> and a global truncation error of <span class="math inline">\(\mathcal{O}(\Delta t)\)</span>. Despite having the same order of accuracy as the Euler method, it provides more stable solutions for oscillatory systems.</p>
-<p>Advantages: The Euler-Cromer method represents a simple modification of the Euler method that achieves better stability for oscillatory systems without requiring additional function evaluations.</p>
-<p>Limitations: The method remains first-order accurate globally and is not symmetric in time. While it performs well for certain types of problems, particularly oscillatory systems, it may not be suitable for all differential equations.</p>
-<p>Comparison with Euler Method:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Euler Method</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>v[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> v[i] <span class="op">+</span> f(x[i],v[i],t[i])<span class="op">*</span>dt</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> x[i] <span class="op">+</span> v[i]<span class="op">*</span>dt       <span class="co"># Uses old velocity</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Euler-Cromer Method</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>v[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> v[i] <span class="op">+</span> f(x[i],v[i],t[i])<span class="op">*</span>dt</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>x[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> x[i] <span class="op">+</span> v[i<span class="op">+</span><span class="dv">1</span>]<span class="op">*</span>dt     <span class="co"># Uses new velocity</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="midpoint-method" class="level3">
-<h3 class="anchored" data-anchor-id="midpoint-method">Midpoint Method</h3>
-<p>The <strong>Midpoint Method</strong> (also known as the second-order Runge-Kutta method) improves upon both the Euler and Euler-Cromer methods by using the average of the derivatives at the current point and an estimated midpoint.</p>
-<p>For a system of first-order differential equations:</p>
-<p><span class="math display">\[\begin{equation}
-\dot{\vec{y}} = \vec{f}(\vec{y},t)
-\end{equation}\]</span></p>
-<p>The algorithm proceeds in two steps:</p>
-<ol type="1">
-<li><p>Calculate an intermediate point using an Euler step to the midpoint: <span class="math display">\[\begin{equation}
-\vec{k}_1 = \vec{f}(\vec{y}_i,t_i)
-\end{equation}\]</span> <span class="math display">\[\begin{equation}
-\vec{y}_{i+1/2} = \vec{y}_i + \frac{\Delta t}{2}\vec{k}_1
-\end{equation}\]</span></p></li>
-<li><p>Use the derivative at this midpoint for the full step: <span class="math display">\[\begin{equation}
-\vec{k}_2 = \vec{f}(\vec{y}_{i+1/2},t_i+\Delta t/2)
-\end{equation}\]</span> <span class="math display">\[\begin{equation}
-\vec{y}_{i+1} = \vec{y}_i + \Delta t\vec{k}_2
-\end{equation}\]</span></p></li>
-</ol>
-<p>For our free fall example, this becomes:</p>
-<p><span class="math display">\[\begin{equation}
-\begin{aligned}
-v_{i+1/2} &amp;= v_i - \frac{g\Delta t}{2} \\
-x_{i+1/2} &amp;= x_i + v_i\frac{\Delta t}{2} \\
-v_{i+1} &amp;= v_i - g\Delta t \\
-x_{i+1} &amp;= x_i + v_{i+1/2}\Delta t
-\end{aligned}
-\end{equation}\]</span></p>
-<p>Error Analysis: The method achieves higher accuracy than both Euler and Euler-Cromer methods with:</p>
-<ul>
-<li>Local truncation error: <span class="math inline">\(\mathcal{O}(\Delta t^3)\)</span></li>
-<li>Global truncation error: <span class="math inline">\(\mathcal{O}(\Delta t^2)\)</span></li>
-</ul>
-<p>Implementation:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> midpoint_step(y, t, dt, f):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate k1</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    k1 <span class="op">=</span> f(y, t)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate midpoint</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    y_mid <span class="op">=</span> y <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> dt <span class="op">*</span> k1</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate k2 at midpoint</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    k2 <span class="op">=</span> f(y_mid, t <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>dt)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Full step using midpoint derivative</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y <span class="op">+</span> dt <span class="op">*</span> k2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="6b34b736" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="3_solving_ODEs_files/figure-html/cell-2-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="747" height="371"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="putting-it-all-together" class="level3">
-<h3 class="anchored" data-anchor-id="putting-it-all-together">Putting it all together</h3>
-<p>Now we can implement our numerical solution by combining our understanding of both the physical system and numerical methods. This implementation consists of two main parts: defining the differential equation and solving it numerically.</p>
-<section id="the-definition-of-the-problem" class="level4">
-<h4 class="anchored" data-anchor-id="the-definition-of-the-problem">The Definition of the Problem</h4>
-<p>For the simple harmonic oscillator, we start with the second-order differential equation:</p>
-<p><span class="math display">\[\begin{equation}
-\frac{d^2x}{dt^2} + \omega^2x = 0
-\end{equation}\]</span></p>
-<p>To solve this numerically, we convert it to a system of first-order equations using our state vector <span class="math inline">\(\vec{y} = [x, v]^T\)</span>:</p>
-<p><span class="math display">\[\begin{equation}
-\frac{d}{dt}\begin{bmatrix} x \\ v \end{bmatrix} =
-\begin{bmatrix} v \\ -\omega^2x \end{bmatrix}
-\end{equation}\]</span></p>
-<p>This is implemented as: ~~~ def SHO(state, time): ““” Define the harmonic oscillator system. state[0] : position x state[1] : velocity v returns : [dx/dt, dv/dt] ““” g0 = state[1] # dx/dt = v g1 = -k/m*state[0] # dv/dt = -ω²x return np.array([g0, g1]) ~~~</p>
-<p>This function defines our physical system by returning the derivatives of our state variables at any given point.</p>
-</section>
-<section id="solving-the-problem" class="level4">
-<h4 class="anchored" data-anchor-id="solving-the-problem">Solving the Problem</h4>
-<p>With our system defined, we can implement the numerical solution using Euler’s method. The basic algorithm takes the current state and advances it by one time step:</p>
-<pre><code>def euler(y, t, dt, derivs):
-    """
-    Perform one step of the Euler method.
-    y      : current state [x, v]
-    t      : current time
-    dt     : time step
-    derivs : function returning derivatives
-    """
-    y_next = y + derivs(y, t) * dt
-    return y_next</code></pre>
-<p>This simple structure allows us to solve different physical problems by just changing the derivative function. For example, we can solve the free fall problem with initial conditions <span class="math inline">\(x_0=0\)</span> and <span class="math inline">\(v_0=10\)</span>, or the harmonic oscillator with specified spring constant <span class="math inline">\(k\)</span> and mass <span class="math inline">\(m\)</span>.</p>
-<p>The key advantage of this structure lies in its flexibility. We can change the physical system by providing a different derivative function, implement various numerical methods by modifying the integration step, and explore the system behavior by adjusting parameters and initial conditions. This modular approach allows us to study a wide range of physical systems using the same basic numerical framework.</p>
-<div>
-<div id="pyodide-4">
-
-</div>
-<script type="pyodide-4-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgUGFyYW1ldGVyc1xuTiA9IDIwMDAgICMgbnVtYmVyIG9mIHN0ZXBzXG50YXUgPSA0Km5wLnBpICAjIHRpbWUgcGVyaW9kXG54byA9IDEuMCAgIyBpbml0aWFsIHBvc2l0aW9uXG52byA9IDAuMCAgIyBpbml0aWFsIHZlbG9jaXR5XG5cbmsgPSAzLjVcbm0gPSAwLjJcbmdyYXZpdHkgPSA5LjhcblxuZHQgPSB0YXUvZmxvYXQoTi0xKVxudGltZSA9IG5wLmxpbnNwYWNlKDAsIHRhdSwgTilcblxueSA9IG5wLnplcm9zKFtOLCAyXSlcbnlbMCwgMF0gPSB4b1xueVswLCAxXSA9IHZvXG5cblxuIyMgIGRlZmluaW5nIHRoZSBwcm9ibGVtXG5kZWYgZnJlZV9mYWxsKHN0YXRlICwgdGltZSk6XG4gICAgZzAgPSBzdGF0ZVsxXVxuICAgIGcxID0gLWdyYXZpdHlcbiAgICByZXR1cm4obnAuYXJyYXkoW2cwLCBnMV0pKVxuXG5cbmRlZiBTSE8oeSwgdCwgYj0wLCBrPTMuNSk6XG4gICAgeCwgdiA9IHlcbiAgICBkeWR0ID0gW3YsIC1iKnYgLSBrKnhdXG4gICAgcmV0dXJuIG5wLmFycmF5KGR5ZHQpXG5cblxuZGVmIE1NTShzdGF0ZSwgdGltZSk6XG4gICAgZzAgPSBzdGF0ZVsxXS0xLjEqc3RhdGVbMV1cbiAgICBnMSA9IC1rL20gKiBzdGF0ZVswXS0xMlxuICAgIHJldHVybihucC5hcnJheShbZzAsIGcxXSkpXG5cbiMjICBzb2x2aW5nIHRoZSBwcm9ibGVtIHdpdGggZXVsZXJcbmRlZiBldWxlcih5LCB0LCBkdCwgZGVyaXZzKTpcbiAgICB5X25leHQgPSB5ICsgZGVyaXZzKHksdCkqIGR0XG4gICAgcmV0dXJuKHlfbmV4dClcblxuZGVmIHJ1bmdlX2t1dHRhMih5LCB0aW1lLCBkdCwgZGVyaXZzKTpcbiAgICBrMCA9IGR0ICogZGVyaXZzKHksIHRpbWUpXG4gICAgazEgPSBkdCAqIGRlcml2cyh5ICsgazAsIHRpbWUgKyBkdClcbiAgICB5X25leHQgPSB5ICsgMC41ICogKGswICsgazEpXG4gICAgcmV0dXJuIHlfbmV4dFxuXG4jIFNvbHZlIHRoZSBkaWZmZXJlbnRpYWwgZXF1YXRpb25cbmZvciBqIGluIHJhbmdlKE4tMSk6XG4gICAgeVtqKzFdID0gZXVsZXIoeVtqXSwgdGltZVtqXSwgZHQsIFNITylcblxuIyBQbG90IHJlc3VsdHNcbmZpZywgKGF4MSwgYXgyKSA9IHBsdC5zdWJwbG90cygxLCAyLCBmaWdzaXplPSgxMCwgNSkpXG5cbmF4MS5wbG90KHRpbWUsIHlbOiwgMF0pXG5heDEuc2V0X3RpdGxlKFwiUG9zaXRpb25cIilcbmF4MS5zZXRfeGxhYmVsKCd0aW1lIFtzXScsIGZvbnRzaXplPTE2KVxuYXgxLnNldF95bGFiZWwoJ3Bvc2l0aW9uIHggW21dJywgZm9udHNpemU9MTYpXG5heDEudGlja19wYXJhbXMobGFiZWxzaXplPTE0KVxuXG5heDIucGxvdCh0aW1lLCB5WzosIDFdKVxuYXgyLnNldF90aXRsZShcIlZlbG9jaXR5XCIpXG5heDIuc2V0X3hsYWJlbCgndGltZSBbc10nLCBmb250c2l6ZT0xNilcbmF4Mi5zZXRfeWxhYmVsKCd2ZWxvY2l0eSB2IFttL3NdJywgZm9udHNpemU9MTYpXG5heDIudGlja19wYXJhbXMobGFiZWxzaXplPTE0KVxuXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
-</script>
-</div>
-</section>
-</section>
-</section>
-<section id="sec-solving-ODE" class="level2">
-<h2 class="anchored" data-anchor-id="sec-solving-ODE">Solving the Harmonic Oscillator with SciPy</h2>
-<p>Having explored basic numerical integration methods, we can now utilize more sophisticated tools available in SciPy. The <code>scipy.integrate.odeint()</code> function provides a robust and accurate integration method with several advantages over our simple implementations.</p>
-<p>To use SciPy’s integrator:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> odeint</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The basic syntax is:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>solution <span class="op">=</span> odeint(derivative_function, initial_conditions, time_points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>where:</p>
-<ul>
-<li><code>derivative_function</code> defines the system (like our <code>SHO</code> function)</li>
-<li><code>initial_conditions</code> is a vector containing <span class="math inline">\([x_0, v_0]\)</span></li>
-<li><code>time_points</code> is an array of times at which to compute the solution</li>
-</ul>
-<p>The <code>odeint</code> function offers several significant advantages over our simple implementations. It features adaptive step size control, which automatically adjusts the integration step size based on the local error. The function performs continuous error estimation and correction to maintain accuracy throughout the integration. It also provides various integration methods that can be selected based on the problem’s requirements. The function is capable of handling stiff equations, which are particularly challenging for simpler methods, and generally provides better numerical stability across a wide range of problems.</p>
-<p>For example, to solve the harmonic oscillator:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> SHO(state, t, k<span class="op">=</span><span class="fl">1.0</span>, m<span class="op">=</span><span class="fl">1.0</span>):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    x, v <span class="op">=</span> state</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [v, <span class="op">-</span>k<span class="op">/</span>m <span class="op">*</span> x]</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial conditions</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> [<span class="fl">1.0</span>, <span class="fl">0.0</span>]  <span class="co"># x₀ = 1, v₀ = 0</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve the system</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>solution <span class="op">=</span> odeint(SHO, y0, t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The solution array contains:</p>
-<ul>
-<li><code>solution[:, 0]</code>: position values</li>
-<li><code>solution[:, 1]</code>: velocity values</li>
-</ul>
-<p>Having understood the fundamentals of numerical integration through our implementations of Euler and other methods, we can now confidently use this more sophisticated tool for solving differential equations more accurately and efficiently.</p>
-<section id="setup" class="level3">
-<h3 class="anchored" data-anchor-id="setup">Setup</h3>
-<div>
-<div id="pyodide-5">
-
-</div>
-<script type="pyodide-5-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImZyb20gc2NpcHkuaW50ZWdyYXRlIGltcG9ydCBvZGVpbnRcblxuTiA9IDEwMDAgICMgbnVtYmVyIG9mIHN0ZXBzXG54byA9IDEuMCAjIGluaXRpYWwgcG9zaXRpb25cbnZvID0gMC4wICMgaW5pdGlhbCB2ZWxvY2l0eVxudGF1ID0gNCpucC5waSAjIHRpbWUgcGVyaW9kXG5cbmsgPSAzLjVcbm0gPSAwLjJcbmdyYXZpdHkgPSA5LjhcblxudGltZSA9IG5wLmxpbnNwYWNlKDAsIHRhdSwgTilcblxueSA9IG5wLnplcm9zKDIpXG55WzBdID0geG9cbnlbMV0gPSB2byJ9
-</script>
-</div>
-</section>
-<section id="definition" class="level3">
-<h3 class="anchored" data-anchor-id="definition">Definition</h3>
+<section id="example-2-damped-driven-pendulum" class="level3">
+<h3 class="anchored" data-anchor-id="example-2-damped-driven-pendulum">Example 2: Damped Driven Pendulum</h3>
+<p>Now let’s tackle a more complex problem - a damped driven pendulum:</p>
+<p><span class="math display">\[\frac{d^2\theta}{dt^2} = -\frac{g}{L}\sin(\theta) - b\frac{d\theta}{dt} + \beta\cos(\omega t)\]</span></p>
+<p>This includes: - <strong>Restoring force:</strong> <span class="math inline">\(-\frac{g}{L}\sin(\theta)\)</span> (nonlinear!) - <strong>Damping:</strong> <span class="math inline">\(-b\frac{d\theta}{dt}\)</span> (friction) - <strong>Driving force:</strong> <span class="math inline">\(\beta\cos(\omega t)\)</span> (external periodic force)</p>
 <div>
 <div id="pyodide-6">
 
 </div>
 <script type="pyodide-6-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMjICBkZWZpbmluZyB0aGUgcHJvYmxlbVxuZGVmIFNITyhzdGF0ZSwgdGltZSk6XG4gICAgZzAgPSBzdGF0ZVsxXVxuICAgIGcxID0gLWsvbSAqIHN0YXRlIFswXVxuICAgIHJldHVybihucC5hcnJheShbZzAsIGcxXSkpIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuZGVmIGRhbXBlZF9kcml2ZW5fcGVuZHVsdW0oc3RhdGUsIHQsIEwsIGIsIGJldGEsIG9tZWdhX2RyaXZlLCBnPTkuOCk6XG4gICAgXCJcIlwiXG4gICAgRGVyaXZhdGl2ZSBmdW5jdGlvbiBmb3IgZGFtcGVkIGRyaXZlbiBwZW5kdWx1bS5cblxuICAgIFBhcmFtZXRlcnM6XG4gICAgLS0tLS0tLS0tLS1cbiAgICBzdGF0ZSA6IGFycmF5IFt0aGV0YSwgb21lZ2FdXG4gICAgICAgIEN1cnJlbnQgYW5nbGUgYW5kIGFuZ3VsYXIgdmVsb2NpdHlcbiAgICB0IDogZmxvYXRcbiAgICAgICAgQ3VycmVudCB0aW1lXG4gICAgTCA6IGZsb2F0XG4gICAgICAgIExlbmd0aCBvZiBwZW5kdWx1bSBbbV1cbiAgICBiIDogZmxvYXRcbiAgICAgICAgRGFtcGluZyBjb2VmZmljaWVudFxuICAgIGJldGEgOiBmbG9hdFxuICAgICAgICBEcml2aW5nIGZvcmNlIGFtcGxpdHVkZVxuICAgIG9tZWdhX2RyaXZlIDogZmxvYXRcbiAgICAgICAgRHJpdmluZyBmcmVxdWVuY3lcbiAgICBnIDogZmxvYXRcbiAgICAgICAgR3Jhdml0YXRpb25hbCBhY2NlbGVyYXRpb24gW20vc8KyXVxuXG4gICAgUmV0dXJuczpcbiAgICAtLS0tLS0tLVxuICAgIGFycmF5IFtkdGhldGEvZHQsIGRvbWVnYS9kdF1cbiAgICBcIlwiXCJcbiAgICB0aGV0YSwgb21lZ2EgPSBzdGF0ZVxuXG4gICAgZHRoZXRhX2R0ID0gb21lZ2FcbiAgICBkb21lZ2FfZHQgPSAtKGcvTCkgKiBucC5zaW4odGhldGEpIC0gYiAqIG9tZWdhICsgYmV0YSAqIG5wLmNvcyhvbWVnYV9kcml2ZSAqIHQpXG5cbiAgICByZXR1cm4gW2R0aGV0YV9kdCwgZG9tZWdhX2R0XVxuXG4jIFBhcmFtZXRlcnNcbkwgPSAxMC4wICAgICAgICAgICMgbGVuZ3RoIFttXVxuYiA9IDAuMiAgICAgICAgICAgIyBkYW1waW5nIGNvZWZmaWNpZW50XG5iZXRhID0gbnAucGkvMiAgICAjIGRyaXZpbmcgYW1wbGl0dWRlXG5vbWVnYV9uYXR1cmFsID0gbnAuc3FydCg5LjgvTCkgICMgbmF0dXJhbCBmcmVxdWVuY3lcbm9tZWdhX2RyaXZlID0gb21lZ2FfbmF0dXJhbCAgICAgIyBkcml2aW5nIGZyZXF1ZW5jeVxuXG4jIEluaXRpYWwgY29uZGl0aW9uczogdGhldGEoMCkgPSAxLjAgcmFkLCBvbWVnYSgwKSA9IDAuMCByYWQvc1xuaW5pdGlhbF9zdGF0ZSA9IFsxLjAsIDAuMF1cblxuIyBUaW1lIGFycmF5XG50ID0gbnAubGluc3BhY2UoMCwgMTAwLCAxMDAwMClcblxuIyBTb2x2ZSFcbnNvbHV0aW9uID0gb2RlaW50KGRhbXBlZF9kcml2ZW5fcGVuZHVsdW0sIGluaXRpYWxfc3RhdGUsIHQsXG4gICAgICAgICAgICAgICAgICBhcmdzPShMLCBiLCBiZXRhLCBvbWVnYV9kcml2ZSkpXG5cbnRoZXRhID0gc29sdXRpb25bOiwgMF1cbm9tZWdhID0gc29sdXRpb25bOiwgMV0ifQ==
 </script>
 </div>
-</section>
-<section id="solution-1" class="level3">
-<h3 class="anchored" data-anchor-id="solution-1">Solution</h3>
 <div>
 <div id="pyodide-7">
 
 </div>
 <script type="pyodide-7-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuYW5zd2VyID0gb2RlaW50KCBTSE8sIHkgLCB0aW1lICkifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuZmlnLCAoYXgxLCBheDIpID0gcGx0LnN1YnBsb3RzKDIsIDEsIGZpZ3NpemU9KDEwLCA4KSlcblxuIyBQbG90IGFuZ2xlIHZzIHRpbWVcbmF4MS5wbG90KHQsIHRoZXRhLCAnYi0nLCBsaW5ld2lkdGg9MSlcbmF4MS5wbG90KHQsIGJldGEqbnAuY29zKG9tZWdhX2RyaXZlKnQpLCAnci0tJywgYWxwaGE9MC4zLCBsaW5ld2lkdGg9MS41LFxuICAgICAgICAgbGFiZWw9J0RyaXZpbmcgZm9yY2UnKVxuYXgxLnNldF94bGFiZWwoJ1RpbWUgW3NdJylcbmF4MS5zZXRfeWxhYmVsKCdBbmdsZSDOuCBbcmFkXScpXG5heDEuc2V0X3RpdGxlKCdEYW1wZWQgRHJpdmVuIFBlbmR1bHVtOiBBbmdsZSB2cyBUaW1lJylcbmF4MS5sZWdlbmQoKVxuYXgxLmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxuXG4jIFBsb3QgcGhhc2Ugc3BhY2VcbmF4Mi5wbG90KHRoZXRhLCBvbWVnYSwgJ2ItJywgbGluZXdpZHRoPTAuNSwgYWxwaGE9MC43KVxuYXgyLnNldF94bGFiZWwoJ0FuZ2xlIM64IFtyYWRdJylcbmF4Mi5zZXRfeWxhYmVsKCdBbmd1bGFyIHZlbG9jaXR5IM+JIFtyYWQvc10nKVxuYXgyLnNldF90aXRsZSgnUGhhc2UgU3BhY2UnKVxuYXgyLmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxuXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
 </script>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exploring Parameter Space
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Try changing the parameters: - Increase <code>b</code> to see stronger damping (oscillations die out faster) - Change <code>omega_drive</code> to explore resonance effects - Increase <code>beta</code> to see chaotic behavior (for large initial angles)</p>
+</div>
+</div>
 </section>
-<section id="plotting" class="level3">
-<h3 class="anchored" data-anchor-id="plotting">Plotting</h3>
+</section>
+<section id="summary-how-to-solve-odes" class="level2">
+<h2 class="anchored" data-anchor-id="summary-how-to-solve-odes">Summary: How to Solve ODEs</h2>
+<p>The workflow for solving ODEs in physics is:</p>
+<ol type="1">
+<li><strong>Write down the physics:</strong> Newton’s laws, energy conservation, etc.</li>
+<li><strong>Convert to first-order system:</strong> Introduce velocity/momentum as separate variables</li>
+<li><strong>Define a derivative function:</strong> Implement <span class="math inline">\(\frac{d\vec{y}}{dt} = \vec{f}(\vec{y}, t)\)</span></li>
+<li><strong>Set initial conditions:</strong> Specify <span class="math inline">\(\vec{y}(t=0)\)</span></li>
+<li><strong>Use <code>odeint</code> to solve:</strong> Get the solution at desired time points</li>
+<li><strong>Visualize:</strong> Plot trajectories, phase space, etc.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why Does This Work?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>odeint</code> function uses sophisticated numerical methods (adaptive Runge-Kutta) to: - Step forward in time accurately - Automatically adjust step size for efficiency and accuracy - Handle stiff equations that simpler methods struggle with</p>
+<p>For most physics problems, <code>odeint</code> is all you need!</p>
+</div>
+</div>
+</section>
+<section id="advanced-understanding-numerical-integration-methods" class="level2 callout-tip" data-collapse="true">
+<h2 class="callout-tip anchored" data-collapse="true" data-anchor-id="advanced-understanding-numerical-integration-methods">Advanced: Understanding Numerical Integration Methods</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How <code>odeint</code> Works Under the Hood
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>While <code>odeint</code> handles the details for us, it’s useful to understand the basic concepts of numerical integration. Here we’ll explore simple methods that illustrate the core ideas.</p>
+<section id="the-conceptual-idea-time-stepping" class="level3">
+<h3 class="anchored" data-anchor-id="the-conceptual-idea-time-stepping">The Conceptual Idea: Time Stepping</h3>
+<p>All numerical ODE solvers work by <strong>stepping forward in time</strong>. Starting from initial conditions <span class="math inline">\(\vec{y}(t_0)\)</span>, we calculate the state at <span class="math inline">\(t_1 = t_0 + \Delta t\)</span>, then at <span class="math inline">\(t_2 = t_1 + \Delta t\)</span>, and so on.</p>
+<p>The key question: How do we step from <span class="math inline">\(\vec{y}_i\)</span> to <span class="math inline">\(\vec{y}_{i+1}\)</span>?</p>
+</section>
+<section id="euler-method-the-simplest-approach" class="level3">
+<h3 class="anchored" data-anchor-id="euler-method-the-simplest-approach">Euler Method: The Simplest Approach</h3>
+<p>The <strong>Euler method</strong> uses the Taylor expansion:</p>
+<p><span class="math display">\[\vec{y}(t+\Delta t) = \vec{y}(t) + \frac{d\vec{y}}{dt}\Delta t + \mathcal{O}(\Delta t^2)\]</span></p>
+<p>Dropping higher-order terms:</p>
+<p><span class="math display">\[\vec{y}_{i+1} \approx \vec{y}_i + \vec{f}(\vec{y}_i, t_i)\Delta t\]</span></p>
+<p><strong>Implementation:</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> euler_step(y, t, dt, derivative_func):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Single step of Euler method"""</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y <span class="op">+</span> derivative_func(y, t) <span class="op">*</span> dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>For the harmonic oscillator:</strong></p>
+<p><span class="math display">\[\begin{bmatrix} x_{i+1} \\ v_{i+1} \end{bmatrix} = \begin{bmatrix} x_i \\ v_i \end{bmatrix} + \begin{bmatrix} v_i \\ -\omega^2 x_i \end{bmatrix} \Delta t\]</span></p>
+<p><strong>Accuracy:</strong> - Local error: <span class="math inline">\(\mathcal{O}(\Delta t^2)\)</span> per step - Global error: <span class="math inline">\(\mathcal{O}(\Delta t)\)</span> over time interval <span class="math inline">\([0, T]\)</span></p>
+</section>
+<section id="euler-cromer-method-better-for-oscillators" class="level3">
+<h3 class="anchored" data-anchor-id="euler-cromer-method-better-for-oscillators">Euler-Cromer Method: Better for Oscillators</h3>
+<p>The <strong>Euler-Cromer method</strong> modifies Euler by using the <em>updated</em> velocity when calculating position:</p>
+<p><span class="math display">\[v_{i+1} = v_i + a(x_i, v_i, t_i)\Delta t\]</span> <span class="math display">\[x_{i+1} = x_i + v_{i+1}\Delta t\]</span></p>
+<p>This simple change dramatically improves energy conservation in oscillatory systems!</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> euler_cromer_step(state, t, dt, k, m):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Single step of Euler-Cromer for harmonic oscillator"""</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    x, v <span class="op">=</span> state</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    v_new <span class="op">=</span> v <span class="op">-</span> (k<span class="op">/</span>m) <span class="op">*</span> x <span class="op">*</span> dt</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    x_new <span class="op">=</span> x <span class="op">+</span> v_new <span class="op">*</span> dt  <span class="co"># Use updated velocity!</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array([x_new, v_new])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="comparison-free-fall-example" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-free-fall-example">Comparison: Free Fall Example</h3>
+<p>Let’s compare methods for free fall: <span class="math inline">\(\frac{d^2x}{dt^2} = -g\)</span></p>
 <div>
 <div id="pyodide-8">
 
 </div>
 <script type="pyodide-8-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImZpZz1wbHQuZmlndXJlKDEsIGZpZ3NpemUgPSAoMTAsNSkgKVxucGx0LnN1YnBsb3QoMSwgMiwgMSlcbnBsdC5wbG90KHRpbWUsIGFuc3dlcls6LDBdKVxucGx0LnlsYWJlbChcInBvc2l0aW9uICwgdmVsb2NpdHlcIilcbnBsdC54bGFiZWwoJ3RpbWUgW3NdJywgZm9udHNpemU9MTYpXG5wbHQueWxhYmVsKCdwb3NpdGlvbiB4IFttXScsZm9udHNpemU9MTYpXG5wbHQudGlja19wYXJhbXMobGFiZWxzaXplPTE0KVxuXG5wbHQuc3VicGxvdCgxLCAyLCAyKVxucGx0LnBsb3QodGltZSwgYW5zd2VyWzosMV0pXG5wbHQueGxhYmVsKCd0aW1lIFtzXScsIGZvbnRzaXplPTE2KVxucGx0LnlsYWJlbCgndmVsb2NpdHkgdiBbbS9zXScsZm9udHNpemU9MTYpXG5wbHQudGlja19wYXJhbXMobGFiZWxzaXplPTE0KVxuXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuZGVmIGZyZWVmYWxsX2Rlcml2YXRpdmUoc3RhdGUsIHQsIGc9OS44KTpcbiAgICBcIlwiXCJEZXJpdmF0aXZlIGZ1bmN0aW9uIGZvciBmcmVlIGZhbGxcIlwiXCJcbiAgICB4LCB2ID0gc3RhdGVcbiAgICByZXR1cm4gW3YsIC1nXVxuXG4jIFBhcmFtZXRlcnNcbmcgPSA5LjhcbngwID0gMC4wICAgIyBpbml0aWFsIHBvc2l0aW9uXG52MCA9IDIwLjAgICMgaW5pdGlhbCB2ZWxvY2l0eVxudF9tYXggPSA0LjBcblxuIyBBbmFseXRpY2FsIHNvbHV0aW9uXG5kZWYgYW5hbHl0aWNhbCh0LCB4MCwgdjAsIGcpOlxuICAgIHJldHVybiB4MCArIHYwKnQgLSAwLjUqZyp0KioyXG5cbiMgVGltZSBhcnJheXNcbnRfZmluZSA9IG5wLmxpbnNwYWNlKDAsIHRfbWF4LCAxMDAwKVxudF9jb2Fyc2UgPSBucC5saW5zcGFjZSgwLCB0X21heCwgMTApXG5kdCA9IHRfY29hcnNlWzFdIC0gdF9jb2Fyc2VbMF1cblxuIyBFdWxlciBtZXRob2QgbWFudWFsbHlcbnhfZXVsZXIgPSBucC56ZXJvcyhsZW4odF9jb2Fyc2UpKVxudl9ldWxlciA9IG5wLnplcm9zKGxlbih0X2NvYXJzZSkpXG54X2V1bGVyWzBdLCB2X2V1bGVyWzBdID0geDAsIHYwXG5cbmZvciBpIGluIHJhbmdlKGxlbih0X2NvYXJzZSktMSk6XG4gICAgdl9ldWxlcltpKzFdID0gdl9ldWxlcltpXSAtIGcgKiBkdFxuICAgIHhfZXVsZXJbaSsxXSA9IHhfZXVsZXJbaV0gKyB2X2V1bGVyW2ldICogZHRcblxuIyBvZGVpbnQgc29sdXRpb25cbnNvbHV0aW9uID0gb2RlaW50KGZyZWVmYWxsX2Rlcml2YXRpdmUsIFt4MCwgdjBdLCB0X2ZpbmUsIGFyZ3M9KGcsKSlcbnhfb2RlaW50ID0gc29sdXRpb25bOiwgMF1cblxuIyBBbmFseXRpY2FsIHNvbHV0aW9uXG54X2FuYWx5dGljYWwgPSBhbmFseXRpY2FsKHRfZmluZSwgeDAsIHYwLCBnKVxuXG4jIFBsb3QgY29tcGFyaXNvblxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDE0LCA4KSlcbnBsdC5wbG90KHRfZmluZSwgeF9hbmFseXRpY2FsLCAnay0nLCBsaW5ld2lkdGg9MiwgbGFiZWw9J0FuYWx5dGljYWwnKVxucGx0LnBsb3QodF9maW5lLCB4X29kZWludCwgJ2ctJywgbGluZXdpZHRoPTEuNSwgbGFiZWw9J29kZWludCcsIGFscGhhPTAuNylcbnBsdC5wbG90KHRfY29hcnNlLCB4X2V1bGVyLCAncm8tLScsIG1hcmtlcnNpemU9OCwgbGFiZWw9J0V1bGVyICgxMCBzdGVwcyknKVxucGx0LnhsYWJlbCgnVGltZSBbc10nKVxucGx0LnlsYWJlbCgnUG9zaXRpb24gW21dJylcbnBsdC50aXRsZSgnQ29tcGFyaW5nIE51bWVyaWNhbCBNZXRob2RzOiBGcmVlIEZhbGwnKVxucGx0LmxlZ2VuZCgpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
 </script>
 </div>
 </section>
+<section id="why-use-odeint-instead" class="level3">
+<h3 class="anchored" data-anchor-id="why-use-odeint-instead">Why Use <code>odeint</code> Instead?</h3>
+<p>Simple methods like Euler have limitations: - <strong>Accuracy:</strong> Need very small <span class="math inline">\(\Delta t\)</span> for good accuracy - <strong>Stability:</strong> Can become unstable for stiff equations - <strong>Efficiency:</strong> Waste computation by using uniform small steps</p>
+<p><strong><code>odeint</code> uses adaptive Runge-Kutta methods</strong> that: - Automatically adjust step size based on local error - Achieve high accuracy with fewer function evaluations - Handle stiff equations robustly</p>
+<p>For production code and research, always use <code>odeint</code> (or similar library functions)!</p>
 </section>
-<section id="damped-driven-pendulum-in-scipy" class="level2">
-<h2 class="anchored" data-anchor-id="damped-driven-pendulum-in-scipy">Damped Driven Pendulum in SciPy</h2>
-<p>Write a <code>derivs</code> function for a damped driven pendulum:</p>
-<p><span class="math display">\[\begin{equation}
-\ddot{\theta}=-\frac{g}{L}\sin(\theta)-b \dot{\theta}+\beta\cos(\omega t)
-\end{equation}\]</span></p>
-<p>Use this <em>derivs</em> function with the <em>SciPy</em> solver and plot the result for different parameters. Vary the damping parameter <span class="math inline">\(b\)</span>. Observe the contributions of the homogeneous and the particular solution. Plot the amplitude of the stationary solution as a function of frequency!</p>
-<section id="setup-1" class="level3">
-<h3 class="anchored" data-anchor-id="setup-1">Setup</h3>
+</div>
+</div>
+</div>
+</section>
+<section id="advanced-matrix-methods-for-odes" class="level2 callout-tip" data-collapse="true">
+<h2 class="callout-tip anchored" data-collapse="true" data-anchor-id="advanced-matrix-methods-for-odes">Advanced: Matrix Methods for ODEs</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Implicit/Matrix Method (Crank-Nicolson)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In the numerical differentiation lecture, we learned that derivatives can be represented as matrix operations. This leads to an alternative approach for solving ODEs called the <strong>implicit</strong> or <strong>matrix</strong> method.</p>
+<section id="the-harmonic-oscillator-with-matrices" class="level3">
+<h3 class="anchored" data-anchor-id="the-harmonic-oscillator-with-matrices">The Harmonic Oscillator with Matrices</h3>
+<p>Recall the harmonic oscillator equation:</p>
+<p><span class="math display">\[\frac{d^2x}{dt^2} + \omega^2 x = 0\]</span></p>
+<p>We can discretize this using our matrix representation of the second derivative:</p>
+<p><span class="math display">\[\frac{d^2x}{dt^2} \approx \frac{1}{\Delta t^2}\begin{bmatrix}
+-2 &amp; 1  &amp; 0 &amp; \cdots \\
+1 &amp; -2 &amp; 1 &amp; \cdots \\
+0 &amp; 1  &amp; -2 &amp; \cdots \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+\vdots
+\end{bmatrix}\]</span></p>
+<p>This transforms the differential equation into a <strong>system of linear equations</strong>:</p>
+<p><span class="math display">\[(T + \omega^2 V)\vec{x} = \vec{b}\]</span></p>
+<p>where: - <span class="math inline">\(T\)</span> is the second derivative matrix - <span class="math inline">\(V\)</span> is the identity matrix scaled by <span class="math inline">\(\omega^2\)</span> - <span class="math inline">\(\vec{b}\)</span> encodes boundary/initial conditions</p>
+</section>
+<section id="implementation" class="level3">
+<h3 class="anchored" data-anchor-id="implementation">Implementation</h3>
 <div>
 <div id="pyodide-9">
 
 </div>
 <script type="pyodide-9-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6Ik4gPSAxMDAwMCAgIyBudW1iZXIgb2Ygc3RlcHNcbnRoZXRhX28gPSAxLjAgIyBpbml0aWFsIHBvc2l0aW9uXG52byA9IC0wLjAgIyBpbml0aWFsIHZlbG9jaXR5XG50YXUgPSAxMDAuMCAjIHRpbWUgcGVyaW9kXG5cbmxlbmd0aD0xMC4wXG5iPTAuMlxuYmV0YT1ucC5waS8yXG5ncmF2aXR5ID0gOS44XG5vbWVnYT1ucC5zcXJ0KGdyYXZpdHkvbGVuZ3RoKVxuXG5cbnRpbWUgPSBucC5saW5zcGFjZSgwLCB0YXUsIE4pXG5cbnkgPSBucC56ZXJvcyAoMilcbnlbMF0gPSB0aGV0YV9vXG55WzFdID0gdm8ifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImZyb20gc2NpcHkuc3BhcnNlIGltcG9ydCBkaWFnc1xuXG4jIFBhcmFtZXRlcnNcbmsgPSAxNS41ICAjIHNwcmluZyBjb25zdGFudFxubSA9IDAuMiAgICMgbWFzc1xub21lZ2EgPSBucC5zcXJ0KGsvbSlcblxuIyBEaXNjcmV0aXphdGlvblxuTCA9IG5wLnBpICAjIHRpbWUgaW50ZXJ2YWxcbk4gPSA1MDAgICAgIyBudW1iZXIgb2YgcG9pbnRzXG50ID0gbnAubGluc3BhY2UoMCwgTCwgTilcbmR0ID0gdFsxXSAtIHRbMF1cblxuIyBJbml0aWFsIGNvbmRpdGlvbnMgdmVjdG9yXG5iID0gbnAuemVyb3MoTilcbmJbMF0gPSAxLjAgICMgaW5pdGlhbCBwb3NpdGlvbiB4KDApID0gMVxuYlsxXSA9IDAuMCAgIyBpbml0aWFsIHZlbG9jaXR5IHYoMCkgPSAwXG5cbiMgQ29uc3RydWN0IG1hdHJpY2VzXG5UID0gZGlhZ3MoWy0yLiwgMS4sIDEuXSwgWzAsIDEsIC0xXSwgc2hhcGU9KE4sIE4pKS50b2RlbnNlKClcblYgPSBkaWFncyhbMS5dLCBbMF0sIHNoYXBlPShOLCBOKSkudG9kZW5zZSgpXG5NID0gVC9kdCoqMiArIFYqb21lZ2EqKjJcblxuIyBBcHBseSBpbml0aWFsIGNvbmRpdGlvbnNcbk1bMCwgMF0gPSAxICAgICAgIyB4XzEgPSB4XzBcbk1bMSwgMF0gPSAtMSAgICAgIyAoeF8yIC0geF8xKS9kdCA9IHZfMFxuTVsxLCAxXSA9IDFcblxuIyBTb2x2ZSB0aGUgbGluZWFyIHN5c3RlbVxueCA9IG5wLmxpbmFsZy5zb2x2ZShNLCBiKVxuXG4jIFBsb3RcbnBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgxMiwgNikpXG5wbHQucGxvdCh0LCB4LCAnYi0nLCBsaW5ld2lkdGg9MilcbnBsdC54bGFiZWwoJ1RpbWUgW3NdJylcbnBsdC55bGFiZWwoJ1Bvc2l0aW9uIFttXScpXG5wbHQudGl0bGUoJ0hhcm1vbmljIE9zY2lsbGF0b3I6IEltcGxpY2l0IE1ldGhvZCcpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
 </script>
 </div>
 </section>
-<section id="definition-1" class="level3">
-<h3 class="anchored" data-anchor-id="definition-1">Definition</h3>
-<div>
-<div id="pyodide-10">
-
+<section id="advantages-and-disadvantages" class="level3">
+<h3 class="anchored" data-anchor-id="advantages-and-disadvantages">Advantages and Disadvantages</h3>
+<p><strong>Advantages:</strong> - Solves for all time points simultaneously - Can be more stable for stiff equations - Direct connection to the mathematical structure</p>
+<p><strong>Disadvantages:</strong> - Requires solving large linear systems (memory intensive) - Less flexible for nonlinear equations - More complex to set up boundary conditions</p>
+<p><strong>When to use:</strong> - Specialized applications (PDEs, boundary value problems) - When you need solutions at all time points simultaneously - For linear problems with specific stability requirements</p>
+<p><strong>For most physics problems</strong>, the time-stepping methods (especially <code>odeint</code>) are more practical and efficient.</p>
+</section>
 </div>
-<script type="pyodide-10-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImRlZiBwZW5kdWx1bV9kZWYoc3RhdGUgLCB0aW1lKTpcbiAgICBnMCA9IHN0YXRlWzFdXG4gICAgZzEgPSAtZ3Jhdml0eS9sZW5ndGggKiBucC5zaW4oc3RhdGVbMF0pIC0gYipzdGF0ZVsxXSArIGJldGEqbnAuY29zKG9tZWdhICogdGltZSlcbiAgICByZXR1cm4obnAuYXJyYXkoW2cwLCBnMV0pICkifQ==
-</script>
+</div>
 </div>
 </section>
-<section id="solution-2" class="level3">
-<h3 class="anchored" data-anchor-id="solution-2">Solution</h3>
-<div>
-<div id="pyodide-11">
-
-</div>
-<script type="pyodide-11-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImFuc3dlciA9IG9kZWludCggcGVuZHVsdW1fZGVmLCB5ICwgdGltZSApIn0=
-</script>
-</div>
-</section>
-<section id="plotting-1" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-1">Plotting</h3>
-<div>
-<div id="pyodide-12">
-
-</div>
-<script type="pyodide-12-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImZpZz1wbHQuZmlndXJlKDEsIGZpZ3NpemUgPSAoOCw2KSApXG5wbHQucGxvdCh0aW1lLGJldGEqbnAuY29zKG9tZWdhICogdGltZSksJ3ItLScsYWxwaGE9MC4zKVxucGx0LnBsb3QodGltZSwgYW5zd2VyWzosMF0pXG5wbHQueGxhYmVsKCd0aW1lIFtzXScsIGZvbnRzaXplPTE2KVxucGx0LnlsYWJlbCgnYW5ndWxhciB2ZWxvY2l0eScsZm9udHNpemU9MTYpXG5wbHQudGlja19wYXJhbXMobGFiZWxzaXplPTE0KVxucGx0LnNob3coKSJ9
-</script>
-</div>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next?</h2>
+<p>Now that you know how to solve ODEs, you’re ready to model real physics systems:</p>
+<ul>
+<li><strong>Planetary motion:</strong> Solve Newton’s laws for gravitational systems</li>
+<li><strong>Chaotic systems:</strong> Explore the double pendulum and chaos</li>
+<li><strong>Wave equations:</strong> Model oscillations and wave propagation</li>
+<li><strong>Quantum mechanics:</strong> Solve the time-dependent Schrödinger equation (numerically!)</li>
+</ul>
+<p>The tools you’ve learned - numerical differentiation, integration, and ODE solving - form the foundation of computational physics!</p>
 
 
 <script type="pyodide-data">
 eyJvcHRpb25zIjp7ImluZGV4VVJMIjoiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L3B5b2RpZGUvdjAuMjYuMS9mdWxsLyJ9LCJwYWNrYWdlcyI6eyJwa2dzIjpbInB5b2RpZGVfaHR0cCIsIm1pY3JvcGlwIiwiaXB5dGhvbiIsIm1hdHBsb3RsaWIiLCJudW1weSIsInNjaXB5Il19fQ==
 </script>
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTEyIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTIgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEyLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMiA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTExIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTEgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTExLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTEtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEwIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTAgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEwLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTAtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTAsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTkiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl85ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzkgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzksIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS04LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzggPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl83ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS03LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzcgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTYiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl82ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzYgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS01LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzUgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl80ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzQgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzIgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoiX3B5b2RpZGVfdmFsdWVfMSA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRQeXRob24sIGI2NERlY29kZX0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcInB5b2RpZGUtMS1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBQeXRob24gY29kZVxuICBjb25zdCByZXN1bHQgPSBweW9kaWRlT2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjFcIiBpbiBweW9kaWRlT2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgcHl0aG9uXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFB5dGhvbihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHB5b2RpZGVPanMucmVuZGVyZWRPanNbXCIxXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIn0seyJjZWxsTmFtZSI6InB5b2RpZGUtcHJlbHVkZSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InB5b2RpZGVPanMgPSB7XG4gIGNvbnN0IHtcbiAgICBQeW9kaWRlRXZhbHVhdG9yLFxuICAgIFB5b2RpZGVFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBQeXRob24sXG4gICAgc3RhcnRQeW9kaWRlV29ya2VyLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGgsXG4gIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHN0YXR1c0NvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1zdGF0dXNcIik7XG4gIGNvbnN0IGluZGljYXRvckNvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGluZGljYXRvckNvbnRhaW5lci5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpO1xuXG4gIGxldCBzdGF0dXNUZXh0ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKVxuICBzdGF0dXNUZXh0LmNsYXNzTGlzdCA9IFwiZXhlcmNpc2UtbG9hZGluZy1kZXRhaWxzXCI7XG4gIHN0YXR1c1RleHQgPSBzdGF0dXNDb250YWluZXIuYXBwZW5kQ2hpbGQoc3RhdHVzVGV4dCk7XG4gIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5pdGlhbGlzZWA7XG5cbiAgLy8gSG9pc3QgaW5kaWNhdG9yIG91dCBmcm9tIGZpbmFsIHNsaWRlIHdoZW4gcnVubmluZyB1bmRlciByZXZlYWxcbiAgY29uc3QgcmV2ZWFsU3RhdHVzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgLmV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpZiAocmV2ZWFsU3RhdHVzKSB7XG4gICAgcmV2ZWFsU3RhdHVzLnJlbW92ZSgpO1xuICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsID4gLnNsaWRlc1wiKS5hcHBlbmRDaGlsZChyZXZlYWxTdGF0dXMpO1xuICB9XG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTkiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl85ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzkgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzksIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS04LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzggPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl83ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS03LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzcgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTYiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl82ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzYgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS01LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzUgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl80ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzQgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzIgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoiX3B5b2RpZGVfdmFsdWVfMSA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRQeXRob24sIGI2NERlY29kZX0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcInB5b2RpZGUtMS1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBQeXRob24gY29kZVxuICBjb25zdCByZXN1bHQgPSBweW9kaWRlT2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjFcIiBpbiBweW9kaWRlT2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgcHl0aG9uXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFB5dGhvbihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHB5b2RpZGVPanMucmVuZGVyZWRPanNbXCIxXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIn0seyJjZWxsTmFtZSI6InB5b2RpZGUtcHJlbHVkZSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InB5b2RpZGVPanMgPSB7XG4gIGNvbnN0IHtcbiAgICBQeW9kaWRlRXZhbHVhdG9yLFxuICAgIFB5b2RpZGVFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBQeXRob24sXG4gICAgc3RhcnRQeW9kaWRlV29ya2VyLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGgsXG4gIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHN0YXR1c0NvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1zdGF0dXNcIik7XG4gIGNvbnN0IGluZGljYXRvckNvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGluZGljYXRvckNvbnRhaW5lci5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpO1xuXG4gIGxldCBzdGF0dXNUZXh0ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKVxuICBzdGF0dXNUZXh0LmNsYXNzTGlzdCA9IFwiZXhlcmNpc2UtbG9hZGluZy1kZXRhaWxzXCI7XG4gIHN0YXR1c1RleHQgPSBzdGF0dXNDb250YWluZXIuYXBwZW5kQ2hpbGQoc3RhdHVzVGV4dCk7XG4gIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5pdGlhbGlzZWA7XG5cbiAgLy8gSG9pc3QgaW5kaWNhdG9yIG91dCBmcm9tIGZpbmFsIHNsaWRlIHdoZW4gcnVubmluZyB1bmRlciByZXZlYWxcbiAgY29uc3QgcmV2ZWFsU3RhdHVzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgLmV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpZiAocmV2ZWFsU3RhdHVzKSB7XG4gICAgcmV2ZWFsU3RhdHVzLnJlbW92ZSgpO1xuICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsID4gLnNsaWRlc1wiKS5hcHBlbmRDaGlsZChyZXZlYWxTdGF0dXMpO1xuICB9XG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
 </script>
 <div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
 <div id="exercise-loading-status" class="d-flex gap-2">
@@ -874,7 +741,6 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTEyIiwiaW5saW5lIjpmYWxzZSwibWV0aG9k
 <script type="vfs-file">
 W10=
 </script>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1288,6 +1154,18 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../lectures/lecture07/1_differentiation.html" class="pagination-link" aria-label="Numerical Differentiation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Numerical Differentiation</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="pagination-link" aria-label="Advanced Seminar 1">
+        <span class="nav-page-text">Advanced Seminar 1</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

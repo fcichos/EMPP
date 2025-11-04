@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../lectures/lecture08/3_solving_ODEs.html" rel="next">
+<link href="../../lectures/lecture03/1_numpy.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -133,7 +135,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Numerical Differentiation</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture03/1_numpy.html">⚡ Week 4-5: Classical Mechanics</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture07/1_differentiation.html">Numerical Differentiation</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -255,32 +257,55 @@ window.Quarto = {
  <span class="menu-text">Application: Brownian Motion (Simple)</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">⚡ Week 4-5: Classical Mechanics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture03/1_numpy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Arrays with Numpy</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture07/1_differentiation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Numerical Differentiation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture08/3_solving_ODEs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tool: Solving ODEs</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">🛠️ Hands-On Seminars</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
  <span class="menu-text">Advanced Topics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link">
@@ -301,22 +326,27 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#first-order-derivative" id="toc-first-order-derivative" class="nav-link active" data-scroll-target="#first-order-derivative">First Order Derivative</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#first-order-derivative" id="toc-first-order-derivative" class="nav-link" data-scroll-target="#first-order-derivative">First Order Derivative</a>
   <ul class="collapse">
-  <li><a href="#matrix-version-of-the-first-derivative" id="toc-matrix-version-of-the-first-derivative" class="nav-link" data-scroll-target="#matrix-version-of-the-first-derivative">Matrix Version of the First Derivative</a></li>
+  <li><a href="#the-basic-idea" id="toc-the-basic-idea" class="nav-link" data-scroll-target="#the-basic-idea">The Basic Idea</a></li>
+  <li><a href="#improving-accuracy-central-difference" id="toc-improving-accuracy-central-difference" class="nav-link" data-scroll-target="#improving-accuracy-central-difference">Improving Accuracy: Central Difference</a></li>
+  <li><a href="#example-derivative-of-sinx-using-arrays" id="toc-example-derivative-of-sinx-using-arrays" class="nav-link" data-scroll-target="#example-derivative-of-sinx-using-arrays">Example: Derivative of sin(x) using Arrays</a></li>
+  <li><a href="#forward-and-backward-differences" id="toc-forward-and-backward-differences" class="nav-link" data-scroll-target="#forward-and-backward-differences">Forward and Backward Differences</a></li>
   </ul></li>
-  <li><a href="#second-order-derivative" id="toc-second-order-derivative" class="nav-link" data-scroll-target="#second-order-derivative">Second order derivative</a></li>
-  <li><a href="#scipy-module" id="toc-scipy-module" class="nav-link" data-scroll-target="#scipy-module">SciPy Module</a>
+  <li><a href="#second-order-derivative" id="toc-second-order-derivative" class="nav-link" data-scroll-target="#second-order-derivative">Second Order Derivative</a>
   <ul class="collapse">
-  <li><a href="#matrix-version" id="toc-matrix-version" class="nav-link" data-scroll-target="#matrix-version">Matrix Version</a></li>
+  <li><a href="#example-second-derivative-of-sinx" id="toc-example-second-derivative-of-sinx" class="nav-link" data-scroll-target="#example-second-derivative-of-sinx">Example: Second Derivative of sin(x)</a></li>
   </ul></li>
+  <li><a href="#using-scipy-for-derivatives" id="toc-using-scipy-for-derivatives" class="nav-link" data-scroll-target="#using-scipy-for-derivatives">Using SciPy for Derivatives</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture03/1_numpy.html">⚡ Week 4-5: Classical Mechanics</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture07/1_differentiation.html">Numerical Differentiation</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Numerical Differentiation</h1>
 </div>
@@ -341,12 +371,19 @@ window.Quarto = {
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1ZX0sImNvZGUiOiJcbmltcG9ydCBudW1weSBhcyBucFxuaW1wb3J0IGlvXG5pbXBvcnQgcGFuZGFzIGFzIHBkXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5mcm9tIHNjaXB5Lm9wdGltaXplIGltcG9ydCBjdXJ2ZV9maXRcbnBsdC5yY1BhcmFtcy51cGRhdGUoeydmb250LnNpemUnOiAxOH0pXG5mcm9tIGlweXdpZGdldHMgaW1wb3J0IGludGVyYWN0LCBpbnRlcmFjdGl2ZSwgZml4ZWQsIGludGVyYWN0X21hbnVhbFxuaW1wb3J0IGlweXdpZGdldHMgYXMgd2lkZ2V0c1xuXG4jIGRlZmF1bHQgdmFsdWVzIGZvciBwbG90dGluZ1xucGx0LnJjUGFyYW1zLnVwZGF0ZSh7J2ZvbnQuc2l6ZSc6IDEyLFxuICAgICAgICAgICAgICAgICAgICAgJ2xpbmVzLmxpbmV3aWR0aCc6IDEsXG4gICAgICAgICAgICAgICAgICAgICAnbGluZXMubWFya2Vyc2l6ZSc6IDUsXG4gICAgICAgICAgICAgICAgICAgICAnYXhlcy5sYWJlbHNpemUnOiAxMSxcbiAgICAgICAgICAgICAgICAgICAgICd4dGljay5sYWJlbHNpemUnIDogMTAsXG4gICAgICAgICAgICAgICAgICAgICAneXRpY2subGFiZWxzaXplJyA6IDEwLFxuICAgICAgICAgICAgICAgICAgICAgJ3h0aWNrLnRvcCcgOiBUcnVlLFxuICAgICAgICAgICAgICAgICAgICAgJ3h0aWNrLmRpcmVjdGlvbicgOiAnaW4nLFxuICAgICAgICAgICAgICAgICAgICAgJ3l0aWNrLnJpZ2h0JyA6IFRydWUsXG4gICAgICAgICAgICAgICAgICAgICAneXRpY2suZGlyZWN0aW9uJyA6ICdpbicsfSlcblxuZGVmIGdldF9zaXplKHcsaCk6XG4gICAgICByZXR1cm4oKHcvMi41NCxoLzIuNTQpKSJ9
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1ZX0sImNvZGUiOiJcbmltcG9ydCBudW1weSBhcyBucFxuaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuZnJvbSBzY2lweS5zcGFyc2UgaW1wb3J0IGRpYWdzXG5wbHQucmNQYXJhbXMudXBkYXRlKHsnZm9udC5zaXplJzogMTh9KVxuXG4jIGRlZmF1bHQgdmFsdWVzIGZvciBwbG90dGluZ1xucGx0LnJjUGFyYW1zLnVwZGF0ZSh7J2ZvbnQuc2l6ZSc6IDEyLFxuICAgICAgICAgICAgICAgICAgICAgJ2xpbmVzLmxpbmV3aWR0aCc6IDEsXG4gICAgICAgICAgICAgICAgICAgICAnbGluZXMubWFya2Vyc2l6ZSc6IDUsXG4gICAgICAgICAgICAgICAgICAgICAnYXhlcy5sYWJlbHNpemUnOiAxMSxcbiAgICAgICAgICAgICAgICAgICAgICd4dGljay5sYWJlbHNpemUnIDogMTAsXG4gICAgICAgICAgICAgICAgICAgICAneXRpY2subGFiZWxzaXplJyA6IDEwLFxuICAgICAgICAgICAgICAgICAgICAgJ3h0aWNrLnRvcCcgOiBUcnVlLFxuICAgICAgICAgICAgICAgICAgICAgJ3h0aWNrLmRpcmVjdGlvbicgOiAnaW4nLFxuICAgICAgICAgICAgICAgICAgICAgJ3l0aWNrLnJpZ2h0JyA6IFRydWUsXG4gICAgICAgICAgICAgICAgICAgICAneXRpY2suZGlyZWN0aW9uJyA6ICdpbicsfSlcblxuZGVmIGdldF9zaXplKHcsaCk6XG4gICAgICByZXR1cm4oKHcvMi41NCxoLzIuNTQpKSJ9
 </script>
 </div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In physics, we constantly need to calculate derivatives - rates of change of quantities. For example: - Velocity is the derivative of position: <span class="math inline">\(v = \frac{dx}{dt}\)</span> - Acceleration is the derivative of velocity: <span class="math inline">\(a = \frac{dv}{dt}\)</span> - Force depends on derivatives through Newton’s second law: <span class="math inline">\(F = ma = m\frac{d^2x}{dt^2}\)</span></p>
+<p>When we work with numerical data or need to solve equations on a computer, we need to approximate these derivatives numerically.</p>
+</section>
 <section id="first-order-derivative" class="level2">
 <h2 class="anchored" data-anchor-id="first-order-derivative">First Order Derivative</h2>
-<p>Our previous method of finding the derivative was based on the definition of the derivative itself. The derivative of a function <span class="math inline">\(f(x)\)</span> at a point <span class="math inline">\(x\)</span> is defined as the limit of the difference quotient as the interval <span class="math inline">\(\Delta x\)</span> goes to zero:</p>
+<section id="the-basic-idea" class="level3">
+<h3 class="anchored" data-anchor-id="the-basic-idea">The Basic Idea</h3>
+<p>The derivative of a function <span class="math inline">\(f(x)\)</span> at a point <span class="math inline">\(x\)</span> is defined as the limit of the difference quotient as the interval <span class="math inline">\(\Delta x\)</span> goes to zero:</p>
 <p><span class="math display">\[
 f^{\prime}(x) = \lim_{\Delta x \rightarrow 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}
 \]</span></p>
@@ -354,11 +391,11 @@ f^{\prime}(x) = \lim_{\Delta x \rightarrow 0} \frac{f(x + \Delta x) - f(x)}{\Del
 <p><span class="math display">\[
 f^{\prime}_{i} \approx \frac{f_{i+1} - f_{i}}{\Delta x}
 \]</span></p>
-<p>Here, we look to the right of the current position <span class="math inline">\(i\)</span> and divide by the interval <span class="math inline">\(\Delta x\)</span>. It is not difficult to see that the resulting local error <span class="math inline">\(\delta\)</span> at each step is given by:</p>
-<p><span class="math display">\[
-\delta = f_{i+1} - f_{i} - \Delta x f^{\prime}(x_i) = \frac{1}{2} \Delta x^2 f^{\prime \prime}(x_i) + O(\Delta x^3)
-\]</span></p>
-<p>It can be seen that the error is proportional to the <strong>square</strong> of the interval <span class="math inline">\(\Delta x\)</span>. This is the reason why the method is called first order accurate. The error is of the order of <span class="math inline">\(\Delta x^{2}\)</span>.</p>
+<p>Here, we look to the right of the current position <span class="math inline">\(i\)</span> and divide by the interval <span class="math inline">\(\Delta x\)</span>. This is called the <strong>forward difference</strong> method.</p>
+</section>
+<section id="improving-accuracy-central-difference" class="level3">
+<h3 class="anchored" data-anchor-id="improving-accuracy-central-difference">Improving Accuracy: Central Difference</h3>
+<p>We can do better! Using the Taylor expansion, we can derive a more accurate formula.</p>
 <p>A better expression can be found using the Taylor expansion around the position <span class="math inline">\(x_0\)</span>:</p>
 <p><span class="math display">\[
 f(x) = f(x_{0}) + (x - x_0) f^{\prime}(x) + \frac{(x - x_0)^2}{2!} f^{\prime\prime}(x) + \frac{(x - x_0)^3}{3!} f^{(3)}(x) + \ldots
@@ -375,48 +412,92 @@ f_{i-1} = f_{i} - \Delta x f_{i}^{\prime} + \frac{\Delta x^2}{2!} f_{i}^{\prime\
 <p><span class="math display">\[
 f_{i+1} - f_{i-1} = 2 \Delta x f_{i}^{\prime} + O(\Delta x^3)
 \]</span></p>
-<p>such that the second order term in <span class="math inline">\(\Delta x\)</span> disappears. Neglecting the higher-order terms, we have</p>
+<p>Notice that the second order term in <span class="math inline">\(\Delta x\)</span> disappears! Neglecting the higher-order terms, we have the <strong>central difference</strong> formula:</p>
 <p><span class="math display">\[
 f^{\prime}_{i} \approx \frac{f_{i+1} - f_{i-1}}{2 \Delta x}
 \]</span></p>
-<p>an thus have a first order derivative which is even more accurate than the one obtained from the definition of the derivative.</p>
-<p>We can continue that type of derivation now to obtain higher order approximation of the first derivative with better accuracy. For that purpose you may calculate now <span class="math inline">\(f_{i\pm 2}\)</span> and combining that with <span class="math inline">\(f_{i+1}-f_{i-1}\)</span> will lead to</p>
-<p><span class="math display">\[\begin{equation}
-f_{i}^{\prime}=\frac{1}{12 \Delta x}(f_{i-2}-8f_{i-1}+8f_{i+1}-f_{i+2})
-\end{equation}\]</span></p>
-<p>This can be used to give even better values for the first derivative.</p>
-<p>Let`s try out one of the formulas in the following code cell. We will write a function that calculates the derivative of a given function at a given position <span class="math inline">\(x\)</span>. The function will take the function <span class="math inline">\(f\)</span> as and argument, which is new to us. We will also introduce a small interval <span class="math inline">\(h=\Delta x\)</span> which will be used to calculate the derivative. The function will return the derivative of the function at the given position <span class="math inline">\(x\)</span>.</p>
+<p>This is more accurate than the forward difference method because the error is proportional to <span class="math inline">\(\Delta x^3\)</span> instead of <span class="math inline">\(\Delta x^2\)</span>.</p>
+</section>
+<section id="example-derivative-of-sinx-using-arrays" class="level3">
+<h3 class="anchored" data-anchor-id="example-derivative-of-sinx-using-arrays">Example: Derivative of sin(x) using Arrays</h3>
+<p>Let’s implement the central difference formula using arrays. We’ll calculate the derivative of <span class="math inline">\(\sin(x)\)</span>, which we know should give us <span class="math inline">\(\cos(x)\)</span>.</p>
 <div>
 <div id="pyodide-2">
 
 </div>
 <script type="pyodide-2-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImRlZiBEKGYsIHgsIGg9MS5lLTEyLCAqcGFyYW1zKTpcbiAgICByZXR1cm4gKGYoeCtoLCAqcGFyYW1zKS1mKHgtaCwgKnBhcmFtcykpLygyKmgpIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgQ3JlYXRlIGFuIGFycmF5IG9mIHggdmFsdWVzXG54ID0gbnAubGluc3BhY2UoMCwgMipucC5waSwgMTAwKVxuZHggPSB4WzFdIC0geFswXSAgIyBUaGUgc3BhY2luZyBiZXR3ZWVuIHBvaW50c1xuXG4jIENhbGN1bGF0ZSBzaW4oeClcbnkgPSBucC5zaW4oeClcblxuIyBDYWxjdWxhdGUgdGhlIGRlcml2YXRpdmUgdXNpbmcgY2VudHJhbCBkaWZmZXJlbmNlc1xuIyBXZSB1c2UgYXJyYXkgc2xpY2luZyB0byBnZXQgZltpKzFdIGFuZCBmW2ktMV1cbmRlcml2YXRpdmUgPSAoeVsyOl0gLSB5WzotMl0pIC8gKDIgKiBkeClcblxuIyBOb3RlOiB0aGUgZGVyaXZhdGl2ZSBhcnJheSBpcyAyIGVsZW1lbnRzIHNob3J0ZXIgdGhhbiB0aGUgb3JpZ2luYWxcbiMgKHdlIGxvc2Ugb25lIHBvaW50IGF0IGVhY2ggZW5kKVxueF9kZXJpdmF0aXZlID0geFsxOi0xXSAgIyBDb3JyZXNwb25kaW5nIHggdmFsdWVzIGZvciB0aGUgZGVyaXZhdGl2ZSJ9
 </script>
 </div>
-<p>Note that the definition contains additional parameters <code>*params</code> which are passed to the function <code>f</code>. This is a general way to pass additional parameters to the function <code>f</code> which is used in the definition of the derivative.</p>
-<p>We will try to calculate the derivative of the <span class="math inline">\(\sin(x)\)</span> function:</p>
+<p>Let’s plot the results:</p>
 <div>
 <div id="pyodide-3">
 
 </div>
 <script type="pyodide-3-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImRlZiBmKHgpOlxuICAgIHJldHVybihucC5zaW4oeCkpIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6InBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgxNCwgOCkpXG5wbHQucGxvdCh4LCB5LCAnYi0nLCBsYWJlbD1yJyRmKHgpID0gXFxzaW4oeCkkJywgbGluZXdpZHRoPTIpXG5wbHQucGxvdCh4X2Rlcml2YXRpdmUsIGRlcml2YXRpdmUsICdyLScsIGxhYmVsPXJcIiRmJyh4KSQgKG51bWVyaWNhbClcIiwgbGluZXdpZHRoPTIpXG5wbHQucGxvdCh4LCBucC5jb3MoeCksICdnLS0nLCBsYWJlbD1yJyRcXGNvcyh4KSQgKGV4YWN0KScsIGxpbmV3aWR0aD0xLjUsIGFscGhhPTAuNylcbnBsdC54bGFiZWwoJ3gnKVxucGx0LnlsYWJlbCgneScpXG5wbHQubGVnZW5kKClcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC50aXRsZSgnTnVtZXJpY2FsIERpZmZlcmVudGlhdGlvbiBvZiBzaW4oeCknKVxucGx0LnRpZ2h0X2xheW91dCgpXG5wbHQuc2hvdygpIn0=
 </script>
 </div>
-<p>We can plot this and nicely obtain our cosine function</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Understanding Array Slicing for Derivatives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When we write <code>y[2:]</code> we get all elements from index 2 to the end: <span class="math inline">\([f_2, f_3, f_4, ..., f_n]\)</span></p>
+<p>When we write <code>y[:-2]</code> we get all elements from the start up to (but not including) the last 2: <span class="math inline">\([f_0, f_1, f_2, ..., f_{n-2}]\)</span></p>
+<p>So <code>y[2:] - y[:-2]</code> gives us: <span class="math inline">\([f_2 - f_0, f_3 - f_1, f_4 - f_2, ..., f_n - f_{n-2}]\)</span></p>
+<p>This is exactly <span class="math inline">\(f_{i+1} - f_{i-1}\)</span> for each point <span class="math inline">\(i\)</span>!</p>
+</div>
+</div>
+</section>
+<section id="forward-and-backward-differences" class="level3">
+<h3 class="anchored" data-anchor-id="forward-and-backward-differences">Forward and Backward Differences</h3>
+<p>At the boundaries of our data, we can’t use the central difference formula. Instead, we use:</p>
+<p><strong>Forward difference</strong> (at the left boundary): <span class="math display">\[
+f^{\prime}_{0} \approx \frac{f_{1} - f_{0}}{\Delta x}
+\]</span></p>
+<p><strong>Backward difference</strong> (at the right boundary): <span class="math display">\[
+f^{\prime}_{n} \approx \frac{f_{n} - f_{n-1}}{\Delta x}
+\]</span></p>
+<p>Let’s implement a complete derivative function that handles boundaries:</p>
 <div>
 <div id="pyodide-4">
 
 </div>
 <script type="pyodide-4-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxueD1ucC5saW5zcGFjZSgwLjAxLG5wLnBpKjQsMTAwMClcblxucGx0LnBsb3QoeCxEKGYseCkpIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImRlZiBudW1lcmljYWxfZGVyaXZhdGl2ZSh4LCB5KTpcbiAgICBcIlwiXCJcbiAgICBDYWxjdWxhdGUgdGhlIG51bWVyaWNhbCBkZXJpdmF0aXZlIG9mIHkgd2l0aCByZXNwZWN0IHRvIHguXG4gICAgVXNlcyBjZW50cmFsIGRpZmZlcmVuY2VzIGluIHRoZSBpbnRlcmlvciBhbmQgZm9yd2FyZC9iYWNrd2FyZFxuICAgIGRpZmZlcmVuY2VzIGF0IHRoZSBib3VuZGFyaWVzLlxuICAgIFwiXCJcIlxuICAgIGR4ID0geFsxXSAtIHhbMF0gICMgQXNzdW1lcyB1bmlmb3JtIHNwYWNpbmdcbiAgICBkZXJpdmF0aXZlID0gbnAuemVyb3NfbGlrZSh5KVxuXG4gICAgIyBGb3J3YXJkIGRpZmZlcmVuY2UgYXQgdGhlIGxlZnQgYm91bmRhcnlcbiAgICBkZXJpdmF0aXZlWzBdID0gKHlbMV0gLSB5WzBdKSAvIGR4XG5cbiAgICAjIENlbnRyYWwgZGlmZmVyZW5jZSBpbiB0aGUgaW50ZXJpb3JcbiAgICBkZXJpdmF0aXZlWzE6LTFdID0gKHlbMjpdIC0geVs6LTJdKSAvICgyICogZHgpXG5cbiAgICAjIEJhY2t3YXJkIGRpZmZlcmVuY2UgYXQgdGhlIHJpZ2h0IGJvdW5kYXJ5XG4gICAgZGVyaXZhdGl2ZVstMV0gPSAoeVstMV0gLSB5Wy0yXSkgLyBkeFxuXG4gICAgcmV0dXJuIGRlcml2YXRpdmUifQ==
 </script>
 </div>
-<section id="matrix-version-of-the-first-derivative" class="level3">
-<h3 class="anchored" data-anchor-id="matrix-version-of-the-first-derivative">Matrix Version of the First Derivative</h3>
-<p>If we supply the above function with an array of positions <span class="math inline">\(x_{i}\)</span> at which we would like to calculate the derivative, we obtain an array of derivative values. We can also write this procedure in a different way, which will be helpful for solving differential equations later.</p>
-<p>If we consider the above finite difference formulas for a set of positions <span class="math inline">\(x_{i}\)</span>, we can represent the first derivative at these positions by a matrix operation as well:</p>
+<p>Now let’s test it:</p>
+<div>
+<div id="pyodide-5">
+
+</div>
+<script type="pyodide-5-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6InggPSBucC5saW5zcGFjZSgwLCAyKm5wLnBpLCA1MClcbnkgPSBucC5zaW4oeClcbmR5X2R4ID0gbnVtZXJpY2FsX2Rlcml2YXRpdmUoeCwgeSlcblxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDE0LCA4KSlcbnBsdC5wbG90KHgsIHksICdiLScsIGxhYmVsPXInJFxcc2luKHgpJCcsIGxpbmV3aWR0aD0yKVxucGx0LnBsb3QoeCwgZHlfZHgsICdyLScsIGxhYmVsPXJcIiRkL2R4W1xcc2luKHgpXSQgKG51bWVyaWNhbClcIiwgbGluZXdpZHRoPTIpXG5wbHQucGxvdCh4LCBucC5jb3MoeCksICdnLS0nLCBsYWJlbD1yJyRcXGNvcyh4KSQgKGV4YWN0KScsIGxpbmV3aWR0aD0xLjUpXG5wbHQueGxhYmVsKCd4JylcbnBsdC55bGFiZWwoJ3knKVxucGx0LmxlZ2VuZCgpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
+</script>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Advanced: Matrix Representation of Derivatives
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Here’s a cool alternative perspective! We can represent the derivative operation as a <strong>matrix multiplication</strong>. This might seem fancy, but it’s actually quite elegant and shows that differentiation is just a linear operation.</p>
+<section id="the-idea" class="level3">
+<h3 class="anchored" data-anchor-id="the-idea">The Idea</h3>
+<p>For a set of positions <span class="math inline">\(x_i\)</span>, we can write the forward difference formula as a matrix operation:</p>
 <p><span class="math display">\[
 f^{\prime} = \frac{1}{\Delta x}
 \begin{bmatrix}
@@ -425,7 +506,6 @@ f^{\prime} = \frac{1}{\Delta x}
 0 &amp; 0  &amp; -1 &amp; 1 &amp; 0 &amp; 0\\
 0 &amp; 0  &amp; 0  &amp; -1 &amp; 1 &amp; 0\\
 0 &amp; 0  &amp; 0  &amp;  0 &amp; -1 &amp; 1\\
-0 &amp; 0  &amp; 0  &amp;  0 &amp;  0 &amp; -1\\
 \end{bmatrix}
 \begin{bmatrix}
 f_{1}\\
@@ -435,171 +515,129 @@ f_{4}\\
 f_{5}\\
 f_{6}\\
 \end{bmatrix}
-=
-\begin{bmatrix}
-\frac{f_{2} - f_{1}}{\Delta x}\\
-\frac{f_{3} - f_{2}}{\Delta x}\\
-\frac{f_{4} - f_{3}}{\Delta x}\\
-\frac{f_{5} - f_{4}}{\Delta x}\\
-\frac{f_{6} - f_{5}}{\Delta x}\\
-\frac{0 - f_{6}}{\Delta x}\\
-\end{bmatrix}
 \]</span></p>
-<p>Note that here we took the derivative only to the right side! Each row of the matrix, when multiplied by the vector containing the function values, gives the derivative of the function <span class="math inline">\(f\)</span> at the corresponding position <span class="math inline">\(x_{i}\)</span>. The resulting vector represents the derivative in a certain position region.</p>
-<p>We will demonstrate how to generate such a matrix with the <code>SciPy</code> module below.</p>
+<p>Each row calculates <span class="math inline">\(f_{i+1} - f_i\)</span> for one point!</p>
 </section>
-</section>
-<section id="second-order-derivative" class="level2">
-<h2 class="anchored" data-anchor-id="second-order-derivative">Second order derivative</h2>
-<p>While we did before calculate the first derivative, we can also calculate the second derivative of a function. In the previous calculations we evaluated <span class="math inline">\(f_{i+1} - f_{i-1}\)</span>. We can now also use the sum of both to arrive at</p>
-<p><span class="math display">\[\begin{equation}
-f_{i}^{\prime\prime}\approx \frac{f_{i-1}-2f_{i}+f_{i+1}}{\Delta x^2}
-\end{equation}\]</span></p>
-<p>which gives the basic equation for calculating the second order derivative and the next order may be obtained from</p>
-<p><span class="math display">\[\begin{equation}
-f_{i}^{\prime\prime}\approx \frac{1}{12 \Delta x^{2}}(-f_{i-2}+16f_{i-1}-30 f_{i}+16f_{i+1}-f_{i+2})
-\end{equation}\]</span></p>
-<p>which is again better than our previous formula, yet needs more function values to be calculated.</p>
-</section>
-<section id="scipy-module" class="level2">
-<h2 class="anchored" data-anchor-id="scipy-module">SciPy Module</h2>
-<p>Of course, we are not the first to define some functions for calculating the derivative of functions numerically. This is already implemented in different modules. One module is the above mentioned <code>SciPy</code> module.</p>
-<p>The <code>SciPy</code> module provides the method <code>derivative</code>, which we can call with</p>
-<pre><code>derivative(f,x,dx=1.0,n=1):</code></pre>
-<p>This will calculate the n<span class="math inline">\(th\)</span> derivative of the function <span class="math inline">\(f\)</span> at the position <span class="math inline">\(x\)</span> with a intervall <span class="math inline">\(dx=1.0\)</span> (default value).</p>
-<div>
-<div id="pyodide-5">
-
-</div>
-<script type="pyodide-5-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMjIHRoZSBkZXJpdmF0aXZlIG1ldGhvZCBpcyBoaWRkZW4gaW4gdGhlIGBtaXNjYCBzdWItbW9kdWxlIG9mIGBTY2lQeWAuXG5mcm9tIHNjaXB5Lm1pc2MgaW1wb3J0IGRlcml2YXRpdmUifQ==
-</script>
-</div>
-<p>We also have the option to define the order parameter, which is not the order of the derivative but rather the number of points used to calculate the derivative according to our scheme earlier.</p>
+<section id="implementation-with-scipy" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-with-scipy">Implementation with SciPy</h3>
 <div>
 <div id="pyodide-6">
 
 </div>
 <script type="pyodide-6-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImRlcml2YXRpdmUobnAuc2luLG5wLnBpLGR4PTAuMDAwMDAxLG49MixvcmRlcj01KSJ9
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgSW1wb3J0IHRoZSBkaWFncyBmdW5jdGlvbiAoYWxyZWFkeSBpbXBvcnRlZCBhdCB0aGUgdG9wKVxuZnJvbSBzY2lweS5zcGFyc2UgaW1wb3J0IGRpYWdzXG5cbiMgQ3JlYXRlIGRhdGFcbk4gPSAxMDBcbnggPSBucC5saW5zcGFjZSgwLCAyKm5wLnBpLCBOKVxuZHggPSB4WzFdIC0geFswXVxueSA9IG5wLnNpbih4KVxuXG4jIENyZWF0ZSB0aGUgZGlmZmVyZW50aWF0aW9uIG1hdHJpeFxuIyBUaGUgbGlzdCBbLTEsIDFdIGFyZSB0aGUgdmFsdWVzIHRvIHBsYWNlIG9uIHRoZSBkaWFnb25hbHNcbiMgVGhlIGxpc3QgWzAsIDFdIGFyZSB0aGUgZGlhZ29uYWwgb2Zmc2V0cyAobWFpbiBkaWFnb25hbCBhbmQgb25lIGFib3ZlKVxuRF9tYXRyaXggPSBkaWFncyhbLTEsIDFdLCBbMCwgMV0sIHNoYXBlPShOLCBOKSkgLyBkeFxuXG4jIENhbGN1bGF0ZSBkZXJpdmF0aXZlIHVzaW5nIG1hdHJpeCBtdWx0aXBsaWNhdGlvblxuIyBUaGUgQCBvcGVyYXRvciBtZWFucyBcIm1hdHJpeCBtdWx0aXBseVwiXG5kZXJpdmF0aXZlID0gRF9tYXRyaXggQCB5XG5cbiMgUGxvdFxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDE0LCA4KSlcbnBsdC5wbG90KHhbOi0xXSwgZGVyaXZhdGl2ZVs6LTFdLCAnci0nLCBsYWJlbD1yXCIkZicoeCkkIChtYXRyaXggbWV0aG9kKVwiLCBsaW5ld2lkdGg9MilcbnBsdC5wbG90KHgsIG5wLmNvcyh4KSwgJ2ctLScsIGxhYmVsPXInJFxcY29zKHgpJCAoZXhhY3QpJywgbGluZXdpZHRoPTEuNSlcbnBsdC5wbG90KHgsIHksICdiLScsIGxhYmVsPXInJFxcc2luKHgpJCcsIGxpbmV3aWR0aD0yLCBhbHBoYT0wLjUpXG5wbHQueGxhYmVsKCd4JylcbnBsdC55bGFiZWwoJ3knKVxucGx0LmxlZ2VuZCgpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQudGl0bGUoJ01hdHJpeCBNZXRob2QgZm9yIERpZmZlcmVudGlhdGlvbicpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
 </script>
 </div>
-<section id="matrix-version" class="level3">
-<h3 class="anchored" data-anchor-id="matrix-version">Matrix Version</h3>
-<p>The <code>SciPy</code> module allows us to construct matrices as mentioned above. We will need the <code>diags</code> method from the <code>SciPy</code> module for that purpose.</p>
+</section>
+<section id="for-central-differences" class="level3">
+<h3 class="anchored" data-anchor-id="for-central-differences">For Central Differences</h3>
+<p>For central differences <span class="math inline">\(\frac{f_{i+1} - f_{i-1}}{2\Delta x}\)</span>, we use:</p>
 <div>
 <div id="pyodide-7">
 
 </div>
 <script type="pyodide-7-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImZyb20gc2NpcHkuc3BhcnNlIGltcG9ydCBkaWFncyJ9
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgQ2VudHJhbCBkaWZmZXJlbmNlIG1hdHJpeDogZGlhZ29uYWwgYmVsb3cgKC0xKSBhbmQgZGlhZ29uYWwgYWJvdmUgKCsxKVxuRF9jZW50cmFsID0gZGlhZ3MoWy0xLCAxXSwgWy0xLCAxXSwgc2hhcGU9KE4sIE4pKSAvICgyICogZHgpXG5kZXJpdmF0aXZlX2NlbnRyYWwgPSBEX2NlbnRyYWwgQCB5XG5cbnBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgxNCwgOCkpXG5wbHQucGxvdCh4LCB5LCAnYi0nLCBsYWJlbD1yJyRcXHNpbih4KSQnLCBsaW5ld2lkdGg9MilcbnBsdC5wbG90KHhbMTotMV0sIGRlcml2YXRpdmVfY2VudHJhbFsxOi0xXSwgJ3ItJywgbGFiZWw9clwiJGYnKHgpJCAoY2VudHJhbCBkaWZmIG1hdHJpeClcIiwgbGluZXdpZHRoPTIpXG5wbHQucGxvdCh4LCBucC5jb3MoeCksICdnLS0nLCBsYWJlbD1yJyRcXGNvcyh4KSQgKGV4YWN0KScsIGxpbmV3aWR0aD0xLjUpXG5wbHQueGxhYmVsKCd4JylcbnBsdC55bGFiZWwoJ3knKVxucGx0LmxlZ2VuZCgpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
 </script>
 </div>
-<p>Let’s assume we want to calculate the derivative of the <code>sin</code> function at certain positions.</p>
+</section>
+<section id="why-is-this-cool" class="level3">
+<h3 class="anchored" data-anchor-id="why-is-this-cool">Why is This Cool?</h3>
+<ol type="1">
+<li><strong>Conceptual clarity</strong>: Differentiation is a linear operation - multiply by a matrix!</li>
+<li><strong>Efficient</strong>: Matrix operations are highly optimized in NumPy</li>
+<li><strong>Useful later</strong>: This perspective is essential for solving partial differential equations (PDEs)</li>
+<li><strong>Same math, different view</strong>: It’s just organizing our finite differences into matrix form</li>
+</ol>
+<p>The <code>@</code> operator is Python’s matrix multiplication operator - it’s like <code>*</code> for arrays, but follows matrix multiplication rules.</p>
+</section>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="second-order-derivative" class="level2">
+<h2 class="anchored" data-anchor-id="second-order-derivative">Second Order Derivative</h2>
+<p>We can also calculate the second derivative numerically. Going back to our Taylor expansions, if we <strong>add</strong> <span class="math inline">\(f_{i+1}\)</span> and <span class="math inline">\(f_{i-1}\)</span> instead of subtracting them:</p>
+<p><span class="math display">\[
+f_{i+1} + f_{i-1} = 2f_{i} + \Delta x^2 f_{i}^{\prime\prime} + O(\Delta x^4)
+\]</span></p>
+<p>Rearranging:</p>
+<p><span class="math display">\[
+f_{i}^{\prime\prime}\approx \frac{f_{i-1}-2f_{i}+f_{i+1}}{\Delta x^2}
+\]</span></p>
+<p>This gives us the basic equation for calculating the second derivative.</p>
+<section id="example-second-derivative-of-sinx" class="level3">
+<h3 class="anchored" data-anchor-id="example-second-derivative-of-sinx">Example: Second Derivative of sin(x)</h3>
+<p>The second derivative of <span class="math inline">\(\sin(x)\)</span> should be <span class="math inline">\(-\sin(x)\)</span>.</p>
 <div>
 <div id="pyodide-8">
 
 </div>
 <script type="pyodide-8-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6Ik4gPSAxMDBcbnggPSBucC5saW5zcGFjZSgtNSwgNSwgTilcbnkgPSBucC5zaW4oeCkifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6InggPSBucC5saW5zcGFjZSgwLCAyKm5wLnBpLCAxMDApXG5keCA9IHhbMV0gLSB4WzBdXG55ID0gbnAuc2luKHgpXG5cbiMgU2Vjb25kIGRlcml2YXRpdmUgdXNpbmcgY2VudHJhbCBkaWZmZXJlbmNlc1xuc2Vjb25kX2Rlcml2YXRpdmUgPSAoeVsyOl0gLSAyKnlbMTotMV0gKyB5WzotMl0pIC8gKGR4KioyKVxueF9zZWNvbmRfZGVyaXYgPSB4WzE6LTFdXG5cbnBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgxNCwgOCkpXG5wbHQucGxvdCh4LCB5LCAnYi0nLCBsYWJlbD1yJyRcXHNpbih4KSQnLCBsaW5ld2lkdGg9MilcbnBsdC5wbG90KHhfc2Vjb25kX2Rlcml2LCBzZWNvbmRfZGVyaXZhdGl2ZSwgJ3ItJywgbGFiZWw9clwiJGReMi9keF4yW1xcc2luKHgpXSQgKG51bWVyaWNhbClcIiwgbGluZXdpZHRoPTIpXG5wbHQucGxvdCh4LCAtbnAuc2luKHgpLCAnZy0tJywgbGFiZWw9cickLVxcc2luKHgpJCAoZXhhY3QpJywgbGluZXdpZHRoPTEuNSlcbnBsdC54bGFiZWwoJ3gnKVxucGx0LnlsYWJlbCgneScpXG5wbHQubGVnZW5kKClcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC50aXRsZSgnU2Vjb25kIERlcml2YXRpdmUgb2Ygc2luKHgpJylcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
 </script>
 </div>
-<p>The <code>diags</code> function uses a set of numbers that should be distributed along the diagonals of the matrix. If you supply a list like in the example below, the numbers are distributed using the offsets as defined in the second list. The <code>shape</code> keyword defines the shape of the matrix. Try the example in the next cell with the <code>.todense()</code> suffix. This converts the otherwise unreadable sparse output to a readable matrix form.</p>
+</section>
+</section>
+<section id="using-scipy-for-derivatives" class="level2">
+<h2 class="anchored" data-anchor-id="using-scipy-for-derivatives">Using SciPy for Derivatives</h2>
+<p>Of course, we are not the first to implement numerical derivatives! The <code>SciPy</code> module provides ready-made functions.</p>
+<p>The <code>SciPy</code> module provides the method <code>derivative</code>, which we can use to calculate derivatives of mathematical functions:</p>
 <div>
 <div id="pyodide-9">
 
 </div>
 <script type="pyodide-9-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6Im0gPSBkaWFncyhbLTEsIDFdLCBbMCwgMV0sIHNoYXBlPSgxMCwgMTApKS50b2RlbnNlKClcbnByaW50KG0pIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImZyb20gc2NpcHkubWlzYyBpbXBvcnQgZGVyaXZhdGl2ZVxuXG4jIENhbGN1bGF0ZSB0aGUgZGVyaXZhdGl2ZSBvZiBzaW4gYXQgeCA9IHBpLzRcbnhfcG9pbnQgPSBucC5waSAvIDRcbmRlcml2X3ZhbHVlID0gZGVyaXZhdGl2ZShucC5zaW4sIHhfcG9pbnQsIGR4PTFlLTYpXG5cbnByaW50KGZcIkRlcml2YXRpdmUgb2Ygc2luKHgpIGF0IHggPSDPgC80OlwiKVxucHJpbnQoZlwiTnVtZXJpY2FsOiB7ZGVyaXZfdmFsdWU6LjZmfVwiKVxucHJpbnQoZlwiRXhhY3Q6ICAgICB7bnAuY29zKHhfcG9pbnQpOi42Zn1cIikifQ==
 </script>
 </div>
-<p>To comply with our previous definition of <span class="math inline">\(N=100\)</span> data points and the interval <span class="math inline">\(\Delta x\)</span>, we define:</p>
+<p>You can also calculate higher derivatives by specifying the <code>n</code> parameter:</p>
 <div>
 <div id="pyodide-10">
 
 </div>
 <script type="pyodide-10-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImR4ID0geFsxXSAtIHhbMF1cbm0gPSBkaWFncyhbLTEsIDFdLCBbMCwgMV0sIHNoYXBlPShOLCBOKSkgLyBkeCJ9
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgU2Vjb25kIGRlcml2YXRpdmUgb2Ygc2luIGF0IHggPSBwaS80XG5zZWNvbmRfZGVyaXYgPSBkZXJpdmF0aXZlKG5wLnNpbiwgbnAucGkvNCwgZHg9MWUtNiwgbj0yKVxuXG5wcmludChmXCJTZWNvbmQgZGVyaXZhdGl2ZSBvZiBzaW4oeCkgYXQgeCA9IM+ALzQ6XCIpXG5wcmludChmXCJOdW1lcmljYWw6IHtzZWNvbmRfZGVyaXY6LjZmfVwiKVxucHJpbnQoZlwiRXhhY3Q6ICAgICB7LW5wLnNpbihucC5waS80KTouNmZ9XCIpIn0=
 </script>
 </div>
-<p>The derivative is then simply a matrix-vector multiplication, which is done either by <code>np.dot(m,y)</code> or just by the <code>@</code> operator.</p>
+<p>The <code>order</code> parameter controls the number of points used in the finite difference formula (higher order = more accurate):</p>
 <div>
 <div id="pyodide-11">
 
 </div>
 <script type="pyodide-11-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImRpZmYgPSBtIEAgeSJ9
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgQ29tcGFyZSBkaWZmZXJlbnQgb3JkZXJzXG54X3BvaW50ID0gbnAucGkgLyAzXG5vcmRlcnMgPSBbMywgNSwgN11cblxucHJpbnQoZlwiRGVyaXZhdGl2ZSBvZiBzaW4oeCkgYXQgeCA9IM+ALzM6XCIpXG5wcmludChmXCJFeGFjdCB2YWx1ZToge25wLmNvcyh4X3BvaW50KTouMTBmfVxcblwiKVxuXG5mb3Igb3JkZXIgaW4gb3JkZXJzOlxuICAgIGRlcml2ID0gZGVyaXZhdGl2ZShucC5zaW4sIHhfcG9pbnQsIGR4PTFlLTYsIG9yZGVyPW9yZGVyKVxuICAgIGVycm9yID0gYWJzKGRlcml2IC0gbnAuY29zKHhfcG9pbnQpKVxuICAgIHByaW50KGZcIk9yZGVyIHtvcmRlcn06IHtkZXJpdjouMTBmfSwgZXJyb3IgPSB7ZXJyb3I6LjJlfVwiKSJ9
 </script>
 </div>
-<p>Let’s plot the original function and its numerical derivative.</p>
-<div>
-<div id="pyodide-12">
-
-</div>
-<script type="pyodide-12-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6InBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgxNCw4KSlcbnBsdC5wbG90KHhbOi0xXSwgZGlmZls6LTFdLCBsYWJlbD1yJyRmXntcXHByaW1lfSh4KSQnKVxucGx0LnBsb3QoeCwgeSwgbGFiZWw9cickZih4KT1cXHNpbih4KSQnKVxucGx0LnhsYWJlbCgneCcpXG5wbHQueWxhYmVsKHInJGYkLCAkZl57XFxwcmltZX0kJylcbnBsdC5sZWdlbmQobG9jPSd1cHBlciBsZWZ0JywgYmJveF90b19hbmNob3I9KDEsIDEpKVxucGx0LnlsaW0oLTEsIDEpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
-</script>
-</div>
-<p>Check for yourself that the following line of code will calculate the second derivative.</p>
-<div>
-<div id="pyodide-13">
-
-</div>
-<script type="pyodide-13-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6Im0gPSBkaWFncyhbMSwgLTIsIDFdLCBbLTEsIDAsIDFdLCBzaGFwZT0oTiwgTikpIC8gZHgqKjJcbnNlY29uZF9kaWZmID0gbSBAIHkifQ==
-</script>
-</div>
-<p>Let’s plot the original function and its second numerical derivative.</p>
-<div>
-<div id="pyodide-14">
-
-</div>
-<script type="pyodide-14-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6InBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgxNCw4KSlcbnBsdC5wbG90KHhbMTotMV0sIHNlY29uZF9kaWZmWzE6LTFdLCBsYWJlbD1yJyRmXntcXHByaW1lXFxwcmltZX0oeCkkJylcbnBsdC5wbG90KHgsIHksIGxhYmVsPXInJGYoeCk9XFxzaW4oeCkkJylcbnBsdC54bGFiZWwoJ3gnKVxucGx0LnlsYWJlbChyJyRmJCwgJGZee1xccHJpbWVcXHByaW1lfSQnKVxucGx0LmxlZ2VuZChsb2M9J3VwcGVyIGxlZnQnLCBiYm94X3RvX2FuY2hvcj0oMSwgMSkpXG5wbHQueWxpbSgtMSwgMSlcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
-</script>
-</div>
-<p>This demonstrates how to use the <code>SciPy</code> module to construct matrices for numerical differentiation and how to apply these matrices to compute first and second derivatives.</p>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>In this lecture, we learned:</p>
+<ol type="1">
+<li><strong>Numerical differentiation</strong> approximates derivatives using finite differences</li>
+<li><strong>Central differences</strong> are more accurate than forward/backward differences</li>
+<li>The formulas we use:
+<ul>
+<li>First derivative: <span class="math inline">\(f^{\prime}_{i} \approx \frac{f_{i+1} - f_{i-1}}{2 \Delta x}\)</span></li>
+<li>Second derivative: <span class="math inline">\(f^{\prime\prime}_{i} \approx \frac{f_{i-1}-2f_{i}+f_{i+1}}{\Delta x^2}\)</span></li>
+</ul></li>
+<li>We can implement these using <strong>array slicing</strong> in NumPy</li>
+<li><strong>SciPy</strong> provides ready-made functions for numerical differentiation</li>
+</ol>
+<p>These tools will be essential when we solve differential equations in the next lecture!</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Applications of the Matrix Method
+Why Do We Need This?
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The matrix method for computing derivatives is particularly useful in several contexts, especially in numerical analysis and computational mathematics. Here are some key applications:</p>
-<ol type="1">
-<li><strong>Solving Differential Equations</strong>:
-<ul>
-<li><strong>Ordinary Differential Equations (ODEs)</strong>: The matrix method can be used to discretize ODEs, transforming them into a system of linear equations that can be solved using linear algebra techniques.</li>
-<li><strong>Partial Differential Equations (PDEs)</strong>: Similarly, PDEs can be discretized using finite difference methods, where derivatives are approximated by matrix operations. This is essential in fields like fluid dynamics, heat transfer, and electromagnetics.</li>
-</ul></li>
-<li><strong>Numerical Differentiation</strong>:
-<ul>
-<li>The matrix method provides a systematic way to approximate derivatives of functions given discrete data points. This is useful in data analysis, signal processing, and any application where you need to estimate the rate of change from sampled data.</li>
-</ul></li>
-<li><strong>Stability and Accuracy Analysis</strong>:
-<ul>
-<li>By representing derivative operations as matrices, it becomes easier to analyze the stability and accuracy of numerical schemes. This is crucial for ensuring that numerical solutions to differential equations are reliable.</li>
-</ul></li>
-<li><strong>Optimization Problems</strong>:
-<ul>
-<li>In optimization, especially in gradient-based methods, the matrix method can be used to compute gradients and Hessians efficiently. This is important in machine learning, operations research, and various engineering disciplines.</li>
-</ul></li>
-<li><strong>Finite Element Analysis (FEA)</strong>:
-<ul>
-<li>In FEA, the matrix method is used to approximate derivatives and integrals over complex geometries. This is widely used in structural engineering, biomechanics, and materials science.</li>
-</ul></li>
-<li><strong>Control Theory</strong>:
-<ul>
-<li>In control theory, especially in the design and analysis of control systems, the matrix method can be used to model and simulate the behavior of dynamic systems.</li>
-</ul></li>
-</ol>
-</div>
+<p>In physics, many fundamental laws are expressed as differential equations: - Newton’s second law: <span class="math inline">\(F = m\frac{d^2x}{dt^2}\)</span> - Maxwell’s equations (electromagnetism) - Schrödinger equation (quantum mechanics) - Heat equation, wave equation, and many more!</p>
+<p>To solve these equations numerically, we need to be able to calculate derivatives. That’s what we’ll explore in the upcoming lectures on solving ODEs (Ordinary Differential Equations).</p>
 </div>
 </div>
 
@@ -608,7 +646,7 @@ Applications of the Matrix Method
 eyJvcHRpb25zIjp7ImluZGV4VVJMIjoiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L3B5b2RpZGUvdjAuMjYuMS9mdWxsLyJ9LCJwYWNrYWdlcyI6eyJwa2dzIjpbInB5b2RpZGVfaHR0cCIsIm1pY3JvcGlwIiwiaXB5dGhvbiIsIm1hdHBsb3RsaWIiLCJudW1weSIsInNjaXB5IiwiaXB5d2lkZ2V0cyJdfX0=
 </script>
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTE0IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTQgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE0LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTQtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xNCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEzIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTMgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEzLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTMtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMyA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEyIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTIgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEyLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMiA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTExIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTEgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTExLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTEtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEwIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTAgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEwLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTAtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTAsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTkiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl85ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzkgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzksIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS04LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzggPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl83ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS03LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzcgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTYiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl82ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzYgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS01LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzUgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl80ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzQgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzIgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoiX3B5b2RpZGVfdmFsdWVfMSA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRQeXRob24sIGI2NERlY29kZX0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcInB5b2RpZGUtMS1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBQeXRob24gY29kZVxuICBjb25zdCByZXN1bHQgPSBweW9kaWRlT2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjFcIiBpbiBweW9kaWRlT2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgcHl0aG9uXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFB5dGhvbihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHB5b2RpZGVPanMucmVuZGVyZWRPanNbXCIxXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIn0seyJjZWxsTmFtZSI6InB5b2RpZGUtcHJlbHVkZSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InB5b2RpZGVPanMgPSB7XG4gIGNvbnN0IHtcbiAgICBQeW9kaWRlRXZhbHVhdG9yLFxuICAgIFB5b2RpZGVFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBQeXRob24sXG4gICAgc3RhcnRQeW9kaWRlV29ya2VyLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGgsXG4gIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHN0YXR1c0NvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1zdGF0dXNcIik7XG4gIGNvbnN0IGluZGljYXRvckNvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGluZGljYXRvckNvbnRhaW5lci5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpO1xuXG4gIGxldCBzdGF0dXNUZXh0ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKVxuICBzdGF0dXNUZXh0LmNsYXNzTGlzdCA9IFwiZXhlcmNpc2UtbG9hZGluZy1kZXRhaWxzXCI7XG4gIHN0YXR1c1RleHQgPSBzdGF0dXNDb250YWluZXIuYXBwZW5kQ2hpbGQoc3RhdHVzVGV4dCk7XG4gIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5pdGlhbGlzZWA7XG5cbiAgLy8gSG9pc3QgaW5kaWNhdG9yIG91dCBmcm9tIGZpbmFsIHNsaWRlIHdoZW4gcnVubmluZyB1bmRlciByZXZlYWxcbiAgY29uc3QgcmV2ZWFsU3RhdHVzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgLmV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpZiAocmV2ZWFsU3RhdHVzKSB7XG4gICAgcmV2ZWFsU3RhdHVzLnJlbW92ZSgpO1xuICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsID4gLnNsaWRlc1wiKS5hcHBlbmRDaGlsZChyZXZlYWxTdGF0dXMpO1xuICB9XG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTExIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTEgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTExLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTEtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEwIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTAgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEwLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTAtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTAsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTkiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl85ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzkgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzksIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS04LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzggPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl83ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS03LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzcgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTYiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl82ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzYgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS01LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzUgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl80ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzQgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzIgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoiX3B5b2RpZGVfdmFsdWVfMSA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRQeXRob24sIGI2NERlY29kZX0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcInB5b2RpZGUtMS1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBQeXRob24gY29kZVxuICBjb25zdCByZXN1bHQgPSBweW9kaWRlT2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjFcIiBpbiBweW9kaWRlT2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgcHl0aG9uXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFB5dGhvbihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHB5b2RpZGVPanMucmVuZGVyZWRPanNbXCIxXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIn0seyJjZWxsTmFtZSI6InB5b2RpZGUtcHJlbHVkZSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InB5b2RpZGVPanMgPSB7XG4gIGNvbnN0IHtcbiAgICBQeW9kaWRlRXZhbHVhdG9yLFxuICAgIFB5b2RpZGVFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBQeXRob24sXG4gICAgc3RhcnRQeW9kaWRlV29ya2VyLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGgsXG4gIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHN0YXR1c0NvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1zdGF0dXNcIik7XG4gIGNvbnN0IGluZGljYXRvckNvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGluZGljYXRvckNvbnRhaW5lci5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpO1xuXG4gIGxldCBzdGF0dXNUZXh0ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKVxuICBzdGF0dXNUZXh0LmNsYXNzTGlzdCA9IFwiZXhlcmNpc2UtbG9hZGluZy1kZXRhaWxzXCI7XG4gIHN0YXR1c1RleHQgPSBzdGF0dXNDb250YWluZXIuYXBwZW5kQ2hpbGQoc3RhdHVzVGV4dCk7XG4gIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5pdGlhbGlzZWA7XG5cbiAgLy8gSG9pc3QgaW5kaWNhdG9yIG91dCBmcm9tIGZpbmFsIHNsaWRlIHdoZW4gcnVubmluZyB1bmRlciByZXZlYWxcbiAgY29uc3QgcmV2ZWFsU3RhdHVzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgLmV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpZiAocmV2ZWFsU3RhdHVzKSB7XG4gICAgcmV2ZWFsU3RhdHVzLnJlbW92ZSgpO1xuICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsID4gLnNsaWRlc1wiKS5hcHBlbmRDaGlsZChyZXZlYWxTdGF0dXMpO1xuICB9XG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
 </script>
 <div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
 <div id="exercise-loading-status" class="d-flex gap-2">
@@ -621,7 +659,6 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTE0IiwiaW5saW5lIjpmYWxzZSwibWV0aG9k
 <script type="vfs-file">
 W10=
 </script>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1035,6 +1072,18 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../lectures/lecture03/1_numpy.html" class="pagination-link" aria-label="Arrays with Numpy">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Arrays with Numpy</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../lectures/lecture08/3_solving_ODEs.html" class="pagination-link" aria-label="Tool: Solving ODEs">
+        <span class="nav-page-text">Tool: Solving ODEs</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

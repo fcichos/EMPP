@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../lectures/lecture03/1_numpy.html" rel="prev">
+<link href="../../lectures/lecture08/3_solving_ODEs.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -291,32 +291,55 @@ window.Quarto = {
  <span class="menu-text">Application: Brownian Motion (Simple)</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">⚡ Week 4-5: Classical Mechanics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture03/1_numpy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Arrays with Numpy</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture07/1_differentiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numerical Differentiation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture08/3_solving_ODEs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tool: Solving ODEs</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">🛠️ Hands-On Seminars</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced Topics</span></a>
+ <span class="menu-text">🛠️ Hands-On Seminars</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced Topics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link active">
@@ -395,13 +418,13 @@ window.Quarto = {
 </header>
 
 
-<p>We are close to the end of the course and covered different applications of Python to physical problems. The course is not intended to teach the physics, but exercise the application of Python. One field, which is increasingly important also in physics is the field of machine learning. Machine learning is the summarizing term for a number of computational procedures to extract useful information from data. We would like to spend the rest of the course to introduce you into a tiny part of machine learning. We will do that in a way that you calculate as much as possible in pure Python without any additional packages.</p>
+<p>Welcome to the first of our advanced seminars! Throughout this course, we’ve explored various applications of Python to physical problems. The course has focused not on teaching physics itself, but on exercising and developing your Python skills through physically motivated examples. Now, as we move into these advanced seminars, we’ll explore a field that is increasingly important in physics: machine learning. Machine learning is the umbrella term for a variety of computational procedures designed to extract useful information from data. In this first advanced seminar, we’ll introduce you to a foundational aspect of machine learning—reinforcement learning. True to our course philosophy, we’ll implement this in a way that emphasizes understanding by calculating as much as possible in pure Python without relying heavily on specialized packages.</p>
 <div>
 <div id="pyodide-1">
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1ZX0sImNvZGUiOiJcbmltcG9ydCBudW1weSBhcyBucFxuaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuZnJvbSBzY2lweS5jb25zdGFudHMgaW1wb3J0ICpcbmZyb20gc2NpcHkuc3BhcnNlIGltcG9ydCBkaWFnc1xuZnJvbSBzY2lweSBpbXBvcnQgc3BhcnNlIGFzIHNwYXJzZVxuZnJvbSBzY2lweS5zcGFyc2UgaW1wb3J0IGxpbmFsZyBhcyBsblxuZnJvbSB0aW1lIGltcG9ydCBzbGVlcCx0aW1lXG5pbXBvcnQgbWF0cGxvdGxpYi5wYXRjaGVzIGFzIHBhdGNoZXNcbmZyb20gaXB5Y2FudmFzIGltcG9ydCBNdWx0aUNhbnZhcywgaG9sZF9jYW52YXMsQ2FudmFzXG5cbiMgZGVmYXVsdCB2YWx1ZXMgZm9yIHBsb3R0aW5nXG4jIERlZmF1bHQgcGxvdHRpbmcgcGFyYW1ldGVyc1xucGx0LnJjUGFyYW1zLnVwZGF0ZSh7XG4gICAgJ2ZvbnQuc2l6ZSc6IDEyLFxuICAgICdsaW5lcy5saW5ld2lkdGgnOiAxLFxuICAgICdsaW5lcy5tYXJrZXJzaXplJzogNSxcbiAgICAnYXhlcy5sYWJlbHNpemUnOiAxMSxcbiAgICAneHRpY2subGFiZWxzaXplJzogMTAsXG4gICAgJ3l0aWNrLmxhYmVsc2l6ZSc6IDEwLFxuICAgICd4dGljay50b3AnOiBUcnVlLFxuICAgICd4dGljay5kaXJlY3Rpb24nOiAnaW4nLFxuICAgICd5dGljay5yaWdodCc6IFRydWUsXG4gICAgJ3l0aWNrLmRpcmVjdGlvbic6ICdpbicsXG59KVxuXG5kZWYgZ2V0X3NpemUodywgaCk6XG4gICAgcmV0dXJuICh3LzIuNTQsIGgvMi41NCkifQ==
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1ZX0sImNvZGUiOiJcbmltcG9ydCBudW1weSBhcyBucFxuaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuZnJvbSBzY2lweS5jb25zdGFudHMgaW1wb3J0ICpcbmZyb20gc2NpcHkuc3BhcnNlIGltcG9ydCBkaWFnc1xuZnJvbSBzY2lweSBpbXBvcnQgc3BhcnNlIGFzIHNwYXJzZVxuZnJvbSBzY2lweS5zcGFyc2UgaW1wb3J0IGxpbmFsZyBhcyBsblxuZnJvbSB0aW1lIGltcG9ydCBzbGVlcCx0aW1lXG5pbXBvcnQgbWF0cGxvdGxpYi5wYXRjaGVzIGFzIHBhdGNoZXNcblxuIyBkZWZhdWx0IHZhbHVlcyBmb3IgcGxvdHRpbmdcbiMgRGVmYXVsdCBwbG90dGluZyBwYXJhbWV0ZXJzXG5wbHQucmNQYXJhbXMudXBkYXRlKHtcbiAgICAnZm9udC5zaXplJzogMTIsXG4gICAgJ2xpbmVzLmxpbmV3aWR0aCc6IDEsXG4gICAgJ2xpbmVzLm1hcmtlcnNpemUnOiA1LFxuICAgICdheGVzLmxhYmVsc2l6ZSc6IDExLFxuICAgICd4dGljay5sYWJlbHNpemUnOiAxMCxcbiAgICAneXRpY2subGFiZWxzaXplJzogMTAsXG4gICAgJ3h0aWNrLnRvcCc6IFRydWUsXG4gICAgJ3h0aWNrLmRpcmVjdGlvbic6ICdpbicsXG4gICAgJ3l0aWNrLnJpZ2h0JzogVHJ1ZSxcbiAgICAneXRpY2suZGlyZWN0aW9uJzogJ2luJyxcbn0pXG5cbmRlZiBnZXRfc2l6ZSh3LCBoKTpcbiAgICByZXR1cm4gKHcvMi41NCwgaC8yLjU0KSJ9
 </script>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1581,8 +1604,8 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../lectures/lecture03/1_numpy.html" class="pagination-link" aria-label="Arrays with Numpy">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Arrays with Numpy</span>
+      <a href="../../lectures/lecture08/3_solving_ODEs.html" class="pagination-link" aria-label="Tool: Solving ODEs">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tool: Solving ODEs</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
