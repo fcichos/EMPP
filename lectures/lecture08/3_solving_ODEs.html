@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../seminars/seminar01/2_reinforcement_learning.html" rel="next">
+<link href="../../lectures/lecture08/2_integration.html" rel="next">
 <link href="../../lectures/lecture07/1_differentiation.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -170,7 +170,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture03/1_numpy.html">⚡ Week 4-5: Classical Mechanics</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture08/3_solving_ODEs.html">Tool: Solving ODEs</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture07/1_differentiation.html">⚡ Week 5: Classical Mechanics 2</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture08/3_solving_ODEs.html">Tool: Solving ODEs</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -297,7 +297,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">⚡ Week 4-5: Classical Mechanics</span></a>
+ <span class="menu-text">⚡ Week 4: Classical Mechanics 1</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -305,10 +305,27 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/4_brownian_motion_simple.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Application: Brownian Motion (Simple)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture03/1_numpy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Arrays with Numpy</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">⚡ Week 5: Classical Mechanics 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture07/1_differentiation.html" class="sidebar-item-text sidebar-link">
@@ -321,30 +338,43 @@ window.Quarto = {
  <span class="menu-text">Tool: Solving ODEs</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture08/2_integration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tool: Numerical Integration</span></a>
+  </div>
+</li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
  <span class="menu-text">🛠️ Hands-On Seminars</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
  <span class="menu-text">Advanced Topics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Advanced Seminar 1</span></a>
+ <span class="menu-text">Advanced: Reinforcement Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar01/1_deep_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Deep Learning</span></a>
   </div>
 </li>
       </ul>
@@ -363,27 +393,27 @@ window.Quarto = {
   <ul>
   <li><a href="#introduction-what-are-odes" id="toc-introduction-what-are-odes" class="nav-link active" data-scroll-target="#introduction-what-are-odes">Introduction: What are ODEs?</a>
   <ul class="collapse">
-  <li><a href="#odes-in-physics" id="toc-odes-in-physics" class="nav-link" data-scroll-target="#odes-in-physics">ODEs in Physics</a></li>
-  <li><a href="#from-derivatives-to-odes" id="toc-from-derivatives-to-odes" class="nav-link" data-scroll-target="#from-derivatives-to-odes">From Derivatives to ODEs</a></li>
+  <li><a href="#odes-in-physics-the-language-of-dynamics" id="toc-odes-in-physics-the-language-of-dynamics" class="nav-link" data-scroll-target="#odes-in-physics-the-language-of-dynamics">ODEs in Physics: The Language of Dynamics</a></li>
+  <li><a href="#from-derivatives-to-odes-reversing-the-problem" id="toc-from-derivatives-to-odes-reversing-the-problem" class="nav-link" data-scroll-target="#from-derivatives-to-odes-reversing-the-problem">From Derivatives to ODEs: Reversing the Problem</a></li>
   <li><a href="#converting-to-first-order-systems" id="toc-converting-to-first-order-systems" class="nav-link" data-scroll-target="#converting-to-first-order-systems">Converting to First-Order Systems</a></li>
   </ul></li>
   <li><a href="#the-practical-tool-scipys-odeint" id="toc-the-practical-tool-scipys-odeint" class="nav-link" data-scroll-target="#the-practical-tool-scipys-odeint">The Practical Tool: SciPy’s <code>odeint</code></a>
   <ul class="collapse">
-  <li><a href="#basic-usage" id="toc-basic-usage" class="nav-link" data-scroll-target="#basic-usage">Basic Usage</a></li>
+  <li><a href="#basic-usage-the-odeint-function" id="toc-basic-usage-the-odeint-function" class="nav-link" data-scroll-target="#basic-usage-the-odeint-function">Basic Usage: The <code>odeint</code> Function</a></li>
   <li><a href="#example-1-simple-harmonic-oscillator" id="toc-example-1-simple-harmonic-oscillator" class="nav-link" data-scroll-target="#example-1-simple-harmonic-oscillator">Example 1: Simple Harmonic Oscillator</a></li>
   <li><a href="#example-2-damped-driven-pendulum" id="toc-example-2-damped-driven-pendulum" class="nav-link" data-scroll-target="#example-2-damped-driven-pendulum">Example 2: Damped Driven Pendulum</a></li>
   </ul></li>
-  <li><a href="#summary-how-to-solve-odes" id="toc-summary-how-to-solve-odes" class="nav-link" data-scroll-target="#summary-how-to-solve-odes">Summary: How to Solve ODEs</a></li>
+  <li><a href="#summary-the-ode-solving-workflow" id="toc-summary-the-ode-solving-workflow" class="nav-link" data-scroll-target="#summary-the-ode-solving-workflow">Summary: The ODE-Solving Workflow</a></li>
   <li><a href="#advanced-understanding-numerical-integration-methods" id="toc-advanced-understanding-numerical-integration-methods" class="nav-link" data-scroll-target="#advanced-understanding-numerical-integration-methods">Advanced: Understanding Numerical Integration Methods</a></li>
   <li><a href="#advanced-matrix-methods-for-odes" id="toc-advanced-matrix-methods-for-odes" class="nav-link" data-scroll-target="#advanced-matrix-methods-for-odes">Advanced: Matrix Methods for ODEs</a></li>
-  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next?</a></li>
+  <li><a href="#whats-next-applications-across-physics" id="toc-whats-next-applications-across-physics" class="nav-link" data-scroll-target="#whats-next-applications-across-physics">What’s Next? Applications Across Physics</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture03/1_numpy.html">⚡ Week 4-5: Classical Mechanics</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture08/3_solving_ODEs.html">Tool: Solving ODEs</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture07/1_differentiation.html">⚡ Week 5: Classical Mechanics 2</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture08/3_solving_ODEs.html">Tool: Solving ODEs</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Solving ODEs</h1>
 </div>
@@ -402,7 +432,8 @@ window.Quarto = {
 </header>
 
 
-<p>In the previous lecture, we learned how to calculate derivatives numerically. Now we’ll use that knowledge to solve <strong>Ordinary Differential Equations (ODEs)</strong> - one of the most important tools in physics!</p>
+<p>In the previous lecture on numerical differentiation, we learned how to calculate derivatives numerically—approximating rates of change from discrete data points using finite difference formulas like the central difference <span class="math inline">\(f'_i \approx \frac{f_{i+1} - f_{i-1}}{2\Delta x}\)</span>. Now we face the conceptually inverse problem: solving <strong>Ordinary Differential Equations (ODEs)</strong>, where we know the relationship between a function and its derivatives, and we need to find the function itself. This is one of the most powerful tools in computational physics, allowing us to predict how physical systems evolve in time.</p>
+<p>ODEs describe the dynamics of nearly every physical system you’ll encounter. From the motion of planets to the decay of radioactive nuclei, from oscillating springs to quantum wavefunctions, differential equations capture how systems change. Learning to solve them numerically opens the door to understanding complex phenomena that lack analytical solutions—which includes most real-world physics problems.</p>
 <div>
 <div id="pyodide-1">
 
@@ -413,22 +444,36 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1
 </div>
 <section id="introduction-what-are-odes" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-what-are-odes">Introduction: What are ODEs?</h2>
-<section id="odes-in-physics" class="level3">
-<h3 class="anchored" data-anchor-id="odes-in-physics">ODEs in Physics</h3>
-<p>Many fundamental laws of physics are expressed as <strong>differential equations</strong> - equations that involve derivatives. For example:</p>
-<p><strong>Newton’s Second Law:</strong> <span class="math display">\[F = ma = m\frac{d^2x}{dt^2}\]</span></p>
-<p><strong>Simple Harmonic Oscillator (mass on a spring):</strong> <span class="math display">\[m\frac{d^2x}{dt^2} = -kx\]</span></p>
-<p>or equivalently: <span class="math display">\[\frac{d^2x}{dt^2} + \omega^2 x = 0\]</span> where <span class="math inline">\(\omega = \sqrt{k/m}\)</span> is the angular frequency.</p>
-<p><strong>Damped Driven Pendulum:</strong> <span class="math display">\[\frac{d^2\theta}{dt^2} = -\frac{g}{L}\sin(\theta) - b\frac{d\theta}{dt} + \beta\cos(\omega t)\]</span></p>
-<p>These are all <strong>Ordinary Differential Equations (ODEs)</strong> - equations involving derivatives with respect to a single variable (usually time).</p>
+<section id="odes-in-physics-the-language-of-dynamics" class="level3">
+<h3 class="anchored" data-anchor-id="odes-in-physics-the-language-of-dynamics">ODEs in Physics: The Language of Dynamics</h3>
+<p>The fundamental laws governing physical systems are typically expressed as <strong>differential equations</strong>—relationships involving derivatives that describe how quantities change. These aren’t arbitrary mathematical constructs; they emerge naturally from conservation laws and fundamental principles.</p>
+<p>Consider <strong>Newton’s Second Law</strong>, which states that force equals mass times acceleration: <span class="math display">\[F = ma = m\frac{d^2x}{dt^2}\]</span> This is an ODE relating position to its second time derivative. Given the forces acting on a system and its initial position and velocity, this equation determines all future motion.</p>
+<p>A classic example is the <strong>Simple Harmonic Oscillator</strong> describing a mass on a spring. The restoring force <span class="math display">\[F = -kx\]</span> leads to the equation of motion <span class="math display">\[m\frac{d^2x}{dt^2} = -kx\]</span> or equivalently <span class="math display">\[\frac{d^2x}{dt^2} + \omega^2 x = 0\]</span> where <span class="math inline">\(\4omega = \sqrt{k/m}\)</span>$ is the natural angular frequency. This same equation appears in electrical circuits (LC oscillators), quantum mechanics (harmonic potential), and countless other contexts.</p>
+<p>For more realistic systems, we might have a <strong>Damped Driven Pendulum</strong> with the equation <span class="math display">\[\frac{d^2\theta}{dt^2} = -\frac{g}{L}\sin(\theta) - b\frac{d\theta}{dt} + \beta\cos(\omega t)\]</span>. This incorporates the gravitational restoring torque (with <span class="math inline">\(\sin\theta\)</span> making it nonlinear), friction-like damping proportional to angular velocity, and an external periodic driving force. Such systems can exhibit rich behavior including resonance and even chaos.</p>
+<p>These are all <strong>Ordinary Differential Equations (ODEs)</strong>—“ordinary” because they involve derivatives with respect to a single independent variable (usually time <span class="math inline">\(t\)</span>), unlike partial differential equations which involve multiple variables like both space and time.</p>
 </section>
-<section id="from-derivatives-to-odes" class="level3">
-<h3 class="anchored" data-anchor-id="from-derivatives-to-odes">From Derivatives to ODEs</h3>
-<p>In the last lecture, we learned how to <strong>calculate</strong> derivatives numerically from known data points. Now we face the opposite problem:</p>
-<blockquote class="blockquote">
-<p><strong>Given:</strong> A differential equation and initial conditions <strong>Find:</strong> The solution <span class="math inline">\(x(t)\)</span> that satisfies the equation</p>
-</blockquote>
-<p>This is called <strong>solving</strong> or <strong>integrating</strong> a differential equation.</p>
+<section id="from-derivatives-to-odes-reversing-the-problem" class="level3">
+<h3 class="anchored" data-anchor-id="from-derivatives-to-odes-reversing-the-problem">From Derivatives to ODEs: Reversing the Problem</h3>
+<p>In the last lecture on numerical differentiation, we learned how to <strong>calculate</strong> derivatives numerically—given a set of data points <span class="math inline">\(\{x_i\}\)</span>, we approximated the derivatives <span class="math inline">\(\frac{dx}{dt}\)</span> using finite difference formulas. We saw how the forward difference <span class="math inline">\(f'_i \approx \frac{f_{i+1} - f_i}{\Delta x}\)</span> and the more accurate central difference <span class="math inline">\(f'_i \approx \frac{f_{i+1} - f_{i-1}}{2\Delta x}\)</span> allow us to compute slopes from discrete data. Now we face the conceptually opposite problem: we know the relationship between a function and its derivatives (the ODE), and we need to find the function itself.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Connection to Numerical Differentiation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These two lectures form a complementary pair:</p>
+<p><strong>Differentiation (Previous Lecture):</strong> Given function values <span class="math inline">\(f(x)\)</span>, compute derivatives <span class="math inline">\(f'(x)\)</span> using finite differences.</p>
+<p><strong>Integration (This Lecture):</strong> Given derivative relationships <span class="math inline">\(\frac{dx}{dt} = f(x,t)\)</span>, compute function values <span class="math inline">\(x(t)\)</span>.</p>
+<p>The mathematical tools are deeply connected. The finite difference formulas we derived (forward, central, backward) will reappear inside the ODE solvers as building blocks. The Taylor series analysis we used to derive central differences will help us understand integration methods. Even the matrix representation of derivatives will connect to an alternative approach for solving ODEs.</p>
+<p>Think of it this way: differentiation extracts velocity from position data, while ODE integration computes position trajectories from velocity equations. They’re inverse operations, and understanding both gives you complete mastery over the discrete calculus needed for computational physics.</p>
+</div>
+</div>
+<p>More precisely, we’re given a differential equation like <span class="math display">\[\frac{d^2x}{dt^2} = f(x, \frac{dx}{dt}, t)\]</span> along with initial conditions specifying <span class="math inline">\(x(t_0)\)</span> and <span class="math inline">\(\frac{dx}{dt}|_{t_0}\)</span>$. From this information, we must find the complete solution <span class="math inline">\(x(t)\)</span> for all future (and possibly past) times. This process is called <strong>solving</strong> or <strong>integrating</strong> the differential equation.</p>
+<p>This is fundamentally an initial value problem: knowing the state of a system at one instant, we use the laws of physics (encoded in the ODE) to predict its evolution. It’s analogous to how, in classical mechanics, specifying position and velocity at one moment determines the entire trajectory.</p>
 </section>
 <section id="converting-to-first-order-systems" class="level3">
 <h3 class="anchored" data-anchor-id="converting-to-first-order-systems">Converting to First-Order Systems</h3>
@@ -449,8 +494,8 @@ Why Convert to First-Order?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Standard ODE solvers expect first-order systems in the form: <span class="math display">\[\frac{d\vec{y}}{dt} = \vec{f}(\vec{y}, t)\]</span></p>
-<p>By converting higher-order equations to this form, we can use powerful numerical tools!</p>
+<p>Standard numerical ODE solvers are designed to work with first-order systems—equations of the form <span class="math display">\[\frac{d\vec{y}}{dt} = \vec{f}(\vec{y}, t)\]</span> where <span class="math inline">\(\vec{y}\)</span> is a vector containing all the variables describing the system’s state. This might seem restrictive since many physics equations are second-order (like Newton’s law), but converting to first-order form is straightforward and reveals the system’s structure more clearly.</p>
+<p>The conversion is conceptually natural: in classical mechanics, completely specifying a system requires both positions and velocities (or momenta). These form the system’s <strong>state space</strong> or <strong>phase space</strong>. By explicitly including both <span class="math inline">\(x\)</span> and <span class="math inline">\(v\)</span> as separate variables in our first-order system, we’re making this structure explicit. Once in first-order form, we can apply powerful, well-tested numerical algorithms that have been optimized over decades of research in numerical analysis.</p>
 </div>
 </div>
 </section>
@@ -458,14 +503,14 @@ Why Convert to First-Order?
 <section id="the-practical-tool-scipys-odeint" class="level2">
 <h2 class="anchored" data-anchor-id="the-practical-tool-scipys-odeint">The Practical Tool: SciPy’s <code>odeint</code></h2>
 <p>For most physics problems, we don’t need to implement numerical integration from scratch. Python’s <strong>SciPy</strong> library provides excellent ODE solvers.</p>
-<section id="basic-usage" class="level3">
-<h3 class="anchored" data-anchor-id="basic-usage">Basic Usage</h3>
-<p>The main function we’ll use is <code>scipy.integrate.odeint</code>:</p>
+<section id="basic-usage-the-odeint-function" class="level3">
+<h3 class="anchored" data-anchor-id="basic-usage-the-odeint-function">Basic Usage: The <code>odeint</code> Function</h3>
+<p>The main tool we’ll use is <code>scipy.integrate.odeint</code>, which provides a simple yet powerful interface for solving ODEs:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> odeint</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>solution <span class="op">=</span> odeint(derivative_function, initial_conditions, time_points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Parameters:</strong> - <code>derivative_function</code>: A function that returns <span class="math inline">\(\frac{d\vec{y}}{dt}\)</span> given <span class="math inline">\(\vec{y}\)</span> and <span class="math inline">\(t\)</span> - <code>initial_conditions</code>: A vector containing <span class="math inline">\([x_0, v_0, ...]\)</span> - <code>time_points</code>: An array of times at which to compute the solution</p>
-<p><strong>Returns:</strong> - A 2D array where each row is the state at one time point</p>
+<p>Understanding the parameters is crucial. The <strong>derivative_function</strong> is where you encode the physics—it’s a Python function that takes the current state <span class="math inline">\(\vec{y}\)</span> and time <span class="math inline">\(t\)</span>, and returns the derivatives <span class="math inline">\(\frac{d\vec{y}}{dt}\)</span> according to your ODE. The <strong>initial_conditions</strong> specify where the system starts—typically a vector like <span class="math inline">\([x_0, v_0]\)</span> containing initial position and velocity. The <strong>time_points</strong> argument is an array of times where you want the solution computed—<code>odeint</code> automatically handles the intermediate time-stepping needed to reach these points accurately.</p>
+<p>The function returns a 2D array where each row represents the system’s state at one of the requested time points. If you solve for 1000 time points with a 2-component state vector, you’ll get a 1000×2 array. The first column might be position, the second velocity, and each row corresponds to one moment in time.</p>
 </section>
 <section id="example-1-simple-harmonic-oscillator" class="level3">
 <h3 class="anchored" data-anchor-id="example-1-simple-harmonic-oscillator">Example 1: Simple Harmonic Oscillator</h3>
@@ -520,7 +565,9 @@ Understanding the Phase Space
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The circular trajectory in phase space shows that energy is conserved in the harmonic oscillator. Each point on the circle represents a different state <span class="math inline">\((x, v)\)</span>, and the system traces this circle repeatedly as it oscillates.</p>
+<p>The circular trajectory in phase space reveals fundamental properties of the harmonic oscillator. Each point on this circle represents a different state <span class="math inline">\((x, v)\)</span>—a unique combination of position and velocity. As the system oscillates, it traces this closed loop repeatedly, returning to its starting point after one period.</p>
+<p>The circular shape reflects energy conservation. The total energy <span class="math inline">\(E = \frac{1}{2}mv^2 + \frac{1}{2}kx^2\)</span> remains constant, which describes an ellipse (or circle if we scale the axes appropriately) in the <span class="math inline">\(x\)</span>-<span class="math inline">\(v\)</span> plane. Systems with different initial energies trace different circles—higher energy means larger amplitude oscillations and larger circles. If we added damping, the trajectory would spiral inward as energy dissipates, eventually settling at the origin (the equilibrium point where <span class="math inline">\(x=0\)</span> and <span class="math inline">\(v=0\)</span>).</p>
+<p>Phase space diagrams are powerful tools in physics, revealing qualitative system behavior at a glance: periodic motion appears as closed loops, damped motion spirals inward, and chaotic motion fills regions without repeating.</p>
 </div>
 </div>
 </section>
@@ -528,7 +575,12 @@ Understanding the Phase Space
 <h3 class="anchored" data-anchor-id="example-2-damped-driven-pendulum">Example 2: Damped Driven Pendulum</h3>
 <p>Now let’s tackle a more complex problem - a damped driven pendulum:</p>
 <p><span class="math display">\[\frac{d^2\theta}{dt^2} = -\frac{g}{L}\sin(\theta) - b\frac{d\theta}{dt} + \beta\cos(\omega t)\]</span></p>
-<p>This includes: - <strong>Restoring force:</strong> <span class="math inline">\(-\frac{g}{L}\sin(\theta)\)</span> (nonlinear!) - <strong>Damping:</strong> <span class="math inline">\(-b\frac{d\theta}{dt}\)</span> (friction) - <strong>Driving force:</strong> <span class="math inline">\(\beta\cos(\omega t)\)</span> (external periodic force)</p>
+<p>This includes:</p>
+<ul>
+<li><strong>Restoring force:</strong> <span class="math inline">\(-\frac{g}{L}\sin(\theta)\)</span> (nonlinear!)</li>
+<li><strong>Damping:</strong> <span class="math inline">\(-b\frac{d\theta}{dt}\)</span> (friction)</li>
+<li><strong>Driving force:</strong> <span class="math inline">\(\beta\cos(\omega t)\)</span> (external periodic force)</li>
+</ul>
 <div>
 <div id="pyodide-6">
 
@@ -555,22 +607,19 @@ Exploring Parameter Space
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Try changing the parameters: - Increase <code>b</code> to see stronger damping (oscillations die out faster) - Change <code>omega_drive</code> to explore resonance effects - Increase <code>beta</code> to see chaotic behavior (for large initial angles)</p>
+<p>The beauty of computational physics is the ease of exploring how systems respond to different parameters. Try modifying the code to see various phenomena. Increasing the damping coefficient <code>b</code> produces stronger dissipation, causing oscillations to die out more quickly as energy is removed from the system. This models increasing air resistance or friction.</p>
+<p>Changing the driving frequency <code>omega_drive</code> reveals <strong>resonance effects</strong>—when the driving frequency matches the natural frequency, even small driving amplitudes can produce large oscillations as energy accumulates in phase with the system’s natural motion. This is why bridges can collapse from periodic forces and why opera singers can shatter wine glasses.</p>
+<p>Increasing the driving amplitude <code>beta</code>, especially combined with large initial angles where the <span class="math inline">\(\sin\theta \approx \theta\)</span> approximation breaks down, can push the pendulum into <strong>chaotic regimes</strong>. In this regime, tiny changes in initial conditions lead to drastically different long-term behavior, making prediction impossible beyond a certain time horizon despite the system being completely deterministic. The phase space trajectory becomes a tangled, never-repeating path—a hallmark of chaos.</p>
 </div>
 </div>
 </section>
 </section>
-<section id="summary-how-to-solve-odes" class="level2">
-<h2 class="anchored" data-anchor-id="summary-how-to-solve-odes">Summary: How to Solve ODEs</h2>
-<p>The workflow for solving ODEs in physics is:</p>
-<ol type="1">
-<li><strong>Write down the physics:</strong> Newton’s laws, energy conservation, etc.</li>
-<li><strong>Convert to first-order system:</strong> Introduce velocity/momentum as separate variables</li>
-<li><strong>Define a derivative function:</strong> Implement <span class="math inline">\(\frac{d\vec{y}}{dt} = \vec{f}(\vec{y}, t)\)</span></li>
-<li><strong>Set initial conditions:</strong> Specify <span class="math inline">\(\vec{y}(t=0)\)</span></li>
-<li><strong>Use <code>odeint</code> to solve:</strong> Get the solution at desired time points</li>
-<li><strong>Visualize:</strong> Plot trajectories, phase space, etc.</li>
-</ol>
+<section id="summary-the-ode-solving-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="summary-the-ode-solving-workflow">Summary: The ODE-Solving Workflow</h2>
+<p>Solving ODEs computationally follows a systematic workflow that bridges physics and programming. <strong>First</strong>, you write down the physics governing your system—Newton’s laws, conservation principles, empirical relations, or whatever equations capture the phenomenon you’re studying. <strong>Second</strong>, you convert any higher-order equations into a first-order system by introducing additional variables (like treating velocity as independent from position). <strong>Third</strong>, you implement a derivative function in Python that takes the current state and time and returns the rates of change according to your equations.</p>
+<p><strong>Fourth</strong>, you specify initial conditions—the state of your system at time <span class="math inline">\(t=0\)</span>. In classical mechanics, this means both positions and velocities; knowing just position isn’t enough to predict the future. <strong>Fifth</strong>, you call <code>odeint</code> with your derivative function, initial conditions, and an array of times where you want the solution. The function handles all the numerical complexities automatically. <strong>Finally</strong>, you visualize the results through plots of trajectories versus time, phase space diagrams showing state evolution, or animations showing the system’s motion.</p>
+<p>This workflow applies universally, whether you’re simulating planetary orbits, chemical reaction kinetics, epidemic spread, or quantum systems. Master this pattern and you can tackle an enormous range of physics problems.</p>
+<p><strong>The connection to numerical differentiation:</strong> Notice how solving ODEs is fundamentally the inverse of what we did in the previous lecture. There, we used finite differences to approximate <span class="math inline">\(\frac{dx}{dt}\)</span> from known values of <span class="math inline">\(x(t)\)</span>. Here, we use knowledge of <span class="math inline">\(\frac{dx}{dt}\)</span> (from the ODE) to construct <span class="math inline">\(x(t)\)</span>. The Taylor series that gave us central difference formulas now justifies our time-stepping algorithms. The matrix representations of derivatives reappear in implicit methods. These two lectures form a unified framework for discrete calculus—the computational analog of the continuous calculus you learn in mathematics courses.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -581,15 +630,17 @@ Why Does This Work?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <code>odeint</code> function uses sophisticated numerical methods (adaptive Runge-Kutta) to: - Step forward in time accurately - Automatically adjust step size for efficiency and accuracy - Handle stiff equations that simpler methods struggle with</p>
-<p>For most physics problems, <code>odeint</code> is all you need!</p>
+<p>The <code>odeint</code> function employs sophisticated numerical methods developed over decades of research in numerical analysis. At its core, it uses <strong>adaptive Runge-Kutta methods</strong>—algorithms that step forward in time by evaluating the derivative function at multiple intermediate points and combining them cleverly to achieve high accuracy.</p>
+<p>The “adaptive” part is crucial: the algorithm automatically adjusts its step size based on the local behavior of the solution. In smooth regions where the solution changes slowly, it takes large steps for efficiency. In regions where the solution varies rapidly or has strong curvature, it reduces the step size to maintain accuracy. This adaptivity makes the method both accurate and efficient.</p>
+<p>Additionally, <code>odeint</code> can handle <strong>stiff equations</strong>—problems where some components of the solution change much more rapidly than others, causing simple methods to fail or require impractically small time steps. The underlying algorithms switch between explicit and implicit methods as needed to maintain stability.</p>
+<p>For the vast majority of physics problems you’ll encounter, <code>odeint</code> provides an excellent balance of ease-of-use, accuracy, and robustness. You don’t need to understand all the algorithmic details to use it effectively, but knowing it’s built on solid numerical foundations helps you trust the results.</p>
 </div>
 </div>
 </section>
 <section id="advanced-understanding-numerical-integration-methods" class="level2 callout-tip" data-collapse="true">
 <h2 class="callout-tip anchored" data-collapse="true" data-anchor-id="advanced-understanding-numerical-integration-methods">Advanced: Understanding Numerical Integration Methods</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -598,33 +649,35 @@ How <code>odeint</code> Works Under the Hood
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>While <code>odeint</code> handles the details for us, it’s useful to understand the basic concepts of numerical integration. Here we’ll explore simple methods that illustrate the core ideas.</p>
 <section id="the-conceptual-idea-time-stepping" class="level3">
 <h3 class="anchored" data-anchor-id="the-conceptual-idea-time-stepping">The Conceptual Idea: Time Stepping</h3>
-<p>All numerical ODE solvers work by <strong>stepping forward in time</strong>. Starting from initial conditions <span class="math inline">\(\vec{y}(t_0)\)</span>, we calculate the state at <span class="math inline">\(t_1 = t_0 + \Delta t\)</span>, then at <span class="math inline">\(t_2 = t_1 + \Delta t\)</span>, and so on.</p>
-<p>The key question: How do we step from <span class="math inline">\(\vec{y}_i\)</span> to <span class="math inline">\(\vec{y}_{i+1}\)</span>?</p>
+<p>All numerical ODE solvers share a common conceptual framework: <strong>stepping forward in time</strong> from known to unknown. Starting from initial conditions <span class="math inline">\(\vec{y}(t_0)\)</span> at time <span class="math inline">\(t_0\)</span>, we use the differential equation to predict the state at a slightly later time <span class="math inline">\(t_1 = t_0 + \Delta t\)</span>. Then, treating this new state as our starting point, we step again to <span class="math inline">\(t_2 = t_1 + \Delta t\)</span>, continuing this process to build up the complete solution trajectory.</p>
+<p>The fundamental challenge is determining how to make each individual step. Given the current state <span class="math inline">\(\vec{y}_i\)</span> at time <span class="math inline">\(t_i\)</span>, how do we accurately compute the next state <span class="math inline">\(\vec{y}_{i+1}\)</span> at time <span class="math inline">\(t_{i+1} = t_i + \Delta t\)</span>? Different numerical methods answer this question in different ways, trading off between simplicity, accuracy, and computational cost. Let’s explore some fundamental approaches to understand what <code>odeint</code> is doing behind the scenes.</p>
 </section>
 <section id="euler-method-the-simplest-approach" class="level3">
 <h3 class="anchored" data-anchor-id="euler-method-the-simplest-approach">Euler Method: The Simplest Approach</h3>
-<p>The <strong>Euler method</strong> uses the Taylor expansion:</p>
-<p><span class="math display">\[\vec{y}(t+\Delta t) = \vec{y}(t) + \frac{d\vec{y}}{dt}\Delta t + \mathcal{O}(\Delta t^2)\]</span></p>
-<p>Dropping higher-order terms:</p>
+<p>The <strong>Euler method</strong> is the most straightforward time-stepping algorithm, based directly on the Taylor expansion—the same mathematical tool we used in the differentiation lecture to derive the central difference formula. Recall that we can expand any smooth function around a point using Taylor series:</p>
+<p><span class="math display">\[\vec{y}(t+\Delta t) = \vec{y}(t) + \frac{d\vec{y}}{dt}\Delta t + \frac{1}{2}\frac{d^2\vec{y}}{dt^2}\Delta t^2 + \mathcal{O}(\Delta t^3)\]</span></p>
+<p>The Euler method makes a bold simplification: it keeps only the first two terms, dropping all the higher-order terms involving <span class="math inline">\(\Delta t^2\)</span> and beyond. Since we know <span class="math inline">\(\frac{d\vec{y}}{dt} = \vec{f}(\vec{y}, t)\)</span> from our ODE, this truncation gives us:</p>
 <p><span class="math display">\[\vec{y}_{i+1} \approx \vec{y}_i + \vec{f}(\vec{y}_i, t_i)\Delta t\]</span></p>
-<p><strong>Implementation:</strong></p>
+<p>Notice the deep connection to the differentiation lecture: if we rearrange this as <span class="math inline">\(\frac{\vec{y}_{i+1} - \vec{y}_i}{\Delta t} \approx \vec{f}(\vec{y}_i, t_i)\)</span>, we recognize the <strong>forward difference formula</strong> for the derivative! Euler’s method is essentially using the forward difference approximation in reverse—instead of computing the derivative from function values, we’re computing future function values from the derivative. Geometrically, this means following the tangent line for a short distance—using the slope at the current point to extrapolate where we’ll be after a small time step. It’s like driving by looking only at your current heading without anticipating curves in the road ahead.</p>
+<p><strong>Implementation:</strong> The beauty of Euler’s method lies in its simplicity—just one line of code:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> euler_step(y, t, dt, derivative_func):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Single step of Euler method"""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y <span class="op">+</span> derivative_func(y, t) <span class="op">*</span> dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>For the harmonic oscillator:</strong></p>
+<p><strong>For the harmonic oscillator</strong>, this becomes particularly concrete. Our state vector contains position and velocity, and we update both simultaneously:</p>
 <p><span class="math display">\[\begin{bmatrix} x_{i+1} \\ v_{i+1} \end{bmatrix} = \begin{bmatrix} x_i \\ v_i \end{bmatrix} + \begin{bmatrix} v_i \\ -\omega^2 x_i \end{bmatrix} \Delta t\]</span></p>
-<p><strong>Accuracy:</strong> - Local error: <span class="math inline">\(\mathcal{O}(\Delta t^2)\)</span> per step - Global error: <span class="math inline">\(\mathcal{O}(\Delta t)\)</span> over time interval <span class="math inline">\([0, T]\)</span></p>
+<p><strong>Accuracy considerations:</strong> The method’s simplicity comes at a cost. In each individual step, we incur a <strong>local error</strong> of order <span class="math inline">\(\mathcal{O}(\Delta t^2)\)</span>—the quadratic and higher terms we dropped from the Taylor expansion (just as we saw with the forward difference formula in the differentiation lecture, which had <span class="math inline">\(\mathcal{O}(\Delta x^2)\)</span> error). Over many steps spanning a total time <span class="math inline">\(T\)</span>, these errors accumulate, producing a <strong>global error</strong> of order <span class="math inline">\(\mathcal{O}(\Delta t)\)</span>. This means to reduce the error by a factor of 10, you must take 10 times as many steps—a computationally expensive proposition. Moreover, Euler’s method can artificially inject or remove energy in oscillatory systems, causing solutions to spiral outward or inward when they should maintain constant amplitude.</p>
 </section>
 <section id="euler-cromer-method-better-for-oscillators" class="level3">
 <h3 class="anchored" data-anchor-id="euler-cromer-method-better-for-oscillators">Euler-Cromer Method: Better for Oscillators</h3>
-<p>The <strong>Euler-Cromer method</strong> modifies Euler by using the <em>updated</em> velocity when calculating position:</p>
-<p><span class="math display">\[v_{i+1} = v_i + a(x_i, v_i, t_i)\Delta t\]</span> <span class="math display">\[x_{i+1} = x_i + v_{i+1}\Delta t\]</span></p>
-<p>This simple change dramatically improves energy conservation in oscillatory systems!</p>
+<p>The <strong>Euler-Cromer method</strong> (also called the semi-implicit Euler method) makes a subtle but crucial modification to the standard Euler approach. Instead of using the current velocity to update position, it uses the <em>updated</em> velocity that we just calculated:</p>
+<p><span class="math display">\[v_{i+1} = v_i + a(x_i, v_i, t_i)\Delta t\]</span> <span class="math display">\[x_{i+1} = x_i + v_{i+1}\Delta t \quad \text{(note: using } v_{i+1}\text{, not } v_i\text{)}\]</span></p>
+<p>This seemingly minor change—using <span class="math inline">\(v_{i+1}\)</span> instead of <span class="math inline">\(v_i\)</span> in the position update—has dramatic consequences for oscillatory systems. The method becomes <strong>symplectic</strong>, meaning it preserves the structure of phase space and conserves a modified energy that closely approximates the true energy. While individual trajectories may not be perfectly accurate, the method doesn’t systematically add or remove energy from the system, preventing the artificial spiraling behavior that plagues standard Euler integration of oscillators.</p>
+<p>This property makes Euler-Cromer particularly valuable for long-term simulations of conservative systems like planetary orbits or molecular dynamics, where maintaining energy conservation over billions of time steps is crucial.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> euler_cromer_step(state, t, dt, k, m):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Single step of Euler-Cromer for harmonic oscillator"""</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    x, v <span class="op">=</span> state</span>
@@ -646,9 +699,9 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6Ilxu
 </section>
 <section id="why-use-odeint-instead" class="level3">
 <h3 class="anchored" data-anchor-id="why-use-odeint-instead">Why Use <code>odeint</code> Instead?</h3>
-<p>Simple methods like Euler have limitations: - <strong>Accuracy:</strong> Need very small <span class="math inline">\(\Delta t\)</span> for good accuracy - <strong>Stability:</strong> Can become unstable for stiff equations - <strong>Efficiency:</strong> Waste computation by using uniform small steps</p>
-<p><strong><code>odeint</code> uses adaptive Runge-Kutta methods</strong> that: - Automatically adjust step size based on local error - Achieve high accuracy with fewer function evaluations - Handle stiff equations robustly</p>
-<p>For production code and research, always use <code>odeint</code> (or similar library functions)!</p>
+<p>While understanding simple methods like Euler and Euler-Cromer builds intuition, they have serious limitations for practical work. Their <strong>accuracy</strong> is inherently limited—achieving acceptable error typically requires very small time steps <span class="math inline">\(\Delta t\)</span>, making calculations slow. Their <strong>stability</strong> is problematic—for certain types of equations (called “stiff” equations), these simple methods can become wildly unstable, producing nonsensical results even with small time steps. Their <strong>efficiency</strong> is poor because they use uniform time steps, wasting computation in smooth regions while potentially being inaccurate in rapidly-varying regions.</p>
+<p>The <code>odeint</code> function uses <strong>adaptive Runge-Kutta methods</strong> that overcome all these limitations. These algorithms automatically adjust the step size based on local error estimates—taking large steps where the solution is smooth and small steps where it’s rapidly changing. This adaptive strategy achieves high accuracy with far fewer derivative evaluations than fixed-step methods would require. The underlying LSODA algorithm can also detect stiff problems and switch to appropriate implicit methods that remain stable.</p>
+<p>For production code, research, or any work where you trust the results to be correct, always use well-tested library functions like <code>odeint</code>, <code>scipy.integrate.solve_ivp</code>, or equivalent tools in other languages. These have been refined over decades and handle edge cases you might not even think to test for. Implementing your own integrator is valuable for learning, but for serious work, leverage the expertise embedded in these libraries.</p>
 </section>
 </div>
 </div>
@@ -657,7 +710,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6Ilxu
 <section id="advanced-matrix-methods-for-odes" class="level2 callout-tip" data-collapse="true">
 <h2 class="callout-tip anchored" data-collapse="true" data-anchor-id="advanced-matrix-methods-for-odes">Advanced: Matrix Methods for ODEs</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -666,14 +719,14 @@ Implicit/Matrix Method (Crank-Nicolson)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>In the numerical differentiation lecture, we learned that derivatives can be represented as matrix operations. This leads to an alternative approach for solving ODEs called the <strong>implicit</strong> or <strong>matrix</strong> method.</p>
+<p>In the numerical differentiation lecture, we explored how derivatives can be represented as matrix operations. We saw that the second derivative could be written as a matrix multiplication using a tridiagonal matrix with entries <span class="math inline">\([1, -2, 1]\)</span> along the diagonals. This matrix perspective leads to an alternative approach for solving ODEs called the <strong>implicit</strong> or <strong>matrix</strong> method, which directly parallels the matrix differentiation techniques from the previous lecture.</p>
 <section id="the-harmonic-oscillator-with-matrices" class="level3">
 <h3 class="anchored" data-anchor-id="the-harmonic-oscillator-with-matrices">The Harmonic Oscillator with Matrices</h3>
 <p>Recall the harmonic oscillator equation:</p>
 <p><span class="math display">\[\frac{d^2x}{dt^2} + \omega^2 x = 0\]</span></p>
-<p>We can discretize this using our matrix representation of the second derivative:</p>
+<p>We can discretize this using the matrix representation of the second derivative that we developed in the differentiation lecture:</p>
 <p><span class="math display">\[\frac{d^2x}{dt^2} \approx \frac{1}{\Delta t^2}\begin{bmatrix}
 -2 &amp; 1  &amp; 0 &amp; \cdots \\
 1 &amp; -2 &amp; 1 &amp; \cdots \\
@@ -686,6 +739,7 @@ x_2\\
 x_3\\
 \vdots
 \end{bmatrix}\]</span></p>
+<p>This is exactly the same sparse matrix structure we constructed using <code>scipy.sparse.diags</code> in the previous lecture! The pattern <span class="math inline">\([1, -2, 1]\)</span> encodes the finite difference formula <span class="math inline">\(f''_i \approx \frac{f_{i-1} - 2f_i + f_{i+1}}{\Delta x^2}\)</span>.</p>
 <p>This transforms the differential equation into a <strong>system of linear equations</strong>:</p>
 <p><span class="math display">\[(T + \omega^2 V)\vec{x} = \vec{b}\]</span></p>
 <p>where: - <span class="math inline">\(T\)</span> is the second derivative matrix - <span class="math inline">\(V\)</span> is the identity matrix scaled by <span class="math inline">\(\omega^2\)</span> - <span class="math inline">\(\vec{b}\)</span> encodes boundary/initial conditions</p>
@@ -701,27 +755,22 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImZy
 </script>
 </div>
 </section>
-<section id="advantages-and-disadvantages" class="level3">
-<h3 class="anchored" data-anchor-id="advantages-and-disadvantages">Advantages and Disadvantages</h3>
-<p><strong>Advantages:</strong> - Solves for all time points simultaneously - Can be more stable for stiff equations - Direct connection to the mathematical structure</p>
-<p><strong>Disadvantages:</strong> - Requires solving large linear systems (memory intensive) - Less flexible for nonlinear equations - More complex to set up boundary conditions</p>
-<p><strong>When to use:</strong> - Specialized applications (PDEs, boundary value problems) - When you need solutions at all time points simultaneously - For linear problems with specific stability requirements</p>
-<p><strong>For most physics problems</strong>, the time-stepping methods (especially <code>odeint</code>) are more practical and efficient.</p>
+<section id="advantages-and-disadvantages-of-matrix-methods" class="level3">
+<h3 class="anchored" data-anchor-id="advantages-and-disadvantages-of-matrix-methods">Advantages and Disadvantages of Matrix Methods</h3>
+<p>Matrix methods offer some conceptual and computational advantages in specific contexts. They solve for the solution at all time points simultaneously rather than stepping forward sequentially, which can provide better stability for certain stiff equations and gives direct access to the entire solution trajectory at once. The approach also makes the mathematical structure more explicit—you see the ODE as a linear algebra problem, connecting to the rich theory of matrices and their properties.</p>
+<p>However, these advantages come with significant costs. Solving large linear systems is memory-intensive—storing a dense <span class="math inline">\(N \times N\)</span> matrix for <span class="math inline">\(N\)</span> time points quickly becomes impractical for long simulations. The method is also far less flexible for nonlinear equations, which dominate physics problems; you’d need to linearize or use iterative schemes. Setting up proper boundary and initial conditions in matrix form is more complex than simply specifying initial values for time-stepping methods.</p>
+<p>Matrix methods excel in specialized applications like boundary value problems (where conditions are specified at multiple points, not just initially), certain partial differential equations where spatial discretization naturally leads to matrices (as we’ll see in future lectures on PDEs), and specific linear problems with particular stability requirements. For these niche applications, the simultaneous solution of all time points can be powerful. The matrix differentiation techniques from the previous lecture become especially valuable in these PDE contexts.</p>
+<p>However, for the vast majority of physics problems involving ODEs—especially nonlinear initial value problems like most classical mechanics situations—time-stepping methods like <code>odeint</code> are far more practical, efficient, and easier to implement. They handle nonlinearity naturally, use memory efficiently, and scale to long time simulations gracefully. Think of matrix methods as a specialized tool in your computational toolkit, while time-stepping methods are your everyday workhorses.</p>
 </section>
 </div>
 </div>
 </div>
 </section>
-<section id="whats-next" class="level2">
-<h2 class="anchored" data-anchor-id="whats-next">What’s Next?</h2>
-<p>Now that you know how to solve ODEs, you’re ready to model real physics systems:</p>
-<ul>
-<li><strong>Planetary motion:</strong> Solve Newton’s laws for gravitational systems</li>
-<li><strong>Chaotic systems:</strong> Explore the double pendulum and chaos</li>
-<li><strong>Wave equations:</strong> Model oscillations and wave propagation</li>
-<li><strong>Quantum mechanics:</strong> Solve the time-dependent Schrödinger equation (numerically!)</li>
-</ul>
-<p>The tools you’ve learned - numerical differentiation, integration, and ODE solving - form the foundation of computational physics!</p>
+<section id="whats-next-applications-across-physics" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next-applications-across-physics">What’s Next? Applications Across Physics</h2>
+<p>Now that you’ve mastered solving ODEs numerically, you possess a fundamental tool of computational physics. Combined with the numerical differentiation techniques from the previous lecture, you now understand both how to compute derivatives from functions <strong>and</strong> how to compute functions from their derivatives—completing the computational calculus toolkit. The techniques you’ve learned apply across virtually every domain of physics. Consider <strong>planetary motion</strong>—by solving Newton’s gravitational equations, you can simulate orbits, predict eclipses, or study the complex dynamics of three-body systems that have no analytical solution. You can explore <strong>chaotic systems</strong> like the double pendulum, witnessing how deterministic equations can produce unpredictable, seemingly random behavior that’s exquisitely sensitive to initial conditions.</p>
+<p>You can model <strong>wave propagation</strong> by discretizing wave equations, studying how disturbances travel through media. You can even tackle problems in <strong>quantum mechanics</strong>, solving the time-dependent Schrödinger equation numerically to watch wavefunctions evolve and interfere. While Schrödinger’s equation is fundamentally different from classical ODEs (it’s a partial differential equation with complex values), the same numerical principles apply after appropriate discretization.</p>
+<p>The tools you’ve learned across these two lectures—numerical differentiation and ODE integration—form an inseparable pair at the foundation of computational physics. The finite difference formulas we derived for computing derivatives reappear inside the time-stepping algorithms for solving ODEs. The matrix representations of differential operators connect both lectures. Together, they’re the building blocks for more sophisticated methods: molecular dynamics simulations, climate models, computational fluid dynamics, and finite element analysis all build on these core concepts. You’re now equipped to simulate, predict, and understand physical systems computationally, complementing the analytical techniques you learn in traditional physics courses.</p>
 
 
 <script type="pyodide-data">
@@ -1161,8 +1210,8 @@ window._ojs.runtime.interpretFromScriptTags();
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="pagination-link" aria-label="Advanced Seminar 1">
-        <span class="nav-page-text">Advanced Seminar 1</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../lectures/lecture08/2_integration.html" class="pagination-link" aria-label="Tool: Numerical Integration">
+        <span class="nav-page-text">Tool: Numerical Integration</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

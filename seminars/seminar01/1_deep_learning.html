@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../seminars/seminar01/2_reinforcement_learning.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -168,7 +169,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Neural Networks</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">🛠️ Hands-On Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar01/2_reinforcement_learning.html">Advanced Topics</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar01/1_deep_learning.html">Advanced: Deep Learning</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -295,7 +296,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">⚡ Week 4-5: Classical Mechanics</span></a>
+ <span class="menu-text">⚡ Week 4: Classical Mechanics 1</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -303,10 +304,27 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/4_brownian_motion_simple.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Application: Brownian Motion (Simple)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture03/1_numpy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Arrays with Numpy</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">⚡ Week 5: Classical Mechanics 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture07/1_differentiation.html" class="sidebar-item-text sidebar-link">
@@ -319,30 +337,43 @@ window.Quarto = {
  <span class="menu-text">Tool: Solving ODEs</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture08/2_integration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tool: Numerical Integration</span></a>
+  </div>
+</li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
  <span class="menu-text">🛠️ Hands-On Seminars</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
  <span class="menu-text">Advanced Topics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Advanced Seminar 1</span></a>
+ <span class="menu-text">Advanced: Reinforcement Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar01/1_deep_learning.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Advanced: Deep Learning</span></a>
   </div>
 </li>
       </ul>
@@ -359,38 +390,40 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-mnist-data-set" id="toc-the-mnist-data-set" class="nav-link active" data-scroll-target="#the-mnist-data-set">The MNIST Data Set</a>
+  <li><a href="#overview-building-intelligence-from-scratch" id="toc-overview-building-intelligence-from-scratch" class="nav-link active" data-scroll-target="#overview-building-intelligence-from-scratch">Overview: Building Intelligence from Scratch 🧠</a></li>
+  <li><a href="#the-mnist-data-set" id="toc-the-mnist-data-set" class="nav-link" data-scroll-target="#the-mnist-data-set">The MNIST Data Set 🔢</a>
   <ul class="collapse">
   <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">Load the data</a></li>
   <li><a href="#normalize-the-data" id="toc-normalize-the-data" class="nav-link" data-scroll-target="#normalize-the-data">Normalize the data</a></li>
   <li><a href="#preparing-training-and-testing-data" id="toc-preparing-training-and-testing-data" class="nav-link" data-scroll-target="#preparing-training-and-testing-data">Preparing training and testing data</a></li>
   </ul></li>
-  <li><a href="#a-single-neuron" id="toc-a-single-neuron" class="nav-link" data-scroll-target="#a-single-neuron">A Single Neuron</a>
+  <li><a href="#a-single-neuron-the-fundamental-building-block" id="toc-a-single-neuron-the-fundamental-building-block" class="nav-link" data-scroll-target="#a-single-neuron-the-fundamental-building-block">A Single Neuron: The Fundamental Building Block ⚛️</a>
   <ul class="collapse">
-  <li><a href="#forward-propogation" id="toc-forward-propogation" class="nav-link" data-scroll-target="#forward-propogation">Forward Propogation</a></li>
-  <li><a href="#loss-function" id="toc-loss-function" class="nav-link" data-scroll-target="#loss-function">Loss Function</a></li>
+  <li><a href="#forward-propagation-from-input-to-output" id="toc-forward-propagation-from-input-to-output" class="nav-link" data-scroll-target="#forward-propagation-from-input-to-output">Forward Propagation: From Input to Output</a></li>
+  <li><a href="#loss-function-quantifying-prediction-error" id="toc-loss-function-quantifying-prediction-error" class="nav-link" data-scroll-target="#loss-function-quantifying-prediction-error">Loss Function: Quantifying Prediction Error 📉</a></li>
   </ul></li>
-  <li><a href="#trainging-the-network" id="toc-trainging-the-network" class="nav-link" data-scroll-target="#trainging-the-network">Trainging the Network</a>
+  <li><a href="#training-the-network-learning-from-data" id="toc-training-the-network-learning-from-data" class="nav-link" data-scroll-target="#training-the-network-learning-from-data">Training the Network: Learning from Data 🎓</a>
   <ul class="collapse">
-  <li><a href="#backward-propagation" id="toc-backward-propagation" class="nav-link" data-scroll-target="#backward-propagation">Backward Propagation</a></li>
-  <li><a href="#stochastic-gradient-descent" id="toc-stochastic-gradient-descent" class="nav-link" data-scroll-target="#stochastic-gradient-descent">Stochastic Gradient Descent</a></li>
-  <li><a href="#build-an-train" id="toc-build-an-train" class="nav-link" data-scroll-target="#build-an-train">Build an Train</a></li>
-  <li><a href="#testing-our-model" id="toc-testing-our-model" class="nav-link" data-scroll-target="#testing-our-model">Testing our model</a></li>
+  <li><a href="#backward-propagation-the-chain-rule-in-action" id="toc-backward-propagation-the-chain-rule-in-action" class="nav-link" data-scroll-target="#backward-propagation-the-chain-rule-in-action">Backward Propagation: The Chain Rule in Action 🔗</a></li>
+  <li><a href="#gradient-descent-following-the-downhill-path" id="toc-gradient-descent-following-the-downhill-path" class="nav-link" data-scroll-target="#gradient-descent-following-the-downhill-path">Gradient Descent: Following the Downhill Path ⛰️</a></li>
+  <li><a href="#build-and-train-putting-it-all-together" id="toc-build-and-train-putting-it-all-together" class="nav-link" data-scroll-target="#build-and-train-putting-it-all-together">Build and Train: Putting It All Together 🔨</a></li>
+  <li><a href="#testing-our-model-individual-predictions" id="toc-testing-our-model-individual-predictions" class="nav-link" data-scroll-target="#testing-our-model-individual-predictions">Testing Our Model: Individual Predictions 🔬</a></li>
   </ul></li>
-  <li><a href="#network-with-hidden-layers" id="toc-network-with-hidden-layers" class="nav-link" data-scroll-target="#network-with-hidden-layers">Network with Hidden Layers</a></li>
-  <li><a href="#multiclass-network" id="toc-multiclass-network" class="nav-link" data-scroll-target="#multiclass-network">Multiclass Network</a>
+  <li><a href="#network-with-hidden-layers-increasing-representational-power" id="toc-network-with-hidden-layers-increasing-representational-power" class="nav-link" data-scroll-target="#network-with-hidden-layers-increasing-representational-power">Network with Hidden Layers: Increasing Representational Power 🧩</a></li>
+  <li><a href="#multiclass-network-recognizing-all-digits" id="toc-multiclass-network-recognizing-all-digits" class="nav-link" data-scroll-target="#multiclass-network-recognizing-all-digits">Multiclass Network: Recognizing All Digits 🔢</a>
   <ul class="collapse">
-  <li><a href="#changes-to-the-model" id="toc-changes-to-the-model" class="nav-link" data-scroll-target="#changes-to-the-model">Changes to the model</a></li>
-  <li><a href="#build-and-train" id="toc-build-and-train" class="nav-link" data-scroll-target="#build-and-train">Build and Train</a></li>
+  <li><a href="#changes-to-the-model-architecture" id="toc-changes-to-the-model-architecture" class="nav-link" data-scroll-target="#changes-to-the-model-architecture">Changes to the Model Architecture 🔧</a></li>
+  <li><a href="#build-and-train-the-complete-network" id="toc-build-and-train-the-complete-network" class="nav-link" data-scroll-target="#build-and-train-the-complete-network">Build and Train: The Complete Network 🚀</a></li>
   </ul></li>
-  <li><a href="#test-the-model" id="toc-test-the-model" class="nav-link" data-scroll-target="#test-the-model">Test the model</a></li>
+  <li><a href="#testing-the-model-interactive-exploration" id="toc-testing-the-model-interactive-exploration" class="nav-link" data-scroll-target="#testing-the-model-interactive-exploration">Testing the Model: Interactive Exploration 🔍</a></li>
+  <li><a href="#reflection-and-next-steps" id="toc-reflection-and-next-steps" class="nav-link" data-scroll-target="#reflection-and-next-steps">Reflection and Next Steps 🎯</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">🛠️ Hands-On Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar01/2_reinforcement_learning.html">Advanced Topics</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar01/1_deep_learning.html">Advanced: Deep Learning</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Neural Networks</h1>
 </div>
@@ -409,8 +442,11 @@ window.Quarto = {
 </header>
 
 
-<p>Neural networks are one of the most commonly used machine learning objects nowadays. Mostly these systems are known as <strong>deep neural networks</strong>, which just says something about how many layers in which neurons are arranged exist. We will in this lecture have a look at the basic unit, the neuron, and how to connect and train a network. We will do all ourselves, that means, we will not use one of the many existing python modules, that simplifies the task. This notebook has been largely developed by <strong>Martin Fränzl</strong>.</p>
-<div id="68e9506c" class="cell" data-tags="[]" data-execution_count="1">
+<p>Neural networks have become one of the most powerful tools in modern computational science, with applications ranging from particle physics to materials science. The term <strong>deep neural networks</strong> refers to architectures with many layers of interconnected neurons, where “deep” simply indicates the number of these layers. But what makes these systems particularly fascinating for physicists is their ability to learn complex patterns from data—much like how we extract physical laws from experimental observations.</p>
+<p>In this lecture, we’ll build neural networks from scratch, gaining deep insight into their inner workings rather than treating them as black boxes. We won’t rely on high-level libraries like TensorFlow or Keras just yet; instead, we’ll construct everything using NumPy, giving you the same kind of fundamental understanding you’d gain from deriving equations of motion from first principles rather than just applying them. This hands-on approach will help you understand what’s really happening under the hood when you train a neural network.</p>
+<p>Think of neural networks as complex function approximators. Just as you might fit a polynomial to experimental data, neural networks can approximate incredibly complicated functions—functions that might describe the relationship between input images and their classifications, or between system parameters and physical outcomes. The difference is that neural networks can handle much higher-dimensional spaces and more complex patterns than traditional fitting methods.</p>
+<p>Our goal today is to build a neural network that can recognize handwritten digits—a classic problem that will teach us all the essential concepts. We’ll start simple with a single neuron (essentially logistic regression), then add hidden layers to increase the network’s representational power. By the end, you’ll have a working digit classifier and a solid foundation for understanding deep learning. This notebook has been largely developed by <strong>Martin Fränzl</strong> and adapted for physics students.</p>
+<div id="be3feea5" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -432,25 +468,31 @@ window.Quarto = {
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ytick.direction'</span> : <span class="st">'in'</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                    })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In this lecture we are going to build a neural network from scratch using Python and NumPy (The high-level libaries like Keras and TensorFlow will be covered in Part 2). We will build a network to recognize hand-written digits, using the famous MNIST data set.</p>
+<section id="overview-building-intelligence-from-scratch" class="level2">
+<h2 class="anchored" data-anchor-id="overview-building-intelligence-from-scratch">Overview: Building Intelligence from Scratch 🧠</h2>
+<p>We’re going to build a neural network from scratch using Python and NumPy, without relying on high-level libraries like Keras or TensorFlow (those will come in Part 2). Our task is to recognize handwritten digits using the famous MNIST dataset—a benchmark problem in machine learning that has driven much of the field’s development.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="MNIST.png" class="img-fluid figure-img"></p>
 <figcaption>MNIS</figcaption>
 </figure>
 </div>
-<p>We will start with the simplest possible “network”: A single node that recognizes just the digit 0. This is actually just an implementation of logistic regression, but it will help us understand some of the key components before things get more complicated. Then we’ll extend that into a network with one hidden layer, still recognizing just 0. Finally, we will extend the network to recognize all the digits 0 through 9. That will give us a 92% accurate digit-recognizer.</p>
+<p>Our learning journey proceeds in three stages, each building on the previous one. We’ll start with the simplest possible “network”: a single neuron that learns to recognize just the digit 0. This is actually just logistic regression in disguise, but it will teach us the fundamental concepts of forward propagation, loss functions, and gradient descent. Think of this as the “harmonic oscillator” of neural networks—the simplest non-trivial system that captures the essential physics.</p>
+<p>Next, we’ll add a hidden layer to our network, still focusing on recognizing zeros. This is where things get interesting: the hidden layer allows the network to learn intermediate representations, much like how eigenstates provide a natural basis for describing quantum systems. The network can now discover its own “features” rather than working directly with raw pixel values.</p>
+<p>Finally, we’ll extend our network to recognize all digits from 0 through 9, creating a true multiclass classifier. This requires changing our output layer and loss function, but the core principles remain the same. By the end, we’ll have a network that achieves around 84-92% accuracy—not state-of-the-art by modern standards, but impressive for a network we built entirely from scratch!</p>
+</section>
 <section id="the-mnist-data-set" class="level2">
-<h2 class="anchored" data-anchor-id="the-mnist-data-set">The MNIST Data Set</h2>
-<p>The MNIST data set contains 70,000 images of hand-written digits, each 28 x 28 pixels, in greyscale with pixel-values from 0 to 255. We could download and preprocess the data ourselves, but the makers of the module <code>sklearn</code> already did that for us:</p>
+<h2 class="anchored" data-anchor-id="the-mnist-data-set">The MNIST Data Set 🔢</h2>
+<p>The MNIST (Modified National Institute of Standards and Technology) dataset is to machine learning what the hydrogen atom is to quantum mechanics—a fundamental system that everyone studies first. It contains 70,000 images of handwritten digits, each 28 × 28 pixels in grayscale with pixel values ranging from 0 (black) to 255 (white). This gives us 784 input features per image (28 × 28 = 784), each representing the intensity of one pixel.</p>
+<p>From a physicist’s perspective, each image is a point in a 784-dimensional space. Our task is to partition this space into 10 regions, one for each digit. This is a classification problem, and neural networks provide a flexible way to learn these complex decision boundaries. We could download and preprocess the data ourselves, but the <code>sklearn</code> module has already done the heavy lifting for us:</p>
 <section id="load-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="load-the-data">Load the data</h3>
-<div id="ce1b150a" class="cell" data-tags="[]" data-execution_count="2">
+<div id="6f885a8f" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_openml</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> fetch_openml(<span class="st">'mnist_784'</span>, version<span class="op">=</span><span class="dv">1</span>, return_X_y<span class="op">=</span><span class="va">True</span>,as_frame<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The images are now contained in the array <code>X</code>, while the labels (so which number it is) are contained in <code>y</code>. Let’s have a look at a random image and label.</p>
-<div id="fef4e731" class="cell" data-tags="[]" data-execution_count="3">
+<div id="e0fcf8bf" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">33419</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(np.array(X)[i].reshape(<span class="dv">28</span>, <span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
@@ -470,35 +512,35 @@ window.Quarto = {
 </section>
 <section id="normalize-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="normalize-the-data">Normalize the data</h3>
-<p>To use data in neural networks as training data, it is always useful to normalize the data to the interval [0, 1].</p>
-<div id="a5c2f09f" class="cell" data-tags="[]" data-execution_count="4">
+<p>Normalization is a crucial preprocessing step in machine learning. By dividing by 255, we scale all pixel values to the interval [0, 1]. This normalization serves several purposes: it prevents numerical overflow issues during computation, helps the gradient descent algorithm converge faster (since all features are on the same scale), and makes the learning rate easier to tune. Think of it as choosing appropriate units in physics—working in natural units (ℏ = c = 1) often simplifies calculations, and similarly, normalized data simplifies neural network training.</p>
+<div id="f933c83b" class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X<span class="op">/</span><span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="preparing-training-and-testing-data" class="level3">
 <h3 class="anchored" data-anchor-id="preparing-training-and-testing-data">Preparing training and testing data</h3>
-<p>The default MNIST labels say ‘1’ for an image of a one, ‘2’ for an image of a two, etc., but we are just building a zero classifier for now. So we want our labels to say 1 when we have a zero, and 0 otherwise. So we overwrite the labels accordingly:</p>
-<div id="cd714c7e" class="cell" data-tags="[]" data-execution_count="5">
+<p>For our first network, we’re building a binary classifier—a system that answers a yes/no question: “Is this digit a zero?” The default MNIST labels indicate which digit each image represents (‘0’, ‘1’, ‘2’, etc.), but we need to convert this to binary labels: 1 if the image shows a zero, and 0 otherwise. This is analogous to simplifying a complex quantum system by projecting it onto a two-level system—we’re reducing a 10-class problem to a binary one.</p>
+<div id="f81c8882" class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>y_new <span class="op">=</span> np.zeros(y.shape)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y_new[np.where(y <span class="op">==</span> <span class="st">'0'</span>)[<span class="dv">0</span>]] <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We now split the data in a train and test set. The MNIST images are pre-arranged so that the first 60,000 can be used for training, and the last 10,000 for testing. We’ll also transform the data into the shape we want, with each example in a column (instead of a row):</p>
-<div id="0883acfb" class="cell" data-tags="[]" data-execution_count="6">
+<p>We now split the data into training and testing sets. This separation is crucial: we train on one set and evaluate on a completely different set to test our network’s ability to generalize. This is similar to how you might measure a physical quantity multiple times—some measurements are used to calibrate your instrument (training), while others test its accuracy (testing). The MNIST images are pre-arranged so that the first 60,000 form the training set and the last 10,000 serve as the test set. We’ll also transpose the data so that each example becomes a column rather than a row, which makes our matrix operations more intuitive:</p>
+<div id="33136a33" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">60000</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>m_test <span class="op">=</span> X.shape[<span class="dv">0</span>] <span class="op">-</span> m</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test <span class="op">=</span> X[:m].T, X[m:].T</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>y_train, y_test <span class="op">=</span> y[:m].reshape(<span class="dv">1</span>,m), y[m:].reshape(<span class="dv">1</span>, m_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Finally, we shuffle the training set:</p>
-<div id="9dd4b824" class="cell" data-tags="[]" data-execution_count="7">
+<p>Finally, we shuffle the training set. Shuffling ensures that our network doesn’t learn any spurious patterns related to the order of examples. If all the zeros came first, followed by all the ones, the network might learn temporal patterns that don’t actually exist in the data:</p>
+<div id="69a9f417" class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>shuffle_index <span class="op">=</span> np.random.permutation(m)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> X_train[:,shuffle_index], y_train[:,shuffle_index]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s again have a look at random image and label just to check</p>
-<div id="6d3142e5" class="cell" data-tags="[]" data-execution_count="8">
+<p>Let’s verify our preprocessing by examining a random image and its label:</p>
+<div id="8704686f" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">39</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_train[:,i].reshape(<span class="dv">28</span>, <span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
@@ -515,53 +557,50 @@ window.Quarto = {
 <pre><code>[0.]</code></pre>
 </div>
 </div>
-<p>Try to find a zero to check whether the corresponding label is a 1.</p>
+<p>Try changing the index <code>i</code> to explore different images. When you find a zero, verify that the corresponding label is 1, and when you find any other digit, check that the label is 0. This sanity check ensures our binary labeling worked correctly.</p>
 </section>
 </section>
-<section id="a-single-neuron" class="level2">
-<h2 class="anchored" data-anchor-id="a-single-neuron">A Single Neuron</h2>
-<p>The basic unit of a neural network is a neuron. A neuron takes inputs, does some math with them, and produces one output. The neuron below does that with two inputs.</p>
+<section id="a-single-neuron-the-fundamental-building-block" class="level2">
+<h2 class="anchored" data-anchor-id="a-single-neuron-the-fundamental-building-block">A Single Neuron: The Fundamental Building Block ⚛️</h2>
+<p>The basic unit of a neural network is an artificial neuron, inspired by biological neurons but mathematically much simpler. A neuron takes multiple inputs, performs a weighted sum (plus a bias), and passes the result through an activation function to produce a single output. The diagram below shows a simple neuron with two inputs:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/neuron.png" class="img-fluid figure-img"></p>
 <figcaption>image</figcaption>
 </figure>
 </div>
-<section id="forward-propogation" class="level3">
-<h3 class="anchored" data-anchor-id="forward-propogation">Forward Propogation</h3>
-<p>The neuron does now three things.</p>
-<ol type="1">
-<li>Take input values and multipy by weights</li>
-</ol>
-<p><span class="math display">\[\begin{eqnarray}
+<p>While the biological inspiration is interesting, it’s more useful for us as physicists to think of a neuron as a parametrized nonlinear function. The weights and bias are parameters we’ll adjust during training, and the activation function introduces nonlinearity—crucial because linear combinations of linear functions are still linear, but we need nonlinearity to approximate complex decision boundaries.</p>
+<section id="forward-propagation-from-input-to-output" class="level3">
+<h3 class="anchored" data-anchor-id="forward-propagation-from-input-to-output">Forward Propagation: From Input to Output</h3>
+<p>The term “forward propagation” describes how information flows through the network from inputs to outputs. A neuron performs three sequential operations on its inputs.</p>
+<p><strong>First</strong>, each input value <span class="math inline">\(x_i\)</span> is multiplied by its corresponding weight <span class="math inline">\(w_i\)</span>: <span class="math display">\[\begin{eqnarray}
 x_{1}\rightarrow x_{1} w_{1}\\
 x_{2}\rightarrow x_{2} w_{2}
 \end{eqnarray}\]</span></p>
-<ol start="2" type="1">
-<li>All the weighted inputs are the added to a bias value <span class="math inline">\(b\)</span></li>
-</ol>
-<p><span class="math display">\[\begin{equation}
-x_{1} w_{1}+ x_{2} w_{2}+b
+<p>These weights determine how much influence each input has on the output. In physics terms, think of the weights as coupling constants that determine the strength of interaction between input features and the output.</p>
+<p><strong>Second</strong>, all weighted inputs are summed and a bias term <span class="math inline">\(b\)</span> is added: <span class="math display">\[\begin{equation}
+z = x_{1} w_{1}+ x_{2} w_{2}+b
 \end{equation}\]</span></p>
-<ol start="3" type="1">
-<li>The output is generated by applying a function <span class="math inline">\(\sigma()\)</span> <span class="math display">\[\begin{equation}
-y=\sigma( x_{1} w_{1}+ x_{2} w_{2}+b)
-\end{equation}\]</span></li>
-</ol>
-<p>This function is called activation function. The activation function is used to turn an unbounded input value into a bounded output value with a predictable range. A commonly used activation function is the <code>sigmoid function</code>.</p>
-<p>For a single input dataset <span class="math inline">\(x\)</span> a more compact writing of the math above is</p>
+<p>The bias allows the neuron to shift its activation threshold, similar to how an external potential can shift energy levels in quantum mechanics. It’s crucial for fitting data that doesn’t pass through the origin.</p>
+<p><strong>Third</strong>, this weighted sum <span class="math inline">\(z\)</span> is passed through an activation function <span class="math inline">\(\sigma(\cdot)\)</span> to produce the final output: <span class="math display">\[\begin{equation}
+y=\sigma(z) = \sigma( x_{1} w_{1}+ x_{2} w_{2}+b)
+\end{equation}\]</span></p>
+<p>The activation function serves a critical purpose: it introduces nonlinearity into the network. Without it, stacking multiple layers would be pointless—any composition of linear transformations is itself linear. The activation function allows neural networks to approximate arbitrary nonlinear functions, much like how Fourier series can approximate arbitrary periodic functions through combinations of sines and cosines.</p>
+<p>A commonly used activation function is the <strong>sigmoid function</strong>, which smoothly maps any real number to the interval (0, 1).</p>
+<p>For a single training example <span class="math inline">\(x\)</span> (which is itself a vector of 784 pixel values), we can write this more compactly using vector notation:</p>
 <p><span class="math display">\[\begin{equation*}
 \hat{y} = \sigma(w^{\rm T} x + b)\ .
 \end{equation*}\]</span></p>
-<p>Here <span class="math inline">\(\sigma\)</span> is the sigmoid function: <span class="math display">\[\begin{equation*}
+<p>Here <span class="math inline">\(w^{\rm T} x\)</span> is the dot product of the weight vector with the input vector, <span class="math inline">\(b\)</span> is a scalar bias, and <span class="math inline">\(\sigma\)</span> is the sigmoid activation function: <span class="math display">\[\begin{equation*}
 \sigma(z) = \frac{1}{1+{\rm e}^{-z}}\ .
 \end{equation*}\]</span></p>
-<p>The sigmoid function is something we can already define and plot.</p>
-<div id="a454b82c" class="cell" data-execution_count="9">
+<p>The sigmoid function has a beautiful S-shaped curve. For large positive inputs it approaches 1, for large negative inputs it approaches 0, and it transitions smoothly in between. This makes it perfect for binary classification—we can interpret the output as a probability. Interestingly, the sigmoid function is related to the Fermi-Dirac distribution in statistical mechanics (without the temperature parameter), which describes the occupation probability of quantum states.</p>
+<p>Let’s define and visualize the sigmoid function:</p>
+<div id="e23b9380" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(z):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="7f7f33d6" class="cell" data-execution_count="10">
+<div id="b27cb9a7" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">3</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x,sigmoid(x))</span>
@@ -570,51 +609,50 @@ y=\sigma( x_{1} w_{1}+ x_{2} w_{2}+b)
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="1_deep_learning_files/figure-html/cell-11-output-1.png" width="464" height="297" class="figure-img"></p>
+<figcaption>Sigmoid function</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>If we now have this kind of two input neuron with the weights <span class="math inline">\(w\)</span> and the bias value <span class="math inline">\(b\)</span></p>
-<p><span class="math display">\[\begin{eqnarray}
-w=[0,1]\\
-b=4
-\end{eqnarray}\]</span></p>
-<p>we may supply and input</p>
-<p><span class="math display">\[\begin{eqnarray}
-x=[2,3]
-\end{eqnarray}\]</span></p>
-<p>which gives writing it a s a dot product</p>
+<p><strong>Example calculation:</strong> Consider a simple two-input neuron with weights <span class="math inline">\(w=[0,1]\)</span> and bias <span class="math inline">\(b=4\)</span>. If we provide the input <span class="math inline">\(x=[2,3]\)</span>, the neuron computes:</p>
 <p><span class="math display">\[\begin{equation}
-y=f(w\cdot x+b)=f(7)=0.999
+z = w\cdot x+b = 0 \cdot 2 + 1 \cdot 3 + 4 = 7
 \end{equation}\]</span></p>
-<p>This procedure of propagating the input values to obtain and output value is called <strong>feedforward</strong> or <strong>forward propagation</strong>. Our first goal is now to create a network with a single neuron with 784 inputs (28 x 28), and a single sigmoid unit generating the output.</p>
-<p>The above examples can be written and executed more efficiently in a vectorized form. Generating the output We’ll vectorize by stacking examples side-by-side, so that our input matrix <span class="math inline">\(X\)</span> has an example in each column. The vectorized form of the forward pass is then</p>
+<p>Passing this through the sigmoid gives: <span class="math display">\[\begin{equation}
+y=\sigma(7) = \frac{1}{1+e^{-7}} \approx 0.999
+\end{equation}\]</span></p>
+<p>The output is very close to 1, indicating high confidence. This entire procedure—propagating input values forward through the network to obtain an output—is called <strong>feedforward</strong> or <strong>forward propagation</strong>.</p>
+<p>Our immediate goal is to scale this up: we’ll create a network with a single neuron that has 784 inputs (one for each pixel in our 28 × 28 images) and produces a single sigmoid output indicating whether the image is a zero.</p>
+<p><strong>Vectorization for efficiency:</strong> The real power of NumPy comes from vectorization—processing multiple examples simultaneously. Instead of computing predictions one image at a time, we’ll stack all training examples side-by-side in a matrix <span class="math inline">\(X\)</span>, where each column is one example. The forward pass then becomes:</p>
 <p><span class="math display">\[\begin{equation*}
-\hat{y} = \sigma(w^{\rm T} X + b)\ .
+\hat{Y} = \sigma(w^{\rm T} X + b)\ .
 \end{equation*}\]</span></p>
-<p>Note that <span class="math inline">\(\hat{y}\)</span> is now a vector, not a scalar as it was in the previous equation.</p>
-<p>In our code we will compute this in two stages: <code>Z = np.matmul(W.T, X) + b</code> and then <code>A = sigmoid(Z)</code> (<code>A</code> for Activation). Breaking things up into stages like this is just for clarity - It will make our forward pass computations mirror the steps in our backward propagation computation.</p>
+<p>Note that <span class="math inline">\(\hat{Y}\)</span> is now a vector (one prediction per training example), not a scalar. This vectorized computation is orders of magnitude faster than looping over examples individually—NumPy uses optimized linear algebra libraries (BLAS/LAPACK) under the hood, similar to how you’d use optimized FFT routines rather than implementing Fourier transforms naively.</p>
+<p>In our code, we’ll compute this in two stages: first <code>Z = np.matmul(W.T, X) + b</code> (the weighted sum), then <code>A = sigmoid(Z)</code> (the activation). We use <code>A</code> for “Activation” to match standard deep learning notation. This two-stage breakdown might seem unnecessary now, but it will make our backward propagation code clearer—each stage needs its own gradient computation.</p>
 </section>
-<section id="loss-function" class="level3">
-<h3 class="anchored" data-anchor-id="loss-function">Loss Function</h3>
-<p>Since we have now data and we also know how to propagate (at least in principle) the input through the single neuron here, we also need to define a measure for how far the output deviates from the input. This measure is called <strong>loss</strong>. The many different ways of defining a suitable loss. The <code>mean squared error</code>, as it appeared already during our fitting lecture, could be a suitable loss function</p>
+<section id="loss-function-quantifying-prediction-error" class="level3">
+<h3 class="anchored" data-anchor-id="loss-function-quantifying-prediction-error">Loss Function: Quantifying Prediction Error 📉</h3>
+<p>Now that we can make predictions, we need to quantify how wrong those predictions are. This quantification is called the <strong>loss</strong> (or cost) function. It’s analogous to defining an energy functional in variational methods—we need a scalar quantity to minimize.</p>
+<p>You might think to use <strong>mean squared error</strong> (MSE) from your curve-fitting experience:</p>
 <p><span class="math display">\[\begin{equation}
 MSE(y,\hat{y})=\frac{1}{n}\sum_{i=1}^{n}(y-\hat{y})^2
 \end{equation}\]</span></p>
-<p>for a number of <span class="math inline">\(n\)</span> datasets. Here <span class="math inline">\(\hat{y}\)</span> is the data that is predicted by the network and <span class="math inline">\(y\)</span> is the value which represents the so called ground truth, i.e.&nbsp;the data provided by the training set.</p>
-<p>We will not use the mean squared error bu the <code>cross-entropy</code> for our loss function. The formula for a single training example (one input image) is:</p>
+<p>where <span class="math inline">\(\hat{y}\)</span> represents our predictions and <span class="math inline">\(y\)</span> represents the ground truth (actual labels from the training set). MSE works, but for classification problems, there’s a more principled choice.</p>
+<p>We’ll use <strong>binary cross-entropy loss</strong>, which comes from information theory. For a single training example:</p>
 <p><span class="math display">\[\begin{equation*}
 L(y,\hat{y}) = -y\log(\hat{y})-(1-y)\log(1-\hat{y})\ .
 \end{equation*}\]</span></p>
-<p>This error definition comes from the Shannon entropy definition, which you may look up in the web if you are interested. Averaging over a training set of <span class="math inline">\(m\)</span> examples we then have:</p>
+<p>This formula might look strange at first, but it has a beautiful interpretation. When <span class="math inline">\(y=1\)</span> (the image is a zero), only the first term matters, and we’re penalized more heavily the further <span class="math inline">\(\hat{y}\)</span> is from 1. When <span class="math inline">\(y=0\)</span> (not a zero), only the second term matters, penalizing predictions far from 0. The logarithm ensures that the penalty grows rapidly as predictions become more confident but wrong—being confidently wrong is much worse than being tentatively wrong.</p>
+<p>This loss function derives from maximum likelihood estimation and is related to the Kullback-Leibler divergence between probability distributions. It’s the natural choice for binary classification with sigmoid outputs. For physicists, you might recognize similar logarithmic terms in the partition function of statistical mechanics.</p>
+<p>Averaging over a training set of <span class="math inline">\(m\)</span> examples:</p>
 <p><span class="math display">\[\begin{equation*}
 L(Y,\hat{Y}) = -\frac{1}{m}\sum_{i = 0}^{m}y^{(i)}\log(\hat{y}^{(i)})-(1-y^{(i)})\log(1-\hat{y}^{(i)})\ .
 \end{equation*}\]</span></p>
 <p>In Python code, this looks like</p>
-<div id="ba3aa950" class="cell" data-execution_count="11">
+<div id="b360ea37" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_loss(Y, Y_hat):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> Y.shape[<span class="dv">1</span>]</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> <span class="op">-</span>(<span class="fl">1.</span><span class="op">/</span>m)<span class="op">*</span>(np.<span class="bu">sum</span>(np.multiply(np.log(Y_hat), Y)) <span class="op">+</span> np.<span class="bu">sum</span>(np.multiply(np.log(<span class="dv">1</span> <span class="op">-</span> Y_hat), (<span class="dv">1</span> <span class="op">-</span> Y))))</span>
@@ -622,31 +660,33 @@ L(Y,\hat{Y}) = -\frac{1}{m}\sum_{i = 0}^{m}y^{(i)}\log(\hat{y}^{(i)})-(1-y^{(i)}
 </div>
 </section>
 </section>
-<section id="trainging-the-network" class="level2">
-<h2 class="anchored" data-anchor-id="trainging-the-network">Trainging the Network</h2>
-<p>The goal of all neural network training procedures is to minimize the loss and we have to find a way to minimize that loss. This is not so much different from our fitting of function values before.</p>
-<section id="backward-propagation" class="level3">
-<h3 class="anchored" data-anchor-id="backward-propagation">Backward Propagation</h3>
-<p>The output of the network is determined by the input values and how we have distributed the weights <span class="math inline">\(w\)</span> and the biases <span class="math inline">\(b\)</span>. We can write the loss function therefore as a function of the weights and losses</p>
+<section id="training-the-network-learning-from-data" class="level2">
+<h2 class="anchored" data-anchor-id="training-the-network-learning-from-data">Training the Network: Learning from Data 🎓</h2>
+<p>Training a neural network means adjusting its parameters (weights and biases) to minimize the loss function. This is fundamentally an optimization problem, not unlike minimizing the action in Lagrangian mechanics or finding ground state energies in quantum systems. The key difference is that our loss function lives in a very high-dimensional space—with 784 inputs, we have 784 weights plus 1 bias, giving us a 785-dimensional parameter space to navigate.</p>
+<p>The optimization technique we’ll use is called <strong>gradient descent</strong>—we follow the downhill direction of the loss function, taking small steps toward the minimum. But how do we find this direction? We need gradients, which means we need derivatives of the loss with respect to all parameters. This is where <strong>backpropagation</strong> comes in.</p>
+<section id="backward-propagation-the-chain-rule-in-action" class="level3">
+<h3 class="anchored" data-anchor-id="backward-propagation-the-chain-rule-in-action">Backward Propagation: The Chain Rule in Action 🔗</h3>
+<p>The output of our network depends entirely on the inputs (which are fixed for a given training example) and on the parameters we choose: the weights <span class="math inline">\(w\)</span> and biases <span class="math inline">\(b\)</span>. We can therefore view the loss as a function of these parameters:</p>
 <p><span class="math display">\[
 L(w_{1},w_{2},w_{3},\ldots ,b_{1},b_{2},b_{3},\ldots)
 \]</span></p>
-<p>To train the network, we would now try to find out, by how much the output values change if we do change a specific weight <span class="math inline">\(w_j\)</span>. This can be expressed by the partial derivative</p>
+<p>To train the network through gradient descent, we need to know how the loss changes when we adjust each weight. This is captured by the partial derivative:</p>
 <p><span class="math display">\[
 \frac{\partial L}{\partial w_j}
 \]</span></p>
-<p>We may then take a tiny step and correct the current value of <span class="math inline">\(w_j\)</span> such that the network yields a new output. This way back from the current output of the network and its current loss to a correction of the weights to yield a smaller loss is called <strong>back propagation</strong>.</p>
-<p><strong>Calculating derivatives</strong></p>
-<p>Focusing on a single input image will make it easier to derive the formulas we need. Holding all values except <span class="math inline">\(w_j\)</span> fixed, we can think of <span class="math inline">\(L\)</span> as being computed in three steps: <span class="math inline">\(w_j\rightarrow z \rightarrow \hat{y} \rightarrow L\)</span>. The formulas for these steps are: <span class="math display">\[\begin{align*}
+<p>This derivative tells us the direction and magnitude of steepest increase in the loss. By moving in the opposite direction (negative gradient), we can reduce the loss. The process of computing these gradients by working backward from the loss through the network is called <strong>backpropagation</strong>—it’s just a clever application of the chain rule from calculus, applied systematically to a computational graph.</p>
+<p>Backpropagation is often presented as mysterious or complicated, but it’s really just careful bookkeeping with derivatives. As physicists, you’ve used the chain rule countless times—backpropagation is the same principle, just applied to a more complex composite function.</p>
+<p><strong>Deriving the gradients</strong></p>
+<p>Let’s focus on a single training example to keep the math clear. We can think of computing the loss in three stages: <span class="math inline">\(w_j\rightarrow z \rightarrow \hat{y} \rightarrow L\)</span>. The formulas for these stages are: <span class="math display">\[\begin{align*}
 z &amp;= w^{\rm T} x + b\ , \\
 \hat{y} &amp;= \sigma(z)\ , \\
 L(y,\hat{y}) &amp;= -y\log(\hat{y})-(1-y)\log(1-\hat{y})\ .
 \end{align*}\]</span></p>
-<p>The change of the loss function with the weights can then be split up by the chain rule into</p>
+<p>By the chain rule from calculus, the gradient of the loss with respect to weight <span class="math inline">\(w_j\)</span> factors into three partial derivatives:</p>
 <p><span class="math display">\[\begin{align*}
 \frac{\partial L}{\partial w_j} = \frac{\partial L}{\partial \hat{y}}\frac{\partial \hat{y}}{\partial z}\frac{\partial z}{\partial w_j}
-\end{align*}\]</span> <br></p>
-<p>There we have a product of three individual partial derivatives, which are a bit tedius to write down, but not to complicated. The read like</p>
+\end{align*}\]</span></p>
+<p>This factorization is the essence of backpropagation. Each partial derivative corresponds to one “link” in our computational chain. Let’s compute each factor systematically. The derivatives are a bit tedious to write out, but none of them are particularly complicated—they’re all applications of basic calculus rules you already know.</p>
 <p><span class="math inline">\(\partial L/\partial\hat{y}\)</span>: <span class="math display">\[\begin{align*}
 \frac{\partial L}{\partial\hat{y}} &amp;= \frac{\partial}{\partial\hat{y}}\left(-y\log(\hat{y})-(1-y)\log(1-\hat{y})\right) \\
 &amp;= -y\frac{\partial}{\partial\hat{y}}\log(\hat{y})-(1-y)\frac{\partial}{\partial\hat{y}}\log(1-\hat{y}) \\
@@ -674,34 +714,36 @@ L(y,\hat{y}) &amp;= -y\log(\hat{y})-(1-y)\log(1-\hat{y})\ .
 &amp;= (\hat{y} - y)x_j\ .
 \end{align*}\]</span></p>
 <p>which does not look that unfriendly anymore.</p>
-<p>In vectorized form with <span class="math inline">\(m\)</span> training examples this gives us <span class="math display">\[\begin{align*}
-\frac{\partial L}{\partial w} = \frac{1}{m} X(\hat{y} - y)^{\rm T}\ .
+<p><strong>Vectorizing the gradients:</strong> When we have <span class="math inline">\(m\)</span> training examples processed simultaneously, the weight gradient becomes: <span class="math display">\[\begin{align*}
+\frac{\partial L}{\partial w} = \frac{1}{m} X(\hat{Y} - Y)^{\rm T}\ .
 \end{align*}\]</span></p>
-<p>A very similar derivation of <span class="math inline">\(\partial L/\partial b\)</span> yields, for a single example: <span class="math display">\[\begin{align*}
+<p>The factor of <span class="math inline">\(1/m\)</span> comes from averaging the loss over all examples. Notice how clean this is: the gradient is simply the input matrix multiplied by the error vector <span class="math inline">\((\hat{Y} - Y)\)</span>.</p>
+<p>A similar derivation for the bias gradient yields, for a single example: <span class="math display">\[\begin{align*}
 \frac{\partial L}{\partial b} = (\hat{y} - y)\ .
 \end{align*}\]</span></p>
-<p>In vectorized form we get <span class="math display">\[\begin{align*}
+<p>Vectorized over <span class="math inline">\(m\)</span> examples: <span class="math display">\[\begin{align*}
 \frac{\partial L}{\partial b} = \frac{1}{m}\sum_{i=1}^{m}{(\hat{y}^{(i)} - y^{(i)})}\ .
 \end{align*}\]</span></p>
-<p>In our code we label these gradients according to their denominators, as <code>dW</code> and <code>db</code>. So for backpropagation we compute <code>dW = (1/m) * np.matmul(X, (A-Y).T)</code> and <code>db = (1/m)*np.sum(A-Y, axis=1, keepdims=True)</code>.</p>
+<p>In our code, we’ll follow the convention of labeling gradients with a <code>d</code> prefix: <code>dW</code> for <span class="math inline">\(\partial L/\partial W\)</span> and <code>db</code> for <span class="math inline">\(\partial L/\partial b\)</span>. This notation reminds us that these are derivatives. The backpropagation step then consists of just two lines: <code>dW = (1/m) * np.matmul(X, (A-Y).T)</code> and <code>db = (1/m)*np.sum(A-Y, axis=1, keepdims=True)</code>.</p>
 </section>
-<section id="stochastic-gradient-descent" class="level3">
-<h3 class="anchored" data-anchor-id="stochastic-gradient-descent">Stochastic Gradient Descent</h3>
-<p>We have all the tools we need to train a neural network now! We’ll use an optimization algorithm called stochastic gradient descent (SGD) that tells us how to change our weights and biases to minimize loss. It is a simple umpdate of the weights and biases, which would read for the weights like</p>
+<section id="gradient-descent-following-the-downhill-path" class="level3">
+<h3 class="anchored" data-anchor-id="gradient-descent-following-the-downhill-path">Gradient Descent: Following the Downhill Path ⛰️</h3>
+<p>We now have all the ingredients needed to train our neural network! The optimization algorithm we’ll use is called <strong>gradient descent</strong>—conceptually simple but remarkably effective. The update rule for weights is:</p>
 <p><span class="math display">\[
 w\leftarrow w-\eta\frac{\partial L}{\partial w}
 \]</span></p>
-<p>where <span class="math inline">\(\eta\)</span> is a constant called the learning rate that controls how fast we train. All we’re doing is subtracting <span class="math inline">\(\eta \partial L/\partial w\)</span> from <span class="math inline">\(w\)</span></p>
-<ul>
-<li>If <span class="math inline">\(\partial L/\partial w\)</span> is positive, <span class="math inline">\(w\)</span> will decrease, which makes L decrease.</li>
-<li>If <span class="math inline">\(\partial L/\partial w\)</span> is negative, <span class="math inline">\(w\)</span> will increase, which makes L decrease.</li>
-</ul>
-<p>The equations look equivalent for the bias <span class="math inline">\(b\)</span>. Our back propagation procedure will do that for as many steps we want, i.e.&nbsp;until we feel that the output is close enough to the ground truth. Each back propagation step is called and <code>epoch</code>.</p>
+<p>Here <span class="math inline">\(\eta\)</span> (Greek letter eta) is the <strong>learning rate</strong>, a hyperparameter that controls the step size. Think of gradient descent as navigating down a mountain in fog: the gradient tells you which direction is downhill, and the learning rate determines how big a step you take.</p>
+<p>The logic is straightforward. If <span class="math inline">\(\partial L/\partial w\)</span> is positive, the loss increases as <span class="math inline">\(w\)</span> increases, so we should decrease <span class="math inline">\(w\)</span> to reduce the loss. If <span class="math inline">\(\partial L/\partial w\)</span> is negative, the loss decreases as <span class="math inline">\(w\)</span> increases, so we should increase <span class="math inline">\(w\)</span>. The gradient descent update automatically does the right thing in both cases.</p>
+<p>The identical update rule applies to the bias: <span class="math inline">\(b\leftarrow b-\eta\frac{\partial L}{\partial b}\)</span>.</p>
+<p>We repeat this update process many times—each complete pass through all training data is called an <strong>epoch</strong>. This is analogous to iterative methods you might have encountered in computational physics, like the relaxation method for solving Laplace’s equation or the power method for finding eigenvectors. We start with a random guess and iteratively improve it until convergence.</p>
+<p>The term “stochastic” gradient descent (SGD) actually refers to a variant where we don’t use all training examples at once but rather small random batches. For our purposes, we’ll compute gradients using the full training set each iteration, which is sometimes called batch gradient descent. This is more stable but slower for large datasets.</p>
 </section>
-<section id="build-an-train" class="level3">
-<h3 class="anchored" data-anchor-id="build-an-train">Build an Train</h3>
-<p>Now we have all things together to create a single neuron network doing the analysis of the MNIST numbers. This type of data processing is called logistic regression based on the sigmoid function, which is a logistic function. So let’s create all in python code and train the network for 100 epochs.</p>
-<div id="8ba4dcd4" class="cell" data-execution_count="12">
+<section id="build-and-train-putting-it-all-together" class="level3">
+<h3 class="anchored" data-anchor-id="build-and-train-putting-it-all-together">Build and Train: Putting It All Together 🔨</h3>
+<p>Now comes the exciting moment—assembling all our components into a working neural network! Let’s review what we have: a forward propagation function (computing predictions), a loss function (measuring error), and backpropagation (computing gradients). The training loop combines these pieces iteratively to learn optimal weights.</p>
+<p>Here’s our complete training procedure for a single-neuron network recognizing zeros:</p>
+<p>This architecture is actually equivalent to <strong>logistic regression</strong>—the sigmoid function is called a “logistic” function, hence the name. Despite its simplicity, logistic regression is quite powerful and forms the foundation for more complex networks.</p>
+<div id="2d11c75e" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array(X_train)</span>
@@ -753,15 +795,18 @@ Epoch 190  loss:  0.036116712255247
 Final loss: 0.03579805734492837</code></pre>
 </div>
 </div>
-<p>We do not really now how to judge the quality of our trained network. At least we saw that the loss is decreasing, which is good. We may judge the quality of our trained network by calculating the so-called <strong>confusion matrix</strong>. The confusion matrix is creating a matrix giving reports the actual values in the rows and the predicted values in the columns.</p>
+<p>Watching the loss decrease is encouraging—it means our network is learning! But how do we judge its actual performance? The loss function tells us about training progress, but what we really care about is classification accuracy on unseen data.</p>
+<p>To evaluate our network properly, we’ll use the <strong>confusion matrix</strong>—a fundamental tool in classification that shows not just whether predictions are right or wrong, but specifically how they’re wrong. The confusion matrix displays actual labels in the rows and predicted labels in the columns, giving us a complete picture of our classifier’s behavior.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="confusion_matrix.png" class="img-fluid figure-img"></p>
 <figcaption>confusion_matrix</figcaption>
 </figure>
 </div>
-<p>The entries in the matrix are called <strong>true positives</strong> (TP), <strong>false positives</strong> (FP), <strong>false negatives</strong> (FN), and <strong>true negatives</strong> (TN). Fortunately we can use a method of the <code>sklearn</code> module to calculate the confusion matrix. We just have to supply the predictions and the actual labels to it. To do so, we use the testing data set <code>X_test</code> which we have splitted earlier.</p>
-<div id="24d798f6" class="cell" data-execution_count="13">
+<p>Understanding the confusion matrix is crucial. <strong>True positives</strong> (TP) are zeros correctly identified as zeros. <strong>False positives</strong> (FP) are other digits incorrectly classified as zeros. <strong>False negatives</strong> (FN) are zeros that we missed (classified as “not zero”). <strong>True negatives</strong> (TN) are other digits correctly identified as not-zeros.</p>
+<p>From these four quantities, we can derive useful metrics. <strong>Precision</strong> = TP/(TP+FP) tells us what fraction of predicted zeros are actually zeros. <strong>Recall</strong> = TP/(TP+FN) tells us what fraction of actual zeros we successfully identified. <strong>Accuracy</strong> = (TP+TN)/(TP+TN+FP+FN) tells us the overall fraction of correct predictions.</p>
+<p>Fortunately, <code>sklearn</code> provides functions to compute all of this automatically. We just need to supply predictions and actual labels. Crucially, we evaluate on the test set <code>X_test</code>—data the network has never seen during training. This tests generalization, not memorization.</p>
+<div id="d0e438e9" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, classification_report</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.matmul(W.T,X_test) <span class="op">+</span> b</span>
@@ -776,7 +821,7 @@ Final loss: 0.03579805734492837</code></pre>
  [  47  947]]</code></pre>
 </div>
 </div>
-<div id="01b33083" class="cell" data-execution_count="14">
+<div id="f9c8fd86" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
@@ -791,39 +836,45 @@ weighted avg       0.99      0.99      0.99     10000
 </div>
 </div>
 </section>
-<section id="testing-our-model" class="level3">
-<h3 class="anchored" data-anchor-id="testing-our-model">Testing our model</h3>
-<p>We can check a single image of our testing data with the following line. If the output number is bigger than 0.5, our number is likely a 0.</p>
-<div id="90a6cf58" class="cell" data-execution_count="15">
+<section id="testing-our-model-individual-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="testing-our-model-individual-predictions">Testing Our Model: Individual Predictions 🔬</h3>
+<p>Beyond aggregate statistics, it’s instructive to examine individual predictions. We can test our network on a single image and see what it predicts. Since sigmoid outputs range from 0 to 1, we use 0.5 as our decision threshold—outputs above 0.5 are classified as zeros, below 0.5 as not-zeros. This threshold could be adjusted to trade off precision versus recall, but 0.5 is the natural choice for balanced classes.</p>
+<div id="559e4c66" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="dv">200</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(sigmoid(np.matmul(W.T, np.array(X_test)[:,i])<span class="op">+</span>b)<span class="op">&gt;</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="bfd2851e" class="cell" data-execution_count="16">
+<div id="071ac298" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(np.array(X_test)[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>),cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="1_deep_learning_files/figure-html/cell-17-output-1.png" width="424" height="420" class="figure-img"></p>
+<figcaption>Example Image</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="network-with-hidden-layers" class="level2">
-<h2 class="anchored" data-anchor-id="network-with-hidden-layers">Network with Hidden Layers</h2>
-<p>In our example above, we just had an input layer and a single output neuron. More complex neural networks are containing many layers between the input layer and the output layer. These inbetween layers are called hidden layers. Here is a simple example of a neural network with a single hidden layer.</p>
+<section id="network-with-hidden-layers-increasing-representational-power" class="level2">
+<h2 class="anchored" data-anchor-id="network-with-hidden-layers-increasing-representational-power">Network with Hidden Layers: Increasing Representational Power 🧩</h2>
+<p>So far, our network consists of just an input layer (784 pixels) connected directly to a single output neuron. This is the simplest possible neural network architecture. To handle more complex patterns, we need to add <strong>hidden layers</strong>—intermediate layers between input and output.</p>
+<p>Hidden layers are called “hidden” because they’re internal to the network; we don’t directly observe their outputs during normal operation. But these hidden units are where the magic happens! They allow the network to learn intermediate representations—abstract features derived from the raw input pixels.</p>
+<p>Think of it hierarchically: the first layer might learn to detect edges and curves, while deeper layers combine these into higher-level features like loops and intersections. This compositional structure is what makes deep learning so powerful—complex concepts are built from simpler ones, much like how physical theories build complexity from fundamental principles.</p>
+<p>Here’s the architecture we’ll build: 784 inputs → 64 hidden units → 1 output neuron.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="image.png" class="img-fluid figure-img"></p>
 <figcaption>hidden</figcaption>
 </figure>
 </div>
-<p>So we have now and input layer with 784 inputs that are connected to 64 units in the hidden layer and 1 neuron in the output layer. We will not go through the derivations of all the formulas for the forward and backward passes this time. The code is a simple extension of what we did before and I hope easy to read.</p>
-<div id="5a7381f8" class="cell" data-execution_count="17">
+<p>Our network now has two sets of parameters: weights <span class="math inline">\(W_1\)</span> and biases <span class="math inline">\(b_1\)</span> connecting the input to the hidden layer (shape 64 × 784), and weights <span class="math inline">\(W_2\)</span> and biases <span class="math inline">\(b_2\)</span> connecting the hidden layer to the output (shape 1 × 64). This gives us roughly 50,000 trainable parameters—a significant increase from 785 in the single-neuron network!</p>
+<p>The forward pass now has two stages: input → hidden layer (apply <span class="math inline">\(W_1\)</span>, <span class="math inline">\(b_1\)</span>, then sigmoid), then hidden layer → output (apply <span class="math inline">\(W_2\)</span>, <span class="math inline">\(b_2\)</span>, then sigmoid). Backpropagation also has two stages, working backward from the output error through each layer using the chain rule.</p>
+<p>We won’t derive all the equations again—they follow the same principles as before, just applied to each layer. The code extends naturally from our single-neuron implementation:</p>
+<div id="117c826e" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X_train</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> y_train</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -877,8 +928,8 @@ Epoch 90 loss:  0.0872943606401609
 Final loss: 0.08367740628296327</code></pre>
 </div>
 </div>
-<p>To judge the newtork quality we do use again the confusion matrix.</p>
-<div id="ed2db277" class="cell" data-execution_count="18">
+<p>To evaluate our improved network, we again use the confusion matrix on the test set. You should notice better performance compared to the single-neuron network—the hidden layer provides additional representational power.</p>
+<div id="27a2aa49" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>Z1 <span class="op">=</span> np.matmul(W1, X_test) <span class="op">+</span> b1</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> sigmoid(Z1)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>Z2 <span class="op">=</span> np.matmul(W2, A1) <span class="op">+</span> b2</span>
@@ -904,52 +955,52 @@ weighted avg       0.97      0.97      0.97     10000
 </div>
 </div>
 </section>
-<section id="multiclass-network" class="level2">
-<h2 class="anchored" data-anchor-id="multiclass-network">Multiclass Network</h2>
-<p>So far we did only classify if the number we feed to the network is just a 0 or not. We would like to recognize the different number now and therefore need a multiclass network. Each number is then a class and per class, we have multiple realizations of handwritten numbers. We therefore have to create an output layer, which is not only containing a single neuron, but 10 neurons. Each of these neuron can output a value between 0 and 1. Whenever the output is 1, the index of the neuron represents the number predicted.</p>
-<p>The output array</p>
-<pre><code>[0,1,0,0,0,0,0,0,0,0]</code></pre>
-<p>would therefore correspond to the value 1.</p>
-<p>For this purpose, we need to reload the right labels.</p>
-<div id="adb4c3f1" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_openml</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> fetch_openml(<span class="st">'mnist_784'</span>, version<span class="op">=</span><span class="dv">1</span>, return_X_y<span class="op">=</span><span class="va">True</span>,as_frame<span class="op">=</span><span class="va">False</span>)</span>
+<section id="multiclass-network-recognizing-all-digits" class="level2">
+<h2 class="anchored" data-anchor-id="multiclass-network-recognizing-all-digits">Multiclass Network: Recognizing All Digits 🔢</h2>
+<p>Our binary classifier successfully distinguishes zeros from non-zeros, but the real challenge is recognizing all ten digits (0-9). This requires extending to <strong>multiclass classification</strong>—instead of a yes/no question, we’re asking “which of these 10 categories?”</p>
+<p>The key architectural change is replacing our single output neuron with 10 output neurons, one per digit class. Each neuron produces a score for its corresponding digit. We then interpret these scores as probabilities—the neuron with the highest score determines our prediction.</p>
+<p>This is analogous to expanding from a two-state quantum system (like spin-½) to a ten-state system—we need ten basis states to represent all possibilities. The output layer produces a probability distribution over these ten states.</p>
+<p>For example, the output array <code>[0,1,0,0,0,0,0,0,0,0]</code> would indicate the network predicts digit 1 (the second position, using zero-indexing). In practice, the outputs won’t be exactly 0 and 1, but rather probabilities that sum to 1. The predicted class is simply the position of the maximum value.</p>
+<p>To train a multiclass network, we need to reload the original MNIST labels (not our binary 0/1 encoding):</p>
+<div id="1da65619" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_openml</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> fetch_openml(<span class="st">'mnist_784'</span>, version<span class="op">=</span><span class="dv">1</span>, return_X_y<span class="op">=</span><span class="va">True</span>,as_frame<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X <span class="op">/</span> <span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We’ll convert these labels to <strong>one-hot encoding</strong>—a representation where each label becomes a vector of length 10 with a single 1 and nine 0s. The digit “3” becomes <code>[0,0,0,1,0,0,0,0,0,0]</code>, for instance. This encoding matches our network’s output format and makes the loss calculation straightforward. The result is a 10 × 70,000 array where each column is one training example’s label:</p>
+<div id="9399f341" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>digits <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>examples <span class="op">=</span> y.shape[<span class="dv">0</span>]</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X <span class="op">/</span> <span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y.reshape(<span class="dv">1</span>, examples)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>Y_new <span class="op">=</span> np.eye(digits)[y.astype(<span class="st">'int32'</span>)]</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>Y_new <span class="op">=</span> Y_new.T.reshape(digits, examples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Then we’ll one-hot encode MNIST’s labels, to get a 10 x 70,000 array.</p>
-<div id="dbcd4ebe" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>digits <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>examples <span class="op">=</span> y.shape[<span class="dv">0</span>]</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y.reshape(<span class="dv">1</span>, examples)</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>Y_new <span class="op">=</span> np.eye(digits)[y.astype(<span class="st">'int32'</span>)]</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>Y_new <span class="op">=</span> Y_new.T.reshape(digits, examples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="e28cae32" class="cell" data-tags="[]" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Y_new.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bcbf5e2b" class="cell" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>Y_new.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>(10, 70000)</code></pre>
 </div>
 </div>
-<p>We also seperate into trainging and testing data</p>
-<div id="80ac74a5" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">60000</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>m_test <span class="op">=</span> X.shape[<span class="dv">0</span>] <span class="op">-</span> m</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test <span class="op">=</span> X[:m].T, X[m:].T</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>Y_train, Y_test <span class="op">=</span> Y_new[:,:m], Y_new[:,m:]</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>shuffle_index <span class="op">=</span> np.random.permutation(m)</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>X_train, Y_train <span class="op">=</span> X_train[:, shuffle_index], Y_train[:, shuffle_index]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We also separate into training and testing sets, maintaining the same 60,000/10,000 split:</p>
+<div id="ee3a8478" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">60000</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>m_test <span class="op">=</span> X.shape[<span class="dv">0</span>] <span class="op">-</span> m</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test <span class="op">=</span> X[:m].T, X[m:].T</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>Y_train, Y_test <span class="op">=</span> Y_new[:,:m], Y_new[:,m:]</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>shuffle_index <span class="op">=</span> np.random.permutation(m)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>X_train, Y_train <span class="op">=</span> X_train[:, shuffle_index], Y_train[:, shuffle_index]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="adb4bdd8" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">58</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_train[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>Y_train[:,i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4d49b9cb" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">58</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_train[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>Y_train[:,i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -961,83 +1012,89 @@ weighted avg       0.97      0.97      0.97     10000
 <pre><code>array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1.])</code></pre>
 </div>
 </div>
-<section id="changes-to-the-model" class="level3">
-<h3 class="anchored" data-anchor-id="changes-to-the-model">Changes to the model</h3>
-<p>OK, so let’s consider what changes we need to make to the model itself.</p>
-<section id="forward-pass" class="level4">
-<h4 class="anchored" data-anchor-id="forward-pass">Forward Pass</h4>
-<p>Only the last layer of our network is changing. To add the softmax, we have to replace our lone, final node with a 10 unit layer. Its final activations are the exponentials of its z-values, normalized across all ten such exponentials. So instead of just computing <span class="math inline">\(\sigma(z)\)</span>, we compute the activation for each unit <span class="math inline">\(i\)</span> using the softmax function: <span class="math display">\[\begin{align*}
+<section id="changes-to-the-model-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="changes-to-the-model-architecture">Changes to the Model Architecture 🔧</h3>
+<p>Let’s systematically examine what changes are required to extend our binary classifier to multiclass. The input and hidden layers remain unchanged—they still extract useful features. Only the output layer and loss function need modification.</p>
+<section id="forward-pass-the-softmax-function" class="level4">
+<h4 class="anchored" data-anchor-id="forward-pass-the-softmax-function">Forward Pass: The Softmax Function</h4>
+<p>The critical change is in the output layer. Instead of a single sigmoid unit, we now have 10 units with a <strong>softmax</strong> activation function. Softmax generalizes sigmoid to multiple classes—it converts a vector of arbitrary real numbers (the logits <span class="math inline">\(z\)</span>) into a probability distribution that sums to 1.</p>
+<p>The softmax function computes the activation for each output unit <span class="math inline">\(i\)</span> as: <span class="math display">\[\begin{align*}
 \sigma(z)_i = \frac{{\rm e}^{z_i}}{\sum_{j=0}^9{\rm e}^{z_i}}\ .
 \end{align*}\]</span></p>
-<p>So, in our vectorized code, the last line of forward propagation will be <code>A2 = np.exp(Z2) / np.sum(np.exp(Z2), axis=0)</code>.</p>
+<p>The exponential ensures all outputs are positive, and the normalization ensures they sum to 1, giving us a valid probability distribution. Units with larger logits <span class="math inline">\(z_i\)</span> get exponentially larger probabilities—the softmax is “soft” because it doesn’t simply pick the maximum but gives a smooth distribution.</p>
+<p>In vectorized NumPy code: <code>A2 = np.exp(Z2) / np.sum(np.exp(Z2), axis=0)</code>. The <code>axis=0</code> parameter ensures we normalize each example independently (summing down columns, not across the entire matrix).</p>
 </section>
-<section id="loss-function-1" class="level4">
-<h4 class="anchored" data-anchor-id="loss-function-1">Loss Function</h4>
-<p>Our loss function now has to generalize to more than two classes. The general formula for <span class="math inline">\(n\)</span> classes is: <span class="math display">\[\begin{align*}
+<section id="loss-function-categorical-cross-entropy" class="level4">
+<h4 class="anchored" data-anchor-id="loss-function-categorical-cross-entropy">Loss Function: Categorical Cross-Entropy</h4>
+<p>With multiple classes, we need to generalize our loss function. The <strong>categorical cross-entropy</strong> extends binary cross-entropy to <span class="math inline">\(n\)</span> classes. For a single training example: <span class="math display">\[\begin{align*}
 L(y,\hat{y}) = -\sum_{i=0}^n y_i\log(\hat{y}_i)\ .
-\end{align*}\]</span> Averaging over <span class="math inline">\(m\)</span> training examples this becomes: <span class="math display">\[\begin{align*}
+\end{align*}\]</span> This is the negative log-probability assigned to the correct class. Since the labels are one-hot encoded, only one term in the sum is nonzero (the term corresponding to the true class). This means we’re minimizing the negative log-likelihood—maximizing the probability assigned to the correct class.</p>
+<p>From a physics perspective, this is deeply connected to statistical mechanics. The cross-entropy loss is equivalent to minimizing the Kullback-Leibler divergence between the true distribution (the one-hot labels) and the predicted distribution (softmax outputs). It’s the information-theoretic measure of how well our predictions match reality.</p>
+<p>Averaging over <span class="math inline">\(m\)</span> training examples: <span class="math display">\[\begin{align*}
 L(y,\hat{y}) = -\frac{1}{m}\sum_{j=0}^m\sum_{i=0}^n y_i^{(i)}\log(\hat{y}_i^{(i)})\ .
 \end{align*}\]</span></p>
 <p>So let’s define:</p>
-<div id="b8e855db" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_multiclass_loss(Y, Y_hat):</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    L_sum <span class="op">=</span> np.<span class="bu">sum</span>(np.multiply(Y, np.log(Y_hat)))</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> Y.shape[<span class="dv">1</span>]</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> <span class="op">-</span>(<span class="dv">1</span><span class="op">/</span>m) <span class="op">*</span> L_sum</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d9104b9b" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_multiclass_loss(Y, Y_hat):</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    L_sum <span class="op">=</span> np.<span class="bu">sum</span>(np.multiply(Y, np.log(Y_hat)))</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> Y.shape[<span class="dv">1</span>]</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> <span class="op">-</span>(<span class="dv">1</span><span class="op">/</span>m) <span class="op">*</span> L_sum</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="back-propagation" class="level4">
-<h4 class="anchored" data-anchor-id="back-propagation">Back Propagation</h4>
-<p>Luckily it turns out that back propagation isn’t really affected by the switch to a softmax. A softmax generalizes the sigmoid activiation we’ve been using, and in such a way that the code we wrote earlier still works. We could verify this by deriving: <span class="math display">\[\begin{align*}
+<section id="backpropagation-a-fortunate-simplification" class="level4">
+<h4 class="anchored" data-anchor-id="backpropagation-a-fortunate-simplification">Backpropagation: A Fortunate Simplification</h4>
+<p>Here’s a beautiful mathematical result: despite the complexity of the softmax function, the gradient simplifies dramatically. When we combine softmax activation with cross-entropy loss, the derivative of the loss with respect to the logits (the <span class="math inline">\(z\)</span> values) is simply: <span class="math display">\[\begin{align*}
 \frac{\partial L}{\partial z_i} = \hat{y}_i - y_i\ .
 \end{align*}\]</span></p>
-<p>But we won’t walk through the steps here. Let’s just go ahead and build our final network.</p>
+<p>This is exactly the same form we had with sigmoid and binary cross-entropy! The predicted probabilities minus the true labels. This isn’t a coincidence—it reflects the principled connection between exponential family distributions and their conjugate loss functions. The mathematical elegance here is reminiscent of how the Hamiltonian and Lagrangian formulations of mechanics lead to equivalent equations of motion.</p>
+<p>We won’t walk through the full derivation (it requires careful application of the chain rule with matrix derivatives), but trust that this simple gradient makes implementation straightforward.</p>
 </section>
 </section>
-<section id="build-and-train" class="level3">
-<h3 class="anchored" data-anchor-id="build-and-train">Build and Train</h3>
-<p>As we have now more weights and classes, the training takes longer and we actually need also more episodes to achieve a good accuracy.</p>
-<div id="3fc9da5f" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>n_x <span class="op">=</span> X_train.shape[<span class="dv">0</span>]</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>n_h <span class="op">=</span> <span class="dv">64</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>W1 <span class="op">=</span> np.random.randn(n_h, n_x)</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> np.zeros((n_h, <span class="dv">1</span>))</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>W2 <span class="op">=</span> np.random.randn(digits, n_h)</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>b2 <span class="op">=</span> np.zeros((digits, <span class="dv">1</span>))</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X_train</span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> Y_train</span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">200</span>):</span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>    Z1 <span class="op">=</span> np.matmul(W1,X) <span class="op">+</span> b1</span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>    A1 <span class="op">=</span> sigmoid(Z1)</span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>    Z2 <span class="op">=</span> np.matmul(W2,A1) <span class="op">+</span> b2</span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>    A2 <span class="op">=</span> np.exp(Z2) <span class="op">/</span> np.<span class="bu">sum</span>(np.exp(Z2), axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> compute_multiclass_loss(Y, A2)</span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>    dZ2 <span class="op">=</span> A2<span class="op">-</span>Y</span>
-<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>    dW2 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.matmul(dZ2, A1.T)</span>
-<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>    db2 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.<span class="bu">sum</span>(dZ2, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>    dA1 <span class="op">=</span> np.matmul(W2.T, dZ2)</span>
-<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>    dZ1 <span class="op">=</span> dA1 <span class="op">*</span> sigmoid(Z1) <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> sigmoid(Z1))</span>
-<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>    dW1 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.matmul(dZ1, X.T)</span>
-<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>    db1 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.<span class="bu">sum</span>(dZ1, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>    W2 <span class="op">=</span> W2 <span class="op">-</span> learning_rate <span class="op">*</span> dW2</span>
-<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>    b2 <span class="op">=</span> b2 <span class="op">-</span> learning_rate <span class="op">*</span> db2</span>
-<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>    W1 <span class="op">=</span> W1 <span class="op">-</span> learning_rate <span class="op">*</span> dW1</span>
-<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>    b1 <span class="op">=</span> b1 <span class="op">-</span> learning_rate <span class="op">*</span> db1</span>
-<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>):</span>
-<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Epoch"</span>, i, <span class="st">"loss: "</span>, loss)</span>
-<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Final loss:"</span>, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="build-and-train-the-complete-network" class="level3">
+<h3 class="anchored" data-anchor-id="build-and-train-the-complete-network">Build and Train: The Complete Network 🚀</h3>
+<p>Now we assemble our final, full-featured digit classifier. With more parameters (now around 50,000) and a more complex task (10 classes instead of 2), training will take longer. We’ll run 200 epochs to give the network sufficient time to learn the patterns distinguishing all ten digits.</p>
+<p>The architecture is: 784 inputs → 64 hidden units (sigmoid) → 10 outputs (softmax). Watch how the loss decreases as training progresses—you’re witnessing the network discover representations of handwritten digits!</p>
+<div id="d9c6e2a5" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>n_x <span class="op">=</span> X_train.shape[<span class="dv">0</span>]</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>n_h <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>W1 <span class="op">=</span> np.random.randn(n_h, n_x)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> np.zeros((n_h, <span class="dv">1</span>))</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>W2 <span class="op">=</span> np.random.randn(digits, n_h)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>b2 <span class="op">=</span> np.zeros((digits, <span class="dv">1</span>))</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X_train</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> Y_train</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">200</span>):</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>    Z1 <span class="op">=</span> np.matmul(W1,X) <span class="op">+</span> b1</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>    A1 <span class="op">=</span> sigmoid(Z1)</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>    Z2 <span class="op">=</span> np.matmul(W2,A1) <span class="op">+</span> b2</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>    A2 <span class="op">=</span> np.exp(Z2) <span class="op">/</span> np.<span class="bu">sum</span>(np.exp(Z2), axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> compute_multiclass_loss(Y, A2)</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>    dZ2 <span class="op">=</span> A2<span class="op">-</span>Y</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>    dW2 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.matmul(dZ2, A1.T)</span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>    db2 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.<span class="bu">sum</span>(dZ2, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>    dA1 <span class="op">=</span> np.matmul(W2.T, dZ2)</span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>    dZ1 <span class="op">=</span> dA1 <span class="op">*</span> sigmoid(Z1) <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> sigmoid(Z1))</span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>    dW1 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.matmul(dZ1, X.T)</span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>    db1 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.<span class="bu">sum</span>(dZ1, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a>    W2 <span class="op">=</span> W2 <span class="op">-</span> learning_rate <span class="op">*</span> dW2</span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>    b2 <span class="op">=</span> b2 <span class="op">-</span> learning_rate <span class="op">*</span> db2</span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a>    W1 <span class="op">=</span> W1 <span class="op">-</span> learning_rate <span class="op">*</span> dW1</span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a>    b1 <span class="op">=</span> b1 <span class="op">-</span> learning_rate <span class="op">*</span> db1</span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>):</span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Epoch"</span>, i, <span class="st">"loss: "</span>, loss)</span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Final loss:"</span>, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch 0 loss:  9.359409945262723
 Epoch 10 loss:  2.480915410750769
@@ -1063,20 +1120,21 @@ Final loss: 0.5636592880338959</code></pre>
 </div>
 </div>
 <p>Let’s see how we did:</p>
-<div id="04ec208a" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>Z1 <span class="op">=</span> np.matmul(W1, X_test) <span class="op">+</span> b1</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> sigmoid(Z1)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>Z2 <span class="op">=</span> np.matmul(W2, A1) <span class="op">+</span> b2</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> np.exp(Z2) <span class="op">/</span> np.<span class="bu">sum</span>(np.exp(Z2), axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> np.argmax(A2, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> np.argmax(Y_test, axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7e0be3e6" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Z1 <span class="op">=</span> np.matmul(W1, X_test) <span class="op">+</span> b1</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> sigmoid(Z1)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>Z2 <span class="op">=</span> np.matmul(W2, A1) <span class="op">+</span> b2</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> np.exp(Z2) <span class="op">/</span> np.<span class="bu">sum</span>(np.exp(Z2), axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> np.argmax(A2, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> np.argmax(Y_test, axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="model-performance" class="level4">
-<h4 class="anchored" data-anchor-id="model-performance">Model performance</h4>
-<div id="287b676c" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(predictions, labels))</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="model-performance-confusion-matrix-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="model-performance-confusion-matrix-analysis">Model Performance: Confusion Matrix Analysis 📊</h4>
+<p>Now for the moment of truth—how well does our network perform on unseen test data?</p>
+<div id="780c5d1e" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(predictions, labels))</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[ 896    0   26    8    8   22   30    4   14   10]
  [   0 1076   15    6    2    7    3    6   14    2]
@@ -1107,16 +1165,18 @@ weighted avg       0.83      0.83      0.83     10000
 </code></pre>
 </div>
 </div>
-<p>We are at 84% accuray across all digits, which could be of course better. We may now plot image and the corresponding prediction.</p>
+<p>We achieve approximately 84% accuracy across all ten digits—not bad for a network we built entirely from scratch! Modern state-of-the-art methods using convolutional neural networks reach 99%+ accuracy, but our simple fully-connected network demonstrates the fundamental principles.</p>
+<p>Looking at the confusion matrix and classification report, you can see which digits are hardest to distinguish. Often, 4s and 9s are confused, or 3s and 5s—even humans sometimes struggle with these pairs in badly written examples. The confusion matrix gives insight into the network’s systematic errors, which could guide improvements.</p>
 </section>
 </section>
 </section>
-<section id="test-the-model" class="level2">
-<h2 class="anchored" data-anchor-id="test-the-model">Test the model</h2>
-<div id="531b9add" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="dv">2003</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_test[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>predictions[i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="testing-the-model-interactive-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="testing-the-model-interactive-exploration">Testing the Model: Interactive Exploration 🔍</h2>
+<p>Let’s test our trained network on individual examples to get an intuitive feel for its predictions:</p>
+<div id="5c6e2ce9" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="dv">2003</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_test[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>predictions[i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>np.int64(5)</code></pre>
 </div>
@@ -1128,6 +1188,16 @@ weighted avg       0.83      0.83      0.83     10000
 </div>
 </div>
 </div>
+<p>Try changing the index <code>i</code> to explore different test images. Compare the network’s predictions with what you see. When does it make mistakes? Are the errors understandable? This kind of error analysis is crucial in practical machine learning—understanding failure modes helps you improve your models.</p>
+</section>
+<section id="reflection-and-next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="reflection-and-next-steps">Reflection and Next Steps 🎯</h2>
+<p>Congratulations! You’ve built a complete neural network from scratch and trained it to recognize handwritten digits with reasonable accuracy. More importantly, you understand every component: forward propagation (matrix multiplications and activations), loss functions (quantifying error), backpropagation (computing gradients via chain rule), and gradient descent (iterative optimization).</p>
+<p><strong>Key Insights for Physicists:</strong> The mathematical tools we used—linear algebra, calculus, and optimization—are the same ones you use throughout physics. Neural networks are fundamentally just differentiable programs that we optimize. The loss landscape we navigate with gradient descent is analogous to potential energy surfaces in molecular dynamics or action functionals in field theory.</p>
+<p><strong>What We Built:</strong> Our final network has ~50,000 parameters organized into two layers. It processes 784-dimensional input vectors (flattened images) through learned transformations to produce 10-dimensional output probability distributions. Training involved computing gradients for all 50,000 parameters on 60,000 examples, iterating 200 times—about 600 million gradient computations in total, all completed in seconds thanks to vectorized NumPy operations.</p>
+<p><strong>Limitations and Improvements:</strong> Our network treats pixels as independent features, ignoring spatial structure. Convolutional neural networks (CNNs) exploit the 2D structure of images, achieving much better performance. We also used a fixed learning rate and simple gradient descent; modern optimizers like Adam adapt the learning rate automatically. And we’ve barely scratched the surface of architecture design—depth, width, activation functions, regularization, and many other choices affect performance.</p>
+<p><strong>In the Next Seminar:</strong> We’ll explore high-level frameworks like TensorFlow and PyTorch that make building and training complex networks much easier. We’ll also see how to apply these techniques to physics problems—from analyzing experimental data to solving differential equations with neural networks. The principles remain the same; the tools just become more powerful.</p>
+<p><strong>Final Thought:</strong> Machine learning is rapidly transforming physics research. From discovering new particles in collider data to controlling quantum systems to simulating complex materials, neural networks are becoming as essential as Fourier transforms or numerical integration. By understanding these tools at a fundamental level, you’re well-prepared to apply them creatively in your own research. ```</p>
 
 
 <script type="ojs-module-contents">
@@ -1557,6 +1627,15 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="pagination-link" aria-label="Advanced: Reinforcement Learning">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Advanced: Reinforcement Learning</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assignment 3 – Einführung in die Modellierung Physikalischer Prozesse</title>
+<title>assignment-2 – Einführung in die Modellierung Physikalischer Prozesse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,6 +107,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -139,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Assignment 3</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -359,76 +388,501 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Assignment 3</h1>
+
+
+
+<p>Define a function year_to_century that returns the century for a given year. The first century spans from the year 1 up to and including the year 100, the second - from the year 101 up to and including the year 200, etc.</p>
+<div id="753ace76" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> year_to_century(year):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (year <span class="op">+</span> <span class="dv">99</span>) <span class="op">//</span> <span class="dv">100</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>year_to_century(<span class="dv">2024</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>21</code></pre>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p><strong>Problem 1</strong></p>
-<p>Define a class with the name particle with a constructor that initializes the property D with twice the value supplied as an argument to the constructor.&nbsp;</p>
-<div id="cell-3" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> particle:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,R):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.D<span class="op">=</span><span class="dv">2</span><span class="op">*</span>R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Problem 2</strong></p>
-<p>Write a class particle that has a class variable id. Implement a constructor that assigns a unique id property to each instance from the class id, increasing by 1 each time an instance (object) is created. The first created object id should be 1.</p>
-<div id="cell-5" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> particle:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        particle.<span class="bu">id</span><span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> particle.<span class="bu">id</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__del__</span>(<span class="va">self</span>):</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        particle.<span class="bu">id</span><span class="op">-=</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Write python code to import the numpy module under the namespace np.</p>
+<div id="a3b4b3b9" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Problem 3</strong></p>
-<p>Write a class particle that is constructed with two parameters that are stored in the properties R&nbsp;and type_t of the object (R goes first). The type_t property should be of type string and be either “circle” or “square”.</p>
-<p>Write a class method&nbsp;area that calculates the area of the object from the parameter R depending on the property type_t. The result of the area calculation should be stored in the property A, which should be 0 initially.</p>
-<p>Create an object c which is a circle and compute its area. Create an object s which is a square without computing its area. The R parameter of these objects can be an arbitrary positive number.</p>
-<p>You have two answer attempts without penalty.</p>
-<div id="cell-7" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> particle:</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, R, type_t):</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.R <span class="op">=</span> R</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.type_t <span class="op">=</span> type_t</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.A <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> area(<span class="va">self</span>):</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.type_t <span class="op">==</span> <span class="st">"square"</span>:</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.A <span class="op">=</span> <span class="va">self</span>.R<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.type_t <span class="op">==</span> <span class="st">"circle"</span>:</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.A <span class="op">=</span> pi<span class="op">*</span><span class="va">self</span>.R<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.A <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>c<span class="op">=</span>particle(<span class="dv">3</span>,<span class="st">"circle"</span>)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>c.area()</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>s<span class="op">=</span>particle(<span class="dv">3</span>,<span class="st">"square"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Write a Python function inner_product that computes the inner product of two vectors of the same length.&nbsp;Do not use any external modules.</p>
+<p>Hint: You can use the raise keyword to throw an error.</p>
+<div id="b5e13cee" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inner_product(vec1, vec2):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(vec1) <span class="op">!=</span> <span class="bu">len</span>(vec2):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">SystemError</span>(<span class="st">"Vectors must be of the same length"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    a<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(vec1)):</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        a <span class="op">+=</span> vec1[i] <span class="op">*</span> vec2[i]</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>c.A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>28.274333882308138</code></pre>
+<div id="544ee1a1" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>inner_product([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>26</code></pre>
+</div>
+</div>
+<p>Define a function triangle that takes the 3 sides of a triangle and returns one of the following:&nbsp;</p>
+<p>“No Triangle”:&nbsp;If the sides don’t form a valid triangle (degenerate case).</p>
+<p>“Acute Triangle”: If all angles are acute.</p>
+<p>“Right Triangle”: If one angle is exactly 90°.</p>
+<p>“Obtuse Triangle”: If one angle is obtuse.</p>
+<div id="183fda02" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> triangle(a, b, c):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    sides <span class="op">=</span> <span class="bu">sorted</span>([a, b, c]) <span class="co"># Sort sides so that a &lt;= b &lt;= c</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    a, b, c <span class="op">=</span> sides</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> a <span class="op">+</span> b <span class="op">&lt;=</span> c:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"No Triangle"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> a<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b<span class="op">**</span><span class="dv">2</span> <span class="op">==</span> c<span class="op">**</span><span class="dv">2</span>:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Right Triangle"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> a<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b<span class="op">**</span><span class="dv">2</span> <span class="op">&gt;</span> c<span class="op">**</span><span class="dv">2</span>:</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Acute Triangle"</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Obtuse Triangle"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Assign the 100 numbers between -10 and 10 including -10 and 10 to the variable x using the linspace function of numpy. Assign the function values <span class="math inline">\(x³ - 3x² - 10\)</span> to the variable y. Calculate the numerical derivative $ $ from the differences between neighbouring values in the&nbsp;y and the x array and store it in the variable derivative.</p>
+<div id="466a7471" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>x<span class="op">**</span><span class="dv">3</span> <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">10</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>derivative<span class="op">=</span>(y[<span class="dv">1</span>:]<span class="op">-</span>y[:<span class="op">-</span><span class="dv">1</span>])<span class="op">/</span>(x[<span class="dv">1</span>:]<span class="op">-</span>x[:<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="8781be11" class="cell" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.random.randint(<span class="dv">10</span>,size<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">8</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="90">
+<pre><code>array([[2, 0, 6, 0, 1, 5, 0, 7],
+       [4, 2, 5, 7, 9, 8, 2, 1],
+       [4, 1, 3, 9, 9, 3, 8, 8],
+       [9, 4, 0, 6, 9, 2, 0, 3],
+       [2, 5, 2, 0, 1, 2, 4, 8],
+       [6, 1, 1, 7, 5, 5, 8, 2],
+       [0, 1, 0, 0, 2, 0, 1, 4],
+       [7, 4, 4, 2, 3, 7, 0, 3],
+       [4, 3, 6, 8, 3, 1, 0, 4],
+       [1, 0, 5, 6, 7, 2, 3, 9]])</code></pre>
+</div>
+</div>
+<div id="26d3acf1" class="cell" data-execution_count="123">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dt<span class="op">=</span><span class="fl">0.05</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>D<span class="op">=</span><span class="fl">2.2e-13</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>N<span class="op">=</span><span class="dv">200</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>sigma<span class="op">=</span>np.sqrt(<span class="dv">2</span><span class="op">*</span>D<span class="op">*</span>dt)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>scale<span class="op">=</span><span class="fl">1e6</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>n_trajectories<span class="op">=</span><span class="dv">1000</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">6</span>))</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>[plt.plot(np.random.normal(<span class="dv">0</span>,sigma,size<span class="op">=</span>N).cumsum()<span class="op">*</span>scale,np.random.normal(<span class="dv">0</span>,sigma,size<span class="op">=</span>N).cumsum()<span class="op">*</span>scale,<span class="st">'k-'</span>,alpha<span class="op">=</span><span class="fl">0.2</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_trajectories)]</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Assignment 2_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="96f08913" class="cell" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.plot(dx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Assignment 2_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="4881632e" class="cell" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>?np.random.randint</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> np.random.randint(low, high=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>, size=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>, dtype=&lt;<span style="font-weight:bold;color:rgb(0,135,0)">class</span> <span class="ansi-yellow-fg">'int'</span>&gt;)
+
+<span class="ansi-red-fg">Docstring:</span>
+
+randint(low, high=None, size=None, dtype=int)
+
+
+
+Return random integers from `low` (inclusive) to `high` (exclusive).
+
+
+
+Return random integers from the "discrete uniform" distribution of
+
+the specified dtype in the "half-open" interval [`low`, `high`). If
+
+`high` is None (the default), then results are from [0, `low`).
+
+
+
+.. note::
+
+    New code should use the `~numpy.random.Generator.integers`
+
+    method of a `~numpy.random.Generator` instance instead;
+
+    please see the :ref:`random-quick-start`.
+
+
+
+Parameters
+
+----------
+
+low : int or array-like of ints
+
+    Lowest (signed) integers to be drawn from the distribution (unless
+
+    ``high=None``, in which case this parameter is one above the
+
+    *highest* such integer).
+
+high : int or array-like of ints, optional
+
+    If provided, one above the largest (signed) integer to be drawn
+
+    from the distribution (see above for behavior if ``high=None``).
+
+    If array-like, must contain integer values
+
+size : int or tuple of ints, optional
+
+    Output shape.  If the given shape is, e.g., ``(m, n, k)``, then
+
+    ``m * n * k`` samples are drawn.  Default is None, in which case a
+
+    single value is returned.
+
+dtype : dtype, optional
+
+    Desired dtype of the result. Byteorder must be native.
+
+    The default value is long.
+
+
+
+    .. warning::
+
+      This function defaults to the C-long dtype, which is 32bit on windows
+
+      and otherwise 64bit on 64bit platforms (and 32bit on 32bit ones).
+
+      Since NumPy 2.0, NumPy's default integer is 32bit on 32bit platforms
+
+      and 64bit on 64bit platforms.  Which corresponds to `np.intp`.
+
+      (`dtype=int` is not the same as in most NumPy functions.)
+
+
+
+Returns
+
+-------
+
+out : int or ndarray of ints
+
+    `size`-shaped array of random integers from the appropriate
+
+    distribution, or a single such random int if `size` not provided.
+
+
+
+See Also
+
+--------
+
+random_integers : similar to `randint`, only for the closed
+
+    interval [`low`, `high`], and 1 is the lowest value if `high` is
+
+    omitted.
+
+random.Generator.integers: which should be used for new code.
+
+
+
+Examples
+
+--------
+
+&gt;&gt;&gt; np.random.randint(2, size=10)
+
+array([1, 0, 0, 0, 1, 1, 0, 0, 1, 0]) # random
+
+&gt;&gt;&gt; np.random.randint(1, size=10)
+
+array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+
+
+
+Generate a 2 x 4 array of ints between 0 and 4, inclusive:
+
+
+
+&gt;&gt;&gt; np.random.randint(5, size=(2, 4))
+
+array([[4, 0, 2, 1], # random
+
+       [3, 2, 2, 0]])
+
+
+
+Generate a 1 x 3 array with 3 different upper bounds
+
+
+
+&gt;&gt;&gt; np.random.randint(1, [3, 5, 10])
+
+array([2, 2, 9]) # random
+
+
+
+Generate a 1 by 3 array with 3 different lower bounds
+
+
+
+&gt;&gt;&gt; np.random.randint([1, 5, 7], 10)
+
+array([9, 8, 7]) # random
+
+
+
+Generate a 2 by 4 array using broadcasting with dtype of uint8
+
+
+
+&gt;&gt;&gt; np.random.randint([1, 3, 5, 7], [[10], [20]], dtype=np.uint8)
+
+array([[ 8,  6,  9,  7], # random
+
+       [ 1, 16,  9, 12]], dtype=uint8)
+
+<span class="ansi-red-fg">Type:</span>      method</pre>
+</div>
+</div>
+</div>
+<div id="4167738f" class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="63">
+<pre><code>[0, 1, 2, 3, 4, 5]</code></pre>
+</div>
+</div>
+<div id="93a4e259" class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d85780ab" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>difference<span class="op">=</span>derivative<span class="op">-</span>np.array(derivative1)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>plt.plot(x[:<span class="op">-</span><span class="dv">1</span>],difference)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Assignment 2_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="40975f0f" class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[45]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">diff</span>()
+
+<span class="ansi-red-fg">AttributeError</span>: 'numpy.ndarray' object has no attribute 'diff'</pre>
+</div>
+</div>
+</div>
+<div id="6462324b" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="855a068b" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>['T',
+ '__abs__',
+ '__add__',
+ '__and__',
+ '__array__',
+ '__array_finalize__',
+ '__array_function__',
+ '__array_interface__',
+ '__array_namespace__',
+ '__array_priority__',
+ '__array_struct__',
+ '__array_ufunc__',
+ '__array_wrap__',
+ '__bool__',
+ '__buffer__',
+ '__class__',
+ '__class_getitem__',
+ '__complex__',
+ '__contains__',
+ '__copy__',
+ '__deepcopy__',
+ '__delattr__',
+ '__delitem__',
+ '__dir__',
+ '__divmod__',
+ '__dlpack__',
+ '__dlpack_device__',
+ '__doc__',
+ '__eq__',
+ '__float__',
+ '__floordiv__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__getitem__',
+ '__getstate__',
+ '__gt__',
+ '__hash__',
+ '__iadd__',
+ '__iand__',
+ '__ifloordiv__',
+ '__ilshift__',
+ '__imatmul__',
+ '__imod__',
+ '__imul__',
+ '__index__',
+ '__init__',
+ '__init_subclass__',
+ '__int__',
+ '__invert__',
+ '__ior__',
+ '__ipow__',
+ '__irshift__',
+ '__isub__',
+ '__iter__',
+ '__itruediv__',
+ '__ixor__',
+ '__le__',
+ '__len__',
+ '__lshift__',
+ '__lt__',
+ '__matmul__',
+ '__mod__',
+ '__mul__',
+ '__ne__',
+ '__neg__',
+ '__new__',
+ '__or__',
+ '__pos__',
+ '__pow__',
+ '__radd__',
+ '__rand__',
+ '__rdivmod__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__rfloordiv__',
+ '__rlshift__',
+ '__rmatmul__',
+ '__rmod__',
+ '__rmul__',
+ '__ror__',
+ '__rpow__',
+ '__rrshift__',
+ '__rshift__',
+ '__rsub__',
+ '__rtruediv__',
+ '__rxor__',
+ '__setattr__',
+ '__setitem__',
+ '__setstate__',
+ '__sizeof__',
+ '__str__',
+ '__sub__',
+ '__subclasshook__',
+ '__truediv__',
+ '__xor__',
+ 'all',
+ 'any',
+ 'argmax',
+ 'argmin',
+ 'argpartition',
+ 'argsort',
+ 'astype',
+ 'base',
+ 'byteswap',
+ 'choose',
+ 'clip',
+ 'compress',
+ 'conj',
+ 'conjugate',
+ 'copy',
+ 'ctypes',
+ 'cumprod',
+ 'cumsum',
+ 'data',
+ 'device',
+ 'diagonal',
+ 'dot',
+ 'dtype',
+ 'dump',
+ 'dumps',
+ 'fill',
+ 'flags',
+ 'flat',
+ 'flatten',
+ 'getfield',
+ 'imag',
+ 'item',
+ 'itemset',
+ 'itemsize',
+ 'mT',
+ 'max',
+ 'mean',
+ 'min',
+ 'nbytes',
+ 'ndim',
+ 'newbyteorder',
+ 'nonzero',
+ 'partition',
+ 'prod',
+ 'ptp',
+ 'put',
+ 'ravel',
+ 'real',
+ 'repeat',
+ 'reshape',
+ 'resize',
+ 'round',
+ 'searchsorted',
+ 'setfield',
+ 'setflags',
+ 'shape',
+ 'size',
+ 'sort',
+ 'squeeze',
+ 'std',
+ 'strides',
+ 'sum',
+ 'swapaxes',
+ 'take',
+ 'to_device',
+ 'tobytes',
+ 'tofile',
+ 'tolist',
+ 'trace',
+ 'transpose',
+ 'var',
+ 'view']</code></pre>
 </div>
 </div>
 
