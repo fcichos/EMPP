@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>week1_changes – Einführung in die Modellierung Physikalischer Prozesse</title>
+<title>week6_quick_reference – Einführung in die Modellierung Physikalischer Prozesse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,6 +107,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -377,48 +406,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#week-1-restructuring---summary-of-changes" id="toc-week-1-restructuring---summary-of-changes" class="nav-link active" data-scroll-target="#week-1-restructuring---summary-of-changes">Week 1 Restructuring - Summary of Changes</a>
+  <li><a href="#week-6-quick-reference-classical-mechanics-applications" id="toc-week-6-quick-reference-classical-mechanics-applications" class="nav-link active" data-scroll-target="#week-6-quick-reference-classical-mechanics-applications">Week 6 Quick Reference: Classical Mechanics Applications</a>
   <ul class="collapse">
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#new-week-1-structure" id="toc-new-week-1-structure" class="nav-link" data-scroll-target="#new-week-1-structure">New Week 1 Structure</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">📚 Overview</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">🎯 Learning Objectives</a></li>
+  <li><a href="#lecture-1-planetary-motion" id="toc-lecture-1-planetary-motion" class="nav-link" data-scroll-target="#lecture-1-planetary-motion">📖 Lecture 1: Planetary Motion</a>
   <ul class="collapse">
-  <li><a href="#original-structure-old" id="toc-original-structure-old" class="nav-link" data-scroll-target="#original-structure-old">Original Structure (Old)</a></li>
-  <li><a href="#new-structure-improved" id="toc-new-structure-improved" class="nav-link" data-scroll-target="#new-structure-improved">New Structure (Improved)</a></li>
+  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a></li>
+  <li><a href="#equations-of-motion" id="toc-equations-of-motion" class="nav-link" data-scroll-target="#equations-of-motion">Equations of Motion</a></li>
+  <li><a href="#units-astronomical" id="toc-units-astronomical" class="nav-link" data-scroll-target="#units-astronomical">Units (Astronomical)</a></li>
+  <li><a href="#orbit-types-by-eccentricity-ε" id="toc-orbit-types-by-eccentricity-ε" class="nav-link" data-scroll-target="#orbit-types-by-eccentricity-ε">Orbit Types (by eccentricity ε)</a></li>
+  <li><a href="#code-structure" id="toc-code-structure" class="nav-link" data-scroll-target="#code-structure">Code Structure</a></li>
+  <li><a href="#circular-orbit" id="toc-circular-orbit" class="nav-link" data-scroll-target="#circular-orbit">Circular Orbit</a></li>
+  <li><a href="#elliptical-orbit" id="toc-elliptical-orbit" class="nav-link" data-scroll-target="#elliptical-orbit">Elliptical Orbit</a></li>
+  <li><a href="#keplers-laws-verification" id="toc-keplers-laws-verification" class="nav-link" data-scroll-target="#keplers-laws-verification">Kepler’s Laws Verification</a></li>
+  <li><a href="#real-planets-examples" id="toc-real-planets-examples" class="nav-link" data-scroll-target="#real-planets-examples">Real Planets (Examples)</a></li>
   </ul></li>
-  <li><a href="#key-changes-made" id="toc-key-changes-made" class="nav-link" data-scroll-target="#key-changes-made">Key Changes Made</a>
+  <li><a href="#lecture-2-spring-pendulum-chaos" id="toc-lecture-2-spring-pendulum-chaos" class="nav-link" data-scroll-target="#lecture-2-spring-pendulum-chaos">📖 Lecture 2: Spring Pendulum &amp; Chaos</a>
   <ul class="collapse">
-  <li><a href="#lectureslecture0101-lecture01.qmd---jupyter-setup" id="toc-lectureslecture0101-lecture01.qmd---jupyter-setup" class="nav-link" data-scroll-target="#lectureslecture0101-lecture01.qmd---jupyter-setup">1. <code>lectures/lecture01/01-lecture01.qmd</code> - Jupyter Setup</a></li>
-  <li><a href="#lectureslecture0404-plotting.qmd---moved-to-week-1" id="toc-lectureslecture0404-plotting.qmd---moved-to-week-1" class="nav-link" data-scroll-target="#lectureslecture0404-plotting.qmd---moved-to-week-1">2. <code>lectures/lecture04/04-plotting.qmd</code> - Moved to Week 1</a></li>
-  <li><a href="#lectureslecture0102-lecture01.qmd---variables-numbers" id="toc-lectureslecture0102-lecture01.qmd---variables-numbers" class="nav-link" data-scroll-target="#lectureslecture0102-lecture01.qmd---variables-numbers">3. <code>lectures/lecture01/02-lecture01.qmd</code> - Variables &amp; Numbers</a></li>
+  <li><a href="#key-concepts-1" id="toc-key-concepts-1" class="nav-link" data-scroll-target="#key-concepts-1">Key Concepts</a></li>
+  <li><a href="#equations-of-motion-1" id="toc-equations-of-motion-1" class="nav-link" data-scroll-target="#equations-of-motion-1">Equations of Motion</a></li>
+  <li><a href="#key-physics" id="toc-key-physics" class="nav-link" data-scroll-target="#key-physics">Key Physics</a></li>
+  <li><a href="#code-structure-1" id="toc-code-structure-1" class="nav-link" data-scroll-target="#code-structure-1">Code Structure</a></li>
+  <li><a href="#typical-parameters" id="toc-typical-parameters" class="nav-link" data-scroll-target="#typical-parameters">Typical Parameters</a></li>
+  <li><a href="#chaotic-parameters" id="toc-chaotic-parameters" class="nav-link" data-scroll-target="#chaotic-parameters">Chaotic Parameters</a></li>
+  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations">Visualizations</a></li>
   </ul></li>
-  <li><a href="#pedagogical-rationale" id="toc-pedagogical-rationale" class="nav-link" data-scroll-target="#pedagogical-rationale">Pedagogical Rationale</a>
+  <li><a href="#common-workflows" id="toc-common-workflows" class="nav-link" data-scroll-target="#common-workflows">🔧 Common Workflows</a>
   <ul class="collapse">
-  <li><a href="#immediate-engagement" id="toc-immediate-engagement" class="nav-link" data-scroll-target="#immediate-engagement">1. <strong>Immediate Engagement</strong></a></li>
-  <li><a href="#learn-by-doing" id="toc-learn-by-doing" class="nav-link" data-scroll-target="#learn-by-doing">2. <strong>Learn by Doing</strong></a></li>
-  <li><a href="#just-in-time-learning" id="toc-just-in-time-learning" class="nav-link" data-scroll-target="#just-in-time-learning">3. <strong>Just-in-Time Learning</strong></a></li>
-  <li><a href="#physics-context-throughout" id="toc-physics-context-throughout" class="nav-link" data-scroll-target="#physics-context-throughout">4. <strong>Physics Context Throughout</strong></a></li>
-  <li><a href="#reduced-cognitive-load" id="toc-reduced-cognitive-load" class="nav-link" data-scroll-target="#reduced-cognitive-load">5. <strong>Reduced Cognitive Load</strong></a></li>
+  <li><a href="#standard-ode-solution-process" id="toc-standard-ode-solution-process" class="nav-link" data-scroll-target="#standard-ode-solution-process">Standard ODE Solution Process</a></li>
+  <li><a href="#convert-polar-to-cartesian" id="toc-convert-polar-to-cartesian" class="nav-link" data-scroll-target="#convert-polar-to-cartesian">Convert Polar to Cartesian</a></li>
+  <li><a href="#energy-conservation-check" id="toc-energy-conservation-check" class="nav-link" data-scroll-target="#energy-conservation-check">Energy Conservation Check</a></li>
+  <li><a href="#phase-space-plot" id="toc-phase-space-plot" class="nav-link" data-scroll-target="#phase-space-plot">Phase Space Plot</a></li>
   </ul></li>
-  <li><a href="#student-experience-comparison" id="toc-student-experience-comparison" class="nav-link" data-scroll-target="#student-experience-comparison">Student Experience Comparison</a>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">🎓 Key Takeaways</a>
   <ul class="collapse">
-  <li><a href="#old-week-1-experience" id="toc-old-week-1-experience" class="nav-link" data-scroll-target="#old-week-1-experience">Old Week 1 Experience:</a></li>
-  <li><a href="#new-week-1-experience" id="toc-new-week-1-experience" class="nav-link" data-scroll-target="#new-week-1-experience">New Week 1 Experience:</a></li>
+  <li><a href="#mathematical-connections" id="toc-mathematical-connections" class="nav-link" data-scroll-target="#mathematical-connections">Mathematical Connections</a></li>
+  <li><a href="#physical-differences-why-order-matters" id="toc-physical-differences-why-order-matters" class="nav-link" data-scroll-target="#physical-differences-why-order-matters">Physical Differences (Why Order Matters!)</a></li>
+  <li><a href="#planetary-motion" id="toc-planetary-motion" class="nav-link" data-scroll-target="#planetary-motion">Planetary Motion</a></li>
+  <li><a href="#why-this-matters" id="toc-why-this-matters" class="nav-link" data-scroll-target="#why-this-matters">Why This Matters</a></li>
   </ul></li>
-  <li><a href="#what-hasnt-changed" id="toc-what-hasnt-changed" class="nav-link" data-scroll-target="#what-hasnt-changed">What Hasn’t Changed</a></li>
-  <li><a href="#integration-with-your-existing-_quarto.yml" id="toc-integration-with-your-existing-_quarto.yml" class="nav-link" data-scroll-target="#integration-with-your-existing-_quarto.yml">Integration with Your Existing _quarto.yml</a></li>
-  <li><a href="#expected-outcomes" id="toc-expected-outcomes" class="nav-link" data-scroll-target="#expected-outcomes">Expected Outcomes</a>
+  <li><a href="#common-student-questions" id="toc-common-student-questions" class="nav-link" data-scroll-target="#common-student-questions">💡 Common Student Questions</a></li>
+  <li><a href="#practice-exercises" id="toc-practice-exercises" class="nav-link" data-scroll-target="#practice-exercises">🎯 Practice Exercises</a>
   <ul class="collapse">
-  <li><a href="#student-motivation" id="toc-student-motivation" class="nav-link" data-scroll-target="#student-motivation">Student Motivation</a></li>
-  <li><a href="#learning-effectiveness" id="toc-learning-effectiveness" class="nav-link" data-scroll-target="#learning-effectiveness">Learning Effectiveness</a></li>
+  <li><a href="#spring-pendulum" id="toc-spring-pendulum" class="nav-link" data-scroll-target="#spring-pendulum">Spring Pendulum</a></li>
+  <li><a href="#planetary-motion-1" id="toc-planetary-motion-1" class="nav-link" data-scroll-target="#planetary-motion-1">Planetary Motion</a></li>
   </ul></li>
-  <li><a href="#next-steps-optional" id="toc-next-steps-optional" class="nav-link" data-scroll-target="#next-steps-optional">Next Steps (Optional)</a>
+  <li><a href="#assessment-ideas" id="toc-assessment-ideas" class="nav-link" data-scroll-target="#assessment-ideas">📊 Assessment Ideas</a>
   <ul class="collapse">
-  <li><a href="#additional-enhancements-you-could-make" id="toc-additional-enhancements-you-could-make" class="nav-link" data-scroll-target="#additional-enhancements-you-could-make">Additional Enhancements You Could Make:</a></li>
-  <li><a href="#future-week-restructuring" id="toc-future-week-restructuring" class="nav-link" data-scroll-target="#future-week-restructuring">Future Week Restructuring:</a></li>
+  <li><a href="#homework-problems" id="toc-homework-problems" class="nav-link" data-scroll-target="#homework-problems">Homework Problems</a></li>
+  <li><a href="#mini-project" id="toc-mini-project" class="nav-link" data-scroll-target="#mini-project">Mini-Project</a></li>
   </ul></li>
-  <li><a href="#files-modified" id="toc-files-modified" class="nav-link" data-scroll-target="#files-modified">Files Modified</a></li>
-  <li><a href="#testing-recommendations" id="toc-testing-recommendations" class="nav-link" data-scroll-target="#testing-recommendations">Testing Recommendations</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#connections" id="toc-connections" class="nav-link" data-scroll-target="#connections">🔗 Connections</a>
+  <ul class="collapse">
+  <li><a href="#to-previous-weeks" id="toc-to-previous-weeks" class="nav-link" data-scroll-target="#to-previous-weeks">To Previous Weeks</a></li>
+  <li><a href="#to-next-weeks" id="toc-to-next-weeks" class="nav-link" data-scroll-target="#to-next-weeks">To Next Weeks</a></li>
+  <li><a href="#within-week-6" id="toc-within-week-6" class="nav-link" data-scroll-target="#within-week-6">Within Week 6</a></li>
+  </ul></li>
+  <li><a href="#further-resources" id="toc-further-resources" class="nav-link" data-scroll-target="#further-resources">📚 Further Resources</a>
+  <ul class="collapse">
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#physics-background" id="toc-physics-background" class="nav-link" data-scroll-target="#physics-background">Physics Background</a></li>
+  <li><a href="#computational" id="toc-computational" class="nav-link" data-scroll-target="#computational">Computational</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -429,172 +479,414 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="week-1-restructuring---summary-of-changes" class="level1">
-<h1>Week 1 Restructuring - Summary of Changes</h1>
+<section id="week-6-quick-reference-classical-mechanics-applications" class="level1">
+<h1>Week 6 Quick Reference: Classical Mechanics Applications</h1>
 <section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Week 1 has been restructured to follow a <strong>physics-first, motivation-driven</strong> approach. Instead of overwhelming students with Jupyter documentation before they write any code, we now get them coding and visualizing physics immediately.</p>
+<h2 class="anchored" data-anchor-id="overview">📚 Overview</h2>
+<p>Week 6 applies the ODE-solving techniques from Week 5 to two classic physics problems: 1. <strong>Planetary Motion</strong> - Newton’s law of gravitation and Kepler’s laws (easier, good starting point) 2. <strong>Spring Pendulum</strong> - coupled oscillations and chaos (more complex, builds on planetary motion)</p>
 </section>
-<section id="new-week-1-structure" class="level2">
-<h2 class="anchored" data-anchor-id="new-week-1-structure">New Week 1 Structure</h2>
-<section id="original-structure-old" class="level3">
-<h3 class="anchored" data-anchor-id="original-structure-old">Original Structure (Old)</h3>
-<pre><code>Week 1:
-  1. Jupyter Notebooks (350+ lines of technical documentation)
-  2. Variables &amp; Numbers (technical Python details)
-  3. [Plotting way later in Week 4]</code></pre>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">🎯 Learning Objectives</h2>
+<p>By the end of Week 6, students should be able to: - Apply <code>odeint</code> to solve coupled 2nd-order ODEs in polar coordinates - Convert physical equations to first-order systems for numerical solution - Use phase space plots to analyze dynamical systems - Verify numerical solutions against analytical predictions - Recognize signatures of regular vs.&nbsp;chaotic motion - Check conservation laws (energy, angular momentum) in simulations</p>
 </section>
-<section id="new-structure-improved" class="level3">
-<h3 class="anchored" data-anchor-id="new-structure-improved">New Structure (Improved)</h3>
-<pre><code>Week 1: Your First Physics Code
-  1. Setup: Jupyter Notebooks (streamlined, 15-20 min)
-  2. Quick Win: Plotting Your First Graph (moved from Week 4)
-  3. Variables &amp; Numbers (What You Just Used) - with physics context</code></pre>
-</section>
-</section>
-<section id="key-changes-made" class="level2">
-<h2 class="anchored" data-anchor-id="key-changes-made">Key Changes Made</h2>
-<section id="lectureslecture0101-lecture01.qmd---jupyter-setup" class="level3">
-<h3 class="anchored" data-anchor-id="lectureslecture0101-lecture01.qmd---jupyter-setup">1. <code>lectures/lecture01/01-lecture01.qmd</code> - Jupyter Setup</h3>
-<p><strong>Before:</strong> - 350+ lines of comprehensive Jupyter documentation - Deep technical details about kernels, JSON format, nbconvert - Advanced features (magic commands, debugger, widgets) upfront - No physics motivation - Reference manual style</p>
-<p><strong>After:</strong> - Streamlined to ~200 lines focused on getting started - <strong>Physics motivation first</strong>: Shows what students will create - Embedded example: Projectile motion plot in the introduction - First calculation: Gravitational potential energy (within 5 minutes) - Essential keyboard shortcuts only - Advanced topics moved to collapsible sections - Clear “Next Steps” pointing to plotting lesson</p>
-<p><strong>Key Improvements:</strong> - ✅ Shows physics visualization in first 2 minutes - ✅ Students run their first physics calculation within 10 minutes - ✅ Two types of cells explained with physics examples - ✅ Practice exercise: Calculate kinetic energy with proper LaTeX documentation - ✅ “Try It Yourself” section with free fall calculation - ✅ Quick reference card for essential shortcuts</p>
-</section>
-<section id="lectureslecture0404-plotting.qmd---moved-to-week-1" class="level3">
-<h3 class="anchored" data-anchor-id="lectureslecture0404-plotting.qmd---moved-to-week-1">2. <code>lectures/lecture04/04-plotting.qmd</code> - Moved to Week 1</h3>
-<p><strong>Status:</strong> <strong>File kept as-is</strong> but moved up in the course sequence</p>
-<p><strong>Why:</strong> This file already contains good content. By moving it to Week 1 position #2, students: - See visual results immediately (motivation!) - Learn by doing before learning theory - Understand why variables matter (they’ll use them in plots)</p>
-<p><strong>Current content includes:</strong> - Simple line plots - Anatomy of matplotlib figures - Axis labels, legends, error bars - Multiple plot types (scatter, histogram) - Physics examples throughout</p>
-</section>
-<section id="lectureslecture0102-lecture01.qmd---variables-numbers" class="level3">
-<h3 class="anchored" data-anchor-id="lectureslecture0102-lecture01.qmd---variables-numbers">3. <code>lectures/lecture01/02-lecture01.qmd</code> - Variables &amp; Numbers</h3>
-<p><strong>Before:</strong> - Generic programming tutorial - No physics context - Technical type explanations - Reserved keywords warning with <code>lambda</code> mention but no physics connection</p>
-<p><strong>After:</strong> - <strong>Opens with “What You Just Used!”</strong> - references the previous plotting lesson - Physics-motivated variable naming conventions - Real physics examples for each number type: - <strong>Integers</strong>: Particle counts, quantum numbers, timesteps - <strong>Floats</strong>: Mass, energy, position (with physical constants) - <strong>Complex</strong>: Wave functions, AC circuits, quantum mechanics - Physics constant examples (c, h, electron mass) - Scientific notation with astronomy/atomic scales - Practical tips: “Why <code>lambda_</code> instead of <code>lambda</code>” for wavelength - Complex numbers tied to quantum mechanics applications</p>
-<p><strong>Key Improvements:</strong> - ✅ Every code example uses physics variables (mass, velocity, energy) - ✅ Explains when to use each type in physics context - ✅ Real constants: Speed of light, Planck’s constant, electron mass - ✅ Complex number section connected to quantum mechanics and wave functions - ✅ Practical examples: Photon energy calculation, wave function probability density - ✅ Tips box: “Which Type for Physics?” table</p>
-</section>
-</section>
-<section id="pedagogical-rationale" class="level2">
-<h2 class="anchored" data-anchor-id="pedagogical-rationale">Pedagogical Rationale</h2>
-<section id="immediate-engagement" class="level3">
-<h3 class="anchored" data-anchor-id="immediate-engagement">1. <strong>Immediate Engagement</strong></h3>
-<p>Students see a beautiful physics plot in the first 2 minutes, not after hours of documentation reading.</p>
-</section>
-<section id="learn-by-doing" class="level3">
-<h3 class="anchored" data-anchor-id="learn-by-doing">2. <strong>Learn by Doing</strong></h3>
-<p>They plot data before understanding all the theory. This is how physicists actually work in research.</p>
-</section>
-<section id="just-in-time-learning" class="level3">
-<h3 class="anchored" data-anchor-id="just-in-time-learning">3. <strong>Just-in-Time Learning</strong></h3>
-<p>Variables are taught <em>after</em> students have used them, so they understand why they’re learning it.</p>
-</section>
-<section id="physics-context-throughout" class="level3">
-<h3 class="anchored" data-anchor-id="physics-context-throughout">4. <strong>Physics Context Throughout</strong></h3>
-<p>Every example uses physics notation, units, and real-world constants. Students see Python as a physics tool, not just a programming language.</p>
-</section>
-<section id="reduced-cognitive-load" class="level3">
-<h3 class="anchored" data-anchor-id="reduced-cognitive-load">5. <strong>Reduced Cognitive Load</strong></h3>
-<p>Week 1 focuses on three things: 1. Running Jupyter 2. Making plots 3. Understanding what variables are</p>
-<p>Advanced topics (kernels, magic commands, etc.) are in collapsible sections for reference.</p>
-</section>
-</section>
-<section id="student-experience-comparison" class="level2">
-<h2 class="anchored" data-anchor-id="student-experience-comparison">Student Experience Comparison</h2>
-<section id="old-week-1-experience" class="level3">
-<h3 class="anchored" data-anchor-id="old-week-1-experience">Old Week 1 Experience:</h3>
-<pre><code>Hour 1: Read about Jupyter architecture
-Hour 2: Learn about kernels and JSON format
-Hour 3: Markdown syntax
-Hour 4: Still reading documentation...
-Hour 5: Finally start programming
-Result: "This is boring, when do we do physics?"</code></pre>
-</section>
-<section id="new-week-1-experience" class="level3">
-<h3 class="anchored" data-anchor-id="new-week-1-experience">New Week 1 Experience:</h3>
-<pre><code>Minute 1: "Wow, look at that physics plot!"
-Minute 10: "I just calculated potential energy!"
-Minute 30: "I made my first graph!"
-Minute 45: "I can plot projectile motion!"
-Hour 1-2: "Now I understand what variables are and why they matter"
-Result: "This is cool, I'm doing real physics!"</code></pre>
-</section>
-</section>
-<section id="what-hasnt-changed" class="level2">
-<h2 class="anchored" data-anchor-id="what-hasnt-changed">What Hasn’t Changed</h2>
-<ol type="1">
-<li><strong>Content quality</strong>: All original material is preserved (moved to collapsible sections)</li>
-<li><strong>Depth</strong>: Advanced users can still access detailed Jupyter documentation</li>
-<li><strong>File organization</strong>: All files remain in their original locations</li>
-<li><strong>Later weeks</strong>: Only Week 1 structure was modified</li>
-</ol>
-</section>
-<section id="integration-with-your-existing-_quarto.yml" class="level2">
-<h2 class="anchored" data-anchor-id="integration-with-your-existing-_quarto.yml">Integration with Your Existing _quarto.yml</h2>
-<p>The proposed <code>_quarto.yml</code> section for Week 1:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">section</span><span class="kw">:</span><span class="at"> </span><span class="st">"🚀 Week 1: Your First Physics Code"</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">contents</span><span class="kw">:</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Setup: Jupyter Notebooks"</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">href</span><span class="kw">:</span><span class="at"> lectures/lecture01/01-lecture01.qmd</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Quick Win: Plotting Your First Graph"</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">href</span><span class="kw">:</span><span class="at"> lectures/lecture04/04-plotting.qmd</span><span class="co">  # MOVED UP!</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Variables &amp; Numbers (What You Just Used)"</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">href</span><span class="kw">:</span><span class="at"> lectures/lecture01/02-lecture01.qmd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="expected-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="expected-outcomes">Expected Outcomes</h2>
-<section id="student-motivation" class="level3">
-<h3 class="anchored" data-anchor-id="student-motivation">Student Motivation</h3>
+<section id="lecture-1-planetary-motion" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-1-planetary-motion">📖 Lecture 1: Planetary Motion</h2>
+<section id="key-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="key-concepts">Key Concepts</h3>
 <ul>
-<li>↑ Higher engagement in first week</li>
-<li>↑ “Aha!” moments earlier</li>
-<li>↑ Confidence: “I can do this!”</li>
-<li>↓ Dropout in first two weeks</li>
+<li><strong>Newton’s gravity</strong>: <span class="math inline">\(F = -GMm/r^2\)</span> (inverse square law)</li>
+<li><strong>Kepler’s laws</strong>: Empirical observations explained by Newton</li>
+<li><strong>Conic sections</strong>: Orbits are ellipses, parabolas, or hyperbolas</li>
+<li><strong>Conservation</strong>: Energy and angular momentum conserved</li>
 </ul>
 </section>
-<section id="learning-effectiveness" class="level3">
-<h3 class="anchored" data-anchor-id="learning-effectiveness">Learning Effectiveness</h3>
+<section id="equations-of-motion" class="level3">
+<h3 class="anchored" data-anchor-id="equations-of-motion">Equations of Motion</h3>
+<pre><code>Radial:  d²r/dt² = r·ω² - GM/r²
+Angular: d²θ/dt² = -2·(dr/dt)·ω/r</code></pre>
+</section>
+<section id="units-astronomical" class="level3">
+<h3 class="anchored" data-anchor-id="units-astronomical">Units (Astronomical)</h3>
 <ul>
-<li>Better retention (learned in context)</li>
-<li>Stronger connection between Python and physics</li>
-<li>More independent experimentation</li>
-<li>Clearer understanding of “why” before “how”</li>
+<li>Distance: AU (1 AU = Earth-Sun distance)</li>
+<li>Time: years</li>
+<li>Mass: Solar masses</li>
+<li>With these: <strong>G = 4π²</strong></li>
+</ul>
+</section>
+<section id="orbit-types-by-eccentricity-ε" class="level3">
+<h3 class="anchored" data-anchor-id="orbit-types-by-eccentricity-ε">Orbit Types (by eccentricity ε)</h3>
+<ul>
+<li><strong>ε = 0</strong>: Perfect circle</li>
+<li><strong>0 &lt; ε &lt; 1</strong>: Ellipse (all planets)</li>
+<li><strong>ε = 1</strong>: Parabola (escape trajectory)</li>
+<li><strong>ε &gt; 1</strong>: Hyperbola (fast escape)</li>
+</ul>
+</section>
+<section id="code-structure" class="level3">
+<h3 class="anchored" data-anchor-id="code-structure">Code Structure</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> planetary_motion(state, time):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    r, v, theta, omega <span class="op">=</span> state</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    dr_dt <span class="op">=</span> v</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    dv_dt <span class="op">=</span> r <span class="op">*</span> omega<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> G <span class="op">*</span> M <span class="op">/</span> r<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    dtheta_dt <span class="op">=</span> omega</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    domega_dt <span class="op">=</span> <span class="op">-</span><span class="fl">2.0</span> <span class="op">*</span> v <span class="op">*</span> omega <span class="op">/</span> r</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [dr_dt, dv_dt, dtheta_dt, domega_dt]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="circular-orbit" class="level3">
+<h3 class="anchored" data-anchor-id="circular-orbit">Circular Orbit</h3>
+<ul>
+<li>Start at: <code>r_0 = 1.0</code> AU</li>
+<li>No radial velocity: <code>v_0 = 0.0</code></li>
+<li>Angular velocity: <code>ω_0 = √(GM/r₀³)</code> ≈ 6.28 rad/yr</li>
+</ul>
+</section>
+<section id="elliptical-orbit" class="level3">
+<h3 class="anchored" data-anchor-id="elliptical-orbit">Elliptical Orbit</h3>
+<ul>
+<li>Start at: <code>r_0 = 1.0</code> AU</li>
+<li>No radial velocity: <code>v_0 = 0.0</code></li>
+<li>Higher angular velocity: <code>ω_0 = 1.8</code> rad/yr (creates ellipse)</li>
+</ul>
+</section>
+<section id="keplers-laws-verification" class="level3">
+<h3 class="anchored" data-anchor-id="keplers-laws-verification">Kepler’s Laws Verification</h3>
+<ol type="1">
+<li><strong>First Law</strong>: Plot shows ellipse ✓</li>
+<li><strong>Second Law</strong>: Angular momentum L = mr²ω = constant ✓</li>
+<li><strong>Third Law</strong>: T² = a³ (in our units) ✓</li>
+</ol>
+</section>
+<section id="real-planets-examples" class="level3">
+<h3 class="anchored" data-anchor-id="real-planets-examples">Real Planets (Examples)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Planet</th>
+<th>a (AU)</th>
+<th>ε</th>
+<th>T (years)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mercury</td>
+<td>0.387</td>
+<td>0.206</td>
+<td>0.24</td>
+</tr>
+<tr class="even">
+<td>Earth</td>
+<td>1.000</td>
+<td>0.017</td>
+<td>1.00</td>
+</tr>
+<tr class="odd">
+<td>Mars</td>
+<td>1.524</td>
+<td>0.093</td>
+<td>1.88</td>
+</tr>
+<tr class="even">
+<td>Jupiter</td>
+<td>5.203</td>
+<td>0.048</td>
+<td>11.86</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="lecture-2-spring-pendulum-chaos" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-2-spring-pendulum-chaos">📖 Lecture 2: Spring Pendulum &amp; Chaos</h2>
+<section id="key-concepts-1" class="level3">
+<h3 class="anchored" data-anchor-id="key-concepts-1">Key Concepts</h3>
+<ul>
+<li><strong>Polar coordinates</strong>: <span class="math inline">\((L, \theta)\)</span> for spring stretch and angle</li>
+<li><strong>Coupled motion</strong>: Spring oscillation and pendulum swing influence each other</li>
+<li><strong>Energy exchange</strong>: Energy sloshes between radial and angular modes</li>
+<li><strong>Chaos</strong>: Deterministic but unpredictable long-term behavior</li>
+<li><strong>Builds on Lecture 1</strong>: Same mathematical framework, different force law</li>
+</ul>
+</section>
+<section id="equations-of-motion-1" class="level3">
+<h3 class="anchored" data-anchor-id="equations-of-motion-1">Equations of Motion</h3>
+<pre><code>Radial:  d²L/dt² = (L₀+L)ω² - (k/m)L + g·cos(θ)
+Angular: d²θ/dt² = -[g·sin(θ) + 2(dL/dt)ω]/(L₀+L)</code></pre>
+</section>
+<section id="key-physics" class="level3">
+<h3 class="anchored" data-anchor-id="key-physics">Key Physics</h3>
+<ul>
+<li><strong>Centrifugal term</strong>: <span class="math inline">\((L_0+L)\omega^2\)</span> pushes outward</li>
+<li><strong>Spring force</strong>: <span class="math inline">\(-kL\)</span> pulls back to equilibrium (vs.&nbsp;<span class="math inline">\(-GM/r^2\)</span> for planets)</li>
+<li><strong>Coupling term</strong>: <span class="math inline">\(2\dot{L}\omega\)</span> connects radial and angular motion</li>
+</ul>
+</section>
+<section id="code-structure-1" class="level3">
+<h3 class="anchored" data-anchor-id="code-structure-1">Code Structure</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> spring_pendulum(state, time):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    L, v, theta, omega <span class="op">=</span> state</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    dL_dt <span class="op">=</span> v</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    dv_dt <span class="op">=</span> (L_o <span class="op">+</span> L) <span class="op">*</span> omega<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> (k<span class="op">/</span>m) <span class="op">*</span> L <span class="op">+</span> g <span class="op">*</span> np.cos(theta)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    dtheta_dt <span class="op">=</span> omega</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    domega_dt <span class="op">=</span> <span class="op">-</span>(g <span class="op">*</span> np.sin(theta) <span class="op">+</span> <span class="fl">2.0</span> <span class="op">*</span> v <span class="op">*</span> omega) <span class="op">/</span> (L_o <span class="op">+</span> L)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [dL_dt, dv_dt, dtheta_dt, domega_dt]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="typical-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="typical-parameters">Typical Parameters</h3>
+<ul>
+<li>Natural length: <code>L_o = 5</code> m</li>
+<li>Spring constant: <code>k = 10</code> N/m</li>
+<li>Mass: <code>m = 1</code> kg</li>
+<li>Small displacement: <code>L = 0.1</code> m, <code>θ = 0.1</code> rad</li>
+</ul>
+</section>
+<section id="chaotic-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="chaotic-parameters">Chaotic Parameters</h3>
+<ul>
+<li>Softer spring: <code>k = 5</code></li>
+<li>Shorter pendulum: <code>L_o = 2</code></li>
+<li>Large initial angle: <code>θ = 1.0</code> rad</li>
+<li>Initial velocity: <code>v = 1.0</code> m/s</li>
+</ul>
+</section>
+<section id="visualizations" class="level3">
+<h3 class="anchored" data-anchor-id="visualizations">Visualizations</h3>
+<ol type="1">
+<li><strong>Trajectory plot</strong> (x-y space)</li>
+<li><strong>Phase space</strong> (L vs v, θ vs ω) - can show strange attractors!</li>
+<li><strong>Time series</strong> (L and θ vs time)</li>
+<li><strong>Energy plot</strong> (KE, PE, Total vs time)</li>
+</ol>
+</section>
+</section>
+<section id="common-workflows" class="level2">
+<h2 class="anchored" data-anchor-id="common-workflows">🔧 Common Workflows</h2>
+<section id="standard-ode-solution-process" class="level3">
+<h3 class="anchored" data-anchor-id="standard-ode-solution-process">Standard ODE Solution Process</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define physical parameters</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>k, m, L_o, g <span class="op">=</span> <span class="fl">10.0</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">9.81</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Set initial conditions</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>state_0 <span class="op">=</span> np.array([L_initial, v_initial, theta_initial, omega_initial])</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Create time array</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> np.linspace(<span class="dv">0</span>, t_final, N_points)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Solve</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>solution <span class="op">=</span> odeint(equations_function, state_0, time)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Extract and plot</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>L, v, theta, omega <span class="op">=</span> solution.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="convert-polar-to-cartesian" class="level3">
+<h3 class="anchored" data-anchor-id="convert-polar-to-cartesian">Convert Polar to Cartesian</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For spring pendulum</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> (L_o <span class="op">+</span> L) <span class="op">*</span> np.sin(theta)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="op">-</span>(L_o <span class="op">+</span> L) <span class="op">*</span> np.cos(theta)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># For planetary motion</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> r <span class="op">*</span> np.cos(theta)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> r <span class="op">*</span> np.sin(theta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="energy-conservation-check" class="level3">
+<h3 class="anchored" data-anchor-id="energy-conservation-check">Energy Conservation Check</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Kinetic energy (radial + angular)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>KE <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> m <span class="op">*</span> (v<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (L_o <span class="op">+</span> L)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> omega<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Potential energy (spring + gravity)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>PE_spring <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> k <span class="op">*</span> L<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>PE_gravity <span class="op">=</span> <span class="op">-</span>m <span class="op">*</span> g <span class="op">*</span> (L_o <span class="op">+</span> L) <span class="op">*</span> np.cos(theta)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>PE <span class="op">=</span> PE_spring <span class="op">+</span> PE_gravity</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Total</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>E_total <span class="op">=</span> KE <span class="op">+</span> PE</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Should be approximately constant!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="phase-space-plot" class="level3">
+<h3 class="anchored" data-anchor-id="phase-space-plot">Phase Space Plot</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">6</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Radial phase space</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>ax1.plot(solution[:, <span class="dv">0</span>], solution[:, <span class="dv">1</span>])</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Position'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Velocity'</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Angular phase space</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>ax2.plot(solution[:, <span class="dv">2</span>], solution[:, <span class="dv">3</span>])</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">'Angle'</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'Angular velocity'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">🎓 Key Takeaways</h2>
+<section id="mathematical-connections" class="level3">
+<h3 class="anchored" data-anchor-id="mathematical-connections">Mathematical Connections</h3>
+<p>Both problems share: - ✅ Polar coordinates (r, θ) - ✅ Coupled 2nd-order ODEs - ✅ Centrifugal terms (rω²) - ✅ Coupling via dr/dt · ω - ✅ Same solution method (<code>odeint</code>)</p>
+</section>
+<section id="physical-differences-why-order-matters" class="level3">
+<h3 class="anchored" data-anchor-id="physical-differences-why-order-matters">Physical Differences (Why Order Matters!)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Planetary Motion (Lecture 1)</th>
+<th>Spring Pendulum (Lecture 2)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Force law</td>
+<td>F = -GM/r² (inverse square)</td>
+<td>F = -kL (linear)</td>
+</tr>
+<tr class="even">
+<td>Behavior</td>
+<td>Stable ellipses (bound)</td>
+<td>Can be chaotic</td>
+</tr>
+<tr class="odd">
+<td>Conservation</td>
+<td>Energy + Angular momentum</td>
+<td>Energy only</td>
+</tr>
+<tr class="even">
+<td>Difficulty</td>
+<td>Easier, intuitive</td>
+<td>More complex</td>
+</tr>
+<tr class="odd">
+<td>Learning</td>
+<td>Good starting point</td>
+<td>Builds on Lecture 1</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p><old_text line="229"> ### Spring Pendulum 1. Find parameters that create “beats” (energy oscillating between modes) 2. Create a circular trajectory by balancing forces 3. Measure how quickly chaos develops (Lyapunov exponent) 4. Find the natural frequencies of spring and pendulum modes</old_text></p>
+</section>
+<section id="planetary-motion" class="level3">
+<h3 class="anchored" data-anchor-id="planetary-motion">Planetary Motion</h3>
+<ol type="1">
+<li>Simulate Halley’s Comet (a=17.8 AU, ε=0.967)</li>
+<li>Plot inner solar system (Mercury, Venus, Earth, Mars)</li>
+<li>Calculate escape velocity from different distances</li>
+<li>Verify Kepler’s 3rd law for multiple orbits</li>
+</ol>
+</section>
+<section id="why-this-matters" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-matters">Why This Matters</h3>
+<ul>
+<li>Same <strong>mathematical framework</strong> applies to different physics</li>
+<li><strong>Numerical methods</strong> are universal problem-solving tools</li>
+<li><strong>Phase space</strong> reveals hidden structure</li>
+<li><strong>Conservation laws</strong> validate numerical solutions</li>
 </ul>
 </section>
 </section>
-<section id="next-steps-optional" class="level2">
-<h2 class="anchored" data-anchor-id="next-steps-optional">Next Steps (Optional)</h2>
-<section id="additional-enhancements-you-could-make" class="level3">
-<h3 class="anchored" data-anchor-id="additional-enhancements-you-could-make">Additional Enhancements You Could Make:</h3>
+<section id="common-student-questions" class="level2">
+<h2 class="anchored" data-anchor-id="common-student-questions">💡 Common Student Questions</h2>
+<p><strong>Q: Why are the equations so similar?</strong><br>
+A: Both use polar coordinates for central forces. The mathematical structure (centrifugal + radial force + coupling) is the same; only the specific force differs.</p>
+<p><strong>Q: How do I know if my solution is correct?</strong><br>
+A: Check: (1) Energy conservation, (2) Angular momentum conservation (planets), (3) Compare to analytical solution if available, (4) Physical reasonableness.</p>
+<p><strong>Q: What causes chaos in the spring pendulum?</strong><br>
+A: Nonlinear coupling between modes + sufficient energy. Not all parameter choices give chaos!</p>
+<p><strong>Q: Why don’t we see chaos in planetary motion?</strong><br>
+A: Single planet around Sun is “integrable” (has enough conserved quantities). Multi-planet systems can be chaotic!</p>
+<p><strong>Q: Can I simulate the whole solar system?</strong><br>
+A: Yes! But you need the N-body equations (Week 7+ material). Each planet affects all others.</p>
+</section>
+<section id="practice-exercises" class="level2">
+<h2 class="anchored" data-anchor-id="practice-exercises">🎯 Practice Exercises</h2>
+<section id="spring-pendulum" class="level3">
+<h3 class="anchored" data-anchor-id="spring-pendulum">Spring Pendulum</h3>
 <ol type="1">
-<li><strong>Add a “Week Overview” page</strong> for each week with learning objectives</li>
-<li><strong>Create a cheat sheet PDF</strong> for quick reference during lectures</li>
-<li><strong>Add more interactive exercises</strong> throughout the lessons</li>
-<li><strong>Include short video demos</strong> (5 min) showing key concepts</li>
-<li><strong>Student project gallery</strong> to showcase what’s possible</li>
+<li>Find parameters that create “beats” (energy oscillating between modes)</li>
+<li>Create a circular trajectory by balancing forces</li>
+<li>Measure how quickly chaos develops (Lyapunov exponent)</li>
+<li>Find the natural frequencies of spring and pendulum modes</li>
 </ol>
 </section>
-<section id="future-week-restructuring" class="level3">
-<h3 class="anchored" data-anchor-id="future-week-restructuring">Future Week Restructuring:</h3>
-<p>Apply similar principles to other weeks: - Week 2: Lead with Brownian Motion before classes - Week 4: Show planetary orbits before ODEs - Week 8: Wave animations before Fourier theory</p>
-</section>
-</section>
-<section id="files-modified" class="level2">
-<h2 class="anchored" data-anchor-id="files-modified">Files Modified</h2>
+<section id="planetary-motion-1" class="level3">
+<h3 class="anchored" data-anchor-id="planetary-motion-1">Planetary Motion</h3>
 <ol type="1">
-<li><code>lectures/lecture01/01-lecture01.qmd</code> - <strong>Completely restructured</strong></li>
-<li><code>lectures/lecture01/02-lecture01.qmd</code> - <strong>Enhanced with physics context</strong></li>
-<li><code>lectures/lecture04/04-plotting.qmd</code> - <strong>Moved up (content unchanged)</strong></li>
+<li>Simulate Halley’s Comet (a=17.8 AU, ε=0.967)</li>
+<li>Plot inner solar system (Mercury, Venus, Earth, Mars)</li>
+<li>Calculate escape velocity from different distances</li>
+<li>Verify Kepler’s 3rd law for multiple orbits</li>
 </ol>
 </section>
-<section id="testing-recommendations" class="level2">
-<h2 class="anchored" data-anchor-id="testing-recommendations">Testing Recommendations</h2>
-<p>Before deploying to students: 1. ✅ Run through Week 1 as a student would 2. ✅ Time each section (should be ~2 hours total) 3. ✅ Test all code examples in fresh Jupyter environment 4. ✅ Verify all links work in the rendered Quarto site 5. ✅ Ask a colleague to review for clarity</p>
 </section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p><strong>Bottom line:</strong> Week 1 is now exciting, physics-focused, and gets students creating visualizations in minutes instead of hours. The technical details are still there, but they’re optional reference material instead of required reading.</p>
-<p>Students will leave Week 1 thinking “I can do physics with code!” instead of “I learned about Jupyter’s architecture.”</p>
+<section id="assessment-ideas" class="level2">
+<h2 class="anchored" data-anchor-id="assessment-ideas">📊 Assessment Ideas</h2>
+<section id="homework-problems" class="level3">
+<h3 class="anchored" data-anchor-id="homework-problems">Homework Problems</h3>
+<ul>
+<li>Simulate a comet with given parameters</li>
+<li>Find chaotic regime in spring pendulum</li>
+<li>Verify conservation laws numerically</li>
+<li>Compare circular vs elliptical orbits</li>
+</ul>
+</section>
+<section id="mini-project" class="level3">
+<h3 class="anchored" data-anchor-id="mini-project">Mini-Project</h3>
+<p>“Design a satellite orbit”: Given requirements (altitude, period), calculate initial conditions and verify with simulation.</p>
+</section>
+</section>
+<section id="connections" class="level2">
+<h2 class="anchored" data-anchor-id="connections">🔗 Connections</h2>
+<section id="to-previous-weeks" class="level3">
+<h3 class="anchored" data-anchor-id="to-previous-weeks">To Previous Weeks</h3>
+<ul>
+<li>Week 5: Uses <code>odeint</code>, differentiation, integration</li>
+<li>Week 4: Arrays for storing trajectories</li>
+<li>Week 3: Motion concepts, coordinates</li>
+</ul>
+</section>
+<section id="to-next-weeks" class="level3">
+<h3 class="anchored" data-anchor-id="to-next-weeks">To Next Weeks</h3>
+<ul>
+<li>Week 7: Organizing complex simulations with classes (motivated by Week 6 complexity)</li>
+<li>Week 8+: Coupled oscillators, wave propagation</li>
+<li>Later: Multi-body systems, numerical stability</li>
+</ul>
+</section>
+<section id="within-week-6" class="level3">
+<h3 class="anchored" data-anchor-id="within-week-6">Within Week 6</h3>
+<ul>
+<li>Lecture 1 (Planetary Motion): Establishes the mathematical pattern</li>
+<li>Lecture 2 (Spring Pendulum): Shows how same framework handles different physics and chaos </li>
+</ul>
+<p><old_text line="279"> <strong>Time Estimate</strong>: 2-3 hours lecture + 3-4 hours practice <strong>Difficulty</strong>: Intermediate (requires Week 5 mastery) <strong>Prerequisites</strong>: ODEs, basic mechanics, <code>odeint</code></old_text></p>
+</section>
+</section>
+<section id="further-resources" class="level2">
+<h2 class="anchored" data-anchor-id="further-resources">📚 Further Resources</h2>
+<section id="documentation" class="level3">
+<h3 class="anchored" data-anchor-id="documentation">Documentation</h3>
+<ul>
+<li>SciPy <code>odeint</code>: https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.odeint.html</li>
+<li>NumPy arrays: https://numpy.org/doc/stable/</li>
+</ul>
+</section>
+<section id="physics-background" class="level3">
+<h3 class="anchored" data-anchor-id="physics-background">Physics Background</h3>
+<ul>
+<li>Goldstein, <em>Classical Mechanics</em> (advanced)</li>
+<li>Taylor, <em>Classical Mechanics</em> (undergraduate)</li>
+<li>Landau &amp; Lifshitz, <em>Mechanics</em> (theoretical)</li>
+</ul>
+</section>
+<section id="computational" class="level3">
+<h3 class="anchored" data-anchor-id="computational">Computational</h3>
+<ul>
+<li>Giordano &amp; Nakanishi, <em>Computational Physics</em></li>
+<li>Newman, <em>Computational Physics</em></li>
+</ul>
 <hr>
-<p><strong>Date of Changes:</strong> Generated during course restructuring consultation <strong>Philosophy:</strong> Physics first, technical details second, engagement always</p>
+<p><strong>Time Estimate</strong>: 2-3 hours lecture + 3-4 hours practice <strong>Difficulty</strong>: Intermediate (requires Week 5 mastery) <strong>Prerequisites</strong>: ODEs, basic mechanics, <code>odeint</code></p>
 
 
 <script type="ojs-module-contents">
@@ -611,6 +903,7 @@ eyJjb250ZW50cyI6W119
 <script type="vfs-file">
 W10=
 </script>
+</section>
 </section>
 </section>
 

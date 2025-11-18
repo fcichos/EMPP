@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Planetary Motion – Einführung in die Modellierung Physikalischer Prozesse</title>
+<title>Planetary Motion: Newton’s Masterpiece – Einführung in die Modellierung Physikalischer Prozesse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../lectures/lecture10/1_spring_pendulum.html" rel="next">
+<link href="../../lectures/lecture08/3_solving_ODEs.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -133,7 +135,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Planetary Motion</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture10/2_planetary_motion.html">🌟 Week 6: Classical Mechanics Applications</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture10/2_planetary_motion.html">Planetary Motion</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -283,7 +285,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">⚡ Week 5: Classical Mechanics 2</span></a>
+ <span class="menu-text">⚡ Week 5: Numerical Methods Toolkit</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -301,10 +303,27 @@ window.Quarto = {
  <span class="menu-text">Tool: Solving ODEs</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">🌟 Week 6: Classical Mechanics Applications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture08/2_integration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tool: Numerical Integration</span></a>
+  <a href="../../lectures/lecture10/2_planetary_motion.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Planetary Motion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture10/1_spring_pendulum.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spring Pendulum &amp; Chaos</span></a>
   </div>
 </li>
       </ul>
@@ -312,22 +331,22 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
  <span class="menu-text">🛠️ Hands-On Seminars</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
  <span class="menu-text">Advanced Topics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link">
@@ -354,22 +373,68 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#physical-model" id="toc-physical-model" class="nav-link active" data-scroll-target="#physical-model">Physical Model</a></li>
-  <li><a href="#numerical-solution" id="toc-numerical-solution" class="nav-link" data-scroll-target="#numerical-solution">Numerical Solution</a>
+  <li><a href="#historical-context-newtons-revolution" id="toc-historical-context-newtons-revolution" class="nav-link active" data-scroll-target="#historical-context-newtons-revolution">Historical Context: Newton’s Revolution</a></li>
+  <li><a href="#the-physical-setup" id="toc-the-physical-setup" class="nav-link" data-scroll-target="#the-physical-setup">The Physical Setup</a>
   <ul class="collapse">
-  <li><a href="#initial-parameters-planets" id="toc-initial-parameters-planets" class="nav-link" data-scroll-target="#initial-parameters-planets">Initial Parameters: Planets</a></li>
-  <li><a href="#solution-planets" id="toc-solution-planets" class="nav-link" data-scroll-target="#solution-planets">Solution: Planets</a></li>
-  <li><a href="#plotting-planets" id="toc-plotting-planets" class="nav-link" data-scroll-target="#plotting-planets">Plotting: Planets</a></li>
+  <li><a href="#polar-coordinates-the-natural-choice" id="toc-polar-coordinates-the-natural-choice" class="nav-link" data-scroll-target="#polar-coordinates-the-natural-choice">Polar Coordinates: The Natural Choice</a></li>
   </ul></li>
+  <li><a href="#the-equations-of-motion" id="toc-the-equations-of-motion" class="nav-link" data-scroll-target="#the-equations-of-motion">The Equations of Motion</a>
+  <ul class="collapse">
+  <li><a href="#radial-motion" id="toc-radial-motion" class="nav-link" data-scroll-target="#radial-motion">Radial Motion</a></li>
+  <li><a href="#angular-motion" id="toc-angular-motion" class="nav-link" data-scroll-target="#angular-motion">Angular Motion</a></li>
+  </ul></li>
+  <li><a href="#the-analytical-solution-conic-sections" id="toc-the-analytical-solution-conic-sections" class="nav-link" data-scroll-target="#the-analytical-solution-conic-sections">The Analytical Solution: Conic Sections</a>
+  <ul class="collapse">
+  <li><a href="#what-do-different-eccentricities-mean" id="toc-what-do-different-eccentricities-mean" class="nav-link" data-scroll-target="#what-do-different-eccentricities-mean">What Do Different Eccentricities Mean?</a></li>
+  </ul></li>
+  <li><a href="#converting-to-first-order-system" id="toc-converting-to-first-order-system" class="nav-link" data-scroll-target="#converting-to-first-order-system">Converting to First-Order System</a></li>
+  <li><a href="#implementing-the-equations" id="toc-implementing-the-equations" class="nav-link" data-scroll-target="#implementing-the-equations">Implementing the Equations</a></li>
+  <li><a href="#setting-up-units-matter" id="toc-setting-up-units-matter" class="nav-link" data-scroll-target="#setting-up-units-matter">Setting Up: Units Matter!</a></li>
+  <li><a href="#simulation-1-earth-like-orbit" id="toc-simulation-1-earth-like-orbit" class="nav-link" data-scroll-target="#simulation-1-earth-like-orbit">Simulation 1: Earth-like Orbit</a>
+  <ul class="collapse">
+  <li><a href="#setting-initial-conditions" id="toc-setting-initial-conditions" class="nav-link" data-scroll-target="#setting-initial-conditions">Setting Initial Conditions</a></li>
+  <li><a href="#solving-the-odes" id="toc-solving-the-odes" class="nav-link" data-scroll-target="#solving-the-odes">Solving the ODEs</a></li>
+  <li><a href="#converting-to-cartesian-coordinates" id="toc-converting-to-cartesian-coordinates" class="nav-link" data-scroll-target="#converting-to-cartesian-coordinates">Converting to Cartesian Coordinates</a></li>
+  <li><a href="#visualizing-the-orbit" id="toc-visualizing-the-orbit" class="nav-link" data-scroll-target="#visualizing-the-orbit">Visualizing the Orbit</a></li>
+  </ul></li>
+  <li><a href="#simulation-2-elliptical-orbit" id="toc-simulation-2-elliptical-orbit" class="nav-link" data-scroll-target="#simulation-2-elliptical-orbit">Simulation 2: Elliptical Orbit</a>
+  <ul class="collapse">
+  <li><a href="#comparing-with-analytical-solution" id="toc-comparing-with-analytical-solution" class="nav-link" data-scroll-target="#comparing-with-analytical-solution">Comparing with Analytical Solution</a></li>
+  <li><a href="#plotting-numerical-vs.-analytical" id="toc-plotting-numerical-vs.-analytical" class="nav-link" data-scroll-target="#plotting-numerical-vs.-analytical">Plotting Numerical vs.&nbsp;Analytical</a></li>
+  </ul></li>
+  <li><a href="#understanding-the-orbit-keplers-laws" id="toc-understanding-the-orbit-keplers-laws" class="nav-link" data-scroll-target="#understanding-the-orbit-keplers-laws">Understanding the Orbit: Kepler’s Laws</a>
+  <ul class="collapse">
+  <li><a href="#keplers-first-law-ellipses" id="toc-keplers-first-law-ellipses" class="nav-link" data-scroll-target="#keplers-first-law-ellipses">Kepler’s First Law: Ellipses</a></li>
+  <li><a href="#keplers-second-law-equal-areas-in-equal-times" id="toc-keplers-second-law-equal-areas-in-equal-times" class="nav-link" data-scroll-target="#keplers-second-law-equal-areas-in-equal-times">Kepler’s Second Law: Equal Areas in Equal Times</a></li>
+  <li><a href="#keplers-third-law-period-distance-relationship" id="toc-keplers-third-law-period-distance-relationship" class="nav-link" data-scroll-target="#keplers-third-law-period-distance-relationship">Kepler’s Third Law: Period-Distance Relationship</a></li>
+  </ul></li>
+  <li><a href="#energy-conservation-the-ultimate-check" id="toc-energy-conservation-the-ultimate-check" class="nav-link" data-scroll-target="#energy-conservation-the-ultimate-check">Energy Conservation: The Ultimate Check</a></li>
+  <li><a href="#phase-space-a-different-perspective" id="toc-phase-space-a-different-perspective" class="nav-link" data-scroll-target="#phase-space-a-different-perspective">Phase Space: A Different Perspective</a></li>
+  <li><a href="#exploration-different-orbit-types" id="toc-exploration-different-orbit-types" class="nav-link" data-scroll-target="#exploration-different-orbit-types">Exploration: Different Orbit Types</a>
+  <ul class="collapse">
+  <li><a href="#highly-elliptical-orbit-like-a-comet" id="toc-highly-elliptical-orbit-like-a-comet" class="nav-link" data-scroll-target="#highly-elliptical-orbit-like-a-comet">Highly Elliptical Orbit (Like a Comet)</a></li>
+  <li><a href="#escape-velocity-parabolic-trajectory" id="toc-escape-velocity-parabolic-trajectory" class="nav-link" data-scroll-target="#escape-velocity-parabolic-trajectory">Escape Velocity: Parabolic Trajectory</a></li>
+  <li><a href="#comparing-different-orbits" id="toc-comparing-different-orbits" class="nav-link" data-scroll-target="#comparing-different-orbits">Comparing Different Orbits</a></li>
+  </ul></li>
+  <li><a href="#real-solar-system-examples" id="toc-real-solar-system-examples" class="nav-link" data-scroll-target="#real-solar-system-examples">Real Solar System Examples</a>
+  <ul class="collapse">
+  <li><a href="#mercury-the-most-elliptical" id="toc-mercury-the-most-elliptical" class="nav-link" data-scroll-target="#mercury-the-most-elliptical">Mercury: The Most Elliptical</a></li>
+  </ul></li>
+  <li><a href="#summary-what-weve-learned" id="toc-summary-what-weve-learned" class="nav-link" data-scroll-target="#summary-what-weve-learned">Summary: What We’ve Learned</a></li>
+  <li><a href="#challenge-exercises" id="toc-challenge-exercises" class="nav-link" data-scroll-target="#challenge-exercises">Challenge Exercises</a></li>
+  <li><a href="#whats-next-a-preview" id="toc-whats-next-a-preview" class="nav-link" data-scroll-target="#whats-next-a-preview">What’s Next: A Preview</a></li>
+  <li><a href="#historical-impact-why-this-matters" id="toc-historical-impact-why-this-matters" class="nav-link" data-scroll-target="#historical-impact-why-this-matters">Historical Impact: Why This Matters</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next?</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture10/2_planetary_motion.html">🌟 Week 6: Classical Mechanics Applications</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture10/2_planetary_motion.html">Planetary Motion</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Planetary Motion</h1>
+<h1 class="title">Planetary Motion: Newton’s Masterpiece</h1>
 </div>
 
 
@@ -386,122 +451,655 @@ window.Quarto = {
 </header>
 
 
+<p>In Week 5, you learned powerful tools for solving differential equations, especially <code>odeint</code> for ODEs. Now it’s time to put these tools to work on one of the most beautiful problems in physics: <strong>planetary motion</strong>!</p>
+<p>This is the perfect first application because: - The physics is intuitive (we all know planets orbit the Sun) - The equations are elegant (just Newton’s gravity) - The results are spectacular (you’ll reproduce Kepler’s laws!) - The mathematics sets the pattern for more complex problems</p>
+<p>These same techniques will work for many other physics problems - anytime you have coupled motion in two dimensions. The mathematical framework is surprisingly general!</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🎯 What You’ll Learn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this lecture, you’ll: - Apply <code>odeint</code> to solve Newton’s laws for planetary orbits - Discover how gravity creates elliptical orbits - Connect our numerical solution to Kepler’s laws - Verify energy and angular momentum conservation - Explore different types of orbits (circular, elliptical, parabolic) - See how changing initial conditions creates different orbital paths</p>
+</div>
+</div>
 <div>
 <div id="pyodide-1">
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1ZX0sImNvZGUiOiJcbmltcG9ydCBudW1weSBhcyBucFxuaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuZnJvbSBzY2lweS5pbnRlZ3JhdGUgaW1wb3J0IG9kZWludFxuXG4jIFNldCBkZWZhdWx0IHBsb3R0aW5nIHBhcmFtZXRlcnNcbnBsdC5yY1BhcmFtcy51cGRhdGUoe1xuICAgICdmb250LnNpemUnOiAxMixcbiAgICAnbGluZXMubGluZXdpZHRoJzogMSxcbiAgICAnbGluZXMubWFya2Vyc2l6ZSc6IDUsXG4gICAgJ2F4ZXMubGFiZWxzaXplJzogMTEsXG4gICAgJ3h0aWNrLmxhYmVsc2l6ZSc6IDEwLFxuICAgICd5dGljay5sYWJlbHNpemUnOiAxMCxcbiAgICAneHRpY2sudG9wJzogVHJ1ZSxcbiAgICAneHRpY2suZGlyZWN0aW9uJzogJ2luJyxcbiAgICAneXRpY2sucmlnaHQnOiBUcnVlLFxuICAgICd5dGljay5kaXJlY3Rpb24nOiAnaW4nLFxufSlcblxuZGVmIGdldF9zaXplKHcsIGgpOlxuICAgIHJldHVybiAody8yLjU0LCBoLzIuNTQpIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJcbmltcG9ydCBudW1weSBhcyBucFxuaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuZnJvbSBzY2lweS5pbnRlZ3JhdGUgaW1wb3J0IG9kZWludFxuXG4jIFNldCBkZWZhdWx0IHBsb3R0aW5nIHBhcmFtZXRlcnNcbnBsdC5yY1BhcmFtcy51cGRhdGUoe1xuICAgICdmb250LnNpemUnOiAxMixcbiAgICAnbGluZXMubGluZXdpZHRoJzogMSxcbiAgICAnbGluZXMubWFya2Vyc2l6ZSc6IDUsXG4gICAgJ2F4ZXMubGFiZWxzaXplJzogMTEsXG4gICAgJ3h0aWNrLmxhYmVsc2l6ZSc6IDEwLFxuICAgICd5dGljay5sYWJlbHNpemUnOiAxMCxcbiAgICAneHRpY2sudG9wJzogVHJ1ZSxcbiAgICAneHRpY2suZGlyZWN0aW9uJzogJ2luJyxcbiAgICAneXRpY2sucmlnaHQnOiBUcnVlLFxuICAgICd5dGljay5kaXJlY3Rpb24nOiAnaW4nLFxufSlcblxuZGVmIGdldF9zaXplKHcsIGgpOlxuICAgIHJldHVybiAody8yLjU0LCBoLzIuNTQpIn0=
 </script>
 </div>
-<section id="physical-model" class="level2">
-<h2 class="anchored" data-anchor-id="physical-model">Physical Model</h2>
-<p>The motion of planets around the Sun is a classic problem in physics that beautifully demonstrates Newton’s laws of motion and universal gravitation. While this motion might seem very different from a spring pendulum, the mathematical description is surprisingly similar. The main difference is that instead of a spring force, we now have gravity as our central force.</p>
-<p>In both cases, we describe the motion using two coordinates: the distance from the center (<span class="math inline">\(r\)</span>) and an angle (<span class="math inline">\(\theta\)</span>). For planetary motion, <span class="math inline">\(r\)</span> is the distance between the planet and the Sun, and <span class="math inline">\(\theta\)</span> describes the planet’s angular position in its orbit.</p>
-<p>The equations of motion contain two parts: The first equation describes the radial acceleration (<span class="math inline">\(\ddot{r}\)</span>), and the second describes the angular acceleration (<span class="math inline">\(\ddot{\theta}\)</span>):</p>
-<p><span class="math display">\[\begin{eqnarray}
-\ddot{r}&amp;=&amp;r\dot{\theta}^2-\frac{G\, M}{r^2}\\
-\ddot{\theta}&amp;=&amp;-\frac{1}{r}2\dot{r}\dot{\theta}
-\end{eqnarray}\]</span></p>
-<p>In the first equation, the term <span class="math inline">\(r\dot{\theta}^2\)</span> represents the centrifugal effect - the tendency of the planet to move away from the Sun due to its orbital motion. The term <span class="math inline">\(-\frac{G\, M}{r^2}\)</span> is Newton’s gravitational force (divided by mass), pulling the planet toward the Sun. <span class="math inline">\(G\)</span> is the gravitational constant, and <span class="math inline">\(M\)</span> is the mass of the Sun.</p>
-<p>The second equation describes how the angular motion changes. The term <span class="math inline">\(2\dot{r}\dot{\theta}\)</span> represents the coupling between radial and angular motion - as the planet moves closer to or farther from the Sun, its angular velocity must change to conserve angular momentum, similar to how an ice skater spins faster when pulling their arms in.</p>
-<p>The solution to these equations gives us the famous orbital equation:</p>
-<p><span class="math display">\[
-r(\theta)=\frac{p}{1+\epsilon \cos(\theta)}
-\]</span></p>
-<p>This is the equation of a conic section, where <span class="math inline">\(p\)</span> and <span class="math inline">\(\epsilon\)</span> determine the orbit’s shape. The parameter <span class="math inline">\(p\)</span> is related to the angular momentum <span class="math inline">\(L\)</span>:</p>
+<section id="historical-context-newtons-revolution" class="level2">
+<h2 class="anchored" data-anchor-id="historical-context-newtons-revolution">Historical Context: Newton’s Revolution</h2>
+<p>In 1687, Isaac Newton published the <em>Principia Mathematica</em>, arguably the most important physics book ever written. In it, he showed that:</p>
+<ol type="1">
+<li>The same force that makes apples fall (gravity) also keeps planets in orbit</li>
+<li>All planetary motion could be explained by one simple equation: <span class="math inline">\(F = GMm/r^2\)</span></li>
+<li>Kepler’s empirical laws of planetary motion (discovered from observations) could be <strong>derived</strong> from Newton’s laws</li>
+</ol>
+<p>This was revolutionary! It meant the same physics applies on Earth and in the heavens. Before Newton, these were thought to be fundamentally different realms.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Newton’s Insight
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What made Newton’s work so powerful was that it was <strong>predictive</strong>, not just descriptive. Given a planet’s position and velocity at one moment, you could predict its entire future orbit. This is exactly what we’ll do with <code>odeint</code>!</p>
+</div>
+</div>
+</section>
+<section id="the-physical-setup" class="level2">
+<h2 class="anchored" data-anchor-id="the-physical-setup">The Physical Setup</h2>
+<p>Imagine a planet orbiting the Sun:</p>
+<ul>
+<li>The <strong>Sun</strong> is at the origin (we assume it’s much more massive than the planet, so it doesn’t move)</li>
+<li>The <strong>planet</strong> has mass <span class="math inline">\(m\)</span> and moves in a plane around the Sun</li>
+<li>The only force is <strong>gravity</strong>: <span class="math inline">\(F = -\frac{GMm}{r^2}\)</span> (pointing toward the Sun)</li>
+</ul>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(G\)</span> is the gravitational constant</li>
+<li><span class="math inline">\(M\)</span> is the mass of the Sun</li>
+<li><span class="math inline">\(m\)</span> is the mass of the planet</li>
+<li><span class="math inline">\(r\)</span> is the distance between them</li>
+</ul>
+<section id="polar-coordinates-the-natural-choice" class="level3">
+<h3 class="anchored" data-anchor-id="polar-coordinates-the-natural-choice">Polar Coordinates: The Natural Choice</h3>
+<p>We’ll use polar coordinates because they’re natural for this problem:</p>
+<ol type="1">
+<li><strong><span class="math inline">\(r\)</span></strong>: Distance from the Sun to the planet</li>
+<li><strong><span class="math inline">\(\theta\)</span></strong>: Angular position (where the planet is in its orbit)</li>
+</ol>
+<p>These are more natural than <span class="math inline">\((x, y)\)</span> because:</p>
+<ul>
+<li>Gravity acts in the radial direction</li>
+<li>Angular momentum is naturally expressed in terms of <span class="math inline">\(\theta\)</span></li>
+<li>The equations become simpler</li>
+</ul>
+</section>
+</section>
+<section id="the-equations-of-motion" class="level2">
+<h2 class="anchored" data-anchor-id="the-equations-of-motion">The Equations of Motion</h2>
+<p>Using Newton’s second law in polar coordinates, we get two coupled differential equations:</p>
+<section id="radial-motion" class="level3">
+<h3 class="anchored" data-anchor-id="radial-motion">Radial Motion</h3>
 <p><span class="math display">\[\begin{equation}
-p=\frac{L^2}{G M m^2}
+\ddot{r} = r\dot{\theta}^2 - \frac{GM}{r^2}
 \end{equation}\]</span></p>
-<p>The eccentricity <span class="math inline">\(\epsilon\)</span> depends on both the energy <span class="math inline">\(E\)</span> and angular momentum <span class="math inline">\(L\)</span>:</p>
+<p>Let’s understand each term:</p>
+<ul>
+<li><strong><span class="math inline">\(r\dot{\theta}^2\)</span></strong>: The <strong>centrifugal effect</strong> - the planet “wants” to fly outward due to its orbital motion</li>
+<li><strong><span class="math inline">\(-\frac{GM}{r^2}\)</span></strong>: <strong>Newton’s gravitational force</strong> (per unit mass) - pulls the planet toward the Sun
+<ul>
+<li>Notice the <span class="math inline">\(1/r^2\)</span> dependence - this is Newton’s inverse square law!</li>
+</ul></li>
+</ul>
+</section>
+<section id="angular-motion" class="level3">
+<h3 class="anchored" data-anchor-id="angular-motion">Angular Motion</h3>
 <p><span class="math display">\[\begin{equation}
-\epsilon=\sqrt{1+\frac{2\frac{E}{m}\frac{L^2}{m^2}}{G^2M^2}}
+\ddot{\theta} = -\frac{2\dot{r}\dot{\theta}}{r}
 \end{equation}\]</span></p>
-<p>When <span class="math inline">\(0 &lt; \epsilon &lt; 1\)</span>, we get an elliptical orbit (the case for all planets in our solar system). A perfect circle occurs when <span class="math inline">\(\epsilon = 0\)</span>. These equations, derived by Newton and studied by Kepler, explain not only planetary orbits but also the paths of comets, artificial satellites, and many other celestial objects.</p>
+<p>This describes how the angular velocity changes:</p>
+<ul>
+<li><strong><span class="math inline">\(2\dot{r}\dot{\theta}\)</span></strong>: The <strong>coupling term</strong> - connects radial and angular motion</li>
+<li><strong><span class="math inline">\(1/r\)</span></strong>: As the planet gets closer to the Sun, it speeds up; farther away, it slows down
+<ul>
+<li>This is <strong>conservation of angular momentum</strong> in action!</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="the-analytical-solution-conic-sections" class="level2">
+<h2 class="anchored" data-anchor-id="the-analytical-solution-conic-sections">The Analytical Solution: Conic Sections</h2>
+<p>Before we solve this numerically, it’s worth knowing what the analytical solution looks like. This is what Newton derived in the Principia!</p>
+<p>The orbit equation is:</p>
+<p><span class="math display">\[\begin{equation}
+r(\theta) = \frac{p}{1 + \varepsilon\cos(\theta)}
+\end{equation}\]</span></p>
+<p>This is the equation of a <strong>conic section</strong>, where:</p>
+<ul>
+<li><span class="math inline">\(p = \frac{L^2}{GMm^2}\)</span> depends on the <strong>angular momentum</strong> <span class="math inline">\(L\)</span></li>
+<li><span class="math inline">\(\varepsilon\)</span> is the <strong>eccentricity</strong>, which depends on the <strong>energy</strong> <span class="math inline">\(E\)</span>:</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+\varepsilon = \sqrt{1 + \frac{2EL^2}{m^3G^2M^2}}
+\end{equation}\]</span></p>
+<section id="what-do-different-eccentricities-mean" class="level3">
+<h3 class="anchored" data-anchor-id="what-do-different-eccentricities-mean">What Do Different Eccentricities Mean?</h3>
+<ul>
+<li><strong><span class="math inline">\(\varepsilon = 0\)</span></strong>: Perfect <strong>circle</strong> (e.g., an idealized orbit)</li>
+<li><strong><span class="math inline">\(0 &lt; \varepsilon &lt; 1\)</span></strong>: <strong>Ellipse</strong> (all planets in our solar system!)
+<ul>
+<li>Earth: <span class="math inline">\(\varepsilon \approx 0.017\)</span> (nearly circular)</li>
+<li>Mercury: <span class="math inline">\(\varepsilon \approx 0.206\)</span> (noticeably elliptical)</li>
+</ul></li>
+<li><strong><span class="math inline">\(\varepsilon = 1\)</span></strong>: <strong>Parabola</strong> (escape trajectory - barely escapes)</li>
+<li><strong><span class="math inline">\(\varepsilon &gt; 1\)</span></strong>: <strong>Hyperbola</strong> (escape trajectory - like some comets)</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Kepler’s First Law
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>“Planets move in ellipses with the Sun at one focus.”</p>
+<p>This is exactly what Newton’s equation predicts! We’ll verify this numerically.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="converting-to-first-order-system" class="level2">
+<h2 class="anchored" data-anchor-id="converting-to-first-order-system">Converting to First-Order System</h2>
+<p>To use <code>odeint</code>, we need first-order differential equations. Let’s introduce:</p>
+<ul>
+<li><span class="math inline">\(v = \dot{r}\)</span> (radial velocity)</li>
+<li><span class="math inline">\(\omega = \dot{\theta}\)</span> (angular velocity)</li>
+</ul>
+<p>Our <strong>state vector</strong> is: <span class="math inline">\([r, v, \theta, \omega]\)</span></p>
+<p>This gives us <strong>four</strong> first-order equations:</p>
+<p><span class="math display">\[\begin{align}
+\dot{r} &amp;= v \\
+\dot{v} &amp;= r\omega^2 - \frac{GM}{r^2} \\
+\dot{\theta} &amp;= \omega \\
+\dot{\omega} &amp;= -\frac{2v\omega}{r}
+\end{align}\]</span></p>
+</section>
+<section id="implementing-the-equations" class="level2">
+<h2 class="anchored" data-anchor-id="implementing-the-equations">Implementing the Equations</h2>
+<p>Let’s write the function for <code>odeint</code>:</p>
 <div>
 <div id="pyodide-2">
 
 </div>
 <script type="pyodide-2-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuZGVmIHBsYW5ldGFyeV9tb3Rpb24oc3RhdGUsIHRpbWUgKTpcbiAgICBnMCA9IHN0YXRlWzFdXG4gICAgZzEgPSBzdGF0ZVswXSpzdGF0ZVszXSoqMiAtIEcqTS8oc3RhdGVbMF0qKjIpXG4gICAgZzIgPSBzdGF0ZVszXVxuICAgIGczID0gLTIuMCpzdGF0ZVsxXSpzdGF0ZVszXS9zdGF0ZVswXVxuICAgIHJldHVybiBucC5hcnJheShbZzAsIGcxLCBnMiwgZzNdKSJ9
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuZGVmIHBsYW5ldGFyeV9tb3Rpb24oc3RhdGUsIHRpbWUpOlxuICAgIFwiXCJcIlxuICAgIENhbGN1bGF0ZXMgZGVyaXZhdGl2ZXMgZm9yIHBsYW5ldGFyeSBtb3Rpb24gdW5kZXIgZ3Jhdml0eS5cbiAgICBcbiAgICBzdGF0ZSA9IFtyLCB2LCB0aGV0YSwgb21lZ2FdXG4gICAgd2hlcmU6XG4gICAgICAgIHIgICAgID0gZGlzdGFuY2UgZnJvbSBTdW5cbiAgICAgICAgdiAgICAgPSByYWRpYWwgdmVsb2NpdHkgKGRyL2R0KVxuICAgICAgICB0aGV0YSA9IGFuZ3VsYXIgcG9zaXRpb25cbiAgICAgICAgb21lZ2EgPSBhbmd1bGFyIHZlbG9jaXR5IChkdGhldGEvZHQpXG4gICAgXG4gICAgUmV0dXJuczogW2RyL2R0LCBkdi9kdCwgZHRoZXRhL2R0LCBkb21lZ2EvZHRdXG4gICAgXCJcIlwiXG4gICAgIyBVbnBhY2sgY3VycmVudCBzdGF0ZVxuICAgIHIgPSBzdGF0ZVswXVxuICAgIHYgPSBzdGF0ZVsxXVxuICAgIHRoZXRhID0gc3RhdGVbMl1cbiAgICBvbWVnYSA9IHN0YXRlWzNdXG4gICAgXG4gICAgIyBDYWxjdWxhdGUgZGVyaXZhdGl2ZXNcbiAgICBkcl9kdCA9IHZcbiAgICBkdl9kdCA9IHIgKiBvbWVnYSoqMiAtIEcgKiBNIC8gcioqMlxuICAgIGR0aGV0YV9kdCA9IG9tZWdhXG4gICAgZG9tZWdhX2R0ID0gLTIuMCAqIHYgKiBvbWVnYSAvIHJcbiAgICBcbiAgICByZXR1cm4gbnAuYXJyYXkoW2RyX2R0LCBkdl9kdCwgZHRoZXRhX2R0LCBkb21lZ2FfZHRdKSJ9
 </script>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Clarity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The structure is clean and modular - we unpack the state, calculate each derivative, and return them in order. This pattern works for any coupled ODE system!</p>
+</div>
+</div>
 </section>
-<section id="numerical-solution" class="level2">
-<h2 class="anchored" data-anchor-id="numerical-solution">Numerical Solution</h2>
-<p>For the numerical solution, we will use the <code>odeint</code> function from the <code>scipy.integrate</code> module. This function solves ordinary differential equations (ODEs) given an initial state and a time array. We will integrate the equations of motion for a planet with an initial radius <span class="math inline">\(r_0\)</span>, radial velocity <span class="math inline">\(v_0\)</span>, angle <span class="math inline">\(\theta_0\)</span>, and angular velocity <span class="math inline">\(\omega_0\)</span>.</p>
-<section id="initial-parameters-planets" class="level3">
-<h3 class="anchored" data-anchor-id="initial-parameters-planets">Initial Parameters: Planets</h3>
-<p>We first define the initial parameters for the planet’s motion. We set the mass of the Sun <span class="math inline">\(M=1\)</span> and the mass of the planet <span class="math inline">\(m=1\)</span> for simplicity. The gravitational constant <span class="math inline">\(G\)</span> is set to <span class="math inline">\(4\pi^2\)</span> to simplify the equations. We also define the initial radius <span class="math inline">\(r_0\)</span>, radial velocity <span class="math inline">\(v_0\)</span>, angle <span class="math inline">\(\theta_0\)</span>, and angular velocity <span class="math inline">\(\omega_0\)</span>.</p>
+<section id="setting-up-units-matter" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-units-matter">Setting Up: Units Matter!</h2>
+<p>Before simulating, we need to choose units carefully. Let’s use <strong>astronomical units</strong>:</p>
+<ul>
+<li>Distance: <strong>AU</strong> (1 AU = Earth-Sun distance ≈ 150 million km)</li>
+<li>Time: <strong>years</strong></li>
+<li>Mass: <strong>Solar masses</strong> (<span class="math inline">\(M_{\odot}\)</span>)</li>
+</ul>
+<p>In these units, something magical happens: <span class="math inline">\(G = 4\pi^2\)</span>!</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why <span class="math inline">\(G = 4\pi^2\)</span>?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From Kepler’s third law, for a circular orbit: <span class="math display">\[T^2 = \frac{4\pi^2}{GM}r^3\]</span></p>
+<p>For Earth (<span class="math inline">\(r = 1\)</span> AU, <span class="math inline">\(T = 1\)</span> year, <span class="math inline">\(M = 1 M_{\odot}\)</span>): <span class="math display">\[1 = \frac{4\pi^2}{GM} \cdot 1\]</span> <span class="math display">\[GM = 4\pi^2\]</span></p>
+<p>Since we set <span class="math inline">\(M = 1\)</span>, this means <span class="math inline">\(G = 4\pi^2\)</span> in our units!</p>
+</div>
+</div>
+</div>
 <div>
 <div id="pyodide-3">
 
 </div>
 <script type="pyodide-3-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuRz00Km5wLnBpKioyXG5NPTEgIyBtYXNzIG9mIHRoZSBzdW5cbm09MSAjIG1hc3Mgb2YgdGhlIGVhcnRoXG5cbk4gPSAxMDAwMFxuc3RhdGUgPSBucC56ZXJvcyAoWzRdKVxucl9vPSAxLjggIyBpbml0aWFsIHJhZGl1c1xudl9vID0gMCAjIGluaXRpYWwgcmFkaWFsIHZlbG9jaXR5XG50aGV0YV9vID0gMCAjIGluaXRpYWwgYW5nbGVcbm9tZWdhX28gPSAxIyBpbml0aWFsIGFuZ3VsYXIgdmVsb2NpdHksIGZvciAyLjIyMiBpdCBiZWNvbWVzIGNpcmN1bGFyXG5cblxuc3RhdGVbMF09cl9vXG5zdGF0ZVsxXT12X29cbnN0YXRlWzJdID0gdGhldGFfb1xuc3RhdGVbM10gPSBvbWVnYV9vXG5cbnRpbWUgPSBucC5saW5zcGFjZSgwLCAzLCBOKSJ9
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBQaHlzaWNhbCBwYXJhbWV0ZXJzIGluIGFzdHJvbm9taWNhbCB1bml0c1xuRyA9IDQgKiBucC5waSoqMiAgIyBHcmF2aXRhdGlvbmFsIGNvbnN0YW50IFtBVcKzIHly4oG7wrIgTV/imInigbvCuV1cbk0gPSAxLjAgICAgICAgICAgICAjIE1hc3Mgb2YgU3VuIFtNX+KYiV1cbm0gPSAxLjAgICAgICAgICAgICAjIE1hc3Mgb2YgcGxhbmV0IFthcmJpdHJhcnkgLSBjYW5jZWxzIG91dCBpbiBlcXVhdGlvbnNdXG5cbnByaW50KGZcIkdyYXZpdGF0aW9uYWwgY29uc3RhbnQ6IEcgPSB7RzouNGZ9IEFVwrMgeXLigbvCsiBNX+KYieKBu8K5XCIpXG5wcmludChmXCJTdW4ncyBtYXNzOiBNID0ge019IE1f4piJXCIpIn0=
 </script>
 </div>
 </section>
-<section id="solution-planets" class="level3">
-<h3 class="anchored" data-anchor-id="solution-planets">Solution: Planets</h3>
-<p>T</p>
+<section id="simulation-1-earth-like-orbit" class="level2">
+<h2 class="anchored" data-anchor-id="simulation-1-earth-like-orbit">Simulation 1: Earth-like Orbit</h2>
+<p>Let’s start with an Earth-like orbit: nearly circular, at 1 AU distance.</p>
+<section id="setting-initial-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="setting-initial-conditions">Setting Initial Conditions</h3>
+<p>For a <strong>circular orbit</strong> at radius <span class="math inline">\(r_0\)</span>, the orbital velocity must satisfy: <span class="math display">\[v_{\text{circular}} = \sqrt{\frac{GM}{r_0}}\]</span></p>
 <div>
 <div id="pyodide-4">
 
 </div>
 <script type="pyodide-4-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuYW5zd2VyID0gb2RlaW50ICggcGxhbmV0YXJ5X21vdGlvbiAsIHN0YXRlICwgdGltZSApXG5cbnhkYXRhID0gYW5zd2VyWzosMF0qbnAuY29zKGFuc3dlcls6LDJdKVxueWRhdGEgPSBhbnN3ZXJbOiwwXSpucC5zaW4oYW5zd2VyWzosMl0pIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBJbml0aWFsIGNvbmRpdGlvbnMgZm9yIG5lYXItY2lyY3VsYXIgb3JiaXRcbnJfMCA9IDEuMCAgICAgICMgU3RhcnQgYXQgMSBBVSAoRWFydGgncyBkaXN0YW5jZSlcbnZfMCA9IDAuMCAgICAgICMgTm8gcmFkaWFsIHZlbG9jaXR5IChjaXJjdWxhciBvcmJpdClcbnRoZXRhXzAgPSAwLjAgICMgU3RhcnQgYXQgYW5nbGUgMFxub21lZ2FfMCA9IG5wLnNxcnQoRyAqIE0gLyByXzAqKjMpICAjIENpcmN1bGFyIG9yYml0IGFuZ3VsYXIgdmVsb2NpdHlcblxuIyBUaW1lIGFycmF5IC0gc2ltdWxhdGUgZm9yIDMgeWVhcnNcbk4gPSAxMDAwMFxudGltZSA9IG5wLmxpbnNwYWNlKDAsIDMsIE4pXG5cbiMgSW5pdGlhbCBzdGF0ZSB2ZWN0b3JcbnN0YXRlXzAgPSBucC5hcnJheShbcl8wLCB2XzAsIHRoZXRhXzAsIG9tZWdhXzBdKVxuXG5wcmludChmXCJJbml0aWFsIGNvbmRpdGlvbnM6XCIpXG5wcmludChmXCIgIERpc3RhbmNlOiB7cl8wfSBBVVwiKVxucHJpbnQoZlwiICBSYWRpYWwgdmVsb2NpdHk6IHt2XzB9IEFVL3lyXCIpXG5wcmludChmXCIgIEFuZ3VsYXIgdmVsb2NpdHk6IHtvbWVnYV8wOi40Zn0gcmFkL3lyID0ge25wLmRlZ3JlZXMob21lZ2FfMCk6LjJmfcKwL3lyXCIpXG5wcmludChmXCIgIE9yYml0YWwgcGVyaW9kICgyz4Avz4kpOiB7MipucC5waS9vbWVnYV8wOi40Zn0geWVhcnNcIikifQ==
 </script>
 </div>
+</section>
+<section id="solving-the-odes" class="level3">
+<h3 class="anchored" data-anchor-id="solving-the-odes">Solving the ODEs</h3>
 <div>
 <div id="pyodide-5">
 
 </div>
 <script type="pyodide-5-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBlbGxpcHNlIHBhcmFtZXRlcnNcblxuTD1tKnJfbyoqMipvbWVnYV9vICMgYW5ndWxhciBtb21lbnR1bVxuRT0wLjUqbSoodl9vKioyK3JfbyoqMipvbWVnYV9vKioyKS1HKk0qbS9yX29cblxucD0oTC9tKSoqMi8oRypNKVxuZT1ucC5zcXJ0KDErKDIqRSpMKioyLyhtKiozKSkvKEcqRypNKk0pKSJ9
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBTb2x2ZSB0aGUgZGlmZmVyZW50aWFsIGVxdWF0aW9uc1xuc29sdXRpb24gPSBvZGVpbnQocGxhbmV0YXJ5X21vdGlvbiwgc3RhdGVfMCwgdGltZSlcblxucHJpbnQoZlwiU29sdXRpb24gc2hhcGU6IHtzb2x1dGlvbi5zaGFwZX1cIilcbnByaW50KGZcIlNpbXVsYXRlZCB7dGltZVstMV19IHllYXJzIHdpdGgge059IHRpbWUgc3RlcHNcIikifQ==
 </script>
 </div>
 </section>
-<section id="plotting-planets" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-planets">Plotting: Planets</h3>
-<p>We can now plot the numerical solution of the planetary motion. The black dashed line represents the analytical solution for the orbit of the planet. The black solid line shows the numerical solution obtained by integrating the equations of motion.</p>
-<section id="trajectory" class="level4">
-<h4 class="anchored" data-anchor-id="trajectory">Trajectory</h4>
+<section id="converting-to-cartesian-coordinates" class="level3">
+<h3 class="anchored" data-anchor-id="converting-to-cartesian-coordinates">Converting to Cartesian Coordinates</h3>
+<p>To visualize the orbit, let’s convert from <span class="math inline">\((r, \theta)\)</span> to <span class="math inline">\((x, y)\)</span>:</p>
 <div>
 <div id="pyodide-6">
 
 </div>
 <script type="pyodide-6-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBhbmFseXRpY2FsIHNvbHV0aW9uXG50aGV0YT1ucC5saW5zcGFjZSgwLDIqbnAucGksMTAwMClcbnI9cC8oMStlKm5wLmNvcyh0aGV0YSkpXG5cblxuZmlnPXBsdC5maWd1cmUoMSwgZmlnc2l6ZSA9IGdldF9zaXplKDcsNykpXG5wbHQucGxvdCh4ZGF0YSx5ZGF0YSwnay0nLGx3PTUsYWxwaGE9MC4zLGxhYmVsPSdudW1lcmljYWwnKVxucGx0LnBsb3QoLXIqbnAuY29zKHRoZXRhKSxyKm5wLnNpbih0aGV0YSksJ2stLScsbHc9MSxsYWJlbD0nYW5hbHl0aWNhbCcpXG5wbHQucGxvdCgwLDAsJ28nKVxucGx0LnhsaW0oLTIsMilcbnBsdC55bGltKC0yLDIpXG5wbHQubGVnZW5kKClcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBFeHRyYWN0IHNvbHV0aW9uc1xucl9zb2x1dGlvbiA9IHNvbHV0aW9uWzosIDBdXG50aGV0YV9zb2x1dGlvbiA9IHNvbHV0aW9uWzosIDJdXG5cbiMgQ29udmVydCB0byBDYXJ0ZXNpYW4gY29vcmRpbmF0ZXNcbnhfcG9zaXRpb24gPSByX3NvbHV0aW9uICogbnAuY29zKHRoZXRhX3NvbHV0aW9uKVxueV9wb3NpdGlvbiA9IHJfc29sdXRpb24gKiBucC5zaW4odGhldGFfc29sdXRpb24pXG5cbnByaW50KGZcIlBvc2l0aW9uIHJhbmdlczpcIilcbnByaW50KGZcIiAgeDoge3hfcG9zaXRpb24ubWluKCk6LjNmfSB0byB7eF9wb3NpdGlvbi5tYXgoKTouM2Z9IEFVXCIpXG5wcmludChmXCIgIHk6IHt5X3Bvc2l0aW9uLm1pbigpOi4zZn0gdG8ge3lfcG9zaXRpb24ubWF4KCk6LjNmfSBBVVwiKSJ9
 </script>
 </div>
 </section>
-<section id="energy" class="level4">
-<h4 class="anchored" data-anchor-id="energy">Energy</h4>
-<p>Finally, we can plot the total energy of the planet as a function of time. The total energy is the sum of the kinetic and potential energy of the planet. We can see that the energy is conserved over time, as expected for a system with no external forces.</p>
+<section id="visualizing-the-orbit" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-the-orbit">Visualizing the Orbit</h3>
 <div>
 <div id="pyodide-7">
 
 </div>
 <script type="pyodide-7-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuRXRvdD0wLjUqbSooYW5zd2VyWzosMV0qKjIrYW5zd2VyWzosMF0qKjIqYW5zd2VyWzosM10qKjIpLUcqTSptL2Fuc3dlcls6LDBdXG5Fa2luPTAuNSptKihhbnN3ZXJbOiwxXSoqMithbnN3ZXJbOiwwXSoqMiphbnN3ZXJbOiwzXSoqMilcbkVwb3Q9LUcqTSptL2Fuc3dlcls6LDBdIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDEyLCAxMikpXG5wbHQucGxvdCh4X3Bvc2l0aW9uLCB5X3Bvc2l0aW9uLCAnYi0nLCBsaW5ld2lkdGg9MS41LCBsYWJlbD0nTnVtZXJpY2FsIHNvbHV0aW9uJylcbnBsdC5wbG90KDAsIDAsICd5bycsIG1hcmtlcnNpemU9MjAsIGxhYmVsPSdTdW4nKVxucGx0LnBsb3QoeF9wb3NpdGlvblswXSwgeV9wb3NpdGlvblswXSwgJ2dvJywgbWFya2Vyc2l6ZT0xMCwgbGFiZWw9J1N0YXJ0JylcblxucGx0LnhsYWJlbCgneCBbQVVdJylcbnBsdC55bGFiZWwoJ3kgW0FVXScpXG5wbHQuYXhpcygnZXF1YWwnKVxucGx0LmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxucGx0LmxlZ2VuZCgpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
 </script>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What You Should See
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A nearly perfect circle! This is an Earth-like orbit. The numerical solution should trace out a circle around the Sun at 1 AU.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="simulation-2-elliptical-orbit" class="level2">
+<h2 class="anchored" data-anchor-id="simulation-2-elliptical-orbit">Simulation 2: Elliptical Orbit</h2>
+<p>Now let’s create a more eccentric orbit by giving the planet some radial velocity.</p>
 <div>
 <div id="pyodide-8">
 
 </div>
 <script type="pyodide-8-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDcsIDYpKVxucGx0LnBsb3QodGltZSxFa2luLGxhYmVsPVwiRV9raW5cIilcbnBsdC5wbG90KHRpbWUsRXBvdCxsYWJlbD1cIkVfcG90XCIpXG5wbHQucGxvdCh0aW1lLEV0b3QpXG5wbHQueGxhYmVsKCd0aW1lJylcbnBsdC55bGFiZWwoJ2VuZXJneScpXG5wbHQueWxpbSgtMTAwLDEwMClcbnBsdC5sZWdlbmQoKVxucGx0LnRpZ2h0X2xheW91dCgpXG5wbHQuc2hvdygpIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBJbml0aWFsIGNvbmRpdGlvbnMgZm9yIGVsbGlwdGljYWwgb3JiaXRcbnJfMF9lbGxpcHNlID0gMS4wICAgICAgIyBTdGFydCBhdCAxIEFVXG52XzBfZWxsaXBzZSA9IDAuMCAgICAgICMgTm8gaW5pdGlhbCByYWRpYWwgdmVsb2NpdHlcbnRoZXRhXzBfZWxsaXBzZSA9IDAuMCAgIyBTdGFydCBhdCBhbmdsZSAwXG5vbWVnYV8wX2VsbGlwc2UgPSAxLjggICMgRGlmZmVyZW50IGFuZ3VsYXIgdmVsb2NpdHkgY3JlYXRlcyBlbGxpcHNlXG5cbnN0YXRlX2VsbGlwc2UgPSBucC5hcnJheShbcl8wX2VsbGlwc2UsIHZfMF9lbGxpcHNlLCB0aGV0YV8wX2VsbGlwc2UsIG9tZWdhXzBfZWxsaXBzZV0pXG5cbiMgU29sdmVcbnNvbHV0aW9uX2VsbGlwc2UgPSBvZGVpbnQocGxhbmV0YXJ5X21vdGlvbiwgc3RhdGVfZWxsaXBzZSwgdGltZSlcblxuIyBDb252ZXJ0IHRvIENhcnRlc2lhblxueF9lbGxpcHNlID0gc29sdXRpb25fZWxsaXBzZVs6LCAwXSAqIG5wLmNvcyhzb2x1dGlvbl9lbGxpcHNlWzosIDJdKVxueV9lbGxpcHNlID0gc29sdXRpb25fZWxsaXBzZVs6LCAwXSAqIG5wLnNpbihzb2x1dGlvbl9lbGxpcHNlWzosIDJdKSJ9
 </script>
 </div>
+<section id="comparing-with-analytical-solution" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-with-analytical-solution">Comparing with Analytical Solution</h3>
+<p>Let’s verify our numerical solution matches Newton’s analytical prediction:</p>
+<div>
+<div id="pyodide-9">
+
+</div>
+<script type="pyodide-9-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBDYWxjdWxhdGUgb3JiaXRhbCBwYXJhbWV0ZXJzIGZyb20gaW5pdGlhbCBjb25kaXRpb25zXG5MID0gbSAqIHJfMF9lbGxpcHNlKioyICogb21lZ2FfMF9lbGxpcHNlICAjIEFuZ3VsYXIgbW9tZW50dW1cbnZfciA9IHZfMF9lbGxpcHNlXG52X3RoZXRhID0gcl8wX2VsbGlwc2UgKiBvbWVnYV8wX2VsbGlwc2VcbkUgPSAwLjUgKiBtICogKHZfcioqMiArIHZfdGhldGEqKjIpIC0gRyAqIE0gKiBtIC8gcl8wX2VsbGlwc2UgICMgVG90YWwgZW5lcmd5XG5cbiMgQ2FsY3VsYXRlIG9yYml0IHBhcmFtZXRlcnNcbnAgPSAoTCAvIG0pKioyIC8gKEcgKiBNKSAgIyBTZW1pLWxhdHVzIHJlY3R1bVxuZXBzaWxvbiA9IG5wLnNxcnQoMSArICgyICogRSAqIEwqKjIgLyBtKiozKSAvIChHKioyICogTSoqMikpICAjIEVjY2VudHJpY2l0eVxuXG5wcmludChmXCJPcmJpdGFsIHBhcmFtZXRlcnM6XCIpXG5wcmludChmXCIgIEFuZ3VsYXIgbW9tZW50dW06IEwgPSB7TDouNGZ9IEFVwrIgeXLigbvCuVwiKVxucHJpbnQoZlwiICBUb3RhbCBlbmVyZ3k6IEUgPSB7RTouNGZ9IEFVwrIgeXLigbvCslwiKVxucHJpbnQoZlwiICBTZW1pLWxhdHVzIHJlY3R1bTogcCA9IHtwOi40Zn0gQVVcIilcbnByaW50KGZcIiAgRWNjZW50cmljaXR5OiDOtSA9IHtlcHNpbG9uOi40Zn1cIilcblxuIyBHZW5lcmF0ZSBhbmFseXRpY2FsIG9yYml0XG4jIFRoZSBhbmFseXRpY2FsIGZvcm11bGEgcijOuCkgPSBwLygxICsgzrUgY29zKM64KSkgYXNzdW1lcyBwZXJpaGVsaW9uIGF0IM64PTBcbiMgQnV0IG91ciBudW1lcmljYWwgc2ltdWxhdGlvbiBzdGFydHMgYXQgzrg9MCB3aXRoIHI9cl8wLCB3aGljaCBtYXkgbm90IGJlIHBlcmloZWxpb25cbiMgV2UgbmVlZCB0byBmaW5kIHRoZSBwaGFzZSBzaGlmdCDOuF8wIHdoZXJlIHRoZSBudW1lcmljYWwgb3JiaXQgc3RhcnRzXG5cbiMgQ2FsY3VsYXRlIHRoZSBpbml0aWFsIGFuZ2xlIGluIHRoZSBhbmFseXRpY2FsIG9yYml0IGZyYW1lXG4jIEZyb20gcl8wID0gcCAvICgxICsgzrUgY29zKM64XzApKSwgc29sdmUgZm9yIM64XzBcbmNvc190aGV0YV8wID0gKHAgLyByXzBfZWxsaXBzZSAtIDEpIC8gZXBzaWxvblxudGhldGFfMF9hbmFseXRpY2FsID0gbnAuYXJjY29zKG5wLmNsaXAoY29zX3RoZXRhXzAsIC0xLCAxKSlcblxuIyBEZXRlcm1pbmUgc2lnbiBiYXNlZCBvbiBpbml0aWFsIHZlbG9jaXR5IGRpcmVjdGlvblxuIyBJZiB2X3IgPiAwLCBwbGFuZXQgaXMgbW92aW5nIGF3YXkgKGFmdGVyIHBlcmloZWxpb24pLCBzbyDOuF8wID4gMFxuIyBJZiB2X3IgPCAwLCBwbGFuZXQgaXMgbW92aW5nIHRvd2FyZCBTdW4gKGJlZm9yZSBwZXJpaGVsaW9uKSwgc28gzrhfMCA8IDBcbiMgSWYgdl9yID0gMCwgY2hlY2sgaWYgd2UncmUgYXQgcGVyaWhlbGlvbiBvciBhcGhlbGlvblxuaWYgdl8wX2VsbGlwc2UgPCAwOlxuICAgIHRoZXRhXzBfYW5hbHl0aWNhbCA9IC10aGV0YV8wX2FuYWx5dGljYWxcblxuIyBHZW5lcmF0ZSBhbmFseXRpY2FsIG9yYml0IHdpdGggcHJvcGVyIHBoYXNlIHNoaWZ0XG50aGV0YV9hbmFseXRpY2FsID0gbnAubGluc3BhY2UoMCwgMipucC5waSwgMTAwMCkgKyB0aGV0YV8wX2FuYWx5dGljYWxcbnJfYW5hbHl0aWNhbCA9IHAgLyAoMSArIGVwc2lsb24gKiBucC5jb3ModGhldGFfYW5hbHl0aWNhbCAtIHRoZXRhXzBfYW5hbHl0aWNhbCkpXG54X2FuYWx5dGljYWwgPSByX2FuYWx5dGljYWwgKiBucC5jb3ModGhldGFfYW5hbHl0aWNhbClcbnlfYW5hbHl0aWNhbCA9IHJfYW5hbHl0aWNhbCAqIG5wLnNpbih0aGV0YV9hbmFseXRpY2FsKSJ9
+</script>
+</div>
+</section>
+<section id="plotting-numerical-vs.-analytical" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-numerical-vs.-analytical">Plotting Numerical vs.&nbsp;Analytical</h3>
+<div>
+<div id="pyodide-10">
+
+</div>
+<script type="pyodide-10-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDEyLCAxMikpXG5wbHQucGxvdCh4X2VsbGlwc2UsIHlfZWxsaXBzZSwgJ2ItJywgbGluZXdpZHRoPTMsIGFscGhhPTAuNSwgbGFiZWw9J051bWVyaWNhbCAob2RlaW50KScpXG5wbHQucGxvdCh4X2FuYWx5dGljYWwsIHlfYW5hbHl0aWNhbCwgJ3ItLScsIGxpbmV3aWR0aD0xLjUsIGxhYmVsPSdBbmFseXRpY2FsJylcbnBsdC5wbG90KDAsIDAsICd5bycsIG1hcmtlcnNpemU9MjAsIGxhYmVsPSdTdW4nKVxucGx0LnBsb3QoeF9lbGxpcHNlWzBdLCB5X2VsbGlwc2VbMF0sICdnbycsIG1hcmtlcnNpemU9MTAsIGxhYmVsPSdTdGFydCcpXG5cbnBsdC54bGFiZWwoJ3ggW0FVXScpXG5wbHQueWxhYmVsKCd5IFtBVV0nKVxucGx0LnRpdGxlKGYnRWxsaXB0aWNhbCBPcmJpdCAozrUgPSB7ZXBzaWxvbjouM2Z9KScpXG5wbHQuYXhpcygnZXF1YWwnKVxucGx0LmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxucGx0LmxlZ2VuZCgpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KClcblxuIyBDaGVjayBhZ3JlZW1lbnQgYXQgc3RhcnRpbmcgcG9pbnRcbnByaW50KGZcIlxcblZlcmlmaWNhdGlvbiBhdCBzdGFydGluZyBwb2ludDpcIilcbnByaW50KGZcIiAgTnVtZXJpY2FsOiB4ID0ge3hfZWxsaXBzZVswXTouNmZ9LCB5ID0ge3lfZWxsaXBzZVswXTouNmZ9XCIpXG5wcmludChmXCIgIEFuYWx5dGljYWw6IHggPSB7eF9hbmFseXRpY2FsWzBdOi42Zn0sIHkgPSB7eV9hbmFseXRpY2FsWzBdOi42Zn1cIilcbnByaW50KGZcIiAgRGlmZmVyZW5jZTogzpR4ID0ge2Ficyh4X2VsbGlwc2VbMF0gLSB4X2FuYWx5dGljYWxbMF0pOi4yZX0sIM6UeSA9IHthYnMoeV9lbGxpcHNlWzBdIC0geV9hbmFseXRpY2FsWzBdKTouMmV9XCIpIn0=
+</script>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why Do We Need a Phase Shift?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You might wonder why we needed to calculate <code>theta_0_analytical</code> - why don’t the orbits match automatically?</p>
+<p><strong>The issue:</strong> The analytical orbit formula <span class="math inline">\(r(\theta) = \frac{p}{1 + \varepsilon\cos(\theta)}\)</span> has a built-in assumption: <strong>perihelion (closest point to the Sun) is at angle θ = 0</strong>.</p>
+<p><strong>The problem:</strong> Our numerical simulation starts at: - Position: r = 1.0 AU, θ = 0 - Velocities: v_r = 0, ω = 1.8 rad/yr</p>
+<p>This starting point is <strong>NOT at perihelion</strong>! The planet is somewhere else in its orbit when θ = 0.</p>
+<p><strong>The solution:</strong> We calculate where the planet actually starts in the analytical orbit frame by solving: <span class="math display">\[r_0 = \frac{p}{1 + \varepsilon\cos(\theta_0)} \quad \Rightarrow \quad \theta_0 = \arccos\left(\frac{p/r_0 - 1}{\varepsilon}\right)\]</span></p>
+<p>This <code>theta_0_analytical</code> tells us how much to rotate the analytical orbit so it matches the numerical simulation’s starting point.</p>
+<p><strong>Physical interpretation:</strong> Both orbits are the same ellipse, just rotated relative to each other! The shape, size, and period are identical - only the orientation in space differs.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Perfect Agreement!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>After accounting for the phase shift, the numerical and analytical solutions should overlap almost perfectly. This confirms: 1. Our numerical method is accurate 2. Newton’s equations correctly predict orbits 3. <code>odeint</code> is a reliable tool for solving ODEs</p>
+<p>Any small remaining differences come from numerical rounding errors.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="understanding-the-orbit-keplers-laws" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-the-orbit-keplers-laws">Understanding the Orbit: Kepler’s Laws</h2>
+<p>Let’s verify Kepler’s three laws with our simulation!</p>
+<section id="keplers-first-law-ellipses" class="level3">
+<h3 class="anchored" data-anchor-id="keplers-first-law-ellipses">Kepler’s First Law: Ellipses</h3>
+<p>✓ Already verified - we see elliptical orbits!</p>
+</section>
+<section id="keplers-second-law-equal-areas-in-equal-times" class="level3">
+<h3 class="anchored" data-anchor-id="keplers-second-law-equal-areas-in-equal-times">Kepler’s Second Law: Equal Areas in Equal Times</h3>
+<p>“A line connecting the planet to the Sun sweeps out equal areas in equal times.”</p>
+<p>This is equivalent to <strong>conservation of angular momentum</strong>!</p>
+<div>
+<div id="pyodide-11">
+
+</div>
+<script type="pyodide-11-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBDYWxjdWxhdGUgYW5ndWxhciBtb21lbnR1bSBhdCBlYWNoIHRpbWUgc3RlcFxucl92YWx1ZXMgPSBzb2x1dGlvbl9lbGxpcHNlWzosIDBdXG5vbWVnYV92YWx1ZXMgPSBzb2x1dGlvbl9lbGxpcHNlWzosIDNdXG5MX3ZhbHVlcyA9IG0gKiByX3ZhbHVlcyoqMiAqIG9tZWdhX3ZhbHVlc1xuXG5wbHQuZmlndXJlKGZpZ3NpemU9Z2V0X3NpemUoMTUsIDEwKSlcbnBsdC5wbG90KHRpbWUsIExfdmFsdWVzLCAnYi0nLCBsaW5ld2lkdGg9MilcbnBsdC54bGFiZWwoJ1RpbWUgW3llYXJzXScpXG5wbHQueWxhYmVsKCdBbmd1bGFyIE1vbWVudHVtIFtBVcKyIHly4oG7wrldJylcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKVxuXG5wcmludChmXCJBbmd1bGFyIG1vbWVudHVtIHZhcmlhdGlvbjpcIilcbnByaW50KGZcIiAgSW5pdGlhbDoge0xfdmFsdWVzWzBdOi42Zn1cIilcbnByaW50KGZcIiAgRmluYWw6IHtMX3ZhbHVlc1stMV06LjZmfVwiKVxucHJpbnQoZlwiICBSZWxhdGl2ZSBjaGFuZ2U6IHthYnMoTF92YWx1ZXNbLTFdIC0gTF92YWx1ZXNbMF0pL0xfdmFsdWVzWzBdOi4yZX1cIikifQ==
+</script>
+</div>
+</section>
+<section id="keplers-third-law-period-distance-relationship" class="level3">
+<h3 class="anchored" data-anchor-id="keplers-third-law-period-distance-relationship">Kepler’s Third Law: Period-Distance Relationship</h3>
+<p>“The square of the orbital period is proportional to the cube of the semi-major axis.”</p>
+<p><span class="math display">\[T^2 = \frac{4\pi^2}{GM}a^3\]</span></p>
+<p>For our units with <span class="math inline">\(GM = 4\pi^2\)</span>, this simplifies to: <span class="math inline">\(T^2 = a^3\)</span></p>
+<p>Let’s verify:</p>
+<div>
+<div id="pyodide-12">
+
+</div>
+<script type="pyodide-12-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBGaW5kIG9yYml0YWwgcGVyaW9kIGJ5IGRldGVjdGluZyB3aGVuIHBsYW5ldCByZXR1cm5zIHRvIHN0YXJ0aW5nIHBvc2l0aW9uXG4jIFdlJ2xsIGxvb2sgZm9yIHdoZW4gdGhldGEgaW5jcmVhc2VzIGJ5IDLPgFxuXG50aGV0YV92YWx1ZXMgPSBzb2x1dGlvbl9lbGxpcHNlWzosIDJdXG50aGV0YV93cmFwcGVkID0gbnAubW9kKHRoZXRhX3ZhbHVlcywgMipucC5waSlcblxuIyBGaW5kIHdoZW4gd2UgY29tcGxldGUgb25lIG9yYml0XG5jb21wbGV0ZWRfb3JiaXQgPSBucC53aGVyZShucC5kaWZmKHRoZXRhX3dyYXBwZWQpIDwgMClbMF1cbmlmIGxlbihjb21wbGV0ZWRfb3JiaXQpID4gMDpcbiAgICBwZXJpb2RfaW5kZXggPSBjb21wbGV0ZWRfb3JiaXRbMF0gKyAxXG4gICAgVF9udW1lcmljYWwgPSB0aW1lW3BlcmlvZF9pbmRleF1cbiAgICBcbiAgICAjIENhbGN1bGF0ZSBzZW1pLW1ham9yIGF4aXNcbiAgICByX21pbiA9IG5wLm1pbihyX3ZhbHVlcylcbiAgICByX21heCA9IG5wLm1heChyX3ZhbHVlcylcbiAgICBhID0gKHJfbWluICsgcl9tYXgpIC8gMiAgIyBTZW1pLW1ham9yIGF4aXNcbiAgICBcbiAgICAjIEtlcGxlcidzIHRoaXJkIGxhdyBwcmVkaWN0aW9uXG4gICAgVF9rZXBsZXIgPSBucC5zcXJ0KGEqKjMpXG4gICAgXG4gICAgcHJpbnQoZlwiS2VwbGVyJ3MgVGhpcmQgTGF3IFZlcmlmaWNhdGlvbjpcIilcbiAgICBwcmludChmXCIgIFNlbWktbWFqb3IgYXhpczogYSA9IHthOi40Zn0gQVVcIilcbiAgICBwcmludChmXCIgIE51bWVyaWNhbCBwZXJpb2Q6IFQgPSB7VF9udW1lcmljYWw6LjRmfSB5ZWFyc1wiKVxuICAgIHByaW50KGZcIiAgS2VwbGVyJ3MgcHJlZGljdGlvbjogVCA9IOKImihhwrMpID0ge1Rfa2VwbGVyOi40Zn0geWVhcnNcIilcbiAgICBwcmludChmXCIgIEFncmVlbWVudDoge2FicyhUX251bWVyaWNhbCAtIFRfa2VwbGVyKS9UX2tlcGxlciAqIDEwMDouM2Z9JSBkaWZmZXJlbmNlXCIpIn0=
+</script>
+</div>
+</section>
+</section>
+<section id="energy-conservation-the-ultimate-check" class="level2">
+<h2 class="anchored" data-anchor-id="energy-conservation-the-ultimate-check">Energy Conservation: The Ultimate Check</h2>
+<p>Energy should be perfectly conserved (no friction or other forces):</p>
+<div>
+<div id="pyodide-13">
+
+</div>
+<script type="pyodide-13-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBFeHRyYWN0IHNvbHV0aW9uIGNvbXBvbmVudHNcbnJfc29sID0gc29sdXRpb25fZWxsaXBzZVs6LCAwXVxudl9zb2wgPSBzb2x1dGlvbl9lbGxpcHNlWzosIDFdXG5vbWVnYV9zb2wgPSBzb2x1dGlvbl9lbGxpcHNlWzosIDNdXG5cbiMgQ2FsY3VsYXRlIGVuZXJnaWVzXG5LRV9yYWRpYWwgPSAwLjUgKiBtICogdl9zb2wqKjJcbktFX2FuZ3VsYXIgPSAwLjUgKiBtICogcl9zb2wqKjIgKiBvbWVnYV9zb2wqKjJcbktFX3RvdGFsID0gS0VfcmFkaWFsICsgS0VfYW5ndWxhclxuXG5QRSA9IC1HICogTSAqIG0gLyByX3NvbFxuXG5FX3RvdGFsID0gS0VfdG90YWwgKyBQRVxuXG5wbHQuZmlndXJlKGZpZ3NpemU9Z2V0X3NpemUoMTUsIDEwKSlcbnBsdC5wbG90KHRpbWUsIEtFX3RvdGFsLCAnci0nLCBsYWJlbD0nS2luZXRpYyBFbmVyZ3knLCBsaW5ld2lkdGg9MS41KVxucGx0LnBsb3QodGltZSwgUEUsICdiLScsIGxhYmVsPSdQb3RlbnRpYWwgRW5lcmd5JywgbGluZXdpZHRoPTEuNSlcbnBsdC5wbG90KHRpbWUsIEVfdG90YWwsICdrLScsIGxhYmVsPSdUb3RhbCBFbmVyZ3knLCBsaW5ld2lkdGg9MilcblxucGx0LnhsYWJlbCgnVGltZSBbeWVhcnNdJylcbnBsdC55bGFiZWwoJ0VuZXJneSBbQVXCsiB5cuKBu8KyXScpXG5wbHQubGVnZW5kKClcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKVxuXG4jIENoZWNrIGNvbnNlcnZhdGlvblxuZW5lcmd5X3ZhcmlhdGlvbiA9IG5wLm1heChFX3RvdGFsKSAtIG5wLm1pbihFX3RvdGFsKVxucmVsYXRpdmVfZXJyb3IgPSBlbmVyZ3lfdmFyaWF0aW9uIC8gbnAuYWJzKG5wLm1lYW4oRV90b3RhbCkpXG5cbnByaW50KGZcIkVuZXJneSBjb25zZXJ2YXRpb24gY2hlY2s6XCIpXG5wcmludChmXCIgIE1lYW4gZW5lcmd5OiB7bnAubWVhbihFX3RvdGFsKTouNmZ9XCIpXG5wcmludChmXCIgIEVuZXJneSB2YXJpYXRpb246IHtlbmVyZ3lfdmFyaWF0aW9uOi4yZX1cIilcbnByaW50KGZcIiAgUmVsYXRpdmUgZXJyb3I6IHtyZWxhdGl2ZV9lcnJvcjouMmV9XCIpIn0=
+</script>
+</div>
+</section>
+<section id="phase-space-a-different-perspective" class="level2">
+<h2 class="anchored" data-anchor-id="phase-space-a-different-perspective">Phase Space: A Different Perspective</h2>
+<p>Let’s look at the orbit in phase space:</p>
+<div>
+<div id="pyodide-14">
+
+</div>
+<script type="pyodide-14-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuZmlnLCAoYXgxLCBheDIpID0gcGx0LnN1YnBsb3RzKDEsIDIsIGZpZ3NpemU9Z2V0X3NpemUoMjAsIDEwKSlcblxuIyBSYWRpYWwgcGhhc2Ugc3BhY2VcbmF4MS5wbG90KHNvbHV0aW9uX2VsbGlwc2VbOiwgMF0sIHNvbHV0aW9uX2VsbGlwc2VbOiwgMV0sICdyLScsIGxpbmV3aWR0aD0xLjUpXG5heDEuc2V0X3hsYWJlbCgnRGlzdGFuY2UgJHIkIFtBVV0nKVxuYXgxLnNldF95bGFiZWwoJ1JhZGlhbCB2ZWxvY2l0eSAkdiQgW0FVL3lyXScpXG5heDEuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5cbiMgQW5ndWxhciBwaGFzZSBzcGFjZVxuYXgyLnBsb3Qoc29sdXRpb25fZWxsaXBzZVs6LCAyXSwgc29sdXRpb25fZWxsaXBzZVs6LCAzXSwgJ2ItJywgbGluZXdpZHRoPTEuNSlcbmF4Mi5zZXRfeGxhYmVsKCdBbmdsZSAkXFxcXHRoZXRhJCBbcmFkXScpXG5heDIuc2V0X3lsYWJlbCgnQW5ndWxhciB2ZWxvY2l0eSAkXFxcXG9tZWdhJCBbcmFkL3lyXScpXG5heDIuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5cbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
+</script>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Phase Space Interpretation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Radial phase space</strong>: Shows the closed curve of radial oscillation</li>
+<li><strong>Angular phase space</strong>: Shows steady increase in angle (nearly constant <span class="math inline">\(\omega\)</span>)</li>
+</ul>
+<p>Both are characteristic of stable, periodic orbits!</p>
+</div>
+</div>
+</section>
+<section id="exploration-different-orbit-types" class="level2">
+<h2 class="anchored" data-anchor-id="exploration-different-orbit-types">Exploration: Different Orbit Types</h2>
+<section id="highly-elliptical-orbit-like-a-comet" class="level3">
+<h3 class="anchored" data-anchor-id="highly-elliptical-orbit-like-a-comet">Highly Elliptical Orbit (Like a Comet)</h3>
+<div>
+<div id="pyodide-15">
+
+</div>
+<script type="pyodide-15-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBDb21ldC1saWtlIG9yYml0IHdpdGggaGlnaCBlY2NlbnRyaWNpdHlcbnN0YXRlX2NvbWV0ID0gbnAuYXJyYXkoW1xuICAgIDAuNSwgICAjIFN0YXJ0IGNsb3NlIHRvIFN1blxuICAgIDAuMCwgICAjIE5vIHJhZGlhbCB2ZWxvY2l0eVxuICAgIDAuMCwgICAjIEFuZ2xlIDBcbiAgICA0LjAgICAgIyBIaWdoIGFuZ3VsYXIgdmVsb2NpdHlcbl0pXG5cbnNvbHV0aW9uX2NvbWV0ID0gb2RlaW50KHBsYW5ldGFyeV9tb3Rpb24sIHN0YXRlX2NvbWV0LCB0aW1lKVxuXG4jIENhbGN1bGF0ZSBvcmJpdGFsIHBhcmFtZXRlcnNcbkxfY29tZXQgPSBtICogc3RhdGVfY29tZXRbMF0qKjIgKiBzdGF0ZV9jb21ldFszXVxudl90aGV0YV9jb21ldCA9IHN0YXRlX2NvbWV0WzBdICogc3RhdGVfY29tZXRbM11cbkVfY29tZXQgPSAwLjUgKiBtICogdl90aGV0YV9jb21ldCoqMiAtIEcgKiBNICogbSAvIHN0YXRlX2NvbWV0WzBdXG5wX2NvbWV0ID0gKExfY29tZXQgLyBtKSoqMiAvIChHICogTSlcbmVwc2lsb25fY29tZXQgPSBucC5zcXJ0KDEgKyAoMiAqIEVfY29tZXQgKiBMX2NvbWV0KioyIC8gbSoqMykgLyAoRyoqMiAqIE0qKjIpKVxuXG5wcmludChmXCJDb21ldCBvcmJpdCBlY2NlbnRyaWNpdHk6IM61ID0ge2Vwc2lsb25fY29tZXQ6LjRmfVwiKVxuXG4jIFBsb3RcbnhfY29tZXQgPSBzb2x1dGlvbl9jb21ldFs6LCAwXSAqIG5wLmNvcyhzb2x1dGlvbl9jb21ldFs6LCAyXSlcbnlfY29tZXQgPSBzb2x1dGlvbl9jb21ldFs6LCAwXSAqIG5wLnNpbihzb2x1dGlvbl9jb21ldFs6LCAyXSlcblxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDEyLCAxMikpXG5wbHQucGxvdCh4X2NvbWV0LCB5X2NvbWV0LCAnci0nLCBsaW5ld2lkdGg9MiwgbGFiZWw9ZidDb21ldCAozrU9e2Vwc2lsb25fY29tZXQ6LjNmfSknKVxucGx0LnBsb3QoMCwgMCwgJ3lvJywgbWFya2Vyc2l6ZT0yMCwgbGFiZWw9J1N1bicpXG5wbHQueGxhYmVsKCd4IFtBVV0nKVxucGx0LnlsYWJlbCgneSBbQVVdJylcbnBsdC5heGlzKCdlcXVhbCcpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQubGVnZW5kKClcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
+</script>
+</div>
+</section>
+<section id="escape-velocity-parabolic-trajectory" class="level3">
+<h3 class="anchored" data-anchor-id="escape-velocity-parabolic-trajectory">Escape Velocity: Parabolic Trajectory</h3>
+<p>What if we give the planet enough energy to escape?</p>
+<div>
+<div id="pyodide-16">
+
+</div>
+<script type="pyodide-16-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBDYWxjdWxhdGUgZXNjYXBlIHZlbG9jaXR5IGF0IHIgPSAxIEFVXG52X2VzY2FwZSA9IG5wLnNxcnQoMiAqIEcgKiBNIC8gMS4wKVxucHJpbnQoZlwiRXNjYXBlIHZlbG9jaXR5IGF0IDEgQVU6IHt2X2VzY2FwZTouNGZ9IEFVL3lyXCIpXG5cbiMgR2l2ZSBwbGFuZXQgZXNjYXBlIHZlbG9jaXR5XG5vbWVnYV9lc2NhcGUgPSB2X2VzY2FwZSAvIDEuMCAgIyBDb252ZXJ0IHRvIGFuZ3VsYXIgdmVsb2NpdHlcblxuc3RhdGVfZXNjYXBlID0gbnAuYXJyYXkoW1xuICAgIDEuMCwgICAgICAgICAgIyBTdGFydCBhdCAxIEFVXG4gICAgMC4wLCAgICAgICAgICAjIE5vIHJhZGlhbCB2ZWxvY2l0eVxuICAgIDAuMCwgICAgICAgICAgIyBBbmdsZSAwXG4gICAgb21lZ2FfZXNjYXBlICAjIEVzY2FwZSBhbmd1bGFyIHZlbG9jaXR5XG5dKVxuXG5zb2x1dGlvbl9lc2NhcGUgPSBvZGVpbnQocGxhbmV0YXJ5X21vdGlvbiwgc3RhdGVfZXNjYXBlLCB0aW1lKVxuXG4jIENhbGN1bGF0ZSBlY2NlbnRyaWNpdHlcbkxfZXNjYXBlID0gbSAqIDEuMCoqMiAqIG9tZWdhX2VzY2FwZVxuRV9lc2NhcGUgPSAwLjUgKiBtICogdl9lc2NhcGUqKjIgLSBHICogTSAqIG0gLyAxLjBcbmVwc2lsb25fZXNjYXBlID0gbnAuc3FydCgxICsgKDIgKiBFX2VzY2FwZSAqIExfZXNjYXBlKioyIC8gbSoqMykgLyAoRyoqMiAqIE0qKjIpKVxuXG5wcmludChmXCJFc2NhcGUgb3JiaXQgZWNjZW50cmljaXR5OiDOtSA9IHtlcHNpbG9uX2VzY2FwZTouNGZ9XCIpXG5wcmludChmXCIozrUgPSAxIHdvdWxkIGJlIGV4YWN0bHkgcGFyYWJvbGljKVwiKVxuXG54X2VzY2FwZSA9IHNvbHV0aW9uX2VzY2FwZVs6LCAwXSAqIG5wLmNvcyhzb2x1dGlvbl9lc2NhcGVbOiwgMl0pXG55X2VzY2FwZSA9IHNvbHV0aW9uX2VzY2FwZVs6LCAwXSAqIG5wLnNpbihzb2x1dGlvbl9lc2NhcGVbOiwgMl0pXG5cbnBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgxMiwgMTIpKVxucGx0LnBsb3QoeF9lc2NhcGUsIHlfZXNjYXBlLCAnZy0nLCBsaW5ld2lkdGg9MiwgbGFiZWw9ZidFc2NhcGUgKM614omIMSknKVxucGx0LnBsb3QoMCwgMCwgJ3lvJywgbWFya2Vyc2l6ZT0yMCwgbGFiZWw9J1N1bicpXG5wbHQueGxhYmVsKCd4IFtBVV0nKVxucGx0LnlsYWJlbCgneSBbQVVdJylcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC5sZWdlbmQoKVxucGx0LnRpZ2h0X2xheW91dCgpXG5wbHQuc2hvdygpIn0=
+</script>
+</div>
+</section>
+<section id="comparing-different-orbits" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-different-orbits">Comparing Different Orbits</h3>
+<div>
+<div id="pyodide-17">
+
+</div>
+<script type="pyodide-17-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDE1LCAxNSkpXG5cbiMgQ2lyY3VsYXIgb3JiaXRcbnBsdC5wbG90KHhfcG9zaXRpb24sIHlfcG9zaXRpb24sICdiLScsIGxpbmV3aWR0aD0yLCBsYWJlbD0nQ2lyY3VsYXIgKM614omIMCknKVxuXG4jIEVsbGlwdGljYWwgb3JiaXRcbnBsdC5wbG90KHhfZWxsaXBzZSwgeV9lbGxpcHNlLCAnci0nLCBsaW5ld2lkdGg9MiwgbGFiZWw9ZidFbGxpcHRpY2FsICjOtT17ZXBzaWxvbjouMmZ9KScpXG5cbiMgSGlnaGx5IGVsbGlwdGljYWxcbnBsdC5wbG90KHhfY29tZXQsIHlfY29tZXQsICdvcmFuZ2UnLCBsaW5ld2lkdGg9MiwgbGFiZWw9ZidDb21ldCAozrU9e2Vwc2lsb25fY29tZXQ6LjJmfSknKVxuXG4jIFN1blxucGx0LnBsb3QoMCwgMCwgJ3lvJywgbWFya2Vyc2l6ZT0yMCwgbGFiZWw9J1N1bicpXG5cbnBsdC54bGFiZWwoJ3ggW0FVXScpXG5wbHQueWxhYmVsKCd5IFtBVV0nKVxucGx0LmF4aXMoJ2VxdWFsJylcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC5sZWdlbmQobG9jPSd1cHBlciByaWdodCcpXG5wbHQueGxpbSgtMywgMylcbnBsdC55bGltKC0zLCAzKVxucGx0LnRpZ2h0X2xheW91dCgpXG5wbHQuc2hvdygpIn0=
+</script>
+</div>
+</section>
+</section>
+<section id="real-solar-system-examples" class="level2">
+<h2 class="anchored" data-anchor-id="real-solar-system-examples">Real Solar System Examples</h2>
+<p>Let’s simulate some actual planets!</p>
+<section id="mercury-the-most-elliptical" class="level3">
+<h3 class="anchored" data-anchor-id="mercury-the-most-elliptical">Mercury: The Most Elliptical</h3>
+<div>
+<div id="pyodide-18">
+
+</div>
+<script type="pyodide-18-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBNZXJjdXJ5IG9yYml0YWwgcGFyYW1ldGVycyAoaW4gb3VyIEFVLXllYXIgdW5pdHMpXG5hX21lcmN1cnkgPSAwLjM4NyAgIyBTZW1pLW1ham9yIGF4aXMgW0FVXVxuZV9tZXJjdXJ5ID0gMC4yMDYgICMgQWN0dWFsIGVjY2VudHJpY2l0eVxuXG4jIENhbGN1bGF0ZSBpbml0aWFsIGNvbmRpdGlvbnMgZm9yIE1lcmN1cnlcbiMgU3RhcnQgYXQgcGVyaWhlbGlvbiAoY2xvc2VzdCBwb2ludClcbnJfMF9tZXJjdXJ5ID0gYV9tZXJjdXJ5ICogKDEgLSBlX21lcmN1cnkpXG5vbWVnYV8wX21lcmN1cnkgPSBucC5zcXJ0KEcgKiBNIC8gYV9tZXJjdXJ5KiozKSAvICgxIC0gZV9tZXJjdXJ5KVxuXG5zdGF0ZV9tZXJjdXJ5ID0gbnAuYXJyYXkoW3JfMF9tZXJjdXJ5LCAwLjAsIDAuMCwgb21lZ2FfMF9tZXJjdXJ5XSlcblxuIyBTaW11bGF0ZSBmb3IgMSBNZXJjdXJ5IHllYXJcbnRpbWVfbWVyY3VyeSA9IG5wLmxpbnNwYWNlKDAsIDAuMjQsIDIwMDApICAjIE1lcmN1cnkncyB5ZWFyIGlzIDAuMjQgRWFydGggeWVhcnNcbnNvbHV0aW9uX21lcmN1cnkgPSBvZGVpbnQocGxhbmV0YXJ5X21vdGlvbiwgc3RhdGVfbWVyY3VyeSwgdGltZV9tZXJjdXJ5KVxuXG54X21lcmN1cnkgPSBzb2x1dGlvbl9tZXJjdXJ5WzosIDBdICogbnAuY29zKHNvbHV0aW9uX21lcmN1cnlbOiwgMl0pXG55X21lcmN1cnkgPSBzb2x1dGlvbl9tZXJjdXJ5WzosIDBdICogbnAuc2luKHNvbHV0aW9uX21lcmN1cnlbOiwgMl0pXG5cbnBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgxMiwgMTIpKVxucGx0LnBsb3QoeF9tZXJjdXJ5LCB5X21lcmN1cnksICdicm93bicsIGxpbmV3aWR0aD0yLCBsYWJlbD0nTWVyY3VyeScpXG5wbHQucGxvdCgwLCAwLCAneW8nLCBtYXJrZXJzaXplPTIwLCBsYWJlbD0nU3VuJylcbnBsdC54bGFiZWwoJ3ggW0FVXScpXG5wbHQueWxhYmVsKCd5IFtBVV0nKVxucGx0LmF4aXMoJ2VxdWFsJylcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC5sZWdlbmQoKVxucGx0LnRpZ2h0X2xheW91dCgpXG5wbHQuc2hvdygpXG5cbnByaW50KGZcIk1lcmN1cnkncyBvcmJpdGFsIHBlcmlvZDogezAuMjQ6LjNmfSBFYXJ0aCB5ZWFycyAoODggZGF5cylcIikifQ==
+</script>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn: Simulate Other Planets!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Try simulating other planets with their actual orbital parameters: - <strong>Venus</strong>: a = 0.723 AU, ε = 0.007 - <strong>Mars</strong>: a = 1.524 AU, ε = 0.093 - <strong>Jupiter</strong>: a = 5.203 AU, ε = 0.048</p>
+<p>Can you plot them all on one diagram to show the inner solar system?</p>
+</div>
+</div>
+</section>
+</section>
+<section id="summary-what-weve-learned" class="level2">
+<h2 class="anchored" data-anchor-id="summary-what-weve-learned">Summary: What We’ve Learned</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🎓 Key Takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Universal Physics</strong>: The same mathematical framework can describe many different physical systems - you just change the force law!</p></li>
+<li><p><strong>Newton’s Triumph</strong>: Newton’s law of gravitation (<span class="math inline">\(F = GMm/r^2\)</span>) perfectly explains planetary orbits</p></li>
+<li><p><strong>Kepler’s Laws Verified</strong>:</p>
+<ul>
+<li>First Law: Planets move in ellipses ✓</li>
+<li>Second Law: Angular momentum is conserved ✓</li>
+<li>Third Law: <span class="math inline">\(T^2 \propto a^3\)</span> ✓</li>
+</ul></li>
+<li><p><strong>Computational Methods</strong>: We used the same <code>odeint</code> workflow:</p>
+<ul>
+<li>Define equations of motion</li>
+<li>Convert to first-order system</li>
+<li>Solve numerically</li>
+<li>Verify with analytical solutions</li>
+</ul></li>
+<li><p><strong>Orbit Types</strong>: Different energies create different trajectories:</p>
+<ul>
+<li>E &lt; 0: Bound elliptical orbits</li>
+<li>E = 0: Parabolic escape</li>
+<li>E &gt; 0: Hyperbolic escape</li>
+</ul></li>
+<li><p><strong>Conservation Laws</strong>: Energy and angular momentum are conserved, providing powerful checks on our numerical solutions</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="challenge-exercises" class="level2">
+<h2 class="anchored" data-anchor-id="challenge-exercises">Challenge Exercises</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🎯 Try These!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Solar System Model</strong>: Create a plot showing the orbits of all inner planets (Mercury, Venus, Earth, Mars) to scale. Which planet has the most eccentric orbit?</p></li>
+<li><p><strong>Halley’s Comet</strong>: Halley’s comet has a = 17.8 AU and ε = 0.967. Simulate its orbit and find its orbital period. (Historical note: Halley correctly predicted its return in 1758!)</p></li>
+<li><p><strong>Escape Trajectories</strong>: Experiment with escape velocities. At what angular velocity does a planet starting at 1 AU just barely escape? How does this compare to Earth’s actual orbital velocity?</p></li>
+<li><p><strong>Orbital Energy</strong>: For an elliptical orbit, verify that:</p>
+<ul>
+<li>Kinetic energy is maximum at perihelion (closest approach)</li>
+<li>Potential energy is maximum (least negative) at perihelion</li>
+<li>Speed is fastest at perihelion (Kepler’s second law!)</li>
+</ul></li>
+<li><p><strong>Two-Body Problem</strong>: Modify the code to include the Sun’s motion (don’t assume it stays fixed). Place the origin at the center of mass and simulate both bodies. How much does the Sun actually move?</p></li>
+<li><p><strong>Precession</strong>: Real planetary orbits precess slowly due to effects not in Newton’s equations (e.g., general relativity for Mercury). Can you add a small additional force term to create artificial precession?</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="whats-next-a-preview" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next-a-preview">What’s Next: A Preview</h2>
+<p>Congratulations on mastering planetary motion! You’ve learned to: - Solve coupled ODEs in polar coordinates - Use phase space for analysis<br>
+- Verify numerical solutions against analytical predictions - Check conservation laws</p>
+<p>In the <strong>next lecture</strong>, you’ll apply these same techniques to a different system: the <strong>spring pendulum</strong>. This fascinating system combines a spring (bouncing) with a pendulum (swinging), and something amazing happens:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Coming Up: From Order to Chaos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The spring pendulum uses the same mathematical framework you just mastered: - Polar coordinates: ✓ - Coupled ODEs: ✓ - <code>odeint</code> solution: ✓</p>
+<p>But there’s a twist! While planetary orbits are stable and predictable, the spring pendulum can become <strong>chaotic</strong> - deterministic yet unpredictable. You’ll discover how changing just one force law (from <span class="math inline">\(F = -GM/r^2\)</span> to <span class="math inline">\(F = -kL\)</span>) creates dramatically different behavior.</p>
+<p>Get ready to explore the fascinating world of chaos theory! 🎭</p>
+</div>
+</div>
+</section>
+<section id="historical-impact-why-this-matters" class="level2">
+<h2 class="anchored" data-anchor-id="historical-impact-why-this-matters">Historical Impact: Why This Matters</h2>
+<p>Newton’s solution to planetary motion wasn’t just a scientific achievement - it changed how humanity views the universe:</p>
+<ol type="1">
+<li><p><strong>Predictive Power</strong>: Astronomers could predict planetary positions centuries in advance</p></li>
+<li><p><strong>Discovery of Neptune</strong>: In 1846, Neptune was discovered because Uranus’s orbit didn’t match predictions - something must be pulling on it! Adams and Le Verrier calculated where Neptune should be, and astronomers found it there.</p></li>
+<li><p><strong>Space Age</strong>: Every satellite, probe, and spacecraft uses Newton’s equations to calculate trajectories</p></li>
+<li><p><strong>Philosophical Impact</strong>: The universe operates by mathematical laws that humans can understand and use</p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+From Newton to Einstein
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Newton’s equations work perfectly for planetary motion… except for tiny deviations in Mercury’s orbit. These tiny differences led Einstein to develop General Relativity in 1915. Even Newton’s “wrong” theory is spectacularly accurate!</p>
+</div>
+</div>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next?</h2>
+<p>Congratulations! You’ve just solved one of the most important problems in physics using modern computational methods. Newton would be proud! 🚀🌍</p>
+<p>In the <strong>next lecture</strong> (still Week 6), we’ll apply the same techniques to the <strong>spring pendulum</strong> - a system that combines oscillation and rotation. You’ll see: - How the same mathematical framework applies to different force laws - What happens when two modes of motion couple together - How deterministic systems can become chaotic!</p>
+<p>Then in <strong>Week 7</strong>, we’ll step back and learn better ways to <strong>organize</strong> our code using modules and classes. After working with these complex simulations, you’ll appreciate why good code organization matters!</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+📚 If You Want to Learn More
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Historical Sources:</strong> - Newton’s <em>Principia Mathematica</em> (1687) - the original! (Translated versions available) - Kepler’s <em>Astronomia Nova</em> (1609) - where the first two laws appeared</p>
+<p><strong>Modern Textbooks:</strong> - Goldstein, <em>Classical Mechanics</em> - Chapter on central forces - Taylor, <em>Classical Mechanics</em> - Excellent treatment of orbits</p>
+<p><strong>Computational Physics:</strong> - Giordano &amp; Nakanishi, <em>Computational Physics</em> - More complex orbital simulations - Newman, <em>Computational Physics</em> - Python implementations of classical mechanics</p>
+<p><strong>Applications:</strong> - How spacecraft trajectories are designed (orbital mechanics) - Exoplanet detection methods (observing orbital effects) - Satellite constellation design (GPS, Starlink, etc.)</p>
+</div>
+</div>
+</div>
+<p>Congratulations! You’ve just solved one of the most important problems in physics using modern computational methods. Newton would be proud! 🚀🌍</p>
 
 
 <script type="pyodide-data">
 eyJvcHRpb25zIjp7ImluZGV4VVJMIjoiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L3B5b2RpZGUvdjAuMjYuMS9mdWxsLyJ9LCJwYWNrYWdlcyI6eyJwa2dzIjpbInB5b2RpZGVfaHR0cCIsIm1pY3JvcGlwIiwiaXB5dGhvbiIsIm1hdHBsb3RsaWIiLCJudW1weSIsInNjaXB5Il19fQ==
 </script>
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS04LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzggPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl83ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS03LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzcgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTYiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl82ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzYgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS01LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzUgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl80ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzQgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzIgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoiX3B5b2RpZGVfdmFsdWVfMSA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRQeXRob24sIGI2NERlY29kZX0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcInB5b2RpZGUtMS1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBQeXRob24gY29kZVxuICBjb25zdCByZXN1bHQgPSBweW9kaWRlT2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjFcIiBpbiBweW9kaWRlT2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgcHl0aG9uXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFB5dGhvbihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHB5b2RpZGVPanMucmVuZGVyZWRPanNbXCIxXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIn0seyJjZWxsTmFtZSI6InB5b2RpZGUtcHJlbHVkZSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InB5b2RpZGVPanMgPSB7XG4gIGNvbnN0IHtcbiAgICBQeW9kaWRlRXZhbHVhdG9yLFxuICAgIFB5b2RpZGVFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBQeXRob24sXG4gICAgc3RhcnRQeW9kaWRlV29ya2VyLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGgsXG4gIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHN0YXR1c0NvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1zdGF0dXNcIik7XG4gIGNvbnN0IGluZGljYXRvckNvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGluZGljYXRvckNvbnRhaW5lci5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpO1xuXG4gIGxldCBzdGF0dXNUZXh0ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKVxuICBzdGF0dXNUZXh0LmNsYXNzTGlzdCA9IFwiZXhlcmNpc2UtbG9hZGluZy1kZXRhaWxzXCI7XG4gIHN0YXR1c1RleHQgPSBzdGF0dXNDb250YWluZXIuYXBwZW5kQ2hpbGQoc3RhdHVzVGV4dCk7XG4gIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5pdGlhbGlzZWA7XG5cbiAgLy8gSG9pc3QgaW5kaWNhdG9yIG91dCBmcm9tIGZpbmFsIHNsaWRlIHdoZW4gcnVubmluZyB1bmRlciByZXZlYWxcbiAgY29uc3QgcmV2ZWFsU3RhdHVzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgLmV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpZiAocmV2ZWFsU3RhdHVzKSB7XG4gICAgcmV2ZWFsU3RhdHVzLnJlbW92ZSgpO1xuICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsID4gLnNsaWRlc1wiKS5hcHBlbmRDaGlsZChyZXZlYWxTdGF0dXMpO1xuICB9XG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTE4IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTggPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE4LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTgtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xOCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTE3IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTcgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE3LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTctY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xNyA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTE2IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTYgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE2LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTYtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xNiA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTE1IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTUgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE1LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTUtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xNSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTE0IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTQgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE0LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTQtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xNCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEzIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTMgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEzLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTMtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMyA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEyIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTIgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEyLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMiA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTExIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTEgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTExLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTEtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEwIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTAgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEwLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTAtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTAsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTkiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl85ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzkgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzksIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS04LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzggPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl83ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS03LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzcgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTYiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl82ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzYgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS01LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzUgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl80ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzQgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzIgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoiX3B5b2RpZGVfdmFsdWVfMSA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRQeXRob24sIGI2NERlY29kZX0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcInB5b2RpZGUtMS1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBQeXRob24gY29kZVxuICBjb25zdCByZXN1bHQgPSBweW9kaWRlT2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjFcIiBpbiBweW9kaWRlT2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgcHl0aG9uXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFB5dGhvbihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHB5b2RpZGVPanMucmVuZGVyZWRPanNbXCIxXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIn0seyJjZWxsTmFtZSI6InB5b2RpZGUtcHJlbHVkZSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InB5b2RpZGVPanMgPSB7XG4gIGNvbnN0IHtcbiAgICBQeW9kaWRlRXZhbHVhdG9yLFxuICAgIFB5b2RpZGVFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBQeXRob24sXG4gICAgc3RhcnRQeW9kaWRlV29ya2VyLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGgsXG4gIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHN0YXR1c0NvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1zdGF0dXNcIik7XG4gIGNvbnN0IGluZGljYXRvckNvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGluZGljYXRvckNvbnRhaW5lci5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpO1xuXG4gIGxldCBzdGF0dXNUZXh0ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKVxuICBzdGF0dXNUZXh0LmNsYXNzTGlzdCA9IFwiZXhlcmNpc2UtbG9hZGluZy1kZXRhaWxzXCI7XG4gIHN0YXR1c1RleHQgPSBzdGF0dXNDb250YWluZXIuYXBwZW5kQ2hpbGQoc3RhdHVzVGV4dCk7XG4gIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5pdGlhbGlzZWA7XG5cbiAgLy8gSG9pc3QgaW5kaWNhdG9yIG91dCBmcm9tIGZpbmFsIHNsaWRlIHdoZW4gcnVubmluZyB1bmRlciByZXZlYWxcbiAgY29uc3QgcmV2ZWFsU3RhdHVzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgLmV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpZiAocmV2ZWFsU3RhdHVzKSB7XG4gICAgcmV2ZWFsU3RhdHVzLnJlbW92ZSgpO1xuICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsID4gLnNsaWRlc1wiKS5hcHBlbmRDaGlsZChyZXZlYWxTdGF0dXMpO1xuICB9XG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
 </script>
 <div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
 <div id="exercise-loading-status" class="d-flex gap-2">
@@ -514,8 +1112,6 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2RO
 <script type="vfs-file">
 W10=
 </script>
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -929,6 +1525,18 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../lectures/lecture08/3_solving_ODEs.html" class="pagination-link" aria-label="Tool: Solving ODEs">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tool: Solving ODEs</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../lectures/lecture10/1_spring_pendulum.html" class="pagination-link" aria-label="Spring Pendulum &amp; Chaos">
+        <span class="nav-page-text">Spring Pendulum &amp; Chaos</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

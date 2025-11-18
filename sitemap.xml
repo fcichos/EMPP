@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://fcichos.github.io/EMPP24/Assignment 4.html</loc>
-    <lastmod>2024-11-22T13:58:14.000Z</lastmod>
+    <loc>https://fcichos.github.io/EMPP24/WEEK6_QUICK_REFERENCE.html</loc>
+    <lastmod>2025-11-18T09:03:55.761Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcichos.github.io/EMPP24/LECTURE_ORDER_RATIONALE.html</loc>
+    <lastmod>2025-11-18T09:30:44.929Z</lastmod>
   </url>
   <url>
     <loc>https://fcichos.github.io/EMPP24/lectures/PEDAGOGICAL_NOTES.html</loc>
@@ -66,7 +70,7 @@
   </url>
   <url>
     <loc>https://fcichos.github.io/EMPP24/lectures/lecture10/2_planetary_motion.html</loc>
-    <lastmod>2024-12-10T09:58:09.000Z</lastmod>
+    <lastmod>2025-11-18T10:08:53.171Z</lastmod>
   </url>
   <url>
     <loc>https://fcichos.github.io/EMPP24/lectures/lecture10/DampedOscillation.html</loc>
@@ -209,6 +213,14 @@
     <lastmod>2024-10-08T20:50:09.000Z</lastmod>
   </url>
   <url>
+    <loc>https://fcichos.github.io/EMPP24/WEEK6_RESTRUCTURING_SUMMARY.html</loc>
+    <lastmod>2025-11-18T09:02:59.766Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcichos.github.io/EMPP24/CHANGES_SUMMARY.html</loc>
+    <lastmod>2025-11-18T10:08:36.156Z</lastmod>
+  </url>
+  <url>
     <loc>https://fcichos.github.io/EMPP24/NiceFigures.html</loc>
     <lastmod>2024-12-06T13:13:36.000Z</lastmod>
   </url>
@@ -342,7 +354,7 @@
   </url>
   <url>
     <loc>https://fcichos.github.io/EMPP24/lectures/lecture10/1_spring_pendulum.html</loc>
-    <lastmod>2024-12-10T10:02:48.000Z</lastmod>
+    <lastmod>2025-11-18T09:34:04.596Z</lastmod>
   </url>
   <url>
     <loc>https://fcichos.github.io/EMPP24/lectures/BROWNIAN_MOTION_RESTRUCTURE_README.html</loc>
@@ -362,7 +374,7 @@
   </url>
   <url>
     <loc>https://fcichos.github.io/EMPP24/lectures/lecture08/3_solving_ODEs.html</loc>
-    <lastmod>2025-11-11T10:03:40.213Z</lastmod>
+    <lastmod>2025-11-18T09:55:19.745Z</lastmod>
   </url>
   <url>
     <loc>https://fcichos.github.io/EMPP24/lectures/lecture06/test.html</loc>
@@ -407,5 +419,9 @@
   <url>
     <loc>https://fcichos.github.io/EMPP24/references.html</loc>
     <lastmod>2024-08-14T18:38:01.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcichos.github.io/EMPP24/Assignment 4.html</loc>
+    <lastmod>2024-11-22T13:58:14.000Z</lastmod>
   </url>
 </urlset>
