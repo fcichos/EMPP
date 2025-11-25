@@ -328,25 +328,48 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">🛠️ Hands-On Seminars</span></a>
+ <span class="menu-text">🔧 Week 7: Code Organization</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/1_classes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classes &amp; Objects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/2_brownian_motion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Brownian Motion with OOP</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
- <span class="menu-text">Advanced Topics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">🛠️ Hands-On Seminars</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Advanced Topics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link">
@@ -452,7 +475,13 @@ window.Quarto = {
 
 
 <p>In Week 5, you learned powerful tools for solving differential equations, especially <code>odeint</code> for ODEs. Now it’s time to put these tools to work on one of the most beautiful problems in physics: <strong>planetary motion</strong>!</p>
-<p>This is the perfect first application because: - The physics is intuitive (we all know planets orbit the Sun) - The equations are elegant (just Newton’s gravity) - The results are spectacular (you’ll reproduce Kepler’s laws!) - The mathematics sets the pattern for more complex problems</p>
+<p>This is the perfect first application because:</p>
+<ul>
+<li>The physics is intuitive (we all know planets orbit the Sun)</li>
+<li>The equations are elegant (just Newton’s gravity)</li>
+<li>The results are spectacular (you’ll reproduce Kepler’s laws!)</li>
+<li>The mathematics sets the pattern for more complex problems</li>
+</ul>
 <p>These same techniques will work for many other physics problems - anytime you have coupled motion in two dimensions. The mathematical framework is surprisingly general!</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -464,7 +493,15 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In this lecture, you’ll: - Apply <code>odeint</code> to solve Newton’s laws for planetary orbits - Discover how gravity creates elliptical orbits - Connect our numerical solution to Kepler’s laws - Verify energy and angular momentum conservation - Explore different types of orbits (circular, elliptical, parabolic) - See how changing initial conditions creates different orbital paths</p>
+<p>In this lecture, you’ll:</p>
+<ul>
+<li>Apply <code>odeint</code> to solve Newton’s laws for planetary orbits</li>
+<li>Discover how gravity creates elliptical orbits</li>
+<li>Connect our numerical solution to Kepler’s laws</li>
+<li>Verify energy and angular momentum conservation</li>
+<li>Explore different types of orbits (circular, elliptical, parabolic)</li>
+<li>See how changing initial conditions creates different orbital paths</li>
+</ul>
 </div>
 </div>
 <div>
@@ -788,7 +825,11 @@ Why Do We Need a Phase Shift?
 <div class="callout-body-container callout-body">
 <p>You might wonder why we needed to calculate <code>theta_0_analytical</code> - why don’t the orbits match automatically?</p>
 <p><strong>The issue:</strong> The analytical orbit formula <span class="math inline">\(r(\theta) = \frac{p}{1 + \varepsilon\cos(\theta)}\)</span> has a built-in assumption: <strong>perihelion (closest point to the Sun) is at angle θ = 0</strong>.</p>
-<p><strong>The problem:</strong> Our numerical simulation starts at: - Position: r = 1.0 AU, θ = 0 - Velocities: v_r = 0, ω = 1.8 rad/yr</p>
+<p><strong>The problem:</strong> Our numerical simulation starts at:</p>
+<ul>
+<li>Position: r = 1.0 AU, θ = 0</li>
+<li>Velocities: v_r = 0, ω = 1.8 rad/yr</li>
+</ul>
 <p>This starting point is <strong>NOT at perihelion</strong>! The planet is somewhere else in its orbit when θ = 0.</p>
 <p><strong>The solution:</strong> We calculate where the planet actually starts in the analytical orbit frame by solving: <span class="math display">\[r_0 = \frac{p}{1 + \varepsilon\cos(\theta_0)} \quad \Rightarrow \quad \theta_0 = \arccos\left(\frac{p/r_0 - 1}{\varepsilon}\right)\]</span></p>
 <p>This <code>theta_0_analytical</code> tells us how much to rotate the analytical orbit so it matches the numerical simulation’s starting point.</p>
@@ -1023,8 +1064,14 @@ Your Turn: Simulate Other Planets!
 </section>
 <section id="whats-next-a-preview" class="level2">
 <h2 class="anchored" data-anchor-id="whats-next-a-preview">What’s Next: A Preview</h2>
-<p>Congratulations on mastering planetary motion! You’ve learned to: - Solve coupled ODEs in polar coordinates - Use phase space for analysis<br>
-- Verify numerical solutions against analytical predictions - Check conservation laws</p>
+<p>Congratulations on mastering planetary motion! You’ve learned to:</p>
+<ul>
+<li>Solve coupled ODEs in polar coordinates</li>
+<li>Use phase space for analysis<br>
+</li>
+<li>Verify numerical solutions against analytical predictions</li>
+<li>Check conservation laws</li>
+</ul>
 <p>In the <strong>next lecture</strong>, you’ll apply these same techniques to a different system: the <strong>spring pendulum</strong>. This fascinating system combines a spring (bouncing) with a pendulum (swinging), and something amazing happens:</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1036,7 +1083,12 @@ Coming Up: From Order to Chaos
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The spring pendulum uses the same mathematical framework you just mastered: - Polar coordinates: ✓ - Coupled ODEs: ✓ - <code>odeint</code> solution: ✓</p>
+<p>The spring pendulum uses the same mathematical framework you just mastered:</p>
+<ul>
+<li>Polar coordinates: ✓</li>
+<li>Coupled ODEs: ✓</li>
+<li><code>odeint</code> solution: ✓</li>
+</ul>
 <p>But there’s a twist! While planetary orbits are stable and predictable, the spring pendulum can become <strong>chaotic</strong> - deterministic yet unpredictable. You’ll discover how changing just one force law (from <span class="math inline">\(F = -GM/r^2\)</span> to <span class="math inline">\(F = -kL\)</span>) creates dramatically different behavior.</p>
 <p>Get ready to explore the fascinating world of chaos theory! 🎭</p>
 </div>
@@ -1068,8 +1120,9 @@ From Newton to Einstein
 <section id="whats-next" class="level2">
 <h2 class="anchored" data-anchor-id="whats-next">What’s Next?</h2>
 <p>Congratulations! You’ve just solved one of the most important problems in physics using modern computational methods. Newton would be proud! 🚀🌍</p>
-<p>In the <strong>next lecture</strong> (still Week 6), we’ll apply the same techniques to the <strong>spring pendulum</strong> - a system that combines oscillation and rotation. You’ll see: - How the same mathematical framework applies to different force laws - What happens when two modes of motion couple together - How deterministic systems can become chaotic!</p>
-<p>Then in <strong>Week 7</strong>, we’ll step back and learn better ways to <strong>organize</strong> our code using modules and classes. After working with these complex simulations, you’ll appreciate why good code organization matters!</p>
+<p>In the <strong>next lecture</strong> (still Week 6), we’ll apply the same techniques to the <strong>spring pendulum</strong> - a fascinating system that combines oscillation and rotation in a single dynamical system. This problem will demonstrate the versatility of the numerical methods you’ve learned today. The spring pendulum consists of a mass attached to a spring that can both stretch and swing like a pendulum. What makes it particularly interesting is that it uses the same mathematical framework we’ve developed here - we’ll still be solving coupled first-order ODEs using <code>scipy.integrate.solve_ivp</code> - but the force law will be different, combining both elastic restoring forces and gravitational forces.</p>
+<p>The spring pendulum is special because it shows how two different modes of motion - radial oscillation and angular swing - can couple together in surprising ways. Unlike the planetary motion we’ve studied today, where the orbits are stable and predictable, the spring pendulum can exhibit rich dynamical behavior. Depending on the initial conditions and system parameters, you might see regular periodic motion, quasi-periodic behavior where the system never quite repeats itself, or even deterministic chaos where tiny changes in initial conditions lead to wildly different outcomes. This will be your first glimpse into the fascinating world of nonlinear dynamics!</p>
+<p>Then in <strong>Week 7</strong>, we’ll take a step back from the physics and focus on software engineering principles. After working with these increasingly complex simulations, you’ll have experienced firsthand why good code organization matters. We’ll learn how to structure our code using modules and classes, making it more readable, reusable, and maintainable. You’ll discover how to transform the scripts we’ve been writing into well-organized libraries that you can easily extend and share. This transition from “code that works” to “code that works well” is an essential skill for any computational scientist.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
@@ -1085,10 +1138,27 @@ From Newton to Einstein
 </div>
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Historical Sources:</strong> - Newton’s <em>Principia Mathematica</em> (1687) - the original! (Translated versions available) - Kepler’s <em>Astronomia Nova</em> (1609) - where the first two laws appeared</p>
-<p><strong>Modern Textbooks:</strong> - Goldstein, <em>Classical Mechanics</em> - Chapter on central forces - Taylor, <em>Classical Mechanics</em> - Excellent treatment of orbits</p>
-<p><strong>Computational Physics:</strong> - Giordano &amp; Nakanishi, <em>Computational Physics</em> - More complex orbital simulations - Newman, <em>Computational Physics</em> - Python implementations of classical mechanics</p>
-<p><strong>Applications:</strong> - How spacecraft trajectories are designed (orbital mechanics) - Exoplanet detection methods (observing orbital effects) - Satellite constellation design (GPS, Starlink, etc.)</p>
+<p><strong>Historical Sources:</strong></p>
+<ul>
+<li>Newton’s <em>Principia Mathematica</em> (1687) - the original! (Translated versions available)</li>
+<li>Kepler’s <em>Astronomia Nova</em> (1609) - where the first two laws appeared</li>
+</ul>
+<p><strong>Modern Textbooks:</strong></p>
+<ul>
+<li>Goldstein, <em>Classical Mechanics</em> - Chapter on central forces</li>
+<li>Taylor, <em>Classical Mechanics</em> - Excellent treatment of orbits</li>
+</ul>
+<p><strong>Computational Physics:</strong></p>
+<ul>
+<li>Giordano &amp; Nakanishi, <em>Computational Physics</em> - More complex orbital simulations</li>
+<li>Newman, <em>Computational Physics</em> - Python implementations of classical mechanics</li>
+</ul>
+<p><strong>Applications:</strong></p>
+<ul>
+<li>How spacecraft trajectories are designed (orbital mechanics)</li>
+<li>Exoplanet detection methods (observing orbital effects)</li>
+<li>Satellite constellation design (GPS, Starlink, etc.)</li>
+</ul>
 </div>
 </div>
 </div>

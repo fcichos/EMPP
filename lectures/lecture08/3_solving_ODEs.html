@@ -363,25 +363,48 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">🛠️ Hands-On Seminars</span></a>
+ <span class="menu-text">🔧 Week 7: Code Organization</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/1_classes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classes &amp; Objects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/2_brownian_motion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Brownian Motion with OOP</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
- <span class="menu-text">Advanced Topics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">🛠️ Hands-On Seminars</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Advanced Topics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link">
@@ -820,7 +843,7 @@ Key Insight: Symplectic vs Non-Symplectic
 <section id="advanced-matrix-methods-for-odes" class="level2 callout-tip" data-collapse="true">
 <h2 class="callout-tip anchored" data-collapse="true" data-anchor-id="advanced-matrix-methods-for-odes">Advanced: Matrix Methods for ODEs</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -829,7 +852,7 @@ Implicit/Matrix Method (Crank-Nicolson)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>In the numerical differentiation lecture, we explored how derivatives can be represented as matrix operations. We saw that the second derivative could be written as a matrix multiplication using a tridiagonal matrix with entries <span class="math inline">\([1, -2, 1]\)</span> along the diagonals. This matrix perspective leads to an alternative approach for solving ODEs called the <strong>implicit</strong> or <strong>matrix</strong> method, which directly parallels the matrix differentiation techniques from the previous lecture.</p>
 <section id="the-harmonic-oscillator-with-matrices" class="level3">
@@ -885,23 +908,37 @@ How Initial Conditions Enter the Matrix
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For the harmonic oscillator starting at position <span class="math inline">\(x_0 = 1\)</span> and velocity <span class="math inline">\(v_0 = 0\)</span>:</p>
+<p>The key to the matrix method is properly structuring the system:</p>
+<p><strong>Matrix Structure:</strong></p>
+<pre><code>Row 0:        [1, 0, 0, 0, ...]           (x[0] = x0)
+Row 1:        [-1/dt, 1/dt, 0, 0, ...]    ((x[1]-x[0])/dt = v0)
+Row 2:        [1/dt², -2/dt²+ω², 1/dt², 0, ...] (ODE at i=2)
+Row 3:        [0, 1/dt², -2/dt²+ω², 1/dt², ...] (ODE at i=3)
+...
+Row N-1:      [..., 1/dt², -2/dt²+ω², 1/dt²]    (ODE at i=N-1)</code></pre>
+<p><strong>Explanation:</strong></p>
 <ol type="1">
-<li><strong>Position initial condition</strong> <span class="math inline">\(x(t_0) = x_0\)</span>:
+<li><strong>Row 0 - Position initial condition</strong>: <span class="math inline">\(x(t_0) = x_0\)</span>
 <ul>
-<li>Replace first row of matrix: <span class="math inline">\(M[0, :] \rightarrow [1, 0, 0, \ldots]\)</span></li>
-<li>Set first element of <span class="math inline">\(\vec{b}\)</span>: <span class="math inline">\(b[0] = x_0\)</span></li>
-<li>This enforces: <span class="math inline">\(1 \cdot x_0 + 0 \cdot x_1 + \ldots = x_0\)</span> → <span class="math inline">\(x_0 = x_0\)</span> ✓</li>
+<li>Matrix row: <span class="math inline">\([1, 0, 0, \ldots]\)</span></li>
+<li>Right-hand side: <span class="math inline">\(b[0] = x_0\)</span></li>
+<li>Enforces: <span class="math inline">\(x[0] = x_0\)</span> ✓</li>
 </ul></li>
-<li><strong>Velocity initial condition</strong> <span class="math inline">\(v(t_0) = v_0\)</span>:
+<li><strong>Row 1 - Velocity initial condition</strong>: <span class="math inline">\(v(t_0) = v_0\)</span>
 <ul>
-<li>Velocity is <span class="math inline">\(v = \frac{dx}{dt} \approx \frac{x_1 - x_0}{\Delta t}\)</span></li>
-<li>Replace second row: <span class="math inline">\(M[1, :] \rightarrow [-1/\Delta t, 1/\Delta t, 0, \ldots]\)</span></li>
-<li>Set second element: <span class="math inline">\(b[1] = v_0\)</span></li>
-<li>This enforces: <span class="math inline">\(\frac{x_1 - x_0}{\Delta t} = v_0\)</span> ✓</li>
+<li>Matrix row: <span class="math inline">\([-1/\Delta t, 1/\Delta t, 0, \ldots]\)</span></li>
+<li>Right-hand side: <span class="math inline">\(b[1] = v_0\)</span></li>
+<li>Enforces: <span class="math inline">\(\frac{x[1] - x[0]}{\Delta t} = v_0\)</span> ✓</li>
+</ul></li>
+<li><strong>Rows 2 to N-1 - Differential equation</strong>: <span class="math inline">\(\frac{d^2x}{dt^2} + \omega^2 x = 0\)</span>
+<ul>
+<li>Discretized using centered differences: <span class="math inline">\(\frac{x_{i-1} - 2x_i + x_{i+1}}{\Delta t^2} + \omega^2 x_i = 0\)</span></li>
+<li>Matrix row: <span class="math inline">\([\ldots, 1/\Delta t^2, -2/\Delta t^2 + \omega^2, 1/\Delta t^2, \ldots]\)</span></li>
+<li>This is the <strong>[1, -2, 1]</strong> stencil for the second derivative!</li>
+<li>Right-hand side: <span class="math inline">\(b[i] = 0\)</span> (homogeneous equation)</li>
 </ul></li>
 </ol>
-<p>These modifications <strong>override</strong> the differential equation at the first two time points, replacing it with the known initial conditions.</p>
+<p>The first two rows set the initial conditions, and all remaining rows enforce the physics (the differential equation).</p>
 </div>
 </div>
 </section>
@@ -912,8 +949,28 @@ How Initial Conditions Enter the Matrix
 
 </div>
 <script type="pyodide-12-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImZyb20gc2NpcHkuc3BhcnNlIGltcG9ydCBkaWFnc1xuXG4jIFBhcmFtZXRlcnNcbmsgPSAxNS41ICAjIHNwcmluZyBjb25zdGFudFxubSA9IDAuMiAgICMgbWFzc1xub21lZ2EgPSBucC5zcXJ0KGsvbSlcblxuIyBEaXNjcmV0aXphdGlvblxuTCA9IG5wLnBpICAjIHRpbWUgaW50ZXJ2YWxcbk4gPSA1MDAgICAgIyBudW1iZXIgb2YgcG9pbnRzXG50ID0gbnAubGluc3BhY2UoMCwgTCwgTilcbmR0ID0gdFsxXSAtIHRbMF1cblxuIyBJbml0aWFsIGNvbmRpdGlvbnNcbngwID0gMS4wICAjIGluaXRpYWwgcG9zaXRpb25cbnYwID0gMC4wICAjIGluaXRpYWwgdmVsb2NpdHlcblxuIyBJbml0aWFsaXplIHJpZ2h0LWhhbmQgc2lkZSB2ZWN0b3IgKHN0YXJ0cyBhcyB6ZXJvcylcbmIgPSBucC56ZXJvcyhOKVxuXG4jIENvbnN0cnVjdCB0aGUgZGlmZmVyZW50aWFsIG9wZXJhdG9yIG1hdHJpY2VzXG5UID0gZGlhZ3MoWy0yLiwgMS4sIDEuXSwgWzAsIDEsIC0xXSwgc2hhcGU9KE4sIE4pKS50b2RlbnNlKCkgICMgU2Vjb25kIGRlcml2YXRpdmVcblYgPSBkaWFncyhbMS5dLCBbMF0sIHNoYXBlPShOLCBOKSkudG9kZW5zZSgpICAgICAgICAgICAgICAgICAgIyBJZGVudGl0eSBtYXRyaXhcbk0gPSBUL2R0KioyICsgVipvbWVnYSoqMiAgIyBDb21iaW5lZCBvcGVyYXRvcjogZMKyL2R0wrIgKyDPicKyXG5cbiMgTW9kaWZ5IGZpcnN0IHJvdyB0byBlbmZvcmNlIHBvc2l0aW9uIGluaXRpYWwgY29uZGl0aW9uOiB4KDApID0geDBcbk1bMCwgOl0gPSAwICAgICAgIyBDbGVhciBmaXJzdCByb3dcbk1bMCwgMF0gPSAxICAgICAgIyBTZXQgdG8gaWRlbnRpdHk6IHhfMCA9IC4uLlxuYlswXSA9IHgwICAgICAgICAjIC4uLiA9IHgwXG5cbiMgTW9kaWZ5IHNlY29uZCByb3cgdG8gZW5mb3JjZSB2ZWxvY2l0eSBpbml0aWFsIGNvbmRpdGlvbjogdigwKSA9IHYwXG4jIFVzZSBmb3J3YXJkIGRpZmZlcmVuY2U6IHYg4omIICh4XzEgLSB4XzApL2R0XG5NWzEsIDpdID0gMCAgICAgICAgICAjIENsZWFyIHNlY29uZCByb3dcbk1bMSwgMF0gPSAtMS4wL2R0ICAgICMgLXhfMC9kdFxuTVsxLCAxXSA9IDEuMC9kdCAgICAgIyAreF8xL2R0XG5iWzFdID0gdjAgICAgICAgICAgICAjICh4XzEgLSB4XzApL2R0ID0gdjBcblxuIyBTb2x2ZSB0aGUgbGluZWFyIHN5c3RlbSBmb3IgYWxsIHRpbWUgcG9pbnRzIHNpbXVsdGFuZW91c2x5XG54ID0gbnAubGluYWxnLnNvbHZlKE0sIGIpXG5cbiMgRm9yIGNvbXBhcmlzb24sIGNvbXB1dGUgYW5hbHl0aWNhbCBzb2x1dGlvblxueF9hbmFseXRpY2FsID0geDAgKiBucC5jb3Mob21lZ2EgKiB0KSArICh2MC9vbWVnYSkgKiBucC5zaW4ob21lZ2EgKiB0KVxuXG4jIFBsb3QgY29tcGFyaXNvblxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDE0LCA4KSlcbnBsdC5wbG90KHQsIHgsICdiLScsIGxpbmV3aWR0aD0yLCBsYWJlbD0nTWF0cml4IE1ldGhvZCcsIGFscGhhPTAuNylcbnBsdC5wbG90KHQsIHhfYW5hbHl0aWNhbCwgJ3ItLScsIGxpbmV3aWR0aD0xLjUsIGxhYmVsPSdBbmFseXRpY2FsIFNvbHV0aW9uJylcbnBsdC54bGFiZWwoJ1RpbWUgW3NdJylcbnBsdC55bGFiZWwoJ1Bvc2l0aW9uIFttXScpXG5wbHQudGl0bGUoJ0hhcm1vbmljIE9zY2lsbGF0b3I6IE1hdHJpeCBNZXRob2QgdnMgQW5hbHl0aWNhbCcpXG5wbHQubGVnZW5kKClcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKVxuXG5wcmludChmXCJJbml0aWFsIGNvbmRpdGlvbnMgY2hlY2s6XCIpXG5wcmludChmXCIgIHgoMCkgZnJvbSBtYXRyaXggbWV0aG9kOiB7eFswXTouNmZ9IChzaG91bGQgYmUge3gwfSlcIilcbnByaW50KGZcIiAgdigwKSBmcm9tIG1hdHJpeCBtZXRob2Q6IHsoeFsxXS14WzBdKS9kdDouNmZ9IChzaG91bGQgYmUge3YwfSlcIilcbnByaW50KGZcIiAgTWF4aW11bSBlcnJvciB2cyBhbmFseXRpY2FsOiB7bnAubWF4KG5wLmFicyh4IC0geF9hbmFseXRpY2FsKSk6LjJlfVwiKSJ9
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6ImZyb20gc2NpcHkuc3BhcnNlIGltcG9ydCBkaWFnc1xuXG4jIFBhcmFtZXRlcnNcbmsgPSAxNS41ICAjIHNwcmluZyBjb25zdGFudFxubSA9IDAuMiAgICMgbWFzc1xub21lZ2EgPSBucC5zcXJ0KGsvbSlcblxuIyBEaXNjcmV0aXphdGlvblxuTCA9IG5wLnBpICAjIHRpbWUgaW50ZXJ2YWwgKGFib3V0IDEgcGVyaW9kKVxuTiA9IDEwMCAgICAjIG51bWJlciBvZiBwb2ludHMgKHJlZHVjZWQgZm9yIHN0YWJpbGl0eSlcbnQgPSBucC5saW5zcGFjZSgwLCBMLCBOKVxuZHQgPSB0WzFdIC0gdFswXVxuXG4jIEluaXRpYWwgY29uZGl0aW9uc1xueDAgPSAxLjAgICMgaW5pdGlhbCBwb3NpdGlvblxudjAgPSAwLjAgICMgaW5pdGlhbCB2ZWxvY2l0eVxuXG4jIEluaXRpYWxpemUgcmlnaHQtaGFuZCBzaWRlIHZlY3RvciAoc3RhcnRzIGFzIHplcm9zIGZvciBob21vZ2VuZW91cyBPREUpXG5iID0gbnAuemVyb3MoTilcblxuIyA9PT09PSBDT05TVFJVQ1QgU1lTVEVNIE1BVFJJWCA9PT09PVxuIyBTdHJhdGVneTogXG4jIC0gRmlyc3QgMiByb3dzOiBJbml0aWFsIGNvbmRpdGlvbnNcbiMgLSBSZW1haW5pbmcgcm93cyAoMiB0byBOLTEpOiBEaWZmZXJlbnRpYWwgZXF1YXRpb24gZMKyeC9kdMKyICsgz4nCsnggPSAwXG5cbiMgSW5pdGlhbGl6ZSBtYXRyaXhcbk0gPSBucC56ZXJvcygoTiwgTikpXG5cbiMgUm93IDA6IFBvc2l0aW9uIGluaXRpYWwgY29uZGl0aW9uIHgoMCkgPSB4MFxuTVswLCAwXSA9IDEuMFxuYlswXSA9IHgwXG5cbiMgUm93IDE6IFZlbG9jaXR5IGluaXRpYWwgY29uZGl0aW9uIGR4L2R0KDApID0gdjBcbiMgVXNlIGZvcndhcmQgZGlmZmVyZW5jZTogdjAg4omIICh4WzFdIC0geFswXSkvZHRcbk1bMSwgMF0gPSAtMS4wIC8gZHRcbk1bMSwgMV0gPSAxLjAgLyBkdFxuYlsxXSA9IHYwXG5cbiMgUm93cyAyIHRvIE4tMTogQXBwbHkgdGhlIGRpZmZlcmVudGlhbCBlcXVhdGlvblxuIyBkwrJ4L2R0wrIgKyDPicKyeCA9IDBcbiMgRGlzY3JldGl6ZWQ6ICh4W2ktMV0gLSAyKnhbaV0gKyB4W2krMV0pL2R0wrIgKyDPicKyKnhbaV0gPSAwXG4jIFJlYXJyYW5nZWQ6IHhbaS0xXSArICgtMiArIM+JwrIqZHTCsikqeFtpXSArIHhbaSsxXSA9IDBcblxuZm9yIGkgaW4gcmFuZ2UoMiwgTik6XG4gICAgaWYgaSA8IE4tMTogICMgSW50ZXJpb3IgcG9pbnRzXG4gICAgICAgIE1baSwgaS0xXSA9IDEuMCAvIChkdCoqMikgICAgICAgICAgICAgICAgICAgICMgQ29lZmZpY2llbnQgb2YgeFtpLTFdXG4gICAgICAgIE1baSwgaV0gPSAtMi4wIC8gKGR0KioyKSArIG9tZWdhKioyICAgICAgICAgICMgQ29lZmZpY2llbnQgb2YgeFtpXVxuICAgICAgICBNW2ksIGkrMV0gPSAxLjAgLyAoZHQqKjIpICAgICAgICAgICAgICAgICAgICAjIENvZWZmaWNpZW50IG9mIHhbaSsxXVxuICAgICAgICBiW2ldID0gMC4wICAjIEhvbW9nZW5lb3VzIGVxdWF0aW9uXG4gICAgZWxzZTogICMgTGFzdCBwb2ludCAoaSA9PSBOLTEpOiBVc2UgYmFja3dhcmQgZGlmZmVyZW5jZSBvciBsZXQgZXF1YXRpb24gaGFuZGxlIGl0XG4gICAgICAgIE1baSwgaS0yXSA9IDEuMCAvIChkdCoqMilcbiAgICAgICAgTVtpLCBpLTFdID0gLTIuMCAvIChkdCoqMikgKyBvbWVnYSoqMlxuICAgICAgICBNW2ksIGldID0gMS4wIC8gKGR0KioyKVxuICAgICAgICBiW2ldID0gMC4wXG5cbiMgU29sdmUgdGhlIGxpbmVhciBzeXN0ZW0gTXggPSBiXG54ID0gbnAubGluYWxnLnNvbHZlKE0sIGIpXG5cbiMgQ29tcHV0ZSBhbmFseXRpY2FsIHNvbHV0aW9uIGZvciBjb21wYXJpc29uXG54X2FuYWx5dGljYWwgPSB4MCAqIG5wLmNvcyhvbWVnYSAqIHQpICsgKHYwIC8gb21lZ2EpICogbnAuc2luKG9tZWdhICogdClcblxuIyBDYWxjdWxhdGUgZXJyb3JcbmVycm9yID0gbnAuYWJzKHggLSB4X2FuYWx5dGljYWwpXG5tYXhfZXJyb3IgPSBucC5tYXgoZXJyb3IpXG5yZWxfZXJyb3IgPSBtYXhfZXJyb3IgLyBucC5tYXgobnAuYWJzKHhfYW5hbHl0aWNhbCkpXG5cbiMgUGxvdCBjb21wYXJpc29uXG5maWcsIChheDEsIGF4MikgPSBwbHQuc3VicGxvdHMoMiwgMSwgZmlnc2l6ZT1nZXRfc2l6ZSgxNCwgMTYpKVxuXG4jIFRvcDogU29sdXRpb25zIGNvbXBhcmlzb25cbmF4MS5wbG90KHQsIHgsICdiLScsIGxpbmV3aWR0aD0yLCBsYWJlbD0nTWF0cml4IE1ldGhvZCcsIGFscGhhPTAuNylcbmF4MS5wbG90KHQsIHhfYW5hbHl0aWNhbCwgJ3ItLScsIGxpbmV3aWR0aD0xLjUsIGxhYmVsPSdBbmFseXRpY2FsIFNvbHV0aW9uJylcbmF4MS5zZXRfeGxhYmVsKCdUaW1lIFtzXScpXG5heDEuc2V0X3lsYWJlbCgnUG9zaXRpb24gW21dJylcbmF4MS5zZXRfdGl0bGUoJ0hhcm1vbmljIE9zY2lsbGF0b3I6IE1hdHJpeCBNZXRob2QgdnMgQW5hbHl0aWNhbCcpXG5heDEubGVnZW5kKClcbmF4MS5ncmlkKFRydWUsIGFscGhhPTAuMylcblxuIyBCb3R0b206IEVycm9yIHBsb3RcbmF4Mi5zZW1pbG9neSh0LCBlcnJvciwgJ2ctJywgbGluZXdpZHRoPTIpXG5heDIuc2V0X3hsYWJlbCgnVGltZSBbc10nKVxuYXgyLnNldF95bGFiZWwoJ0Fic29sdXRlIEVycm9yIFttXScpXG5heDIuc2V0X3RpdGxlKCdFcnJvcjogTWF0cml4IE1ldGhvZCB2cyBBbmFseXRpY2FsJylcbmF4Mi5ncmlkKFRydWUsIGFscGhhPTAuMylcblxucGx0LnRpZ2h0X2xheW91dCgpXG5wbHQuc2hvdygpXG5cbiMgVmVyaWZpY2F0aW9uXG5wcmludChmXCJJbml0aWFsIGNvbmRpdGlvbnMgdmVyaWZpY2F0aW9uOlwiKVxucHJpbnQoZlwiICB4KDApID0ge3hbMF06LjhmfSAodGFyZ2V0OiB7eDB9KVwiKVxucHJpbnQoZlwiICB2KDApID0geyh4WzFdIC0geFswXSkgLyBkdDouOGZ9ICh0YXJnZXQ6IHt2MH0pXCIpXG5wcmludChmXCJcXG5BY2N1cmFjeTpcIilcbnByaW50KGZcIiAgTWF4aW11bSBhYnNvbHV0ZSBlcnJvcjoge21heF9lcnJvcjouMmV9IG1cIilcbnByaW50KGZcIiAgUmVsYXRpdmUgZXJyb3I6IHtyZWxfZXJyb3I6LjIlfVwiKVxucHJpbnQoZlwiICBUaW1lIHN0ZXAgZHQ6IHtkdDouNmZ9IHNcIikifQ==
 </script>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important Note on Matrix Method Accuracy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The matrix method treats an <strong>initial value problem</strong> as a <strong>boundary value problem</strong>, which can lead to accuracy issues:</p>
+<ul>
+<li>The error tends to grow away from the initial conditions</li>
+<li>Shorter time intervals give better results</li>
+<li>Smaller time steps (larger N) improve accuracy but increase computational cost</li>
+<li>For this reason, time-stepping methods (Euler, Runge-Kutta) are generally preferred for initial value problems</li>
+</ul>
+<p>This method is more naturally suited for boundary value problems where conditions are specified at both ends of the domain.</p>
+</div>
 </div>
 </section>
 <section id="advantages-and-disadvantages-of-matrix-methods" class="level3">
