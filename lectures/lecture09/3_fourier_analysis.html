@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../lectures/lecture09/2_coupled_pendula.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -133,7 +134,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Fourier Analysis</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture05/2_brownian_motion.html">🌊 Week 8: Oscillations &amp; Waves</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture09/3_fourier_analysis.html">Fourier Analysis</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -341,10 +342,39 @@ window.Quarto = {
  <span class="menu-text">Classes &amp; Objects</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">🌊 Week 8: Oscillations &amp; Waves</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/lecture05/2_brownian_motion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Advanced: Brownian Motion with OOP</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture06/1_input_output.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Input, Output, Data Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture09/2_coupled_pendula.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coupled Pendula</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture09/3_fourier_analysis.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Fourier Analysis</span></a>
   </div>
 </li>
       </ul>
@@ -352,22 +382,22 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
  <span class="menu-text">🛠️ Hands-On Seminars</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
  <span class="menu-text">Advanced Topics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link">
@@ -394,16 +424,34 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#fourier-series" id="toc-fourier-series" class="nav-link active" data-scroll-target="#fourier-series">Fourier series</a></li>
-  <li><a href="#fourier-transform" id="toc-fourier-transform" class="nav-link" data-scroll-target="#fourier-transform">Fourier transform</a></li>
-  <li><a href="#frequency-analysis-of-our-coupled-pendula" id="toc-frequency-analysis-of-our-coupled-pendula" class="nav-link" data-scroll-target="#frequency-analysis-of-our-coupled-pendula">Frequency analysis of our coupled pendula</a></li>
+  <li><a href="#fourier-series" id="toc-fourier-series" class="nav-link active" data-scroll-target="#fourier-series">Fourier series</a>
+  <ul class="collapse">
+  <li><a href="#basic-idea" id="toc-basic-idea" class="nav-link" data-scroll-target="#basic-idea">Basic Idea</a></li>
+  <li><a href="#mathematical-definition" id="toc-mathematical-definition" class="nav-link" data-scroll-target="#mathematical-definition">Mathematical Definition</a></li>
+  <li><a href="#orthogonality-of-basis-functions" id="toc-orthogonality-of-basis-functions" class="nav-link" data-scroll-target="#orthogonality-of-basis-functions">Orthogonality of Basis Functions</a></li>
+  <li><a href="#simple-example-square-wave" id="toc-simple-example-square-wave" class="nav-link" data-scroll-target="#simple-example-square-wave">Simple Example: Square Wave</a></li>
+  </ul></li>
+  <li><a href="#fourier-transform" id="toc-fourier-transform" class="nav-link" data-scroll-target="#fourier-transform">Fourier transform</a>
+  <ul class="collapse">
+  <li><a href="#from-series-to-transform" id="toc-from-series-to-transform" class="nav-link" data-scroll-target="#from-series-to-transform">From Series to Transform</a></li>
+  <li><a href="#mathematical-definition-1" id="toc-mathematical-definition-1" class="nav-link" data-scroll-target="#mathematical-definition-1">Mathematical Definition</a></li>
+  <li><a href="#discrete-fourier-transform-dft-and-fft" id="toc-discrete-fourier-transform-dft-and-fft" class="nav-link" data-scroll-target="#discrete-fourier-transform-dft-and-fft">Discrete Fourier Transform (DFT) and FFT</a></li>
+  </ul></li>
+  <li><a href="#frequency-analysis-of-our-coupled-pendula" id="toc-frequency-analysis-of-our-coupled-pendula" class="nav-link" data-scroll-target="#frequency-analysis-of-our-coupled-pendula">Frequency analysis of our coupled pendula</a>
+  <ul class="collapse">
+  <li><a href="#generate-the-coupled-pendula-data" id="toc-generate-the-coupled-pendula-data" class="nav-link" data-scroll-target="#generate-the-coupled-pendula-data">Generate the coupled pendula data</a></li>
+  <li><a href="#visualize-the-time-domain-signals-first" id="toc-visualize-the-time-domain-signals-first" class="nav-link" data-scroll-target="#visualize-the-time-domain-signals-first">Visualize the time-domain signals first</a></li>
+  <li><a href="#perform-fourier-transform-and-visualize-frequency-spectra" id="toc-perform-fourier-transform-and-visualize-frequency-spectra" class="nav-link" data-scroll-target="#perform-fourier-transform-and-visualize-frequency-spectra">Perform Fourier transform and visualize frequency spectra</a></li>
+  <li><a href="#compare-with-theoretical-predictions" id="toc-compare-with-theoretical-predictions" class="nav-link" data-scroll-target="#compare-with-theoretical-predictions">Compare with theoretical predictions</a></li>
+  <li><a href="#physical-interpretation" id="toc-physical-interpretation" class="nav-link" data-scroll-target="#physical-interpretation">Physical Interpretation</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture05/2_brownian_motion.html">🌊 Week 8: Oscillations &amp; Waves</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture09/3_fourier_analysis.html">Fourier Analysis</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Fourier Analysis</h1>
 </div>
@@ -434,6 +482,12 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1
 </div>
 <section id="fourier-series" class="level2">
 <h2 class="anchored" data-anchor-id="fourier-series">Fourier series</h2>
+<section id="basic-idea" class="level3">
+<h3 class="anchored" data-anchor-id="basic-idea">Basic Idea</h3>
+<p>The fundamental idea behind Fourier analysis is that <strong>any periodic function can be decomposed into a sum of simple sine and cosine waves</strong>. This is similar to how white light can be decomposed into its color spectrum using a prism. Just as white light is a superposition of many colors (frequencies), any periodic signal is a superposition of simple oscillations at different frequencies.</p>
+</section>
+<section id="mathematical-definition" class="level3">
+<h3 class="anchored" data-anchor-id="mathematical-definition">Mathematical Definition</h3>
 <p>A Fourier series represents a periodic function <span class="math inline">\(f(t)\)</span> with period <span class="math inline">\(2\pi\)</span> or, more generally, any arbitrary interval <span class="math inline">\(T\)</span> as a sum of sine and cosine functions:</p>
 <p><span id="eq-fourier_sum"><span class="math display">\[
 f(t)=\frac{A_{0}}{2}+\sum_{k=1}^{\infty}\left ( A_{k}\cos\left (\omega_k t\right) + B_{k}\sin\left (\omega_k t\right)\right )
@@ -442,10 +496,16 @@ f(t)=\frac{A_{0}}{2}+\sum_{k=1}^{\infty}\left ( A_{k}\cos\left (\omega_k t\right
 <p><span class="math display">\[\begin{equation*}
 \omega_k= 0, \frac{2\pi}{T}, \frac{4\pi}{T}, \frac{6\pi}{T}, ... , \frac{n\pi}{T}
 \end{equation*}\]</span></p>
-<p>and varying amplitudes. We can demonstrate that the cosine and sine functions in the sum (<a href="#eq-fourier_sum" class="quarto-xref">Equation&nbsp;1</a>) are orthogonal using the trigonometric identity:</p>
-<p><span class="math display">\[\begin{equation}
-\sin(\omega_{i} t)\sin(\omega_{k}t )=\frac{1}{2}\lbrace\cos((\omega_{i}-\omega_{k})t)- \cos((\omega_{i}+\omega_{k})t\rbrace
-\end{equation}\]</span></p>
+<p>and varying amplitudes.</p>
+<p><strong>Physical interpretation:</strong> The coefficient <span class="math inline">\(A_0/2\)</span> represents the average value (DC component) of the function. Each pair of terms with frequency <span class="math inline">\(\omega_k\)</span> represents an oscillation at that frequency, where <span class="math inline">\(A_k\)</span> controls the amplitude of the cosine part and <span class="math inline">\(B_k\)</span> controls the amplitude of the sine part.</p>
+</section>
+<section id="orthogonality-of-basis-functions" class="level3">
+<h3 class="anchored" data-anchor-id="orthogonality-of-basis-functions">Orthogonality of Basis Functions</h3>
+<p>The key mathematical property that makes Fourier series work is <strong>orthogonality</strong>: different sine and cosine functions are orthogonal to each other when integrated over one period. This is analogous to perpendicular vectors in geometry.</p>
+<p>We can demonstrate that the cosine and sine functions in the sum (<a href="#eq-fourier_sum" class="quarto-xref">Equation&nbsp;1</a>) are orthogonal using the trigonometric identity:</p>
+<p><span class="math display">\[
+\sin(\omega_{i} t)\sin(\omega_{k}t )=\frac{1}{2}\left\{\cos((\omega_{i}-\omega_{k})t)- \cos((\omega_{i}+\omega_{k})t)\right\}
+\]</span></p>
 <p>This leads to the integral:</p>
 <p><span class="math display">\[\begin{equation}
 \int\limits_{-\frac{T}{2}}^{+\frac{T}{2}}  \sin(\omega_{i}t)\sin (\omega_k t) dt
@@ -485,9 +545,34 @@ A_0= \frac{1}{T}\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}} f(t) dt
 B_k=\frac{2}{T}\int\limits_{-\frac{T}{2}}^{+\frac{T}{2}} f(t) \sin(\omega_k t) dt,\,  \forall k
 \end{equation}\]</span></p>
 </section>
+<section id="simple-example-square-wave" class="level3">
+<h3 class="anchored" data-anchor-id="simple-example-square-wave">Simple Example: Square Wave</h3>
+<p>Let’s visualize how a Fourier series works by approximating a square wave:</p>
+<div>
+<div id="pyodide-2">
+
+</div>
+<script type="pyodide-2-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBDcmVhdGUgYSBzcXVhcmUgd2F2ZSBhbmQgYXBwcm94aW1hdGUgaXQgd2l0aCBGb3VyaWVyIHNlcmllc1xudCA9IG5wLmxpbnNwYWNlKC1ucC5waSwgbnAucGksIDEwMDApXG5cbiMgRGVmaW5lIHNxdWFyZSB3YXZlXG5zcXVhcmVfd2F2ZSA9IG5wLnNpZ24obnAuc2luKHQpKVxuXG4jIENyZWF0ZSBGb3VyaWVyIHNlcmllcyBhcHByb3hpbWF0aW9uIHdpdGggZGlmZmVyZW50IG51bWJlcnMgb2YgdGVybXNcbnBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgyMCwgMTIpKVxuXG5mb3IgaWR4LCBuX3Rlcm1zIGluIGVudW1lcmF0ZShbMSwgMywgNSwgMTVdKTpcbiAgICBwbHQuc3VicGxvdCgyLCAyLCBpZHgrMSlcbiAgICBcbiAgICAjIEJ1aWxkIEZvdXJpZXIgc2VyaWVzIChmb3Igc3F1YXJlIHdhdmUsIG9ubHkgb2RkIHNpbmUgdGVybXMpXG4gICAgZm91cmllcl9hcHByb3ggPSBucC56ZXJvc19saWtlKHQpXG4gICAgZm9yIGsgaW4gcmFuZ2UoMSwgbl90ZXJtcysxLCAyKTogICMgT25seSBvZGQga1xuICAgICAgICBmb3VyaWVyX2FwcHJveCArPSAoNC8oaypucC5waSkpICogbnAuc2luKGsqdClcbiAgICBcbiAgICBwbHQucGxvdCh0LCBzcXVhcmVfd2F2ZSwgJ2stJywgbHc9MSwgYWxwaGE9MC4zLCBsYWJlbD0nU3F1YXJlIHdhdmUnKVxuICAgIHBsdC5wbG90KHQsIGZvdXJpZXJfYXBwcm94LCAnci0nLCBsdz0yLCBsYWJlbD1mJ0ZvdXJpZXIgc2VyaWVzIChuPXtuX3Rlcm1zfSknKVxuICAgIHBsdC54bGFiZWwoJ3QnLCBmb250c2l6ZT0xMilcbiAgICBwbHQueWxhYmVsKCdmKHQpJywgZm9udHNpemU9MTIpXG4gICAgcGx0LnRpdGxlKGYnQXBwcm94aW1hdGlvbiB3aXRoIHtuX3Rlcm1zfSB0ZXJtKHMpJywgZm9udHNpemU9MTIpXG4gICAgcGx0LmxlZ2VuZCgpXG4gICAgcGx0LmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxuICAgIHBsdC55bGltKC0xLjUsIDEuNSlcblxucGx0LnRpZ2h0X2xheW91dCgpXG5wbHQuc2hvdygpIn0=
+</script>
+</div>
+<p><strong>Observation:</strong> As we add more terms, the Fourier series approximates the square wave better. This demonstrates that complex periodic functions can be built from simple sine and cosine components.</p>
+</section>
+</section>
 <section id="fourier-transform" class="level2">
 <h2 class="anchored" data-anchor-id="fourier-transform">Fourier transform</h2>
-<p>The Fourier transform extends the concept of Fourier series by representing arbitrary non-periodic functions <span class="math inline">\(f(t)\)</span> through a continuous spectrum of complex functions <span class="math inline">\(\exp(i\omega t)\)</span>. Known as the continuous Fourier transform, this approach replaces the discrete frequency sum of sine and cosine functions found in Fourier series with an integral over complex exponential functions <span class="math inline">\(\exp(i\omega t)\)</span> spanning continuous frequency values <span class="math inline">\(\omega\)</span>.</p>
+<section id="from-series-to-transform" class="level3">
+<h3 class="anchored" data-anchor-id="from-series-to-transform">From Series to Transform</h3>
+<p>The Fourier transform extends the concept of Fourier series to <strong>non-periodic</strong> functions. While Fourier series use discrete frequencies (<span class="math inline">\(\omega_k = 2\pi k/T\)</span>) for periodic functions, the Fourier transform uses a <strong>continuous spectrum</strong> of frequencies for arbitrary functions.</p>
+<p><strong>Key differences:</strong></p>
+<ul>
+<li><strong>Fourier Series:</strong> Periodic functions → discrete frequencies (sum)</li>
+<li><strong>Fourier Transform:</strong> Non-periodic functions → continuous frequencies (integral)</li>
+</ul>
+<p>The Fourier transform represents arbitrary non-periodic functions <span class="math inline">\(f(t)\)</span> through a continuous spectrum of complex functions <span class="math inline">\(\exp(i\omega t)\)</span>. This approach replaces the discrete frequency sum of sine and cosine functions found in Fourier series with an integral over complex exponential functions <span class="math inline">\(\exp(i\omega t)\)</span> spanning continuous frequency values <span class="math inline">\(\omega\)</span>.</p>
+</section>
+<section id="mathematical-definition-1" class="level3">
+<h3 class="anchored" data-anchor-id="mathematical-definition-1">Mathematical Definition</h3>
 <p>The Fourier transform of a function <span class="math inline">\(f(t)\)</span> is defined as:</p>
 <p><span id="eq-fourier_transform"><span class="math display">\[
 F(\omega)=\int\limits_{-\infty}^{+\infty}f(t)e^{-i\omega t}dt
@@ -502,49 +587,104 @@ f(t)=\frac{1}{2\pi}\int\limits_{-\infty}^{+\infty}F(\omega)e^{+i\omega t}dt
 \end{equation}\]</span></p>
 <p>while the amplitude at frequency <span class="math inline">\(\omega\)</span> is:</p>
 <p><span class="math display">\[\begin{equation}
-x_{0}^{\rm theo}=|F(\omega)|
+|F(\omega)|=\sqrt{\text{Re}(F(\omega))^2 + \text{Im}(F(\omega))^2}
 \end{equation}\]</span></p>
-<p>Modern computing offers efficient algorithms for Fourier transformation, particularly the Fast Fourier Transform (FFT) implemented in libraries like NumPy. We’ll use these algorithms to identify oscillation patterns in our signals. Here’s an example of using NumPy’s FFT functions to compute the transform and generate the corresponding frequency axis:</p>
-<pre><code>f=np.fft.fft(alpha)
-freq = np.fft.fftfreq(t.shape[-1],time/t.shape[-1])</code></pre>
 </section>
-<section id="frequency-analysis-of-our-coupled-pendula" class="level2">
-<h2 class="anchored" data-anchor-id="frequency-analysis-of-our-coupled-pendula">Frequency analysis of our coupled pendula</h2>
-<p>Let us now apply Fourier analysis to examine the data from our previous simulation of coupled pendula, which includes both normal modes and beat mode oscillations of the harmonic oscillator.</p>
-<div>
-<div id="pyodide-2">
-
-</div>
-<script type="pyodide-2-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInRhZ3MiOltdfSwiY29kZSI6Im5tMT1ucC5sb2FkdHh0KCdubTEudHh0JyxkZWxpbWl0ZXI9JywnKVxubm0yPW5wLmxvYWR0eHQoJ25tMi50eHQnLGRlbGltaXRlcj0nLCcpXG5iZWF0cz1ucC5sb2FkdHh0KCdiZWF0cy50eHQnLGRlbGltaXRlcj0nLCcpIn0=
-</script>
-</div>
-<p>First, we extract the time series data and angular displacements into separate arrays for clearer analysis:</p>
+<section id="discrete-fourier-transform-dft-and-fft" class="level3">
+<h3 class="anchored" data-anchor-id="discrete-fourier-transform-dft-and-fft">Discrete Fourier Transform (DFT) and FFT</h3>
+<p>In practice, we work with <strong>sampled data</strong> (discrete time points), not continuous functions. The Discrete Fourier Transform (DFT) is the computational version of the Fourier transform for sampled data:</p>
+<p><span class="math display">\[
+F_k = \sum_{n=0}^{N-1} f_n e^{-2\pi i kn/N}
+\]</span></p>
+<p>where <span class="math inline">\(f_n\)</span> are the <span class="math inline">\(N\)</span> sampled data points and <span class="math inline">\(F_k\)</span> are the frequency components.</p>
+<p><strong>Fast Fourier Transform (FFT):</strong> Computing the DFT naively requires <span class="math inline">\(O(N^2)\)</span> operations. The FFT is an algorithm that computes the same result in only <span class="math inline">\(O(N \log N)\)</span> operations, making it practical for large datasets.</p>
+<p>Modern computing libraries like NumPy implement the FFT. Here’s how to use it:</p>
 <div>
 <div id="pyodide-3">
 
 </div>
 <script type="pyodide-3-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInRhZ3MiOltdfSwiY29kZSI6InQ9bm0xWzosMF1cbnRoZXRhMV9ubTE9bm0xWzosMV1cbnRoZXRhMV9ubTI9bm0yWzosMV1cbnRoZXRhMV9iZWF0cz1iZWF0c1s6LDFdIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFeGFtcGxlOiBGb3VyaWVyIHRyYW5zZm9ybSBvZiBhIHNpbXBsZSBzaW5lIHdhdmVcbiMgR2VuZXJhdGUgYSBzaWduYWwgd2l0aCB0d28gZnJlcXVlbmN5IGNvbXBvbmVudHNcbmR0ID0gMC4wMSAgIyB0aW1lIHN0ZXBcbnRfZXhhbXBsZSA9IG5wLmFyYW5nZSgwLCAxMCwgZHQpICAjIDEwIHNlY29uZHMgb2YgZGF0YVxuZjEsIGYyID0gMi4wLCA1LjAgICMgZnJlcXVlbmNpZXMgaW4gSHpcbnNpZ25hbCA9IG5wLnNpbigyKm5wLnBpKmYxKnRfZXhhbXBsZSkgKyAwLjUqbnAuc2luKDIqbnAucGkqZjIqdF9leGFtcGxlKVxuXG4jIENvbXB1dGUgRkZUXG5mZnRfcmVzdWx0ID0gbnAuZmZ0LmZmdChzaWduYWwpXG5mcmVxdWVuY2llcyA9IG5wLmZmdC5mZnRmcmVxKGxlbih0X2V4YW1wbGUpLCBkdClcblxuIyBQbG90IHRoZSBzaWduYWwgYW5kIGl0cyBmcmVxdWVuY3kgc3BlY3RydW1cbmZpZywgKGF4MSwgYXgyKSA9IHBsdC5zdWJwbG90cygyLCAxLCBmaWdzaXplPWdldF9zaXplKDE4LCAxMikpXG5cbiMgVGltZSBkb21haW5cbmF4MS5wbG90KHRfZXhhbXBsZVs6MjAwXSwgc2lnbmFsWzoyMDBdLCAnYi0nLCBsdz0xKVxuYXgxLnNldF94bGFiZWwoJ1RpbWUgW3NdJywgZm9udHNpemU9MTIpXG5heDEuc2V0X3lsYWJlbCgnU2lnbmFsIGFtcGxpdHVkZScsIGZvbnRzaXplPTEyKVxuYXgxLnNldF90aXRsZSgnVGltZSBkb21haW46IFNpZ25hbCB3aXRoIDIgSHogYW5kIDUgSHogY29tcG9uZW50cycsIGZvbnRzaXplPTEzKVxuYXgxLmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxuXG4jIEZyZXF1ZW5jeSBkb21haW4gKG9ubHkgcG9zaXRpdmUgZnJlcXVlbmNpZXMpXG5uID0gbGVuKGZyZXF1ZW5jaWVzKVxuYXgyLnBsb3QoZnJlcXVlbmNpZXNbOm4vLzJdLCBucC5hYnMoZmZ0X3Jlc3VsdClbOm4vLzJdLCAnci0nLCBsdz0xKVxuYXgyLnNldF94bGFiZWwoJ0ZyZXF1ZW5jeSBbSHpdJywgZm9udHNpemU9MTIpXG5heDIuc2V0X3lsYWJlbCgnQW1wbGl0dWRlJywgZm9udHNpemU9MTIpXG5heDIuc2V0X3RpdGxlKCdGcmVxdWVuY3kgZG9tYWluOiBGRlQgcmV2ZWFscyB0aGUgdHdvIGZyZXF1ZW5jeSBjb21wb25lbnRzJywgZm9udHNpemU9MTMpXG5heDIuc2V0X3hsaW0oMCwgMTApXG5heDIuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5cbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
 </script>
 </div>
-<p>Next, we perform the Fourier transform of our signals and visualize their frequency spectra:</p>
+<p><strong>Key NumPy FFT functions:</strong></p>
+<ul>
+<li><code>np.fft.fft(signal)</code>: Computes the FFT of the signal</li>
+<li><code>np.fft.fftfreq(N, dt)</code>: Generates the corresponding frequency axis
+<ul>
+<li><code>N</code>: number of data points</li>
+<li><code>dt</code>: time step between samples</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="frequency-analysis-of-our-coupled-pendula" class="level2">
+<h2 class="anchored" data-anchor-id="frequency-analysis-of-our-coupled-pendula">Frequency analysis of our coupled pendula</h2>
+<p>Let us now apply Fourier analysis to examine the data from our previous simulation of coupled pendula. We need to first generate the data by solving the coupled pendula equations for the three different cases: normal mode 1 (in-phase), normal mode 2 (out-of-phase), and beats.</p>
+<section id="generate-the-coupled-pendula-data" class="level3">
+<h3 class="anchored" data-anchor-id="generate-the-coupled-pendula-data">Generate the coupled pendula data</h3>
 <div>
 <div id="pyodide-4">
 
 </div>
 <script type="pyodide-4-contents">
-eyJhdHRyIjp7IkV4ZWN1dGVUaW1lIjp7ImVuZF90aW1lIjoiMjAxOC0wNS0yOVQxMTowMTo1NS40MjA1ODVaIiwic3RhcnRfdGltZSI6IjIwMTgtMDUtMjlUMTE6MDE6NTUuNDE1OTg1WiJ9LCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJ0YWdzIjpbXX0sImNvZGUiOiIjIGNhbGN1bGF0ZSB0aGUgZnJlcXVlbmN5IHNwZWN0cnVtIG9mIHRoZSBvc2NpbGxhdGlvbnMgZm9yIGRpZmZlcmVudCBpbml0aWFsIGNvbmRpdGlvbnNcbnBsdC5maWd1cmUoMSxmaWdzaXplPSg2LDUpKVxucGx0LnhsYWJlbCgnZnJlcXVlbmN5IFtIel0nLCBmb250c2l6ZT0xNilcbnBsdC55bGFiZWwoJ0FtcGxpdHVkZScsZm9udHNpemU9MTYpXG5wbHQudGlja19wYXJhbXMobGFiZWxzaXplPTE0KVxuZnQxPW5wLmZmdC5mZnQodGhldGExX25tMSlcbmZyZXEgPSBucC5mZnQuZmZ0ZnJlcSh0LnNoYXBlWy0xXSx0Wy0xXS90LnNoYXBlWy0xXSlcbnBsdC5wbG90KGZyZXFbOjEwMDBdLG5wLmFicyhmdDEpWzoxMDAwXSxsYWJlbD0nbm9ybWFsIG1vZGUgMScpXG5cbmZ0MT1ucC5mZnQuZmZ0KHRoZXRhMV9ubTIpXG5mcmVxID0gbnAuZmZ0LmZmdGZyZXEodC5zaGFwZVstMV0sdFstMV0vdC5zaGFwZVstMV0pXG5wbHQucGxvdChmcmVxWzoxMDAwXSxucC5hYnMoZnQxKVs6MTAwMF0sbGFiZWw9J25vcm1hbCBtb2RlIDInKVxuXG5mdDE9bnAuZmZ0LmZmdCh0aGV0YTFfYmVhdHMpXG5mcmVxID0gbnAuZmZ0LmZmdGZyZXEodC5zaGFwZVstMV0sdFstMV0vdC5zaGFwZVstMV0pXG5wbHQucGxvdChmcmVxWzoxMDAwXSxucC5hYnMoZnQxKVs6MTAwMF0sJ2stLScsbHc9MSxsYWJlbD0nYmVhdCBtb2RlJylcblxucGx0LmxlZ2VuZCgpXG5wbHQueGxpbSgwLjIsMC40KVxucGx0LnNob3coKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBEZWZpbmUgdGhlIGNvdXBsZWQgcGVuZHVsYSBzeXN0ZW0gKHNhbWUgYXMgaW4gcHJldmlvdXMgbGVjdHVyZSlcbmRlZiBjb3VwbGVkX3BlbmR1bGEoc3RhdGUsIHQsIEwxLCBMMiwgZywgbSwgYywgayk6XG4gICAgZzAgPSBzdGF0ZVsxXVxuICAgIGcxID0gLWcvTDEqbnAuc2luKHN0YXRlWzBdKSAtIGsqYyoqMi8obSpMMSoqMikqKG5wLnNpbihzdGF0ZVswXSktbnAuc2luKHN0YXRlWzJdKSlcbiAgICBnMiA9IHN0YXRlWzNdXG4gICAgZzMgPSAtZy9MMipucC5zaW4oc3RhdGVbMl0pICsgaypjKioyLyhtKkwyKioyKSoobnAuc2luKHN0YXRlWzBdKS1ucC5zaW4oc3RhdGVbMl0pKVxuICAgIHJldHVybiBucC5hcnJheShbZzAsIGcxLCBnMiwgZzNdKVxuXG4jIFBhcmFtZXRlcnNcbkwxID0gMyAgICAgIyBsZW5ndGggb2YgcGVuZHVsdW0gMVxuTDIgPSAzICAgICAjIGxlbmd0aCBvZiBwZW5kdWx1bSAyXG5nID0gOS44MSAgICMgZ3Jhdml0YXRpb25hbCBhY2NlbGVyYXRpb25cbm0gPSAxICAgICAgIyBtYXNzIGF0IGVhY2ggcGVuZHVsdW1cbmMgPSAyICAgICAgIyBjb3VwbGluZyBkaXN0YW5jZSBmcm9tIHRoZSBtb3VudFxuayA9IDAuNyAgICAjIGNvdXBsaW5nIHNwcmluZyBjb25zdGFudFxuXG4jIFRpbWUgYXJyYXlcbnRpbWUgPSA0MDAgICMgdG90YWwgdGltZSBpbiBzZWNvbmRzXG5OID0gMTAwMDAgICAjIG51bWJlciBvZiB0aW1lc3RlcHNcbnQgPSBucC5saW5zcGFjZSgwLCB0aW1lLCBOKVxuXG4jIENhc2UgMTogTm9ybWFsIG1vZGUgMSAoaW4tcGhhc2UpXG5zdGF0ZV9ubTEgPSBbbnAucGkvMTIsIDAuMCwgbnAucGkvMTIsIDAuMF1cbmFuc3dlcl9ubTEgPSBvZGVpbnQoY291cGxlZF9wZW5kdWxhLCBzdGF0ZV9ubTEsIHQsIGFyZ3M9KEwxLCBMMiwgZywgbSwgYywgaykpXG50aGV0YTFfbm0xID0gYW5zd2VyX25tMVs6LCAwXVxudGhldGEyX25tMSA9IGFuc3dlcl9ubTFbOiwgMl1cblxuIyBDYXNlIDI6IE5vcm1hbCBtb2RlIDIgKG91dC1vZi1waGFzZSlcbnN0YXRlX25tMiA9IFtucC5waS8xMiwgMC4wLCAtbnAucGkvMTIsIDAuMF1cbmFuc3dlcl9ubTIgPSBvZGVpbnQoY291cGxlZF9wZW5kdWxhLCBzdGF0ZV9ubTIsIHQsIGFyZ3M9KEwxLCBMMiwgZywgbSwgYywgaykpXG50aGV0YTFfbm0yID0gYW5zd2VyX25tMls6LCAwXVxudGhldGEyX25tMiA9IGFuc3dlcl9ubTJbOiwgMl1cblxuIyBDYXNlIDM6IEJlYXQgbW9kZVxuc3RhdGVfYmVhdHMgPSBbbnAucGkvMTIsIDAuMCwgMC4wLCAwLjBdXG5hbnN3ZXJfYmVhdHMgPSBvZGVpbnQoY291cGxlZF9wZW5kdWxhLCBzdGF0ZV9iZWF0cywgdCwgYXJncz0oTDEsIEwyLCBnLCBtLCBjLCBrKSlcbnRoZXRhMV9iZWF0cyA9IGFuc3dlcl9iZWF0c1s6LCAwXVxudGhldGEyX2JlYXRzID0gYW5zd2VyX2JlYXRzWzosIDJdXG5cbnByaW50KFwiRGF0YSBnZW5lcmF0ZWQgc3VjY2Vzc2Z1bGx5IVwiKVxucHJpbnQoZlwiVGltZSBzcGFuOiB7dGltZX0gc2Vjb25kcyB3aXRoIHtOfSBkYXRhIHBvaW50c1wiKVxucHJpbnQoZlwiVGltZSByZXNvbHV0aW9uOiB7dFsxXS10WzBdOi40Zn0gc2Vjb25kc1wiKSJ9
 </script>
 </div>
-<p>Our analysis reveals that the beat mode represents a superposition of the system’s two normal modes. This demonstrates a fundamental principle: any possible state of a coupled oscillator system can be constructed from a superposition of its normal modes with specific amplitudes.</p>
+</section>
+<section id="visualize-the-time-domain-signals-first" class="level3">
+<h3 class="anchored" data-anchor-id="visualize-the-time-domain-signals-first">Visualize the time-domain signals first</h3>
+<p>Before performing Fourier analysis, let’s look at the oscillations in the time domain:</p>
+<div>
+<div id="pyodide-5">
+
+</div>
+<script type="pyodide-5-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBQbG90IHRpbWUtZG9tYWluIHNpZ25hbHMgZm9yIHRoZSB0aHJlZSBjYXNlc1xuZmlnLCBheGVzID0gcGx0LnN1YnBsb3RzKDMsIDEsIGZpZ3NpemU9Z2V0X3NpemUoMjAsIDE2KSlcblxuIyBOb3JtYWwgbW9kZSAxIChpbi1waGFzZSlcbmF4ZXNbMF0ucGxvdCh0WzoyMDAwXSwgdGhldGExX25tMVs6MjAwMF0sICdiLScsIGx3PTEsIGxhYmVsPSdQZW5kdWx1bSAxJylcbmF4ZXNbMF0ucGxvdCh0WzoyMDAwXSwgdGhldGEyX25tMVs6MjAwMF0sICdyLS0nLCBsdz0xLCBsYWJlbD0nUGVuZHVsdW0gMicpXG5heGVzWzBdLnNldF94bGFiZWwoJ1RpbWUgW3NdJywgZm9udHNpemU9MTIpXG5heGVzWzBdLnNldF95bGFiZWwoJ0FuZ2xlIFtyYWRdJywgZm9udHNpemU9MTIpXG5heGVzWzBdLnNldF90aXRsZSgnTm9ybWFsIE1vZGUgMSAoSW4tcGhhc2UpOiBCb3RoIHBlbmR1bGEgb3NjaWxsYXRlIHRvZ2V0aGVyJywgZm9udHNpemU9MTMpXG5heGVzWzBdLmxlZ2VuZCgpXG5heGVzWzBdLmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxuXG4jIE5vcm1hbCBtb2RlIDIgKG91dC1vZi1waGFzZSlcbmF4ZXNbMV0ucGxvdCh0WzoyMDAwXSwgdGhldGExX25tMls6MjAwMF0sICdiLScsIGx3PTEsIGxhYmVsPSdQZW5kdWx1bSAxJylcbmF4ZXNbMV0ucGxvdCh0WzoyMDAwXSwgdGhldGEyX25tMls6MjAwMF0sICdyLS0nLCBsdz0xLCBsYWJlbD0nUGVuZHVsdW0gMicpXG5heGVzWzFdLnNldF94bGFiZWwoJ1RpbWUgW3NdJywgZm9udHNpemU9MTIpXG5heGVzWzFdLnNldF95bGFiZWwoJ0FuZ2xlIFtyYWRdJywgZm9udHNpemU9MTIpXG5heGVzWzFdLnNldF90aXRsZSgnTm9ybWFsIE1vZGUgMiAoT3V0LW9mLXBoYXNlKTogUGVuZHVsYSBvc2NpbGxhdGUgaW4gb3Bwb3NpdGUgZGlyZWN0aW9ucycsIGZvbnRzaXplPTEzKVxuYXhlc1sxXS5sZWdlbmQoKVxuYXhlc1sxXS5ncmlkKFRydWUsIGFscGhhPTAuMylcblxuIyBCZWF0IG1vZGVcbmF4ZXNbMl0ucGxvdCh0WzoyMDAwXSwgdGhldGExX2JlYXRzWzoyMDAwXSwgJ2ItJywgbHc9MSwgbGFiZWw9J1BlbmR1bHVtIDEnKVxuYXhlc1syXS5wbG90KHRbOjIwMDBdLCB0aGV0YTJfYmVhdHNbOjIwMDBdLCAnci0tJywgbHc9MSwgbGFiZWw9J1BlbmR1bHVtIDInKVxuYXhlc1syXS5zZXRfeGxhYmVsKCdUaW1lIFtzXScsIGZvbnRzaXplPTEyKVxuYXhlc1syXS5zZXRfeWxhYmVsKCdBbmdsZSBbcmFkXScsIGZvbnRzaXplPTEyKVxuYXhlc1syXS5zZXRfdGl0bGUoJ0JlYXQgTW9kZTogRW5lcmd5IG9zY2lsbGF0ZXMgYmV0d2VlbiBwZW5kdWxhJywgZm9udHNpemU9MTMpXG5heGVzWzJdLmxlZ2VuZCgpXG5heGVzWzJdLmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxuXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
+</script>
+</div>
+</section>
+<section id="perform-fourier-transform-and-visualize-frequency-spectra" class="level3">
+<h3 class="anchored" data-anchor-id="perform-fourier-transform-and-visualize-frequency-spectra">Perform Fourier transform and visualize frequency spectra</h3>
+<p>Now we perform the Fourier transform of our signals to see which frequencies are present:</p>
+<div>
+<div id="pyodide-6">
+
+</div>
+<script type="pyodide-6-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBDYWxjdWxhdGUgdGhlIGZyZXF1ZW5jeSBzcGVjdHJ1bSBmb3IgYWxsIHRocmVlIGNhc2VzXG5wbHQuZmlndXJlKGZpZ3NpemU9Z2V0X3NpemUoMjAsIDEyKSlcbnBsdC54bGFiZWwoJ0ZyZXF1ZW5jeSBbSHpdJywgZm9udHNpemU9MTQpXG5wbHQueWxhYmVsKCdBbXBsaXR1ZGUnLCBmb250c2l6ZT0xNClcbnBsdC50aWNrX3BhcmFtcyhsYWJlbHNpemU9MTIpXG5cbiMgTm9ybWFsIG1vZGUgMVxuZmZ0X25tMSA9IG5wLmZmdC5mZnQodGhldGExX25tMSlcbmZyZXEgPSBucC5mZnQuZmZ0ZnJlcShsZW4odCksIHRbMV0tdFswXSlcbnBsdC5wbG90KGZyZXFbOmxlbihmcmVxKS8vMl0sIG5wLmFicyhmZnRfbm0xKVs6bGVuKGZyZXEpLy8yXSwgJ2ItJywgbHc9MiwgbGFiZWw9J05vcm1hbCBtb2RlIDEgKGluLXBoYXNlKScpXG5cbiMgTm9ybWFsIG1vZGUgMlxuZmZ0X25tMiA9IG5wLmZmdC5mZnQodGhldGExX25tMilcbnBsdC5wbG90KGZyZXFbOmxlbihmcmVxKS8vMl0sIG5wLmFicyhmZnRfbm0yKVs6bGVuKGZyZXEpLy8yXSwgJ3ItJywgbHc9MiwgbGFiZWw9J05vcm1hbCBtb2RlIDIgKG91dC1vZi1waGFzZSknKVxuXG4jIEJlYXQgbW9kZVxuZmZ0X2JlYXRzID0gbnAuZmZ0LmZmdCh0aGV0YTFfYmVhdHMpXG5wbHQucGxvdChmcmVxWzpsZW4oZnJlcSkvLzJdLCBucC5hYnMoZmZ0X2JlYXRzKVs6bGVuKGZyZXEpLy8yXSwgJ2stLScsIGx3PTIsIGxhYmVsPSdCZWF0IG1vZGUnKVxuXG5wbHQubGVnZW5kKGZvbnRzaXplPTEyKVxucGx0LnhsaW0oMCwgMC41KVxucGx0LnRpdGxlKCdGcmVxdWVuY3kgc3BlY3RyYSBvZiBjb3VwbGVkIHBlbmR1bGEgb3NjaWxsYXRpb25zJywgZm9udHNpemU9MTQpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
+</script>
+</div>
+</section>
+<section id="compare-with-theoretical-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="compare-with-theoretical-predictions">Compare with theoretical predictions</h3>
+<p>Let’s calculate the theoretical normal mode frequencies and compare with our FFT results:</p>
+<div>
+<div id="pyodide-7">
+
+</div>
+<script type="pyodide-7-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBDYWxjdWxhdGUgdGhlb3JldGljYWwgZnJlcXVlbmNpZXMgKHNtYWxsIGFuZ2xlIGFwcHJveGltYXRpb24pXG5vbWVnYV8xID0gbnAuc3FydChnL0wxKSAgIyByYWQvc1xub21lZ2FfMiA9IG5wLnNxcnQoZy9MMSArIDIqaypjKioyLyhtKkwxKioyKSkgICMgcmFkL3NcblxuZjFfdGhlb3J5ID0gb21lZ2FfMSAvICgyKm5wLnBpKSAgIyBIelxuZjJfdGhlb3J5ID0gb21lZ2FfMiAvICgyKm5wLnBpKSAgIyBIelxuXG5wcmludChcIlRoZW9yZXRpY2FsIG5vcm1hbCBtb2RlIGZyZXF1ZW5jaWVzOlwiKVxucHJpbnQoZlwiICBNb2RlIDEgKGluLXBoYXNlKTogICAgIGbigoEgPSB7ZjFfdGhlb3J5Oi40Zn0gSHpcIilcbnByaW50KGZcIiAgTW9kZSAyIChvdXQtb2YtcGhhc2UpOiBm4oKCID0ge2YyX3RoZW9yeTouNGZ9IEh6XCIpXG5wcmludChmXCIgIEZyZXF1ZW5jeSBkaWZmZXJlbmNlOiAgzpRmID0ge2YyX3RoZW9yeSAtIGYxX3RoZW9yeTouNGZ9IEh6XCIpXG5cbiMgRmluZCBwZWFrcyBpbiBGRlQgdG8gY29tcGFyZSB3aXRoIHRoZW9yeVxuZGVmIGZpbmRfcGVha19mcmVxdWVuY3koZmZ0X2RhdGEsIGZyZXFfYXJyYXkpOlxuICAgIFwiXCJcIkZpbmQgdGhlIGZyZXF1ZW5jeSB3aXRoIG1heGltdW0gYW1wbGl0dWRlIGluIEZGVFwiXCJcIlxuICAgICMgT25seSBsb29rIGF0IHBvc2l0aXZlIGZyZXF1ZW5jaWVzIHVwIHRvIDAuNSBIelxuICAgIG1hc2sgPSAoZnJlcV9hcnJheSA+IDApICYgKGZyZXFfYXJyYXkgPCAwLjUpXG4gICAgcGVha19pZHggPSBucC5hcmdtYXgobnAuYWJzKGZmdF9kYXRhW21hc2tdKSlcbiAgICByZXR1cm4gZnJlcV9hcnJheVttYXNrXVtwZWFrX2lkeF1cblxuZjFfbWVhc3VyZWQgPSBmaW5kX3BlYWtfZnJlcXVlbmN5KGZmdF9ubTEsIGZyZXEpXG5mMl9tZWFzdXJlZCA9IGZpbmRfcGVha19mcmVxdWVuY3koZmZ0X25tMiwgZnJlcSlcblxucHJpbnQoXCJcXG5NZWFzdXJlZCBmcmVxdWVuY2llcyBmcm9tIEZGVDpcIilcbnByaW50KGZcIiAgTW9kZSAxIChpbi1waGFzZSk6ICAgICBm4oKBID0ge2YxX21lYXN1cmVkOi40Zn0gSHpcIilcbnByaW50KGZcIiAgTW9kZSAyIChvdXQtb2YtcGhhc2UpOiBm4oKCID0ge2YyX21lYXN1cmVkOi40Zn0gSHpcIilcbnByaW50KGZcIiAgRnJlcXVlbmN5IGRpZmZlcmVuY2U6ICDOlGYgPSB7ZjJfbWVhc3VyZWQgLSBmMV9tZWFzdXJlZDouNGZ9IEh6XCIpXG5cbnByaW50KFwiXFxuUmVsYXRpdmUgZXJyb3JzOlwiKVxucHJpbnQoZlwiICBNb2RlIDE6IHthYnMoZjFfbWVhc3VyZWQgLSBmMV90aGVvcnkpL2YxX3RoZW9yeSAqIDEwMDouMmZ9JVwiKVxucHJpbnQoZlwiICBNb2RlIDI6IHthYnMoZjJfbWVhc3VyZWQgLSBmMl90aGVvcnkpL2YyX3RoZW9yeSAqIDEwMDouMmZ9JVwiKSJ9
+</script>
+</div>
+</section>
+<section id="physical-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="physical-interpretation">Physical Interpretation</h3>
+<p><strong>Key observations:</strong></p>
+<ol type="1">
+<li><p><strong>Normal mode 1 (in-phase):</strong> The FFT shows a single peak at frequency <span class="math inline">\(f_1 \approx\)</span> 0.288 Hz. This corresponds to the natural frequency of an uncoupled pendulum <span class="math inline">\(\omega_1 = \sqrt{g/L}\)</span>.</p></li>
+<li><p><strong>Normal mode 2 (out-of-phase):</strong> The FFT shows a single peak at a higher frequency <span class="math inline">\(f_2 \approx\)</span> 0.295 Hz. The spring coupling increases the restoring force, resulting in faster oscillations.</p></li>
+<li><p><strong>Beat mode:</strong> The FFT shows <strong>two peaks</strong> at both <span class="math inline">\(f_1\)</span> and <span class="math inline">\(f_2\)</span>! This confirms that the beat motion is a <strong>superposition</strong> of the two normal modes. The energy oscillation between pendula (beats) occurs because these two frequency components interfere.</p></li>
+</ol>
+<p><strong>Fundamental principle:</strong> Any motion of a coupled oscillator system can be decomposed into a superposition of its normal modes with specific amplitudes and phases. The Fourier transform reveals this decomposition explicitly!</p>
+<p>This is analogous to how white light can be decomposed into its color spectrum, or how a musical chord can be decomposed into individual notes.</p>
 
 
 <script type="pyodide-data">
 eyJvcHRpb25zIjp7ImluZGV4VVJMIjoiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L3B5b2RpZGUvdjAuMjYuMS9mdWxsLyJ9LCJwYWNrYWdlcyI6eyJwa2dzIjpbInB5b2RpZGVfaHR0cCIsIm1pY3JvcGlwIiwiaXB5dGhvbiIsIm1hdHBsb3RsaWIiLCJudW1weSIsInNjaXB5Il19fQ==
 </script>
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl80ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzQgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzIgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoiX3B5b2RpZGVfdmFsdWVfMSA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRQeXRob24sIGI2NERlY29kZX0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcInB5b2RpZGUtMS1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBQeXRob24gY29kZVxuICBjb25zdCByZXN1bHQgPSBweW9kaWRlT2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjFcIiBpbiBweW9kaWRlT2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgcHl0aG9uXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFB5dGhvbihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHB5b2RpZGVPanMucmVuZGVyZWRPanNbXCIxXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIn0seyJjZWxsTmFtZSI6InB5b2RpZGUtcHJlbHVkZSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InB5b2RpZGVPanMgPSB7XG4gIGNvbnN0IHtcbiAgICBQeW9kaWRlRXZhbHVhdG9yLFxuICAgIFB5b2RpZGVFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBQeXRob24sXG4gICAgc3RhcnRQeW9kaWRlV29ya2VyLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGgsXG4gIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHN0YXR1c0NvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1zdGF0dXNcIik7XG4gIGNvbnN0IGluZGljYXRvckNvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGluZGljYXRvckNvbnRhaW5lci5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpO1xuXG4gIGxldCBzdGF0dXNUZXh0ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKVxuICBzdGF0dXNUZXh0LmNsYXNzTGlzdCA9IFwiZXhlcmNpc2UtbG9hZGluZy1kZXRhaWxzXCI7XG4gIHN0YXR1c1RleHQgPSBzdGF0dXNDb250YWluZXIuYXBwZW5kQ2hpbGQoc3RhdHVzVGV4dCk7XG4gIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5pdGlhbGlzZWA7XG5cbiAgLy8gSG9pc3QgaW5kaWNhdG9yIG91dCBmcm9tIGZpbmFsIHNsaWRlIHdoZW4gcnVubmluZyB1bmRlciByZXZlYWxcbiAgY29uc3QgcmV2ZWFsU3RhdHVzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgLmV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpZiAocmV2ZWFsU3RhdHVzKSB7XG4gICAgcmV2ZWFsU3RhdHVzLnJlbW92ZSgpO1xuICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsID4gLnNsaWRlc1wiKS5hcHBlbmRDaGlsZChyZXZlYWxTdGF0dXMpO1xuICB9XG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl83ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS03LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzcgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTYiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl82ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzYgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS01LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzUgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl80ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzQgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzIgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoiX3B5b2RpZGVfdmFsdWVfMSA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRQeXRob24sIGI2NERlY29kZX0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcInB5b2RpZGUtMS1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBQeXRob24gY29kZVxuICBjb25zdCByZXN1bHQgPSBweW9kaWRlT2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjFcIiBpbiBweW9kaWRlT2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgcHl0aG9uXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFB5dGhvbihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHB5b2RpZGVPanMucmVuZGVyZWRPanNbXCIxXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIn0seyJjZWxsTmFtZSI6InB5b2RpZGUtcHJlbHVkZSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InB5b2RpZGVPanMgPSB7XG4gIGNvbnN0IHtcbiAgICBQeW9kaWRlRXZhbHVhdG9yLFxuICAgIFB5b2RpZGVFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBQeXRob24sXG4gICAgc3RhcnRQeW9kaWRlV29ya2VyLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGgsXG4gIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHN0YXR1c0NvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1zdGF0dXNcIik7XG4gIGNvbnN0IGluZGljYXRvckNvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGluZGljYXRvckNvbnRhaW5lci5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpO1xuXG4gIGxldCBzdGF0dXNUZXh0ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKVxuICBzdGF0dXNUZXh0LmNsYXNzTGlzdCA9IFwiZXhlcmNpc2UtbG9hZGluZy1kZXRhaWxzXCI7XG4gIHN0YXR1c1RleHQgPSBzdGF0dXNDb250YWluZXIuYXBwZW5kQ2hpbGQoc3RhdHVzVGV4dCk7XG4gIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5pdGlhbGlzZWA7XG5cbiAgLy8gSG9pc3QgaW5kaWNhdG9yIG91dCBmcm9tIGZpbmFsIHNsaWRlIHdoZW4gcnVubmluZyB1bmRlciByZXZlYWxcbiAgY29uc3QgcmV2ZWFsU3RhdHVzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgLmV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpZiAocmV2ZWFsU3RhdHVzKSB7XG4gICAgcmV2ZWFsU3RhdHVzLnJlbW92ZSgpO1xuICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsID4gLnNsaWRlc1wiKS5hcHBlbmRDaGlsZChyZXZlYWxTdGF0dXMpO1xuICB9XG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
 </script>
 <div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
 <div id="exercise-loading-status" class="d-flex gap-2">
@@ -557,6 +697,7 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2RO
 <script type="vfs-file">
 W10=
 </script>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -970,6 +1111,15 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../lectures/lecture09/2_coupled_pendula.html" class="pagination-link" aria-label="Coupled Pendula">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Coupled Pendula</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
