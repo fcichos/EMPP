@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../seminars/seminar01/1_deep_learning.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -142,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Erstellung veröffentlichungsreifer Diagramme</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">🛠️ Hands-On Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar01/2_reinforcement_learning.html">Advanced Topics</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar06/25_publication_ready_figures.html">Publication-Ready Figures</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -428,13 +429,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true">
  <span class="menu-text">Advanced Topics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link">
@@ -445,6 +446,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../seminars/seminar01/1_deep_learning.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Advanced: Deep Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar06/25_publication_ready_figures.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Publication-Ready Figures</span></a>
   </div>
 </li>
       </ul>
@@ -465,13 +472,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#erstellen-eines-diagramms-mit-einer-bestimmten-achsenrahmengröße" id="toc-erstellen-eines-diagramms-mit-einer-bestimmten-achsenrahmengröße" class="nav-link" data-scroll-target="#erstellen-eines-diagramms-mit-einer-bestimmten-achsenrahmengröße">Erstellen eines Diagramms mit einer bestimmten Achsenrahmengröße</a></li>
   <li><a href="#auswahl-der-schriftarten" id="toc-auswahl-der-schriftarten" class="nav-link" data-scroll-target="#auswahl-der-schriftarten">Auswahl der Schriftarten</a></li>
   <li><a href="#ein-dokument-vorbereiten" id="toc-ein-dokument-vorbereiten" class="nav-link" data-scroll-target="#ein-dokument-vorbereiten">Ein Dokument vorbereiten</a></li>
+  <li><a href="#komplexe-layouts-mit-gridspec" id="toc-komplexe-layouts-mit-gridspec" class="nav-link" data-scroll-target="#komplexe-layouts-mit-gridspec">Komplexe Layouts mit GridSpec</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">🛠️ Hands-On Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar01/2_reinforcement_learning.html">Advanced Topics</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar06/25_publication_ready_figures.html">Publication-Ready Figures</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Erstellung veröffentlichungsreifer Diagramme</h1>
 </div>
@@ -517,7 +525,7 @@ plt.show()</code></pre>
 <li><p>Sie werden auch feststellen, dass die Arbeit mit dieser Abbildungsgröße in einem Jupyter-Notebook nicht gut ist. Das hat damit zu tun, wie Jupyter die Ausgabe in eine PNG-Datei übersetzt, die inline angezeigt wird. Eine Möglichkeit, den Plot im Jupyter-Notebook zu vergrößern, aber die PDF-Größe beizubehalten, besteht darin, den Parameter <strong>dpi</strong> im Befehl <code>plt.figure(figsize=(3,2), dpi=150)</code> zu erhöhen. Normalerweise ist er auf dpi=75 eingestellt, was jetzt viel zu klein ist. Eine Einstellung von dpi=150 scheint ein vernünftiger Kompromiss zwischen Bildschirm- und Druckgröße zu sein. Wenn Sie völlig unabhängig sein wollen</p></li>
 <li><p>Der Befehl <code>plt.savefig</code> verwendet einen zusätzlichen <code>bbox_inches = 'tight'</code> Parameter, der sicherstellt, dass die Boundingbox auch wirklich alle Komponenten des Plots genau umschließt.</p></li>
 </ul>
-<div id="4b074990" class="cell" data-edit="false" data-execute="true" data-execution_count="1">
+<div id="b4aba8ea" class="cell" data-edit="false" data-execute="true" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.font_manager <span class="im">as</span> font_manager</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span>
@@ -525,12 +533,12 @@ plt.show()</code></pre>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> directory_tree <span class="im">import</span> display_tree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="5c2354f9" class="cell" data-autorun="false" data-execution_count="2">
+<div id="2483048c" class="cell" data-autorun="false" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.size'</span>: <span class="dv">12</span>,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'lines.linewidth'</span>: <span class="dv">1</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'lines.markersize'</span>: <span class="dv">10</span>,</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'axes.labelsize'</span>: <span class="dv">11</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'xtick.labelsize'</span> : <span class="dv">10</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'axes.labelpad'</span>: <span class="dv">0</span>,</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ytick.labelsize'</span> : <span class="dv">10</span>,</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'xtick.top'</span> : <span class="va">True</span>,</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'xtick.direction'</span> : <span class="st">'in'</span>,</span>
@@ -538,11 +546,11 @@ plt.show()</code></pre>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ytick.direction'</span> : <span class="st">'in'</span>,</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'figure.dpi'</span>: <span class="dv">150</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="826b47ef" class="cell" data-autorun="false" data-execution_count="3">
+<div id="32d22498" class="cell" data-autorun="false" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_size(w,h):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>((w<span class="op">/</span><span class="fl">2.54</span>,h<span class="op">/</span><span class="fl">2.54</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8b59c169" class="cell" data-autorun="false" data-execution_count="4">
+<div id="1f14d775" class="cell" data-autorun="false" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>get_size(<span class="dv">7</span>,<span class="dv">6</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="dv">0</span>,np.pi<span class="op">*</span><span class="dv">4</span>,<span class="dv">200</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x,np.sin(x),color<span class="op">=</span><span class="st">'k'</span>)</span>
@@ -554,7 +562,7 @@ plt.show()</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="25_publication_ready_figures_files/figure-html/cell-5-output-1.png" width="387" height="328" class="figure-img"></p>
+<p><img src="25_publication_ready_figures_files/figure-html/cell-5-output-1.png" width="387" height="327" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -585,7 +593,7 @@ Figure&nbsp;1
     figh = float(h)/(t-b)
     ax.figure.set_size_inches(figw, figh)</code></pre>
 <p>wobei Sie die gewünschte Breite und Höhe (in Zoll) der aktuellen Achse <em>ax</em> angeben müssen. Die Funktion gibt nichts zurück, sondern legt direkt die Größe fest.</p>
-<div id="c860984a" class="cell" data-autorun="false" data-execution_count="5">
+<div id="e65fa288" class="cell" data-autorun="false" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_size(w,h, ax<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" w, h: width, height in inches """</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> ax: ax<span class="op">=</span>plt.gca()</span>
@@ -608,7 +616,7 @@ Figure&nbsp;1
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="25_publication_ready_figures_files/figure-html/cell-6-output-1.png" width="568" height="391" class="figure-img"></p>
+<p><img src="25_publication_ready_figures_files/figure-html/cell-6-output-1.png" width="565" height="385" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -619,7 +627,7 @@ Figure&nbsp;1
 <section id="auswahl-der-schriftarten" class="level2">
 <h2 class="anchored" data-anchor-id="auswahl-der-schriftarten">Auswahl der Schriftarten</h2>
 <p>Matplotlib kann auf eine Reihe von verschiedenen Schriftarten zugreifen. Es kann schwierig sein, die passende Schriftart für den Formelstil Ihres Dokuments oder Ihrer Publikation zu finden. Eine Liste der Schriftarten, die Matplotlib zur Verfügung stehen, kann mit dem folgenden Codeschnipsel abgerufen werden, den ich <a href="https://jonathansoma.com/lede/data-studio/matplotlib/list-all-fonts-available-in-matplotlib-plus-samples/">hier</a> gefunden habe.</p>
-<div id="b0eb29e2" class="cell" data-autorun="false" data-execution_count="6">
+<div id="6590e31c" class="cell" data-autorun="false" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML, display</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_html(fontname):</span>
@@ -1067,12 +1075,12 @@ Figure&nbsp;1
 </div>
 </div>
 <p>Falls Sie Ihr Dokument in <em>LaTeX</em> schreiben, könnten die <strong>cmXXXX</strong>-Schriften für Sie von Interesse sein, da sie den in <em>LaTeX</em>-Dokumenten verwendeten Schriften entsprechen. Hier ist ein Beispiel:</p>
-<div id="662213f4" class="cell" data-autorun="false" data-execution_count="7">
+<div id="442c8ba4" class="cell" data-autorun="false" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cmfont <span class="op">=</span> font_manager.FontProperties(fname<span class="op">=</span>mpl.get_data_path() <span class="op">+</span> <span class="st">'/fonts/ttf/cmr10.ttf'</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.size'</span>: <span class="dv">12</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'axes.titlesize'</span>: <span class="dv">12</span>,</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'axes.labelsize'</span>: <span class="dv">12</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'axes.labelpad'</span>: <span class="dv">12</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'axes.labelpad'</span>: <span class="dv">5</span>,</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'lines.linewidth'</span>: <span class="dv">1</span>,</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'lines.markersize'</span>: <span class="dv">10</span>,</span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'xtick.labelsize'</span> : <span class="dv">10</span>,</span>
@@ -1088,10 +1096,10 @@ Figure&nbsp;1
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'mathtext.fontset'</span> : <span class="st">'cm'</span></span>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>                    })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="c714ea16" class="cell" data-autorun="false" data-execution_count="8">
+<div id="46ac3249" class="cell" data-autorun="false" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="dv">0</span>,np.pi,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="1bbcb67f" class="cell" data-autorun="false" data-execution_count="9">
+<div id="6ba3a5d5" class="cell" data-autorun="false" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>get_size(<span class="dv">6</span>,<span class="dv">5</span>),dpi<span class="op">=</span><span class="dv">150</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,np.sin(x))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r"velocity </span><span class="dv">$</span><span class="vs">v</span><span class="dv">$</span><span class="vs">"</span>)</span>
@@ -1100,7 +1108,7 @@ Figure&nbsp;1
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="25_publication_ready_figures_files/figure-html/cell-10-output-1.png" width="395" height="330" class="figure-img"></p>
+<p><img src="25_publication_ready_figures_files/figure-html/cell-10-output-1.png" width="381" height="315" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1109,7 +1117,7 @@ Figure&nbsp;1
 <section id="ein-dokument-vorbereiten" class="level2">
 <h2 class="anchored" data-anchor-id="ein-dokument-vorbereiten">Ein Dokument vorbereiten</h2>
 <p>Wenn man ein Dokument (Bachelorarbeit z.B.) erstellt, ist es nützlich, seine Daten und Texte geschickt zur organisieren, um sich Arbeit zu ersparen. Hier ist ein Beipiel,</p>
-<div id="1bcf7e1f" class="cell" data-autorun="false" data-execution_count="10">
+<div id="6fb962d0" class="cell" data-autorun="false" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>display_tree(<span class="st">"Report"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Report/
@@ -1218,10 +1226,70 @@ Figure&nbsp;1
     └── paperNotes.bib</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_13178/929351223.py:1: DeprecationWarning: The `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is "31st December 2024".
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_16849/929351223.py:1: DeprecationWarning: The `display_tree` Function is Deprecated and will be Removed in a Future Release. Please use `DirectoryTree` Instead. End of Life Date is "31st December 2024".
   display_tree("Report")</code></pre>
 </div>
 </div>
+</section>
+<section id="komplexe-layouts-mit-gridspec" class="level2">
+<h2 class="anchored" data-anchor-id="komplexe-layouts-mit-gridspec">Komplexe Layouts mit GridSpec</h2>
+<p>Wenn Sie mehrere Teildiagramme in einer Abbildung kombinieren möchten, bietet <strong>GridSpec</strong> eine flexible Möglichkeit, Layouts zu erstellen, bei denen einzelne Achsen unterschiedliche Größen haben können. GridSpec definiert ein Gitter, über das sich Achsen über mehrere Zeilen oder Spalten erstrecken können.</p>
+<p>Hier ist ein einfaches Beispiel mit drei Teildiagrammen:</p>
+<div id="3283db6b" class="cell" data-autorun="false" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> gridspec</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Figurgröße für zweispaltiges Layout</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>get_size(<span class="dv">14</span>, <span class="dv">10</span>), dpi<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># GridSpec mit 2 Zeilen und 2 Spalten erstellen</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> gridspec.GridSpec(<span class="dv">2</span>, <span class="dv">2</span>, figure<span class="op">=</span>fig, hspace<span class="op">=</span><span class="fl">0.5</span>, wspace<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Daten für Plots vorbereiten</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">200</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Erster Plot: nimmt beide Spalten der ersten Zeile ein</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, :])</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>ax1.plot(x, np.sin(x), <span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'sin(x)'</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="vs">r"Winkel </span><span class="dv">$</span><span class="ch">\t</span><span class="vs">heta</span><span class="dv">$</span><span class="vs"> </span><span class="pp">[rad]</span><span class="vs">"</span>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="vs">r"</span><span class="dv">$\s</span><span class="vs">in</span><span class="kw">(</span><span class="ch">\t</span><span class="vs">heta</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>ax1.legend()</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Zweiter Plot: linke untere Zelle</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(gs[<span class="dv">1</span>, <span class="dv">0</span>])</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>ax2.plot(x, np.cos(x), <span class="st">'r-'</span>, label<span class="op">=</span><span class="st">'cos(x)'</span>)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="vs">r"Winkel </span><span class="dv">$</span><span class="ch">\t</span><span class="vs">heta</span><span class="dv">$</span><span class="vs"> </span><span class="pp">[rad]</span><span class="vs">"</span>)</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="vs">r"</span><span class="dv">$</span><span class="er">\</span><span class="vs">cos</span><span class="kw">(</span><span class="ch">\t</span><span class="vs">heta</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>ax2.legend()</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Dritter Plot: rechte untere Zelle</span></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> fig.add_subplot(gs[<span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>ax3.plot(x, np.tan(x), <span class="st">'g-'</span>, label<span class="op">=</span><span class="st">'tan(x)'</span>)</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>ax3.set_xlabel(<span class="vs">r"Winkel </span><span class="dv">$</span><span class="ch">\t</span><span class="vs">heta</span><span class="dv">$</span><span class="vs"> </span><span class="pp">[rad]</span><span class="vs">"</span>)</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>ax3.set_ylabel(<span class="vs">r"</span><span class="dv">$</span><span class="ch">\t</span><span class="vs">an</span><span class="kw">(</span><span class="ch">\t</span><span class="vs">heta</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>ax3.set_ylim(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>ax3.legend()</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"figure_gridspec.pdf"</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, transparent<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="25_publication_ready_figures_files/figure-html/cell-12-output-1.png" width="739" height="545" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In diesem Beispiel:</p>
+<ul>
+<li>Der erste Plot (<code>ax1</code>) erstreckt sich über die gesamte obere Zeile mit <code>gs[0, :]</code></li>
+<li>Der zweite Plot (<code>ax2</code>) befindet sich in der linken unteren Zelle mit <code>gs[1, 0]</code></li>
+<li>Der dritte Plot (<code>ax3</code>) befindet sich in der rechten unteren Zelle mit <code>gs[1, 1]</code></li>
+<li>Die Parameter <code>hspace</code> und <code>wspace</code> steuern den vertikalen und horizontalen Abstand zwischen den Teildiagrammen</li>
+</ul>
+<p>Diese Methode ist besonders nützlich, wenn Sie eine Hauptabbildung mit mehreren kleineren Detail-Plots kombinieren möchten, während Sie gleichzeitig die exakte Größe der gesamten Abbildung kontrollieren.</p>
 
 
 <script type="ojs-module-contents">
@@ -1651,6 +1719,15 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../seminars/seminar01/1_deep_learning.html" class="pagination-link" aria-label="Advanced: Deep Learning">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Advanced: Deep Learning</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
