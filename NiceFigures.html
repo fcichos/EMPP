@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>nicefigures – Einführung in die Modellierung Physikalischer Prozesse</title>
+<title>Protokoll zum Versuch: “Optisches Pumpen” – Einführung in die Modellierung Physikalischer Prozesse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -106,10 +106,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -142,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Protokoll zum Versuch: “Optisches Pumpen”</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -416,25 +442,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
- <span class="menu-text">🛠️ Hands-On Seminars</span></a>
+ <span class="menu-text">📊 Week 10: Analyzing Experiments</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lectures/lecture07/1_curve_fitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curve Fitting to Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
- <span class="menu-text">Advanced Topics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true">
+ <span class="menu-text">🛠️ Hands-On Seminars</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Advanced Topics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link">
@@ -447,10 +490,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Advanced: Deep Learning</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Other Seminar Topics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./seminars/seminar06/25_publication_ready_figures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Publication-Ready Figures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seminars/seminar07/seminar7_curve_fitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curve Fitting</span></a>
   </div>
 </li>
       </ul>
@@ -462,16 +522,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#einleitung" id="toc-einleitung" class="nav-link active" data-scroll-target="#einleitung">Einleitung</a></li>
+  <li><a href="#resultate" id="toc-resultate" class="nav-link" data-scroll-target="#resultate">Resultate</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Protokoll zum Versuch: “Optisches Pumpen”</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<div id="31dc8fcd-fb8f-45f4-8032-26a58484c3c9" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[&quot;hide-input&quot;]" data-execution_count="6">
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Author: Heinz Georg Mauser</p>
+<div id="31dc8fcd-fb8f-45f4-8032-26a58484c3c9" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[&quot;hide-input&quot;]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.font_manager <span class="im">as</span> font_manager</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span>
@@ -479,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> directory_tree <span class="im">import</span> display_tree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="88556946-a26a-4d9a-b487-26e3765d0abd" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[&quot;hide-input&quot;]" data-execution_count="7">
+<div id="88556946-a26a-4d9a-b487-26e3765d0abd" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[&quot;hide-input&quot;]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.size'</span>: <span class="dv">12</span>,</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'lines.linewidth'</span>: <span class="dv">1</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'lines.markersize'</span>: <span class="dv">10</span>,</span>
@@ -492,10 +576,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ytick.direction'</span> : <span class="st">'in'</span>,</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'figure.dpi'</span>: <span class="dv">150</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="80981901-5875-48af-822a-2177a5cd96b8" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[&quot;hide-input&quot;]" data-execution_count="8">
+<div id="80981901-5875-48af-822a-2177a5cd96b8" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[&quot;hide-input&quot;]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_size(w,h):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>((w<span class="op">/</span><span class="fl">2.54</span>,h<span class="op">/</span><span class="fl">2.54</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="einleitung" class="level2">
+<h2 class="anchored" data-anchor-id="einleitung">Einleitung</h2>
+<p>Dieser Versuch beschäftigt sich mit optisch induzierter magnetischer Resonanz.</p>
+<p>Dazu brauchen wir ein Magnetfeld <span class="math inline">\(\vec{B}\)</span>, das durch Helmholtz Spulen erzeugt wird.</p>
+<p><span class="math display">\[
+\vec{B}=c\frac{I}{r^4}
+\]</span></p>
+</section>
+<section id="resultate" class="level2">
+<h2 class="anchored" data-anchor-id="resultate">Resultate</h2>
 <div id="0e5b4148-205c-42ff-a81f-eb1a3570893b" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>get_size(<span class="dv">7</span>,<span class="dv">5</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="dv">0</span>,np.pi<span class="op">*</span><span class="dv">4</span>,<span class="dv">200</span>)</span>
@@ -542,368 +636,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="e6abb314-0b7a-4982-baef-a3654092b7d5" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML, display</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_html(fontname):</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"&lt;p&gt;</span><span class="sc">{font}</span><span class="st">: &lt;span style='font-family:</span><span class="sc">{font}</span><span class="st">; font-size: 24px;'&gt;</span><span class="sc">{font}</span><span class="st">&lt;/p&gt;"</span>.<span class="bu">format</span>(font<span class="op">=</span>fontname)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>code <span class="op">=</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join([make_html(font) <span class="cf">for</span> font <span class="kw">in</span> <span class="bu">sorted</span>(<span class="bu">set</span>([f.name <span class="cf">for</span> f <span class="kw">in</span> font_manager.fontManager.ttflist]))])</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>display(HTML(<span class="st">"&lt;div style='column-count: 2;'&gt;</span><span class="sc">{}</span><span class="st">&lt;/div&gt;"</span>.<span class="bu">format</span>(code)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a96f42d4-05ab-4a33-9631-bb943e9499cb" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cmfont <span class="op">=</span> font_manager.FontProperties(fname<span class="op">=</span>mpl.get_data_path() <span class="op">+</span> <span class="st">'/fonts/ttf/cmr10.ttf'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.size'</span>: <span class="dv">12</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'axes.titlesize'</span>: <span class="dv">12</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'axes.labelsize'</span>: <span class="dv">12</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'axes.labelpad'</span>: <span class="dv">4</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'lines.linewidth'</span>: <span class="dv">1</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'lines.markersize'</span>: <span class="dv">10</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'xtick.labelsize'</span> : <span class="dv">10</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ytick.labelsize'</span> : <span class="dv">10</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'xtick.top'</span> : <span class="va">True</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'xtick.direction'</span> : <span class="st">'in'</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ytick.right'</span> : <span class="va">True</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ytick.direction'</span> : <span class="st">'in'</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'font.family'</span> : <span class="st">'serif'</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'font.serif'</span> : cmfont.get_name(),</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"axes.formatter.use_mathtext"</span>: <span class="va">True</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'text.usetex'</span>: <span class="va">True</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'mathtext.fontset'</span> : <span class="st">'cm'</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                    })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="bd998c2d-e34a-4da1-837c-4000bb23084b" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="dv">0</span>,np.pi,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="4f3d6a39-7162-4ad7-ba3b-ba1565347107" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>get_size(<span class="dv">6</span>,<span class="dv">5</span>),dpi<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,np.sin(x))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r"velocity </span><span class="dv">$</span><span class="vs">v</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r"position </span><span class="dv">$</span><span class="vs">r</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div style="column-count: 2;"><p>.Aqua Kana: <span style="font-family:.Aqua Kana; font-size: 24px;">.Aqua Kana</span></p>
-<p>.CJK Symbols Fallback HK: <span style="font-family:.CJK Symbols Fallback HK; font-size: 24px;">.CJK Symbols Fallback HK</span></p>
-<p>.Keyboard: <span style="font-family:.Keyboard; font-size: 24px;">.Keyboard</span></p>
-<p>.New York: <span style="font-family:.New York; font-size: 24px;">.New York</span></p>
-<p>.SF Arabic: <span style="font-family:.SF Arabic; font-size: 24px;">.SF Arabic</span></p>
-<p>.SF Arabic Rounded: <span style="font-family:.SF Arabic Rounded; font-size: 24px;">.SF Arabic Rounded</span></p>
-<p>.SF Armenian: <span style="font-family:.SF Armenian; font-size: 24px;">.SF Armenian</span></p>
-<p>.SF Armenian Rounded: <span style="font-family:.SF Armenian Rounded; font-size: 24px;">.SF Armenian Rounded</span></p>
-<p>.SF Camera: <span style="font-family:.SF Camera; font-size: 24px;">.SF Camera</span></p>
-<p>.SF Compact: <span style="font-family:.SF Compact; font-size: 24px;">.SF Compact</span></p>
-<p>.SF Compact Rounded: <span style="font-family:.SF Compact Rounded; font-size: 24px;">.SF Compact Rounded</span></p>
-<p>.SF Georgian: <span style="font-family:.SF Georgian; font-size: 24px;">.SF Georgian</span></p>
-<p>.SF Georgian Rounded: <span style="font-family:.SF Georgian Rounded; font-size: 24px;">.SF Georgian Rounded</span></p>
-<p>.SF Hebrew: <span style="font-family:.SF Hebrew; font-size: 24px;">.SF Hebrew</span></p>
-<p>.SF Hebrew Rounded: <span style="font-family:.SF Hebrew Rounded; font-size: 24px;">.SF Hebrew Rounded</span></p>
-<p>.SF NS Mono: <span style="font-family:.SF NS Mono; font-size: 24px;">.SF NS Mono</span></p>
-<p>.SF NS Rounded: <span style="font-family:.SF NS Rounded; font-size: 24px;">.SF NS Rounded</span></p>
-<p>.SF Soft Numeric: <span style="font-family:.SF Soft Numeric; font-size: 24px;">.SF Soft Numeric</span></p>
-<p>.ThonburiUI: <span style="font-family:.ThonburiUI; font-size: 24px;">.ThonburiUI</span></p>
-<p>Academy Engraved LET: <span style="font-family:Academy Engraved LET; font-size: 24px;">Academy Engraved LET</span></p>
-<p>Agency FB: <span style="font-family:Agency FB; font-size: 24px;">Agency FB</span></p>
-<p>Al Bayan: <span style="font-family:Al Bayan; font-size: 24px;">Al Bayan</span></p>
-<p>Al Nile: <span style="font-family:Al Nile; font-size: 24px;">Al Nile</span></p>
-<p>Al Tarikh: <span style="font-family:Al Tarikh; font-size: 24px;">Al Tarikh</span></p>
-<p>American Typewriter: <span style="font-family:American Typewriter; font-size: 24px;">American Typewriter</span></p>
-<p>Andale Mono: <span style="font-family:Andale Mono; font-size: 24px;">Andale Mono</span></p>
-<p>Apple Braille: <span style="font-family:Apple Braille; font-size: 24px;">Apple Braille</span></p>
-<p>Apple Chancery: <span style="font-family:Apple Chancery; font-size: 24px;">Apple Chancery</span></p>
-<p>Apple SD Gothic Neo: <span style="font-family:Apple SD Gothic Neo; font-size: 24px;">Apple SD Gothic Neo</span></p>
-<p>Apple Symbols: <span style="font-family:Apple Symbols; font-size: 24px;">Apple Symbols</span></p>
-<p>AppleGothic: <span style="font-family:AppleGothic; font-size: 24px;">AppleGothic</span></p>
-<p>AppleMyungjo: <span style="font-family:AppleMyungjo; font-size: 24px;">AppleMyungjo</span></p>
-<p>Arial: <span style="font-family:Arial; font-size: 24px;">Arial</span></p>
-<p>Arial Black: <span style="font-family:Arial Black; font-size: 24px;">Arial Black</span></p>
-<p>Arial Hebrew: <span style="font-family:Arial Hebrew; font-size: 24px;">Arial Hebrew</span></p>
-<p>Arial Narrow: <span style="font-family:Arial Narrow; font-size: 24px;">Arial Narrow</span></p>
-<p>Arial Rounded MT Bold: <span style="font-family:Arial Rounded MT Bold; font-size: 24px;">Arial Rounded MT Bold</span></p>
-<p>Arial Unicode MS: <span style="font-family:Arial Unicode MS; font-size: 24px;">Arial Unicode MS</span></p>
-<p>Artifakt Element: <span style="font-family:Artifakt Element; font-size: 24px;">Artifakt Element</span></p>
-<p>Athelas: <span style="font-family:Athelas; font-size: 24px;">Athelas</span></p>
-<p>Avenir: <span style="font-family:Avenir; font-size: 24px;">Avenir</span></p>
-<p>Avenir Next: <span style="font-family:Avenir Next; font-size: 24px;">Avenir Next</span></p>
-<p>Avenir Next Condensed: <span style="font-family:Avenir Next Condensed; font-size: 24px;">Avenir Next Condensed</span></p>
-<p>Ayuthaya: <span style="font-family:Ayuthaya; font-size: 24px;">Ayuthaya</span></p>
-<p>Baghdad: <span style="font-family:Baghdad; font-size: 24px;">Baghdad</span></p>
-<p>Bangla MN: <span style="font-family:Bangla MN; font-size: 24px;">Bangla MN</span></p>
-<p>Bangla Sangam MN: <span style="font-family:Bangla Sangam MN; font-size: 24px;">Bangla Sangam MN</span></p>
-<p>Baskerville: <span style="font-family:Baskerville; font-size: 24px;">Baskerville</span></p>
-<p>Beirut: <span style="font-family:Beirut; font-size: 24px;">Beirut</span></p>
-<p>Big Caslon: <span style="font-family:Big Caslon; font-size: 24px;">Big Caslon</span></p>
-<p>Bodoni 72: <span style="font-family:Bodoni 72; font-size: 24px;">Bodoni 72</span></p>
-<p>Bodoni 72 Oldstyle: <span style="font-family:Bodoni 72 Oldstyle; font-size: 24px;">Bodoni 72 Oldstyle</span></p>
-<p>Bodoni 72 Smallcaps: <span style="font-family:Bodoni 72 Smallcaps; font-size: 24px;">Bodoni 72 Smallcaps</span></p>
-<p>Bodoni Ornaments: <span style="font-family:Bodoni Ornaments; font-size: 24px;">Bodoni Ornaments</span></p>
-<p>Bradley Hand: <span style="font-family:Bradley Hand; font-size: 24px;">Bradley Hand</span></p>
-<p>Brush Script MT: <span style="font-family:Brush Script MT; font-size: 24px;">Brush Script MT</span></p>
-<p>Chalkboard: <span style="font-family:Chalkboard; font-size: 24px;">Chalkboard</span></p>
-<p>Chalkboard SE: <span style="font-family:Chalkboard SE; font-size: 24px;">Chalkboard SE</span></p>
-<p>Chalkduster: <span style="font-family:Chalkduster; font-size: 24px;">Chalkduster</span></p>
-<p>Charter: <span style="font-family:Charter; font-size: 24px;">Charter</span></p>
-<p>Cochin: <span style="font-family:Cochin; font-size: 24px;">Cochin</span></p>
-<p>Comic Sans MS: <span style="font-family:Comic Sans MS; font-size: 24px;">Comic Sans MS</span></p>
-<p>Copperplate: <span style="font-family:Copperplate; font-size: 24px;">Copperplate</span></p>
-<p>Corsiva Hebrew: <span style="font-family:Corsiva Hebrew; font-size: 24px;">Corsiva Hebrew</span></p>
-<p>Courier: <span style="font-family:Courier; font-size: 24px;">Courier</span></p>
-<p>Courier New: <span style="font-family:Courier New; font-size: 24px;">Courier New</span></p>
-<p>DIN Alternate: <span style="font-family:DIN Alternate; font-size: 24px;">DIN Alternate</span></p>
-<p>DIN Condensed: <span style="font-family:DIN Condensed; font-size: 24px;">DIN Condensed</span></p>
-<p>Damascus: <span style="font-family:Damascus; font-size: 24px;">Damascus</span></p>
-<p>DecoType Naskh: <span style="font-family:DecoType Naskh; font-size: 24px;">DecoType Naskh</span></p>
-<p>DejaVu Sans: <span style="font-family:DejaVu Sans; font-size: 24px;">DejaVu Sans</span></p>
-<p>DejaVu Sans Display: <span style="font-family:DejaVu Sans Display; font-size: 24px;">DejaVu Sans Display</span></p>
-<p>DejaVu Sans Mono: <span style="font-family:DejaVu Sans Mono; font-size: 24px;">DejaVu Sans Mono</span></p>
-<p>DejaVu Serif: <span style="font-family:DejaVu Serif; font-size: 24px;">DejaVu Serif</span></p>
-<p>DejaVu Serif Display: <span style="font-family:DejaVu Serif Display; font-size: 24px;">DejaVu Serif Display</span></p>
-<p>Devanagari MT: <span style="font-family:Devanagari MT; font-size: 24px;">Devanagari MT</span></p>
-<p>Devanagari Sangam MN: <span style="font-family:Devanagari Sangam MN; font-size: 24px;">Devanagari Sangam MN</span></p>
-<p>Didot: <span style="font-family:Didot; font-size: 24px;">Didot</span></p>
-<p>Diwan Kufi: <span style="font-family:Diwan Kufi; font-size: 24px;">Diwan Kufi</span></p>
-<p>Diwan Thuluth: <span style="font-family:Diwan Thuluth; font-size: 24px;">Diwan Thuluth</span></p>
-<p>Euphemia UCAS: <span style="font-family:Euphemia UCAS; font-size: 24px;">Euphemia UCAS</span></p>
-<p>Farah: <span style="font-family:Farah; font-size: 24px;">Farah</span></p>
-<p>Farisi: <span style="font-family:Farisi; font-size: 24px;">Farisi</span></p>
-<p>Futura: <span style="font-family:Futura; font-size: 24px;">Futura</span></p>
-<p>Galvji: <span style="font-family:Galvji; font-size: 24px;">Galvji</span></p>
-<p>Geeza Pro: <span style="font-family:Geeza Pro; font-size: 24px;">Geeza Pro</span></p>
-<p>Geneva: <span style="font-family:Geneva; font-size: 24px;">Geneva</span></p>
-<p>Georgia: <span style="font-family:Georgia; font-size: 24px;">Georgia</span></p>
-<p>Gill Sans: <span style="font-family:Gill Sans; font-size: 24px;">Gill Sans</span></p>
-<p>Gujarati MT: <span style="font-family:Gujarati MT; font-size: 24px;">Gujarati MT</span></p>
-<p>Gujarati Sangam MN: <span style="font-family:Gujarati Sangam MN; font-size: 24px;">Gujarati Sangam MN</span></p>
-<p>Gurmukhi MN: <span style="font-family:Gurmukhi MN; font-size: 24px;">Gurmukhi MN</span></p>
-<p>Gurmukhi MT: <span style="font-family:Gurmukhi MT; font-size: 24px;">Gurmukhi MT</span></p>
-<p>Gurmukhi Sangam MN: <span style="font-family:Gurmukhi Sangam MN; font-size: 24px;">Gurmukhi Sangam MN</span></p>
-<p>Heiti TC: <span style="font-family:Heiti TC; font-size: 24px;">Heiti TC</span></p>
-<p>Helvetica: <span style="font-family:Helvetica; font-size: 24px;">Helvetica</span></p>
-<p>Helvetica Neue: <span style="font-family:Helvetica Neue; font-size: 24px;">Helvetica Neue</span></p>
-<p>Herculanum: <span style="font-family:Herculanum; font-size: 24px;">Herculanum</span></p>
-<p>Hiragino Maru Gothic Pro: <span style="font-family:Hiragino Maru Gothic Pro; font-size: 24px;">Hiragino Maru Gothic Pro</span></p>
-<p>Hiragino Mincho ProN: <span style="font-family:Hiragino Mincho ProN; font-size: 24px;">Hiragino Mincho ProN</span></p>
-<p>Hiragino Sans: <span style="font-family:Hiragino Sans; font-size: 24px;">Hiragino Sans</span></p>
-<p>Hiragino Sans GB: <span style="font-family:Hiragino Sans GB; font-size: 24px;">Hiragino Sans GB</span></p>
-<p>Hoefler Text: <span style="font-family:Hoefler Text; font-size: 24px;">Hoefler Text</span></p>
-<p>ITF Devanagari: <span style="font-family:ITF Devanagari; font-size: 24px;">ITF Devanagari</span></p>
-<p>Impact: <span style="font-family:Impact; font-size: 24px;">Impact</span></p>
-<p>InaiMathi: <span style="font-family:InaiMathi; font-size: 24px;">InaiMathi</span></p>
-<p>Iowan Old Style: <span style="font-family:Iowan Old Style; font-size: 24px;">Iowan Old Style</span></p>
-<p>Kailasa: <span style="font-family:Kailasa; font-size: 24px;">Kailasa</span></p>
-<p>Kannada MN: <span style="font-family:Kannada MN; font-size: 24px;">Kannada MN</span></p>
-<p>Kannada Sangam MN: <span style="font-family:Kannada Sangam MN; font-size: 24px;">Kannada Sangam MN</span></p>
-<p>Kefa: <span style="font-family:Kefa; font-size: 24px;">Kefa</span></p>
-<p>Khmer MN: <span style="font-family:Khmer MN; font-size: 24px;">Khmer MN</span></p>
-<p>Khmer Sangam MN: <span style="font-family:Khmer Sangam MN; font-size: 24px;">Khmer Sangam MN</span></p>
-<p>Kohinoor Bangla: <span style="font-family:Kohinoor Bangla; font-size: 24px;">Kohinoor Bangla</span></p>
-<p>Kohinoor Devanagari: <span style="font-family:Kohinoor Devanagari; font-size: 24px;">Kohinoor Devanagari</span></p>
-<p>Kohinoor Gujarati: <span style="font-family:Kohinoor Gujarati; font-size: 24px;">Kohinoor Gujarati</span></p>
-<p>Kohinoor Telugu: <span style="font-family:Kohinoor Telugu; font-size: 24px;">Kohinoor Telugu</span></p>
-<p>Kokonor: <span style="font-family:Kokonor; font-size: 24px;">Kokonor</span></p>
-<p>Krungthep: <span style="font-family:Krungthep; font-size: 24px;">Krungthep</span></p>
-<p>KufiStandardGK: <span style="font-family:KufiStandardGK; font-size: 24px;">KufiStandardGK</span></p>
-<p>Lao MN: <span style="font-family:Lao MN; font-size: 24px;">Lao MN</span></p>
-<p>Lao Sangam MN: <span style="font-family:Lao Sangam MN; font-size: 24px;">Lao Sangam MN</span></p>
-<p>Lucida Grande: <span style="font-family:Lucida Grande; font-size: 24px;">Lucida Grande</span></p>
-<p>Luminari: <span style="font-family:Luminari; font-size: 24px;">Luminari</span></p>
-<p>Malayalam MN: <span style="font-family:Malayalam MN; font-size: 24px;">Malayalam MN</span></p>
-<p>Malayalam Sangam MN: <span style="font-family:Malayalam Sangam MN; font-size: 24px;">Malayalam Sangam MN</span></p>
-<p>Marion: <span style="font-family:Marion; font-size: 24px;">Marion</span></p>
-<p>Marker Felt: <span style="font-family:Marker Felt; font-size: 24px;">Marker Felt</span></p>
-<p>Menlo: <span style="font-family:Menlo; font-size: 24px;">Menlo</span></p>
-<p>Microsoft Sans Serif: <span style="font-family:Microsoft Sans Serif; font-size: 24px;">Microsoft Sans Serif</span></p>
-<p>Mishafi: <span style="font-family:Mishafi; font-size: 24px;">Mishafi</span></p>
-<p>Mishafi Gold: <span style="font-family:Mishafi Gold; font-size: 24px;">Mishafi Gold</span></p>
-<p>Monaco: <span style="font-family:Monaco; font-size: 24px;">Monaco</span></p>
-<p>Mshtakan: <span style="font-family:Mshtakan; font-size: 24px;">Mshtakan</span></p>
-<p>Mukta Mahee: <span style="font-family:Mukta Mahee; font-size: 24px;">Mukta Mahee</span></p>
-<p>Muna: <span style="font-family:Muna; font-size: 24px;">Muna</span></p>
-<p>Myanmar MN: <span style="font-family:Myanmar MN; font-size: 24px;">Myanmar MN</span></p>
-<p>Myanmar Sangam MN: <span style="font-family:Myanmar Sangam MN; font-size: 24px;">Myanmar Sangam MN</span></p>
-<p>Nadeem: <span style="font-family:Nadeem; font-size: 24px;">Nadeem</span></p>
-<p>New Peninim MT: <span style="font-family:New Peninim MT; font-size: 24px;">New Peninim MT</span></p>
-<p>Noteworthy: <span style="font-family:Noteworthy; font-size: 24px;">Noteworthy</span></p>
-<p>Noto Nastaliq Urdu: <span style="font-family:Noto Nastaliq Urdu; font-size: 24px;">Noto Nastaliq Urdu</span></p>
-<p>Noto Sans Adlam: <span style="font-family:Noto Sans Adlam; font-size: 24px;">Noto Sans Adlam</span></p>
-<p>Noto Sans Armenian: <span style="font-family:Noto Sans Armenian; font-size: 24px;">Noto Sans Armenian</span></p>
-<p>Noto Sans Avestan: <span style="font-family:Noto Sans Avestan; font-size: 24px;">Noto Sans Avestan</span></p>
-<p>Noto Sans Bamum: <span style="font-family:Noto Sans Bamum; font-size: 24px;">Noto Sans Bamum</span></p>
-<p>Noto Sans Bassa Vah: <span style="font-family:Noto Sans Bassa Vah; font-size: 24px;">Noto Sans Bassa Vah</span></p>
-<p>Noto Sans Batak: <span style="font-family:Noto Sans Batak; font-size: 24px;">Noto Sans Batak</span></p>
-<p>Noto Sans Bhaiksuki: <span style="font-family:Noto Sans Bhaiksuki; font-size: 24px;">Noto Sans Bhaiksuki</span></p>
-<p>Noto Sans Brahmi: <span style="font-family:Noto Sans Brahmi; font-size: 24px;">Noto Sans Brahmi</span></p>
-<p>Noto Sans Buginese: <span style="font-family:Noto Sans Buginese; font-size: 24px;">Noto Sans Buginese</span></p>
-<p>Noto Sans Buhid: <span style="font-family:Noto Sans Buhid; font-size: 24px;">Noto Sans Buhid</span></p>
-<p>Noto Sans Canadian Aboriginal: <span style="font-family:Noto Sans Canadian Aboriginal; font-size: 24px;">Noto Sans Canadian Aboriginal</span></p>
-<p>Noto Sans Carian: <span style="font-family:Noto Sans Carian; font-size: 24px;">Noto Sans Carian</span></p>
-<p>Noto Sans Caucasian Albanian: <span style="font-family:Noto Sans Caucasian Albanian; font-size: 24px;">Noto Sans Caucasian Albanian</span></p>
-<p>Noto Sans Chakma: <span style="font-family:Noto Sans Chakma; font-size: 24px;">Noto Sans Chakma</span></p>
-<p>Noto Sans Cham: <span style="font-family:Noto Sans Cham; font-size: 24px;">Noto Sans Cham</span></p>
-<p>Noto Sans Coptic: <span style="font-family:Noto Sans Coptic; font-size: 24px;">Noto Sans Coptic</span></p>
-<p>Noto Sans Cuneiform: <span style="font-family:Noto Sans Cuneiform; font-size: 24px;">Noto Sans Cuneiform</span></p>
-<p>Noto Sans Cypriot: <span style="font-family:Noto Sans Cypriot; font-size: 24px;">Noto Sans Cypriot</span></p>
-<p>Noto Sans Duployan: <span style="font-family:Noto Sans Duployan; font-size: 24px;">Noto Sans Duployan</span></p>
-<p>Noto Sans Egyptian Hieroglyphs: <span style="font-family:Noto Sans Egyptian Hieroglyphs; font-size: 24px;">Noto Sans Egyptian Hieroglyphs</span></p>
-<p>Noto Sans Elbasan: <span style="font-family:Noto Sans Elbasan; font-size: 24px;">Noto Sans Elbasan</span></p>
-<p>Noto Sans Glagolitic: <span style="font-family:Noto Sans Glagolitic; font-size: 24px;">Noto Sans Glagolitic</span></p>
-<p>Noto Sans Gothic: <span style="font-family:Noto Sans Gothic; font-size: 24px;">Noto Sans Gothic</span></p>
-<p>Noto Sans Gunjala Gondi: <span style="font-family:Noto Sans Gunjala Gondi; font-size: 24px;">Noto Sans Gunjala Gondi</span></p>
-<p>Noto Sans Hanifi Rohingya: <span style="font-family:Noto Sans Hanifi Rohingya; font-size: 24px;">Noto Sans Hanifi Rohingya</span></p>
-<p>Noto Sans Hanunoo: <span style="font-family:Noto Sans Hanunoo; font-size: 24px;">Noto Sans Hanunoo</span></p>
-<p>Noto Sans Hatran: <span style="font-family:Noto Sans Hatran; font-size: 24px;">Noto Sans Hatran</span></p>
-<p>Noto Sans Imperial Aramaic: <span style="font-family:Noto Sans Imperial Aramaic; font-size: 24px;">Noto Sans Imperial Aramaic</span></p>
-<p>Noto Sans Inscriptional Pahlavi: <span style="font-family:Noto Sans Inscriptional Pahlavi; font-size: 24px;">Noto Sans Inscriptional Pahlavi</span></p>
-<p>Noto Sans Inscriptional Parthian: <span style="font-family:Noto Sans Inscriptional Parthian; font-size: 24px;">Noto Sans Inscriptional Parthian</span></p>
-<p>Noto Sans Javanese: <span style="font-family:Noto Sans Javanese; font-size: 24px;">Noto Sans Javanese</span></p>
-<p>Noto Sans Kaithi: <span style="font-family:Noto Sans Kaithi; font-size: 24px;">Noto Sans Kaithi</span></p>
-<p>Noto Sans Kannada: <span style="font-family:Noto Sans Kannada; font-size: 24px;">Noto Sans Kannada</span></p>
-<p>Noto Sans Kayah Li: <span style="font-family:Noto Sans Kayah Li; font-size: 24px;">Noto Sans Kayah Li</span></p>
-<p>Noto Sans Kharoshthi: <span style="font-family:Noto Sans Kharoshthi; font-size: 24px;">Noto Sans Kharoshthi</span></p>
-<p>Noto Sans Khojki: <span style="font-family:Noto Sans Khojki; font-size: 24px;">Noto Sans Khojki</span></p>
-<p>Noto Sans Khudawadi: <span style="font-family:Noto Sans Khudawadi; font-size: 24px;">Noto Sans Khudawadi</span></p>
-<p>Noto Sans Lepcha: <span style="font-family:Noto Sans Lepcha; font-size: 24px;">Noto Sans Lepcha</span></p>
-<p>Noto Sans Limbu: <span style="font-family:Noto Sans Limbu; font-size: 24px;">Noto Sans Limbu</span></p>
-<p>Noto Sans Linear A: <span style="font-family:Noto Sans Linear A; font-size: 24px;">Noto Sans Linear A</span></p>
-<p>Noto Sans Linear B: <span style="font-family:Noto Sans Linear B; font-size: 24px;">Noto Sans Linear B</span></p>
-<p>Noto Sans Lisu: <span style="font-family:Noto Sans Lisu; font-size: 24px;">Noto Sans Lisu</span></p>
-<p>Noto Sans Lycian: <span style="font-family:Noto Sans Lycian; font-size: 24px;">Noto Sans Lycian</span></p>
-<p>Noto Sans Lydian: <span style="font-family:Noto Sans Lydian; font-size: 24px;">Noto Sans Lydian</span></p>
-<p>Noto Sans Mahajani: <span style="font-family:Noto Sans Mahajani; font-size: 24px;">Noto Sans Mahajani</span></p>
-<p>Noto Sans Mandaic: <span style="font-family:Noto Sans Mandaic; font-size: 24px;">Noto Sans Mandaic</span></p>
-<p>Noto Sans Manichaean: <span style="font-family:Noto Sans Manichaean; font-size: 24px;">Noto Sans Manichaean</span></p>
-<p>Noto Sans Marchen: <span style="font-family:Noto Sans Marchen; font-size: 24px;">Noto Sans Marchen</span></p>
-<p>Noto Sans Masaram Gondi: <span style="font-family:Noto Sans Masaram Gondi; font-size: 24px;">Noto Sans Masaram Gondi</span></p>
-<p>Noto Sans Meetei Mayek: <span style="font-family:Noto Sans Meetei Mayek; font-size: 24px;">Noto Sans Meetei Mayek</span></p>
-<p>Noto Sans Mende Kikakui: <span style="font-family:Noto Sans Mende Kikakui; font-size: 24px;">Noto Sans Mende Kikakui</span></p>
-<p>Noto Sans Meroitic: <span style="font-family:Noto Sans Meroitic; font-size: 24px;">Noto Sans Meroitic</span></p>
-<p>Noto Sans Miao: <span style="font-family:Noto Sans Miao; font-size: 24px;">Noto Sans Miao</span></p>
-<p>Noto Sans Modi: <span style="font-family:Noto Sans Modi; font-size: 24px;">Noto Sans Modi</span></p>
-<p>Noto Sans Mongolian: <span style="font-family:Noto Sans Mongolian; font-size: 24px;">Noto Sans Mongolian</span></p>
-<p>Noto Sans Mro: <span style="font-family:Noto Sans Mro; font-size: 24px;">Noto Sans Mro</span></p>
-<p>Noto Sans Multani: <span style="font-family:Noto Sans Multani; font-size: 24px;">Noto Sans Multani</span></p>
-<p>Noto Sans Myanmar: <span style="font-family:Noto Sans Myanmar; font-size: 24px;">Noto Sans Myanmar</span></p>
-<p>Noto Sans NKo: <span style="font-family:Noto Sans NKo; font-size: 24px;">Noto Sans NKo</span></p>
-<p>Noto Sans Nabataean: <span style="font-family:Noto Sans Nabataean; font-size: 24px;">Noto Sans Nabataean</span></p>
-<p>Noto Sans New Tai Lue: <span style="font-family:Noto Sans New Tai Lue; font-size: 24px;">Noto Sans New Tai Lue</span></p>
-<p>Noto Sans Newa: <span style="font-family:Noto Sans Newa; font-size: 24px;">Noto Sans Newa</span></p>
-<p>Noto Sans Ol Chiki: <span style="font-family:Noto Sans Ol Chiki; font-size: 24px;">Noto Sans Ol Chiki</span></p>
-<p>Noto Sans Old Hungarian: <span style="font-family:Noto Sans Old Hungarian; font-size: 24px;">Noto Sans Old Hungarian</span></p>
-<p>Noto Sans Old Italic: <span style="font-family:Noto Sans Old Italic; font-size: 24px;">Noto Sans Old Italic</span></p>
-<p>Noto Sans Old North Arabian: <span style="font-family:Noto Sans Old North Arabian; font-size: 24px;">Noto Sans Old North Arabian</span></p>
-<p>Noto Sans Old Permic: <span style="font-family:Noto Sans Old Permic; font-size: 24px;">Noto Sans Old Permic</span></p>
-<p>Noto Sans Old Persian: <span style="font-family:Noto Sans Old Persian; font-size: 24px;">Noto Sans Old Persian</span></p>
-<p>Noto Sans Old South Arabian: <span style="font-family:Noto Sans Old South Arabian; font-size: 24px;">Noto Sans Old South Arabian</span></p>
-<p>Noto Sans Old Turkic: <span style="font-family:Noto Sans Old Turkic; font-size: 24px;">Noto Sans Old Turkic</span></p>
-<p>Noto Sans Oriya: <span style="font-family:Noto Sans Oriya; font-size: 24px;">Noto Sans Oriya</span></p>
-<p>Noto Sans Osage: <span style="font-family:Noto Sans Osage; font-size: 24px;">Noto Sans Osage</span></p>
-<p>Noto Sans Osmanya: <span style="font-family:Noto Sans Osmanya; font-size: 24px;">Noto Sans Osmanya</span></p>
-<p>Noto Sans Pahawh Hmong: <span style="font-family:Noto Sans Pahawh Hmong; font-size: 24px;">Noto Sans Pahawh Hmong</span></p>
-<p>Noto Sans Palmyrene: <span style="font-family:Noto Sans Palmyrene; font-size: 24px;">Noto Sans Palmyrene</span></p>
-<p>Noto Sans Pau Cin Hau: <span style="font-family:Noto Sans Pau Cin Hau; font-size: 24px;">Noto Sans Pau Cin Hau</span></p>
-<p>Noto Sans PhagsPa: <span style="font-family:Noto Sans PhagsPa; font-size: 24px;">Noto Sans PhagsPa</span></p>
-<p>Noto Sans Phoenician: <span style="font-family:Noto Sans Phoenician; font-size: 24px;">Noto Sans Phoenician</span></p>
-<p>Noto Sans Psalter Pahlavi: <span style="font-family:Noto Sans Psalter Pahlavi; font-size: 24px;">Noto Sans Psalter Pahlavi</span></p>
-<p>Noto Sans Rejang: <span style="font-family:Noto Sans Rejang; font-size: 24px;">Noto Sans Rejang</span></p>
-<p>Noto Sans Samaritan: <span style="font-family:Noto Sans Samaritan; font-size: 24px;">Noto Sans Samaritan</span></p>
-<p>Noto Sans Saurashtra: <span style="font-family:Noto Sans Saurashtra; font-size: 24px;">Noto Sans Saurashtra</span></p>
-<p>Noto Sans Sharada: <span style="font-family:Noto Sans Sharada; font-size: 24px;">Noto Sans Sharada</span></p>
-<p>Noto Sans Siddham: <span style="font-family:Noto Sans Siddham; font-size: 24px;">Noto Sans Siddham</span></p>
-<p>Noto Sans Sora Sompeng: <span style="font-family:Noto Sans Sora Sompeng; font-size: 24px;">Noto Sans Sora Sompeng</span></p>
-<p>Noto Sans Sundanese: <span style="font-family:Noto Sans Sundanese; font-size: 24px;">Noto Sans Sundanese</span></p>
-<p>Noto Sans Syloti Nagri: <span style="font-family:Noto Sans Syloti Nagri; font-size: 24px;">Noto Sans Syloti Nagri</span></p>
-<p>Noto Sans Syriac: <span style="font-family:Noto Sans Syriac; font-size: 24px;">Noto Sans Syriac</span></p>
-<p>Noto Sans Tagalog: <span style="font-family:Noto Sans Tagalog; font-size: 24px;">Noto Sans Tagalog</span></p>
-<p>Noto Sans Tagbanwa: <span style="font-family:Noto Sans Tagbanwa; font-size: 24px;">Noto Sans Tagbanwa</span></p>
-<p>Noto Sans Tai Le: <span style="font-family:Noto Sans Tai Le; font-size: 24px;">Noto Sans Tai Le</span></p>
-<p>Noto Sans Tai Tham: <span style="font-family:Noto Sans Tai Tham; font-size: 24px;">Noto Sans Tai Tham</span></p>
-<p>Noto Sans Tai Viet: <span style="font-family:Noto Sans Tai Viet; font-size: 24px;">Noto Sans Tai Viet</span></p>
-<p>Noto Sans Takri: <span style="font-family:Noto Sans Takri; font-size: 24px;">Noto Sans Takri</span></p>
-<p>Noto Sans Thaana: <span style="font-family:Noto Sans Thaana; font-size: 24px;">Noto Sans Thaana</span></p>
-<p>Noto Sans Tifinagh: <span style="font-family:Noto Sans Tifinagh; font-size: 24px;">Noto Sans Tifinagh</span></p>
-<p>Noto Sans Tirhuta: <span style="font-family:Noto Sans Tirhuta; font-size: 24px;">Noto Sans Tirhuta</span></p>
-<p>Noto Sans Ugaritic: <span style="font-family:Noto Sans Ugaritic; font-size: 24px;">Noto Sans Ugaritic</span></p>
-<p>Noto Sans Vai: <span style="font-family:Noto Sans Vai; font-size: 24px;">Noto Sans Vai</span></p>
-<p>Noto Sans Wancho: <span style="font-family:Noto Sans Wancho; font-size: 24px;">Noto Sans Wancho</span></p>
-<p>Noto Sans Warang Citi: <span style="font-family:Noto Sans Warang Citi; font-size: 24px;">Noto Sans Warang Citi</span></p>
-<p>Noto Sans Yi: <span style="font-family:Noto Sans Yi; font-size: 24px;">Noto Sans Yi</span></p>
-<p>Noto Serif Ahom: <span style="font-family:Noto Serif Ahom; font-size: 24px;">Noto Serif Ahom</span></p>
-<p>Noto Serif Balinese: <span style="font-family:Noto Serif Balinese; font-size: 24px;">Noto Serif Balinese</span></p>
-<p>Noto Serif Hmong Nyiakeng: <span style="font-family:Noto Serif Hmong Nyiakeng; font-size: 24px;">Noto Serif Hmong Nyiakeng</span></p>
-<p>Noto Serif Myanmar: <span style="font-family:Noto Serif Myanmar; font-size: 24px;">Noto Serif Myanmar</span></p>
-<p>Noto Serif Yezidi: <span style="font-family:Noto Serif Yezidi; font-size: 24px;">Noto Serif Yezidi</span></p>
-<p>Optima: <span style="font-family:Optima; font-size: 24px;">Optima</span></p>
-<p>Oriya MN: <span style="font-family:Oriya MN; font-size: 24px;">Oriya MN</span></p>
-<p>Oriya Sangam MN: <span style="font-family:Oriya Sangam MN; font-size: 24px;">Oriya Sangam MN</span></p>
-<p>PT Mono: <span style="font-family:PT Mono; font-size: 24px;">PT Mono</span></p>
-<p>PT Sans: <span style="font-family:PT Sans; font-size: 24px;">PT Sans</span></p>
-<p>PT Serif: <span style="font-family:PT Serif; font-size: 24px;">PT Serif</span></p>
-<p>PT Serif Caption: <span style="font-family:PT Serif Caption; font-size: 24px;">PT Serif Caption</span></p>
-<p>Palatino: <span style="font-family:Palatino; font-size: 24px;">Palatino</span></p>
-<p>Papyrus: <span style="font-family:Papyrus; font-size: 24px;">Papyrus</span></p>
-<p>Party LET: <span style="font-family:Party LET; font-size: 24px;">Party LET</span></p>
-<p>Phosphate: <span style="font-family:Phosphate; font-size: 24px;">Phosphate</span></p>
-<p>Plantagenet Cherokee: <span style="font-family:Plantagenet Cherokee; font-size: 24px;">Plantagenet Cherokee</span></p>
-<p>Raanana: <span style="font-family:Raanana; font-size: 24px;">Raanana</span></p>
-<p>Rockwell: <span style="font-family:Rockwell; font-size: 24px;">Rockwell</span></p>
-<p>SF Grandezza: <span style="font-family:SF Grandezza; font-size: 24px;">SF Grandezza</span></p>
-<p>STIX Two Math: <span style="font-family:STIX Two Math; font-size: 24px;">STIX Two Math</span></p>
-<p>STIX Two Text: <span style="font-family:STIX Two Text; font-size: 24px;">STIX Two Text</span></p>
-<p>STIXGeneral: <span style="font-family:STIXGeneral; font-size: 24px;">STIXGeneral</span></p>
-<p>STIXIntegralsD: <span style="font-family:STIXIntegralsD; font-size: 24px;">STIXIntegralsD</span></p>
-<p>STIXIntegralsSm: <span style="font-family:STIXIntegralsSm; font-size: 24px;">STIXIntegralsSm</span></p>
-<p>STIXIntegralsUp: <span style="font-family:STIXIntegralsUp; font-size: 24px;">STIXIntegralsUp</span></p>
-<p>STIXIntegralsUpD: <span style="font-family:STIXIntegralsUpD; font-size: 24px;">STIXIntegralsUpD</span></p>
-<p>STIXIntegralsUpSm: <span style="font-family:STIXIntegralsUpSm; font-size: 24px;">STIXIntegralsUpSm</span></p>
-<p>STIXNonUnicode: <span style="font-family:STIXNonUnicode; font-size: 24px;">STIXNonUnicode</span></p>
-<p>STIXSizeFiveSym: <span style="font-family:STIXSizeFiveSym; font-size: 24px;">STIXSizeFiveSym</span></p>
-<p>STIXSizeFourSym: <span style="font-family:STIXSizeFourSym; font-size: 24px;">STIXSizeFourSym</span></p>
-<p>STIXSizeOneSym: <span style="font-family:STIXSizeOneSym; font-size: 24px;">STIXSizeOneSym</span></p>
-<p>STIXSizeThreeSym: <span style="font-family:STIXSizeThreeSym; font-size: 24px;">STIXSizeThreeSym</span></p>
-<p>STIXSizeTwoSym: <span style="font-family:STIXSizeTwoSym; font-size: 24px;">STIXSizeTwoSym</span></p>
-<p>STIXVariants: <span style="font-family:STIXVariants; font-size: 24px;">STIXVariants</span></p>
-<p>Sana: <span style="font-family:Sana; font-size: 24px;">Sana</span></p>
-<p>Sathu: <span style="font-family:Sathu; font-size: 24px;">Sathu</span></p>
-<p>Savoye LET: <span style="font-family:Savoye LET; font-size: 24px;">Savoye LET</span></p>
-<p>Seravek: <span style="font-family:Seravek; font-size: 24px;">Seravek</span></p>
-<p>Shree Devanagari 714: <span style="font-family:Shree Devanagari 714; font-size: 24px;">Shree Devanagari 714</span></p>
-<p>SignPainter: <span style="font-family:SignPainter; font-size: 24px;">SignPainter</span></p>
-<p>Silom: <span style="font-family:Silom; font-size: 24px;">Silom</span></p>
-<p>Sinhala MN: <span style="font-family:Sinhala MN; font-size: 24px;">Sinhala MN</span></p>
-<p>Sinhala Sangam MN: <span style="font-family:Sinhala Sangam MN; font-size: 24px;">Sinhala Sangam MN</span></p>
-<p>Skia: <span style="font-family:Skia; font-size: 24px;">Skia</span></p>
-<p>Snell Roundhand: <span style="font-family:Snell Roundhand; font-size: 24px;">Snell Roundhand</span></p>
-<p>Songti SC: <span style="font-family:Songti SC; font-size: 24px;">Songti SC</span></p>
-<p>Sukhumvit Set: <span style="font-family:Sukhumvit Set; font-size: 24px;">Sukhumvit Set</span></p>
-<p>Superclarendon: <span style="font-family:Superclarendon; font-size: 24px;">Superclarendon</span></p>
-<p>Symbol: <span style="font-family:Symbol; font-size: 24px;">Symbol</span></p>
-<p>System Font: <span style="font-family:System Font; font-size: 24px;">System Font</span></p>
-<p>Tahoma: <span style="font-family:Tahoma; font-size: 24px;">Tahoma</span></p>
-<p>Tamil MN: <span style="font-family:Tamil MN; font-size: 24px;">Tamil MN</span></p>
-<p>Tamil Sangam MN: <span style="font-family:Tamil Sangam MN; font-size: 24px;">Tamil Sangam MN</span></p>
-<p>Telugu MN: <span style="font-family:Telugu MN; font-size: 24px;">Telugu MN</span></p>
-<p>Telugu Sangam MN: <span style="font-family:Telugu Sangam MN; font-size: 24px;">Telugu Sangam MN</span></p>
-<p>Thonburi: <span style="font-family:Thonburi; font-size: 24px;">Thonburi</span></p>
-<p>Times: <span style="font-family:Times; font-size: 24px;">Times</span></p>
-<p>Times New Roman: <span style="font-family:Times New Roman; font-size: 24px;">Times New Roman</span></p>
-<p>Trattatello: <span style="font-family:Trattatello; font-size: 24px;">Trattatello</span></p>
-<p>Trebuchet MS: <span style="font-family:Trebuchet MS; font-size: 24px;">Trebuchet MS</span></p>
-<p>Verdana: <span style="font-family:Verdana; font-size: 24px;">Verdana</span></p>
-<p>Waseem: <span style="font-family:Waseem; font-size: 24px;">Waseem</span></p>
-<p>Webdings: <span style="font-family:Webdings; font-size: 24px;">Webdings</span></p>
-<p>Wingdings: <span style="font-family:Wingdings; font-size: 24px;">Wingdings</span></p>
-<p>Wingdings 2: <span style="font-family:Wingdings 2; font-size: 24px;">Wingdings 2</span></p>
-<p>Wingdings 3: <span style="font-family:Wingdings 3; font-size: 24px;">Wingdings 3</span></p>
-<p>Zapf Dingbats: <span style="font-family:Zapf Dingbats; font-size: 24px;">Zapf Dingbats</span></p>
-<p>Zapfino: <span style="font-family:Zapfino; font-size: 24px;">Zapfino</span></p>
-<p>cmb10: <span style="font-family:cmb10; font-size: 24px;">cmb10</span></p>
-<p>cmex10: <span style="font-family:cmex10; font-size: 24px;">cmex10</span></p>
-<p>cmmi10: <span style="font-family:cmmi10; font-size: 24px;">cmmi10</span></p>
-<p>cmr10: <span style="font-family:cmr10; font-size: 24px;">cmr10</span></p>
-<p>cmss10: <span style="font-family:cmss10; font-size: 24px;">cmss10</span></p>
-<p>cmsy10: <span style="font-family:cmsy10; font-size: 24px;">cmsy10</span></p>
-<p>cmtt10: <span style="font-family:cmtt10; font-size: 24px;">cmtt10</span></p></div>
+<div>
+<figure class="figure">
+<p><img src="NiceFigures_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div id="a96f42d4-05ab-4a33-9631-bb943e9499cb" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cmfont <span class="op">=</span> font_manager.FontProperties(fname<span class="op">=</span>mpl.get_data_path() <span class="op">+</span> <span class="st">'/fonts/ttf/cmr10.ttf'</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.size'</span>: <span class="dv">12</span>,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'axes.titlesize'</span>: <span class="dv">12</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'axes.labelsize'</span>: <span class="dv">12</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'axes.labelpad'</span>: <span class="dv">12</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'lines.linewidth'</span>: <span class="dv">1</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'lines.markersize'</span>: <span class="dv">10</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'xtick.labelsize'</span> : <span class="dv">10</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ytick.labelsize'</span> : <span class="dv">10</span>,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'xtick.top'</span> : <span class="va">True</span>,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'xtick.direction'</span> : <span class="st">'in'</span>,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ytick.right'</span> : <span class="va">True</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ytick.direction'</span> : <span class="st">'in'</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'font.family'</span> : <span class="st">'serif'</span>,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'font.serif'</span> : cmfont.get_name(),</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"axes.formatter.use_mathtext"</span>: <span class="va">True</span>,</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'text.usetex'</span>: <span class="va">True</span>,</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'mathtext.fontset'</span> : <span class="st">'cm'</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>                    })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="bd998c2d-e34a-4da1-837c-4000bb23084b" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="dv">0</span>,np.pi,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="4f3d6a39-7162-4ad7-ba3b-ba1565347107" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>get_size(<span class="dv">6</span>,<span class="dv">5</span>),dpi<span class="op">=</span><span class="dv">150</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,np.sin(x))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r"velocity </span><span class="dv">$</span><span class="vs">v</span><span class="dv">$</span><span class="vs">"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r"position </span><span class="dv">$</span><span class="vs">r</span><span class="dv">$</span><span class="vs">"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="df579c14-7034-49b1-8e44-897ec6497960" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> gridspec</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Figurgröße für zweispaltiges Layout</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>get_size(<span class="dv">14</span>, <span class="dv">10</span>), dpi<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># GridSpec mit 2 Zeilen und 2 Spalten erstellen</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> gridspec.GridSpec(<span class="dv">2</span>, <span class="dv">3</span>, figure<span class="op">=</span>fig, hspace<span class="op">=</span><span class="fl">0.5</span>, wspace<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Daten für Plots vorbereiten</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">200</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Erster Plot: nimmt beide Spalten der ersten Zeile ein</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, <span class="dv">1</span>:<span class="dv">3</span>])</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>ax1.plot(x, np.sin(x), <span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'sin(x)'</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="vs">r"Winkel </span><span class="dv">$</span><span class="ch">\t</span><span class="vs">heta</span><span class="dv">$</span><span class="vs"> </span><span class="pp">[rad]</span><span class="vs">"</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="vs">r"</span><span class="dv">$\s</span><span class="vs">in</span><span class="kw">(</span><span class="ch">\t</span><span class="vs">heta</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Zweiter Plot: linke untere Zelle</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(gs[<span class="dv">1</span>, <span class="dv">0</span>])</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>ax2.plot(x, np.cos(x), <span class="st">'r-'</span>, label<span class="op">=</span><span class="st">'cos(x)'</span>)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="vs">r"Winkel </span><span class="dv">$</span><span class="ch">\t</span><span class="vs">heta</span><span class="dv">$</span><span class="vs"> </span><span class="pp">[rad]</span><span class="vs">"</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="vs">r"</span><span class="dv">$</span><span class="er">\</span><span class="vs">cos</span><span class="kw">(</span><span class="ch">\t</span><span class="vs">heta</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Dritter Plot: rechte untere Zelle</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> fig.add_subplot(gs[<span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>ax3.plot(x, np.tan(x), <span class="st">'g-'</span>, label<span class="op">=</span><span class="st">'tan(x)'</span>)</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>ax3.set_xlabel(<span class="vs">r"Winkel </span><span class="dv">$</span><span class="ch">\t</span><span class="vs">heta</span><span class="dv">$</span><span class="vs"> </span><span class="pp">[rad]</span><span class="vs">"</span>)</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>ax3.set_ylabel(<span class="vs">r"</span><span class="dv">$</span><span class="ch">\t</span><span class="vs">an</span><span class="kw">(</span><span class="ch">\t</span><span class="vs">heta</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>ax3.set_ylim(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"figure_gridspec.pdf"</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, transparent<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -928,6 +735,7 @@ eyJjb250ZW50cyI6W119
 <script type="vfs-file">
 W10=
 </script>
+</section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
