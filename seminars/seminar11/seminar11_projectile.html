@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.34">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Seminar: Projectile Motion with Air Resistance – Einführung in die Modellierung Physikalischer Prozesse</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../seminars/seminar07/seminar7_curve_fitting.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-9344fb9851b4da3cab95007ef9d770dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Einführung in die Modellierung Physikalischer Prozesse</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">🛠️ Hands-On Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar11/seminar11_projectile.html">Recap: Projectile Motion</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar11/seminar11_projectile.html">Projectile with Air Resistance</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">📋 Course Info</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/intructors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorlesender</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ressourcen</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übungsaufgaben</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/exam.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prüfungen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">🚀 Week 1: Your First Physics Code</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture01/01-lecture01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup: Jupyter Notebooks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture01/01-plotting-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quick Win: Plotting Your First Graph</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">🎯 Week 2: Python Building Blocks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture01/02-lecture01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables &amp; Numbers (What You Just Used)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/3_datatypes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Datatypes for Physics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">🌟 Week 3: Modeling Motion</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/01-lecture02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions: Reusable Physics Equations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/4_brownian_motion_simple.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Application: Brownian Motion (Simple)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">⚡ Week 4: Classical Mechanics 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/4_brownian_motion_simple.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Application: Brownian Motion (Simple)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture03/1_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arrays with Numpy</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">⚡ Week 5: Numerical Methods Toolkit</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture07/1_differentiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numerical Differentiation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture08/3_solving_ODEs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tool: Solving ODEs</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">🌟 Week 6: Classical Mechanics Applications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture10/2_planetary_motion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Planetary Motion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture10/1_spring_pendulum.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spring Pendulum &amp; Chaos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">🔧 Week 7: Code Organization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/1_classes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classes &amp; Objects</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">🌊 Week 8: Oscillations &amp; Files</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/2_brownian_motion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Brownian Motion with OOP</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture06/1_input_output.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Input, Output, Data Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture09/2_coupled_pendula.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coupled Pendula</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
+ <span class="menu-text">🌊 Week 9: Fourier Analysis &amp; Waves</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture09/3_fourier_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture13/1_plane_waves.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plane Waves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture13/2_spherical_waves.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spherical Waves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture14/3_huygens_principle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Huygens Principle</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
+ <span class="menu-text">📊 Week 10: Analyzing Experiments</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture07/1_curve_fitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curve Fitting to Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true">
+ <span class="menu-text">🎓 Week 11: Review</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture11/1_repetition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: Core Concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture11/1_repetition_slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: Core Concepts Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture15/lecture15a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: ODE Review</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture15/lecture15a_slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: ODE Review Slides</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true">
+ <span class="menu-text">🛠️ Hands-On Seminars</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Advanced Topics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Reinforcement Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar01/1_deep_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Deep Learning</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Other Seminar Topics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar06/25_publication_ready_figures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Publication-Ready Figures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar07/seminar7_curve_fitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curve Fitting</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="true">
+ <span class="menu-text">Recap: Projectile Motion</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar11/seminar11_projectile.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Projectile with Air Resistance</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#what-you-will-learn" id="toc-what-you-will-learn" class="nav-link" data-scroll-target="#what-you-will-learn">What You Will Learn</a></li>
+  <li><a href="#the-physics" id="toc-the-physics" class="nav-link" data-scroll-target="#the-physics">The Physics</a></li>
+  </ul></li>
+  <li><a href="#part-1-projectile-without-air-resistance-warmup" id="toc-part-1-projectile-without-air-resistance-warmup" class="nav-link" data-scroll-target="#part-1-projectile-without-air-resistance-warmup">Part 1: Projectile Without Air Resistance (Warmup)</a>
+  <ul class="collapse">
+  <li><a href="#the-equations" id="toc-the-equations" class="nav-link" data-scroll-target="#the-equations">The Equations</a></li>
+  <li><a href="#analytical-solution-for-comparison" id="toc-analytical-solution-for-comparison" class="nav-link" data-scroll-target="#analytical-solution-for-comparison">Analytical Solution (for comparison)</a></li>
+  </ul></li>
+  <li><a href="#part-2-adding-linear-air-resistance" id="toc-part-2-adding-linear-air-resistance" class="nav-link" data-scroll-target="#part-2-adding-linear-air-resistance">Part 2: Adding Linear Air Resistance</a>
+  <ul class="collapse">
+  <li><a href="#linear-drag-stokes-drag" id="toc-linear-drag-stokes-drag" class="nav-link" data-scroll-target="#linear-drag-stokes-drag">Linear Drag (Stokes Drag)</a></li>
+  </ul></li>
+  <li><a href="#part-3-quadratic-air-resistance-realistic" id="toc-part-3-quadratic-air-resistance-realistic" class="nav-link" data-scroll-target="#part-3-quadratic-air-resistance-realistic">Part 3: Quadratic Air Resistance (Realistic)</a></li>
+  <li><a href="#part-4-analysis-finding-the-optimal-angle" id="toc-part-4-analysis-finding-the-optimal-angle" class="nav-link" data-scroll-target="#part-4-analysis-finding-the-optimal-angle">Part 4: Analysis — Finding the Optimal Angle</a></li>
+  <li><a href="#part-5-challenge-velocity-and-energy-analysis" id="toc-part-5-challenge-velocity-and-energy-analysis" class="nav-link" data-scroll-target="#part-5-challenge-velocity-and-energy-analysis">Part 5: Challenge — Velocity and Energy Analysis</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
+  <ul class="collapse">
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
+  </ul></li>
+  <li><a href="#bonus-try-it-yourself" id="toc-bonus-try-it-yourself" class="nav-link" data-scroll-target="#bonus-try-it-yourself">Bonus: Try It Yourself!</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">🛠️ Hands-On Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar11/seminar11_projectile.html">Recap: Projectile Motion</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar11/seminar11_projectile.html">Projectile with Air Resistance</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Seminar: Projectile Motion with Air Resistance</h1>
+<p class="subtitle lead">Applying ODE Methods to Real Physics</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div>
+<div id="pyodide-1">
+
+</div>
+<script type="pyodide-1-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1ZX0sImNvZGUiOiJcbmltcG9ydCBudW1weSBhcyBucFxuaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuXG4jIFNldCBkZWZhdWx0IHBsb3R0aW5nIHBhcmFtZXRlcnNcbnBsdC5yY1BhcmFtcy51cGRhdGUoe1xuICAgICdmb250LnNpemUnOiAxMixcbiAgICAnbGluZXMubGluZXdpZHRoJzogMixcbiAgICAnbGluZXMubWFya2Vyc2l6ZSc6IDUsXG4gICAgJ2F4ZXMubGFiZWxzaXplJzogMTIsXG4gICAgJ3h0aWNrLmxhYmVsc2l6ZSc6IDEwLFxuICAgICd5dGljay5sYWJlbHNpemUnOiAxMCxcbiAgICAneHRpY2sudG9wJzogVHJ1ZSxcbiAgICAneHRpY2suZGlyZWN0aW9uJzogJ2luJyxcbiAgICAneXRpY2sucmlnaHQnOiBUcnVlLFxuICAgICd5dGljay5kaXJlY3Rpb24nOiAnaW4nLFxuICAgICdheGVzLmdyaWQnOiBUcnVlLFxuICAgICdncmlkLmFscGhhJzogMC4zLFxufSlcblxuZGVmIGdldF9zaXplKHcsIGgpOlxuICAgIHJldHVybiAody8yLjU0LCBoLzIuNTQpIn0=
+</script>
+</div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In today’s seminar, we will apply the numerical methods from the lecture to solve a classic physics problem: <strong>projectile motion with air resistance</strong>.</p>
+<p>This problem is perfect for practicing because:</p>
+<ul>
+<li>You know the physics from your mechanics course</li>
+<li>Without air resistance, you can verify your code against the analytical solution</li>
+<li>With air resistance, there is <strong>no analytical solution</strong> — you <em>need</em> numerical methods!</li>
+</ul>
+<section id="what-you-will-learn" class="level3">
+<h3 class="anchored" data-anchor-id="what-you-will-learn">What You Will Learn</h3>
+<ol type="1">
+<li>How to translate physics equations into code</li>
+<li>How to handle 2D motion with coupled ODEs</li>
+<li>How to compare different physical models</li>
+<li>How to analyze and visualize results</li>
+</ol>
+</section>
+<section id="the-physics" class="level3">
+<h3 class="anchored" data-anchor-id="the-physics">The Physics</h3>
+<p>A projectile of mass <span class="math inline">\(m\)</span> experiences two forces:</p>
+<ol type="1">
+<li><strong>Gravity:</strong> <span class="math inline">\(\vec{F}_g = -mg\hat{y}\)</span></li>
+<li><strong>Air resistance (drag):</strong> <span class="math inline">\(\vec{F}_d = -b\vec{v}\)</span> (linear) or <span class="math inline">\(\vec{F}_d = -c|\vec{v}|\vec{v}\)</span> (quadratic)</li>
+</ol>
+<p>From Newton’s second law: <span class="math inline">\(m\vec{a} = \vec{F}_g + \vec{F}_d\)</span></p>
+<hr>
+</section>
+</section>
+<section id="part-1-projectile-without-air-resistance-warmup" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-projectile-without-air-resistance-warmup">Part 1: Projectile Without Air Resistance (Warmup)</h2>
+<p>Before adding complexity, let’s verify our numerical method works by solving a problem we <em>can</em> solve analytically.</p>
+<section id="the-equations" class="level3">
+<h3 class="anchored" data-anchor-id="the-equations">The Equations</h3>
+<p>Without drag, the equations of motion are:</p>
+<p><span class="math display">\[\frac{d^2x}{dt^2} = 0 \qquad \frac{d^2y}{dt^2} = -g\]</span></p>
+<p>Converting to first-order ODEs (state vector: <span class="math inline">\([x, y, v_x, v_y]\)</span>):</p>
+<p><span class="math display">\[\frac{dx}{dt} = v_x \qquad \frac{dv_x}{dt} = 0\]</span> <span class="math display">\[\frac{dy}{dt} = v_y \qquad \frac{dv_y}{dt} = -g\]</span></p>
+</section>
+<section id="analytical-solution-for-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="analytical-solution-for-comparison">Analytical Solution (for comparison)</h3>
+<p><span class="math display">\[x(t) = x_0 + v_{x0} t\]</span> <span class="math display">\[y(t) = y_0 + v_{y0} t - \frac{1}{2}gt^2\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: Simple Projectile Motion
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Complete the code below to simulate a projectile without air resistance.</p>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Define the derivative function <code>projectile_no_drag(state, g)</code> that returns <span class="math inline">\([v_x, v_y, a_x, a_y]\)</span></li>
+<li>Implement the improved Euler method</li>
+<li>Run the simulation and compare with the analytical solution</li>
+</ol>
+<p><strong>Initial conditions:</strong> Launch from origin at 45° with speed 20 m/s</p>
+<div>
+<div id="pyodide-2">
+
+</div>
+<script type="pyodide-2-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMSJ9LCJjb2RlIjoiXG5pbXBvcnQgbnVtcHkgYXMgbnBcbmltcG9ydCBtYXRwbG90bGliLnB5cGxvdCBhcyBwbHRcblxuIyBQaHlzaWNhbCBwYXJhbWV0ZXJzXG5nID0gOS44MSAgIyBncmF2aXRhdGlvbmFsIGFjY2VsZXJhdGlvbiAobS9zwrIpXG52MCA9IDIwLjAgICMgaW5pdGlhbCBzcGVlZCAobS9zKVxudGhldGEgPSA0NSAgIyBsYXVuY2ggYW5nbGUgKGRlZ3JlZXMpXG5cbiMgQ29udmVydCBhbmdsZSB0byByYWRpYW5zIGFuZCBnZXQgaW5pdGlhbCB2ZWxvY2l0aWVzXG50aGV0YV9yYWQgPSBucC5kZWcycmFkKHRoZXRhKVxudngwID0gdjAgKiBucC5jb3ModGhldGFfcmFkKVxudnkwID0gdjAgKiBucC5zaW4odGhldGFfcmFkKVxuXG4jIFRpbWUgc2V0dXBcbmR0ID0gMC4wMSAgIyB0aW1lIHN0ZXBcbnRfbWF4ID0gMy4wICAjIG1heGltdW0gc2ltdWxhdGlvbiB0aW1lXG50ID0gbnAuYXJhbmdlKDAsIHRfbWF4LCBkdClcblxuIyBTdGF0ZSB2ZWN0b3I6IFt4LCB5LCB2eCwgdnldXG5zdGF0ZSA9IG5wLnplcm9zKChsZW4odCksIDQpKVxuc3RhdGVbMF0gPSBbMCwgMCwgdngwLCB2eTBdICAjIGluaXRpYWwgY29uZGl0aW9uc1xuXG5kZWYgcHJvamVjdGlsZV9ub19kcmFnKHN0YXRlLCBnKTpcbiAgICBcIlwiXCJcbiAgICBDYWxjdWxhdGUgZGVyaXZhdGl2ZXMgZm9yIHByb2plY3RpbGUgd2l0aG91dCBkcmFnLlxuICAgIHN0YXRlID0gW3gsIHksIHZ4LCB2eV1cbiAgICBSZXR1cm5zIFtkeC9kdCwgZHkvZHQsIGR2eC9kdCwgZHZ5L2R0XVxuICAgIFwiXCJcIlxuICAgIHgsIHksIHZ4LCB2eSA9IHN0YXRlXG4gICAgIyBZT1VSIENPREUgSEVSRTogcmV0dXJuIHRoZSBkZXJpdmF0aXZlc1xuICAgIF9fX19cblxuZGVmIGltcHJvdmVkX2V1bGVyX3N0ZXAoc3RhdGUsIGR0LCBkZXJpdl9mdW5jLCAqcGFyYW1zKTpcbiAgICBcIlwiXCJcbiAgICBPbmUgc3RlcCBvZiBpbXByb3ZlZCBFdWxlciAoSGV1bidzIG1ldGhvZCkuXG4gICAgXCJcIlwiXG4gICAgIyBZT1VSIENPREUgSEVSRTogaW1wbGVtZW50IGltcHJvdmVkIEV1bGVyXG4gICAgX19fX1xuXG4jIFRpbWUgZXZvbHV0aW9uXG5mb3IgaSBpbiByYW5nZSgxLCBsZW4odCkpOlxuICAgIHN0YXRlW2ldID0gaW1wcm92ZWRfZXVsZXJfc3RlcChzdGF0ZVtpLTFdLCBkdCwgcHJvamVjdGlsZV9ub19kcmFnLCBnKVxuICAgICMgU3RvcCBpZiBwcm9qZWN0aWxlIGhpdHMgZ3JvdW5kXG4gICAgaWYgc3RhdGVbaSwgMV0gPCAwOlxuICAgICAgICBzdGF0ZSA9IHN0YXRlWzppKzFdXG4gICAgICAgIHQgPSB0WzppKzFdXG4gICAgICAgIGJyZWFrXG5cbiMgRXh0cmFjdCBwb3NpdGlvbnNcbnhfbnVtID0gc3RhdGVbOiwgMF1cbnlfbnVtID0gc3RhdGVbOiwgMV1cblxuIyBBbmFseXRpY2FsIHNvbHV0aW9uIGZvciBjb21wYXJpc29uXG54X2FuYWx5dGljYWwgPSB2eDAgKiB0XG55X2FuYWx5dGljYWwgPSB2eTAgKiB0IC0gMC41ICogZyAqIHQqKjJcblxuIyBQbG90XG5wbHQuZmlndXJlKGZpZ3NpemU9Z2V0X3NpemUoMTQsIDEwKSlcbnBsdC5wbG90KHhfYW5hbHl0aWNhbCwgeV9hbmFseXRpY2FsLCAnay0tJywgbGFiZWw9J0FuYWx5dGljYWwnLCBsaW5ld2lkdGg9MilcbnBsdC5wbG90KHhfbnVtLCB5X251bSwgJ2ItJywgbGFiZWw9J051bWVyaWNhbCAoSW1wcm92ZWQgRXVsZXIpJywgYWxwaGE9MC43KVxucGx0LnhsYWJlbCgnSG9yaXpvbnRhbCBkaXN0YW5jZSB4IChtKScpXG5wbHQueWxhYmVsKCdIZWlnaHQgeSAobSknKVxucGx0LnRpdGxlKCdQcm9qZWN0aWxlIE1vdGlvbiBXaXRob3V0IEFpciBSZXNpc3RhbmNlJylcbnBsdC5sZWdlbmQoKVxucGx0LnhsaW0oMCwgTm9uZSlcbnBsdC55bGltKDAsIE5vbmUpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KClcblxuIyBDYWxjdWxhdGUgcmFuZ2VcbnByaW50KGZcIk51bWVyaWNhbCByYW5nZToge3hfbnVtWy0xXTouMmZ9IG1cIilcbnByaW50KGZcIkFuYWx5dGljYWwgcmFuZ2U6IHt2MCoqMiAqIG5wLnNpbigyKnRoZXRhX3JhZCkgLyBnOi4yZn0gbVwiKSJ9
+</script>
+</div>
+<div class="hint webr-ojs-exercise exercise-hint d-none" data-exercise="ex_1">
+<p><strong>Hints:</strong></p>
+<ol type="1">
+<li>For <code>projectile_no_drag</code>: The derivatives are simply <code>[vx, vy, 0, -g]</code></li>
+<li>For <code>improved_euler_step</code>:
+<ul>
+<li>First predict: <code>state_pred = state + dt * deriv_func(state, *params)</code></li>
+<li>Then average: <code>return state + 0.5 * dt * (deriv_func(state, *params) + deriv_func(state_pred, *params))</code></li>
+</ul></li>
+</ol>
+</div>
+<div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_1">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div id="pyodide-3">
+
+</div>
+<script type="pyodide-3-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuaW1wb3J0IG51bXB5IGFzIG5wXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5cbiMgUGh5c2ljYWwgcGFyYW1ldGVyc1xuZyA9IDkuODFcbnYwID0gMjAuMFxudGhldGEgPSA0NVxuXG50aGV0YV9yYWQgPSBucC5kZWcycmFkKHRoZXRhKVxudngwID0gdjAgKiBucC5jb3ModGhldGFfcmFkKVxudnkwID0gdjAgKiBucC5zaW4odGhldGFfcmFkKVxuXG5kdCA9IDAuMDFcbnRfbWF4ID0gMy4wXG50ID0gbnAuYXJhbmdlKDAsIHRfbWF4LCBkdClcblxuc3RhdGUgPSBucC56ZXJvcygobGVuKHQpLCA0KSlcbnN0YXRlWzBdID0gWzAsIDAsIHZ4MCwgdnkwXVxuXG5kZWYgcHJvamVjdGlsZV9ub19kcmFnKHN0YXRlLCBnKTpcbiAgICBcIlwiXCJDYWxjdWxhdGUgZGVyaXZhdGl2ZXMgZm9yIHByb2plY3RpbGUgd2l0aG91dCBkcmFnLlwiXCJcIlxuICAgIHgsIHksIHZ4LCB2eSA9IHN0YXRlXG4gICAgcmV0dXJuIG5wLmFycmF5KFt2eCwgdnksIDAsIC1nXSlcblxuZGVmIGltcHJvdmVkX2V1bGVyX3N0ZXAoc3RhdGUsIGR0LCBkZXJpdl9mdW5jLCAqcGFyYW1zKTpcbiAgICBcIlwiXCJPbmUgc3RlcCBvZiBpbXByb3ZlZCBFdWxlciAoSGV1bidzIG1ldGhvZCkuXCJcIlwiXG4gICAgZGVyaXYxID0gZGVyaXZfZnVuYyhzdGF0ZSwgKnBhcmFtcylcbiAgICBzdGF0ZV9wcmVkID0gc3RhdGUgKyBkdCAqIGRlcml2MVxuICAgIGRlcml2MiA9IGRlcml2X2Z1bmMoc3RhdGVfcHJlZCwgKnBhcmFtcylcbiAgICByZXR1cm4gc3RhdGUgKyAwLjUgKiBkdCAqIChkZXJpdjEgKyBkZXJpdjIpXG5cbmZvciBpIGluIHJhbmdlKDEsIGxlbih0KSk6XG4gICAgc3RhdGVbaV0gPSBpbXByb3ZlZF9ldWxlcl9zdGVwKHN0YXRlW2ktMV0sIGR0LCBwcm9qZWN0aWxlX25vX2RyYWcsIGcpXG4gICAgaWYgc3RhdGVbaSwgMV0gPCAwOlxuICAgICAgICBzdGF0ZSA9IHN0YXRlWzppKzFdXG4gICAgICAgIHQgPSB0WzppKzFdXG4gICAgICAgIGJyZWFrXG5cbnhfbnVtID0gc3RhdGVbOiwgMF1cbnlfbnVtID0gc3RhdGVbOiwgMV1cblxueF9hbmFseXRpY2FsID0gdngwICogdFxueV9hbmFseXRpY2FsID0gdnkwICogdCAtIDAuNSAqIGcgKiB0KioyXG5cbnBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgxNCwgMTApKVxucGx0LnBsb3QoeF9hbmFseXRpY2FsLCB5X2FuYWx5dGljYWwsICdrLS0nLCBsYWJlbD0nQW5hbHl0aWNhbCcsIGxpbmV3aWR0aD0yKVxucGx0LnBsb3QoeF9udW0sIHlfbnVtLCAnYi0nLCBsYWJlbD0nTnVtZXJpY2FsIChJbXByb3ZlZCBFdWxlciknLCBhbHBoYT0wLjcpXG5wbHQueGxhYmVsKCdIb3Jpem9udGFsIGRpc3RhbmNlIHggKG0pJylcbnBsdC55bGFiZWwoJ0hlaWdodCB5IChtKScpXG5wbHQudGl0bGUoJ1Byb2plY3RpbGUgTW90aW9uIFdpdGhvdXQgQWlyIFJlc2lzdGFuY2UnKVxucGx0LmxlZ2VuZCgpXG5wbHQueGxpbSgwLCBOb25lKVxucGx0LnlsaW0oMCwgTm9uZSlcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKVxuXG5wcmludChmXCJOdW1lcmljYWwgcmFuZ2U6IHt4X251bVstMV06LjJmfSBtXCIpXG5wcmludChmXCJBbmFseXRpY2FsIHJhbmdlOiB7djAqKjIgKiBucC5zaW4oMip0aGV0YV9yYWQpIC8gZzouMmZ9IG1cIikifQ==
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="part-2-adding-linear-air-resistance" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-adding-linear-air-resistance">Part 2: Adding Linear Air Resistance</h2>
+<p>Now let’s add physics that <em>cannot</em> be solved analytically in 2D!</p>
+<section id="linear-drag-stokes-drag" class="level3">
+<h3 class="anchored" data-anchor-id="linear-drag-stokes-drag">Linear Drag (Stokes Drag)</h3>
+<p>For slow-moving objects or small particles, air resistance is proportional to velocity:</p>
+<p><span class="math display">\[\vec{F}_d = -b\vec{v}\]</span></p>
+<p>where <span class="math inline">\(b\)</span> is a drag coefficient. The equations of motion become:</p>
+<p><span class="math display">\[m\frac{dv_x}{dt} = -bv_x \qquad m\frac{dv_y}{dt} = -mg - bv_y\]</span></p>
+<p>We define the <strong>drag parameter</strong> <span class="math inline">\(\gamma = b/m\)</span> (units: 1/s), so:</p>
+<p><span class="math display">\[\frac{dv_x}{dt} = -\gamma v_x \qquad \frac{dv_y}{dt} = -g - \gamma v_y\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Projectile with Linear Drag
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Modify your code to include linear air resistance.</p>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Modify the derivative function to include linear drag</li>
+<li>Compare trajectories with and without drag</li>
+<li>Explore how different values of <span class="math inline">\(\gamma\)</span> affect the trajectory</li>
+</ol>
+<div>
+<div id="pyodide-4">
+
+</div>
+<script type="pyodide-4-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMiJ9LCJjb2RlIjoiXG5pbXBvcnQgbnVtcHkgYXMgbnBcbmltcG9ydCBtYXRwbG90bGliLnB5cGxvdCBhcyBwbHRcblxuZyA9IDkuODFcbnYwID0gMjAuMFxudGhldGEgPSA0NVxuXG50aGV0YV9yYWQgPSBucC5kZWcycmFkKHRoZXRhKVxudngwID0gdjAgKiBucC5jb3ModGhldGFfcmFkKVxudnkwID0gdjAgKiBucC5zaW4odGhldGFfcmFkKVxuXG5kdCA9IDAuMDFcbnRfbWF4ID0gNS4wXG5cbmRlZiBwcm9qZWN0aWxlX2xpbmVhcl9kcmFnKHN0YXRlLCBnLCBnYW1tYSk6XG4gICAgXCJcIlwiXG4gICAgQ2FsY3VsYXRlIGRlcml2YXRpdmVzIGZvciBwcm9qZWN0aWxlIHdpdGggTElORUFSIGRyYWcuXG4gICAgRHJhZyBmb3JjZTogRl9kID0gLWdhbW1hICogbSAqIHYgKHNvIGFjY2VsZXJhdGlvbiA9IC1nYW1tYSAqIHYpXG4gICAgXG4gICAgc3RhdGUgPSBbeCwgeSwgdngsIHZ5XVxuICAgIFJldHVybnMgW2R4L2R0LCBkeS9kdCwgZHZ4L2R0LCBkdnkvZHRdXG4gICAgXCJcIlwiXG4gICAgeCwgeSwgdngsIHZ5ID0gc3RhdGVcbiAgICAjIFlPVVIgQ09ERSBIRVJFXG4gICAgX19fX1xuXG5kZWYgaW1wcm92ZWRfZXVsZXJfc3RlcChzdGF0ZSwgZHQsIGRlcml2X2Z1bmMsICpwYXJhbXMpOlxuICAgIGRlcml2MSA9IGRlcml2X2Z1bmMoc3RhdGUsICpwYXJhbXMpXG4gICAgc3RhdGVfcHJlZCA9IHN0YXRlICsgZHQgKiBkZXJpdjFcbiAgICBkZXJpdjIgPSBkZXJpdl9mdW5jKHN0YXRlX3ByZWQsICpwYXJhbXMpXG4gICAgcmV0dXJuIHN0YXRlICsgMC41ICogZHQgKiAoZGVyaXYxICsgZGVyaXYyKVxuXG5kZWYgc2ltdWxhdGVfcHJvamVjdGlsZShnYW1tYSk6XG4gICAgXCJcIlwiU2ltdWxhdGUgcHJvamVjdGlsZSB3aXRoIGdpdmVuIGRyYWcgY29lZmZpY2llbnQuXCJcIlwiXG4gICAgdCA9IG5wLmFyYW5nZSgwLCB0X21heCwgZHQpXG4gICAgc3RhdGUgPSBucC56ZXJvcygobGVuKHQpLCA0KSlcbiAgICBzdGF0ZVswXSA9IFswLCAwLCB2eDAsIHZ5MF1cbiAgICBcbiAgICBmb3IgaSBpbiByYW5nZSgxLCBsZW4odCkpOlxuICAgICAgICBzdGF0ZVtpXSA9IGltcHJvdmVkX2V1bGVyX3N0ZXAoc3RhdGVbaS0xXSwgZHQsIHByb2plY3RpbGVfbGluZWFyX2RyYWcsIGcsIGdhbW1hKVxuICAgICAgICBpZiBzdGF0ZVtpLCAxXSA8IDA6XG4gICAgICAgICAgICBzdGF0ZSA9IHN0YXRlWzppKzFdXG4gICAgICAgICAgICBicmVha1xuICAgIFxuICAgIHJldHVybiBzdGF0ZVs6LCAwXSwgc3RhdGVbOiwgMV1cblxuIyBDb21wYXJlIGRpZmZlcmVudCBkcmFnIGNvZWZmaWNpZW50c1xucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDE0LCAxMCkpXG5cbmdhbW1hX3ZhbHVlcyA9IFswLCAwLjEsIDAuMywgMC41XVxuY29sb3JzID0gWydibGFjaycsICdibHVlJywgJ2dyZWVuJywgJ3JlZCddXG5cbmZvciBnYW1tYSwgY29sb3IgaW4gemlwKGdhbW1hX3ZhbHVlcywgY29sb3JzKTpcbiAgICB4LCB5ID0gc2ltdWxhdGVfcHJvamVjdGlsZShnYW1tYSlcbiAgICBsYWJlbCA9IGYnzrMgPSB7Z2FtbWF9IHPigbvCuScgaWYgZ2FtbWEgPiAwIGVsc2UgJ05vIGRyYWcnXG4gICAgbGluZXN0eWxlID0gJy0tJyBpZiBnYW1tYSA9PSAwIGVsc2UgJy0nXG4gICAgcGx0LnBsb3QoeCwgeSwgY29sb3I9Y29sb3IsIGxpbmVzdHlsZT1saW5lc3R5bGUsIGxhYmVsPWxhYmVsKVxuXG5wbHQueGxhYmVsKCdIb3Jpem9udGFsIGRpc3RhbmNlIHggKG0pJylcbnBsdC55bGFiZWwoJ0hlaWdodCB5IChtKScpXG5wbHQudGl0bGUoJ0VmZmVjdCBvZiBMaW5lYXIgQWlyIFJlc2lzdGFuY2Ugb24gUHJvamVjdGlsZSBNb3Rpb24nKVxucGx0LmxlZ2VuZCgpXG5wbHQueGxpbSgwLCBOb25lKVxucGx0LnlsaW0oMCwgTm9uZSlcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
+</script>
+</div>
+<div class="hint webr-ojs-exercise exercise-hint d-none" data-exercise="ex_2">
+<p><strong>Hint:</strong> The only change from the no-drag case is in the accelerations:</p>
+<ul>
+<li><span class="math inline">\(a_x = -\gamma \cdot v_x\)</span> (was 0)</li>
+<li><span class="math inline">\(a_y = -g - \gamma \cdot v_y\)</span> (was just <span class="math inline">\(-g\)</span>)</li>
+</ul>
+</div>
+<div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_2">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div id="pyodide-5">
+
+</div>
+<script type="pyodide-5-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuaW1wb3J0IG51bXB5IGFzIG5wXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5cbmcgPSA5LjgxXG52MCA9IDIwLjBcbnRoZXRhID0gNDVcblxudGhldGFfcmFkID0gbnAuZGVnMnJhZCh0aGV0YSlcbnZ4MCA9IHYwICogbnAuY29zKHRoZXRhX3JhZClcbnZ5MCA9IHYwICogbnAuc2luKHRoZXRhX3JhZClcblxuZHQgPSAwLjAxXG50X21heCA9IDUuMFxuXG5kZWYgcHJvamVjdGlsZV9saW5lYXJfZHJhZyhzdGF0ZSwgZywgZ2FtbWEpOlxuICAgIFwiXCJcIkNhbGN1bGF0ZSBkZXJpdmF0aXZlcyBmb3IgcHJvamVjdGlsZSB3aXRoIExJTkVBUiBkcmFnLlwiXCJcIlxuICAgIHgsIHksIHZ4LCB2eSA9IHN0YXRlXG4gICAgYXggPSAtZ2FtbWEgKiB2eFxuICAgIGF5ID0gLWcgLSBnYW1tYSAqIHZ5XG4gICAgcmV0dXJuIG5wLmFycmF5KFt2eCwgdnksIGF4LCBheV0pXG5cbmRlZiBpbXByb3ZlZF9ldWxlcl9zdGVwKHN0YXRlLCBkdCwgZGVyaXZfZnVuYywgKnBhcmFtcyk6XG4gICAgZGVyaXYxID0gZGVyaXZfZnVuYyhzdGF0ZSwgKnBhcmFtcylcbiAgICBzdGF0ZV9wcmVkID0gc3RhdGUgKyBkdCAqIGRlcml2MVxuICAgIGRlcml2MiA9IGRlcml2X2Z1bmMoc3RhdGVfcHJlZCwgKnBhcmFtcylcbiAgICByZXR1cm4gc3RhdGUgKyAwLjUgKiBkdCAqIChkZXJpdjEgKyBkZXJpdjIpXG5cbmRlZiBzaW11bGF0ZV9wcm9qZWN0aWxlKGdhbW1hKTpcbiAgICB0ID0gbnAuYXJhbmdlKDAsIHRfbWF4LCBkdClcbiAgICBzdGF0ZSA9IG5wLnplcm9zKChsZW4odCksIDQpKVxuICAgIHN0YXRlWzBdID0gWzAsIDAsIHZ4MCwgdnkwXVxuICAgIFxuICAgIGZvciBpIGluIHJhbmdlKDEsIGxlbih0KSk6XG4gICAgICAgIHN0YXRlW2ldID0gaW1wcm92ZWRfZXVsZXJfc3RlcChzdGF0ZVtpLTFdLCBkdCwgcHJvamVjdGlsZV9saW5lYXJfZHJhZywgZywgZ2FtbWEpXG4gICAgICAgIGlmIHN0YXRlW2ksIDFdIDwgMDpcbiAgICAgICAgICAgIHN0YXRlID0gc3RhdGVbOmkrMV1cbiAgICAgICAgICAgIGJyZWFrXG4gICAgXG4gICAgcmV0dXJuIHN0YXRlWzosIDBdLCBzdGF0ZVs6LCAxXVxuXG5wbHQuZmlndXJlKGZpZ3NpemU9Z2V0X3NpemUoMTQsIDEwKSlcblxuZ2FtbWFfdmFsdWVzID0gWzAsIDAuMSwgMC4zLCAwLjVdXG5jb2xvcnMgPSBbJ2JsYWNrJywgJ2JsdWUnLCAnZ3JlZW4nLCAncmVkJ11cblxuZm9yIGdhbW1hLCBjb2xvciBpbiB6aXAoZ2FtbWFfdmFsdWVzLCBjb2xvcnMpOlxuICAgIHgsIHkgPSBzaW11bGF0ZV9wcm9qZWN0aWxlKGdhbW1hKVxuICAgIGxhYmVsID0gZifOsyA9IHtnYW1tYX0gc+KBu8K5JyBpZiBnYW1tYSA+IDAgZWxzZSAnTm8gZHJhZydcbiAgICBsaW5lc3R5bGUgPSAnLS0nIGlmIGdhbW1hID09IDAgZWxzZSAnLSdcbiAgICBwbHQucGxvdCh4LCB5LCBjb2xvcj1jb2xvciwgbGluZXN0eWxlPWxpbmVzdHlsZSwgbGFiZWw9bGFiZWwpXG5cbnBsdC54bGFiZWwoJ0hvcml6b250YWwgZGlzdGFuY2UgeCAobSknKVxucGx0LnlsYWJlbCgnSGVpZ2h0IHkgKG0pJylcbnBsdC50aXRsZSgnRWZmZWN0IG9mIExpbmVhciBBaXIgUmVzaXN0YW5jZSBvbiBQcm9qZWN0aWxlIE1vdGlvbicpXG5wbHQubGVnZW5kKClcbnBsdC54bGltKDAsIE5vbmUpXG5wbHQueWxpbSgwLCBOb25lKVxucGx0LnRpZ2h0X2xheW91dCgpXG5wbHQuc2hvdygpIn0=
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="part-3-quadratic-air-resistance-realistic" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-quadratic-air-resistance-realistic">Part 3: Quadratic Air Resistance (Realistic)</h2>
+<p>For everyday objects moving through air at reasonable speeds, the drag is actually proportional to velocity <em>squared</em>:</p>
+<p><span class="math display">\[\vec{F}_d = -\frac{1}{2}\rho C_d A |\vec{v}| \vec{v}\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\rho\)</span> = air density (≈ 1.2 kg/m³)</li>
+<li><span class="math inline">\(C_d\)</span> = drag coefficient (≈ 0.47 for a sphere)</li>
+<li><span class="math inline">\(A\)</span> = cross-sectional area</li>
+</ul>
+<p>We simplify by defining <span class="math inline">\(k = \frac{\rho C_d A}{2m}\)</span>, giving:</p>
+<p><span class="math display">\[\frac{dv_x}{dt} = -k \sqrt{v_x^2 + v_y^2} \cdot v_x\]</span> <span class="math display">\[\frac{dv_y}{dt} = -g - k \sqrt{v_x^2 + v_y^2} \cdot v_y\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 3: Projectile with Quadratic Drag
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Implement the realistic quadratic drag model.</p>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Implement the derivative function with quadratic drag</li>
+<li>Compare linear vs.&nbsp;quadratic drag</li>
+<li>Simulate a baseball (mass ≈ 145 g, diameter ≈ 7.4 cm)</li>
+</ol>
+<div>
+<div id="pyodide-6">
+
+</div>
+<script type="pyodide-6-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMyJ9LCJjb2RlIjoiXG5pbXBvcnQgbnVtcHkgYXMgbnBcbmltcG9ydCBtYXRwbG90bGliLnB5cGxvdCBhcyBwbHRcblxuIyBQaHlzaWNhbCBwYXJhbWV0ZXJzXG5nID0gOS44MVxudjAgPSA0MC4wICAjIGZhc3RlciBpbml0aWFsIHNwZWVkIHRvIHNlZSBkcmFnIGVmZmVjdHNcbnRoZXRhID0gNDVcblxudGhldGFfcmFkID0gbnAuZGVnMnJhZCh0aGV0YSlcbnZ4MCA9IHYwICogbnAuY29zKHRoZXRhX3JhZClcbnZ5MCA9IHYwICogbnAuc2luKHRoZXRhX3JhZClcblxuIyBCYXNlYmFsbCBwYXJhbWV0ZXJzXG5tYXNzID0gMC4xNDUgICMga2dcbmRpYW1ldGVyID0gMC4wNzQgICMgbVxuYXJlYSA9IG5wLnBpICogKGRpYW1ldGVyLzIpKioyXG5yaG8gPSAxLjIgICMgYWlyIGRlbnNpdHkga2cvbcKzXG5DZCA9IDAuNDcgICMgZHJhZyBjb2VmZmljaWVudCBmb3Igc3BoZXJlXG5cbiMgRHJhZyBwYXJhbWV0ZXIgZm9yIHF1YWRyYXRpYyBkcmFnXG5rID0gKHJobyAqIENkICogYXJlYSkgLyAoMiAqIG1hc3MpXG5wcmludChmXCJEcmFnIHBhcmFtZXRlciBrID0ge2s6LjRmfSBt4oG7wrlcIilcblxuZHQgPSAwLjAwMSAgIyBzbWFsbGVyIHRpbWUgc3RlcCBmb3IgYWNjdXJhY3lcbnRfbWF4ID0gMTAuMFxuXG5kZWYgcHJvamVjdGlsZV9xdWFkcmF0aWNfZHJhZyhzdGF0ZSwgZywgayk6XG4gICAgXCJcIlwiXG4gICAgQ2FsY3VsYXRlIGRlcml2YXRpdmVzIGZvciBwcm9qZWN0aWxlIHdpdGggUVVBRFJBVElDIGRyYWcuXG4gICAgRHJhZyBhY2NlbGVyYXRpb246IGFfZHJhZyA9IC1rICogfHZ8ICogdlxuICAgIFxuICAgIHN0YXRlID0gW3gsIHksIHZ4LCB2eV1cbiAgICBSZXR1cm5zIFtkeC9kdCwgZHkvZHQsIGR2eC9kdCwgZHZ5L2R0XVxuICAgIFwiXCJcIlxuICAgIHgsIHksIHZ4LCB2eSA9IHN0YXRlXG4gICAgIyBZT1VSIENPREUgSEVSRVxuICAgICMgQ2FsY3VsYXRlIHNwZWVkOiB2ID0gc3FydCh2eMKyICsgdnnCsilcbiAgICAjIENhbGN1bGF0ZSBhY2NlbGVyYXRpb25zIHdpdGggcXVhZHJhdGljIGRyYWdcbiAgICBfX19fXG5cbmRlZiBpbXByb3ZlZF9ldWxlcl9zdGVwKHN0YXRlLCBkdCwgZGVyaXZfZnVuYywgKnBhcmFtcyk6XG4gICAgZGVyaXYxID0gZGVyaXZfZnVuYyhzdGF0ZSwgKnBhcmFtcylcbiAgICBzdGF0ZV9wcmVkID0gc3RhdGUgKyBkdCAqIGRlcml2MVxuICAgIGRlcml2MiA9IGRlcml2X2Z1bmMoc3RhdGVfcHJlZCwgKnBhcmFtcylcbiAgICByZXR1cm4gc3RhdGUgKyAwLjUgKiBkdCAqIChkZXJpdjEgKyBkZXJpdjIpXG5cbmRlZiBzaW11bGF0ZShkZXJpdl9mdW5jLCAqcGFyYW1zKTpcbiAgICBcIlwiXCJHZW5lcmljIHNpbXVsYXRpb24gZnVuY3Rpb24uXCJcIlwiXG4gICAgdCA9IG5wLmFyYW5nZSgwLCB0X21heCwgZHQpXG4gICAgc3RhdGUgPSBucC56ZXJvcygobGVuKHQpLCA0KSlcbiAgICBzdGF0ZVswXSA9IFswLCAwLCB2eDAsIHZ5MF1cbiAgICBcbiAgICBmb3IgaSBpbiByYW5nZSgxLCBsZW4odCkpOlxuICAgICAgICBzdGF0ZVtpXSA9IGltcHJvdmVkX2V1bGVyX3N0ZXAoc3RhdGVbaS0xXSwgZHQsIGRlcml2X2Z1bmMsICpwYXJhbXMpXG4gICAgICAgIGlmIHN0YXRlW2ksIDFdIDwgMDpcbiAgICAgICAgICAgIHN0YXRlID0gc3RhdGVbOmkrMV1cbiAgICAgICAgICAgIHQgPSB0WzppKzFdXG4gICAgICAgICAgICBicmVha1xuICAgIFxuICAgIHJldHVybiBzdGF0ZSwgdFxuXG4jIE5vIGRyYWcgKGZvciByZWZlcmVuY2UpXG5kZWYgcHJvamVjdGlsZV9ub19kcmFnKHN0YXRlLCBnKTpcbiAgICB4LCB5LCB2eCwgdnkgPSBzdGF0ZVxuICAgIHJldHVybiBucC5hcnJheShbdngsIHZ5LCAwLCAtZ10pXG5cbiMgTGluZWFyIGRyYWcgKGZvciBjb21wYXJpc29uKVxuZ2FtbWEgPSAwLjIgICMgZXF1aXZhbGVudCBsaW5lYXIgZHJhZyBwYXJhbWV0ZXJcbmRlZiBwcm9qZWN0aWxlX2xpbmVhcl9kcmFnKHN0YXRlLCBnLCBnYW1tYSk6XG4gICAgeCwgeSwgdngsIHZ5ID0gc3RhdGVcbiAgICByZXR1cm4gbnAuYXJyYXkoW3Z4LCB2eSwgLWdhbW1hKnZ4LCAtZyAtIGdhbW1hKnZ5XSlcblxuIyBTaW11bGF0ZSBhbGwgdGhyZWUgY2FzZXNcbnN0YXRlX25vZHJhZywgdF9ub2RyYWcgPSBzaW11bGF0ZShwcm9qZWN0aWxlX25vX2RyYWcsIGcpXG5zdGF0ZV9saW5lYXIsIHRfbGluZWFyID0gc2ltdWxhdGUocHJvamVjdGlsZV9saW5lYXJfZHJhZywgZywgZ2FtbWEpXG5zdGF0ZV9xdWFkLCB0X3F1YWQgPSBzaW11bGF0ZShwcm9qZWN0aWxlX3F1YWRyYXRpY19kcmFnLCBnLCBrKVxuXG4jIFBsb3QgY29tcGFyaXNvblxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDE0LCAxMCkpXG5wbHQucGxvdChzdGF0ZV9ub2RyYWdbOiwgMF0sIHN0YXRlX25vZHJhZ1s6LCAxXSwgJ2stLScsIGxhYmVsPSdObyBkcmFnJywgbGluZXdpZHRoPTIpXG5wbHQucGxvdChzdGF0ZV9saW5lYXJbOiwgMF0sIHN0YXRlX2xpbmVhcls6LCAxXSwgJ2ItJywgbGFiZWw9ZidMaW5lYXIgZHJhZyAozrM9e2dhbW1hfSknLCBhbHBoYT0wLjgpXG5wbHQucGxvdChzdGF0ZV9xdWFkWzosIDBdLCBzdGF0ZV9xdWFkWzosIDFdLCAnci0nLCBsYWJlbD1mJ1F1YWRyYXRpYyBkcmFnIChrPXtrOi4zZn0pJywgYWxwaGE9MC44KVxuXG5wbHQueGxhYmVsKCdIb3Jpem9udGFsIGRpc3RhbmNlIHggKG0pJylcbnBsdC55bGFiZWwoJ0hlaWdodCB5IChtKScpXG5wbHQudGl0bGUoZidCYXNlYmFsbCBUcmFqZWN0b3J5OiB24oKAID0ge3YwfSBtL3MgYXQge3RoZXRhfcKwJylcbnBsdC5sZWdlbmQoKVxucGx0LnhsaW0oMCwgTm9uZSlcbnBsdC55bGltKDAsIE5vbmUpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KClcblxuIyBQcmludCByYW5nZXNcbnByaW50KGZcIlxcblJhbmdlIHdpdGhvdXQgZHJhZzoge3N0YXRlX25vZHJhZ1stMSwgMF06LjFmfSBtXCIpXG5wcmludChmXCJSYW5nZSB3aXRoIGxpbmVhciBkcmFnOiB7c3RhdGVfbGluZWFyWy0xLCAwXTouMWZ9IG1cIilcbnByaW50KGZcIlJhbmdlIHdpdGggcXVhZHJhdGljIGRyYWc6IHtzdGF0ZV9xdWFkWy0xLCAwXTouMWZ9IG1cIilcbnByaW50KGZcIlJlZHVjdGlvbiBkdWUgdG8gcXVhZHJhdGljIGRyYWc6IHsxMDAqKDEgLSBzdGF0ZV9xdWFkWy0xLCAwXS9zdGF0ZV9ub2RyYWdbLTEsIDBdKTouMWZ9JVwiKSJ9
+</script>
+</div>
+<div class="hint webr-ojs-exercise exercise-hint d-none" data-exercise="ex_3">
+<p><strong>Hints:</strong></p>
+<ol type="1">
+<li>Calculate the speed: <code>v = np.sqrt(vx**2 + vy**2)</code></li>
+<li>The drag acceleration has magnitude <span class="math inline">\(k \cdot v^2\)</span> and opposes the velocity</li>
+<li>Components: <code>ax = -k * v * vx</code> and <code>ay = -g - k * v * vy</code></li>
+</ol>
+</div>
+<div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_3">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div id="pyodide-7">
+
+</div>
+<script type="pyodide-7-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuaW1wb3J0IG51bXB5IGFzIG5wXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5cbmcgPSA5LjgxXG52MCA9IDQwLjBcbnRoZXRhID0gNDVcblxudGhldGFfcmFkID0gbnAuZGVnMnJhZCh0aGV0YSlcbnZ4MCA9IHYwICogbnAuY29zKHRoZXRhX3JhZClcbnZ5MCA9IHYwICogbnAuc2luKHRoZXRhX3JhZClcblxubWFzcyA9IDAuMTQ1XG5kaWFtZXRlciA9IDAuMDc0XG5hcmVhID0gbnAucGkgKiAoZGlhbWV0ZXIvMikqKjJcbnJobyA9IDEuMlxuQ2QgPSAwLjQ3XG5cbmsgPSAocmhvICogQ2QgKiBhcmVhKSAvICgyICogbWFzcylcbnByaW50KGZcIkRyYWcgcGFyYW1ldGVyIGsgPSB7azouNGZ9IG3igbvCuVwiKVxuXG5kdCA9IDAuMDAxXG50X21heCA9IDEwLjBcblxuZGVmIHByb2plY3RpbGVfcXVhZHJhdGljX2RyYWcoc3RhdGUsIGcsIGspOlxuICAgIFwiXCJcIkNhbGN1bGF0ZSBkZXJpdmF0aXZlcyBmb3IgcHJvamVjdGlsZSB3aXRoIFFVQURSQVRJQyBkcmFnLlwiXCJcIlxuICAgIHgsIHksIHZ4LCB2eSA9IHN0YXRlXG4gICAgdiA9IG5wLnNxcnQodngqKjIgKyB2eSoqMilcbiAgICBheCA9IC1rICogdiAqIHZ4XG4gICAgYXkgPSAtZyAtIGsgKiB2ICogdnlcbiAgICByZXR1cm4gbnAuYXJyYXkoW3Z4LCB2eSwgYXgsIGF5XSlcblxuZGVmIGltcHJvdmVkX2V1bGVyX3N0ZXAoc3RhdGUsIGR0LCBkZXJpdl9mdW5jLCAqcGFyYW1zKTpcbiAgICBkZXJpdjEgPSBkZXJpdl9mdW5jKHN0YXRlLCAqcGFyYW1zKVxuICAgIHN0YXRlX3ByZWQgPSBzdGF0ZSArIGR0ICogZGVyaXYxXG4gICAgZGVyaXYyID0gZGVyaXZfZnVuYyhzdGF0ZV9wcmVkLCAqcGFyYW1zKVxuICAgIHJldHVybiBzdGF0ZSArIDAuNSAqIGR0ICogKGRlcml2MSArIGRlcml2MilcblxuZGVmIHNpbXVsYXRlKGRlcml2X2Z1bmMsICpwYXJhbXMpOlxuICAgIHQgPSBucC5hcmFuZ2UoMCwgdF9tYXgsIGR0KVxuICAgIHN0YXRlID0gbnAuemVyb3MoKGxlbih0KSwgNCkpXG4gICAgc3RhdGVbMF0gPSBbMCwgMCwgdngwLCB2eTBdXG4gICAgXG4gICAgZm9yIGkgaW4gcmFuZ2UoMSwgbGVuKHQpKTpcbiAgICAgICAgc3RhdGVbaV0gPSBpbXByb3ZlZF9ldWxlcl9zdGVwKHN0YXRlW2ktMV0sIGR0LCBkZXJpdl9mdW5jLCAqcGFyYW1zKVxuICAgICAgICBpZiBzdGF0ZVtpLCAxXSA8IDA6XG4gICAgICAgICAgICBzdGF0ZSA9IHN0YXRlWzppKzFdXG4gICAgICAgICAgICB0ID0gdFs6aSsxXVxuICAgICAgICAgICAgYnJlYWtcbiAgICBcbiAgICByZXR1cm4gc3RhdGUsIHRcblxuZGVmIHByb2plY3RpbGVfbm9fZHJhZyhzdGF0ZSwgZyk6XG4gICAgeCwgeSwgdngsIHZ5ID0gc3RhdGVcbiAgICByZXR1cm4gbnAuYXJyYXkoW3Z4LCB2eSwgMCwgLWddKVxuXG5nYW1tYSA9IDAuMlxuZGVmIHByb2plY3RpbGVfbGluZWFyX2RyYWcoc3RhdGUsIGcsIGdhbW1hKTpcbiAgICB4LCB5LCB2eCwgdnkgPSBzdGF0ZVxuICAgIHJldHVybiBucC5hcnJheShbdngsIHZ5LCAtZ2FtbWEqdngsIC1nIC0gZ2FtbWEqdnldKVxuXG5zdGF0ZV9ub2RyYWcsIHRfbm9kcmFnID0gc2ltdWxhdGUocHJvamVjdGlsZV9ub19kcmFnLCBnKVxuc3RhdGVfbGluZWFyLCB0X2xpbmVhciA9IHNpbXVsYXRlKHByb2plY3RpbGVfbGluZWFyX2RyYWcsIGcsIGdhbW1hKVxuc3RhdGVfcXVhZCwgdF9xdWFkID0gc2ltdWxhdGUocHJvamVjdGlsZV9xdWFkcmF0aWNfZHJhZywgZywgaylcblxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDE0LCAxMCkpXG5wbHQucGxvdChzdGF0ZV9ub2RyYWdbOiwgMF0sIHN0YXRlX25vZHJhZ1s6LCAxXSwgJ2stLScsIGxhYmVsPSdObyBkcmFnJywgbGluZXdpZHRoPTIpXG5wbHQucGxvdChzdGF0ZV9saW5lYXJbOiwgMF0sIHN0YXRlX2xpbmVhcls6LCAxXSwgJ2ItJywgbGFiZWw9ZidMaW5lYXIgZHJhZyAozrM9e2dhbW1hfSknLCBhbHBoYT0wLjgpXG5wbHQucGxvdChzdGF0ZV9xdWFkWzosIDBdLCBzdGF0ZV9xdWFkWzosIDFdLCAnci0nLCBsYWJlbD1mJ1F1YWRyYXRpYyBkcmFnIChrPXtrOi4zZn0pJywgYWxwaGE9MC44KVxuXG5wbHQueGxhYmVsKCdIb3Jpem9udGFsIGRpc3RhbmNlIHggKG0pJylcbnBsdC55bGFiZWwoJ0hlaWdodCB5IChtKScpXG5wbHQudGl0bGUoZidCYXNlYmFsbCBUcmFqZWN0b3J5OiB24oKAID0ge3YwfSBtL3MgYXQge3RoZXRhfcKwJylcbnBsdC5sZWdlbmQoKVxucGx0LnhsaW0oMCwgTm9uZSlcbnBsdC55bGltKDAsIE5vbmUpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KClcblxucHJpbnQoZlwiXFxuUmFuZ2Ugd2l0aG91dCBkcmFnOiB7c3RhdGVfbm9kcmFnWy0xLCAwXTouMWZ9IG1cIilcbnByaW50KGZcIlJhbmdlIHdpdGggbGluZWFyIGRyYWc6IHtzdGF0ZV9saW5lYXJbLTEsIDBdOi4xZn0gbVwiKVxucHJpbnQoZlwiUmFuZ2Ugd2l0aCBxdWFkcmF0aWMgZHJhZzoge3N0YXRlX3F1YWRbLTEsIDBdOi4xZn0gbVwiKVxucHJpbnQoZlwiUmVkdWN0aW9uIGR1ZSB0byBxdWFkcmF0aWMgZHJhZzogezEwMCooMSAtIHN0YXRlX3F1YWRbLTEsIDBdL3N0YXRlX25vZHJhZ1stMSwgMF0pOi4xZn0lXCIpIn0=
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="part-4-analysis-finding-the-optimal-angle" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-analysis-finding-the-optimal-angle">Part 4: Analysis — Finding the Optimal Angle</h2>
+<p>A classic question: <strong>What launch angle gives maximum range?</strong></p>
+<ul>
+<li>Without drag: The answer is 45° (you can prove this analytically)</li>
+<li>With drag: The optimal angle is <strong>less than 45°</strong> — but by how much?</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 4: Optimal Launch Angle
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Find the optimal launch angle with quadratic drag by scanning different angles.</p>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Simulate trajectories for angles from 20° to 70°</li>
+<li>Find the angle that gives maximum range</li>
+<li>Plot range vs.&nbsp;angle and compare with the no-drag case</li>
+</ol>
+<div>
+<div id="pyodide-8">
+
+</div>
+<script type="pyodide-8-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfNCJ9LCJjb2RlIjoiXG5pbXBvcnQgbnVtcHkgYXMgbnBcbmltcG9ydCBtYXRwbG90bGliLnB5cGxvdCBhcyBwbHRcblxuZyA9IDkuODFcbnYwID0gNDAuMFxuXG4jIEJhc2ViYWxsIHBhcmFtZXRlcnNcbm1hc3MgPSAwLjE0NVxuZGlhbWV0ZXIgPSAwLjA3NFxuYXJlYSA9IG5wLnBpICogKGRpYW1ldGVyLzIpKioyXG5yaG8gPSAxLjJcbkNkID0gMC40N1xuayA9IChyaG8gKiBDZCAqIGFyZWEpIC8gKDIgKiBtYXNzKVxuXG5kdCA9IDAuMDAxXG50X21heCA9IDEwLjBcblxuZGVmIHByb2plY3RpbGVfcXVhZHJhdGljX2RyYWcoc3RhdGUsIGcsIGspOlxuICAgIHgsIHksIHZ4LCB2eSA9IHN0YXRlXG4gICAgdiA9IG5wLnNxcnQodngqKjIgKyB2eSoqMilcbiAgICBheCA9IC1rICogdiAqIHZ4XG4gICAgYXkgPSAtZyAtIGsgKiB2ICogdnlcbiAgICByZXR1cm4gbnAuYXJyYXkoW3Z4LCB2eSwgYXgsIGF5XSlcblxuZGVmIGltcHJvdmVkX2V1bGVyX3N0ZXAoc3RhdGUsIGR0LCBkZXJpdl9mdW5jLCAqcGFyYW1zKTpcbiAgICBkZXJpdjEgPSBkZXJpdl9mdW5jKHN0YXRlLCAqcGFyYW1zKVxuICAgIHN0YXRlX3ByZWQgPSBzdGF0ZSArIGR0ICogZGVyaXYxXG4gICAgZGVyaXYyID0gZGVyaXZfZnVuYyhzdGF0ZV9wcmVkLCAqcGFyYW1zKVxuICAgIHJldHVybiBzdGF0ZSArIDAuNSAqIGR0ICogKGRlcml2MSArIGRlcml2MilcblxuZGVmIGdldF9yYW5nZSh0aGV0YV9kZWcsIHdpdGhfZHJhZz1UcnVlKTpcbiAgICBcIlwiXCJcbiAgICBTaW11bGF0ZSBwcm9qZWN0aWxlIGFuZCByZXR1cm4gdGhlIGhvcml6b250YWwgcmFuZ2UuXG4gICAgXG4gICAgUGFyYW1ldGVyczpcbiAgICAgICAgdGhldGFfZGVnOiBsYXVuY2ggYW5nbGUgaW4gZGVncmVlc1xuICAgICAgICB3aXRoX2RyYWc6IGlmIFRydWUsIHVzZSBxdWFkcmF0aWMgZHJhZzsgaWYgRmFsc2UsIG5vIGRyYWdcbiAgICBcbiAgICBSZXR1cm5zOlxuICAgICAgICByYW5nZTogaG9yaXpvbnRhbCBkaXN0YW5jZSB3aGVuIHk9MFxuICAgIFwiXCJcIlxuICAgIHRoZXRhX3JhZCA9IG5wLmRlZzJyYWQodGhldGFfZGVnKVxuICAgIHZ4MCA9IHYwICogbnAuY29zKHRoZXRhX3JhZClcbiAgICB2eTAgPSB2MCAqIG5wLnNpbih0aGV0YV9yYWQpXG4gICAgXG4gICAgdCA9IG5wLmFyYW5nZSgwLCB0X21heCwgZHQpXG4gICAgc3RhdGUgPSBucC56ZXJvcygobGVuKHQpLCA0KSlcbiAgICBzdGF0ZVswXSA9IFswLCAwLCB2eDAsIHZ5MF1cbiAgICBcbiAgICBmb3IgaSBpbiByYW5nZSgxLCBsZW4odCkpOlxuICAgICAgICBpZiB3aXRoX2RyYWc6XG4gICAgICAgICAgICBzdGF0ZVtpXSA9IGltcHJvdmVkX2V1bGVyX3N0ZXAoc3RhdGVbaS0xXSwgZHQsIHByb2plY3RpbGVfcXVhZHJhdGljX2RyYWcsIGcsIGspXG4gICAgICAgIGVsc2U6XG4gICAgICAgICAgICAjIE5vIGRyYWc6IHNpbXBsZSBhbmFseXRpY2FsIHVwZGF0ZVxuICAgICAgICAgICAgc3RhdGVbaSwgMF0gPSBzdGF0ZVtpLTEsIDBdICsgdngwICogZHRcbiAgICAgICAgICAgIHN0YXRlW2ksIDFdID0gc3RhdGVbaS0xLCAxXSArIHN0YXRlW2ktMSwgM10gKiBkdFxuICAgICAgICAgICAgc3RhdGVbaSwgMl0gPSB2eDBcbiAgICAgICAgICAgIHN0YXRlW2ksIDNdID0gc3RhdGVbaS0xLCAzXSAtIGcgKiBkdFxuICAgICAgICBcbiAgICAgICAgaWYgc3RhdGVbaSwgMV0gPCAwOlxuICAgICAgICAgICAgcmV0dXJuIHN0YXRlW2ksIDBdXG4gICAgXG4gICAgcmV0dXJuIHN0YXRlWy0xLCAwXVxuXG4jIFlPVVIgQ09ERSBIRVJFOlxuIyAxLiBDcmVhdGUgYXJyYXkgb2YgYW5nbGVzIGZyb20gMjAgdG8gNzAgZGVncmVlc1xuIyAyLiBDYWxjdWxhdGUgcmFuZ2UgZm9yIGVhY2ggYW5nbGUgKHdpdGggYW5kIHdpdGhvdXQgZHJhZylcbiMgMy4gRmluZCBvcHRpbWFsIGFuZ2xlc1xuIyA0LiBQbG90IHJlc3VsdHNcblxuYW5nbGVzID0gX19fX1xucmFuZ2VzX2RyYWcgPSBfX19fXG5yYW5nZXNfbm9kcmFnID0gX19fX1xuXG4jIEZpbmQgb3B0aW1hbCBhbmdsZXNcbm9wdGltYWxfZHJhZyA9IF9fX19cbm9wdGltYWxfbm9kcmFnID0gX19fX1xuXG4jIFBsb3RcbnBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgxNCwgMTApKVxuIyBZT1VSIFBMT1RUSU5HIENPREUgSEVSRVxuX19fX1xuXG5wbHQuc2hvdygpXG5cbnByaW50KGZcIk9wdGltYWwgYW5nbGUgd2l0aG91dCBkcmFnOiB7b3B0aW1hbF9ub2RyYWc6LjFmfcKwXCIpXG5wcmludChmXCJPcHRpbWFsIGFuZ2xlIHdpdGggZHJhZzoge29wdGltYWxfZHJhZzouMWZ9wrBcIikifQ==
+</script>
+</div>
+<div class="hint webr-ojs-exercise exercise-hint d-none" data-exercise="ex_4">
+<p><strong>Hints:</strong></p>
+<ol type="1">
+<li>Create angles: <code>angles = np.linspace(20, 70, 51)</code></li>
+<li>Use list comprehension: <code>ranges = [get_range(a, with_drag=True) for a in angles]</code></li>
+<li>Find maximum: <code>optimal = angles[np.argmax(ranges)]</code></li>
+</ol>
+</div>
+<div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_4">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div id="pyodide-9">
+
+</div>
+<script type="pyodide-9-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuaW1wb3J0IG51bXB5IGFzIG5wXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5cbmcgPSA5LjgxXG52MCA9IDQwLjBcblxubWFzcyA9IDAuMTQ1XG5kaWFtZXRlciA9IDAuMDc0XG5hcmVhID0gbnAucGkgKiAoZGlhbWV0ZXIvMikqKjJcbnJobyA9IDEuMlxuQ2QgPSAwLjQ3XG5rID0gKHJobyAqIENkICogYXJlYSkgLyAoMiAqIG1hc3MpXG5cbmR0ID0gMC4wMDFcbnRfbWF4ID0gMTAuMFxuXG5kZWYgcHJvamVjdGlsZV9xdWFkcmF0aWNfZHJhZyhzdGF0ZSwgZywgayk6XG4gICAgeCwgeSwgdngsIHZ5ID0gc3RhdGVcbiAgICB2ID0gbnAuc3FydCh2eCoqMiArIHZ5KioyKVxuICAgIGF4ID0gLWsgKiB2ICogdnhcbiAgICBheSA9IC1nIC0gayAqIHYgKiB2eVxuICAgIHJldHVybiBucC5hcnJheShbdngsIHZ5LCBheCwgYXldKVxuXG5kZWYgaW1wcm92ZWRfZXVsZXJfc3RlcChzdGF0ZSwgZHQsIGRlcml2X2Z1bmMsICpwYXJhbXMpOlxuICAgIGRlcml2MSA9IGRlcml2X2Z1bmMoc3RhdGUsICpwYXJhbXMpXG4gICAgc3RhdGVfcHJlZCA9IHN0YXRlICsgZHQgKiBkZXJpdjFcbiAgICBkZXJpdjIgPSBkZXJpdl9mdW5jKHN0YXRlX3ByZWQsICpwYXJhbXMpXG4gICAgcmV0dXJuIHN0YXRlICsgMC41ICogZHQgKiAoZGVyaXYxICsgZGVyaXYyKVxuXG5kZWYgZ2V0X3JhbmdlKHRoZXRhX2RlZywgd2l0aF9kcmFnPVRydWUpOlxuICAgIHRoZXRhX3JhZCA9IG5wLmRlZzJyYWQodGhldGFfZGVnKVxuICAgIHZ4MCA9IHYwICogbnAuY29zKHRoZXRhX3JhZClcbiAgICB2eTAgPSB2MCAqIG5wLnNpbih0aGV0YV9yYWQpXG4gICAgXG4gICAgdCA9IG5wLmFyYW5nZSgwLCB0X21heCwgZHQpXG4gICAgc3RhdGUgPSBucC56ZXJvcygobGVuKHQpLCA0KSlcbiAgICBzdGF0ZVswXSA9IFswLCAwLCB2eDAsIHZ5MF1cbiAgICBcbiAgICBmb3IgaSBpbiByYW5nZSgxLCBsZW4odCkpOlxuICAgICAgICBpZiB3aXRoX2RyYWc6XG4gICAgICAgICAgICBzdGF0ZVtpXSA9IGltcHJvdmVkX2V1bGVyX3N0ZXAoc3RhdGVbaS0xXSwgZHQsIHByb2plY3RpbGVfcXVhZHJhdGljX2RyYWcsIGcsIGspXG4gICAgICAgIGVsc2U6XG4gICAgICAgICAgICBzdGF0ZVtpLCAwXSA9IHN0YXRlW2ktMSwgMF0gKyB2eDAgKiBkdFxuICAgICAgICAgICAgc3RhdGVbaSwgMV0gPSBzdGF0ZVtpLTEsIDFdICsgc3RhdGVbaS0xLCAzXSAqIGR0XG4gICAgICAgICAgICBzdGF0ZVtpLCAyXSA9IHZ4MFxuICAgICAgICAgICAgc3RhdGVbaSwgM10gPSBzdGF0ZVtpLTEsIDNdIC0gZyAqIGR0XG4gICAgICAgIFxuICAgICAgICBpZiBzdGF0ZVtpLCAxXSA8IDA6XG4gICAgICAgICAgICByZXR1cm4gc3RhdGVbaSwgMF1cbiAgICBcbiAgICByZXR1cm4gc3RhdGVbLTEsIDBdXG5cbiMgU2NhbiBhbmdsZXNcbmFuZ2xlcyA9IG5wLmxpbnNwYWNlKDIwLCA3MCwgNTEpXG5yYW5nZXNfZHJhZyA9IG5wLmFycmF5KFtnZXRfcmFuZ2UoYSwgd2l0aF9kcmFnPVRydWUpIGZvciBhIGluIGFuZ2xlc10pXG5yYW5nZXNfbm9kcmFnID0gbnAuYXJyYXkoW2dldF9yYW5nZShhLCB3aXRoX2RyYWc9RmFsc2UpIGZvciBhIGluIGFuZ2xlc10pXG5cbiMgRmluZCBvcHRpbWFsIGFuZ2xlc1xub3B0aW1hbF9kcmFnID0gYW5nbGVzW25wLmFyZ21heChyYW5nZXNfZHJhZyldXG5vcHRpbWFsX25vZHJhZyA9IGFuZ2xlc1tucC5hcmdtYXgocmFuZ2VzX25vZHJhZyldXG5cbiMgUGxvdFxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDE0LCAxMCkpXG5wbHQucGxvdChhbmdsZXMsIHJhbmdlc19ub2RyYWcsICdrLS0nLCBsYWJlbD0nTm8gZHJhZycsIGxpbmV3aWR0aD0yKVxucGx0LnBsb3QoYW5nbGVzLCByYW5nZXNfZHJhZywgJ3ItJywgbGFiZWw9J1dpdGggcXVhZHJhdGljIGRyYWcnLCBsaW5ld2lkdGg9MilcbnBsdC5heHZsaW5lKG9wdGltYWxfbm9kcmFnLCBjb2xvcj0nYmxhY2snLCBsaW5lc3R5bGU9JzonLCBhbHBoYT0wLjUpXG5wbHQuYXh2bGluZShvcHRpbWFsX2RyYWcsIGNvbG9yPSdyZWQnLCBsaW5lc3R5bGU9JzonLCBhbHBoYT0wLjUpXG5wbHQueGxhYmVsKCdMYXVuY2ggYW5nbGUgKGRlZ3JlZXMpJylcbnBsdC55bGFiZWwoJ1JhbmdlIChtKScpXG5wbHQudGl0bGUoZidSYW5nZSB2cyBMYXVuY2ggQW5nbGUgKHbigoAgPSB7djB9IG0vcyknKVxucGx0LmxlZ2VuZCgpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KClcblxucHJpbnQoZlwiT3B0aW1hbCBhbmdsZSB3aXRob3V0IGRyYWc6IHtvcHRpbWFsX25vZHJhZzouMWZ9wrBcIilcbnByaW50KGZcIk9wdGltYWwgYW5nbGUgd2l0aCBkcmFnOiB7b3B0aW1hbF9kcmFnOi4xZn3CsFwiKVxucHJpbnQoZlwiTWF4aW11bSByYW5nZSB3aXRob3V0IGRyYWc6IHtucC5tYXgocmFuZ2VzX25vZHJhZyk6LjFmfSBtXCIpXG5wcmludChmXCJNYXhpbXVtIHJhbmdlIHdpdGggZHJhZzoge25wLm1heChyYW5nZXNfZHJhZyk6LjFmfSBtXCIpIn0=
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="part-5-challenge-velocity-and-energy-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="part-5-challenge-velocity-and-energy-analysis">Part 5: Challenge — Velocity and Energy Analysis</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 5 (Optional): Energy Loss Analysis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Analyze how energy is dissipated during flight with air resistance.</p>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Track kinetic energy throughout the flight</li>
+<li>Calculate work done against drag</li>
+<li>Plot energy vs.&nbsp;time</li>
+</ol>
+<div>
+<div id="pyodide-10">
+
+</div>
+<script type="pyodide-10-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfNSJ9LCJjb2RlIjoiXG5pbXBvcnQgbnVtcHkgYXMgbnBcbmltcG9ydCBtYXRwbG90bGliLnB5cGxvdCBhcyBwbHRcblxuZyA9IDkuODFcbnYwID0gNDAuMFxudGhldGEgPSA0MCAgIyBuZWFyIG9wdGltYWwgZm9yIGRyYWdcbm1hc3MgPSAwLjE0NVxuXG50aGV0YV9yYWQgPSBucC5kZWcycmFkKHRoZXRhKVxudngwID0gdjAgKiBucC5jb3ModGhldGFfcmFkKVxudnkwID0gdjAgKiBucC5zaW4odGhldGFfcmFkKVxuXG4jIERyYWcgcGFyYW1ldGVyXG5kaWFtZXRlciA9IDAuMDc0XG5hcmVhID0gbnAucGkgKiAoZGlhbWV0ZXIvMikqKjJcbnJobyA9IDEuMlxuQ2QgPSAwLjQ3XG5rID0gKHJobyAqIENkICogYXJlYSkgLyAoMiAqIG1hc3MpXG5cbmR0ID0gMC4wMDFcbnRfbWF4ID0gNi4wXG50ID0gbnAuYXJhbmdlKDAsIHRfbWF4LCBkdClcblxuIyBTdG9yYWdlIGZvciBzdGF0ZSBhbmQgZW5lcmd5XG5zdGF0ZSA9IG5wLnplcm9zKChsZW4odCksIDQpKVxuc3RhdGVbMF0gPSBbMCwgMCwgdngwLCB2eTBdXG5cbmRlZiBwcm9qZWN0aWxlX3F1YWRyYXRpY19kcmFnKHN0YXRlLCBnLCBrKTpcbiAgICB4LCB5LCB2eCwgdnkgPSBzdGF0ZVxuICAgIHYgPSBucC5zcXJ0KHZ4KioyICsgdnkqKjIpXG4gICAgcmV0dXJuIG5wLmFycmF5KFt2eCwgdnksIC1rKnYqdngsIC1nIC0gayp2KnZ5XSlcblxuZGVmIGltcHJvdmVkX2V1bGVyX3N0ZXAoc3RhdGUsIGR0LCBkZXJpdl9mdW5jLCAqcGFyYW1zKTpcbiAgICBkZXJpdjEgPSBkZXJpdl9mdW5jKHN0YXRlLCAqcGFyYW1zKVxuICAgIHN0YXRlX3ByZWQgPSBzdGF0ZSArIGR0ICogZGVyaXYxXG4gICAgZGVyaXYyID0gZGVyaXZfZnVuYyhzdGF0ZV9wcmVkLCAqcGFyYW1zKVxuICAgIHJldHVybiBzdGF0ZSArIDAuNSAqIGR0ICogKGRlcml2MSArIGRlcml2MilcblxuIyBTaW11bGF0ZVxuZmluYWxfaWR4ID0gbGVuKHQpIC0gMVxuZm9yIGkgaW4gcmFuZ2UoMSwgbGVuKHQpKTpcbiAgICBzdGF0ZVtpXSA9IGltcHJvdmVkX2V1bGVyX3N0ZXAoc3RhdGVbaS0xXSwgZHQsIHByb2plY3RpbGVfcXVhZHJhdGljX2RyYWcsIGcsIGspXG4gICAgaWYgc3RhdGVbaSwgMV0gPCAwOlxuICAgICAgICBmaW5hbF9pZHggPSBpXG4gICAgICAgIGJyZWFrXG5cbiMgVHJpbSBhcnJheXNcbnN0YXRlID0gc3RhdGVbOmZpbmFsX2lkeCsxXVxudCA9IHRbOmZpbmFsX2lkeCsxXVxuXG4jIFlPVVIgQ09ERSBIRVJFOlxuIyBDYWxjdWxhdGUgZW5lcmdpZXNcbiMgS0UgPSAwLjUgKiBtICogdsKyXG4jIFBFID0gbSAqIGcgKiBoXG4jIFRvdGFsIEUgPSBLRSArIFBFXG5cbmtpbmV0aWNfZW5lcmd5ID0gX19fX1xucG90ZW50aWFsX2VuZXJneSA9IF9fX19cbnRvdGFsX2VuZXJneSA9IF9fX19cbmluaXRpYWxfZW5lcmd5ID0gX19fX1xuXG4jIFBsb3QgZW5lcmdpZXNcbnBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgxNCwgMTApKVxuIyBZT1VSIFBMT1RUSU5HIENPREVcbl9fX19cbnBsdC5zaG93KClcblxuIyBDYWxjdWxhdGUgZW5lcmd5IGxvc3NcbmVuZXJneV9sb3N0ID0gX19fX1xucHJpbnQoZlwiSW5pdGlhbCBlbmVyZ3k6IHtpbml0aWFsX2VuZXJneTouMWZ9IEpcIilcbnByaW50KGZcIkZpbmFsIGVuZXJneToge3RvdGFsX2VuZXJneVstMV06LjFmfSBKXCIpXG5wcmludChmXCJFbmVyZ3kgbG9zdCB0byBkcmFnOiB7ZW5lcmd5X2xvc3Q6LjFmfSBKICh7MTAwKmVuZXJneV9sb3N0L2luaXRpYWxfZW5lcmd5Oi4xZn0lKVwiKSJ9
+</script>
+</div>
+<div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_5">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div id="pyodide-11">
+
+</div>
+<script type="pyodide-11-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuaW1wb3J0IG51bXB5IGFzIG5wXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5cbmcgPSA5LjgxXG52MCA9IDQwLjBcbnRoZXRhID0gNDBcbm1hc3MgPSAwLjE0NVxuXG50aGV0YV9yYWQgPSBucC5kZWcycmFkKHRoZXRhKVxudngwID0gdjAgKiBucC5jb3ModGhldGFfcmFkKVxudnkwID0gdjAgKiBucC5zaW4odGhldGFfcmFkKVxuXG5kaWFtZXRlciA9IDAuMDc0XG5hcmVhID0gbnAucGkgKiAoZGlhbWV0ZXIvMikqKjJcbnJobyA9IDEuMlxuQ2QgPSAwLjQ3XG5rID0gKHJobyAqIENkICogYXJlYSkgLyAoMiAqIG1hc3MpXG5cbmR0ID0gMC4wMDFcbnRfbWF4ID0gNi4wXG50ID0gbnAuYXJhbmdlKDAsIHRfbWF4LCBkdClcblxuc3RhdGUgPSBucC56ZXJvcygobGVuKHQpLCA0KSlcbnN0YXRlWzBdID0gWzAsIDAsIHZ4MCwgdnkwXVxuXG5kZWYgcHJvamVjdGlsZV9xdWFkcmF0aWNfZHJhZyhzdGF0ZSwgZywgayk6XG4gICAgeCwgeSwgdngsIHZ5ID0gc3RhdGVcbiAgICB2ID0gbnAuc3FydCh2eCoqMiArIHZ5KioyKVxuICAgIHJldHVybiBucC5hcnJheShbdngsIHZ5LCAtayp2KnZ4LCAtZyAtIGsqdip2eV0pXG5cbmRlZiBpbXByb3ZlZF9ldWxlcl9zdGVwKHN0YXRlLCBkdCwgZGVyaXZfZnVuYywgKnBhcmFtcyk6XG4gICAgZGVyaXYxID0gZGVyaXZfZnVuYyhzdGF0ZSwgKnBhcmFtcylcbiAgICBzdGF0ZV9wcmVkID0gc3RhdGUgKyBkdCAqIGRlcml2MVxuICAgIGRlcml2MiA9IGRlcml2X2Z1bmMoc3RhdGVfcHJlZCwgKnBhcmFtcylcbiAgICByZXR1cm4gc3RhdGUgKyAwLjUgKiBkdCAqIChkZXJpdjEgKyBkZXJpdjIpXG5cbmZpbmFsX2lkeCA9IGxlbih0KSAtIDFcbmZvciBpIGluIHJhbmdlKDEsIGxlbih0KSk6XG4gICAgc3RhdGVbaV0gPSBpbXByb3ZlZF9ldWxlcl9zdGVwKHN0YXRlW2ktMV0sIGR0LCBwcm9qZWN0aWxlX3F1YWRyYXRpY19kcmFnLCBnLCBrKVxuICAgIGlmIHN0YXRlW2ksIDFdIDwgMDpcbiAgICAgICAgZmluYWxfaWR4ID0gaVxuICAgICAgICBicmVha1xuXG5zdGF0ZSA9IHN0YXRlWzpmaW5hbF9pZHgrMV1cbnQgPSB0WzpmaW5hbF9pZHgrMV1cblxuIyBDYWxjdWxhdGUgZW5lcmdpZXNcbnZfc3F1YXJlZCA9IHN0YXRlWzosIDJdKioyICsgc3RhdGVbOiwgM10qKjJcbmtpbmV0aWNfZW5lcmd5ID0gMC41ICogbWFzcyAqIHZfc3F1YXJlZFxucG90ZW50aWFsX2VuZXJneSA9IG1hc3MgKiBnICogc3RhdGVbOiwgMV1cbnRvdGFsX2VuZXJneSA9IGtpbmV0aWNfZW5lcmd5ICsgcG90ZW50aWFsX2VuZXJneVxuaW5pdGlhbF9lbmVyZ3kgPSB0b3RhbF9lbmVyZ3lbMF1cblxuIyBQbG90XG5maWcsIGF4ZXMgPSBwbHQuc3VicGxvdHMoMSwgMiwgZmlnc2l6ZT1nZXRfc2l6ZSgxNiwgNykpXG5cbiMgRW5lcmd5IHZzIHRpbWVcbmF4MSA9IGF4ZXNbMF1cbmF4MS5wbG90KHQsIGtpbmV0aWNfZW5lcmd5LCAnci0nLCBsYWJlbD0nS2luZXRpYyBFbmVyZ3knKVxuYXgxLnBsb3QodCwgcG90ZW50aWFsX2VuZXJneSwgJ2ItJywgbGFiZWw9J1BvdGVudGlhbCBFbmVyZ3knKVxuYXgxLnBsb3QodCwgdG90YWxfZW5lcmd5LCAnay0tJywgbGFiZWw9J1RvdGFsIEVuZXJneScsIGxpbmV3aWR0aD0yKVxuYXgxLmF4aGxpbmUoaW5pdGlhbF9lbmVyZ3ksIGNvbG9yPSdncmF5JywgbGluZXN0eWxlPSc6JywgYWxwaGE9MC41KVxuYXgxLnNldF94bGFiZWwoJ1RpbWUgKHMpJylcbmF4MS5zZXRfeWxhYmVsKCdFbmVyZ3kgKEopJylcbmF4MS5zZXRfdGl0bGUoJ0VuZXJneSBEdXJpbmcgRmxpZ2h0JylcbmF4MS5sZWdlbmQoKVxuXG4jIEVuZXJneSB2cyBwb3NpdGlvblxuYXgyID0gYXhlc1sxXVxuYXgyLnBsb3Qoc3RhdGVbOiwgMF0sIHRvdGFsX2VuZXJneSwgJ2stJywgbGluZXdpZHRoPTIpXG5heDIuc2V0X3hsYWJlbCgnSG9yaXpvbnRhbCBkaXN0YW5jZSAobSknKVxuYXgyLnNldF95bGFiZWwoJ1RvdGFsIEVuZXJneSAoSiknKVxuYXgyLnNldF90aXRsZSgnRW5lcmd5IExvc3MgQWxvbmcgVHJhamVjdG9yeScpXG5cbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKVxuXG5lbmVyZ3lfbG9zdCA9IGluaXRpYWxfZW5lcmd5IC0gdG90YWxfZW5lcmd5Wy0xXVxucHJpbnQoZlwiSW5pdGlhbCBlbmVyZ3k6IHtpbml0aWFsX2VuZXJneTouMWZ9IEpcIilcbnByaW50KGZcIkZpbmFsIGVuZXJneToge3RvdGFsX2VuZXJneVstMV06LjFmfSBKXCIpXG5wcmludChmXCJFbmVyZ3kgbG9zdCB0byBkcmFnOiB7ZW5lcmd5X2xvc3Q6LjFmfSBKICh7MTAwKmVuZXJneV9sb3N0L2luaXRpYWxfZW5lcmd5Oi4xZn0lKVwiKSJ9
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>In this seminar, you have:</p>
+<div class="incremental">
+<ol class="incremental" type="1">
+<li>✅ Implemented numerical ODE solving for 2D motion</li>
+<li>✅ Translated physics equations directly into code</li>
+<li>✅ Compared different drag models (none, linear, quadratic)</li>
+<li>✅ Discovered that optimal launch angle decreases with drag</li>
+<li>✅ Analyzed energy dissipation in a real physical system</li>
+</ol>
+</div>
+<section id="key-takeaways" class="level3">
+<h3 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 66%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>What You Learned</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>State vectors</td>
+<td>How to handle multi-variable problems: <span class="math inline">\([x, y, v_x, v_y]\)</span></td>
+</tr>
+<tr class="even">
+<td>Derivative functions</td>
+<td>How to encode physics: <code>return [vx, vy, ax, ay]</code></td>
+</tr>
+<tr class="odd">
+<td>Improved Euler</td>
+<td>Predict-correct gives <span class="math inline">\(O(\Delta t^2)\)</span> accuracy</td>
+</tr>
+<tr class="even">
+<td>Physical insight</td>
+<td>Air resistance shifts optimal angle below 45°</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="next-steps" class="level3">
+<h3 class="anchored" data-anchor-id="next-steps">Next Steps</h3>
+<ul>
+<li>Try different objects (golf ball, soccer ball, ping pong ball)</li>
+<li>Add wind effects: <span class="math inline">\(\vec{F}_{wind}\)</span></li>
+<li>Model the Magnus effect (spinning ball)</li>
+<li>Use <code>scipy.integrate.solve_ivp</code> for production code</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="bonus-try-it-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-try-it-yourself">Bonus: Try It Yourself!</h2>
+<p>Modify the parameters below and see what happens:</p>
+<div>
+<div id="pyodide-12">
+
+</div>
+<script type="pyodide-12-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbiMgSU5URVJBQ1RJVkUgUExBWUdST1VORFxuIyBDaGFuZ2UgdGhlc2UgcGFyYW1ldGVycyBhbmQgcnVuIHRoZSBjZWxsIVxuIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuIyBPYmplY3QgcGFyYW1ldGVyc1xubWFzcyA9IDAuMTQ1ICAgICAgICAjIFRyeTogMC4wNDUgKGdvbGYgYmFsbCksIDAuNDMgKHNvY2NlciBiYWxsKVxuZGlhbWV0ZXIgPSAwLjA3NCAgICAjIFRyeTogMC4wNDMgKGdvbGYgYmFsbCksIDAuMjIgKHNvY2NlciBiYWxsKVxuQ2QgPSAwLjQ3ICAgICAgICAgICAjIFRyeTogMC4yNSAoZ29sZiBiYWxsIHdpdGggZGltcGxlcylcblxuIyBMYXVuY2ggcGFyYW1ldGVycyAgXG52MCA9IDQwLjAgICAgICAgICAgICMgSW5pdGlhbCBzcGVlZCAobS9zKVxudGhldGEgPSA0MCAgICAgICAgICAjIExhdW5jaCBhbmdsZSAoZGVncmVlcylcblxuIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbiMgU2ltdWxhdGlvbiAoZG9uJ3QgbmVlZCB0byBtb2RpZnkgYmVsb3cpXG4jID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuaW1wb3J0IG51bXB5IGFzIG5wXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5cbmcgPSA5LjgxXG5hcmVhID0gbnAucGkgKiAoZGlhbWV0ZXIvMikqKjJcbnJobyA9IDEuMlxuayA9IChyaG8gKiBDZCAqIGFyZWEpIC8gKDIgKiBtYXNzKVxuXG50aGV0YV9yYWQgPSBucC5kZWcycmFkKHRoZXRhKVxudngwID0gdjAgKiBucC5jb3ModGhldGFfcmFkKVxudnkwID0gdjAgKiBucC5zaW4odGhldGFfcmFkKVxuXG5kdCA9IDAuMDAxXG50X21heCA9IDE1LjBcblxuZGVmIHNpbXVsYXRlKGtfdmFsKTpcbiAgICB0ID0gbnAuYXJhbmdlKDAsIHRfbWF4LCBkdClcbiAgICBzdGF0ZSA9IG5wLnplcm9zKChsZW4odCksIDQpKVxuICAgIHN0YXRlWzBdID0gWzAsIDAsIHZ4MCwgdnkwXVxuICAgIFxuICAgIGZvciBpIGluIHJhbmdlKDEsIGxlbih0KSk6XG4gICAgICAgIHgsIHksIHZ4LCB2eSA9IHN0YXRlW2ktMV1cbiAgICAgICAgdiA9IG5wLnNxcnQodngqKjIgKyB2eSoqMilcbiAgICAgICAgZGVyaXYgPSBucC5hcnJheShbdngsIHZ5LCAta192YWwqdip2eCwgLWcgLSBrX3ZhbCp2KnZ5XSlcbiAgICAgICAgc3RhdGVfcHJlZCA9IHN0YXRlW2ktMV0gKyBkdCAqIGRlcml2XG4gICAgICAgIFxuICAgICAgICB2eF9wLCB2eV9wID0gc3RhdGVfcHJlZFsyXSwgc3RhdGVfcHJlZFszXVxuICAgICAgICB2X3AgPSBucC5zcXJ0KHZ4X3AqKjIgKyB2eV9wKioyKVxuICAgICAgICBkZXJpdl9wcmVkID0gbnAuYXJyYXkoW3Z4X3AsIHZ5X3AsIC1rX3ZhbCp2X3AqdnhfcCwgLWcgLSBrX3ZhbCp2X3AqdnlfcF0pXG4gICAgICAgIFxuICAgICAgICBzdGF0ZVtpXSA9IHN0YXRlW2ktMV0gKyAwLjUgKiBkdCAqIChkZXJpdiArIGRlcml2X3ByZWQpXG4gICAgICAgIFxuICAgICAgICBpZiBzdGF0ZVtpLCAxXSA8IDA6XG4gICAgICAgICAgICByZXR1cm4gc3RhdGVbOmkrMSwgMF0sIHN0YXRlWzppKzEsIDFdXG4gICAgXG4gICAgcmV0dXJuIHN0YXRlWzosIDBdLCBzdGF0ZVs6LCAxXVxuXG4jIFNpbXVsYXRlXG54X2RyYWcsIHlfZHJhZyA9IHNpbXVsYXRlKGspXG54X25vZHJhZywgeV9ub2RyYWcgPSBzaW11bGF0ZSgwKVxuXG4jIFBsb3RcbnBsdC5maWd1cmUoZmlnc2l6ZT0oMTIsIDgpKVxucGx0LnBsb3QoeF9ub2RyYWcsIHlfbm9kcmFnLCAnay0tJywgbGFiZWw9J1dpdGhvdXQgZHJhZycsIGxpbmV3aWR0aD0yKVxucGx0LnBsb3QoeF9kcmFnLCB5X2RyYWcsICdyLScsIGxhYmVsPSdXaXRoIGRyYWcnLCBsaW5ld2lkdGg9MilcbnBsdC54bGFiZWwoJ0Rpc3RhbmNlIChtKScpXG5wbHQueWxhYmVsKCdIZWlnaHQgKG0pJylcbnBsdC50aXRsZShmJ1Byb2plY3RpbGU6IG09e21hc3N9a2csIGQ9e2RpYW1ldGVyKjEwMDouMWZ9Y20sIHbigoA9e3YwfW0vcywgzrg9e3RoZXRhfcKwJylcbnBsdC5sZWdlbmQoKVxucGx0LmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxucGx0LnhsaW0oMCwgTm9uZSlcbnBsdC55bGltKDAsIE5vbmUpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KClcblxucHJpbnQoZlwiUmFuZ2Ugd2l0aG91dCBkcmFnOiB7eF9ub2RyYWdbLTFdOi4xZn0gbVwiKVxucHJpbnQoZlwiUmFuZ2Ugd2l0aCBkcmFnOiB7eF9kcmFnWy0xXTouMWZ9IG1cIilcbnByaW50KGZcIlJhbmdlIHJlZHVjdGlvbjogezEwMCooMS14X2RyYWdbLTFdL3hfbm9kcmFnWy0xXSk6LjFmfSVcIikifQ==
+</script>
+</div>
+
+
+<script type="pyodide-data">
+eyJvcHRpb25zIjp7ImluZGV4VVJMIjoiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L3B5b2RpZGUvdjAuMjYuMS9mdWxsLyJ9LCJwYWNrYWdlcyI6eyJwa2dzIjpbInB5b2RpZGVfaHR0cCIsIm1pY3JvcGlwIiwiaXB5dGhvbiIsIm1hdHBsb3RsaWIiLCJudW1weSJdfX0=
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTEyIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTIgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEyLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMiA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTExIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTEgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTExLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTEtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEwIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTAgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEwLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBleGVyY2lzZSBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKFxuICAgIHtcbiAgICAgIGlkOiBcInB5b2RpZGUtMTAtY29udGVudHNcIixcbiAgICAgIGVudmlyOiBgZXhlcmNpc2UtZW52LSR7YmxvY2suYXR0ci5leGVyY2lzZX1gLFxuICAgICAgZXJyb3I6IGZhbHNlLFxuICAgICAgYXV0b3J1bjogZmFsc2UsXG4gICAgICBjYXB0aW9uOiAnRXhlcmNpc2UnLFxuICAgIH0sXG4gICAgYmxvY2suYXR0clxuICApO1xuXG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IocHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxudmlld29mIF9weW9kaWRlX3ZhbHVlXzEwID0gcHlvZGlkZU9qcy5wcm9jZXNzKF9weW9kaWRlX2VkaXRvcl8xMCwge30pO1xuX3B5b2RpZGVfZmVlZGJhY2tfMTAgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUdyYWRlciB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3QgZW1wdHlGZWVkYmFjayA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpO1xuXG4gIGNvbnN0IGdyYWRlciA9IG5ldyBQeW9kaWRlR3JhZGVyKF9weW9kaWRlX3ZhbHVlXzEwLmV2YWx1YXRvcik7XG4gIGNvbnN0IGZlZWRiYWNrID0gYXdhaXQgZ3JhZGVyLmdyYWRlRXhlcmNpc2UoKTtcbiAgaWYgKCFmZWVkYmFjaykgcmV0dXJuIGVtcHR5RmVlZGJhY2s7XG4gIHJldHVybiBmZWVkYmFjaztcbn1cbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTkiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl85ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzkgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzksIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS04LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBleGVyY2lzZSBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKFxuICAgIHtcbiAgICAgIGlkOiBcInB5b2RpZGUtOC1jb250ZW50c1wiLFxuICAgICAgZW52aXI6IGBleGVyY2lzZS1lbnYtJHtibG9jay5hdHRyLmV4ZXJjaXNlfWAsXG4gICAgICBlcnJvcjogZmFsc2UsXG4gICAgICBhdXRvcnVuOiBmYWxzZSxcbiAgICAgIGNhcHRpb246ICdFeGVyY2lzZScsXG4gICAgfSxcbiAgICBibG9jay5hdHRyXG4gICk7XG5cbiAgY29uc3QgZWRpdG9yID0gbmV3IFB5b2RpZGVFeGVyY2lzZUVkaXRvcihweW9kaWRlT2pzLnB5b2RpZGVQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG52aWV3b2YgX3B5b2RpZGVfdmFsdWVfOCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfOCwge30pO1xuX3B5b2RpZGVfZmVlZGJhY2tfOCA9IHtcbiAgY29uc3QgeyBQeW9kaWRlR3JhZGVyIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBlbXB0eUZlZWRiYWNrID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7XG5cbiAgY29uc3QgZ3JhZGVyID0gbmV3IFB5b2RpZGVHcmFkZXIoX3B5b2RpZGVfdmFsdWVfOC5ldmFsdWF0b3IpO1xuICBjb25zdCBmZWVkYmFjayA9IGF3YWl0IGdyYWRlci5ncmFkZUV4ZXJjaXNlKCk7XG4gIGlmICghZmVlZGJhY2spIHJldHVybiBlbXB0eUZlZWRiYWNrO1xuICByZXR1cm4gZmVlZGJhY2s7XG59XG4ifSx7ImNlbGxOYW1lIjoicHlvZGlkZS03IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfNyA9IHtcbiAgY29uc3QgeyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInB5b2RpZGUtNy1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGBweW9kaWRlLTctY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV83ID0gcHlvZGlkZU9qcy5wcm9jZXNzKF9weW9kaWRlX2VkaXRvcl83LCB7fSk7XG4ifSx7ImNlbGxOYW1lIjoicHlvZGlkZS02IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfNiA9IHtcbiAgY29uc3QgeyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInB5b2RpZGUtNi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXhlcmNpc2UgY29uZmlndXJhdGlvblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbihcbiAgICB7XG4gICAgICBpZDogXCJweW9kaWRlLTYtY29udGVudHNcIixcbiAgICAgIGVudmlyOiBgZXhlcmNpc2UtZW52LSR7YmxvY2suYXR0ci5leGVyY2lzZX1gLFxuICAgICAgZXJyb3I6IGZhbHNlLFxuICAgICAgYXV0b3J1bjogZmFsc2UsXG4gICAgICBjYXB0aW9uOiAnRXhlcmNpc2UnLFxuICAgIH0sXG4gICAgYmxvY2suYXR0clxuICApO1xuXG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IocHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxudmlld29mIF9weW9kaWRlX3ZhbHVlXzYgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzYsIHt9KTtcbl9weW9kaWRlX2ZlZWRiYWNrXzYgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUdyYWRlciB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3QgZW1wdHlGZWVkYmFjayA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpO1xuXG4gIGNvbnN0IGdyYWRlciA9IG5ldyBQeW9kaWRlR3JhZGVyKF9weW9kaWRlX3ZhbHVlXzYuZXZhbHVhdG9yKTtcbiAgY29uc3QgZmVlZGJhY2sgPSBhd2FpdCBncmFkZXIuZ3JhZGVFeGVyY2lzZSgpO1xuICBpZiAoIWZlZWRiYWNrKSByZXR1cm4gZW1wdHlGZWVkYmFjaztcbiAgcmV0dXJuIGZlZWRiYWNrO1xufVxuIn0seyJjZWxsTmFtZSI6InB5b2RpZGUtNSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3B5b2RpZGVfZWRpdG9yXzUgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTUtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgcHlvZGlkZS01LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFB5b2RpZGVFeGVyY2lzZUVkaXRvcihcbiAgICBweW9kaWRlT2pzLnB5b2RpZGVQcm9taXNlLFxuICAgIGJsb2NrLmNvZGUsXG4gICAgb3B0aW9uc1xuICApO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3B5b2RpZGVfdmFsdWVfNSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfNSwge30pO1xuIn0seyJjZWxsTmFtZSI6InB5b2RpZGUtNCIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3B5b2RpZGVfZWRpdG9yXzQgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTQtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICAvLyBEZWZhdWx0IGV4ZXJjaXNlIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oXG4gICAge1xuICAgICAgaWQ6IFwicHlvZGlkZS00LWNvbnRlbnRzXCIsXG4gICAgICBlbnZpcjogYGV4ZXJjaXNlLWVudi0ke2Jsb2NrLmF0dHIuZXhlcmNpc2V9YCxcbiAgICAgIGVycm9yOiBmYWxzZSxcbiAgICAgIGF1dG9ydW46IGZhbHNlLFxuICAgICAgY2FwdGlvbjogJ0V4ZXJjaXNlJyxcbiAgICB9LFxuICAgIGJsb2NrLmF0dHJcbiAgKTtcblxuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbnZpZXdvZiBfcHlvZGlkZV92YWx1ZV80ID0gcHlvZGlkZU9qcy5wcm9jZXNzKF9weW9kaWRlX2VkaXRvcl80LCB7fSk7XG5fcHlvZGlkZV9mZWVkYmFja180ID0ge1xuICBjb25zdCB7IFB5b2RpZGVHcmFkZXIgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IGVtcHR5RmVlZGJhY2sgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTtcblxuICBjb25zdCBncmFkZXIgPSBuZXcgUHlvZGlkZUdyYWRlcihfcHlvZGlkZV92YWx1ZV80LmV2YWx1YXRvcik7XG4gIGNvbnN0IGZlZWRiYWNrID0gYXdhaXQgZ3JhZGVyLmdyYWRlRXhlcmNpc2UoKTtcbiAgaWYgKCFmZWVkYmFjaykgcmV0dXJuIGVtcHR5RmVlZGJhY2s7XG4gIHJldHVybiBmZWVkYmFjaztcbn1cbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBleGVyY2lzZSBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKFxuICAgIHtcbiAgICAgIGlkOiBcInB5b2RpZGUtMi1jb250ZW50c1wiLFxuICAgICAgZW52aXI6IGBleGVyY2lzZS1lbnYtJHtibG9jay5hdHRyLmV4ZXJjaXNlfWAsXG4gICAgICBlcnJvcjogZmFsc2UsXG4gICAgICBhdXRvcnVuOiBmYWxzZSxcbiAgICAgIGNhcHRpb246ICdFeGVyY2lzZScsXG4gICAgfSxcbiAgICBibG9jay5hdHRyXG4gICk7XG5cbiAgY29uc3QgZWRpdG9yID0gbmV3IFB5b2RpZGVFeGVyY2lzZUVkaXRvcihweW9kaWRlT2pzLnB5b2RpZGVQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG52aWV3b2YgX3B5b2RpZGVfdmFsdWVfMiA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMiwge30pO1xuX3B5b2RpZGVfZmVlZGJhY2tfMiA9IHtcbiAgY29uc3QgeyBQeW9kaWRlR3JhZGVyIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBlbXB0eUZlZWRiYWNrID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7XG5cbiAgY29uc3QgZ3JhZGVyID0gbmV3IFB5b2RpZGVHcmFkZXIoX3B5b2RpZGVfdmFsdWVfMi5ldmFsdWF0b3IpO1xuICBjb25zdCBmZWVkYmFjayA9IGF3YWl0IGdyYWRlci5ncmFkZUV4ZXJjaXNlKCk7XG4gIGlmICghZmVlZGJhY2spIHJldHVybiBlbXB0eUZlZWRiYWNrO1xuICByZXR1cm4gZmVlZGJhY2s7XG59XG4ifSx7ImNlbGxOYW1lIjoicHlvZGlkZS0xIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6Il9weW9kaWRlX3ZhbHVlXzEgPSB7XG4gIGNvbnN0IHsgaGlnaGxpZ2h0UHl0aG9uLCBiNjREZWNvZGV9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInB5b2RpZGUtMS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXZhbHVhdGlvbiBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHtcbiAgICBpZDogXCJweW9kaWRlLTEtY29udGVudHNcIixcbiAgICBlY2hvOiB0cnVlLFxuICAgIG91dHB1dDogdHJ1ZVxuICB9LCBibG9jay5hdHRyKTtcblxuICAvLyBFdmFsdWF0ZSB0aGUgcHJvdmlkZWQgUHl0aG9uIGNvZGVcbiAgY29uc3QgcmVzdWx0ID0gcHlvZGlkZU9qcy5wcm9jZXNzKHtjb2RlOiBibG9jay5jb2RlLCBvcHRpb25zfSwge30pO1xuXG4gIC8vIEVhcmx5IHlpZWxkIHdoaWxlIHdlIHdhaXQgZm9yIHRoZSBmaXJzdCBldmFsdWF0aW9uIGFuZCByZW5kZXJcbiAgaWYgKG9wdGlvbnMub3V0cHV0ICYmICEoXCIxXCIgaW4gcHlvZGlkZU9qcy5yZW5kZXJlZE9qcykpIHtcbiAgICBjb25zdCBjb250YWluZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuICAgIGNvbnN0IHNwaW5uZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuXG4gICAgaWYgKG9wdGlvbnMuZWNobykge1xuICAgICAgLy8gU2hvdyBvdXRwdXQgYXMgaGlnaGxpZ2h0ZWQgc291cmNlXG4gICAgICBjb25zdCBwcmVFbGVtID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcInByZVwiKTtcbiAgICAgIGNvbnRhaW5lci5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGVcIjtcbiAgICAgIHByZUVsZW0uY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlIHB5dGhvblwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChoaWdobGlnaHRQeXRob24oYmxvY2suY29kZSkpO1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItZ3JvdyBzcGlubmVyLWdyb3ctc20gbS0yIHBvc2l0aW9uLWFic29sdXRlIHRvcC0wIGVuZC0wXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHByZUVsZW0pO1xuICAgIH0gZWxzZSB7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ib3JkZXIgc3Bpbm5lci1ib3JkZXItc21cIjtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICB9XG5cbiAgICB5aWVsZCBjb250YWluZXI7XG4gIH1cblxuICBweW9kaWRlT2pzLnJlbmRlcmVkT2pzW1wiMVwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLXByZWx1ZGUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJweW9kaWRlT2pzID0ge1xuICBjb25zdCB7XG4gICAgUHlvZGlkZUV2YWx1YXRvcixcbiAgICBQeW9kaWRlRW52aXJvbm1lbnRNYW5hZ2VyLFxuICAgIHNldHVwUHl0aG9uLFxuICAgIHN0YXJ0UHlvZGlkZVdvcmtlcixcbiAgICBiNjREZWNvZGUsXG4gICAgY29sbGFwc2VQYXRoLFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIFB5b2RpZGUgc3VwcGxlbWVudGFsIGRhdGEgYW5kIG9wdGlvbnNcbiAgY29uc3QgZGF0YUNvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS1kYXRhXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZGF0YSA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGRhdGFDb250ZW50KSk7XG5cbiAgLy8gR3JhYiBsaXN0IG9mIHJlc291cmNlcyB0byBiZSBkb3dubG9hZGVkXG4gIGNvbnN0IGZpbGVzQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ2ZnMtZmlsZVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGZpbGVzID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZmlsZXNDb250ZW50KSk7XG5cbiAgbGV0IHB5b2RpZGVQcm9taXNlID0gKGFzeW5jICgpID0+IHtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIFB5b2RpZGVgO1xuICAgIGNvbnN0IHB5b2RpZGUgPSBhd2FpdCBzdGFydFB5b2RpZGVXb3JrZXIoZGF0YS5vcHRpb25zKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcGFja2FnZTogbWljcm9waXBgO1xuICAgIGF3YWl0IHB5b2RpZGUubG9hZFBhY2thZ2UoXCJtaWNyb3BpcFwiKTtcbiAgICBjb25zdCBtaWNyb3BpcCA9IGF3YWl0IHB5b2RpZGUucHlpbXBvcnQoXCJtaWNyb3BpcFwiKTtcbiAgICBhd2FpdCBkYXRhLnBhY2thZ2VzLnBrZ3MubWFwKChwa2cpID0+ICgpID0+IHtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcGFja2FnZTogJHtwa2d9YDtcbiAgICAgIHJldHVybiBtaWNyb3BpcC5pbnN0YWxsKHBrZyk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG4gICAgYXdhaXQgbWljcm9waXAuZGVzdHJveSgpO1xuXG4gICAgLy8gRG93bmxvYWQgYW5kIGluc3RhbGwgcmVzb3VyY2VzXG4gICAgYXdhaXQgZmlsZXMubWFwKChmaWxlKSA9PiBhc3luYyAoKSA9PiB7XG4gICAgICBjb25zdCBuYW1lID0gZmlsZS5zdWJzdHJpbmcoZmlsZS5sYXN0SW5kZXhPZignLycpICsgMSk7XG4gICAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIHJlc291cmNlOiAke25hbWV9YDtcbiAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2goZmlsZSk7XG4gICAgICBpZiAoIXJlc3BvbnNlLm9rKSB7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgQ2FuJ3QgZG93bmxvYWQgXFxgJHtmaWxlfVxcYC4gRXJyb3IgJHtyZXNwb25zZS5zdGF0dXN9OiBcIiR7cmVzcG9uc2Uuc3RhdHVzVGV4dH1cIi5gKTtcbiAgICAgIH1cbiAgICAgIGNvbnN0IGRhdGEgPSBhd2FpdCByZXNwb25zZS5hcnJheUJ1ZmZlcigpO1xuXG4gICAgICAvLyBTdG9yZSBVUkxzIGluIHRoZSBjd2Qgd2l0aG91dCBhbnkgc3ViZGlyZWN0b3J5IHN0cnVjdHVyZVxuICAgICAgaWYgKGZpbGUuaW5jbHVkZXMoXCI6Ly9cIikpIHtcbiAgICAgICAgZmlsZSA9IG5hbWU7XG4gICAgICB9XG5cbiAgICAgIC8vIENvbGxhcHNlIGhpZ2hlciBkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBmaWxlID0gY29sbGFwc2VQYXRoKGZpbGUpO1xuXG4gICAgICAvLyBDcmVhdGUgZGlyZWN0b3J5IHRyZWUsIGlnbm9yaW5nIFwiZGlyZWN0b3J5IGV4aXN0c1wiIFZGUyBlcnJvcnNcbiAgICAgIGNvbnN0IHBhcnRzID0gZmlsZS5zcGxpdCgnLycpLnNsaWNlKDAsIC0xKTtcbiAgICAgIGxldCBwYXRoID0gJyc7XG4gICAgICB3aGlsZSAocGFydHMubGVuZ3RoID4gMCkge1xuICAgICAgICBwYXRoICs9IHBhcnRzLnNoaWZ0KCkgKyAnLyc7XG4gICAgICAgIHRyeSB7XG4gICAgICAgICAgYXdhaXQgcHlvZGlkZS5GUy5ta2RpcihwYXRoKTtcbiAgICAgICAgfSBjYXRjaCAoZSkge1xuICAgICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICAgIGlmIChlLmVycm5vICE9PSAyMCkge1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0UHRyID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLl9zdHJlcnJvcihlLmVycm5vKTtcbiAgICAgICAgICAgIGNvbnN0IGVycm9yVGV4dCA9IGF3YWl0IHB5b2RpZGUuX21vZHVsZS5VVEY4VG9TdHJpbmcoZXJyb3JUZXh0UHRyKTtcbiAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICB9XG5cbiAgICAgIC8vIFdyaXRlIHRoaXMgZmlsZSB0byB0aGUgVkZTXG4gICAgICB0cnkge1xuICAgICAgICByZXR1cm4gYXdhaXQgcHlvZGlkZS5GUy53cml0ZUZpbGUoZmlsZSwgbmV3IFVpbnQ4QXJyYXkoZGF0YSkpO1xuICAgICAgfSBjYXRjaCAoZSkge1xuICAgICAgICBpZiAoZS5uYW1lICE9PSBcIkVycm5vRXJyb3JcIikgdGhyb3cgZTtcbiAgICAgICAgY29uc3QgZXJyb3JUZXh0UHRyID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLl9zdHJlcnJvcihlLmVycm5vKTtcbiAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYEZpbGVzeXN0ZW0gRXJyb3IgJHtlLmVycm5vfSBcIiR7ZXJyb3JUZXh0fVwiLmApO1xuICAgICAgfVxuICAgIH0pLnJlZHVjZSgoY3VyLCBuZXh0KSA9PiBjdXIudGhlbihuZXh0KSwgUHJvbWlzZS5yZXNvbHZlKCkpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBQeW9kaWRlIGVudmlyb25tZW50IHNldHVwYDtcbiAgICBhd2FpdCBzZXR1cFB5dGhvbihweW9kaWRlKTtcblxuICAgIHN0YXR1c1RleHQucmVtb3ZlKCk7XG4gICAgaWYgKHN0YXR1c0NvbnRhaW5lci5jaGlsZHJlbi5sZW5ndGggPT0gMCkge1xuICAgICAgc3RhdHVzQ29udGFpbmVyLnBhcmVudE5vZGUucmVtb3ZlKCk7XG4gICAgfVxuICAgIHJldHVybiBweW9kaWRlO1xuICB9KSgpLmNhdGNoKChlcnIpID0+IHtcbiAgICBzdGF0dXNUZXh0LnN0eWxlLmNvbG9yID0gXCJ2YXIoLS1leGVyY2lzZS1lZGl0b3ItaGwtZXIsICNBRDAwMDApXCI7XG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGVyci5tZXNzYWdlO1xuICAgIC8vaW5kaWNhdG9yQ29udGFpbmVyLnF1ZXJ5U2VsZWN0b3IoXCIuc3Bpbm5lci1ncm93XCIpLmNsYXNzTGlzdC5hZGQoXCJkLW5vbmVcIik7XG4gICAgdGhyb3cgZXJyO1xuICB9KTtcblxuICAvLyBLZWVwIHRyYWNrIG9mIGluaXRpYWwgT0pTIGJsb2NrIHJlbmRlclxuICBjb25zdCByZW5kZXJlZE9qcyA9IHt9O1xuXG4gIGNvbnN0IHByb2Nlc3MgPSBhc3luYyAoY29udGV4dCwgaW5wdXRzKSA9PiB7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHB5b2RpZGVQcm9taXNlO1xuICAgIGNvbnN0IGV2YWx1YXRvciA9IG5ldyBQeW9kaWRlRXZhbHVhdG9yKHB5b2RpZGUsIGNvbnRleHQpO1xuICAgIGF3YWl0IGV2YWx1YXRvci5wcm9jZXNzKGlucHV0cyk7XG4gICAgcmV0dXJuIGV2YWx1YXRvci5jb250YWluZXI7XG4gIH1cblxuICByZXR1cm4ge1xuICAgIHB5b2RpZGVQcm9taXNlLFxuICAgIHJlbmRlcmVkT2pzLFxuICAgIHByb2Nlc3MsXG4gIH07XG59XG4ifV19
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../seminars/seminar11";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/fcichos\.github\.io\/EMPP24\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../seminars/seminar07/seminar7_curve_fitting.html" class="pagination-link" aria-label="Curve Fitting">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Curve Fitting</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

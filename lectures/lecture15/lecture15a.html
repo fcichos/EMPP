@@ -517,6 +517,23 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false">
+ <span class="menu-text">Recap: Projectile Motion</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar11/seminar11_projectile.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projectile with Air Resistance</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -599,6 +616,7 @@ N(t) = N(0) e^{-kt}
 N(t + \Delta t) = N(t) + \Delta t f^{\prime}(t)
 \]</span></p>
 <p>We can now implement the Euler method to solve the ODE numerically.</p>
+<p><strong>Exercise 1</strong></p>
 <div>
 <div id="pyodide-2">
 
@@ -644,6 +662,7 @@ f(t_0 + \Delta t) \approx f(t_0) + \Delta t f'(t_0)
 f(t_0 + \Delta t) \approx f(t_0) + \frac{\Delta t}{2} (f'(t_0) + f'(t_0 + \Delta t))
 \]</span></p>
 <p>This effectively now introduces the curvature of the function at <span class="math inline">\(t_0\)</span> into the approximation. We can see this by expanding the improved Euler method in a Taylor series. The first derivative at <span class="math inline">\(t_0\)</span> is <span class="math inline">\(f'(t_0)\)</span>, and the derivative at the predicted point <span class="math inline">\(f'(t_0 + \Delta t)\)</span> can be expanded as <span class="math inline">\(f'(t_0) + \Delta t f''(t_0)\)</span>. When we average these two derivatives and multiply by <span class="math inline">\(\Delta t\)</span>, we get <span class="math inline">\(\Delta t f'(t_0) + \frac{\Delta t^2}{2} f''(t_0)\)</span>, which matches the first two terms in the Taylor expansion. This is why the improved Euler method has an error of order <span class="math inline">\(O(\Delta t^2)\)</span> compared to <span class="math inline">\(O(\Delta t)\)</span> for the simple Euler method.</p>
+<p><strong>Exercise 2</strong></p>
 <div>
 <div id="pyodide-4">
 
@@ -693,6 +712,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6Ilxu
 \end{align}
 \]</span></p>
 <p>We can now use the improved Euler method to solve these two equations simultaneously. The code below shows how to solve the above second order differential equation.</p>
+<p><strong>Exercise 3</strong></p>
 <div>
 <div id="pyodide-6">
 
@@ -738,6 +758,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6Ilxu
 \end{align}
 \]</span></p>
 <p>where <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\gamma\)</span>, and <span class="math inline">\(\delta\)</span> are positive constants representing the interaction between the species. Here <span class="math inline">\(\alpha\)</span> is the growth rate of prey in absence of predators, <span class="math inline">\(\beta\)</span> is the rate at which predators eat prey, <span class="math inline">\(\delta\)</span> is the efficiency of turning eaten prey into new predators, and <span class="math inline">\(\gamma\)</span> is the death rate of predators in absence of prey.</p>
+<p><strong>Exercise 4</strong></p>
 <div>
 <div id="pyodide-8">
 
