@@ -106,7 +106,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
-<script defer="" data-domain="fcichos.github.io" src="https://plausible.io/js/script.js"></script>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async="" src="https://plausible.io/js/pa-STLzCtrlwjN9dGc-mqu2f.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -666,7 +671,7 @@ window.Quarto = {
 
 
 <p>Neural networks are one of the most commonly used machine learning objects nowadays. Mostly these systems are known as <strong>deep neural networks</strong>, which just says something about how many layers in which neurons are arranged exist. We will in this lecture have a look at the basic unit, the neuron, and how to connect and train a network. We will do all ourselves, that means, we will not use one of the many existing python modules, that simplifies the task. This notebook has been largely developed by <strong>Martin Fränzl</strong>.</p>
-<div id="62689642" class="cell" data-tags="[]" data-execution_count="1">
+<div id="eba401aa" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -701,12 +706,12 @@ window.Quarto = {
 <p>The MNIST data set contains 70,000 images of hand-written digits, each 28 x 28 pixels, in greyscale with pixel-values from 0 to 255. We could download and preprocess the data ourselves, but the makers of the module <code>sklearn</code> already did that for us:</p>
 <section id="load-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="load-the-data">Load the data</h3>
-<div id="3f2ae289" class="cell" data-tags="[]" data-execution_count="2">
+<div id="7b1551a3" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_openml</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> fetch_openml(<span class="st">'mnist_784'</span>, version<span class="op">=</span><span class="dv">1</span>, return_X_y<span class="op">=</span><span class="va">True</span>,as_frame<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The images are now contained in the array <code>X</code>, while the labels (so which number it is) are contained in <code>y</code>. Let’s have a look at a random image and label.</p>
-<div id="0c909ee8" class="cell" data-tags="[]" data-execution_count="3">
+<div id="887b6066" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">33419</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(np.array(X)[i].reshape(<span class="dv">28</span>, <span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
@@ -727,20 +732,20 @@ window.Quarto = {
 <section id="normalize-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="normalize-the-data">Normalize the data</h3>
 <p>To use data in neural networks as training data, it is always useful to normalize the data to the interval [0, 1].</p>
-<div id="3b25545d" class="cell" data-tags="[]" data-execution_count="4">
+<div id="73808f41" class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X<span class="op">/</span><span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="preparing-training-and-testing-data" class="level3">
 <h3 class="anchored" data-anchor-id="preparing-training-and-testing-data">Preparing training and testing data</h3>
 <p>The default MNIST labels say ‘1’ for an image of a one, ‘2’ for an image of a two, etc., but we are just building a zero classifier for now. So we want our labels to say 1 when we have a zero, and 0 otherwise. So we overwrite the labels accordingly:</p>
-<div id="8cb51d74" class="cell" data-tags="[]" data-execution_count="5">
+<div id="672660e8" class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>y_new <span class="op">=</span> np.zeros(y.shape)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y_new[np.where(y <span class="op">==</span> <span class="st">'0'</span>)[<span class="dv">0</span>]] <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We now split the data in a train and test set. The MNIST images are pre-arranged so that the first 60,000 can be used for training, and the last 10,000 for testing. We’ll also transform the data into the shape we want, with each example in a column (instead of a row):</p>
-<div id="174fc99b" class="cell" data-tags="[]" data-execution_count="6">
+<div id="9dde971e" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">60000</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>m_test <span class="op">=</span> X.shape[<span class="dv">0</span>] <span class="op">-</span> m</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -748,13 +753,13 @@ window.Quarto = {
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>y_train, y_test <span class="op">=</span> y[:m].reshape(<span class="dv">1</span>,m), y[m:].reshape(<span class="dv">1</span>, m_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, we shuffle the training set:</p>
-<div id="cd70507c" class="cell" data-tags="[]" data-execution_count="7">
+<div id="c237dfb8" class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>shuffle_index <span class="op">=</span> np.random.permutation(m)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> X_train[:,shuffle_index], y_train[:,shuffle_index]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s again have a look at random image and label just to check</p>
-<div id="81eb0abb" class="cell" data-tags="[]" data-execution_count="8">
+<div id="4aef7c47" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">39</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_train[:,i].reshape(<span class="dv">28</span>, <span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
@@ -813,11 +818,11 @@ y=\sigma( x_{1} w_{1}+ x_{2} w_{2}+b)
 \sigma(z) = \frac{1}{1+{\rm e}^{-z}}\ .
 \end{equation*}\]</span></p>
 <p>The sigmoid function is something we can already define and plot.</p>
-<div id="9b3e19f9" class="cell" data-execution_count="9">
+<div id="44af20a4" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(z):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="eba1063b" class="cell" data-execution_count="10">
+<div id="54ebd5af" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">3</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x,sigmoid(x))</span>
@@ -870,7 +875,7 @@ L(y,\hat{y}) = -y\log(\hat{y})-(1-y)\log(1-\hat{y})\ .
 L(Y,\hat{Y}) = -\frac{1}{m}\sum_{i = 0}^{m}y^{(i)}\log(\hat{y}^{(i)})-(1-y^{(i)})\log(1-\hat{y}^{(i)})\ .
 \end{equation*}\]</span></p>
 <p>In Python code, this looks like</p>
-<div id="bd05f61f" class="cell" data-execution_count="11">
+<div id="b3d6f46c" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_loss(Y, Y_hat):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> Y.shape[<span class="dv">1</span>]</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> <span class="op">-</span>(<span class="fl">1.</span><span class="op">/</span>m)<span class="op">*</span>(np.<span class="bu">sum</span>(np.multiply(np.log(Y_hat), Y)) <span class="op">+</span> np.<span class="bu">sum</span>(np.multiply(np.log(<span class="dv">1</span> <span class="op">-</span> Y_hat), (<span class="dv">1</span> <span class="op">-</span> Y))))</span>
@@ -957,7 +962,7 @@ w\leftarrow w-\eta\frac{\partial L}{\partial w}
 <section id="build-an-train" class="level3">
 <h3 class="anchored" data-anchor-id="build-an-train">Build an Train</h3>
 <p>Now we have all things together to create a single neuron network doing the analysis of the MNIST numbers. This type of data processing is called logistic regression based on the sigmoid function, which is a logistic function. So let’s create all in python code and train the network for 100 epochs.</p>
-<div id="be9a6d3f" class="cell" data-execution_count="12">
+<div id="180bd87c" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array(X_train)</span>
@@ -992,17 +997,17 @@ Epoch 20  loss:  0.061318323546277226
 Epoch 30  loss:  0.055230119812005714</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1534748172.py:13: RuntimeWarning: divide by zero encountered in matmul
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1534748172.py:13: RuntimeWarning: divide by zero encountered in matmul
   Z = np.matmul(W.T, X) + b
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1534748172.py:13: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1534748172.py:13: RuntimeWarning: overflow encountered in matmul
   Z = np.matmul(W.T, X) + b
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1534748172.py:13: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1534748172.py:13: RuntimeWarning: invalid value encountered in matmul
   Z = np.matmul(W.T, X) + b
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1534748172.py:18: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1534748172.py:18: RuntimeWarning: divide by zero encountered in matmul
   dW = (1/m)*np.matmul(X, (A-Y).T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1534748172.py:18: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1534748172.py:18: RuntimeWarning: overflow encountered in matmul
   dW = (1/m)*np.matmul(X, (A-Y).T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1534748172.py:18: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1534748172.py:18: RuntimeWarning: invalid value encountered in matmul
   dW = (1/m)*np.matmul(X, (A-Y).T)</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -1033,7 +1038,7 @@ Final loss: 0.03579805734492837</code></pre>
 </figure>
 </div>
 <p>The entries in the matrix are called <strong>true positives</strong> (TP), <strong>false positives</strong> (FP), <strong>false negatives</strong> (FN), and <strong>true negatives</strong> (TN). Fortunately we can use a method of the <code>sklearn</code> module to calculate the confusion matrix. We just have to supply the predictions and the actual labels to it. To do so, we use the testing data set <code>X_test</code> which we have splitted earlier.</p>
-<div id="1d7c6b4f" class="cell" data-execution_count="13">
+<div id="c23ef287" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, classification_report</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.matmul(W.T,X_test) <span class="op">+</span> b</span>
@@ -1048,15 +1053,15 @@ Final loss: 0.03579805734492837</code></pre>
  [  47  947]]</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/2374582204.py:3: RuntimeWarning: divide by zero encountered in matmul
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/2374582204.py:3: RuntimeWarning: divide by zero encountered in matmul
   Z = np.matmul(W.T,X_test) + b
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/2374582204.py:3: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/2374582204.py:3: RuntimeWarning: overflow encountered in matmul
   Z = np.matmul(W.T,X_test) + b
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/2374582204.py:3: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/2374582204.py:3: RuntimeWarning: invalid value encountered in matmul
   Z = np.matmul(W.T,X_test) + b</code></pre>
 </div>
 </div>
-<div id="1ae9a6a1" class="cell" data-execution_count="14">
+<div id="3dde3d08" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
@@ -1074,14 +1079,14 @@ weighted avg       0.99      0.99      0.99     10000
 <section id="testing-our-model" class="level3">
 <h3 class="anchored" data-anchor-id="testing-our-model">Testing our model</h3>
 <p>We can check a single image of our testing data with the following line. If the output number is bigger than 0.5, our number is likely a 0.</p>
-<div id="df1178a0" class="cell" data-execution_count="15">
+<div id="f92a0a1b" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="dv">200</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(sigmoid(np.matmul(W.T, np.array(X_test)[:,i])<span class="op">+</span>b)<span class="op">&gt;</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="fd957215" class="cell" data-execution_count="16">
+<div id="a2cee1e4" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(np.array(X_test)[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>),cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1103,7 +1108,7 @@ weighted avg       0.99      0.99      0.99     10000
 </figure>
 </div>
 <p>So we have now and input layer with 784 inputs that are connected to 64 units in the hidden layer and 1 neuron in the output layer. We will not go through the derivations of all the formulas for the forward and backward passes this time. The code is a simple extension of what we did before and I hope easy to read.</p>
-<div id="ba617d29" class="cell" data-execution_count="17">
+<div id="81ed7fb9" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X_train</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> y_train</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1144,29 +1149,29 @@ weighted avg       0.99      0.99      0.99     10000
 <span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Final loss:"</span>, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1376930165.py:15: RuntimeWarning: divide by zero encountered in matmul
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1376930165.py:15: RuntimeWarning: divide by zero encountered in matmul
   Z1 = np.matmul(W1, X) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1376930165.py:15: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1376930165.py:15: RuntimeWarning: overflow encountered in matmul
   Z1 = np.matmul(W1, X) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1376930165.py:15: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1376930165.py:15: RuntimeWarning: invalid value encountered in matmul
   Z1 = np.matmul(W1, X) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1376930165.py:17: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1376930165.py:17: RuntimeWarning: divide by zero encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1376930165.py:17: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1376930165.py:17: RuntimeWarning: overflow encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1376930165.py:17: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1376930165.py:17: RuntimeWarning: invalid value encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1376930165.py:23: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1376930165.py:23: RuntimeWarning: divide by zero encountered in matmul
   dW2 = (1./m) * np.matmul(dZ2, A1.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1376930165.py:23: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1376930165.py:23: RuntimeWarning: overflow encountered in matmul
   dW2 = (1./m) * np.matmul(dZ2, A1.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1376930165.py:23: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1376930165.py:23: RuntimeWarning: invalid value encountered in matmul
   dW2 = (1./m) * np.matmul(dZ2, A1.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1376930165.py:28: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1376930165.py:28: RuntimeWarning: divide by zero encountered in matmul
   dW1 = (1./m) * np.matmul(dZ1, X.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1376930165.py:28: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1376930165.py:28: RuntimeWarning: overflow encountered in matmul
   dW1 = (1./m) * np.matmul(dZ1, X.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1376930165.py:28: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1376930165.py:28: RuntimeWarning: invalid value encountered in matmul
   dW1 = (1./m) * np.matmul(dZ1, X.T)</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -1184,7 +1189,7 @@ Final loss: 0.08367740628296327</code></pre>
 </div>
 </div>
 <p>To judge the newtork quality we do use again the confusion matrix.</p>
-<div id="93959db7" class="cell" data-execution_count="18">
+<div id="5eaa4ba3" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>Z1 <span class="op">=</span> np.matmul(W1, X_test) <span class="op">+</span> b1</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> sigmoid(Z1)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>Z2 <span class="op">=</span> np.matmul(W2, A1) <span class="op">+</span> b2</span>
@@ -1209,17 +1214,17 @@ weighted avg       0.97      0.97      0.97     10000
 </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/3572825488.py:1: RuntimeWarning: divide by zero encountered in matmul
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/3572825488.py:1: RuntimeWarning: divide by zero encountered in matmul
   Z1 = np.matmul(W1, X_test) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/3572825488.py:1: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/3572825488.py:1: RuntimeWarning: overflow encountered in matmul
   Z1 = np.matmul(W1, X_test) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/3572825488.py:1: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/3572825488.py:1: RuntimeWarning: invalid value encountered in matmul
   Z1 = np.matmul(W1, X_test) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/3572825488.py:3: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/3572825488.py:3: RuntimeWarning: divide by zero encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/3572825488.py:3: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/3572825488.py:3: RuntimeWarning: overflow encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/3572825488.py:3: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/3572825488.py:3: RuntimeWarning: invalid value encountered in matmul
   Z2 = np.matmul(W2, A1) + b2</code></pre>
 </div>
 </div>
@@ -1231,14 +1236,14 @@ weighted avg       0.97      0.97      0.97     10000
 <pre><code>[0,1,0,0,0,0,0,0,0,0]</code></pre>
 <p>would therefore correspond to the value 1.</p>
 <p>For this purpose, we need to reload the right labels.</p>
-<div id="3280385a" class="cell" data-execution_count="19">
+<div id="ee651757" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_openml</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> fetch_openml(<span class="st">'mnist_784'</span>, version<span class="op">=</span><span class="dv">1</span>, return_X_y<span class="op">=</span><span class="va">True</span>,as_frame<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X <span class="op">/</span> <span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then we’ll one-hot encode MNIST’s labels, to get a 10 x 70,000 array.</p>
-<div id="e8f2dbeb" class="cell" data-execution_count="20">
+<div id="57e63ae1" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>digits <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>examples <span class="op">=</span> y.shape[<span class="dv">0</span>]</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1247,14 +1252,14 @@ weighted avg       0.97      0.97      0.97     10000
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>Y_new <span class="op">=</span> np.eye(digits)[y.astype(<span class="st">'int32'</span>)]</span>
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>Y_new <span class="op">=</span> Y_new.T.reshape(digits, examples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="5fba506e" class="cell" data-tags="[]" data-execution_count="21">
+<div id="bd20d636" class="cell" data-tags="[]" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Y_new.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>(10, 70000)</code></pre>
 </div>
 </div>
 <p>We also seperate into trainging and testing data</p>
-<div id="b72bee39" class="cell" data-execution_count="22">
+<div id="762a69f8" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">60000</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>m_test <span class="op">=</span> X.shape[<span class="dv">0</span>] <span class="op">-</span> m</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1264,7 +1269,7 @@ weighted avg       0.97      0.97      0.97     10000
 <span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>shuffle_index <span class="op">=</span> np.random.permutation(m)</span>
 <span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>X_train, Y_train <span class="op">=</span> X_train[:, shuffle_index], Y_train[:, shuffle_index]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="1adf78b1" class="cell" data-execution_count="23">
+<div id="c35fc3eb" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">58</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_train[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
@@ -1299,7 +1304,7 @@ L(y,\hat{y}) = -\sum_{i=0}^n y_i\log(\hat{y}_i)\ .
 L(y,\hat{y}) = -\frac{1}{m}\sum_{j=0}^m\sum_{i=0}^n y_i^{(i)}\log(\hat{y}_i^{(i)})\ .
 \end{align*}\]</span></p>
 <p>So let’s define:</p>
-<div id="3173d770" class="cell" data-execution_count="24">
+<div id="c91c4b5c" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_multiclass_loss(Y, Y_hat):</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    L_sum <span class="op">=</span> np.<span class="bu">sum</span>(np.multiply(Y, np.log(Y_hat)))</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> Y.shape[<span class="dv">1</span>]</span>
@@ -1318,7 +1323,7 @@ L(y,\hat{y}) = -\frac{1}{m}\sum_{j=0}^m\sum_{i=0}^n y_i^{(i)}\log(\hat{y}_i^{(i)
 <section id="build-and-train" class="level3">
 <h3 class="anchored" data-anchor-id="build-and-train">Build and Train</h3>
 <p>As we have now more weights and classes, the training takes longer and we actually need also more episodes to achieve a good accuracy.</p>
-<div id="4ca37156" class="cell" data-execution_count="25">
+<div id="0f475f22" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>n_x <span class="op">=</span> X_train.shape[<span class="dv">0</span>]</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>n_h <span class="op">=</span> <span class="dv">64</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="dv">1</span></span>
@@ -1359,35 +1364,35 @@ L(y,\hat{y}) = -\frac{1}{m}\sum_{j=0}^m\sum_{i=0}^n y_i^{(i)}\log(\hat{y}_i^{(i)
 <span id="cb41-38"><a href="#cb41-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-39"><a href="#cb41-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Final loss:"</span>, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:15: RuntimeWarning: divide by zero encountered in matmul
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:15: RuntimeWarning: divide by zero encountered in matmul
   Z1 = np.matmul(W1,X) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:15: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:15: RuntimeWarning: overflow encountered in matmul
   Z1 = np.matmul(W1,X) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:15: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:15: RuntimeWarning: invalid value encountered in matmul
   Z1 = np.matmul(W1,X) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:17: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:17: RuntimeWarning: divide by zero encountered in matmul
   Z2 = np.matmul(W2,A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:17: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:17: RuntimeWarning: overflow encountered in matmul
   Z2 = np.matmul(W2,A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:17: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:17: RuntimeWarning: invalid value encountered in matmul
   Z2 = np.matmul(W2,A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:23: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:23: RuntimeWarning: divide by zero encountered in matmul
   dW2 = (1./m) * np.matmul(dZ2, A1.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:23: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:23: RuntimeWarning: overflow encountered in matmul
   dW2 = (1./m) * np.matmul(dZ2, A1.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:23: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:23: RuntimeWarning: invalid value encountered in matmul
   dW2 = (1./m) * np.matmul(dZ2, A1.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:26: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:26: RuntimeWarning: divide by zero encountered in matmul
   dA1 = np.matmul(W2.T, dZ2)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:26: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:26: RuntimeWarning: overflow encountered in matmul
   dA1 = np.matmul(W2.T, dZ2)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:26: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:26: RuntimeWarning: invalid value encountered in matmul
   dA1 = np.matmul(W2.T, dZ2)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:28: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:28: RuntimeWarning: divide by zero encountered in matmul
   dW1 = (1./m) * np.matmul(dZ1, X.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:28: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:28: RuntimeWarning: overflow encountered in matmul
   dW1 = (1./m) * np.matmul(dZ1, X.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/1725216505.py:28: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/1725216505.py:28: RuntimeWarning: invalid value encountered in matmul
   dW1 = (1./m) * np.matmul(dZ1, X.T)</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -1415,7 +1420,7 @@ Final loss: 0.5636592880338956</code></pre>
 </div>
 </div>
 <p>Let’s see how we did:</p>
-<div id="25dd6696" class="cell" data-execution_count="26">
+<div id="8bbbe9eb" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>Z1 <span class="op">=</span> np.matmul(W1, X_test) <span class="op">+</span> b1</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> sigmoid(Z1)</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>Z2 <span class="op">=</span> np.matmul(W2, A1) <span class="op">+</span> b2</span>
@@ -1424,23 +1429,23 @@ Final loss: 0.5636592880338956</code></pre>
 <span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> np.argmax(A2, axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> np.argmax(Y_test, axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/3032217627.py:1: RuntimeWarning: divide by zero encountered in matmul
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/3032217627.py:1: RuntimeWarning: divide by zero encountered in matmul
   Z1 = np.matmul(W1, X_test) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/3032217627.py:1: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/3032217627.py:1: RuntimeWarning: overflow encountered in matmul
   Z1 = np.matmul(W1, X_test) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/3032217627.py:1: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/3032217627.py:1: RuntimeWarning: invalid value encountered in matmul
   Z1 = np.matmul(W1, X_test) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/3032217627.py:3: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/3032217627.py:3: RuntimeWarning: divide by zero encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/3032217627.py:3: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/3032217627.py:3: RuntimeWarning: overflow encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_46870/3032217627.py:3: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_49119/3032217627.py:3: RuntimeWarning: invalid value encountered in matmul
   Z2 = np.matmul(W2, A1) + b2</code></pre>
 </div>
 </div>
 <section id="model-performance" class="level4">
 <h4 class="anchored" data-anchor-id="model-performance">Model performance</h4>
-<div id="f3eac05f" class="cell" data-execution_count="27">
+<div id="23be34cf" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(predictions, labels))</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1479,7 +1484,7 @@ weighted avg       0.83      0.83      0.83     10000
 </section>
 <section id="test-the-model" class="level2">
 <h2 class="anchored" data-anchor-id="test-the-model">Test the model</h2>
-<div id="341354ad" class="cell" data-execution_count="28">
+<div id="84e306e3" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="dv">2003</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_test[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>predictions[i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
