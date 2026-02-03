@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../seminars/seminar11/projectile-motion.html" rel="next">
+<link href="../../seminars/seminar01/reinforcement-learning.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-9344fb9851b4da3cab95007ef9d770dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
@@ -65,6 +82,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../seminars/seminar11/projectile-motion.html" rel="next">
+<link href="../../seminars/seminar01/reinforcement-learning.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -168,7 +187,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Neural Networks</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar01/reinforcement-learning.html">Advanced Topics</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar01/deep-learning.html">Deep Learning</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -190,7 +209,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">📋 Course Info</span></a>
+ <span class="menu-text">Course Info</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -226,7 +245,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">🚀 Week 1: Your First Physics Code</span></a>
+ <span class="menu-text">Week 1: Your First Physics Code</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -234,20 +253,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture01/01-lecture01.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture01/jupyter-notebooks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup: Jupyter Notebooks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture04/04-plotting.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Quick Win: Plotting Your First Graph</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture01/02-lecture01.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Variables &amp; Numbers (What You Just Used)</span></a>
+  <a href="../../lectures/lecture01/plotting-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting Your First Graph</span></a>
   </div>
 </li>
       </ul>
@@ -255,7 +268,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">🎯 Week 2-3: Modeling Motion</span></a>
+ <span class="menu-text">Week 2: Python Building Blocks</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -263,26 +276,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture02/3_datatypes.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture01/variables-and-numbers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables &amp; Numbers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/datatypes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Datatypes for Physics</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture02/01-lecture02.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Functions: Reusable Physics Equations</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture05/2_brownian_motion.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Application: Brownian Motion Part 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture03/1_numpy.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Arrays with Numpy</span></a>
   </div>
 </li>
       </ul>
@@ -290,7 +291,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">⚡ Week 4-5: Classical Mechanics</span></a>
+ <span class="menu-text">Week 3: Modeling Motion</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -298,26 +299,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture10/2_planetary_motion.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Planetary Motion</span></a>
+  <a href="../../lectures/lecture02/functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions: Reusable Physics Equations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture10/1_spring_pendulum.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Spring Pendulum &amp; Chaos</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture08/3_solving_ODEs.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tool: Solving ODEs</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture08/2_integration.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tool: Numerical Integration</span></a>
+  <a href="../../lectures/lecture02/brownian-motion-simple.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Brownian Motion (Simple)</span></a>
   </div>
 </li>
       </ul>
@@ -325,7 +314,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">🔧 Week 6-7: Code Organization</span></a>
+ <span class="menu-text">Week 4: Classical Mechanics I</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -333,32 +322,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture02/02-lecture02.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modules: Organizing Your Code</span></a>
+  <a href="../../lectures/lecture02/brownian-motion-simple.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Brownian Motion (Simple)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture05/1_classes.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Classes &amp; Objects</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture05/2_brownian_motion.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Advanced: Brownian Motion Part 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture06/1_input_output.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with Data Files</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://forms.gle/2Mt4EvvFyQxnDJj78" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Course Feedback</span></a>
+  <a href="../../lectures/lecture03/numpy-arrays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arrays with NumPy</span></a>
   </div>
 </li>
       </ul>
@@ -366,7 +337,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">🌊 Week 8-9: Oscillations &amp; Waves</span></a>
+ <span class="menu-text">Week 5: Numerical Methods</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -374,32 +345,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture09/2_coupled_pendula.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Coupled Pendula</span></a>
+  <a href="../../lectures/lecture07/differentiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numerical Differentiation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture09/3_fourier_analysis.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fourier Analysis</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture13/1_plane_waves.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plane Waves</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture13/2_spherical_waves.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Spherical Waves</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture14/3_huygens_principle.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Huygens Principle</span></a>
+  <a href="../../lectures/lecture08/solving-odes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solving ODEs</span></a>
   </div>
 </li>
       </ul>
@@ -407,7 +360,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">📊 Week 10-11: Analyzing Experiments</span></a>
+ <span class="menu-text">Week 6: Classical Mechanics II</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -415,20 +368,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture07/1_curve_fitting.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Curve Fitting to Data</span></a>
+  <a href="../../lectures/lecture10/planetary-motion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Planetary Motion</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture07/1_differentiation.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Numerical Differentiation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture12/3_diffusion_equation.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Diffusion Equation</span></a>
+  <a href="../../lectures/lecture10/spring-pendulum.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spring Pendulum &amp; Chaos</span></a>
   </div>
 </li>
       </ul>
@@ -436,7 +383,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">🎓 Week 12-15: Advanced &amp; Review</span></a>
+ <span class="menu-text">Week 7: Code Organization</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -444,26 +391,205 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture12/4_repetition.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Repetition: ODEs</span></a>
+  <a href="../../lectures/lecture05/classes-and-objects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classes &amp; Objects</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Week 8: Oscillations &amp; Files</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/brownian-motion-advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Brownian Motion with OOP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture11/1_repetition.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture06/input-output.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Input, Output, Data Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture09/coupled-pendula.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coupled Pendula</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
+ <span class="menu-text">Week 9: Fourier Analysis &amp; Waves</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture09/fourier-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture13/plane-waves.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plane Waves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture13/spherical-waves.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spherical Waves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture14/huygens-principle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Huygens Principle</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
+ <span class="menu-text">Week 10: Analyzing Experiments</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture07/curve-fitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curve Fitting to Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true">
+ <span class="menu-text">Week 11: Review</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture11/repetition.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Repetition: Core Concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture13/4_repetition.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture11/repetition-slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: Core Concepts Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture15/ode-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: ODE Review</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture15/ode-review-slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: ODE Review Slides</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true">
+ <span class="menu-text">Week 12: Review</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture13/repetition-week13.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Repetition: Meshgrid &amp; Arrays</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture15/lecture15a.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Repetition: ODE Review</span></a>
+  <a href="../../lectures/lecture13/repetition-week13-slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: Meshgrid &amp; Arrays Slides</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="true">
+ <span class="menu-text">Week 13: PDEs</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture12/diffusion-equation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diffusion Equation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture12/diffusion-equation-slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diffusion Equation Slides</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="true">
+ <span class="menu-text">Week 14: PDEs</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture15/1_quantum_mechanics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quantum Mechanics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture15/quantum-mechanics-slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quantum Mechanics Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture15/2_particle_in_a_box.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Particle in a Box</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture15/particle-in-box-slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Particle in a Box Slides</span></a>
   </div>
 </li>
       </ul>
@@ -471,103 +597,49 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
- <span class="menu-text">🛠️ Hands-On Seminars</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="true">
+ <span class="menu-text">Seminars</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
- <span class="menu-text">MD Simulations (Project Series)</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced Topics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar01/md1.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Part 1: Basics</span></a>
+  <a href="../../seminars/seminar01/reinforcement-learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reinforcement Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar02/md2.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Part 2: Forces</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar03/md3.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Part 3: Advanced</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar04/md4.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Part 4: Optimization</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar05/md5.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Part 5: Analysis</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar09/md_vibration.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Part 6: Vibrations</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar05/mdsim.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Complete Code</span></a>
+  <a href="../../seminars/seminar01/deep-learning.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Deep Learning</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
- <span class="menu-text">Skills Workshops</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="false">
+ <span class="menu-text">Recap: Projectile Motion</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar06/25_publication_ready_figures.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Publication-Ready Figures</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar07/seminar7.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Coding Session 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar08/seminar8.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Coding Session 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar09/seminar9.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Problem Solving 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar10/seminar10.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Problem Solving 2</span></a>
+  <a href="../../seminars/seminar11/projectile-motion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projectile with Air Resistance</span></a>
   </div>
 </li>
       </ul>
@@ -617,7 +689,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar01/reinforcement-learning.html">Advanced Topics</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar01/deep-learning.html">Deep Learning</a></li></ol></nav><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Seminars</li><li class="breadcrumb-item"><a href="../../seminars/seminar01/reinforcement-learning.html">Advanced Topics</a></li><li class="breadcrumb-item"><a href="../../seminars/seminar01/deep-learning.html">Deep Learning</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Neural Networks</h1>
 </div>
@@ -640,7 +712,7 @@ window.Quarto = {
 <p>In this lecture, we’ll build neural networks from scratch, gaining deep insight into their inner workings rather than treating them as black boxes. We won’t rely on high-level libraries like TensorFlow or Keras just yet; instead, we’ll construct everything using NumPy, giving you the same kind of fundamental understanding you’d gain from deriving equations of motion from first principles rather than just applying them. This hands-on approach will help you understand what’s really happening under the hood when you train a neural network.</p>
 <p>Think of neural networks as complex function approximators. Just as you might fit a polynomial to experimental data, neural networks can approximate incredibly complicated functions—functions that might describe the relationship between input images and their classifications, or between system parameters and physical outcomes. The difference is that neural networks can handle much higher-dimensional spaces and more complex patterns than traditional fitting methods.</p>
 <p>Our goal today is to build a neural network that can recognize handwritten digits—a classic problem that will teach us all the essential concepts. We’ll start simple with a single neuron (essentially logistic regression), then add hidden layers to increase the network’s representational power. By the end, you’ll have a working digit classifier and a solid foundation for understanding deep learning. This notebook has been largely developed by <strong>Martin Fränzl</strong> and adapted for physics students.</p>
-<div id="497ec737" class="cell" data-tags="[]" data-execution_count="1">
+<div id="1162d6b1" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -660,7 +732,7 @@ window.Quarto = {
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'xtick.direction'</span> : <span class="st">'in'</span>,</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ytick.right'</span> : <span class="va">True</span>,</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ytick.direction'</span> : <span class="st">'in'</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                    })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                    })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="overview-building-intelligence-from-scratch" class="level2">
 <h2 class="anchored" data-anchor-id="overview-building-intelligence-from-scratch">Overview: Building Intelligence from Scratch 🧠</h2>
@@ -681,17 +753,17 @@ window.Quarto = {
 <p>From a physicist’s perspective, each image is a point in a 784-dimensional space. Our task is to partition this space into 10 regions, one for each digit. This is a classification problem, and neural networks provide a flexible way to learn these complex decision boundaries. We could download and preprocess the data ourselves, but the <code>sklearn</code> module has already done the heavy lifting for us:</p>
 <section id="load-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="load-the-data">Load the data</h3>
-<div id="9470b5cb" class="cell" data-tags="[]" data-execution_count="2">
+<div id="516f5c19" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_openml</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> fetch_openml(<span class="st">'mnist_784'</span>, version<span class="op">=</span><span class="dv">1</span>, return_X_y<span class="op">=</span><span class="va">True</span>,as_frame<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> fetch_openml(<span class="st">'mnist_784'</span>, version<span class="op">=</span><span class="dv">1</span>, return_X_y<span class="op">=</span><span class="va">True</span>,as_frame<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The images are now contained in the array <code>X</code>, while the labels (so which number it is) are contained in <code>y</code>. Let’s have a look at a random image and label.</p>
-<div id="08d3dcef" class="cell" data-tags="[]" data-execution_count="3">
+<div id="f352763c" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">33419</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(np.array(X)[i].reshape(<span class="dv">28</span>, <span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'label: '</span>,y[i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'label: '</span>,y[i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -707,39 +779,39 @@ window.Quarto = {
 <section id="normalize-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="normalize-the-data">Normalize the data</h3>
 <p>Normalization is a crucial preprocessing step in machine learning. By dividing by 255, we scale all pixel values to the interval [0, 1]. This normalization serves several purposes: it prevents numerical overflow issues during computation, helps the gradient descent algorithm converge faster (since all features are on the same scale), and makes the learning rate easier to tune. Think of it as choosing appropriate units in physics—working in natural units (ℏ = c = 1) often simplifies calculations, and similarly, normalized data simplifies neural network training.</p>
-<div id="2672a8bb" class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X<span class="op">/</span><span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="83ed1d3a" class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X<span class="op">/</span><span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="preparing-training-and-testing-data" class="level3">
 <h3 class="anchored" data-anchor-id="preparing-training-and-testing-data">Preparing training and testing data</h3>
 <p>For our first network, we’re building a binary classifier—a system that answers a yes/no question: “Is this digit a zero?” The default MNIST labels indicate which digit each image represents (‘0’, ‘1’, ‘2’, etc.), but we need to convert this to binary labels: 1 if the image shows a zero, and 0 otherwise. This is analogous to simplifying a complex quantum system by projecting it onto a two-level system—we’re reducing a 10-class problem to a binary one.</p>
-<div id="2cab75f5" class="cell" data-tags="[]" data-execution_count="5">
+<div id="c99f4cbd" class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>y_new <span class="op">=</span> np.zeros(y.shape)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y_new[np.where(y <span class="op">==</span> <span class="st">'0'</span>)[<span class="dv">0</span>]] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We now split the data into training and testing sets. This separation is crucial: we train on one set and evaluate on a completely different set to test our network’s ability to generalize. This is similar to how you might measure a physical quantity multiple times—some measurements are used to calibrate your instrument (training), while others test its accuracy (testing). The MNIST images are pre-arranged so that the first 60,000 form the training set and the last 10,000 serve as the test set. We’ll also transpose the data so that each example becomes a column rather than a row, which makes our matrix operations more intuitive:</p>
-<div id="ae57c568" class="cell" data-tags="[]" data-execution_count="6">
+<div id="14ae66c5" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">60000</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>m_test <span class="op">=</span> X.shape[<span class="dv">0</span>] <span class="op">-</span> m</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test <span class="op">=</span> X[:m].T, X[m:].T</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>y_train, y_test <span class="op">=</span> y[:m].reshape(<span class="dv">1</span>,m), y[m:].reshape(<span class="dv">1</span>, m_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>y_train, y_test <span class="op">=</span> y[:m].reshape(<span class="dv">1</span>,m), y[m:].reshape(<span class="dv">1</span>, m_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, we shuffle the training set. Shuffling ensures that our network doesn’t learn any spurious patterns related to the order of examples. If all the zeros came first, followed by all the ones, the network might learn temporal patterns that don’t actually exist in the data:</p>
-<div id="823b6e59" class="cell" data-tags="[]" data-execution_count="7">
+<div id="a4dabb0a" class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>shuffle_index <span class="op">=</span> np.random.permutation(m)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> X_train[:,shuffle_index], y_train[:,shuffle_index]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> X_train[:,shuffle_index], y_train[:,shuffle_index]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s verify our preprocessing by examining a random image and its label:</p>
-<div id="186ea0b6" class="cell" data-tags="[]" data-execution_count="8">
+<div id="dfdd1102" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">39</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_train[:,i].reshape(<span class="dv">28</span>, <span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_train[:,i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_train[:,i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -790,18 +862,18 @@ y=\sigma(z) = \sigma( x_{1} w_{1}+ x_{2} w_{2}+b)
 \end{equation*}\]</span></p>
 <p>The sigmoid function has a beautiful S-shaped curve. For large positive inputs it approaches 1, for large negative inputs it approaches 0, and it transitions smoothly in between. This makes it perfect for binary classification—we can interpret the output as a probability. Interestingly, the sigmoid function is related to the Fermi-Dirac distribution in statistical mechanics (without the temperature parameter), which describes the occupation probability of quantum states.</p>
 <p>Let’s define and visualize the sigmoid function:</p>
-<div id="dbe9ad85" class="cell" data-execution_count="9">
+<div id="fb1c9b49" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(z):</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="83aaed59" class="cell" data-execution_count="10">
+<div id="285aee84" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">3</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x,sigmoid(x))</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'input'</span>)</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'output'</span>)</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -846,11 +918,11 @@ L(y,\hat{y}) = -y\log(\hat{y})-(1-y)\log(1-\hat{y})\ .
 L(Y,\hat{Y}) = -\frac{1}{m}\sum_{i = 0}^{m}y^{(i)}\log(\hat{y}^{(i)})-(1-y^{(i)})\log(1-\hat{y}^{(i)})\ .
 \end{equation*}\]</span></p>
 <p>In Python code, this looks like</p>
-<div id="9c04b4e2" class="cell" data-execution_count="11">
+<div id="85beefbd" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_loss(Y, Y_hat):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> Y.shape[<span class="dv">1</span>]</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> <span class="op">-</span>(<span class="fl">1.</span><span class="op">/</span>m)<span class="op">*</span>(np.<span class="bu">sum</span>(np.multiply(np.log(Y_hat), Y)) <span class="op">+</span> np.<span class="bu">sum</span>(np.multiply(np.log(<span class="dv">1</span> <span class="op">-</span> Y_hat), (<span class="dv">1</span> <span class="op">-</span> Y))))</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -937,7 +1009,7 @@ w\leftarrow w-\eta\frac{\partial L}{\partial w}
 <p>Now comes the exciting moment—assembling all our components into a working neural network! Let’s review what we have: a forward propagation function (computing predictions), a loss function (measuring error), and backpropagation (computing gradients). The training loop combines these pieces iteratively to learn optimal weights.</p>
 <p>Here’s our complete training procedure for a single-neuron network recognizing zeros:</p>
 <p>This architecture is actually equivalent to <strong>logistic regression</strong>—the sigmoid function is called a “logistic” function, hence the name. Despite its simplicity, logistic regression is quite powerful and forms the foundation for more complex networks.</p>
-<div id="55db5a00" class="cell" data-execution_count="12">
+<div id="fc31d395" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array(X_train)</span>
@@ -964,23 +1036,23 @@ w\leftarrow w-\eta\frac{\partial L}{\partial w}
 <span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Epoch"</span>, i, <span class="st">" loss: "</span>, loss)</span>
 <span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Final loss:"</span>, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Final loss:"</span>, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch 0  loss:  0.7471125121616977
 Epoch 10  loss:  0.07308269582929021</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1534748172.py:13: RuntimeWarning: divide by zero encountered in matmul
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1534748172.py:13: RuntimeWarning: divide by zero encountered in matmul
   Z = np.matmul(W.T, X) + b
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1534748172.py:13: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1534748172.py:13: RuntimeWarning: overflow encountered in matmul
   Z = np.matmul(W.T, X) + b
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1534748172.py:13: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1534748172.py:13: RuntimeWarning: invalid value encountered in matmul
   Z = np.matmul(W.T, X) + b
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1534748172.py:18: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1534748172.py:18: RuntimeWarning: divide by zero encountered in matmul
   dW = (1/m)*np.matmul(X, (A-Y).T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1534748172.py:18: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1534748172.py:18: RuntimeWarning: overflow encountered in matmul
   dW = (1/m)*np.matmul(X, (A-Y).T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1534748172.py:18: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1534748172.py:18: RuntimeWarning: invalid value encountered in matmul
   dW = (1/m)*np.matmul(X, (A-Y).T)</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -1016,7 +1088,7 @@ Final loss: 0.03579805734492837</code></pre>
 <p>Understanding the confusion matrix is crucial. <strong>True positives</strong> (TP) are zeros correctly identified as zeros. <strong>False positives</strong> (FP) are other digits incorrectly classified as zeros. <strong>False negatives</strong> (FN) are zeros that we missed (classified as “not zero”). <strong>True negatives</strong> (TN) are other digits correctly identified as not-zeros.</p>
 <p>From these four quantities, we can derive useful metrics. <strong>Precision</strong> = TP/(TP+FP) tells us what fraction of predicted zeros are actually zeros. <strong>Recall</strong> = TP/(TP+FN) tells us what fraction of actual zeros we successfully identified. <strong>Accuracy</strong> = (TP+TN)/(TP+TN+FP+FN) tells us the overall fraction of correct predictions.</p>
 <p>Fortunately, <code>sklearn</code> provides functions to compute all of this automatically. We just need to supply predictions and actual labels. Crucially, we evaluate on the test set <code>X_test</code>—data the network has never seen during training. This tests generalization, not memorization.</p>
-<div id="8a25d327" class="cell" data-execution_count="13">
+<div id="8a445bdb" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, classification_report</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.matmul(W.T,X_test) <span class="op">+</span> b</span>
@@ -1025,22 +1097,22 @@ Final loss: 0.03579805734492837</code></pre>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> (A<span class="op">&gt;</span><span class="fl">.5</span>)[<span class="dv">0</span>,:]</span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> (y_test <span class="op">==</span> <span class="dv">1</span>)[<span class="dv">0</span>,:]</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[8973   33]
  [  47  947]]</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/2374582204.py:3: RuntimeWarning: divide by zero encountered in matmul
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/2374582204.py:3: RuntimeWarning: divide by zero encountered in matmul
   Z = np.matmul(W.T,X_test) + b
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/2374582204.py:3: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/2374582204.py:3: RuntimeWarning: overflow encountered in matmul
   Z = np.matmul(W.T,X_test) + b
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/2374582204.py:3: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/2374582204.py:3: RuntimeWarning: invalid value encountered in matmul
   Z = np.matmul(W.T,X_test) + b</code></pre>
 </div>
 </div>
-<div id="ffdf5aad" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5c155c20" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
@@ -1057,15 +1129,15 @@ weighted avg       0.99      0.99      0.99     10000
 <section id="testing-our-model-individual-predictions" class="level3">
 <h3 class="anchored" data-anchor-id="testing-our-model-individual-predictions">Testing Our Model: Individual Predictions 🔬</h3>
 <p>Beyond aggregate statistics, it’s instructive to examine individual predictions. We can test our network on a single image and see what it predicts. Since sigmoid outputs range from 0 to 1, we use 0.5 as our decision threshold—outputs above 0.5 are classified as zeros, below 0.5 as not-zeros. This threshold could be adjusted to trade off precision versus recall, but 0.5 is the natural choice for balanced classes.</p>
-<div id="6543f1ff" class="cell" data-execution_count="15">
+<div id="84882b7c" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="dv">200</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(sigmoid(np.matmul(W.T, np.array(X_test)[:,i])<span class="op">+</span>b)<span class="op">&gt;</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(sigmoid(np.matmul(W.T, np.array(X_test)[:,i])<span class="op">+</span>b)<span class="op">&gt;</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="43018937" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(np.array(X_test)[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>),cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cc60b8a4" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(np.array(X_test)[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>),cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1092,7 +1164,7 @@ weighted avg       0.99      0.99      0.99     10000
 <p>Our network now has two sets of parameters: weights <span class="math inline">\(W_1\)</span> and biases <span class="math inline">\(b_1\)</span> connecting the input to the hidden layer (shape 64 × 784), and weights <span class="math inline">\(W_2\)</span> and biases <span class="math inline">\(b_2\)</span> connecting the hidden layer to the output (shape 1 × 64). This gives us roughly 50,000 trainable parameters—a significant increase from 785 in the single-neuron network!</p>
 <p>The forward pass now has two stages: input → hidden layer (apply <span class="math inline">\(W_1\)</span>, <span class="math inline">\(b_1\)</span>, then sigmoid), then hidden layer → output (apply <span class="math inline">\(W_2\)</span>, <span class="math inline">\(b_2\)</span>, then sigmoid). Backpropagation also has two stages, working backward from the output error through each layer using the chain rule.</p>
 <p>We won’t derive all the equations again—they follow the same principles as before, just applied to each layer. The code extends naturally from our single-neuron implementation:</p>
-<div id="83337e2b" class="cell" data-execution_count="17">
+<div id="e7747c8b" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X_train</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> y_train</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1131,36 +1203,40 @@ weighted avg       0.99      0.99      0.99     10000
 <span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Epoch"</span>, i, <span class="st">"loss: "</span>, loss)</span>
 <span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Final loss:"</span>, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Final loss:"</span>, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1376930165.py:15: RuntimeWarning: divide by zero encountered in matmul
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1376930165.py:15: RuntimeWarning: divide by zero encountered in matmul
   Z1 = np.matmul(W1, X) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1376930165.py:15: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1376930165.py:15: RuntimeWarning: overflow encountered in matmul
   Z1 = np.matmul(W1, X) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1376930165.py:15: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1376930165.py:15: RuntimeWarning: invalid value encountered in matmul
   Z1 = np.matmul(W1, X) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1376930165.py:17: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1376930165.py:17: RuntimeWarning: divide by zero encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1376930165.py:17: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1376930165.py:17: RuntimeWarning: overflow encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1376930165.py:17: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1376930165.py:17: RuntimeWarning: invalid value encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1376930165.py:23: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1376930165.py:23: RuntimeWarning: divide by zero encountered in matmul
   dW2 = (1./m) * np.matmul(dZ2, A1.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1376930165.py:23: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1376930165.py:23: RuntimeWarning: overflow encountered in matmul
   dW2 = (1./m) * np.matmul(dZ2, A1.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1376930165.py:23: RuntimeWarning: invalid value encountered in matmul
-  dW2 = (1./m) * np.matmul(dZ2, A1.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1376930165.py:28: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1376930165.py:23: RuntimeWarning: invalid value encountered in matmul
+  dW2 = (1./m) * np.matmul(dZ2, A1.T)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch 0 loss:  2.395166635058746</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1376930165.py:28: RuntimeWarning: divide by zero encountered in matmul
   dW1 = (1./m) * np.matmul(dZ1, X.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1376930165.py:28: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1376930165.py:28: RuntimeWarning: overflow encountered in matmul
   dW1 = (1./m) * np.matmul(dZ1, X.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1376930165.py:28: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1376930165.py:28: RuntimeWarning: invalid value encountered in matmul
   dW1 = (1./m) * np.matmul(dZ1, X.T)</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 0 loss:  2.395166635058746
-Epoch 10 loss:  0.22074168759268956
+<pre><code>Epoch 10 loss:  0.22074168759268956
 Epoch 20 loss:  0.1660154822272753
 Epoch 30 loss:  0.13990677867922954
 Epoch 40 loss:  0.12390102523919129
@@ -1173,17 +1249,17 @@ Final loss: 0.08367740628296327</code></pre>
 </div>
 </div>
 <p>To evaluate our improved network, we again use the confusion matrix on the test set. You should notice better performance compared to the single-neuron network—the hidden layer provides additional representational power.</p>
-<div id="9c6e0ee8" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>Z1 <span class="op">=</span> np.matmul(W1, X_test) <span class="op">+</span> b1</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> sigmoid(Z1)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>Z2 <span class="op">=</span> np.matmul(W2, A1) <span class="op">+</span> b2</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> sigmoid(Z2)</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> (A2<span class="op">&gt;</span><span class="fl">.5</span>)[<span class="dv">0</span>,:]</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> (y_test <span class="op">==</span> <span class="dv">1</span>)[<span class="dv">0</span>,:]</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(predictions, labels))</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5a7aeb78" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Z1 <span class="op">=</span> np.matmul(W1, X_test) <span class="op">+</span> b1</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> sigmoid(Z1)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>Z2 <span class="op">=</span> np.matmul(W2, A1) <span class="op">+</span> b2</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> sigmoid(Z2)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> (A2<span class="op">&gt;</span><span class="fl">.5</span>)[<span class="dv">0</span>,:]</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> (y_test <span class="op">==</span> <span class="dv">1</span>)[<span class="dv">0</span>,:]</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(predictions, labels))</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[8905  178]
  [ 115  802]]
@@ -1198,17 +1274,17 @@ weighted avg       0.97      0.97      0.97     10000
 </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/3572825488.py:1: RuntimeWarning: divide by zero encountered in matmul
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/3572825488.py:1: RuntimeWarning: divide by zero encountered in matmul
   Z1 = np.matmul(W1, X_test) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/3572825488.py:1: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/3572825488.py:1: RuntimeWarning: overflow encountered in matmul
   Z1 = np.matmul(W1, X_test) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/3572825488.py:1: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/3572825488.py:1: RuntimeWarning: invalid value encountered in matmul
   Z1 = np.matmul(W1, X_test) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/3572825488.py:3: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/3572825488.py:3: RuntimeWarning: divide by zero encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/3572825488.py:3: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/3572825488.py:3: RuntimeWarning: overflow encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/3572825488.py:3: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/3572825488.py:3: RuntimeWarning: invalid value encountered in matmul
   Z2 = np.matmul(W2, A1) + b2</code></pre>
 </div>
 </div>
@@ -1220,45 +1296,45 @@ weighted avg       0.97      0.97      0.97     10000
 <p>This is analogous to expanding from a two-state quantum system (like spin-½) to a ten-state system—we need ten basis states to represent all possibilities. The output layer produces a probability distribution over these ten states.</p>
 <p>For example, the output array <code>[0,1,0,0,0,0,0,0,0,0]</code> would indicate the network predicts digit 1 (the second position, using zero-indexing). In practice, the outputs won’t be exactly 0 and 1, but rather probabilities that sum to 1. The predicted class is simply the position of the maximum value.</p>
 <p>To train a multiclass network, we need to reload the original MNIST labels (not our binary 0/1 encoding):</p>
-<div id="3b2b8c03" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_openml</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> fetch_openml(<span class="st">'mnist_784'</span>, version<span class="op">=</span><span class="dv">1</span>, return_X_y<span class="op">=</span><span class="va">True</span>,as_frame<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X <span class="op">/</span> <span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2db0fe9b" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_openml</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> fetch_openml(<span class="st">'mnist_784'</span>, version<span class="op">=</span><span class="dv">1</span>, return_X_y<span class="op">=</span><span class="va">True</span>,as_frame<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X <span class="op">/</span> <span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We’ll convert these labels to <strong>one-hot encoding</strong>—a representation where each label becomes a vector of length 10 with a single 1 and nine 0s. The digit “3” becomes <code>[0,0,0,1,0,0,0,0,0,0]</code>, for instance. This encoding matches our network’s output format and makes the loss calculation straightforward. The result is a 10 × 70,000 array where each column is one training example’s label:</p>
-<div id="4d1113d5" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>digits <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>examples <span class="op">=</span> y.shape[<span class="dv">0</span>]</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y.reshape(<span class="dv">1</span>, examples)</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>Y_new <span class="op">=</span> np.eye(digits)[y.astype(<span class="st">'int32'</span>)]</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>Y_new <span class="op">=</span> Y_new.T.reshape(digits, examples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="110ba063" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>digits <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>examples <span class="op">=</span> y.shape[<span class="dv">0</span>]</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y.reshape(<span class="dv">1</span>, examples)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>Y_new <span class="op">=</span> np.eye(digits)[y.astype(<span class="st">'int32'</span>)]</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>Y_new <span class="op">=</span> Y_new.T.reshape(digits, examples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="2a4a3a13" class="cell" data-tags="[]" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>Y_new.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="53c3d1b9" class="cell" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Y_new.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>(10, 70000)</code></pre>
 </div>
 </div>
 <p>We also separate into training and testing sets, maintaining the same 60,000/10,000 split:</p>
-<div id="55927727" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">60000</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>m_test <span class="op">=</span> X.shape[<span class="dv">0</span>] <span class="op">-</span> m</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test <span class="op">=</span> X[:m].T, X[m:].T</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>Y_train, Y_test <span class="op">=</span> Y_new[:,:m], Y_new[:,m:]</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>shuffle_index <span class="op">=</span> np.random.permutation(m)</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>X_train, Y_train <span class="op">=</span> X_train[:, shuffle_index], Y_train[:, shuffle_index]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c764d434" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">60000</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>m_test <span class="op">=</span> X.shape[<span class="dv">0</span>] <span class="op">-</span> m</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test <span class="op">=</span> X[:m].T, X[m:].T</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>Y_train, Y_test <span class="op">=</span> Y_new[:,:m], Y_new[:,m:]</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>shuffle_index <span class="op">=</span> np.random.permutation(m)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>X_train, Y_train <span class="op">=</span> X_train[:, shuffle_index], Y_train[:, shuffle_index]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="5420ede9" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">58</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_train[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>Y_train[:,i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5863f4f8" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">58</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_train[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>Y_train[:,i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1292,12 +1368,12 @@ L(y,\hat{y}) = -\sum_{i=0}^n y_i\log(\hat{y}_i)\ .
 L(y,\hat{y}) = -\frac{1}{m}\sum_{j=0}^m\sum_{i=0}^n y_i^{(i)}\log(\hat{y}_i^{(i)})\ .
 \end{align*}\]</span></p>
 <p>So let’s define:</p>
-<div id="6c016159" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_multiclass_loss(Y, Y_hat):</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    L_sum <span class="op">=</span> np.<span class="bu">sum</span>(np.multiply(Y, np.log(Y_hat)))</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> Y.shape[<span class="dv">1</span>]</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> <span class="op">-</span>(<span class="dv">1</span><span class="op">/</span>m) <span class="op">*</span> L_sum</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="94c12f61" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_multiclass_loss(Y, Y_hat):</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    L_sum <span class="op">=</span> np.<span class="bu">sum</span>(np.multiply(Y, np.log(Y_hat)))</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> Y.shape[<span class="dv">1</span>]</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> <span class="op">-</span>(<span class="dv">1</span><span class="op">/</span>m) <span class="op">*</span> L_sum</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="backpropagation-a-fortunate-simplification" class="level4">
@@ -1313,76 +1389,76 @@ L(y,\hat{y}) = -\frac{1}{m}\sum_{j=0}^m\sum_{i=0}^n y_i^{(i)}\log(\hat{y}_i^{(i)
 <h3 class="anchored" data-anchor-id="build-and-train-the-complete-network">Build and Train: The Complete Network 🚀</h3>
 <p>Now we assemble our final, full-featured digit classifier. With more parameters (now around 50,000) and a more complex task (10 classes instead of 2), training will take longer. We’ll run 200 epochs to give the network sufficient time to learn the patterns distinguishing all ten digits.</p>
 <p>The architecture is: 784 inputs → 64 hidden units (sigmoid) → 10 outputs (softmax). Watch how the loss decreases as training progresses—you’re witnessing the network discover representations of handwritten digits!</p>
-<div id="36a1b2ba" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>n_x <span class="op">=</span> X_train.shape[<span class="dv">0</span>]</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>n_h <span class="op">=</span> <span class="dv">64</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>W1 <span class="op">=</span> np.random.randn(n_h, n_x)</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> np.zeros((n_h, <span class="dv">1</span>))</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>W2 <span class="op">=</span> np.random.randn(digits, n_h)</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>b2 <span class="op">=</span> np.zeros((digits, <span class="dv">1</span>))</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X_train</span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> Y_train</span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">200</span>):</span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>    Z1 <span class="op">=</span> np.matmul(W1,X) <span class="op">+</span> b1</span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>    A1 <span class="op">=</span> sigmoid(Z1)</span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>    Z2 <span class="op">=</span> np.matmul(W2,A1) <span class="op">+</span> b2</span>
-<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>    A2 <span class="op">=</span> np.exp(Z2) <span class="op">/</span> np.<span class="bu">sum</span>(np.exp(Z2), axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> compute_multiclass_loss(Y, A2)</span>
-<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>    dZ2 <span class="op">=</span> A2<span class="op">-</span>Y</span>
-<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>    dW2 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.matmul(dZ2, A1.T)</span>
-<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>    db2 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.<span class="bu">sum</span>(dZ2, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>    dA1 <span class="op">=</span> np.matmul(W2.T, dZ2)</span>
-<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>    dZ1 <span class="op">=</span> dA1 <span class="op">*</span> sigmoid(Z1) <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> sigmoid(Z1))</span>
-<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>    dW1 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.matmul(dZ1, X.T)</span>
-<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a>    db1 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.<span class="bu">sum</span>(dZ1, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>    W2 <span class="op">=</span> W2 <span class="op">-</span> learning_rate <span class="op">*</span> dW2</span>
-<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a>    b2 <span class="op">=</span> b2 <span class="op">-</span> learning_rate <span class="op">*</span> db2</span>
-<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a>    W1 <span class="op">=</span> W1 <span class="op">-</span> learning_rate <span class="op">*</span> dW1</span>
-<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a>    b1 <span class="op">=</span> b1 <span class="op">-</span> learning_rate <span class="op">*</span> db1</span>
-<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>):</span>
-<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Epoch"</span>, i, <span class="st">"loss: "</span>, loss)</span>
-<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-39"><a href="#cb40-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Final loss:"</span>, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b243af05" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>n_x <span class="op">=</span> X_train.shape[<span class="dv">0</span>]</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>n_h <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>W1 <span class="op">=</span> np.random.randn(n_h, n_x)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> np.zeros((n_h, <span class="dv">1</span>))</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>W2 <span class="op">=</span> np.random.randn(digits, n_h)</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>b2 <span class="op">=</span> np.zeros((digits, <span class="dv">1</span>))</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X_train</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> Y_train</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">200</span>):</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>    Z1 <span class="op">=</span> np.matmul(W1,X) <span class="op">+</span> b1</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>    A1 <span class="op">=</span> sigmoid(Z1)</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>    Z2 <span class="op">=</span> np.matmul(W2,A1) <span class="op">+</span> b2</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>    A2 <span class="op">=</span> np.exp(Z2) <span class="op">/</span> np.<span class="bu">sum</span>(np.exp(Z2), axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> compute_multiclass_loss(Y, A2)</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>    dZ2 <span class="op">=</span> A2<span class="op">-</span>Y</span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>    dW2 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.matmul(dZ2, A1.T)</span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>    db2 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.<span class="bu">sum</span>(dZ2, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>    dA1 <span class="op">=</span> np.matmul(W2.T, dZ2)</span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>    dZ1 <span class="op">=</span> dA1 <span class="op">*</span> sigmoid(Z1) <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> sigmoid(Z1))</span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>    dW1 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.matmul(dZ1, X.T)</span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>    db1 <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>m) <span class="op">*</span> np.<span class="bu">sum</span>(dZ1, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>    W2 <span class="op">=</span> W2 <span class="op">-</span> learning_rate <span class="op">*</span> dW2</span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>    b2 <span class="op">=</span> b2 <span class="op">-</span> learning_rate <span class="op">*</span> db2</span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>    W1 <span class="op">=</span> W1 <span class="op">-</span> learning_rate <span class="op">*</span> dW1</span>
+<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>    b1 <span class="op">=</span> b1 <span class="op">-</span> learning_rate <span class="op">*</span> db1</span>
+<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>):</span>
+<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Epoch"</span>, i, <span class="st">"loss: "</span>, loss)</span>
+<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Final loss:"</span>, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:15: RuntimeWarning: divide by zero encountered in matmul
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:15: RuntimeWarning: divide by zero encountered in matmul
   Z1 = np.matmul(W1,X) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:15: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:15: RuntimeWarning: overflow encountered in matmul
   Z1 = np.matmul(W1,X) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:15: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:15: RuntimeWarning: invalid value encountered in matmul
   Z1 = np.matmul(W1,X) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:17: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:17: RuntimeWarning: divide by zero encountered in matmul
   Z2 = np.matmul(W2,A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:17: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:17: RuntimeWarning: overflow encountered in matmul
   Z2 = np.matmul(W2,A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:17: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:17: RuntimeWarning: invalid value encountered in matmul
   Z2 = np.matmul(W2,A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:23: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:23: RuntimeWarning: divide by zero encountered in matmul
   dW2 = (1./m) * np.matmul(dZ2, A1.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:23: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:23: RuntimeWarning: overflow encountered in matmul
   dW2 = (1./m) * np.matmul(dZ2, A1.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:23: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:23: RuntimeWarning: invalid value encountered in matmul
   dW2 = (1./m) * np.matmul(dZ2, A1.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:26: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:26: RuntimeWarning: divide by zero encountered in matmul
   dA1 = np.matmul(W2.T, dZ2)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:26: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:26: RuntimeWarning: overflow encountered in matmul
   dA1 = np.matmul(W2.T, dZ2)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:26: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:26: RuntimeWarning: invalid value encountered in matmul
   dA1 = np.matmul(W2.T, dZ2)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:28: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:28: RuntimeWarning: divide by zero encountered in matmul
   dW1 = (1./m) * np.matmul(dZ1, X.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:28: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:28: RuntimeWarning: overflow encountered in matmul
   dW1 = (1./m) * np.matmul(dZ1, X.T)
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/1725216505.py:28: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/1725216505.py:28: RuntimeWarning: invalid value encountered in matmul
   dW1 = (1./m) * np.matmul(dZ1, X.T)</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -1410,35 +1486,35 @@ Final loss: 0.5636592880338956</code></pre>
 </div>
 </div>
 <p>Let’s see how we did:</p>
-<div id="c8241f55" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>Z1 <span class="op">=</span> np.matmul(W1, X_test) <span class="op">+</span> b1</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> sigmoid(Z1)</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>Z2 <span class="op">=</span> np.matmul(W2, A1) <span class="op">+</span> b2</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> np.exp(Z2) <span class="op">/</span> np.<span class="bu">sum</span>(np.exp(Z2), axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> np.argmax(A2, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> np.argmax(Y_test, axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f671a860" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>Z1 <span class="op">=</span> np.matmul(W1, X_test) <span class="op">+</span> b1</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> sigmoid(Z1)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>Z2 <span class="op">=</span> np.matmul(W2, A1) <span class="op">+</span> b2</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> np.exp(Z2) <span class="op">/</span> np.<span class="bu">sum</span>(np.exp(Z2), axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> np.argmax(A2, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> np.argmax(Y_test, axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/3032217627.py:1: RuntimeWarning: divide by zero encountered in matmul
+<pre><code>/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/3032217627.py:1: RuntimeWarning: divide by zero encountered in matmul
   Z1 = np.matmul(W1, X_test) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/3032217627.py:1: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/3032217627.py:1: RuntimeWarning: overflow encountered in matmul
   Z1 = np.matmul(W1, X_test) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/3032217627.py:1: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/3032217627.py:1: RuntimeWarning: invalid value encountered in matmul
   Z1 = np.matmul(W1, X_test) + b1
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/3032217627.py:3: RuntimeWarning: divide by zero encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/3032217627.py:3: RuntimeWarning: divide by zero encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/3032217627.py:3: RuntimeWarning: overflow encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/3032217627.py:3: RuntimeWarning: overflow encountered in matmul
   Z2 = np.matmul(W2, A1) + b2
-/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_1372/3032217627.py:3: RuntimeWarning: invalid value encountered in matmul
+/var/folders/t4/_9qps8wj56jc60nwkr3nrcr00000gn/T/ipykernel_6964/3032217627.py:3: RuntimeWarning: invalid value encountered in matmul
   Z2 = np.matmul(W2, A1) + b2</code></pre>
 </div>
 </div>
 <section id="model-performance-confusion-matrix-analysis" class="level4">
 <h4 class="anchored" data-anchor-id="model-performance-confusion-matrix-analysis">Model Performance: Confusion Matrix Analysis 📊</h4>
 <p>Now for the moment of truth—how well does our network perform on unseen test data?</p>
-<div id="046b9db8" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(predictions, labels))</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a751ba34" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(predictions, labels))</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(predictions, labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[ 896    0   26    8    8   22   30    4   14   10]
  [   0 1076   15    6    2    7    3    6   14    2]
@@ -1477,10 +1553,10 @@ weighted avg       0.83      0.83      0.83     10000
 <section id="testing-the-model-interactive-exploration" class="level2">
 <h2 class="anchored" data-anchor-id="testing-the-model-interactive-exploration">Testing the Model: Interactive Exploration 🔍</h2>
 <p>Let’s test our trained network on individual examples to get an intuitive feel for its predictions:</p>
-<div id="57d0dbec" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="dv">2003</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_test[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>predictions[i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bcd925c3" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="dv">2003</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(X_test[:,i].reshape(<span class="dv">28</span>,<span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>predictions[i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>np.int64(5)</code></pre>
 </div>
@@ -1931,6 +2007,18 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../seminars/seminar01/reinforcement-learning.html" class="pagination-link" aria-label="Reinforcement Learning">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Reinforcement Learning</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../seminars/seminar11/projectile-motion.html" class="pagination-link" aria-label="Projectile with Air Resistance">
+        <span class="nav-page-text">Projectile with Air Resistance</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
