@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Input and output – Einführung in die Modellierung Physikalischer Prozesse</title>
+<title>input_output – Einführung in die Modellierung Physikalischer Prozesse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,18 +20,51 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../lectures/lecture09/2_coupled_pendula.html" rel="next">
-<link href="../../lectures/lecture05/2_brownian_motion.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -73,13 +106,39 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
-<!-- Privacy-friendly analytics by Plausible -->
-<script async="" src="https://plausible.io/js/pa-STLzCtrlwjN9dGc-mqu2f.js"></script>
-<script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -112,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture05/2_brownian_motion.html">🌊 Week 8: Oscillations &amp; Files</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture06/1_input_output.html">Input, Output, Data Files</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -178,14 +237,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture01/01-lecture01.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture01/01-lecture01.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup: Jupyter Notebooks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture01/01-plotting-basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture04/04-plotting.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quick Win: Plotting Your First Graph</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture01/02-lecture01.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables &amp; Numbers (What You Just Used)</span></a>
   </div>
 </li>
       </ul>
@@ -193,7 +258,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">🎯 Week 2: Python Building Blocks</span></a>
+ <span class="menu-text">🎯 Week 2-3: Modeling Motion</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -201,59 +266,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture01/02-lecture01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Variables &amp; Numbers (What You Just Used)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture02/3_datatypes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture02/3_datatypes.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Datatypes for Physics</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">🌟 Week 3: Modeling Motion</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture02/01-lecture02.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture02/01-lecture02.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions: Reusable Physics Equations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture02/4_brownian_motion_simple.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Application: Brownian Motion (Simple)</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">⚡ Week 4: Classical Mechanics 1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture02/4_brownian_motion_simple.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Application: Brownian Motion (Simple)</span></a>
+  <a href="../../lectures/lecture05/2_brownian_motion.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Application: Brownian Motion Part 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture03/1_numpy.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture03/1_numpy.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Arrays with Numpy</span></a>
   </div>
 </li>
@@ -261,8 +292,84 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">⚡ Week 4-5: Classical Mechanics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture10/2_planetary_motion.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Planetary Motion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture10/1_spring_pendulum.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spring Pendulum &amp; Chaos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture08/3_solving_ODEs.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tool: Solving ODEs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture08/2_integration.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tool: Numerical Integration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">🔧 Week 6-7: Code Organization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/02-lecture02.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modules: Organizing Your Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/1_classes.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classes &amp; Objects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/2_brownian_motion.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Brownian Motion Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture06/1_input_output.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Data Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://forms.gle/2Mt4EvvFyQxnDJj78" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Feedback</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">⚡ Week 5: Numerical Methods Toolkit</span></a>
+ <span class="menu-text">🌊 Week 8-9: Oscillations &amp; Waves</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -270,117 +377,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture07/1_differentiation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Numerical Differentiation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture08/3_solving_ODEs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tool: Solving ODEs</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">🌟 Week 6: Classical Mechanics Applications</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture10/2_planetary_motion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Planetary Motion</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture10/1_spring_pendulum.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Spring Pendulum &amp; Chaos</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">🔧 Week 7: Code Organization</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture05/1_classes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Classes &amp; Objects</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
- <span class="menu-text">🌊 Week 8: Oscillations &amp; Files</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture05/2_brownian_motion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Advanced: Brownian Motion with OOP</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture06/1_input_output.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Input, Output, Data Files</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture09/2_coupled_pendula.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture09/2_coupled_pendula.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Coupled Pendula</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
- <span class="menu-text">🌊 Week 9: Fourier Analysis &amp; Waves</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture09/3_fourier_analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture09/3_fourier_analysis.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fourier Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture13/1_plane_waves.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture13/1_plane_waves.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Plane Waves</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture13/2_spherical_waves.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture13/2_spherical_waves.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Spherical Waves</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture14/3_huygens_principle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture14/3_huygens_principle.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Huygens Principle</span></a>
   </div>
 </li>
@@ -388,87 +409,64 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
- <span class="menu-text">📊 Week 10: Analyzing Experiments</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">📊 Week 10-11: Analyzing Experiments</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture07/1_curve_fitting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture07/1_curve_fitting.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Curve Fitting to Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture07/1_differentiation.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numerical Differentiation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture12/3_diffusion_equation.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diffusion Equation</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true">
- <span class="menu-text">🎓 Week 11: Review</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">🎓 Week 12-15: Advanced &amp; Review</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture11/1_repetition.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture12/4_repetition.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: ODEs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture11/1_repetition.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Repetition: Core Concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture11/1_repetition_slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Repetition: Core Concepts Slides</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture15/lecture15a.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Repetition: ODE Review</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture15/lecture15a_slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Repetition: ODE Review Slides</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true">
- <span class="menu-text">🎓 Week 12: Review</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture13/4_repetition.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture13/4_repetition.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Repetition: Meshgrid &amp; Arrays</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture13/4_repetition_slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Repetition: Meshgrid &amp; Arrays Slides</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture12/3_diffusion_equation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Diffusion Equation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../lectures/lecture12/3_diffusion_equation_slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Diffusion Equation Slides</span></a>
+  <a href="../../lectures/lecture15/lecture15a.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: ODE Review</span></a>
   </div>
 </li>
       </ul>
@@ -476,72 +474,103 @@ ul.task-list li input[type="checkbox"] {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
  <span class="menu-text">🛠️ Hands-On Seminars</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
- <span class="menu-text">Advanced Topics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">MD Simulations (Project Series)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar01/2_reinforcement_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Advanced: Reinforcement Learning</span></a>
+  <a href="../../seminars/seminar01/md1.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 1: Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar01/1_deep_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Advanced: Deep Learning</span></a>
+  <a href="../../seminars/seminar02/md2.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 2: Forces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar03/md3.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 3: Advanced</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar04/md4.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 4: Optimization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar05/md5.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 5: Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar09/md_vibration.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 6: Vibrations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar05/mdsim.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Complete Code</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false">
- <span class="menu-text">Other Seminar Topics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">Skills Workshops</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar06/25_publication_ready_figures.html" class="sidebar-item-text sidebar-link">
+  <a href="../../seminars/seminar06/25_publication_ready_figures.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Publication-Ready Figures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar07/seminar7_curve_fitting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Curve Fitting</span></a>
+  <a href="../../seminars/seminar07/seminar7.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding Session 1</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="false">
- <span class="menu-text">Recap: Projectile Motion</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../seminars/seminar11/seminar11_projectile.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Projectile with Air Resistance</span></a>
+  <a href="../../seminars/seminar08/seminar8.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding Session 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar09/seminar9.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Solving 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar10/seminar10.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Solving 2</span></a>
   </div>
 </li>
       </ul>
@@ -553,52 +582,511 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#input-and-output" id="toc-input-and-output" class="nav-link active" data-scroll-target="#input-and-output">Input and output</a>
+  <ul class="collapse">
+  <li><a href="#keyboard-input" id="toc-keyboard-input" class="nav-link" data-scroll-target="#keyboard-input">Keyboard input</a></li>
+  <li><a href="#screen-output" id="toc-screen-output" class="nav-link" data-scroll-target="#screen-output">Screen output</a>
+  <ul class="collapse">
+  <li><a href="#str.format-formatting" id="toc-str.format-formatting" class="nav-link" data-scroll-target="#str.format-formatting">str.format() Formatting</a></li>
+  <li><a href="#formatting" id="toc-formatting" class="nav-link" data-scroll-target="#formatting">%-Formatting</a></li>
+  <li><a href="#f-strings" id="toc-f-strings" class="nav-link" data-scroll-target="#f-strings">f-Strings</a></li>
+  </ul></li>
+  <li><a href="#file-inputoutput" id="toc-file-inputoutput" class="nav-link" data-scroll-target="#file-inputoutput">File input/output</a>
+  <ul class="collapse">
+  <li><a href="#file-io-with-numpy" id="toc-file-io-with-numpy" class="nav-link" data-scroll-target="#file-io-with-numpy">File I/O with NumPy</a></li>
+  <li><a href="#file-io-with-pandas" id="toc-file-io-with-pandas" class="nav-link" data-scroll-target="#file-io-with-pandas">File I/O with Pandas</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture05/2_brownian_motion.html">🌊 Week 8: Oscillations &amp; Files</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture06/1_input_output.html">Input, Output, Data Files</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Input and output</h1>
+
+
+
+<section id="input-and-output" class="level1">
+<h1>Input and output</h1>
+<section id="keyboard-input" class="level2">
+<h2 class="anchored" data-anchor-id="keyboard-input">Keyboard input</h2>
+<p>Python has a function called <em>input</em> for getting input from the user and assigning it a variable name.</p>
+<div id="cell-2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>value<span class="op">=</span><span class="bu">input</span>(<span class="st">"Tell me a number: "</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tell me a number:  78898.9</code></pre>
 </div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>str</code></pre>
+</div>
+</div>
+<p>The value contains the keyboard input as expected, but it is a string. We want to use a number and not a string, so we need to convert it from a string to a number.</p>
+<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="bu">eval</span>(value)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>float</code></pre>
+</div>
+</div>
+</section>
+<section id="screen-output" class="level2">
+<h2 class="anchored" data-anchor-id="screen-output">Screen output</h2>
+<p>Screen output is possible by using the <code>print</code> command. The argument of the print function can be of different type.</p>
+<section id="str.format-formatting" class="level3">
+<h3 class="anchored" data-anchor-id="str.format-formatting">str.format() Formatting</h3>
+<p>You can format your output by modifying the string given to the <code>print</code> function by <code>str.format()</code>, The <code>str</code> contains text that is written to be the screen, as well as certain format specifiers contained in curly braces {}. The format function contains the list of variables that are to be printed.</p>
+<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;subslide&quot;}}" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">"How"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="st">"are you my friend?"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>int1 <span class="op">=</span> <span class="dv">34</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>int2 <span class="op">=</span> <span class="dv">942885</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>float1 <span class="op">=</span> <span class="op">-</span><span class="fl">3.0</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>float2 <span class="op">=</span> <span class="fl">3.141592653589793e-14</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' ***'</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string1)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string1 <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> string2)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' 1. </span><span class="sc">{}</span><span class="st"> </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(string1, string2)) </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' 2. </span><span class="sc">{0:s}</span><span class="st"> </span><span class="sc">{1:s}</span><span class="st">'</span>.<span class="bu">format</span>(string1, string2))</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' 3. </span><span class="sc">{0:s}</span><span class="st"> </span><span class="sc">{0:s}</span><span class="st"> </span><span class="sc">{1:s}</span><span class="st"> - </span><span class="sc">{0:s}</span><span class="st"> </span><span class="sc">{1:s}</span><span class="st">'</span>.<span class="bu">format</span>(string1, string2)) </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' 4. </span><span class="sc">{0:10s}{1:5s}</span><span class="st">'</span>.<span class="bu">format</span>(string1, string2))</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' ***'</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(int1, int2)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' 6. </span><span class="sc">{0:d}</span><span class="st"> </span><span class="sc">{1:d}</span><span class="st">'</span>.<span class="bu">format</span>(int1, int2)) </span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' 7. </span><span class="sc">{0:8d}</span><span class="st"> </span><span class="sc">{1:10d}</span><span class="st">'</span>.<span class="bu">format</span>(int1, int2)) </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' ***'</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' 8. </span><span class="sc">{0:0.3f}</span><span class="st">'</span>.<span class="bu">format</span>(float1))</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' 9. </span><span class="sc">{0:6.3f}</span><span class="st">'</span>.<span class="bu">format</span>(float1)) </span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'10. </span><span class="sc">{0:8.3f}</span><span class="st">'</span>.<span class="bu">format</span>(float1)) </span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span><span class="op">*</span><span class="st">' 11. </span><span class="sc">{0:8.3f}</span><span class="st">'</span>.<span class="bu">format</span>(float1))</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' ***'</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'12. </span><span class="sc">{0:0.3e}</span><span class="st">'</span>.<span class="bu">format</span>(float2)) </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'13. </span><span class="sc">{0:10.3e}</span><span class="st">'</span>.<span class="bu">format</span>(float2)) </span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'14. </span><span class="sc">{0:10.3f}</span><span class="st">'</span>.<span class="bu">format</span>(float2))</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' ***'</span>)</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'15. 12345678901234567890'</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'16. </span><span class="sc">{0:s}</span><span class="st">--</span><span class="sc">{1:8d}</span><span class="st">,</span><span class="sc">{2:10.3e}</span><span class="st">'</span>.<span class="bu">format</span>(string2, int1, float2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> ***
+How
+How are you my friend?
+ 1. How are you my friend?
+ 2. How are you my friend?
+ 3. How How are you my friend? - How are you my friend?
+ 4. How       are you my friend?
+ ***
+34 942885
+ 6. 34 942885
+ 7.       34     942885
+ ***
+ 8. -3.000
+ 9. -3.000
+10.   -3.000
+ 11.   -3.000 11.   -3.000
+ ***
+12. 3.142e-14
+13.  3.142e-14
+14.      0.000
+ ***
+15. 12345678901234567890
+16. are you my friend?--      34, 3.142e-14</code></pre>
+</div>
+</div>
+</section>
+<section id="formatting" class="level3">
+<h3 class="anchored" data-anchor-id="formatting">%-Formatting</h3>
+<p>A very similar formatting can be achieved with the <code>%</code>operator.</p>
+<div id="cell-11" class="cell" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"Frank"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello, </span><span class="sc">%s</span><span class="st">."</span> <span class="op">%</span> name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello, Frank.</code></pre>
+</div>
+</div>
+</section>
+<section id="f-strings" class="level3">
+<h3 class="anchored" data-anchor-id="f-strings">f-Strings</h3>
+<p><strong>Formatted string literals</strong> are the string literals that start with an <code>f</code> at the beginning and use curly braces {} to enclose the expressions that will be replaced with other values.</p>
+<div id="cell-14" class="cell" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"Python Lecture"</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>fstring <span class="op">=</span> <span class="ss">f"I'm here for the </span><span class="sc">{</span>number<span class="sc">}</span><span class="ss">. time and this </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> is awesome!"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fstring)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>I'm here for the 3. time and this Python Lecture is awesome!</code></pre>
+</div>
+</div>
+<div id="cell-15" class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>fstring <span class="op">=</span> <span class="ss">f"You just have to sent me </span><span class="sc">{</span>times<span class="sc">:10.3f}</span><span class="ss"> Euros."</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fstring)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>You just have to sent me    100.000 Euros.</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="file-inputoutput" class="level2">
+<h2 class="anchored" data-anchor-id="file-inputoutput">File input/output</h2>
+<p>File input and output is one of the most important features. We will have a look at reading and writing of text files with numpy and pandas. Python itself also allows you to <a href="https://www.programiz.com/python-programming/methods/built-in/open">open</a> files and the file object provides the methods <a href="https://www.programiz.com/python-programming/file-operation">read, write</a> and <a href="https://www.programiz.com/python-programming/file-operation">close</a>.</p>
+<div id="cell-18" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'a.txt'</span>, <span class="st">'r'</span>) <span class="im">as</span> file_1,<span class="bu">open</span>(<span class="st">'b.txt'</span>,<span class="st">'r'</span>) <span class="im">as</span> file_2:</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> a,b <span class="kw">in</span> <span class="bu">zip</span>(file_1,file_2):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="bu">int</span>(a)<span class="op">+</span><span class="bu">int</span>(b))</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>file_1.close()</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>file_2.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10
+12
+14
+97
+9
+9</code></pre>
+</div>
+</div>
+<section id="file-io-with-numpy" class="level3">
+<h3 class="anchored" data-anchor-id="file-io-with-numpy">File I/O with NumPy</h3>
+<p>Most of the time we want import numbers from text files. So direct connection to NumPy seems useful and we will study that first.</p>
+<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np <span class="co"># don't forget to import numpy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="reading-data-from-a-text-file" class="level4">
+<h4 class="anchored" data-anchor-id="reading-data-from-a-text-file">Reading data from a text file</h4>
+<p>Often you would like to analyze data that you have stored in a text file. Consider, for example, the data file below for an experiment measuring the free fall of a mass.</p>
+<pre><code>Data for falling mass experiment
+Date: 16-Aug-2013
+Data taken by Frank and Ralf
+data point  time (sec)  height (mm) uncertainty (mm)
+0       0.0     180     3.5
+1       0.5     182     4.5
+2       1.0     178     4.0
+3       1.5     165     5.5
+4       2.0     160     2.5
+5       2.5     148     3.0
+6       3.0     136     2.5</code></pre>
+<p>Suppose that the name of the text file is <strong>MyData.txt</strong>. Then we can read the data into four different arrays with the following NumPy statement:</p>
+<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;subslide&quot;}}" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dataPt, time, height, error <span class="op">=</span> np.loadtxt(<span class="st">"MyData.txt"</span>, skiprows<span class="op">=</span><span class="dv">4</span> , unpack<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you don’t want to read in all the columns of data, you can specify which columns to read in using the usecols key word. For example, the call</p>
+<div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>time, height <span class="op">=</span> np.loadtxt(<span class="st">"MyData.txt"</span>, skiprows<span class="op">=</span><span class="dv">5</span> , usecols <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>), unpack<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>reads in only columns 1 and 2; columns 0 and 3 are skipped.</p>
+</section>
+<section id="writing-data-to-a-text-file" class="level4">
+<h4 class="anchored" data-anchor-id="writing-data-to-a-text-file">Writing data to a text file</h4>
+<p>There are plenty of ways to write data to a data file in Python. We will stick to one very simple one that’s suitable for writing data files in text format. It uses the NumPy <a href="https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.savetxt.html">savetxt</a> routine, which is the counterpart of the loadtxt routine introduced in the previous section. The general form of the routine is</p>
+<pre><code>savetxt(filename, array, fmt="%0.18e", delimiter=" ", newline="\n", header="", footer="", comments="# ")</code></pre>
+<p>We illustrate savetext below with a script that first creates four arrays by reading in the data file MyData.txt, as discussed in the previous section, and then writes that same data set to another file MyDataOut.txt.</p>
+<div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dataPt, time, height, error <span class="op">=</span> np.loadtxt(<span class="st">"MyData.txt"</span>, skiprows<span class="op">=</span><span class="dv">5</span> , unpack<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-30" class="cell" data-tags="[]" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">zip</span>(dataPt, time, height, error))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>[(1.0, 0.5, 182.0, 4.5),
+ (2.0, 1.0, 178.0, 4.0),
+ (3.0, 1.5, 165.0, 5.5),
+ (4.0, 2.0, 160.0, 2.5),
+ (5.0, 2.5, 148.0, 3.0),
+ (6.0, 3.0, 136.0, 2.5)]</code></pre>
+</div>
+</div>
+<div id="cell-31" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">'MyDataOut.txt'</span>,<span class="bu">list</span>(<span class="bu">zip</span>(dataPt, time, height, error)), fmt<span class="op">=</span><span class="st">"</span><span class="sc">%12.3f</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-32" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;subslide&quot;}}" data-tags="[]" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>cat MyDataOut.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1.000        0.500      182.000        4.500
+       2.000        1.000      178.000        4.000
+       3.000        1.500      165.000        5.500
+       4.000        2.000      160.000        2.500
+       5.000        2.500      148.000        3.000
+       6.000        3.000      136.000        2.500</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="file-io-with-pandas" class="level3">
+<h3 class="anchored" data-anchor-id="file-io-with-pandas">File I/O with Pandas</h3>
+<p><a href="https://pandas.pydata.org/docs/user_guide/index.html">Pandas</a> is a software library written for the Python programming language. It is used for data manipulation and analysis. It provides special data structures and operations for the manipulation of numerical tables and time series and builds on top of numpy.</p>
+<ul>
+<li>Easy handling of missing data</li>
+<li>Intelligent label-based slicing, fancy indexing, and subsetting of large data sets</li>
+</ul>
+<p>The data formats provided by the pandas module are used by several other modules, such as the <a href="https://soft-matter.github.io/trackpy/v0.3.2/">trackpy</a> which is a moduly for feature tracking and analysis in image series.</p>
+<section id="short-intro-to-pandas" class="level4">
+<h4 class="anchored" data-anchor-id="short-intro-to-pandas">Short intro to Pandas</h4>
+<div id="cell-36" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd <span class="co"># import the pandas module</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Pandas provides two data structures</p>
+<ul>
+<li>Series</li>
+<li>Data Frames</li>
+</ul>
+<p>A <strong><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.html">Series</a></strong> is a one-dimensional labeled array capable of holding any data type (integers, strings, floating point numbers, Python objects, etc.). The axis labels are collectively referred to as the index.</p>
+<div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>my_simple_series <span class="op">=</span> pd.Series(np.random.randn(<span class="dv">7</span>), index<span class="op">=</span>[<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span>, <span class="st">'e'</span>,<span class="st">'f'</span>,<span class="st">'g'</span>])</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>my_simple_series</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>a    1.160711
+b   -0.296427
+c    1.881074
+d   -1.197978
+e    0.280311
+f    1.538339
+g    1.681957
+dtype: float64</code></pre>
+</div>
+</div>
+<div id="cell-40" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>my_simple_series</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>-0.2964266043928443</code></pre>
+</div>
+</div>
+<p>There is a whole lot of functionality built into pandas data types. You may of course also obtain the same functionality using numpy commands, but you may find the pandas abbrevations very useful.</p>
+<div id="cell-42" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>my_simple_series.agg([<span class="st">'min'</span>,<span class="st">'max'</span>,<span class="st">'sum'</span>,<span class="st">'mean'</span>]) <span class="co"># aggregate a number of properties into a single array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>min    -1.523075
+max     0.525265
+sum    -2.119315
+mean   -0.302759
+dtype: float64</code></pre>
+</div>
+</div>
+<p>A <strong><a href="https://pandas.pydata.org/pandas-docs/stable/api.html#dataframe">DataFrame</a></strong> is a two-dimensional size-mutable, potentially heterogeneous tabular data structure with labeled axes (rows and columns). The example below shows how such a DataFrame can be generated from the scratch. In addition to the data supplied to the DataFrame method, an index column is generated when creating a DataFrame. As in the case of <em>Series</em> there is a whole lot of functionality integrated into the DataFrame data type which you may explore on the website.</p>
+<div id="cell-44" class="cell" data-tags="[]" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-45" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(np.random.randint(low<span class="op">=</span><span class="dv">0</span>, high<span class="op">=</span><span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>)),columns<span class="op">=</span>[<span class="st">'column 1'</span>, <span class="st">'column 2'</span>, <span class="st">'columns 3'</span>, <span class="st">'column 4'</span>, <span class="st">'column 5'</span>])</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">column 1</th>
+<th data-quarto-table-cell-role="th">column 2</th>
+<th data-quarto-table-cell-role="th">columns 3</th>
+<th data-quarto-table-cell-role="th">column 4</th>
+<th data-quarto-table-cell-role="th">column 5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>3</td>
+<td>9</td>
+<td>3</td>
+<td>7</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>2</td>
+<td>4</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>6</td>
+<td>1</td>
+<td>7</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>6</td>
+<td>8</td>
+<td>0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
 
-<div class="quarto-title-meta">
+</div>
+</div>
+</div>
+<p>Due to the labelling of the columns, each column may be accessed by its column label. Labeling by names improves readability considerably.</p>
+<div id="cell-47" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'column 4'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>0    7
+1    6
+2    4
+3    3
+4    0
+Name: column 4, dtype: int64</code></pre>
+</div>
+</div>
+<p>If you don’t like this format, you can always return to a simple numpy array with the <em>as_matrix()</em> method.</p>
+<div id="cell-49" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>array([[3, 9, 3, 7, 4],
+       [2, 2, 4, 6, 7],
+       [6, 1, 7, 4, 5],
+       [3, 4, 4, 3, 0],
+       [5, 6, 8, 0, 2]])</code></pre>
+</div>
+</div>
+</section>
+<section id="reading-csv-data-with-pandas" class="level4">
+<h4 class="anchored" data-anchor-id="reading-csv-data-with-pandas">Reading CSV data with Pandas</h4>
+<p>DataFrames may also be populated by text files such as comma separated value files (short <em>.csv</em>). These files contain data in text format but also a column label, which can be read by the pandas method <em>read_csv()</em>. You can find an example below, which reads the data from the dust sensor on my balcony from April, 11th. You see the different columns, where <strong>P1</strong> and <strong>P2</strong> correspond to the <strong>PM10</strong> and <strong>PM2.5</strong> dust values in <span class="math inline">\(\mu g/m^3\)</span>.</p>
+<div id="cell-53" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"2018-04-11_sds011_sensor_12253.csv"</span>,delimiter<span class="op">=</span><span class="st">";"</span>,parse_dates<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<div>
 
-    
-  
-    
-  </div>
-  
 
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sensor_id</th>
+<th data-quarto-table-cell-role="th">sensor_type</th>
+<th data-quarto-table-cell-role="th">location</th>
+<th data-quarto-table-cell-role="th">lat</th>
+<th data-quarto-table-cell-role="th">lon</th>
+<th data-quarto-table-cell-role="th">timestamp</th>
+<th data-quarto-table-cell-role="th">P1</th>
+<th data-quarto-table-cell-role="th">durP1</th>
+<th data-quarto-table-cell-role="th">ratioP1</th>
+<th data-quarto-table-cell-role="th">P2</th>
+<th data-quarto-table-cell-role="th">durP2</th>
+<th data-quarto-table-cell-role="th">ratioP2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>12253</td>
+<td>SDS011</td>
+<td>6189</td>
+<td>52.527</td>
+<td>13.39</td>
+<td>2018-04-11T00:01:58</td>
+<td>25.87</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>19.37</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>12253</td>
+<td>SDS011</td>
+<td>6189</td>
+<td>52.527</td>
+<td>13.39</td>
+<td>2018-04-11T00:04:24</td>
+<td>25.63</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>20.53</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>12253</td>
+<td>SDS011</td>
+<td>6189</td>
+<td>52.527</td>
+<td>13.39</td>
+<td>2018-04-11T00:06:55</td>
+<td>26.30</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>22.00</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>12253</td>
+<td>SDS011</td>
+<td>6189</td>
+<td>52.527</td>
+<td>13.39</td>
+<td>2018-04-11T00:09:23</td>
+<td>24.60</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>20.30</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>12253</td>
+<td>SDS011</td>
+<td>6189</td>
+<td>52.527</td>
+<td>13.39</td>
+<td>2018-04-11T00:11:51</td>
+<td>25.17</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>20.23</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
 
-</header>
-
-
-<p>To try out all of the functions of todays notebook, we will need to use the embedded JupyterLite notebook. To use the notebook, click ob <code>File -&gt; Open from URL</code> and paste the following link into the input field:</p>
-<pre><code>https://raw.githubusercontent.com/fcichos/EMPP24/refs/heads/main/seminars/1_input_output.ipynb</code></pre>
-<p>To download the data files, click ob <code>File -&gt; Open from URL</code> and paste the following links into the input field:</p>
-<pre><code>https://raw.githubusercontent.com/fcichos/EMPP24/refs/heads/main/seminars/MyData.txt</code></pre>
-<pre><code>https://raw.githubusercontent.com/fcichos/EMPP24/refs/heads/main/seminars/2018-04-11_sds011_sensor_12253.csv</code></pre>
-<pre><code>https://raw.githubusercontent.com/fcichos/EMPP24/refs/heads/main/seminars/2018-04-12_sds011_sensor_12253.csv</code></pre>
-<p>You should then have 3 data files and one notebook. You can then go into fullscreen mode.</p>
-<button onclick="openFullscreen()">Full Screen</button>
-   <iframe id="myIframe" src="https://jupyterlite.github.io/demo/" width="100%" height="600px" allowfullscreen=""></iframe>
-   <script>
-   function openFullscreen() {
-     var iframe = document.getElementById("myIframe");
-     if (iframe.requestFullscreen) {
-       iframe.requestFullscreen();
-     } else if (iframe.webkitRequestFullscreen) { /* Safari */
-       iframe.webkitRequestFullscreen();
-     } else if (iframe.msRequestFullscreen) { /* IE11 */
-       iframe.msRequestFullscreen();
-     }
-   }
-   </script>
+</div>
+</div>
+</div>
+<div id="cell-54" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;subslide&quot;}}" data-tags="[]" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(data[<span class="st">'P1'</span>]<span class="op">/</span>data[<span class="st">'P2'</span>]).plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_input_output_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 <script type="ojs-module-contents">
@@ -615,6 +1103,10 @@ eyJjb250ZW50cyI6W119
 <script type="vfs-file">
 W10=
 </script>
+</section>
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
@@ -700,7 +1192,7 @@ window._ojs.runtime.interpretFromScriptTags();
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/fcichos\.github\.io\/EMPP24\/");
+        var filterRegex = new RegExp("https:\/\/fcichos\.github\.io\/EMPP\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1027,18 +1519,6 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../lectures/lecture05/2_brownian_motion.html" class="pagination-link" aria-label="Advanced: Brownian Motion with OOP">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Advanced: Brownian Motion with OOP</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../lectures/lecture09/2_coupled_pendula.html" class="pagination-link" aria-label="Coupled Pendula">
-        <span class="nav-page-text">Coupled Pendula</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

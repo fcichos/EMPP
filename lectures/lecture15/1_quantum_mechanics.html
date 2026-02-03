@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.34">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Quantum Mechanics – Einführung in die Modellierung Physikalischer Prozesse</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-9344fb9851b4da3cab95007ef9d770dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Einführung in die Modellierung Physikalischer Prozesse</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Quantum Mechanics</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">📋 Course Info</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/intructors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorlesender</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ressourcen</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übungsaufgaben</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/exam.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prüfungen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">🚀 Week 1: Your First Physics Code</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture01/01-lecture01.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup: Jupyter Notebooks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture04/04-plotting.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quick Win: Plotting Your First Graph</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture01/02-lecture01.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables &amp; Numbers (What You Just Used)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">🎯 Week 2-3: Modeling Motion</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/3_datatypes.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Datatypes for Physics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/01-lecture02.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions: Reusable Physics Equations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/2_brownian_motion.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Application: Brownian Motion Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture03/1_numpy.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arrays with Numpy</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">⚡ Week 4-5: Classical Mechanics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture10/2_planetary_motion.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Planetary Motion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture10/1_spring_pendulum.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spring Pendulum &amp; Chaos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture08/3_solving_ODEs.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tool: Solving ODEs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture08/2_integration.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tool: Numerical Integration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">🔧 Week 6-7: Code Organization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/02-lecture02.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modules: Organizing Your Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/1_classes.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classes &amp; Objects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/2_brownian_motion.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Brownian Motion Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture06/1_input_output.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Data Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://forms.gle/2Mt4EvvFyQxnDJj78" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Feedback</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">🌊 Week 8-9: Oscillations &amp; Waves</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture09/2_coupled_pendula.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coupled Pendula</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture09/3_fourier_analysis.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture13/1_plane_waves.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plane Waves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture13/2_spherical_waves.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spherical Waves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture14/3_huygens_principle.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Huygens Principle</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">📊 Week 10-11: Analyzing Experiments</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture07/1_curve_fitting.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curve Fitting to Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture07/1_differentiation.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numerical Differentiation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture12/3_diffusion_equation.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diffusion Equation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">🎓 Week 12-15: Advanced &amp; Review</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture12/4_repetition.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: ODEs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture11/1_repetition.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: Core Concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture13/4_repetition.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: Meshgrid &amp; Arrays</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture15/lecture15a.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: ODE Review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">🛠️ Hands-On Seminars</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">MD Simulations (Project Series)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar01/md1.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 1: Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar02/md2.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 2: Forces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar03/md3.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 3: Advanced</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar04/md4.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 4: Optimization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar05/md5.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 5: Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar09/md_vibration.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 6: Vibrations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar05/mdsim.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Complete Code</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">Skills Workshops</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar06/25_publication_ready_figures.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Publication-Ready Figures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar07/seminar7.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding Session 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar08/seminar8.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding Session 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar09/seminar9.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Solving 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar10/seminar10.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Solving 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-a-differential-equation-problem" id="toc-introduction-a-differential-equation-problem" class="nav-link active" data-scroll-target="#introduction-a-differential-equation-problem">Introduction: A Differential Equation Problem</a></li>
+  <li><a href="#the-equation-we-want-to-solve" id="toc-the-equation-we-want-to-solve" class="nav-link" data-scroll-target="#the-equation-we-want-to-solve">The Equation We Want to Solve</a></li>
+  <li><a href="#from-differential-equation-to-matrix-problem" id="toc-from-differential-equation-to-matrix-problem" class="nav-link" data-scroll-target="#from-differential-equation-to-matrix-problem">From Differential Equation to Matrix Problem</a>
+  <ul class="collapse">
+  <li><a href="#step-1-discretize-the-domain" id="toc-step-1-discretize-the-domain" class="nav-link" data-scroll-target="#step-1-discretize-the-domain">Step 1: Discretize the Domain</a></li>
+  <li><a href="#step-2-discretize-the-second-derivative" id="toc-step-2-discretize-the-second-derivative" class="nav-link" data-scroll-target="#step-2-discretize-the-second-derivative">Step 2: Discretize the Second Derivative</a></li>
+  <li><a href="#step-3-discretize-the-potential-term" id="toc-step-3-discretize-the-potential-term" class="nav-link" data-scroll-target="#step-3-discretize-the-potential-term">Step 3: Discretize the Potential Term</a></li>
+  <li><a href="#step-4-assemble-the-full-matrix" id="toc-step-4-assemble-the-full-matrix" class="nav-link" data-scroll-target="#step-4-assemble-the-full-matrix">Step 4: Assemble the Full Matrix</a></li>
+  </ul></li>
+  <li><a href="#summary-the-recipe" id="toc-summary-the-recipe" class="nav-link" data-scroll-target="#summary-the-recipe">Summary: The Recipe</a></li>
+  <li><a href="#exercise-building-the-second-derivative-matrix" id="toc-exercise-building-the-second-derivative-matrix" class="nav-link" data-scroll-target="#exercise-building-the-second-derivative-matrix">Exercise: Building the Second Derivative Matrix</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Quantum Mechanics</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div>
+<div id="pyodide-1">
+
+</div>
+<script type="pyodide-1-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgbnVtcHkgYXMgbnBcbmZyb20gc2NpcHkuc3BhcnNlIGltcG9ydCBkaWFnc1xuZnJvbSBzY2lweS5zcGFyc2UubGluYWxnIGltcG9ydCBlaWdzaFxuaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuXG5cbiMgZGVmYXVsdCB2YWx1ZXMgZm9yIHBsb3R0aW5nXG5wbHQucmNQYXJhbXMudXBkYXRlKHsnZm9udC5zaXplJzogMTIsXG4gICAgICAgICAgICAgICAgICAgICAnYXhlcy50aXRsZXNpemUnOiAxOCxcbiAgICAgICAgICAgICAgICAgICAgICdheGVzLmxhYmVsc2l6ZSc6IDE2LFxuICAgICAgICAgICAgICAgICAgICAgJ2F4ZXMubGFiZWxwYWQnOiAxNCxcbiAgICAgICAgICAgICAgICAgICAgICdsaW5lcy5saW5ld2lkdGgnOiAxLFxuICAgICAgICAgICAgICAgICAgICAgJ2xpbmVzLm1hcmtlcnNpemUnOiAxMCxcbiAgICAgICAgICAgICAgICAgICAgICd4dGljay5sYWJlbHNpemUnIDogMTYsXG4gICAgICAgICAgICAgICAgICAgICAneXRpY2subGFiZWxzaXplJyA6IDE2LFxuICAgICAgICAgICAgICAgICAgICAgJ3h0aWNrLnRvcCcgOiBUcnVlLFxuICAgICAgICAgICAgICAgICAgICAgJ3h0aWNrLmRpcmVjdGlvbicgOiAnaW4nLFxuICAgICAgICAgICAgICAgICAgICAgJ3l0aWNrLnJpZ2h0JyA6IFRydWUsXG4gICAgICAgICAgICAgICAgICAgICAneXRpY2suZGlyZWN0aW9uJyA6ICdpbicsfSkgIn0=
+</script>
+</div>
+<section id="introduction-a-differential-equation-problem" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-a-differential-equation-problem">Introduction: A Differential Equation Problem</h2>
+<p>Today we will solve a famous differential equation from physics: the <strong>Schrödinger equation</strong>. Don’t worry—you don’t need to understand quantum mechanics to follow this lecture! We will treat the Schrödinger equation simply as what it is: a second-order differential equation that we can convert into a matrix eigenvalue problem.</p>
+<p>The approach we’ll use connects several things we’ve learned:</p>
+<ol type="1">
+<li><strong>Finite differences</strong> to approximate derivatives (from earlier lectures)</li>
+<li><strong>Matrix formulation</strong> of differential equations</li>
+<li><strong>Eigenvalue problems</strong> of the form <span class="math inline">\(A\vec{x} = \lambda \vec{x}\)</span> (from linear algebra)</li>
+</ol>
+<p>The physical interpretation is interesting but optional for our purposes. What matters is that we can apply our numerical tools to solve this equation.</p>
+</section>
+<section id="the-equation-we-want-to-solve" class="level2">
+<h2 class="anchored" data-anchor-id="the-equation-we-want-to-solve">The Equation We Want to Solve</h2>
+<p>The <strong>stationary Schrödinger equation</strong> in one dimension is:</p>
+<p><span class="math display">\[
+-\frac{\hbar^2}{2m}\frac{d^2 \Psi(x)}{dx^2} + V(x)\Psi(x) = E\Psi(x)
+\]</span></p>
+<p>Let’s identify what each term means <strong>mathematically</strong>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 33%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Mathematical Role</th>
+<th>Physical Meaning (optional)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\Psi(x)\)</span></td>
+<td>Unknown function we want to find</td>
+<td>Wave function</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\frac{d^2 \Psi}{dx^2}\)</span></td>
+<td>Second derivative of <span class="math inline">\(\Psi\)</span></td>
+<td>Related to kinetic energy</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(V(x)\)</span></td>
+<td>A given function (the “potential”)</td>
+<td>Potential energy</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(E\)</span></td>
+<td>Unknown constant (eigenvalue)</td>
+<td>Total energy</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\hbar, m\)</span></td>
+<td>Physical constants</td>
+<td>Planck’s constant, mass</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What kind of problem is this?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is an <strong>eigenvalue problem</strong>! We’re looking for:</p>
+<ul>
+<li><strong>Eigenfunctions</strong> <span class="math inline">\(\Psi(x)\)</span>: special functions that, when processed through the differential operator, return a constant times themselves</li>
+<li><strong>Eigenvalues</strong> <span class="math inline">\(E\)</span>: the constants associated with each eigenfunction</li>
+</ul>
+<p>This is exactly like <span class="math inline">\(A\vec{x} = \lambda\vec{x}\)</span> from linear algebra, but in function space!</p>
+</div>
+</div>
+</section>
+<section id="from-differential-equation-to-matrix-problem" class="level2">
+<h2 class="anchored" data-anchor-id="from-differential-equation-to-matrix-problem">From Differential Equation to Matrix Problem</h2>
+<p>Our strategy is to convert this continuous differential equation into a discrete matrix equation that we can solve with standard linear algebra tools.</p>
+<section id="step-1-discretize-the-domain" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-discretize-the-domain">Step 1: Discretize the Domain</h3>
+<p>Instead of considering <span class="math inline">\(\Psi(x)\)</span> for all real <span class="math inline">\(x\)</span>, we evaluate it only at discrete points:</p>
+<p><span class="math display">\[x_1, x_2, x_3, \ldots, x_N\]</span></p>
+<p>with spacing <span class="math inline">\(\delta x\)</span>. Our unknown function <span class="math inline">\(\Psi(x)\)</span> becomes a vector:</p>
+<p><span class="math display">\[\vec{\Psi} = \begin{bmatrix} \Psi(x_1) \\ \Psi(x_2) \\ \vdots \\ \Psi(x_N) \end{bmatrix}\]</span></p>
+</section>
+<section id="step-2-discretize-the-second-derivative" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-discretize-the-second-derivative">Step 2: Discretize the Second Derivative</h3>
+<p>We’ve seen before that the second derivative can be approximated by finite differences:</p>
+<p><span class="math display">\[\frac{d^2\Psi}{dx^2}\bigg|_{x_i} \approx \frac{\Psi(x_{i+1}) - 2\Psi(x_i) + \Psi(x_{i-1})}{\delta x^2}\]</span></p>
+<p>This operation can be written as a matrix multiplication:</p>
+<p><span class="math display">\[\frac{d^2}{dx^2}\vec{\Psi} \approx \frac{1}{\delta x^2}
+\begin{bmatrix}
+-2 &amp; 1  &amp; 0 &amp; 0 &amp; \cdots &amp; 0\\
+1 &amp; -2 &amp; 1 &amp; 0 &amp; \cdots &amp; 0\\
+0 &amp; 1  &amp; -2 &amp; 1 &amp; \cdots &amp; 0\\
+\vdots &amp; &amp; \ddots &amp; \ddots &amp; \ddots &amp; \vdots\\
+0 &amp; \cdots &amp; 0  &amp; 1 &amp; -2 &amp; 1\\
+0 &amp; \cdots &amp; 0  &amp;  0 &amp;  1 &amp; -2\\
+\end{bmatrix}
+\begin{bmatrix}
+\Psi(x_{1})\\
+\Psi(x_{2})\\
+\Psi(x_{3})\\
+\vdots\\
+\Psi(x_{N-1})\\
+\Psi(x_{N})
+\end{bmatrix}\]</span></p>
+<p>This is a <strong>tridiagonal matrix</strong> with <span class="math inline">\(-2\)</span> on the diagonal and <span class="math inline">\(1\)</span> on the off-diagonals.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Boundary Conditions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The matrix above implicitly assumes <span class="math inline">\(\Psi(x_0) = 0\)</span> and <span class="math inline">\(\Psi(x_{N+1}) = 0\)</span> (the function vanishes at the boundaries). These are called <strong>Dirichlet boundary conditions</strong>.</p>
+</div>
+</div>
+</section>
+<section id="step-3-discretize-the-potential-term" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-discretize-the-potential-term">Step 3: Discretize the Potential Term</h3>
+<p>The potential energy term <span class="math inline">\(V(x)\Psi(x)\)</span> is simpler—it’s just multiplication by a function at each point. In matrix form, this becomes a diagonal matrix:</p>
+<p><span class="math display">\[V(x)\vec{\Psi} =
+\begin{bmatrix}
+V(x_{1}) &amp; 0  &amp; \cdots &amp; 0\\
+0 &amp; V(x_{2}) &amp; \cdots &amp; 0\\
+\vdots &amp; &amp; \ddots &amp; \vdots\\
+0 &amp; \cdots &amp;  0 &amp; V(x_{N})\\
+\end{bmatrix}
+\begin{bmatrix}
+\Psi(x_{1})\\
+\Psi(x_{2})\\
+\vdots\\
+\Psi(x_{N})
+\end{bmatrix}\]</span></p>
+</section>
+<section id="step-4-assemble-the-full-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-assemble-the-full-matrix">Step 4: Assemble the Full Matrix</h3>
+<p>Combining both terms, our differential equation becomes:</p>
+<p><span class="math display">\[\underbrace{\left(-\frac{\hbar^2}{2m}\mathbf{T} + \mathbf{V}\right)}_{\mathbf{H}}\vec{\Psi} = E\vec{\Psi}\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\mathbf{T}\)</span> is the tridiagonal second-derivative matrix</li>
+<li><span class="math inline">\(\mathbf{V}\)</span> is the diagonal potential matrix</li>
+<li><span class="math inline">\(\mathbf{H} = -\frac{\hbar^2}{2m}\mathbf{T} + \mathbf{V}\)</span> is called the <strong>Hamiltonian matrix</strong></li>
+</ul>
+<p>This is now a standard matrix eigenvalue problem: <span class="math inline">\(\mathbf{H}\vec{\Psi} = E\vec{\Psi}\)</span></p>
+</section>
+</section>
+<section id="summary-the-recipe" class="level2">
+<h2 class="anchored" data-anchor-id="summary-the-recipe">Summary: The Recipe</h2>
+<p>To solve the Schrödinger equation numerically:</p>
+<ol type="1">
+<li><strong>Choose</strong> a spatial grid <span class="math inline">\(x_1, \ldots, x_N\)</span> with spacing <span class="math inline">\(\delta x\)</span></li>
+<li><strong>Build</strong> the kinetic energy matrix <span class="math inline">\(\mathbf{T}\)</span> (tridiagonal: <span class="math inline">\(-2\)</span> diagonal, <span class="math inline">\(1\)</span> off-diagonal)</li>
+<li><strong>Build</strong> the potential energy matrix <span class="math inline">\(\mathbf{V}\)</span> (diagonal with values <span class="math inline">\(V(x_i)\)</span>)</li>
+<li><strong>Combine</strong> into <span class="math inline">\(\mathbf{H} = -\frac{\hbar^2}{2m}\mathbf{T} + \mathbf{V}\)</span></li>
+<li><strong>Solve</strong> the eigenvalue problem <span class="math inline">\(\mathbf{H}\vec{\Psi} = E\vec{\Psi}\)</span> using <code>scipy.sparse.linalg.eigsh</code></li>
+</ol>
+<p>The eigenvalues <span class="math inline">\(E\)</span> are the allowed energies, and the eigenvectors <span class="math inline">\(\vec{\Psi}\)</span> are the corresponding wave functions.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Insight
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We transformed a continuous differential equation into a discrete matrix eigenvalue problem. The mathematics is the same as finding eigenvalues of any matrix—scipy does the heavy lifting!</p>
+</div>
+</div>
+<p>In the next section, we’ll apply this recipe to a concrete example: a particle trapped in a “box” (a potential well).</p>
+</section>
+<section id="exercise-building-the-second-derivative-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-building-the-second-derivative-matrix">Exercise: Building the Second Derivative Matrix</h2>
+<p>Before we move on, let’s practice building the matrix representation of the second derivative operator.</p>
+<p><strong>Task:</strong> Create a function that builds the tridiagonal matrix for the second derivative and test it on a simple function <span class="math inline">\(f(x) = x^2\)</span>, for which we know the analytical second derivative is <span class="math inline">\(f''(x) = 2\)</span>.</p>
+<div>
+<div id="pyodide-2">
+
+</div>
+<script type="pyodide-2-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfc2Vjb25kX2Rlcml2YXRpdmUifSwiY29kZSI6IlxuaW1wb3J0IG51bXB5IGFzIG5wXG5cbiMgRGVmaW5lIHRoZSBncmlkXG5OID0gMTAxICAjIG51bWJlciBvZiBwb2ludHNcbnggPSBucC5saW5zcGFjZSgwLCAxLCBOKVxuZHggPSB4WzFdIC0geFswXVxuXG4jIFRlc3QgZnVuY3Rpb246IGYoeCkgPSB4XjJcbmYgPSB4KioyXG5cbiMgQnVpbGQgdGhlIHNlY29uZCBkZXJpdmF0aXZlIG1hdHJpeCAoTiB4IE4pXG4jIFRoZSBtYXRyaXggc2hvdWxkIGhhdmU6XG4jICAgLSBNYWluIGRpYWdvbmFsIChwb3NpdGlvbiAwKTogYWxsIGVudHJpZXMgPSAtMlxuIyAgIC0gVXBwZXIgZGlhZ29uYWwgKHBvc2l0aW9uICsxKTogYWxsIGVudHJpZXMgPSAxXG4jICAgLSBMb3dlciBkaWFnb25hbCAocG9zaXRpb24gLTEpOiBhbGwgZW50cmllcyA9IDFcbiMgRG9uJ3QgZm9yZ2V0IHRvIGRpdmlkZSBieSBkeF4yIVxuXG5EMiA9IF9fX18gICMgQ3JlYXRlIHRoZSB0cmlkaWFnb25hbCBtYXRyaXhcblxuIyBBcHBseSB0aGUgbWF0cml4IHRvIGYgdG8gY29tcHV0ZSB0aGUgbnVtZXJpY2FsIHNlY29uZCBkZXJpdmF0aXZlXG5mX3NlY29uZF9kZXJpdmF0aXZlID0gX19fX1xuXG4jIFByaW50IHRoZSByZXN1bHQgKHNob3VsZCBiZSBjbG9zZSB0byAyIGV2ZXJ5d2hlcmUsIGV4Y2VwdCBuZWFyIGJvdW5kYXJpZXMpXG5wcmludChcIk51bWVyaWNhbCBzZWNvbmQgZGVyaXZhdGl2ZSBhdCB4ID0gMC41OlwiKVxucHJpbnQoZlwiICBmJycoMC41KSDiiYgge2Zfc2Vjb25kX2Rlcml2YXRpdmVbTi8vMl06LjZmfVwiKVxucHJpbnQoZlwiICBFeHBlY3RlZDogMi4wXCIpXG5cbiMgUGxvdCB0aGUgcmVzdWx0XG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5wbHQuZmlndXJlKGZpZ3NpemU9KDgsIDQpKVxucGx0LnBsb3QoeCwgZl9zZWNvbmRfZGVyaXZhdGl2ZSwgJ2ItJywgbGFiZWw9XCJOdW1lcmljYWwgJGYnJyh4KSRcIilcbnBsdC5heGhsaW5lKHk9MiwgY29sb3I9J3InLCBsaW5lc3R5bGU9Jy0tJywgbGFiZWw9XCJBbmFseXRpY2FsICRmJycoeCkgPSAyJFwiKVxucGx0LnhsYWJlbCgneCcpXG5wbHQueWxhYmVsKFwiJGYnJyh4KSRcIilcbnBsdC5sZWdlbmQoKVxucGx0LnRpdGxlKFwiVGVzdGluZyB0aGUgU2Vjb25kIERlcml2YXRpdmUgTWF0cml4XCIpXG5wbHQueWxpbShbMCwgNF0pXG5wbHQuc2hvdygpIn0=
+</script>
+</div>
+<div class="hint webr-ojs-exercise exercise-hint d-none" data-exercise="ex_second_derivative">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Use <code>scipy.sparse.diags()</code> to build the tridiagonal matrix efficiently:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.sparse <span class="im">import</span> diags</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>D2 <span class="op">=</span> diags([<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>], shape<span class="op">=</span>(N, N)) <span class="op">/</span> dx<span class="op">**</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>First argument <code>[-2, 1, 1]</code>: the values on each diagonal</li>
+<li>Second argument <code>[0, -1, 1]</code>: the positions (0 = main, -1 = below, +1 = above)</li>
+<li><code>shape=(N, N)</code>: the matrix dimensions</li>
+</ul>
+<p>To apply a sparse matrix to a vector, use <code>D2 @ f</code> (the result is a dense array).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_second_derivative">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div id="pyodide-3">
+
+</div>
+<script type="pyodide-3-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG51bXB5IGFzIG5wXG5mcm9tIHNjaXB5LnNwYXJzZSBpbXBvcnQgZGlhZ3NcblxuIyBEZWZpbmUgdGhlIGdyaWRcbk4gPSAxMDFcbnggPSBucC5saW5zcGFjZSgwLCAxLCBOKVxuZHggPSB4WzFdIC0geFswXVxuXG4jIFRlc3QgZnVuY3Rpb246IGYoeCkgPSB4XjJcbmYgPSB4KioyXG5cbiMgQnVpbGQgdGhlIHNlY29uZCBkZXJpdmF0aXZlIG1hdHJpeCB1c2luZyBzY2lweS5zcGFyc2UuZGlhZ3NcbiMgZGlhZ3MoW3ZhbHVlc10sIFtwb3NpdGlvbnNdLCBzaGFwZSkgY3JlYXRlcyBhIHNwYXJzZSB0cmlkaWFnb25hbCBtYXRyaXhcbkQyID0gZGlhZ3MoWy0yLCAxLCAxXSwgWzAsIC0xLCAxXSwgc2hhcGU9KE4sIE4pKSAvIGR4KioyXG5cbiMgQXBwbHkgdGhlIG1hdHJpeCB0byBjb21wdXRlIG51bWVyaWNhbCBzZWNvbmQgZGVyaXZhdGl2ZVxuZl9zZWNvbmRfZGVyaXZhdGl2ZSA9IEQyIEAgZlxuXG4jIFByaW50IHJlc3VsdFxucHJpbnQoXCJOdW1lcmljYWwgc2Vjb25kIGRlcml2YXRpdmUgYXQgeCA9IDAuNTpcIilcbnByaW50KGZcIiAgZicnKDAuNSkg4omIIHtmX3NlY29uZF9kZXJpdmF0aXZlW04vLzJdOi42Zn1cIilcbnByaW50KGZcIiAgRXhwZWN0ZWQ6IDIuMFwiKVxuXG4jIFBsb3RcbmltcG9ydCBtYXRwbG90bGliLnB5cGxvdCBhcyBwbHRcbnBsdC5maWd1cmUoZmlnc2l6ZT0oOCwgNCkpXG5wbHQucGxvdCh4LCBmX3NlY29uZF9kZXJpdmF0aXZlLCAnYi0nLCBsYWJlbD1cIk51bWVyaWNhbCAkZicnKHgpJFwiKVxucGx0LmF4aGxpbmUoeT0yLCBjb2xvcj0ncicsIGxpbmVzdHlsZT0nLS0nLCBsYWJlbD1cIkFuYWx5dGljYWwgJGYnJyh4KSA9IDIkXCIpXG5wbHQueGxhYmVsKCd4JylcbnBsdC55bGFiZWwoXCIkZicnKHgpJFwiKVxucGx0LmxlZ2VuZCgpXG5wbHQudGl0bGUoXCJUZXN0aW5nIHRoZSBTZWNvbmQgRGVyaXZhdGl2ZSBNYXRyaXhcIilcbnBsdC55bGltKFswLCA0XSlcbnBsdC5zaG93KCkifQ==
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script type="pyodide-data">
+eyJvcHRpb25zIjp7ImluZGV4VVJMIjoiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L3B5b2RpZGUvdjAuMjYuMS9mdWxsLyJ9LCJwYWNrYWdlcyI6eyJwa2dzIjpbInB5b2RpZGVfaHR0cCIsIm1pY3JvcGlwIiwiaXB5dGhvbiIsIm1hdHBsb3RsaWIiLCJudW1weSIsInNjaXB5Il19fQ==
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBleGVyY2lzZSBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKFxuICAgIHtcbiAgICAgIGlkOiBcInB5b2RpZGUtMi1jb250ZW50c1wiLFxuICAgICAgZW52aXI6IGBleGVyY2lzZS1lbnYtJHtibG9jay5hdHRyLmV4ZXJjaXNlfWAsXG4gICAgICBlcnJvcjogZmFsc2UsXG4gICAgICBhdXRvcnVuOiBmYWxzZSxcbiAgICAgIGNhcHRpb246ICdFeGVyY2lzZScsXG4gICAgfSxcbiAgICBibG9jay5hdHRyXG4gICk7XG5cbiAgY29uc3QgZWRpdG9yID0gbmV3IFB5b2RpZGVFeGVyY2lzZUVkaXRvcihweW9kaWRlT2pzLnB5b2RpZGVQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG52aWV3b2YgX3B5b2RpZGVfdmFsdWVfMiA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMiwge30pO1xuX3B5b2RpZGVfZmVlZGJhY2tfMiA9IHtcbiAgY29uc3QgeyBQeW9kaWRlR3JhZGVyIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBlbXB0eUZlZWRiYWNrID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7XG5cbiAgY29uc3QgZ3JhZGVyID0gbmV3IFB5b2RpZGVHcmFkZXIoX3B5b2RpZGVfdmFsdWVfMi5ldmFsdWF0b3IpO1xuICBjb25zdCBmZWVkYmFjayA9IGF3YWl0IGdyYWRlci5ncmFkZUV4ZXJjaXNlKCk7XG4gIGlmICghZmVlZGJhY2spIHJldHVybiBlbXB0eUZlZWRiYWNrO1xuICByZXR1cm4gZmVlZGJhY2s7XG59XG4ifSx7ImNlbGxOYW1lIjoicHlvZGlkZS0xIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6Il9weW9kaWRlX3ZhbHVlXzEgPSB7XG4gIGNvbnN0IHsgaGlnaGxpZ2h0UHl0aG9uLCBiNjREZWNvZGV9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInB5b2RpZGUtMS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXZhbHVhdGlvbiBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHtcbiAgICBpZDogXCJweW9kaWRlLTEtY29udGVudHNcIixcbiAgICBlY2hvOiB0cnVlLFxuICAgIG91dHB1dDogdHJ1ZVxuICB9LCBibG9jay5hdHRyKTtcblxuICAvLyBFdmFsdWF0ZSB0aGUgcHJvdmlkZWQgUHl0aG9uIGNvZGVcbiAgY29uc3QgcmVzdWx0ID0gcHlvZGlkZU9qcy5wcm9jZXNzKHtjb2RlOiBibG9jay5jb2RlLCBvcHRpb25zfSwge30pO1xuXG4gIC8vIEVhcmx5IHlpZWxkIHdoaWxlIHdlIHdhaXQgZm9yIHRoZSBmaXJzdCBldmFsdWF0aW9uIGFuZCByZW5kZXJcbiAgaWYgKG9wdGlvbnMub3V0cHV0ICYmICEoXCIxXCIgaW4gcHlvZGlkZU9qcy5yZW5kZXJlZE9qcykpIHtcbiAgICBjb25zdCBjb250YWluZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuICAgIGNvbnN0IHNwaW5uZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuXG4gICAgaWYgKG9wdGlvbnMuZWNobykge1xuICAgICAgLy8gU2hvdyBvdXRwdXQgYXMgaGlnaGxpZ2h0ZWQgc291cmNlXG4gICAgICBjb25zdCBwcmVFbGVtID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcInByZVwiKTtcbiAgICAgIGNvbnRhaW5lci5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGVcIjtcbiAgICAgIHByZUVsZW0uY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlIHB5dGhvblwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChoaWdobGlnaHRQeXRob24oYmxvY2suY29kZSkpO1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItZ3JvdyBzcGlubmVyLWdyb3ctc20gbS0yIHBvc2l0aW9uLWFic29sdXRlIHRvcC0wIGVuZC0wXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHByZUVsZW0pO1xuICAgIH0gZWxzZSB7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ib3JkZXIgc3Bpbm5lci1ib3JkZXItc21cIjtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICB9XG5cbiAgICB5aWVsZCBjb250YWluZXI7XG4gIH1cblxuICBweW9kaWRlT2pzLnJlbmRlcmVkT2pzW1wiMVwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLXByZWx1ZGUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJweW9kaWRlT2pzID0ge1xuICBjb25zdCB7XG4gICAgUHlvZGlkZUV2YWx1YXRvcixcbiAgICBQeW9kaWRlRW52aXJvbm1lbnRNYW5hZ2VyLFxuICAgIHNldHVwUHl0aG9uLFxuICAgIHN0YXJ0UHlvZGlkZVdvcmtlcixcbiAgICBiNjREZWNvZGUsXG4gICAgY29sbGFwc2VQYXRoLFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIFB5b2RpZGUgc3VwcGxlbWVudGFsIGRhdGEgYW5kIG9wdGlvbnNcbiAgY29uc3QgZGF0YUNvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS1kYXRhXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZGF0YSA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGRhdGFDb250ZW50KSk7XG5cbiAgLy8gR3JhYiBsaXN0IG9mIHJlc291cmNlcyB0byBiZSBkb3dubG9hZGVkXG4gIGNvbnN0IGZpbGVzQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ2ZnMtZmlsZVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGZpbGVzID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZmlsZXNDb250ZW50KSk7XG5cbiAgbGV0IHB5b2RpZGVQcm9taXNlID0gKGFzeW5jICgpID0+IHtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIFB5b2RpZGVgO1xuICAgIGNvbnN0IHB5b2RpZGUgPSBhd2FpdCBzdGFydFB5b2RpZGVXb3JrZXIoZGF0YS5vcHRpb25zKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcGFja2FnZTogbWljcm9waXBgO1xuICAgIGF3YWl0IHB5b2RpZGUubG9hZFBhY2thZ2UoXCJtaWNyb3BpcFwiKTtcbiAgICBjb25zdCBtaWNyb3BpcCA9IGF3YWl0IHB5b2RpZGUucHlpbXBvcnQoXCJtaWNyb3BpcFwiKTtcbiAgICBhd2FpdCBkYXRhLnBhY2thZ2VzLnBrZ3MubWFwKChwa2cpID0+ICgpID0+IHtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcGFja2FnZTogJHtwa2d9YDtcbiAgICAgIHJldHVybiBtaWNyb3BpcC5pbnN0YWxsKHBrZyk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG4gICAgYXdhaXQgbWljcm9waXAuZGVzdHJveSgpO1xuXG4gICAgLy8gRG93bmxvYWQgYW5kIGluc3RhbGwgcmVzb3VyY2VzXG4gICAgYXdhaXQgZmlsZXMubWFwKChmaWxlKSA9PiBhc3luYyAoKSA9PiB7XG4gICAgICBjb25zdCBuYW1lID0gZmlsZS5zdWJzdHJpbmcoZmlsZS5sYXN0SW5kZXhPZignLycpICsgMSk7XG4gICAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIHJlc291cmNlOiAke25hbWV9YDtcbiAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2goZmlsZSk7XG4gICAgICBpZiAoIXJlc3BvbnNlLm9rKSB7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgQ2FuJ3QgZG93bmxvYWQgXFxgJHtmaWxlfVxcYC4gRXJyb3IgJHtyZXNwb25zZS5zdGF0dXN9OiBcIiR7cmVzcG9uc2Uuc3RhdHVzVGV4dH1cIi5gKTtcbiAgICAgIH1cbiAgICAgIGNvbnN0IGRhdGEgPSBhd2FpdCByZXNwb25zZS5hcnJheUJ1ZmZlcigpO1xuXG4gICAgICAvLyBTdG9yZSBVUkxzIGluIHRoZSBjd2Qgd2l0aG91dCBhbnkgc3ViZGlyZWN0b3J5IHN0cnVjdHVyZVxuICAgICAgaWYgKGZpbGUuaW5jbHVkZXMoXCI6Ly9cIikpIHtcbiAgICAgICAgZmlsZSA9IG5hbWU7XG4gICAgICB9XG5cbiAgICAgIC8vIENvbGxhcHNlIGhpZ2hlciBkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBmaWxlID0gY29sbGFwc2VQYXRoKGZpbGUpO1xuXG4gICAgICAvLyBDcmVhdGUgZGlyZWN0b3J5IHRyZWUsIGlnbm9yaW5nIFwiZGlyZWN0b3J5IGV4aXN0c1wiIFZGUyBlcnJvcnNcbiAgICAgIGNvbnN0IHBhcnRzID0gZmlsZS5zcGxpdCgnLycpLnNsaWNlKDAsIC0xKTtcbiAgICAgIGxldCBwYXRoID0gJyc7XG4gICAgICB3aGlsZSAocGFydHMubGVuZ3RoID4gMCkge1xuICAgICAgICBwYXRoICs9IHBhcnRzLnNoaWZ0KCkgKyAnLyc7XG4gICAgICAgIHRyeSB7XG4gICAgICAgICAgYXdhaXQgcHlvZGlkZS5GUy5ta2RpcihwYXRoKTtcbiAgICAgICAgfSBjYXRjaCAoZSkge1xuICAgICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICAgIGlmIChlLmVycm5vICE9PSAyMCkge1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0UHRyID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLl9zdHJlcnJvcihlLmVycm5vKTtcbiAgICAgICAgICAgIGNvbnN0IGVycm9yVGV4dCA9IGF3YWl0IHB5b2RpZGUuX21vZHVsZS5VVEY4VG9TdHJpbmcoZXJyb3JUZXh0UHRyKTtcbiAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICB9XG5cbiAgICAgIC8vIFdyaXRlIHRoaXMgZmlsZSB0byB0aGUgVkZTXG4gICAgICB0cnkge1xuICAgICAgICByZXR1cm4gYXdhaXQgcHlvZGlkZS5GUy53cml0ZUZpbGUoZmlsZSwgbmV3IFVpbnQ4QXJyYXkoZGF0YSkpO1xuICAgICAgfSBjYXRjaCAoZSkge1xuICAgICAgICBpZiAoZS5uYW1lICE9PSBcIkVycm5vRXJyb3JcIikgdGhyb3cgZTtcbiAgICAgICAgY29uc3QgZXJyb3JUZXh0UHRyID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLl9zdHJlcnJvcihlLmVycm5vKTtcbiAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYEZpbGVzeXN0ZW0gRXJyb3IgJHtlLmVycm5vfSBcIiR7ZXJyb3JUZXh0fVwiLmApO1xuICAgICAgfVxuICAgIH0pLnJlZHVjZSgoY3VyLCBuZXh0KSA9PiBjdXIudGhlbihuZXh0KSwgUHJvbWlzZS5yZXNvbHZlKCkpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBQeW9kaWRlIGVudmlyb25tZW50IHNldHVwYDtcbiAgICBhd2FpdCBzZXR1cFB5dGhvbihweW9kaWRlKTtcblxuICAgIHN0YXR1c1RleHQucmVtb3ZlKCk7XG4gICAgaWYgKHN0YXR1c0NvbnRhaW5lci5jaGlsZHJlbi5sZW5ndGggPT0gMCkge1xuICAgICAgc3RhdHVzQ29udGFpbmVyLnBhcmVudE5vZGUucmVtb3ZlKCk7XG4gICAgfVxuICAgIHJldHVybiBweW9kaWRlO1xuICB9KSgpLmNhdGNoKChlcnIpID0+IHtcbiAgICBzdGF0dXNUZXh0LnN0eWxlLmNvbG9yID0gXCJ2YXIoLS1leGVyY2lzZS1lZGl0b3ItaGwtZXIsICNBRDAwMDApXCI7XG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGVyci5tZXNzYWdlO1xuICAgIC8vaW5kaWNhdG9yQ29udGFpbmVyLnF1ZXJ5U2VsZWN0b3IoXCIuc3Bpbm5lci1ncm93XCIpLmNsYXNzTGlzdC5hZGQoXCJkLW5vbmVcIik7XG4gICAgdGhyb3cgZXJyO1xuICB9KTtcblxuICAvLyBLZWVwIHRyYWNrIG9mIGluaXRpYWwgT0pTIGJsb2NrIHJlbmRlclxuICBjb25zdCByZW5kZXJlZE9qcyA9IHt9O1xuXG4gIGNvbnN0IHByb2Nlc3MgPSBhc3luYyAoY29udGV4dCwgaW5wdXRzKSA9PiB7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHB5b2RpZGVQcm9taXNlO1xuICAgIGNvbnN0IGV2YWx1YXRvciA9IG5ldyBQeW9kaWRlRXZhbHVhdG9yKHB5b2RpZGUsIGNvbnRleHQpO1xuICAgIGF3YWl0IGV2YWx1YXRvci5wcm9jZXNzKGlucHV0cyk7XG4gICAgcmV0dXJuIGV2YWx1YXRvci5jb250YWluZXI7XG4gIH1cblxuICByZXR1cm4ge1xuICAgIHB5b2RpZGVQcm9taXNlLFxuICAgIHJlbmRlcmVkT2pzLFxuICAgIHByb2Nlc3MsXG4gIH07XG59XG4ifV19
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../lectures/lecture15";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/fcichos\.github\.io\/EMPP\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

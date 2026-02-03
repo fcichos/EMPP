@@ -45,6 +45,45 @@ h6 {
     margin: 0 auto;
 }
 
+/* Style week sections in sidebar to stand out */
+.sidebar-item-section > .sidebar-item-text {
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+/* Make top-level week sections extra prominent */
+.sidebar-navigation
+    > .sidebar-item
+    > .sidebar-item-section
+    > .sidebar-item-text,
+.sidebar-menu-container > .sidebar-item-section > .sidebar-item-text {
+    font-weight: 700;
+    color: #2c3e50;
+    text-transform: none;
+    letter-spacing: 0.01em;
+}
+
+/* Add subtle top border to week sections for visual separation */
+.sidebar-navigation > .sidebar-item-section,
+.sidebar-menu-container > li > .sidebar-item-section {
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Style nested subsections (like "Advanced Topics") lighter */
+.sidebar-item-section .sidebar-item-section > .sidebar-item-text {
+    font-weight: 500;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Highlight "Course Info" and "Seminars" sections differently */
+.sidebar-item-section[data-collapsed="true"] > .sidebar-item-text,
+.sidebar-item-section[data-collapsed="false"] > .sidebar-item-text {
+    font-weight: 600;
+}
+
 /*
 .cell-output.cell-output-pyodide {
     background-color: white;

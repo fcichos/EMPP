@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.34">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Spring Pendulum: When Two Motions Combine – Einführung in die Modellierung Physikalischer Prozesse</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-9344fb9851b4da3cab95007ef9d770dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Einführung in die Modellierung Physikalischer Prozesse</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Spring Pendulum: When Two Motions Combine</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">📋 Course Info</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/intructors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorlesender</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ressourcen</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übungsaufgaben</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course-info/exam.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prüfungen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">🚀 Week 1: Your First Physics Code</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture01/01-lecture01.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup: Jupyter Notebooks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture04/04-plotting.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quick Win: Plotting Your First Graph</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture01/02-lecture01.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables &amp; Numbers (What You Just Used)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">🎯 Week 2-3: Modeling Motion</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/3_datatypes.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Datatypes for Physics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/01-lecture02.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions: Reusable Physics Equations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/2_brownian_motion.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Application: Brownian Motion Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture03/1_numpy.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arrays with Numpy</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">⚡ Week 4-5: Classical Mechanics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture10/2_planetary_motion.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Planetary Motion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture10/1_spring_pendulum.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spring Pendulum &amp; Chaos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture08/3_solving_ODEs.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tool: Solving ODEs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture08/2_integration.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tool: Numerical Integration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">🔧 Week 6-7: Code Organization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture02/02-lecture02.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modules: Organizing Your Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/1_classes.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classes &amp; Objects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture05/2_brownian_motion.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Brownian Motion Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture06/1_input_output.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Data Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://forms.gle/2Mt4EvvFyQxnDJj78" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Feedback</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">🌊 Week 8-9: Oscillations &amp; Waves</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture09/2_coupled_pendula.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coupled Pendula</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture09/3_fourier_analysis.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture13/1_plane_waves.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plane Waves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture13/2_spherical_waves.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spherical Waves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture14/3_huygens_principle.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Huygens Principle</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">📊 Week 10-11: Analyzing Experiments</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture07/1_curve_fitting.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curve Fitting to Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture07/1_differentiation.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numerical Differentiation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture12/3_diffusion_equation.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diffusion Equation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">🎓 Week 12-15: Advanced &amp; Review</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture12/4_repetition.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: ODEs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture11/1_repetition.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: Core Concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture13/4_repetition.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: Meshgrid &amp; Arrays</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lectures/lecture15/lecture15a.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repetition: ODE Review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">🛠️ Hands-On Seminars</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">MD Simulations (Project Series)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar01/md1.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 1: Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar02/md2.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 2: Forces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar03/md3.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 3: Advanced</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar04/md4.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 4: Optimization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar05/md5.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 5: Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar09/md_vibration.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 6: Vibrations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar05/mdsim.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Complete Code</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">Skills Workshops</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar06/25_publication_ready_figures.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Publication-Ready Figures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar07/seminar7.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding Session 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar08/seminar8.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding Session 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar09/seminar9.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Solving 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../seminars/seminar10/seminar10.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Solving 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-physical-setup" id="toc-the-physical-setup" class="nav-link active" data-scroll-target="#the-physical-setup">The Physical Setup</a>
+  <ul class="collapse">
+  <li><a href="#two-ways-to-describe-motion" id="toc-two-ways-to-describe-motion" class="nav-link" data-scroll-target="#two-ways-to-describe-motion">Two Ways to Describe Motion</a></li>
+  </ul></li>
+  <li><a href="#the-equations-of-motion" id="toc-the-equations-of-motion" class="nav-link" data-scroll-target="#the-equations-of-motion">The Equations of Motion</a>
+  <ul class="collapse">
+  <li><a href="#radial-motion-spring-direction" id="toc-radial-motion-spring-direction" class="nav-link" data-scroll-target="#radial-motion-spring-direction">Radial Motion (Spring Direction)</a></li>
+  <li><a href="#angular-motion-swinging-direction" id="toc-angular-motion-swinging-direction" class="nav-link" data-scroll-target="#angular-motion-swinging-direction">Angular Motion (Swinging Direction)</a></li>
+  </ul></li>
+  <li><a href="#converting-to-first-order-system" id="toc-converting-to-first-order-system" class="nav-link" data-scroll-target="#converting-to-first-order-system">Converting to First-Order System</a></li>
+  <li><a href="#implementing-the-equations" id="toc-implementing-the-equations" class="nav-link" data-scroll-target="#implementing-the-equations">Implementing the Equations</a></li>
+  <li><a href="#setting-up-the-simulation" id="toc-setting-up-the-simulation" class="nav-link" data-scroll-target="#setting-up-the-simulation">Setting Up the Simulation</a>
+  <ul class="collapse">
+  <li><a href="#defining-physical-parameters" id="toc-defining-physical-parameters" class="nav-link" data-scroll-target="#defining-physical-parameters">Defining Physical Parameters</a></li>
+  <li><a href="#initial-conditions-small-displacement" id="toc-initial-conditions-small-displacement" class="nav-link" data-scroll-target="#initial-conditions-small-displacement">Initial Conditions: Small Displacement</a></li>
+  <li><a href="#solving-the-odes" id="toc-solving-the-odes" class="nav-link" data-scroll-target="#solving-the-odes">Solving the ODEs</a></li>
+  </ul></li>
+  <li><a href="#visualizing-the-motion" id="toc-visualizing-the-motion" class="nav-link" data-scroll-target="#visualizing-the-motion">Visualizing the Motion</a>
+  <ul class="collapse">
+  <li><a href="#converting-to-cartesian-coordinates" id="toc-converting-to-cartesian-coordinates" class="nav-link" data-scroll-target="#converting-to-cartesian-coordinates">Converting to Cartesian Coordinates</a></li>
+  <li><a href="#trajectory-plot" id="toc-trajectory-plot" class="nav-link" data-scroll-target="#trajectory-plot">Trajectory Plot</a></li>
+  </ul></li>
+  <li><a href="#understanding-phase-space" id="toc-understanding-phase-space" class="nav-link" data-scroll-target="#understanding-phase-space">Understanding Phase Space</a>
+  <ul class="collapse">
+  <li><a href="#why-phase-space" id="toc-why-phase-space" class="nav-link" data-scroll-target="#why-phase-space">Why Phase Space?</a></li>
+  <li><a href="#phase-space-spring-motion" id="toc-phase-space-spring-motion" class="nav-link" data-scroll-target="#phase-space-spring-motion">Phase Space: Spring Motion</a></li>
+  <li><a href="#phase-space-pendulum-motion" id="toc-phase-space-pendulum-motion" class="nav-link" data-scroll-target="#phase-space-pendulum-motion">Phase Space: Pendulum Motion</a></li>
+  </ul></li>
+  <li><a href="#time-evolution-energy-exchange" id="toc-time-evolution-energy-exchange" class="nav-link" data-scroll-target="#time-evolution-energy-exchange">Time Evolution: Energy Exchange</a></li>
+  <li><a href="#exploration-different-regimes" id="toc-exploration-different-regimes" class="nav-link" data-scroll-target="#exploration-different-regimes">Exploration: Different Regimes</a>
+  <ul class="collapse">
+  <li><a href="#experiment-1-larger-initial-angle" id="toc-experiment-1-larger-initial-angle" class="nav-link" data-scroll-target="#experiment-1-larger-initial-angle">Experiment 1: Larger Initial Angle</a></li>
+  <li><a href="#experiment-2-initial-velocity" id="toc-experiment-2-initial-velocity" class="nav-link" data-scroll-target="#experiment-2-initial-velocity">Experiment 2: Initial Velocity</a></li>
+  <li><a href="#experiment-3-changing-parameters" id="toc-experiment-3-changing-parameters" class="nav-link" data-scroll-target="#experiment-3-changing-parameters">Experiment 3: Changing Parameters</a></li>
+  </ul></li>
+  <li><a href="#the-road-to-chaos" id="toc-the-road-to-chaos" class="nav-link" data-scroll-target="#the-road-to-chaos">The Road to Chaos</a>
+  <ul class="collapse">
+  <li><a href="#chaotic-parameters" id="toc-chaotic-parameters" class="nav-link" data-scroll-target="#chaotic-parameters">Chaotic Parameters</a></li>
+  </ul></li>
+  <li><a href="#energy-conservation-check" id="toc-energy-conservation-check" class="nav-link" data-scroll-target="#energy-conservation-check">Energy Conservation Check</a></li>
+  <li><a href="#summary-what-weve-learned" id="toc-summary-what-weve-learned" class="nav-link" data-scroll-target="#summary-what-weve-learned">Summary: What We’ve Learned</a></li>
+  <li><a href="#challenge-exercises" id="toc-challenge-exercises" class="nav-link" data-scroll-target="#challenge-exercises">Challenge Exercises</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Spring Pendulum: When Two Motions Combine</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In the previous lecture, we applied <code>odeint</code> to planetary motion - a system with radial and angular motion coupled by Newton’s gravity. The mathematics was elegant, and the orbits were stable and predictable.</p>
+<p>Now let’s explore a seemingly simpler system that turns out to be much more complex: the <strong>spring pendulum</strong>.</p>
+<p>Imagine hanging a weight from a spring. If you pull it down and release it, the spring bounces up and down. If you push it sideways, it swings like a pendulum. But what happens if you do <strong>both at the same time</strong>?</p>
+<p>This seemingly simple question leads to one of the most fascinating systems in classical mechanics. Like planetary motion, it involves radial and angular coordinates. But unlike the stable ellipses we saw with planets, the spring pendulum can:</p>
+<ul>
+<li>Exchange energy between modes</li>
+<li>Show intricate patterns</li>
+<li>Even become <strong>chaotic</strong> - deterministic yet unpredictable!</li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🎯 What You’ll Learn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this lecture, you’ll:</p>
+<ul>
+<li>Apply <code>odeint</code> to a system with <strong>coupled oscillation modes</strong> (building on planetary motion)</li>
+<li>See how a <strong>different force law</strong> (spring instead of gravity) creates new behaviors</li>
+<li>Understand <strong>energy exchange</strong> between radial and angular motion</li>
+<li>Discover the route from <strong>regular to chaotic motion</strong></li>
+<li>Use <strong>phase space plots</strong> to distinguish order from chaos</li>
+</ul>
+</div>
+</div>
+<div>
+<div id="pyodide-1">
+
+</div>
+<script type="pyodide-1-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJcbmltcG9ydCBudW1weSBhcyBucFxuaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuZnJvbSBzY2lweS5pbnRlZ3JhdGUgaW1wb3J0IG9kZWludFxuXG4jIFNldCBkZWZhdWx0IHBsb3R0aW5nIHBhcmFtZXRlcnNcbnBsdC5yY1BhcmFtcy51cGRhdGUoe1xuICAgICdmb250LnNpemUnOiAxMixcbiAgICAnbGluZXMubGluZXdpZHRoJzogMSxcbiAgICAnbGluZXMubWFya2Vyc2l6ZSc6IDUsXG4gICAgJ2F4ZXMubGFiZWxzaXplJzogMTEsXG4gICAgJ3h0aWNrLmxhYmVsc2l6ZSc6IDEwLFxuICAgICd5dGljay5sYWJlbHNpemUnOiAxMCxcbiAgICAneHRpY2sudG9wJzogVHJ1ZSxcbiAgICAneHRpY2suZGlyZWN0aW9uJzogJ2luJyxcbiAgICAneXRpY2sucmlnaHQnOiBUcnVlLFxuICAgICd5dGljay5kaXJlY3Rpb24nOiAnaW4nLFxufSlcblxuZGVmIGdldF9zaXplKHcsIGgpOlxuICAgIHJldHVybiAody8yLjU0LCBoLzIuNTQpIn0=
+</script>
+</div>
+<section id="the-physical-setup" class="level2">
+<h2 class="anchored" data-anchor-id="the-physical-setup">The Physical Setup</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/SpringPendulum.png" class="img-fluid figure-img"></p>
+<figcaption>SpringPendulum.png</figcaption>
+</figure>
+</div>
+<p>The spring pendulum consists of: - A <strong>spring</strong> attached to a fixed point (spring constant <span class="math inline">\(k\)</span>) - A <strong>mass</strong> <span class="math inline">\(m\)</span> hanging from the spring - The spring’s natural (rest) length is <span class="math inline">\(L_0\)</span></p>
+<section id="two-ways-to-describe-motion" class="level3">
+<h3 class="anchored" data-anchor-id="two-ways-to-describe-motion">Two Ways to Describe Motion</h3>
+<p>We need <strong>two coordinates</strong> to describe where the mass is at any time:</p>
+<ol type="1">
+<li><strong><span class="math inline">\(L\)</span></strong>: How much the spring is stretched (or compressed) beyond its natural length
+<ul>
+<li><span class="math inline">\(L = 0\)</span> means the spring is at its natural length</li>
+<li><span class="math inline">\(L &gt; 0\)</span> means stretched</li>
+<li><span class="math inline">\(L &lt; 0\)</span> means compressed</li>
+</ul></li>
+<li><strong><span class="math inline">\(\theta\)</span></strong>: The angle from vertical
+<ul>
+<li><span class="math inline">\(\theta = 0\)</span> means hanging straight down</li>
+<li><span class="math inline">\(\theta &gt; 0\)</span> means swinging to the right</li>
+<li><span class="math inline">\(\theta &lt; 0\)</span> means swinging to the left</li>
+</ul></li>
+</ol>
+<p>The <strong>total length</strong> of the pendulum at any moment is <span class="math inline">\(L_0 + L\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why These Coordinates?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We call <span class="math inline">\(L\)</span> and <span class="math inline">\(\theta\)</span> <strong>generalized coordinates</strong>. They’re natural choices because: - They directly measure the spring stretch and pendulum swing - They simplify the equations of motion - They’re called “polar coordinates” (radius and angle)</p>
+</div>
+</div>
+</section>
+</section>
+<section id="the-equations-of-motion" class="level2">
+<h2 class="anchored" data-anchor-id="the-equations-of-motion">The Equations of Motion</h2>
+<p>Just like we learned in Week 5, we need to convert Newton’s second law (<span class="math inline">\(F = ma\)</span>) into equations we can solve with <code>odeint</code>. For the spring pendulum, we get two coupled differential equations:</p>
+<section id="radial-motion-spring-direction" class="level3">
+<h3 class="anchored" data-anchor-id="radial-motion-spring-direction">Radial Motion (Spring Direction)</h3>
+<p><span class="math display">\[\begin{equation}
+\ddot{L} = (L_0+L)\dot{\theta}^2-\frac{k}{m}L+g\cos(\theta)
+\end{equation}\]</span></p>
+<p>Let’s understand each term:</p>
+<ul>
+<li><strong><span class="math inline">\((L_0+L)\dot{\theta}^2\)</span></strong>: The <strong>centrifugal effect</strong> - when the pendulum swings, the mass “wants” to fly outward, stretching the spring</li>
+<li><strong><span class="math inline">\(-\frac{k}{m}L\)</span></strong>: The <strong>spring restoring force</strong> (Hooke’s law) - pulls back toward the natural length</li>
+<li><strong><span class="math inline">\(g\cos(\theta)\)</span></strong>: The <strong>radial component of gravity</strong> - when tilted, gravity has a component along the spring</li>
+</ul>
+</section>
+<section id="angular-motion-swinging-direction" class="level3">
+<h3 class="anchored" data-anchor-id="angular-motion-swinging-direction">Angular Motion (Swinging Direction)</h3>
+<p><span class="math display">\[\begin{equation}
+\ddot{\theta} = -\frac{1}{L_0+L}\left[g\sin(\theta)+2\dot{L}\dot{\theta}\right]
+\end{equation}\]</span></p>
+<p>Understanding these terms:</p>
+<ul>
+<li><strong><span class="math inline">\(g\sin(\theta)\)</span></strong>: The <strong>gravitational torque</strong> - this is what makes a normal pendulum swing</li>
+<li><strong><span class="math inline">\(2\dot{L}\dot{\theta}\)</span></strong>: The <strong>coupling term</strong> - when the spring length changes, it affects the swing speed (like an ice skater spinning faster when pulling arms in!)</li>
+<li><strong><span class="math inline">\(\frac{1}{L_0+L}\)</span></strong>: The effect of changing pendulum length on rotation</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The Key Insight: Coupling
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These equations are <strong>coupled</strong> - they depend on each other! The spring stretch affects the swing, and the swing affects the spring stretch. This coupling creates the rich, complex behavior we’ll explore.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Comparing to Planetary Motion
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notice the similarities to the previous lecture: - <strong>Planetary Motion</strong>: Radial force is <span class="math inline">\(-GM/r^2\)</span> (Newton’s inverse square law) - <strong>Spring Pendulum</strong>: Radial force is <span class="math inline">\(-kL\)</span> (Hooke’s linear law)</p>
+<p>Same mathematical structure (centrifugal term + radial force + coupling), different force laws! The spring’s linear force creates very different behavior than gravity’s inverse square law.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="converting-to-first-order-system" class="level2">
+<h2 class="anchored" data-anchor-id="converting-to-first-order-system">Converting to First-Order System</h2>
+<p>Remember from Week 5: <code>odeint</code> needs <strong>first-order</strong> differential equations. We have <strong>second-order</strong> equations (involving <span class="math inline">\(\ddot{L}\)</span> and <span class="math inline">\(\ddot{\theta}\)</span>), so we need to convert them.</p>
+<p>We introduce new variables for the velocities: - <span class="math inline">\(v = \dot{L}\)</span> (rate of spring stretch) - <span class="math inline">\(\omega = \dot{\theta}\)</span> (angular velocity)</p>
+<p>This gives us <strong>four</strong> first-order equations:</p>
+<p><span class="math display">\[\begin{align}
+\dot{L} &amp;= v \\
+\dot{v} &amp;= (L_0+L)\omega^2-\frac{k}{m}L+g\cos(\theta) \\
+\dot{\theta} &amp;= \omega \\
+\dot{\omega} &amp;= -\frac{1}{L_0+L}\left[g\sin(\theta)+2v\omega\right]
+\end{align}\]</span></p>
+<p>Our <strong>state vector</strong> is: <span class="math inline">\([L, v, \theta, \omega]\)</span></p>
+</section>
+<section id="implementing-the-equations" class="level2">
+<h2 class="anchored" data-anchor-id="implementing-the-equations">Implementing the Equations</h2>
+<p>Now let’s write the function that <code>odeint</code> will use. This should look familiar from Week 5!</p>
+<div>
+<div id="pyodide-2">
+
+</div>
+<script type="pyodide-2-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuZGVmIHNwcmluZ19wZW5kdWx1bShzdGF0ZSwgdGltZSk6XG4gICAgXCJcIlwiXG4gICAgQ2FsY3VsYXRlcyBkZXJpdmF0aXZlcyBmb3IgdGhlIHNwcmluZyBwZW5kdWx1bSBzeXN0ZW0uXG4gICAgXG4gICAgc3RhdGUgPSBbTCwgdiwgdGhldGEsIG9tZWdhXVxuICAgIHdoZXJlOlxuICAgICAgICBMICAgICA9IHNwcmluZyBlbG9uZ2F0aW9uIChiZXlvbmQgcmVzdCBsZW5ndGgpXG4gICAgICAgIHYgICAgID0gcmFkaWFsIHZlbG9jaXR5IChkTC9kdClcbiAgICAgICAgdGhldGEgPSBhbmdsZSBmcm9tIHZlcnRpY2FsXG4gICAgICAgIG9tZWdhID0gYW5ndWxhciB2ZWxvY2l0eSAoZHRoZXRhL2R0KVxuICAgIFxuICAgIFJldHVybnM6IFtkTC9kdCwgZHYvZHQsIGR0aGV0YS9kdCwgZG9tZWdhL2R0XVxuICAgIFwiXCJcIlxuICAgICMgVW5wYWNrIGN1cnJlbnQgc3RhdGVcbiAgICBMID0gc3RhdGVbMF1cbiAgICB2ID0gc3RhdGVbMV1cbiAgICB0aGV0YSA9IHN0YXRlWzJdXG4gICAgb21lZ2EgPSBzdGF0ZVszXVxuICAgIFxuICAgICMgQ2FsY3VsYXRlIGRlcml2YXRpdmVzXG4gICAgZExfZHQgPSB2XG4gICAgZHZfZHQgPSAoTF9vICsgTCkgKiBvbWVnYSoqMiAtIChrL20pICogTCArIGdyYXZpdHkgKiBucC5jb3ModGhldGEpXG4gICAgZHRoZXRhX2R0ID0gb21lZ2FcbiAgICBkb21lZ2FfZHQgPSAtKGdyYXZpdHkgKiBucC5zaW4odGhldGEpICsgMi4wICogdiAqIG9tZWdhKSAvIChMX28gKyBMKVxuICAgIFxuICAgIHJldHVybiBucC5hcnJheShbZExfZHQsIGR2X2R0LCBkdGhldGFfZHQsIGRvbWVnYV9kdF0pIn0=
+</script>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Organization Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notice how we: 1. Documented what the function does 2. Unpacked the state for readability 3. Calculated each derivative clearly 4. Returned them in the same order as the state</p>
+<p>This makes debugging much easier!</p>
+</div>
+</div>
+</section>
+<section id="setting-up-the-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-the-simulation">Setting Up the Simulation</h2>
+<section id="defining-physical-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="defining-physical-parameters">Defining Physical Parameters</h3>
+<p>Let’s start with realistic values:</p>
+<div>
+<div id="pyodide-3">
+
+</div>
+<script type="pyodide-3-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBQaHlzaWNhbCBwYXJhbWV0ZXJzXG5rID0gMTAuMCAgICAgICAgIyBTcHJpbmcgY29uc3RhbnQgW04vbV1cbm0gPSAxLjAgICAgICAgICAjIE1hc3MgW2tnXVxuZ3Jhdml0eSA9IDkuODEgICMgR3Jhdml0YXRpb25hbCBhY2NlbGVyYXRpb24gW20vc8KyXVxuTF9vID0gNS4wICAgICAgICMgTmF0dXJhbCBzcHJpbmcgbGVuZ3RoIFttXVxuXG5wcmludChmXCJTcHJpbmcgY29uc3RhbnQ6IHtrfSBOL21cIilcbnByaW50KGZcIk1hc3M6IHttfSBrZ1wiKVxucHJpbnQoZlwiTmF0dXJhbCBzcHJpbmcgbGVuZ3RoOiB7TF9vfSBtXCIpIn0=
+</script>
+</div>
+</section>
+<section id="initial-conditions-small-displacement" class="level3">
+<h3 class="anchored" data-anchor-id="initial-conditions-small-displacement">Initial Conditions: Small Displacement</h3>
+<p>Let’s start simple - pull the spring down slightly and see what happens:</p>
+<div>
+<div id="pyodide-4">
+
+</div>
+<script type="pyodide-4-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBUaW1lIGFycmF5XG5OID0gMTAwMDBcbnRpbWUgPSBucC5saW5zcGFjZSgwLCA1MCwgTilcblxuIyBJbml0aWFsIHN0YXRlOiBbTCwgdiwgdGhldGEsIG9tZWdhXVxuc3RhdGVfMCA9IG5wLmFycmF5KFtcbiAgICAwLjEsICAgIyBMOiBzdHJldGNoZWQgMC4xIG0gYmV5b25kIG5hdHVyYWwgbGVuZ3RoXG4gICAgMC4wLCAgICMgdjogbm8gaW5pdGlhbCByYWRpYWwgdmVsb2NpdHlcbiAgICAwLjEsICAgIyB0aGV0YTogc21hbGwgYW5nbGUgKGFib3V0IDUuNyBkZWdyZWVzKVxuICAgIDAuMCAgICAjIG9tZWdhOiBubyBpbml0aWFsIGFuZ3VsYXIgdmVsb2NpdHlcbl0pXG5cbnByaW50KFwiSW5pdGlhbCBjb25kaXRpb25zOlwiKVxucHJpbnQoZlwiICBTcHJpbmcgc3RyZXRjaDoge3N0YXRlXzBbMF19IG1cIilcbnByaW50KGZcIiAgSW5pdGlhbCBhbmdsZToge25wLmRlZ3JlZXMoc3RhdGVfMFsyXSk6LjFmfSBkZWdyZWVzXCIpIn0=
+</script>
+</div>
+</section>
+<section id="solving-the-odes" class="level3">
+<h3 class="anchored" data-anchor-id="solving-the-odes">Solving the ODEs</h3>
+<p>Now we use <code>odeint</code> - just like in Week 5!</p>
+<div>
+<div id="pyodide-5">
+
+</div>
+<script type="pyodide-5-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBTb2x2ZSB0aGUgZGlmZmVyZW50aWFsIGVxdWF0aW9uc1xuc29sdXRpb24gPSBvZGVpbnQoc3ByaW5nX3BlbmR1bHVtLCBzdGF0ZV8wLCB0aW1lKVxuXG5wcmludChmXCJTb2x1dGlvbiBzaGFwZToge3NvbHV0aW9uLnNoYXBlfVwiKVxucHJpbnQoZlwiICAtIHtzb2x1dGlvbi5zaGFwZVswXX0gdGltZSBzdGVwc1wiKVxucHJpbnQoZlwiICAtIHtzb2x1dGlvbi5zaGFwZVsxXX0gdmFyaWFibGVzOiBbTCwgdiwgdGhldGEsIG9tZWdhXVwiKSJ9
+</script>
+</div>
+</section>
+</section>
+<section id="visualizing-the-motion" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-the-motion">Visualizing the Motion</h2>
+<section id="converting-to-cartesian-coordinates" class="level3">
+<h3 class="anchored" data-anchor-id="converting-to-cartesian-coordinates">Converting to Cartesian Coordinates</h3>
+<p>To see the actual path of the mass, we convert from <span class="math inline">\((L, \theta)\)</span> to <span class="math inline">\((x, y)\)</span>:</p>
+<div>
+<div id="pyodide-6">
+
+</div>
+<script type="pyodide-6-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBFeHRyYWN0IHNvbHV0aW9uc1xuTF9zb2x1dGlvbiA9IHNvbHV0aW9uWzosIDBdXG50aGV0YV9zb2x1dGlvbiA9IHNvbHV0aW9uWzosIDJdXG5cbiMgQ29udmVydCB0byB4LHkgY29vcmRpbmF0ZXNcbiMgeDogaG9yaXpvbnRhbCBwb3NpdGlvblxuIyB5OiB2ZXJ0aWNhbCBwb3NpdGlvbiAobmVnYXRpdmUgYmVjYXVzZSBkb3duIGlzIG5lZ2F0aXZlKVxueF9wb3NpdGlvbiA9IChMX28gKyBMX3NvbHV0aW9uKSAqIG5wLnNpbih0aGV0YV9zb2x1dGlvbilcbnlfcG9zaXRpb24gPSAtKExfbyArIExfc29sdXRpb24pICogbnAuY29zKHRoZXRhX3NvbHV0aW9uKVxuXG5wcmludChmXCJQb3NpdGlvbiByYW5nZXM6XCIpXG5wcmludChmXCIgIHg6IHt4X3Bvc2l0aW9uLm1pbigpOi4yZn0gdG8ge3hfcG9zaXRpb24ubWF4KCk6LjJmfSBtXCIpXG5wcmludChmXCIgIHk6IHt5X3Bvc2l0aW9uLm1pbigpOi4yZn0gdG8ge3lfcG9zaXRpb24ubWF4KCk6LjJmfSBtXCIpIn0=
+</script>
+</div>
+</section>
+<section id="trajectory-plot" class="level3">
+<h3 class="anchored" data-anchor-id="trajectory-plot">Trajectory Plot</h3>
+<p>Let’s see the path the mass follows:</p>
+<div>
+<div id="pyodide-7">
+
+</div>
+<script type="pyodide-7-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDEyLCAxMikpXG5wbHQucGxvdCh4X3Bvc2l0aW9uLCB5X3Bvc2l0aW9uLCAnYi0nLCBsaW5ld2lkdGg9MC41LCBhbHBoYT0wLjcpXG5wbHQucGxvdCh4X3Bvc2l0aW9uWzBdLCB5X3Bvc2l0aW9uWzBdLCAnZ28nLCBtYXJrZXJzaXplPTEwLCBsYWJlbD0nU3RhcnQnKVxucGx0LnBsb3QoeF9wb3NpdGlvblstMV0sIHlfcG9zaXRpb25bLTFdLCAncm8nLCBtYXJrZXJzaXplPTEwLCBsYWJlbD0nRW5kJylcbnBsdC5wbG90KDAsIDAsICdrKicsIG1hcmtlcnNpemU9MTUsIGxhYmVsPSdGaXhlZCBwb2ludCcpXG5cbnBsdC54bGFiZWwoJ0hvcml6b250YWwgcG9zaXRpb24gW21dJylcbnBsdC55bGFiZWwoJ1ZlcnRpY2FsIHBvc2l0aW9uIFttXScpXG5wbHQuYXhpcygnZXF1YWwnKVxucGx0LmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxucGx0LmxlZ2VuZCgpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
+</script>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What Do You See?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>With small initial displacements, you should see a relatively simple pattern - maybe some oscillation with a bit of wobble. This is the system in a <strong>regular</strong> regime.</p>
+<p>Try to identify: - Is the mass moving more up/down or side-to-side? - Does the pattern repeat? - Can you see both spring and pendulum motion?</p>
+</div>
+</div>
+</section>
+</section>
+<section id="understanding-phase-space" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-phase-space">Understanding Phase Space</h2>
+<p><strong>Phase space plots</strong> are a powerful tool for understanding dynamical systems. Instead of plotting position vs.&nbsp;time, we plot <strong>position vs.&nbsp;velocity</strong>.</p>
+<section id="why-phase-space" class="level3">
+<h3 class="anchored" data-anchor-id="why-phase-space">Why Phase Space?</h3>
+<ul>
+<li>Each point represents the <strong>complete state</strong> of one degree of freedom</li>
+<li>The trajectory shows how the system <strong>evolves</strong></li>
+<li>Regular motion creates <strong>closed curves</strong></li>
+<li>Chaotic motion creates <strong>strange patterns</strong></li>
+</ul>
+</section>
+<section id="phase-space-spring-motion" class="level3">
+<h3 class="anchored" data-anchor-id="phase-space-spring-motion">Phase Space: Spring Motion</h3>
+<p>Let’s look at the spring stretch vs.&nbsp;its velocity:</p>
+<div>
+<div id="pyodide-8">
+
+</div>
+<script type="pyodide-8-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuTF92YWx1ZXMgPSBzb2x1dGlvbls6LCAwXVxudl92YWx1ZXMgPSBzb2x1dGlvbls6LCAxXVxuXG5wbHQuZmlndXJlKGZpZ3NpemU9Z2V0X3NpemUoMTIsIDEwKSlcbnBsdC5wbG90KExfdmFsdWVzLCB2X3ZhbHVlcywgJ3ItJywgbGluZXdpZHRoPTAuNSwgYWxwaGE9MC43KVxucGx0LnBsb3QoTF92YWx1ZXNbMF0sIHZfdmFsdWVzWzBdLCAnZ28nLCBtYXJrZXJzaXplPTEwLCBsYWJlbD0nU3RhcnQnKVxuXG5wbHQueGxhYmVsKCdTcHJpbmcgZWxvbmdhdGlvbiAkTCQgW21dJylcbnBsdC55bGFiZWwoJ1JhZGlhbCB2ZWxvY2l0eSAkdiQgW20vc10nKVxucGx0LmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxucGx0LmxlZ2VuZCgpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
+</script>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpreting Phase Space Plots
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Closed loops</strong>: Regular, periodic motion</li>
+<li><strong>Spiral inward</strong>: Damped oscillation (not in our case - we have no damping!)</li>
+<li><strong>Spiral outward</strong>: Growing amplitude</li>
+<li><strong>Tangled mess</strong>: Chaotic motion</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="phase-space-pendulum-motion" class="level3">
+<h3 class="anchored" data-anchor-id="phase-space-pendulum-motion">Phase Space: Pendulum Motion</h3>
+<p>Now let’s look at the angle vs.&nbsp;angular velocity:</p>
+<div>
+<div id="pyodide-9">
+
+</div>
+<script type="pyodide-9-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxudGhldGFfdmFsdWVzID0gc29sdXRpb25bOiwgMl1cbm9tZWdhX3ZhbHVlcyA9IHNvbHV0aW9uWzosIDNdXG5cbnBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgxMiwgMTApKVxucGx0LnBsb3QodGhldGFfdmFsdWVzLCBvbWVnYV92YWx1ZXMsICdiLScsIGxpbmV3aWR0aD0wLjUsIGFscGhhPTAuNylcbnBsdC5wbG90KHRoZXRhX3ZhbHVlc1swXSwgb21lZ2FfdmFsdWVzWzBdLCAnZ28nLCBtYXJrZXJzaXplPTEwLCBsYWJlbD0nU3RhcnQnKVxuXG5wbHQueGxhYmVsKCdBbmdsZSAkXFxcXHRoZXRhJCBbcmFkXScpXG5wbHQueWxhYmVsKCdBbmd1bGFyIHZlbG9jaXR5ICRcXFxcb21lZ2EkIFtyYWQvc10nKVxucGx0LmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxucGx0LmxlZ2VuZCgpXG5wbHQudGlnaHRfbGF5b3V0KClcbnBsdC5zaG93KCkifQ==
+</script>
+</div>
+</section>
+</section>
+<section id="time-evolution-energy-exchange" class="level2">
+<h2 class="anchored" data-anchor-id="time-evolution-energy-exchange">Time Evolution: Energy Exchange</h2>
+<p>One of the most interesting features of the spring pendulum is the <strong>exchange of energy</strong> between the spring mode and the pendulum mode.</p>
+<div>
+<div id="pyodide-10">
+
+</div>
+<script type="pyodide-10-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDE1LCAxMCkpXG5wbHQucGxvdCh0aW1lLCBMX3ZhbHVlcywgJ3ItJywgbGFiZWw9J1NwcmluZyBlbG9uZ2F0aW9uICRMJCBbbV0nLCBsaW5ld2lkdGg9MS41KVxucGx0LnBsb3QodGltZSwgdGhldGFfdmFsdWVzICogMTAsICdiLScsIGxhYmVsPSdBbmdsZSAkXFxcXHRoZXRhJCDDlyAxMCBbcmFkXScsIGxpbmV3aWR0aD0xLjUpXG5cbnBsdC54bGFiZWwoJ1RpbWUgW3NdJylcbnBsdC55bGFiZWwoJ0FtcGxpdHVkZScpXG5wbHQubGVnZW5kKClcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC54bGltKDAsIDUwKVxucGx0LnRpZ2h0X2xheW91dCgpXG5wbHQuc2hvdygpIn0=
+</script>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Look for Patterns!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Can you see: - Do both motions have the same frequency? - When the spring oscillation is large, is the pendulum swing small (or vice versa)? - Does energy seem to slosh back and forth between the two modes?</p>
+</div>
+</div>
+</section>
+<section id="exploration-different-regimes" class="level2">
+<h2 class="anchored" data-anchor-id="exploration-different-regimes">Exploration: Different Regimes</h2>
+<p>The spring pendulum can show dramatically different behavior depending on the initial conditions and parameters. Let’s explore!</p>
+<section id="experiment-1-larger-initial-angle" class="level3">
+<h3 class="anchored" data-anchor-id="experiment-1-larger-initial-angle">Experiment 1: Larger Initial Angle</h3>
+<p>Try starting with a bigger swing:</p>
+<div>
+<div id="pyodide-11">
+
+</div>
+<script type="pyodide-11-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBMYXJnZXIgaW5pdGlhbCBhbmdsZVxuc3RhdGVfbGFyZ2VfYW5nbGUgPSBucC5hcnJheShbXG4gICAgMC4xLCAgICMgTDogc21hbGwgc3RyZXRjaFxuICAgIDAuMCwgICAjIHY6IG5vIHJhZGlhbCB2ZWxvY2l0eVxuICAgIDAuNSwgICAjIHRoZXRhOiBhYm91dCAyOCBkZWdyZWVzIC0gbXVjaCBsYXJnZXIhXG4gICAgMC4wICAgICMgb21lZ2E6IG5vIGFuZ3VsYXIgdmVsb2NpdHlcbl0pXG5cbnNvbHV0aW9uX2xhcmdlID0gb2RlaW50KHNwcmluZ19wZW5kdWx1bSwgc3RhdGVfbGFyZ2VfYW5nbGUsIHRpbWUpXG5cbiMgQ29udmVydCB0byB4LHlcbnhfbGFyZ2UgPSAoTF9vICsgc29sdXRpb25fbGFyZ2VbOiwgMF0pICogbnAuc2luKHNvbHV0aW9uX2xhcmdlWzosIDJdKVxueV9sYXJnZSA9IC0oTF9vICsgc29sdXRpb25fbGFyZ2VbOiwgMF0pICogbnAuY29zKHNvbHV0aW9uX2xhcmdlWzosIDJdKVxuXG5wbHQuZmlndXJlKGZpZ3NpemU9Z2V0X3NpemUoMTIsIDEyKSlcbnBsdC5wbG90KHhfbGFyZ2UsIHlfbGFyZ2UsICdiLScsIGxpbmV3aWR0aD0wLjUsIGFscGhhPTAuNylcbnBsdC5wbG90KDAsIDAsICdrKicsIG1hcmtlcnNpemU9MTUpXG5wbHQueGxhYmVsKCdIb3Jpem9udGFsIHBvc2l0aW9uIFttXScpXG5wbHQueWxhYmVsKCdWZXJ0aWNhbCBwb3NpdGlvbiBbbV0nKVxucGx0LmF4aXMoJ2VxdWFsJylcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
+</script>
+</div>
+</section>
+<section id="experiment-2-initial-velocity" class="level3">
+<h3 class="anchored" data-anchor-id="experiment-2-initial-velocity">Experiment 2: Initial Velocity</h3>
+<p>What if we give the mass a push?</p>
+<div>
+<div id="pyodide-12">
+
+</div>
+<script type="pyodide-12-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBBZGQgaW5pdGlhbCB2ZWxvY2l0eVxuc3RhdGVfd2l0aF92ZWxvY2l0eSA9IG5wLmFycmF5KFtcbiAgICAwLjEsICAgIyBMXG4gICAgMS4wLCAgICMgdjogZ2l2ZSBpdCBhIHJhZGlhbCBwdXNoIVxuICAgIDAuMSwgICAjIHRoZXRhXG4gICAgMC4wICAgICMgb21lZ2Fcbl0pXG5cbnNvbHV0aW9uX3ZlbG9jaXR5ID0gb2RlaW50KHNwcmluZ19wZW5kdWx1bSwgc3RhdGVfd2l0aF92ZWxvY2l0eSwgdGltZSlcblxueF92ZWwgPSAoTF9vICsgc29sdXRpb25fdmVsb2NpdHlbOiwgMF0pICogbnAuc2luKHNvbHV0aW9uX3ZlbG9jaXR5WzosIDJdKVxueV92ZWwgPSAtKExfbyArIHNvbHV0aW9uX3ZlbG9jaXR5WzosIDBdKSAqIG5wLmNvcyhzb2x1dGlvbl92ZWxvY2l0eVs6LCAyXSlcblxucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDEyLCAxMikpXG5wbHQucGxvdCh4X3ZlbCwgeV92ZWwsICdnLScsIGxpbmV3aWR0aD0wLjUsIGFscGhhPTAuNylcbnBsdC5wbG90KDAsIDAsICdrKicsIG1hcmtlcnNpemU9MTUpXG5wbHQueGxhYmVsKCdIb3Jpem9udGFsIHBvc2l0aW9uIFttXScpXG5wbHQueWxhYmVsKCdWZXJ0aWNhbCBwb3NpdGlvbiBbbV0nKVxucGx0LmF4aXMoJ2VxdWFsJylcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
+</script>
+</div>
+</section>
+<section id="experiment-3-changing-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="experiment-3-changing-parameters">Experiment 3: Changing Parameters</h3>
+<p>Try different physical parameters:</p>
+<div>
+<div id="pyodide-13">
+
+</div>
+<script type="pyodide-13-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBTdGlmZmVyIHNwcmluZyAobGFyZ2VyIGspXG5rX3N0aWZmID0gNTAuMCAgIyBNdWNoIHN0aWZmZXIgc3ByaW5nIVxuXG5kZWYgc3ByaW5nX3BlbmR1bHVtX3N0aWZmKHN0YXRlLCB0aW1lKTpcbiAgICBcIlwiXCJTYW1lIGVxdWF0aW9ucywgYnV0IHdpdGgga19zdGlmZlwiXCJcIlxuICAgIEwsIHYsIHRoZXRhLCBvbWVnYSA9IHN0YXRlXG4gICAgZExfZHQgPSB2XG4gICAgZHZfZHQgPSAoTF9vICsgTCkgKiBvbWVnYSoqMiAtIChrX3N0aWZmL20pICogTCArIGdyYXZpdHkgKiBucC5jb3ModGhldGEpXG4gICAgZHRoZXRhX2R0ID0gb21lZ2FcbiAgICBkb21lZ2FfZHQgPSAtKGdyYXZpdHkgKiBucC5zaW4odGhldGEpICsgMi4wICogdiAqIG9tZWdhKSAvIChMX28gKyBMKVxuICAgIHJldHVybiBucC5hcnJheShbZExfZHQsIGR2X2R0LCBkdGhldGFfZHQsIGRvbWVnYV9kdF0pXG5cbnNvbHV0aW9uX3N0aWZmID0gb2RlaW50KHNwcmluZ19wZW5kdWx1bV9zdGlmZiwgc3RhdGVfMCwgdGltZSlcblxuIyBDb21wYXJlIHNwcmluZyBlbG9uZ2F0aW9uc1xucGx0LmZpZ3VyZShmaWdzaXplPWdldF9zaXplKDE1LCAxMCkpXG5wbHQucGxvdCh0aW1lLCBzb2x1dGlvbls6LCAwXSwgJ3ItJywgbGFiZWw9ZidPcmlnaW5hbCAoaz17a30gTi9tKScsIGxpbmV3aWR0aD0xLjUpXG5wbHQucGxvdCh0aW1lLCBzb2x1dGlvbl9zdGlmZls6LCAwXSwgJ2ItJywgbGFiZWw9ZidTdGlmZiAoaz17a19zdGlmZn0gTi9tKScsIGxpbmV3aWR0aD0xLjUpXG5wbHQueGxhYmVsKCdUaW1lIFtzXScpXG5wbHQueWxhYmVsKCdTcHJpbmcgZWxvbmdhdGlvbiBbbV0nKVxucGx0LmxlZ2VuZCgpXG5wbHQuZ3JpZChUcnVlLCBhbHBoYT0wLjMpXG5wbHQueGxpbSgwLCA1MClcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
+</script>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn to Experiment!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Try modifying: 1. <strong>Spring constant <code>k</code></strong>: What happens with a very soft spring (k=1) vs.&nbsp;very stiff (k=100)? 2. <strong>Pendulum length <code>L_o</code></strong>: Longer pendulum (L_o=10) vs.&nbsp;shorter (L_o=2)? 3. <strong>Initial conditions</strong>: Large angles, large velocities, or both?</p>
+<p>Can you find conditions that create: - Nearly circular motion? - Figure-eight patterns? - Complex, irregular motion?</p>
+</div>
+</div>
+</section>
+</section>
+<section id="the-road-to-chaos" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-to-chaos">The Road to Chaos</h2>
+<p>With certain combinations of parameters and initial conditions, the spring pendulum can exhibit <strong>chaotic motion</strong> - extremely sensitive to initial conditions and unpredictable over long times.</p>
+<section id="chaotic-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="chaotic-parameters">Chaotic Parameters</h3>
+<div>
+<div id="pyodide-14">
+
+</div>
+<script type="pyodide-14-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBQYXJhbWV0ZXJzIHRoYXQgY2FuIGxlYWQgdG8gY2hhb3NcbmtfY2hhb3MgPSA1LjAgICAgICAgICAgIyBTb2Z0ZXIgc3ByaW5nXG5MX29fY2hhb3MgPSAyLjAgICAgICAgICMgU2hvcnRlciBwZW5kdWx1bVxudGltZV9sb25nID0gbnAubGluc3BhY2UoMCwgMjAwLCAyMDAwMCkgICMgTG9uZ2VyIHNpbXVsYXRpb25cblxuc3RhdGVfY2hhb3MgPSBucC5hcnJheShbXG4gICAgMC4wLCAgICMgTDogc3RhcnQgYXQgbmF0dXJhbCBsZW5ndGhcbiAgICAxLjAsICAgIyB2OiBzdHJvbmcgcmFkaWFsIHB1c2hcbiAgICAxLjAsICAgIyB0aGV0YTogbGFyZ2UgYW5nbGVcbiAgICAwLjAgICAgIyBvbWVnYVxuXSlcblxuZGVmIHNwcmluZ19wZW5kdWx1bV9jaGFvcyhzdGF0ZSwgdGltZSk6XG4gICAgXCJcIlwiU3ByaW5nIHBlbmR1bHVtIHdpdGggY2hhb3MtcHJvbmUgcGFyYW1ldGVyc1wiXCJcIlxuICAgIEwsIHYsIHRoZXRhLCBvbWVnYSA9IHN0YXRlXG4gICAgZExfZHQgPSB2XG4gICAgZHZfZHQgPSAoTF9vX2NoYW9zICsgTCkgKiBvbWVnYSoqMiAtIChrX2NoYW9zL20pICogTCArIGdyYXZpdHkgKiBucC5jb3ModGhldGEpXG4gICAgZHRoZXRhX2R0ID0gb21lZ2FcbiAgICBkb21lZ2FfZHQgPSAtKGdyYXZpdHkgKiBucC5zaW4odGhldGEpICsgMi4wICogdiAqIG9tZWdhKSAvIChMX29fY2hhb3MgKyBMKVxuICAgIHJldHVybiBucC5hcnJheShbZExfZHQsIGR2X2R0LCBkdGhldGFfZHQsIGRvbWVnYV9kdF0pXG5cbnNvbHV0aW9uX2NoYW9zID0gb2RlaW50KHNwcmluZ19wZW5kdWx1bV9jaGFvcywgc3RhdGVfY2hhb3MsIHRpbWVfbG9uZylcblxuIyBQbG90IHRyYWplY3RvcnlcbnhfY2hhb3MgPSAoTF9vX2NoYW9zICsgc29sdXRpb25fY2hhb3NbOiwgMF0pICogbnAuc2luKHNvbHV0aW9uX2NoYW9zWzosIDJdKVxueV9jaGFvcyA9IC0oTF9vX2NoYW9zICsgc29sdXRpb25fY2hhb3NbOiwgMF0pICogbnAuY29zKHNvbHV0aW9uX2NoYW9zWzosIDJdKVxuXG5wbHQuZmlndXJlKGZpZ3NpemU9Z2V0X3NpemUoMTIsIDEyKSlcbnBsdC5wbG90KHhfY2hhb3MsIHlfY2hhb3MsICdyLScsIGxpbmV3aWR0aD0wLjMsIGFscGhhPTAuNSlcbnBsdC5wbG90KDAsIDAsICdrKicsIG1hcmtlcnNpemU9MTUpXG5wbHQueGxhYmVsKCdIb3Jpem9udGFsIHBvc2l0aW9uIFttXScpXG5wbHQueWxhYmVsKCdWZXJ0aWNhbCBwb3NpdGlvbiBbbV0nKVxucGx0LmF4aXMoJ2VxdWFsJylcbnBsdC5ncmlkKFRydWUsIGFscGhhPTAuMylcbnBsdC50aWdodF9sYXlvdXQoKVxucGx0LnNob3coKSJ9
+</script>
+</div>
+<p>Look at the phase space for the chaotic case:</p>
+<div>
+<div id="pyodide-15">
+
+</div>
+<script type="pyodide-15-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuZmlnLCAoYXgxLCBheDIpID0gcGx0LnN1YnBsb3RzKDEsIDIsIGZpZ3NpemU9Z2V0X3NpemUoMjAsIDEwKSlcblxuIyBTcHJpbmcgcGhhc2Ugc3BhY2VcbmF4MS5wbG90KHNvbHV0aW9uX2NoYW9zWzosIDBdLCBzb2x1dGlvbl9jaGFvc1s6LCAxXSwgJ3ItJywgbGluZXdpZHRoPTAuMiwgYWxwaGE9MC41KVxuYXgxLnNldF94bGFiZWwoJ1NwcmluZyBlbG9uZ2F0aW9uICRMJCBbbV0nKVxuYXgxLnNldF95bGFiZWwoJ1JhZGlhbCB2ZWxvY2l0eSAkdiQgW20vc10nKVxuYXgxLmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxuXG4jIFBlbmR1bHVtIHBoYXNlIHNwYWNlXG5heDIucGxvdChzb2x1dGlvbl9jaGFvc1s6LCAyXSwgc29sdXRpb25fY2hhb3NbOiwgM10sICdiLScsIGxpbmV3aWR0aD0wLjIsIGFscGhhPTAuNSlcbmF4Mi5zZXRfeGxhYmVsKCdBbmdsZSAkXFxcXHRoZXRhJCBbcmFkXScpXG5heDIuc2V0X3lsYWJlbCgnQW5ndWxhciB2ZWxvY2l0eSAkXFxcXG9tZWdhJCBbcmFkL3NdJylcbmF4Mi5ncmlkKFRydWUsIGFscGhhPTAuMylcblxucGx0LnRpZ2h0X2xheW91dCgpXG5wbHQuc2hvdygpIn0=
+</script>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Signatures of Chaos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chaotic motion shows: - <strong>Dense, irregular trajectories</strong> that fill space - <strong>No repeating patterns</strong> even over long times - <strong>Extreme sensitivity</strong> to initial conditions (change the starting point by 0.001 and get completely different behavior!) - <strong>Phase space “attractors”</strong> with fractal structure</p>
+<p>This is deterministic chaos - the equations are completely deterministic (no randomness!), but the behavior appears random.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="energy-conservation-check" class="level2">
+<h2 class="anchored" data-anchor-id="energy-conservation-check">Energy Conservation Check</h2>
+<p>Even though the motion can be complex, energy should be conserved (we have no damping).</p>
+<p>Let’s verify:</p>
+<div>
+<div id="pyodide-16">
+
+</div>
+<script type="pyodide-16-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuIyBDYWxjdWxhdGUgZW5lcmdpZXMgZm9yIG91ciBvcmlnaW5hbCBzaW11bGF0aW9uXG5MX3NvbCA9IHNvbHV0aW9uWzosIDBdXG52X3NvbCA9IHNvbHV0aW9uWzosIDFdXG50aGV0YV9zb2wgPSBzb2x1dGlvbls6LCAyXVxub21lZ2Ffc29sID0gc29sdXRpb25bOiwgM11cblxuIyBLaW5ldGljIGVuZXJneSAocmFkaWFsICsgYW5ndWxhcilcbktFX3JhZGlhbCA9IDAuNSAqIG0gKiB2X3NvbCoqMlxuS0VfYW5ndWxhciA9IDAuNSAqIG0gKiAoTF9vICsgTF9zb2wpKioyICogb21lZ2Ffc29sKioyXG5LRV90b3RhbCA9IEtFX3JhZGlhbCArIEtFX2FuZ3VsYXJcblxuIyBQb3RlbnRpYWwgZW5lcmd5IChzcHJpbmcgKyBncmF2aXR5KVxuUEVfc3ByaW5nID0gMC41ICogayAqIExfc29sKioyXG5QRV9ncmF2aXR5ID0gLW0gKiBncmF2aXR5ICogKExfbyArIExfc29sKSAqIG5wLmNvcyh0aGV0YV9zb2wpXG5QRV90b3RhbCA9IFBFX3NwcmluZyArIFBFX2dyYXZpdHlcblxuIyBUb3RhbCBlbmVyZ3lcbkVfdG90YWwgPSBLRV90b3RhbCArIFBFX3RvdGFsXG5cbnBsdC5maWd1cmUoZmlnc2l6ZT1nZXRfc2l6ZSgxNSwgMTApKVxucGx0LnBsb3QodGltZSwgS0VfdG90YWwsICdyLScsIGxhYmVsPSdLaW5ldGljIEVuZXJneScsIGxpbmV3aWR0aD0xLjUpXG5wbHQucGxvdCh0aW1lLCBQRV90b3RhbCwgJ2ItJywgbGFiZWw9J1BvdGVudGlhbCBFbmVyZ3knLCBsaW5ld2lkdGg9MS41KVxucGx0LnBsb3QodGltZSwgRV90b3RhbCwgJ2stJywgbGFiZWw9J1RvdGFsIEVuZXJneScsIGxpbmV3aWR0aD0yKVxuXG5wbHQueGxhYmVsKCdUaW1lIFtzXScpXG5wbHQueWxhYmVsKCdFbmVyZ3kgW0pdJylcbnBsdC5sZWdlbmQoKVxucGx0LmdyaWQoVHJ1ZSwgYWxwaGE9MC4zKVxucGx0LnRpZ2h0X2xheW91dCgpXG5wbHQuc2hvdygpIn0=
+</script>
+</div>
+<p>Check how well conserved it is:</p>
+<div>
+<div id="pyodide-17">
+
+</div>
+<script type="pyodide-17-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfSwiY29kZSI6IlxuZW5lcmd5X3ZhcmlhdGlvbiA9IG5wLm1heChFX3RvdGFsKSAtIG5wLm1pbihFX3RvdGFsKVxucmVsYXRpdmVfZXJyb3IgPSBlbmVyZ3lfdmFyaWF0aW9uIC8gbnAubWVhbihucC5hYnMoRV90b3RhbCkpXG5cbnByaW50KGZcIkluaXRpYWwgZW5lcmd5OiB7RV90b3RhbFswXTouNmZ9IEpcIilcbnByaW50KGZcIkZpbmFsIGVuZXJneToge0VfdG90YWxbLTFdOi42Zn0gSlwiKVxucHJpbnQoZlwiRW5lcmd5IHZhcmlhdGlvbjoge2VuZXJneV92YXJpYXRpb246LjJlfSBKXCIpXG5wcmludChmXCJSZWxhdGl2ZSBlcnJvcjoge3JlbGF0aXZlX2Vycm9yOi4yZX1cIikifQ==
+</script>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Numerical Accuracy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The energy should be nearly constant. Small variations (typically &lt; 0.1%) come from:</p>
+<ul>
+<li>Numerical errors in <code>odeint</code></li>
+<li>Finite time step size</li>
+</ul>
+<p>If you see large energy drift, try:</p>
+<ul>
+<li>Increasing the number of time points <code>N</code></li>
+<li>Using tighter tolerances in <code>odeint</code> (see documentation)</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="summary-what-weve-learned" class="level2">
+<h2 class="anchored" data-anchor-id="summary-what-weve-learned">Summary: What We’ve Learned</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🎓 Key Takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Coupled Systems</strong>: The spring pendulum combines two degrees of freedom that influence each other</p></li>
+<li><p><strong>ODE Solving Workflow</strong> (from Week 5):</p>
+<ul>
+<li>Write equations of motion</li>
+<li>Convert to first-order system</li>
+<li>Define derivative function</li>
+<li>Use <code>odeint</code> to solve</li>
+</ul></li>
+<li><p><strong>Phase Space</strong>: A powerful visualization tool for understanding dynamics</p>
+<ul>
+<li>Closed curves = periodic motion</li>
+<li>Complex patterns = chaotic motion</li>
+</ul></li>
+<li><p><strong>Energy Exchange</strong>: Energy can flow between different modes of motion</p></li>
+<li><p><strong>Chaos</strong>: Even simple deterministic systems can show complex, unpredictable behavior</p></li>
+<li><p><strong>Parameter Exploration</strong>: Small changes in parameters or initial conditions can dramatically change behavior</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="challenge-exercises" class="level2">
+<h2 class="anchored" data-anchor-id="challenge-exercises">Challenge Exercises</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🎯 Try These!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Find the Beat Pattern</strong>: Adjust parameters to create “beats” - where energy periodically sloshes between spring and pendulum modes</p></li>
+<li><p><strong>Circular Orbit</strong>: Can you find initial conditions that create nearly circular motion? (Hint: balance centrifugal and spring forces)</p></li>
+<li><p><strong>Sensitivity to Initial Conditions</strong>: Take the chaotic case and run two simulations with initial angles differing by only 0.001 radians. How quickly do they diverge?</p></li>
+<li><p><strong>Frequency Analysis</strong>: The spring has natural frequency <span class="math inline">\(\omega_s = \sqrt{k/m}\)</span> and the pendulum has <span class="math inline">\(\omega_p = \sqrt{g/L_0}\)</span>. What happens when these are equal? When one is twice the other?</p></li>
+<li><p><strong>Phase Space Animation</strong>: Can you create an animated plot showing how the system evolves in phase space over time?</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next?</h2>
+<p>You’ve now mastered applying <code>odeint</code> to two major physics problems in Week 6: 1. <strong>Planetary Motion</strong> (previous lecture) - stable, predictable orbits 2. <strong>Spring Pendulum</strong> (this lecture) - complex behavior and chaos</p>
+<p>Both used the same mathematical framework but showed very different behaviors because of their different force laws. This demonstrates the power and generality of numerical methods!</p>
+<p>In <strong>Week 7</strong>, we’ll step back and learn better ways to <strong>organize</strong> our code using modules and classes. After working with these complex simulations, you’ll understand why good code organization is essential as projects grow. The Brownian motion example in Week 7 will show how object-oriented programming can make simulations cleaner and more powerful! 🎯 </p>
+
+
+<script type="pyodide-data">
+eyJvcHRpb25zIjp7ImluZGV4VVJMIjoiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L3B5b2RpZGUvdjAuMjYuMS9mdWxsLyJ9LCJwYWNrYWdlcyI6eyJwa2dzIjpbInB5b2RpZGVfaHR0cCIsIm1pY3JvcGlwIiwiaXB5dGhvbiIsIm1hdHBsb3RsaWIiLCJudW1weSIsInNjaXB5Il19fQ==
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTE3IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTcgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE3LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTctY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xNyA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTE2IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTYgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE2LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTYtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xNiA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTE1IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTUgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE1LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTUtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xNSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTE0IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTQgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE0LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTQtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xNCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEzIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTMgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEzLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTMtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMyA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEyIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTIgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEyLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMiA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTExIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTEgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTExLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTEtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEwIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTAgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEwLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTAtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTAsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTkiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl85ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzkgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzksIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS04LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzggPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl83ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS03LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzcgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTYiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl82ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzYgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS01LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzUgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl80ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzQgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzIgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoiX3B5b2RpZGVfdmFsdWVfMSA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRQeXRob24sIGI2NERlY29kZX0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcInB5b2RpZGUtMS1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBQeXRob24gY29kZVxuICBjb25zdCByZXN1bHQgPSBweW9kaWRlT2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjFcIiBpbiBweW9kaWRlT2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgcHl0aG9uXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFB5dGhvbihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHB5b2RpZGVPanMucmVuZGVyZWRPanNbXCIxXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIn0seyJjZWxsTmFtZSI6InB5b2RpZGUtcHJlbHVkZSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InB5b2RpZGVPanMgPSB7XG4gIGNvbnN0IHtcbiAgICBQeW9kaWRlRXZhbHVhdG9yLFxuICAgIFB5b2RpZGVFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBQeXRob24sXG4gICAgc3RhcnRQeW9kaWRlV29ya2VyLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGgsXG4gIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHN0YXR1c0NvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1zdGF0dXNcIik7XG4gIGNvbnN0IGluZGljYXRvckNvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGluZGljYXRvckNvbnRhaW5lci5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpO1xuXG4gIGxldCBzdGF0dXNUZXh0ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKVxuICBzdGF0dXNUZXh0LmNsYXNzTGlzdCA9IFwiZXhlcmNpc2UtbG9hZGluZy1kZXRhaWxzXCI7XG4gIHN0YXR1c1RleHQgPSBzdGF0dXNDb250YWluZXIuYXBwZW5kQ2hpbGQoc3RhdHVzVGV4dCk7XG4gIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5pdGlhbGlzZWA7XG5cbiAgLy8gSG9pc3QgaW5kaWNhdG9yIG91dCBmcm9tIGZpbmFsIHNsaWRlIHdoZW4gcnVubmluZyB1bmRlciByZXZlYWxcbiAgY29uc3QgcmV2ZWFsU3RhdHVzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgLmV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpZiAocmV2ZWFsU3RhdHVzKSB7XG4gICAgcmV2ZWFsU3RhdHVzLnJlbW92ZSgpO1xuICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsID4gLnNsaWRlc1wiKS5hcHBlbmRDaGlsZChyZXZlYWxTdGF0dXMpO1xuICB9XG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../lectures/lecture10";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/fcichos\.github\.io\/EMPP\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
