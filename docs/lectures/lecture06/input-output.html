@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Übungsaufgaben – Einführung in die Modellierung Physikalischer Prozesse</title>
+<title>Input and output – Einführung in die Modellierung Physikalischer Prozesse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../course-info/exam.html" rel="next">
-<link href="../course-info/resources.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9344fb9851b4da3cab95007ef9d770dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../lectures/lecture09/coupled-pendula.html" rel="next">
+<link href="../../lectures/lecture05/brownian-motion-advanced.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-9344fb9851b4da3cab95007ef9d770dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,15 +71,11 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<!-- Privacy-friendly analytics by Plausible -->
-<script async="" src="https://plausible.io/js/pa-STLzCtrlwjN9dGc-mqu2f.js"></script>
-<script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
-</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light">
@@ -87,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Einführung in die Modellierung Physikalischer Prozesse</span>
     </a>
   </div>
@@ -108,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../course-info/intructors.html">Course Info</a></li><li class="breadcrumb-item"><a href="../course-info/assignments.html">Übungsaufgaben</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture05/brownian-motion-advanced.html">Week 8: Oscillations &amp; Files</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture06/input-output.html">Input, Output, Data Files</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -122,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
@@ -138,25 +136,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-info/intructors.html" class="sidebar-item-text sidebar-link">
+  <a href="../../course-info/intructors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vorlesender</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-info/resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../../course-info/resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ressourcen</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-info/assignments.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../course-info/assignments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Übungsaufgaben</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-info/exam.html" class="sidebar-item-text sidebar-link">
+  <a href="../../course-info/exam.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prüfungen</span></a>
   </div>
 </li>
@@ -174,13 +172,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture01/jupyter-notebooks.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture01/jupyter-notebooks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup: Jupyter Notebooks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture01/plotting-basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture01/plotting-basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Plotting Your First Graph</span></a>
   </div>
 </li>
@@ -197,13 +195,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture01/variables-and-numbers.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture01/variables-and-numbers.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Variables &amp; Numbers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture02/datatypes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture02/datatypes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Datatypes for Physics</span></a>
   </div>
 </li>
@@ -220,13 +218,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture02/functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture02/functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions: Reusable Physics Equations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture02/brownian-motion-simple.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture02/brownian-motion-simple.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Brownian Motion (Simple)</span></a>
   </div>
 </li>
@@ -243,13 +241,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture02/brownian-motion-simple.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture02/brownian-motion-simple.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Brownian Motion (Simple)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture03/numpy-arrays.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture03/numpy-arrays.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Arrays with NumPy</span></a>
   </div>
 </li>
@@ -266,13 +264,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture07/differentiation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture07/differentiation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Numerical Differentiation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture08/solving-odes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture08/solving-odes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Solving ODEs</span></a>
   </div>
 </li>
@@ -289,13 +287,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture10/planetary-motion.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture10/planetary-motion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Planetary Motion</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture10/spring-pendulum.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture10/spring-pendulum.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Spring Pendulum &amp; Chaos</span></a>
   </div>
 </li>
@@ -312,7 +310,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture05/classes-and-objects.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture05/classes-and-objects.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Classes &amp; Objects</span></a>
   </div>
 </li>
@@ -329,19 +327,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture05/brownian-motion-advanced.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture05/brownian-motion-advanced.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Brownian Motion with OOP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture06/input-output.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture06/input-output.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Input, Output, Data Files</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture09/coupled-pendula.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture09/coupled-pendula.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Coupled Pendula</span></a>
   </div>
 </li>
@@ -358,25 +356,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture09/fourier-analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture09/fourier-analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fourier Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture13/plane-waves.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture13/plane-waves.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Plane Waves</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture13/spherical-waves.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture13/spherical-waves.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Spherical Waves</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture14/huygens-principle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture14/huygens-principle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Huygens Principle</span></a>
   </div>
 </li>
@@ -393,7 +391,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture07/curve-fitting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture07/curve-fitting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Curve Fitting to Data</span></a>
   </div>
 </li>
@@ -410,25 +408,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture11/repetition.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture11/repetition.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Repetition: Core Concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture11/repetition-slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture11/repetition-slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Repetition: Core Concepts Slides</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture15/ode-review.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture15/ode-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Repetition: ODE Review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture15/ode-review-slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture15/ode-review-slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Repetition: ODE Review Slides</span></a>
   </div>
 </li>
@@ -445,13 +443,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture13/repetition-week13.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture13/repetition-week13.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Repetition: Meshgrid &amp; Arrays</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture13/repetition-week13-slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture13/repetition-week13-slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Repetition: Meshgrid &amp; Arrays Slides</span></a>
   </div>
 </li>
@@ -468,13 +466,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture12/diffusion-equation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture12/diffusion-equation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Diffusion Equation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture12/diffusion-equation-slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture12/diffusion-equation-slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Diffusion Equation Slides</span></a>
   </div>
 </li>
@@ -491,25 +489,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture15/1_quantum_mechanics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture15/1_quantum_mechanics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quantum Mechanics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture15/quantum-mechanics-slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture15/quantum-mechanics-slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quantum Mechanics Slides</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture15/2_particle_in_a_box.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture15/2_particle_in_a_box.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Particle in a Box</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/lecture15/particle-in-box-slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/lecture15/particle-in-box-slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Particle in a Box Slides</span></a>
   </div>
 </li>
@@ -520,21 +518,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#bereitstellung-und-abgabe-der-übungsaufgaben" id="toc-bereitstellung-und-abgabe-der-übungsaufgaben" class="nav-link active" data-scroll-target="#bereitstellung-und-abgabe-der-übungsaufgaben">Bereitstellung und Abgabe der Übungsaufgaben</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../course-info/intructors.html">Course Info</a></li><li class="breadcrumb-item"><a href="../course-info/assignments.html">Übungsaufgaben</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lectures/lecture05/brownian-motion-advanced.html">Week 8: Oscillations &amp; Files</a></li><li class="breadcrumb-item"><a href="../../lectures/lecture06/input-output.html">Input, Output, Data Files</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Übungsaufgaben</h1>
+<h1 class="title">Input and output</h1>
 </div>
 
 
@@ -551,34 +543,56 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Es werden insgesamt 6 Übungsblätter zur Verfügung gestellt. <em>Die Übungsblätter sind Teil der Prüfungsleistung!</em> Die Übungsblätter werden nicht benotet, aber die Bearbeitung ist für den erfolgreichen Abschluss des Moduls erforderlich. Genauere Informationen zur Wertung der Übungsblätter finden sie auf der Seite zur <a href="https://fcichos.github.io/EMPP24/course-info/exam.html">Prüfung</a>.</p>
-<section id="bereitstellung-und-abgabe-der-übungsaufgaben" class="level3">
-<h3 class="anchored" data-anchor-id="bereitstellung-und-abgabe-der-übungsaufgaben">Bereitstellung und Abgabe der Übungsaufgaben</h3>
-<ul>
-<li><strong>Veröffentlichung</strong>: Jeden Dienstag um 13:00 Uhr</li>
-<li><strong>Abgabefrist</strong>: Bis zum folgenden Dienstag um 12:00 Uhr</li>
-<li><strong>Bearbeitungszeitraum</strong>: Eine Woche (minus eine Stunde)</li>
-<li><strong>Plattform</strong>: Moodle der Universität
-<ul>
-<li>Sowohl für die Bearbeitung als auch für die Abgabe</li>
-</ul>
-<strong>Wichtig</strong>:
-<ul>
-<li>Achten Sie auf die pünktliche Abgabe innerhalb der angegebenen Frist.</li>
-<li>Nach Ablauf der Frist ist die Aufgabe nicht mehr verfügbar und kann nicht mehr eingereicht werden.</li>
-<li>Achten sie darauf, dass mehrmaliges Einreichen derselben Aufgabe die Punktzahl mit jeder Einreichung um 10% verringert</li>
-</ul></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./img/Physikalisches Modellieren QR.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
-</figure>
+<p>To try out all of the functions of todays notebook, we will need to use the embedded JupyterLite notebook. To use the notebook, click ob <code>File -&gt; Open from URL</code> and paste the following link into the input field:</p>
+<pre><code>https://raw.githubusercontent.com/fcichos/EMPP24/refs/heads/main/seminars/1_input_output.ipynb</code></pre>
+<p>To download the data files, click ob <code>File -&gt; Open from URL</code> and paste the following links into the input field:</p>
+<pre><code>https://raw.githubusercontent.com/fcichos/EMPP24/refs/heads/main/seminars/MyData.txt</code></pre>
+<pre><code>https://raw.githubusercontent.com/fcichos/EMPP24/refs/heads/main/seminars/2018-04-11_sds011_sensor_12253.csv</code></pre>
+<pre><code>https://raw.githubusercontent.com/fcichos/EMPP24/refs/heads/main/seminars/2018-04-12_sds011_sensor_12253.csv</code></pre>
+<p>You should then have 3 data files and one notebook. You can then go into fullscreen mode.</p>
+<button onclick="openFullscreen()">Full Screen</button>
+   <iframe id="myIframe" src="https://jupyterlite.github.io/demo/" width="100%" height="600px" allowfullscreen=""></iframe>
+   <script>
+   function openFullscreen() {
+     var iframe = document.getElementById("myIframe");
+     if (iframe.requestFullscreen) {
+       iframe.requestFullscreen();
+     } else if (iframe.webkitRequestFullscreen) { /* Safari */
+       iframe.webkitRequestFullscreen();
+     } else if (iframe.msRequestFullscreen) { /* IE11 */
+       iframe.msRequestFullscreen();
+     }
+   }
+   </script>
+
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
 </div>
+<div class="spinner-grow spinner-grow-sm">
 
-
-</section>
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../lectures/lecture06";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -980,13 +994,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../course-info/resources.html" class="pagination-link" aria-label="Ressourcen">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Ressourcen</span>
+      <a href="../../lectures/lecture05/brownian-motion-advanced.html" class="pagination-link" aria-label="Brownian Motion with OOP">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Brownian Motion with OOP</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../course-info/exam.html" class="pagination-link" aria-label="Prüfungen">
-        <span class="nav-page-text">Prüfungen</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../lectures/lecture09/coupled-pendula.html" class="pagination-link" aria-label="Coupled Pendula">
+        <span class="nav-page-text">Coupled Pendula</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

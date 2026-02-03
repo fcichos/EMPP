@@ -1,0 +1,487 @@
+---
+title: "Plotting Basics"
+format:
+  live-html:
+    toc: true
+    toc-location: right
+pyodide:
+  autorun: true
+  packages:
+    - matplotlib
+    - numpy
+---
+
+## Why Plotting Matters in Physics 📊
+
+As physicists, we need to **visualize** our data and calculations. A good plot can:
+
+- Reveal patterns and relationships
+- Make predictions visible
+- Communicate results effectively
+- Help us understand complex phenomena
+
+Python's **Matplotlib** library is the standard tool for creating scientific plots.
+
+---
+
+## Getting Started with Matplotlib
+
+Matplotlib is not built into Python - we need to import it:
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+```
+
+::: {.callout-note}
+### Convention
+We import `matplotlib.pyplot as plt` - this is the standard shorthand used everywhere in Python!
+:::
+
+```{pyodide}
+#| autorun: true
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+---
+
+## Your First Plot
+
+The most basic plotting command is:
+
+```python
+plt.plot(x, y)
+plt.show()
+```
+
+Let's plot a sine wave:
+
+```{pyodide}
+#| autorun: true
+
+# Create x values
+x = np.linspace(0, 4*np.pi, 100)
+
+# Calculate y values
+y = np.sin(x)
+
+# Create the plot
+plt.figure(figsize=(6, 4))
+plt.plot(x, y)
+plt.show()
+```
+
+::: {.callout-tip}
+### What This Does
+- `np.linspace(0, 4*np.pi, 100)`: Creates 100 evenly-spaced points from 0 to 4π
+- `plt.figure(figsize=(6, 4))`: Creates a new figure that's 6×4 inches
+- `plt.plot(x, y)`: Plots y versus x
+- `plt.show()`: Displays the plot
+:::
+
+---
+
+## Adding Labels
+
+A plot without labels is useless! Always add:
+- **x-axis label**: What's on the horizontal axis?
+- **y-axis label**: What's on the vertical axis?
+- **Title**: What does this plot show?
+
+```{pyodide}
+#| autorun: true
+
+x = np.linspace(0, 4*np.pi, 100)
+y = np.sin(x)
+
+plt.figure(figsize=(6, 4))
+plt.plot(x, y)
+plt.xlabel('Angle (radians)')
+plt.ylabel('sin(x)')
+plt.title('Sine Function')
+plt.show()
+```
+
+::: {.callout-tip}
+### Using LaTeX in Labels
+You can use mathematical notation in labels with LaTeX syntax:
+
+```python
+plt.xlabel(r'$\theta$ (radians)')  # Greek letters
+plt.ylabel(r'$\sin(\theta)$')      # Math expressions
+```
+
+The `r` before the string means "raw string" - it treats backslashes literally.
+:::
+
+---
+
+## Physics Example: Projectile Motion
+
+Let's plot something more physics-y! A ball launched at 45°:
+
+```{pyodide}
+#| autorun: true
+
+# Physics parameters
+v0 = 20.0  # initial velocity (m/s)
+angle = 45.0  # launch angle (degrees)
+g = 9.81  # gravity (m/s^2)
+
+# Convert angle to radians
+theta = np.radians(angle)
+
+# Time array
+t_max = 2 * v0 * np.sin(theta) / g  # time to hit ground
+t = np.linspace(0, t_max, 100)
+
+# Calculate trajectory
+x = v0 * np.cos(theta) * t
+y = v0 * np.sin(theta) * t - 0.5 * g * t**2
+
+# Plot
+plt.figure(figsize=(6, 4))
+plt.plot(x, y)
+plt.xlabel('Horizontal Distance (m)')
+plt.ylabel('Height (m)')
+plt.title('Projectile Motion (45° Launch)')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+::: {.callout-note}
+### What's New?
+- `plt.grid(True, alpha=0.3)`: Adds a grid (alpha=0.3 makes it semi-transparent)
+- Physics equations turned into beautiful visualization!
+:::
+
+---
+
+## Customizing Your Plot
+
+You can control colors, line styles, and markers:
+
+### Color and Line Style Options
+
+```python
+plt.plot(x, y, 'r-')   # red solid line
+plt.plot(x, y, 'b--')  # blue dashed line
+plt.plot(x, y, 'go')   # green circles
+plt.plot(x, y, 'k:')   # black dotted line
+```
+
+**Color codes**: `r` (red), `g` (green), `b` (blue), `k` (black), `c` (cyan), `m` (magenta), `y` (yellow)
+
+**Line styles**: `-` (solid), `--` (dashed), `:` (dotted), `-.` (dash-dot)
+
+**Markers**: `o` (circle), `s` (square), `^` (triangle), `*` (star), `+` (plus)
+
+### Example
+
+```{pyodide}
+#| autorun: true
+
+x = np.linspace(0, 2*np.pi, 50)
+
+plt.figure(figsize=(6, 4))
+plt.plot(x, np.sin(x), 'r-', linewidth=2)
+plt.plot(x, np.cos(x), 'b--', linewidth=2)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Sine and Cosine')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+---
+
+## Adding a Legend
+
+When you have multiple lines, use a legend to identify them:
+
+```{pyodide}
+#| autorun: true
+
+x = np.linspace(0, 2*np.pi, 50)
+
+plt.figure(figsize=(6, 4))
+plt.plot(x, np.sin(x), 'r-', linewidth=2, label='sin(x)')
+plt.plot(x, np.cos(x), 'b--', linewidth=2, label='cos(x)')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Trigonometric Functions')
+plt.legend(loc='upper right')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+::: {.callout-tip}
+### Legend Locations
+Common locations: `'upper right'`, `'upper left'`, `'lower right'`, `'lower left'`, `'center'`, `'best'` (automatic)
+:::
+
+---
+
+## Physics Example: Damped Oscillator
+
+Let's visualize different damping regimes:
+
+```{pyodide}
+#| autorun: true
+
+# Parameters
+omega0 = 2.0  # natural frequency
+t = np.linspace(0, 10, 500)
+
+# Different damping coefficients
+gamma1 = 0.2   # underdamped
+gamma2 = 2.0   # critically damped
+gamma3 = 4.0   # overdamped
+
+# Underdamped oscillation
+y1 = np.exp(-gamma1*t) * np.cos(omega0*t)
+y2 = np.exp(-gamma2*t)
+y3 = np.exp(-gamma3*t)
+
+plt.figure(figsize=(8, 5))
+plt.plot(t, y1, 'b-', linewidth=2, label=r'Underdamped ($\gamma=0.2$)')
+plt.plot(t, y2, 'r-', linewidth=2, label=r'Critical ($\gamma=2.0$)')
+plt.plot(t, y3, 'g-', linewidth=2, label=r'Overdamped ($\gamma=4.0$)')
+plt.xlabel('Time (s)')
+plt.ylabel('Amplitude')
+plt.title('Damped Harmonic Oscillator')
+plt.legend(loc='upper right')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+---
+
+## Plotting Data Points (Not Just Lines)
+
+Sometimes you want to show discrete data points:
+
+```{pyodide}
+#| autorun: true
+
+# Simulated experimental data
+x_data = np.array([1, 2, 3, 4, 5, 6, 7, 8])
+y_data = np.array([2.1, 3.9, 6.2, 7.8, 10.1, 11.9, 14.2, 15.8])
+
+# Theoretical line
+x_theory = np.linspace(0, 9, 100)
+y_theory = 2 * x_theory
+
+plt.figure(figsize=(6, 4))
+plt.plot(x_data, y_data, 'ro', markersize=8, label='Experimental Data')
+plt.plot(x_theory, y_theory, 'b-', linewidth=2, label='Theory: y = 2x')
+plt.xlabel('Input (units)')
+plt.ylabel('Output (units)')
+plt.title('Experimental vs Theoretical Results')
+plt.legend(loc='upper left')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+::: {.callout-note}
+### Markers Without Lines
+Use `'ro'` (red circles) to plot only markers without connecting lines.
+Use `'r-o'` to plot both line and markers.
+:::
+
+---
+
+## Saving Your Plots
+
+To save a plot to a file:
+
+```python
+plt.savefig('my_plot.png')        # PNG format
+plt.savefig('my_plot.pdf')        # PDF format (best for papers!)
+plt.savefig('my_plot.png', dpi=300)  # High resolution PNG
+```
+
+**Always save before `plt.show()`!**
+
+```{pyodide}
+#| autorun: true
+
+x = np.linspace(0, 2*np.pi, 100)
+y = np.sin(x)
+
+plt.figure(figsize=(6, 4))
+plt.plot(x, y, 'b-', linewidth=2)
+plt.xlabel('x')
+plt.ylabel('sin(x)')
+plt.title('Sine Wave')
+plt.grid(True, alpha=0.3)
+
+# Save before showing!
+plt.savefig('sine_wave.pdf')
+plt.show()
+```
+
+::: {.callout-tip}
+### File Formats
+- **PDF**: Best for inclusion in LaTeX documents and papers
+- **PNG**: Good for presentations and web
+- **SVG**: Vector format, good for editing in Inkscape/Illustrator
+:::
+
+---
+
+## Quick Reference: Essential Commands
+
+```python
+# Setup
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Create plot
+plt.figure(figsize=(6, 4))
+plt.plot(x, y, 'b-', linewidth=2, label='My Data')
+
+# Labels and title
+plt.xlabel('X Label')
+plt.ylabel('Y Label')
+plt.title('My Plot')
+
+# Extras
+plt.legend(loc='best')
+plt.grid(True, alpha=0.3)
+
+# Save and show
+plt.savefig('filename.pdf')
+plt.show()
+```
+
+---
+
+## Practice Exercises 🎯
+
+### Exercise 1: Free Fall Velocity
+Plot the velocity of a falling object: $v = gt$
+
+- Use time from 0 to 5 seconds
+- Set $g = 9.81$ m/s²
+- Add proper labels and title
+- Use a red line with linewidth=2
+
+::: {.callout-tip collapse="true"}
+### Solution
+```python
+g = 9.81
+t = np.linspace(0, 5, 100)
+v = g * t
+
+plt.figure(figsize=(6, 4))
+plt.plot(t, v, 'r-', linewidth=2)
+plt.xlabel('Time (s)')
+plt.ylabel('Velocity (m/s)')
+plt.title('Free Fall Velocity')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+:::
+
+### Exercise 2: Kinetic Energy vs Velocity
+Plot kinetic energy as a function of velocity for a 1000 kg car.
+
+- $E_k = \frac{1}{2}mv^2$
+- Velocity from 0 to 40 m/s
+- Add labels with proper units
+
+::: {.callout-tip collapse="true"}
+### Solution
+```python
+m = 1000  # kg
+v = np.linspace(0, 40, 100)
+E_k = 0.5 * m * v**2
+
+plt.figure(figsize=(6, 4))
+plt.plot(v, E_k/1000, 'b-', linewidth=2)  # Convert to kJ
+plt.xlabel('Velocity (m/s)')
+plt.ylabel('Kinetic Energy (kJ)')
+plt.title('Kinetic Energy of a 1000 kg Car')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+:::
+
+### Exercise 3: Compare Trajectories
+Plot projectile trajectories for launch angles of 30°, 45°, and 60° on the same plot.
+
+- Use $v_0 = 20$ m/s for all
+- Add a legend
+- Use different colors for each angle
+
+::: {.callout-tip collapse="true"}
+### Solution
+```python
+v0 = 20.0
+g = 9.81
+angles = [30, 45, 60]
+colors = ['r', 'b', 'g']
+
+plt.figure(figsize=(8, 5))
+
+for angle, color in zip(angles, colors):
+    theta = np.radians(angle)
+    t_max = 2 * v0 * np.sin(theta) / g
+    t = np.linspace(0, t_max, 100)
+    x = v0 * np.cos(theta) * t
+    y = v0 * np.sin(theta) * t - 0.5 * g * t**2
+    plt.plot(x, y, color=color, linewidth=2, label=f'{angle}°')
+
+plt.xlabel('Horizontal Distance (m)')
+plt.ylabel('Height (m)')
+plt.title('Projectile Trajectories at Different Angles')
+plt.legend(loc='upper right')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+:::
+
+---
+
+## Common Mistakes to Avoid ⚠️
+
+1. **Forgetting `plt.show()`**: Your plot won't display!
+2. **No labels**: Always label axes and add a title
+3. **Saving after showing**: Use `plt.savefig()` BEFORE `plt.show()`
+4. **Too many points**: 100-500 points is usually enough for smooth curves
+5. **Ugly default sizes**: Always set `figsize` for better proportions
+
+---
+
+## What's Next?
+
+You now know the basics of plotting! In later lectures, you'll learn:
+
+- **Scatter plots and histograms** (Lecture 4)
+- **Logarithmic plots** for exponential data
+- **Multiple subplots** in one figure
+- **Contour and 3D plots** for multivariable functions
+- **Animations** for time-dependent phenomena
+
+But these basics will get you through 90% of your physics plotting needs! 🎉
+
+---
+
+## Summary ✅
+
+**Essential Matplotlib Commands:**
+```python
+plt.figure(figsize=(6,4))     # Create new figure
+plt.plot(x, y, 'b-')          # Plot data
+plt.xlabel('label')           # X-axis label
+plt.ylabel('label')           # Y-axis label
+plt.title('title')            # Title
+plt.legend()                  # Add legend
+plt.grid(True)                # Add grid
+plt.savefig('file.pdf')       # Save figure
+plt.show()                    # Display plot
+```
+
+**Remember:** Good plots communicate clearly. Always include labels, units, and legends!

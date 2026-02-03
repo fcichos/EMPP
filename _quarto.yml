@@ -36,7 +36,7 @@ website:
           - text: "Setup: Jupyter Notebooks"
             href: lectures/lecture01/01-lecture01.qmd
           - text: "Quick Win: Plotting Your First Graph"
-            href: lectures/lecture04/04-plotting.qmd # MOVED UP!
+            href: lectures/lecture01/01-plotting-basics.qmd # MOVED UP!
           - text: "Variables & Numbers (What You Just Used)"
             href: lectures/lecture01/02-lecture01.qmd
 
